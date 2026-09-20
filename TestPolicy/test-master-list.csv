@@ -1,0 +1,30 @@
+test,run
+character.[s1] Character export/import.rejects non-JSON and invalid content,0
+character.[s1] Character export/import.round-trips,0
+character.[s1] Character model.a new character is valid,0
+character.[s1] Character model.rejects malformed choices,0
+character.[s1] Character model.rejects out-of-range level,0
+character.[s1] Character model.rejects unknown trait names,0
+character.[s1] Character model.rejects wrong schemaVersion,0
+character.[s1] Character store.lists newest first and reports corrupt records,0
+character.[s1] Character store.refuses to save an invalid character,0
+character.[s1] Character store.removes,0
+character.[s1] Character store.returns null for a missing id,0
+character.[s1] Character store.saves, stamps updatedAt, and loads,0
+packs.[s1] Source pack loader.applies extended packs first, so overrides work regardless of input order,0
+packs.[s1] Source pack loader.errors on circular extends,0
+packs.[s1] Source pack loader.errors on duplicate entry ids across packs,0
+packs.[s1] Source pack loader.errors on duplicate pack ids,0
+packs.[s1] Source pack loader.errors on missing extends,0
+packs.[s1] Source pack loader.errors when overriding a missing entry,0
+packs.[s1] Source pack loader.loads entries and tags their pack,0
+packs.[s1] Source pack validation.accepts a minimal pack,0
+packs.[s1] Source pack validation.rejects an override that tries to change the id,0
+packs.[s1] Source pack validation.rejects bad entry ids,0
+packs.[s1] Source pack validation.rejects missing fields,0
+packs.[s1] Source pack validation.rejects unknown content kinds,0
+packs.[s1] Source pack validation.rejects unknown top-level keys,0
+sample-packs.[s1] Sample packs end to end.a character built from pack ids resolves back against the registry,0
+sample-packs.[s1] Sample packs end to end.extension overrides core content and tags its source,0
+sample-packs.[s1] Sample packs end to end.load through the same loader as any pack,0
+smoke.[evergreen] Smoke.runs,1

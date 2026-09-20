@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "sample-core",
+  "name": "Sample Core (placeholder)",
+  "version": "0.0.1",
+  "publisher": "Project sample",
+  "content": {
+    "classes": [{ "id": "sample-warden", "name": "Sample Warden", "description": "Invented placeholder class." }],
+    "subclasses": [{ "id": "sample-warden-stone", "name": "Stone Path", "class": "sample-warden" }],
+    "ancestries": [{ "id": "sample-hollowfolk", "name": "Hollowfolk" }],
+    "communities": [{ "id": "sample-highland", "name": "Highland" }],
+    "domains": [{ "id": "sample-bone", "name": "Bone" }],
+    "domainCards": [{ "id": "sample-bone-ward", "name": "Bone Ward", "domain": "sample-bone", "level": 1 }],
+    "equipment": [{ "id": "sample-staff", "name": "Oak Staff" }],
+    "campaignFrames": [{ "id": "sample-frame", "name": "Sample Frame" }]
+  }
+}

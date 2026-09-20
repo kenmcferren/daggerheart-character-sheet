@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "sample-extension",
+  "name": "Sample Extension (placeholder)",
+  "version": "0.0.1",
+  "publisher": "Project sample",
+  "extends": ["sample-core"],
+  "content": {
+    "ancestries": [{ "id": "sample-emberkin", "name": "Emberkin" }]
+  },
+  "overrides": {
+    "equipment": { "sample-staff": { "name": "Ash Staff" } }
+  }
+}
