@@ -3,28 +3,95 @@
   "$id": "source-pack.schema.json",
   "title": "Source pack",
   "type": "object",
-  "required": ["schemaVersion", "id", "name", "version", "publisher"],
+  "required": [
+    "schemaVersion",
+    "id",
+    "name",
+    "version",
+    "publisher"
+  ],
   "additionalProperties": false,
   "properties": {
-    "schemaVersion": { "const": 1 },
-    "id": { "$ref": "#/definitions/id" },
-    "name": { "type": "string", "minLength": 1 },
-    "version": { "type": "string", "minLength": 1 },
-    "publisher": { "type": "string", "minLength": 1 },
-    "extends": { "type": "array", "items": { "$ref": "#/definitions/id" }, "uniqueItems": true },
+    "schemaVersion": {
+      "const": 1
+    },
+    "id": {
+      "$ref": "#/definitions/id"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "publisher": {
+      "type": "string",
+      "minLength": 1
+    },
+    "extends": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/id"
+      },
+      "uniqueItems": true
+    },
     "content": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "classes": { "$ref": "#/definitions/entries" },
-        "subclasses": { "$ref": "#/definitions/entries" },
-        "ancestries": { "$ref": "#/definitions/entries" },
-        "communities": { "$ref": "#/definitions/entries" },
-        "domains": { "$ref": "#/definitions/entries" },
-        "domainCards": { "$ref": "#/definitions/entries" },
-        "equipment": { "$ref": "#/definitions/entries" },
-        "campaignFrames": { "$ref": "#/definitions/entries" },
-        "levelUpOptions": { "$ref": "#/definitions/entries" }
+        "classes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/class"
+          }
+        },
+        "subclasses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/subclass"
+          }
+        },
+        "ancestries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ancestry"
+          }
+        },
+        "communities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/community"
+          }
+        },
+        "domains": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/domain"
+          }
+        },
+        "domainCards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/domainCard"
+          }
+        },
+        "equipment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/equipmentItem"
+          }
+        },
+        "campaignFrames": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/campaignFrame"
+          }
+        },
+        "levelUpOptions": {
+          "$ref": "#/definitions/entries"
+        }
       }
     },
     "overrides": {
@@ -32,35 +99,614 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "classes": { "$ref": "#/definitions/patches" },
-        "subclasses": { "$ref": "#/definitions/patches" },
-        "ancestries": { "$ref": "#/definitions/patches" },
-        "communities": { "$ref": "#/definitions/patches" },
-        "domains": { "$ref": "#/definitions/patches" },
-        "domainCards": { "$ref": "#/definitions/patches" },
-        "equipment": { "$ref": "#/definitions/patches" },
-        "campaignFrames": { "$ref": "#/definitions/patches" },
-        "levelUpOptions": { "$ref": "#/definitions/patches" }
+        "classes": {
+          "$ref": "#/definitions/patches"
+        },
+        "subclasses": {
+          "$ref": "#/definitions/patches"
+        },
+        "ancestries": {
+          "$ref": "#/definitions/patches"
+        },
+        "communities": {
+          "$ref": "#/definitions/patches"
+        },
+        "domains": {
+          "$ref": "#/definitions/patches"
+        },
+        "domainCards": {
+          "$ref": "#/definitions/patches"
+        },
+        "equipment": {
+          "$ref": "#/definitions/patches"
+        },
+        "campaignFrames": {
+          "$ref": "#/definitions/patches"
+        },
+        "levelUpOptions": {
+          "$ref": "#/definitions/patches"
+        }
       }
     }
   },
   "definitions": {
-    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$" },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
     "entry": {
-      "description": "Kind-specific fields are added per kind once the SRD shape is known (Series 2).",
+      "description": "Base entry. Kind definitions add typed fields; unknown extra fields are allowed so third-party packs can carry their own data. Rules fields hold SRD rules text only (no flavor).",
       "type": "object",
-      "required": ["id", "name"],
+      "required": [
+        "id",
+        "name"
+      ],
       "properties": {
-        "id": { "$ref": "#/definitions/id" },
-        "name": { "type": "string", "minLength": 1 },
-        "description": { "type": "string" }
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        }
       }
     },
-    "entries": { "type": "array", "items": { "$ref": "#/definitions/entry" } },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/entry"
+      }
+    },
     "patches": {
       "type": "object",
-      "propertyNames": { "pattern": "^[a-z0-9][a-z0-9._-]*$" },
-      "additionalProperties": { "type": "object", "not": { "required": ["id"] } }
+      "propertyNames": {
+        "pattern": "^[a-z0-9][a-z0-9._-]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "not": {
+          "required": [
+            "id"
+          ]
+        }
+      }
+    },
+    "count": {
+      "description": "Fixed number, or derived from a trait modifier (used for circles printed with rule text).",
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "object",
+          "required": [
+            "trait"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "trait": {
+              "enum": [
+                "agility",
+                "strength",
+                "finesse",
+                "instinct",
+                "presence",
+                "knowledge",
+                "spellcast"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "feature": {
+      "type": "object",
+      "required": [
+        "rules"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "rules": {
+          "type": "string",
+          "minLength": 1
+        },
+        "level": {
+          "enum": [
+            "foundation",
+            "specialization",
+            "mastery"
+          ]
+        },
+        "uses": {
+          "$ref": "#/definitions/count"
+        }
+      }
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/feature"
+      }
+    },
+    "tracker": {
+      "description": "Printed marks only, never stored. box = HP/Armor/Stress/frame counters; circle = uses tied to a trait.",
+      "type": "object",
+      "required": [
+        "id",
+        "shape",
+        "count",
+        "label"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "shape": {
+          "enum": [
+            "box",
+            "circle"
+          ]
+        },
+        "count": {
+          "$ref": "#/definitions/count"
+        },
+        "label": {
+          "type": "string"
+        },
+        "placement": {
+          "enum": [
+            "front",
+            "back"
+          ]
+        },
+        "attachTo": {
+          "type": "string"
+        },
+        "perTier": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "choice": {
+      "description": "A choice the wizard asks the player.",
+      "type": "object",
+      "required": [
+        "id",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "type": {
+          "enum": [
+            "pick",
+            "text",
+            "roll-table",
+            "builder",
+            "pick-one-each-from"
+          ]
+        },
+        "min": {
+          "type": "integer"
+        },
+        "max": {
+          "type": "integer"
+        },
+        "pool": {
+          "type": "string"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "key"
+            ],
+            "properties": {
+              "key": {
+                "type": "string"
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "free": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "fixed": {
+          "type": "object"
+        }
+      }
+    },
+    "frameOp": {
+      "description": "One ordered operation a campaign frame applies to character creation. Per-op fields are validated when frame packs are built (step 3).",
+      "type": "object",
+      "required": [
+        "op"
+      ],
+      "properties": {
+        "op": {
+          "enum": [
+            "replace-pool",
+            "add-to-pool",
+            "insert-step",
+            "set-resource",
+            "grant",
+            "annotate",
+            "remove-move",
+            "add-move",
+            "add-tracker",
+            "add-levelup-option",
+            "back-sheet"
+          ]
+        }
+      }
+    },
+    "class": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/entry"
+        },
+        {
+          "type": "object",
+          "required": [],
+          "properties": {
+            "domains": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/id"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "startingEvasion": {
+              "type": "integer"
+            },
+            "startingHitPoints": {
+              "type": "integer"
+            },
+            "classItems": {
+              "type": "string"
+            },
+            "hopeFeature": {
+              "$ref": "#/definitions/feature"
+            },
+            "features": {
+              "$ref": "#/definitions/features"
+            },
+            "subclasses": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/id"
+              }
+            },
+            "backgroundQuestions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "connections": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "supplements": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "title",
+                  "rules"
+                ],
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "rules": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "subclass": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/entry"
+        },
+        {
+          "type": "object",
+          "required": [
+            "class"
+          ],
+          "properties": {
+            "class": {
+              "$ref": "#/definitions/id"
+            },
+            "spellcastTrait": {
+              "enum": [
+                "agility",
+                "strength",
+                "finesse",
+                "instinct",
+                "presence",
+                "knowledge"
+              ]
+            },
+            "features": {
+              "$ref": "#/definitions/features"
+            }
+          }
+        }
+      ]
+    },
+    "ancestry": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/entry"
+        },
+        {
+          "type": "object",
+          "required": [],
+          "properties": {
+            "features": {
+              "$ref": "#/definitions/features"
+            }
+          }
+        }
+      ]
+    },
+    "community": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/entry"
+        },
+        {
+          "type": "object",
+          "required": [],
+          "properties": {
+            "features": {
+              "$ref": "#/definitions/features"
+            }
+          }
+        }
+      ]
+    },
+    "domain": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/entry"
+        },
+        {
+          "type": "object",
+          "required": [],
+          "properties": {
+            "classes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/id"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "domainCard": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/entry"
+        },
+        {
+          "type": "object",
+          "required": [
+            "domain",
+            "level"
+          ],
+          "properties": {
+            "domain": {
+              "$ref": "#/definitions/id"
+            },
+            "level": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10
+            },
+            "type": {
+              "type": "string"
+            },
+            "recallCost": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "rules": {
+              "type": "string"
+            },
+            "uses": {
+              "$ref": "#/definitions/count"
+            },
+            "trackers": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tracker"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "equipmentItem": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/entry"
+        },
+        {
+          "type": "object",
+          "required": [],
+          "properties": {
+            "category": {
+              "enum": [
+                "weapon",
+                "armor",
+                "item",
+                "consumable"
+              ]
+            },
+            "tier": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "weaponSlot": {
+              "enum": [
+                "primary",
+                "secondary",
+                "wheelchair"
+              ]
+            },
+            "trait": {
+              "enum": [
+                "agility",
+                "strength",
+                "finesse",
+                "instinct",
+                "presence",
+                "knowledge",
+                "spellcast"
+              ]
+            },
+            "range": {
+              "type": "string"
+            },
+            "damage": {
+              "type": "string"
+            },
+            "damageType": {
+              "enum": [
+                "physical",
+                "magic"
+              ]
+            },
+            "burden": {
+              "type": "string"
+            },
+            "majorThreshold": {
+              "type": "integer"
+            },
+            "severeThreshold": {
+              "type": "integer"
+            },
+            "armorScore": {
+              "type": "integer"
+            },
+            "feature": {
+              "type": "string"
+            },
+            "roll": {
+              "type": "integer"
+            },
+            "rules": {
+              "type": "string"
+            },
+            "tiers": {
+              "type": "object"
+            }
+          }
+        }
+      ]
+    },
+    "campaignFrame": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/entry"
+        },
+        {
+          "type": "object",
+          "required": [],
+          "properties": {
+            "creation": {
+              "type": "object",
+              "properties": {
+                "choices": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/choice"
+                  }
+                },
+                "ops": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/frameOp"
+                  }
+                }
+              }
+            },
+            "trackers": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tracker"
+              }
+            },
+            "frameKind": {
+              "enum": [
+                "frame",
+                "supplement"
+              ]
+            },
+            "sessionZeroQuestions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "pools": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "name"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

@@ -1,0 +1,1231 @@
+{
+  "schemaVersion": 1,
+  "id": "srd-frames",
+  "name": "Daggerheart SRD 2.0 (campaign frames and supplements)",
+  "version": "2.0.0",
+  "publisher": "Darrington Press (SRD)",
+  "extends": [
+    "srd-core"
+  ],
+  "content": {
+    "campaignFrames": [
+      {
+        "id": "witherwild",
+        "name": "The Witherwild",
+        "frameKind": "frame",
+        "sessionZeroQuestions": [
+          "What dangerous animal comes out during the week of night that isn’t out during the week of day?",
+          "What unique trait (such as appearance, smell, or taste) does anything tainted by the Witherwild have?",
+          "What superstitions does your character or their community have about traversing Fanewick during the long nights?",
+          "Your character has witnessed something beautiful that came from the Witherwild. What is it and how has it transformed their view of the corruption?"
+        ],
+        "creation": {
+          "ops": [
+            {
+              "op": "annotate",
+              "target": "classes.druid",
+              "text": "Druids, rangers, and sorcerers are commonly found throughout Fanewick. If players choose one of these classes, they should consider how their character’s connection to the natural world might be impacted by the Witherwild."
+            },
+            {
+              "op": "annotate",
+              "target": "classes.ranger",
+              "text": "See Druid."
+            },
+            {
+              "op": "annotate",
+              "target": "classes.sorcerer",
+              "text": "See Druid."
+            },
+            {
+              "op": "annotate",
+              "target": "classes.warrior",
+              "text": "Warriors and wizards are prevalent in Haven. A large wizarding school in Haven teaches fighters and healers, and the Haven Army is largely composed of warriors and School of War wizards. If a PC is either of these classes, consider their personal relationship to the Haven Army."
+            },
+            {
+              "op": "annotate",
+              "target": "classes.wizard",
+              "text": "Warriors and wizards are prevalent in Haven. A large wizarding school in Haven teaches fighters and healers, and the Haven Army is largely composed of warriors and School of War wizards. If a PC is either of these classes, consider their personal relationship to the Haven Army."
+            },
+            {
+              "op": "annotate",
+              "target": "subclasses.guardian.vengeance",
+              "text": "Many Wicklings who seek revenge on Haven or to expel them from Fanewick become Vengeance guardians. If players choose this subclass, they should consider what ideals or institutions their character protects."
+            },
+            {
+              "op": "annotate",
+              "target": "subclasses.rogue.syndicate",
+              "text": "The Haven Army sends spies into Fanewick communities to gain information on planned attacks and manipulate public perception. When selecting the Syndicate rogue subclass, players should consider how their character might be connected to or impacted by these covert operatives."
+            },
+            {
+              "op": "annotate",
+              "target": "ancestries.clank",
+              "text": "Clanks from Haven are commonly made from iron and steel, while clanks from Fanewick are typically constructed from wood and stone."
+            },
+            {
+              "op": "annotate",
+              "target": "ancestries.fungril",
+              "text": "Since the Witherwild spread throughout Fanewick, some fungril inhabiting the forests have grown noticeably larger than fungril from other regions."
+            },
+            {
+              "op": "annotate",
+              "target": "ancestries.drakona",
+              "text": "After the Witherwild corrupted Fanewick, some drakona, fauns, firbolgs, and infernis have noticed their horns growing faster and longer."
+            },
+            {
+              "op": "annotate",
+              "target": "ancestries.faun",
+              "text": "After the Witherwild corrupted Fanewick, some drakona, fauns, firbolgs, and infernis have noticed their horns growing faster and longer."
+            },
+            {
+              "op": "annotate",
+              "target": "ancestries.firbolg",
+              "text": "After the Witherwild corrupted Fanewick, some drakona, fauns, firbolgs, and infernis have noticed their horns growing faster and longer."
+            },
+            {
+              "op": "annotate",
+              "target": "ancestries.infernis",
+              "text": "After the Witherwild corrupted Fanewick, some drakona, fauns, firbolgs, and infernis have noticed their horns growing faster and longer."
+            },
+            {
+              "op": "annotate",
+              "target": "ancestries.galapa",
+              "text": "Many families of galapa and ribbets who lived in the bogs of Fanewick were displaced when Haven’s army invaded."
+            },
+            {
+              "op": "annotate",
+              "target": "ancestries.ribbet",
+              "text": "Many families of galapa and ribbets who lived in the bogs of Fanewick were displaced when Haven’s army invaded."
+            },
+            {
+              "op": "annotate",
+              "target": "communities.loreborne",
+              "text": "In Fanewick, knowledge is the most valuable commodity, and those who have expertise have the most power. This economy of information functions primarily through gifting and trading, and wisdom would be considered acceptable collateral for a weapon or warm meal. As such, loreborne community members are the wealthiest in Fanewick and might be smaller, distinct groups of hunters, historians, or artisans within larger villages.",
+              "questions": [
+                "What knowledge did your community teach you that you must now protect or share?",
+                "What are you able to accomplish because of your upbringing that others outside your community do not understand?",
+                "You once traded important knowledge for something terrible. What did you impart and what did you gain in return?"
+              ]
+            },
+            {
+              "op": "annotate",
+              "target": "communities.highborne",
+              "text": "In Haven, the wealthiest members are highborne, having inherited riches built in the walled city over generations. While the highborne of Haven were more insulated from the Serpent’s Sickness, none were immune.",
+              "questions": [
+                "Who have you lost to the Serpent’s Sickness? How did it affect you?",
+                "How did your family make their wealth? Have you rejected or embraced their core set of ethics?",
+                "You grew up in a world of abundance but were kept from learning something about the world. What was this knowledge and when did you discover it?"
+              ]
+            },
+            {
+              "op": "annotate",
+              "target": "communities.ridgeborne",
+              "text": "Characters from these communities were likely raised in Fanewick’s deadly environs, which have only become more dangerous as the Witherwild grows. Each community has unique customs, some freely shared and others kept secret, that allow them safe passage through dangerous terrain and the Faint Divinities’ territories.",
+              "questions": [
+                "In exchange for protection from the Witherwild for themselves and their families, some Wicklings from these groups have been forced to take jobs as farmers in Haven’s flower fields. Though it is backbreaking work performed for a nation destroying their land, the farmers are offered safety by the Haven fires that burn back the ever-creeping Witherwild. What Faint Divinities do you give tribute to, and how have you been rewarded in kind?",
+                "You displeased a god of Fanewick. What did you do, and what misfortune befell you or a loved one?",
+                "You fled the place of your birth. What circumstances drove you to leave?"
+              ]
+            },
+            {
+              "op": "annotate",
+              "target": "communities.underborne",
+              "text": "Characters from these communities were likely raised in Fanewick’s deadly environs, which have only become more dangerous as the Witherwild grows. Each community has unique customs, some freely shared and others kept secret, that allow them safe passage through dangerous terrain and the Faint Divinities’ territories.",
+              "questions": [
+                "In exchange for protection from the Witherwild for themselves and their families, some Wicklings from these groups have been forced to take jobs as farmers in Haven’s flower fields. Though it is backbreaking work performed for a nation destroying their land, the farmers are offered safety by the Haven fires that burn back the ever-creeping Witherwild. What Faint Divinities do you give tribute to, and how have you been rewarded in kind?",
+                "You displeased a god of Fanewick. What did you do, and what misfortune befell you or a loved one?",
+                "You fled the place of your birth. What circumstances drove you to leave?"
+              ]
+            },
+            {
+              "op": "annotate",
+              "target": "communities.wildborne",
+              "text": "Characters from these communities were likely raised in Fanewick’s deadly environs, which have only become more dangerous as the Witherwild grows. Each community has unique customs, some freely shared and others kept secret, that allow them safe passage through dangerous terrain and the Faint Divinities’ territories.",
+              "questions": [
+                "In exchange for protection from the Witherwild for themselves and their families, some Wicklings from these groups have been forced to take jobs as farmers in Haven’s flower fields. Though it is backbreaking work performed for a nation destroying their land, the farmers are offered safety by the Haven fires that burn back the ever-creeping Witherwild. What Faint Divinities do you give tribute to, and how have you been rewarded in kind?",
+                "You displeased a god of Fanewick. What did you do, and what misfortune befell you or a loved one?",
+                "You fled the place of your birth. What circumstances drove you to leave?"
+              ]
+            },
+            {
+              "op": "annotate",
+              "target": "communities.orderborne",
+              "text": "Players might choose to build orderborne characters if they want to play current or former members of the Haven Army that invaded Fanewick. Though the army brings violence into this land, they also carry overwhelming grief for a homeland succumbing to disease.",
+              "questions": [
+                "What regrets do you carry with you from your conquest of foreign soil?",
+                "What kindness did an enemy combatant bestow upon you in an hour of need? How did this change your view of the people of Fanewick?",
+                "You were charged with planting a rumor in a Fanewick community. What is the rumor, and do you plan to carry out this mission?"
+              ]
+            },
+            {
+              "op": "annotate",
+              "target": "communities.slyborne",
+              "text": "As the Haven Army is the current martial power in Fanewick, those who wish to play slyborne characters might come from Fanewick rebel groups seeking to expel the invading forces from their lands. Depending on the tactics their group employs, a character from a slyborne community might align with or go against their upbringing.",
+              "questions": [
+                "Who among the Haven Army do you wish to exact revenge upon and why?",
+                "You joined an insurgent group working to free this land from Haven’s grasp. What has given you doubts about the leadership’s methods?",
+                "Someone you love is a member of the Haven Army. How have you used your position in the rebellion to protect them?"
+              ]
+            },
+            {
+              "op": "annotate",
+              "target": "communities.seaborne",
+              "text": "Both Fanewick and Haven have a coastal border. The majority of Fanewick’s seaborne communities live in small seaside groups and focus on local travel to neighboring regions, while Havenites tend to live in large ports that ship and receive goods from distant lands.",
+              "questions": [
+                "You recently traveled by sea over a vast distance. What went terribly wrong on that passage, and how has it changed you?",
+                "Growing up on the sea taught you a skill few have. What did you learn, and how did it save your life?",
+                "You used to sail with a companion. Who were they, and how do you remain connected?"
+              ]
+            },
+            {
+              "op": "annotate",
+              "target": "communities.wanderborne",
+              "text": "Wanderborne communities can be found in both Fanewick and Haven, though safe travel has been severely restricted due to the military occupation and the expansion of the Witherwild. Whether a wanderborne character comes from Fanewick, Haven, or elsewhere, the player should determine their character’s personal views on the invasion of Fanewick, and how that aligns or departs from their community’s views.",
+              "questions": [
+                "What do you do to keep your small community safe, independent, and hidden from Haven’s forces?",
+                "Because of your community’s transience, you have loved ones in both Fanewick and Haven. How has this affected your relationship with the invasion?",
+                "Your community travels to protect something. What is it, and why does it keep you from settling down?"
+              ]
+            },
+            {
+              "op": "back-sheet",
+              "title": "Serpent’s Sickness",
+              "body": "Anyone, but especially those from Haven, may carry the Serpent’s Sickness, which stiffens their movements and gives them limited time to survive without a cure."
+            },
+            {
+              "op": "add-tracker",
+              "id": "wither-tokens",
+              "shape": "box",
+              "count": 12,
+              "label": "Wither tokens",
+              "placement": "front"
+            },
+            {
+              "op": "back-sheet",
+              "title": "Corruption From the Witherwild",
+              "body": "Any time a PC takes Severe damage from a Withered adversary or environment, gain a Wither token and place it on that PC’s character sheet. When you do, the PC must roll their Fear Die. If they roll equal to or below the number of Wither tokens on their sheet, they immediately gain a scar and clear all tokens, describing how the Witherwild changes them permanently.\nAt the end of each session, clear all Wither tokens from the PCs’ sheets and gain an equal amount of Fear. If a character ever dies with Wither tokens on their sheet, their body is permanently taken over by the Witherwild."
+            }
+          ]
+        }
+      },
+      {
+        "id": "everyday-hero",
+        "name": "Everyday Hero Starting Equipment",
+        "frameKind": "supplement",
+        "pools": {
+          "weapons": [
+            {
+              "id": "cleaver",
+              "name": "Cleaver",
+              "weaponSlot": "primary",
+              "trait": "agility",
+              "range": "melee",
+              "burden": "one-handed",
+              "feature": "Reliable: +1 to attack rolls",
+              "damage": "d8",
+              "damageType": "physical"
+            },
+            {
+              "id": "sharpened-rake",
+              "name": "Sharpened Rake",
+              "weaponSlot": "primary",
+              "trait": "agility",
+              "range": "melee",
+              "burden": "two-handed",
+              "damage": "d8+3",
+              "damageType": "physical"
+            },
+            {
+              "id": "butchers-axe",
+              "name": "Butcher’s Axe",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "two-handed",
+              "feature": "Heavy: −1 to Evasion",
+              "damage": "d12+3",
+              "damageType": "physical"
+            },
+            {
+              "id": "iron-skillet",
+              "name": "Iron Skillet",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "one-handed",
+              "damage": "d8+1",
+              "damageType": "physical"
+            },
+            {
+              "id": "pitchfork",
+              "name": "Pitchfork",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "two-handed",
+              "damage": "d10+3",
+              "damageType": "physical"
+            },
+            {
+              "id": "sledgehammer",
+              "name": "Sledgehammer",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "two-handed",
+              "feature": "Massive: −1 to Evasion; on a successful attack, roll an additional damage die and discard the lowest result.",
+              "damage": "d10+3",
+              "damageType": "physical"
+            },
+            {
+              "id": "cooking-knife",
+              "name": "Cooking Knife",
+              "weaponSlot": "primary",
+              "trait": "finesse",
+              "range": "melee",
+              "burden": "one-handed",
+              "damage": "d8+1",
+              "damageType": "physical"
+            },
+            {
+              "id": "walking-staff",
+              "name": "Walking Staff",
+              "weaponSlot": "primary",
+              "trait": "instinct",
+              "range": "melee",
+              "burden": "two-handed",
+              "damage": "d10+3",
+              "damageType": "physical"
+            },
+            {
+              "id": "rolling-pin",
+              "name": "Rolling Pin",
+              "weaponSlot": "primary",
+              "trait": "presence",
+              "range": "melee",
+              "burden": "one-handed",
+              "damage": "d8+1",
+              "damageType": "physical"
+            },
+            {
+              "id": "sickle",
+              "name": "Sickle",
+              "weaponSlot": "primary",
+              "trait": "presence",
+              "range": "melee",
+              "burden": "one-handed",
+              "feature": "Quick: When you make an attack, you can mark a Stress to target another creature within range.",
+              "damage": "d8",
+              "damageType": "physical"
+            },
+            {
+              "id": "forge-poker",
+              "name": "Forge Poker",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "very-close",
+              "burden": "two-handed",
+              "damage": "d8+2",
+              "damageType": "physical"
+            },
+            {
+              "id": "crop-scythe",
+              "name": "Crop Scythe",
+              "weaponSlot": "primary",
+              "trait": "finesse",
+              "range": "very-close",
+              "burden": "two-handed",
+              "damage": "d8+2",
+              "damageType": "physical"
+            },
+            {
+              "id": "fishing-rod",
+              "name": "Fishing Rod",
+              "weaponSlot": "primary",
+              "trait": "agility",
+              "range": "far",
+              "burden": "two-handed",
+              "damage": "d6+3",
+              "damageType": "physical"
+            },
+            {
+              "id": "slingshot",
+              "name": "Slingshot",
+              "weaponSlot": "primary",
+              "trait": "finesse",
+              "range": "far",
+              "burden": "two-handed",
+              "damage": "d6+3",
+              "damageType": "physical"
+            },
+            {
+              "id": "firework-launcher",
+              "name": "Firework Launcher",
+              "weaponSlot": "primary",
+              "trait": "agility",
+              "range": "very-far",
+              "burden": "two-handed",
+              "feature": "Cumbersome: −1 to Finesse",
+              "damage": "d6+3",
+              "damageType": "physical"
+            },
+            {
+              "id": "enchanted-hammer",
+              "name": "Enchanted Hammer",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "one-handed",
+              "damage": "d10+1",
+              "damageType": "magic"
+            },
+            {
+              "id": "enchanted-mop",
+              "name": "Enchanted Mop",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "two-handed",
+              "damage": "d10+3",
+              "damageType": "magic"
+            },
+            {
+              "id": "enchanted-scissors",
+              "name": "Enchanted Scissors",
+              "weaponSlot": "primary",
+              "trait": "finesse",
+              "range": "very-close",
+              "burden": "one-handed",
+              "damage": "d10",
+              "damageType": "magic"
+            },
+            {
+              "id": "enchanted-broomstick",
+              "name": "Enchanted Broomstick",
+              "weaponSlot": "primary",
+              "trait": "instinct",
+              "range": "very-close",
+              "burden": "two-handed",
+              "damage": "d10+2",
+              "damageType": "magic"
+            },
+            {
+              "id": "exploding-potions",
+              "name": "Exploding Potions",
+              "weaponSlot": "primary",
+              "trait": "finesse",
+              "range": "close",
+              "burden": "one-handed",
+              "damage": "d8",
+              "damageType": "magic"
+            },
+            {
+              "id": "enchanted-forge-lighter",
+              "name": "Enchanted Forge Lighter",
+              "weaponSlot": "primary",
+              "trait": "instinct",
+              "range": "close",
+              "burden": "one-handed",
+              "damage": "d8",
+              "damageType": "magic"
+            },
+            {
+              "id": "enchanted-boomerang",
+              "name": "Enchanted Boomerang",
+              "weaponSlot": "primary",
+              "trait": "instinct",
+              "range": "far",
+              "burden": "two-handed",
+              "damage": "d6+3",
+              "damageType": "magic"
+            },
+            {
+              "id": "enchanted-kite",
+              "name": "Enchanted Kite",
+              "weaponSlot": "primary",
+              "trait": "presence",
+              "range": "far",
+              "burden": "two-handed",
+              "feature": "Versatile: This weapon can also be used with these statistics—Presence, Melee, d10.",
+              "damage": "d6",
+              "damageType": "magic"
+            },
+            {
+              "id": "whisk-wand",
+              "name": "Whisk Wand",
+              "weaponSlot": "primary",
+              "trait": "knowledge",
+              "range": "far",
+              "burden": "one-handed",
+              "damage": "d6+1",
+              "damageType": "magic"
+            },
+            {
+              "id": "sparkling-staff",
+              "name": "Sparkling Staff",
+              "weaponSlot": "primary",
+              "trait": "knowledge",
+              "range": "very-far",
+              "burden": "two-handed",
+              "feature": "Powerful: On a successful attack, roll an additional damage die and discard the lowest result.",
+              "damage": "d6",
+              "damageType": "magic"
+            },
+            {
+              "id": "large-fork",
+              "name": "Large Fork",
+              "weaponSlot": "secondary",
+              "trait": "agility",
+              "range": "melee",
+              "burden": "one-handed",
+              "feature": "Paired: +2 to primary weapon damage to targets within Melee range",
+              "damage": "d8",
+              "damageType": "physical"
+            },
+            {
+              "id": "barrel-lid-shield",
+              "name": "Barrel Lid Shield",
+              "weaponSlot": "secondary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "one-handed",
+              "feature": "Protective: +1 to Armor Score",
+              "damage": "d4",
+              "damageType": "physical"
+            },
+            {
+              "id": "table-shield",
+              "name": "Table Shield",
+              "weaponSlot": "secondary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "one-handed",
+              "feature": "Barrier: +2 to Armor Score; −1 to Evasion",
+              "damage": "d6",
+              "damageType": "physical"
+            },
+            {
+              "id": "paring-knife",
+              "name": "Paring Knife",
+              "weaponSlot": "secondary",
+              "trait": "finesse",
+              "range": "melee",
+              "burden": "one-handed",
+              "feature": "Paired: +2 to primary weapon damage to targets within Melee range",
+              "damage": "d8",
+              "damageType": "physical"
+            },
+            {
+              "id": "festival-whip",
+              "name": "Festival Whip",
+              "weaponSlot": "secondary",
+              "trait": "presence",
+              "range": "very-close",
+              "burden": "one-handed",
+              "feature": "Startling: Mark a Stress to crack the whip and force all adversaries within Melee range back to Close range.",
+              "damage": "d6",
+              "damageType": "physical"
+            },
+            {
+              "id": "towline-hook",
+              "name": "Towline Hook",
+              "weaponSlot": "secondary",
+              "trait": "finesse",
+              "range": "close",
+              "burden": "one-handed",
+              "feature": "Hooked: On a successful attack, you can pull the target into Melee range with you.",
+              "damage": "d6",
+              "damageType": "physical"
+            },
+            {
+              "id": "flare-launcher",
+              "name": "Flare Launcher",
+              "weaponSlot": "secondary",
+              "trait": "finesse",
+              "range": "far",
+              "burden": "one-handed",
+              "feature": "Bright: This weapon temporarily lights up the area the flare lands in.",
+              "damage": "d6+1",
+              "damageType": "physical"
+            }
+          ],
+          "armor": [
+            {
+              "id": "quilted-clothing",
+              "name": "Quilted Clothing",
+              "feature": "Flexible: +1 to Evasion",
+              "majorThreshold": 5,
+              "severeThreshold": 11,
+              "armorScore": 3
+            },
+            {
+              "id": "leather-apron",
+              "name": "Leather Apron",
+              "majorThreshold": 6,
+              "severeThreshold": 13,
+              "armorScore": 3
+            },
+            {
+              "id": "tree-bark-armor",
+              "name": "Tree Bark Armor",
+              "feature": "Heavy: −1 to Evasion",
+              "majorThreshold": 7,
+              "severeThreshold": 15,
+              "armorScore": 4
+            },
+            {
+              "id": "baking-tray-breastplate",
+              "name": "Baking Tray Breastplate",
+              "feature": "Very Heavy: −2 to Evasion; −1 to Agility",
+              "majorThreshold": 8,
+              "severeThreshold": 17,
+              "armorScore": 4
+            }
+          ]
+        },
+        "creation": {
+          "ops": [
+            {
+              "op": "replace-pool",
+              "pool": "weapons",
+              "with": "pools.weapons"
+            },
+            {
+              "op": "replace-pool",
+              "pool": "armor",
+              "with": "pools.armor"
+            }
+          ]
+        }
+      },
+      {
+        "id": "western",
+        "name": "Western Campaigns",
+        "frameKind": "supplement",
+        "pools": {
+          "weapons": [
+            {
+              "id": "revolver",
+              "name": "Revolver",
+              "weaponSlot": "primary",
+              "trait": "finesse",
+              "range": "far",
+              "burden": "one-handed",
+              "feature": "Six Shot: Place 6 Ammo tokens on your character sheet. Spend 1 Ammo token to make an attack. You can mark a Stress to regain spent Ammo tokens.",
+              "damageType": "physical",
+              "tiers": {
+                "1": {
+                  "damage": "d8+1"
+                },
+                "2": {
+                  "damage": "d8+4"
+                },
+                "3": {
+                  "damage": "d8+7"
+                },
+                "4": {
+                  "damage": "d8+10"
+                }
+              }
+            },
+            {
+              "id": "rifle",
+              "name": "Rifle",
+              "weaponSlot": "primary",
+              "trait": "agility",
+              "range": "very-far",
+              "burden": "two-handed",
+              "feature": "Sightline: Spend 2 Hope to gain advantage on an attack roll.",
+              "damageType": "physical",
+              "tiers": {
+                "1": {
+                  "damage": "d8+2"
+                },
+                "2": {
+                  "damage": "d8+5"
+                },
+                "3": {
+                  "damage": "d8+8"
+                },
+                "4": {
+                  "damage": "d8+11"
+                }
+              }
+            },
+            {
+              "id": "shotgun",
+              "name": "Shotgun",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "very-close",
+              "burden": "two-handed",
+              "feature": "Scattershot: When you make an attack, target all creatures in front of you within range.",
+              "damageType": "physical",
+              "tiers": {
+                "1": {
+                  "damage": "d6+2"
+                },
+                "2": {
+                  "damage": "d6+5"
+                },
+                "3": {
+                  "damage": "d6+8"
+                },
+                "4": {
+                  "damage": "d6+11"
+                }
+              }
+            },
+            {
+              "id": "lasso",
+              "name": "Lasso",
+              "weaponSlot": "secondary",
+              "trait": "agility",
+              "range": "very-close",
+              "burden": "one-handed",
+              "feature": "Roped: On a successful attack, you can temporarily Rope the target instead of dealing damage. While Roped, the target is Restrained and Vulnerable, but you must remain within Very Close range of the target. When the target would clear this condition, you can make a Strength Reaction Roll. On a success, they remain Roped.",
+              "damageType": "physical",
+              "tiers": {
+                "1": {
+                  "damage": "d4"
+                },
+                "2": {
+                  "damage": "d4+3"
+                },
+                "3": {
+                  "damage": "d4+6"
+                },
+                "4": {
+                  "damage": "d4+9"
+                }
+              }
+            },
+            {
+              "id": "small-revolver",
+              "name": "Small Revolver",
+              "weaponSlot": "secondary",
+              "trait": "finesse",
+              "range": "far",
+              "burden": "one-handed",
+              "feature": "Quick Shot: Spend 2 Hope to gain a +4 bonus to primary weapon damage.",
+              "damageType": "physical",
+              "tiers": {
+                "1": {
+                  "damage": "d6"
+                },
+                "2": {
+                  "damage": "d6+3"
+                },
+                "3": {
+                  "damage": "d6+6"
+                },
+                "4": {
+                  "damage": "d6+9"
+                }
+              }
+            }
+          ],
+          "consumables": [
+            {
+              "id": "dynamite",
+              "name": "Dynamite",
+              "category": "consumable",
+              "rules": "You can light this dynamite and toss it within Close range. All creatures within Very Close range of where the dynamite lands must make a Reaction Roll (14). Targets who fail take 1d20+5 physical damage. Targets who succeed must mark a Stress. Dynamite deals double damage to inanimate objects or structures."
+            }
+          ]
+        },
+        "creation": {
+          "ops": [
+            {
+              "op": "add-to-pool",
+              "pool": "weapons",
+              "with": "pools.weapons"
+            },
+            {
+              "op": "add-to-pool",
+              "pool": "consumables",
+              "with": "pools.consumables"
+            },
+            {
+              "op": "add-tracker",
+              "id": "revolver-ammo",
+              "shape": "circle",
+              "count": 6,
+              "label": "Ammo",
+              "attachTo": "pools.weapons.revolver"
+            }
+          ]
+        }
+      },
+      {
+        "id": "monster-hunting",
+        "name": "Monster Hunting Campaigns",
+        "frameKind": "supplement",
+        "pools": {
+          "weapons": [
+            {
+              "id": "blessed-brass-knuckles",
+              "name": "Blessed Brass Knuckles",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "one-handed",
+              "damageType": "magic",
+              "tiers": {
+                "1": {
+                  "damage": "d8+1"
+                },
+                "2": {
+                  "damage": "d8+4"
+                },
+                "3": {
+                  "damage": "d8+7"
+                },
+                "4": {
+                  "damage": "d8+10"
+                }
+              }
+            },
+            {
+              "id": "holy-shotgun",
+              "name": "Holy Shotgun",
+              "weaponSlot": "primary",
+              "trait": "agility",
+              "range": "very-close",
+              "burden": "two-handed",
+              "feature": "Scattershot: When you make an attack, target all creatures in front of you within range.",
+              "damageType": "magic",
+              "tiers": {
+                "1": {
+                  "damage": "d6+2"
+                },
+                "2": {
+                  "damage": "d6+5"
+                },
+                "3": {
+                  "damage": "d6+8"
+                },
+                "4": {
+                  "damage": "d6+11"
+                }
+              }
+            },
+            {
+              "id": "repeating-crossbow",
+              "name": "Repeating Crossbow",
+              "weaponSlot": "primary",
+              "trait": "finesse",
+              "range": "far",
+              "burden": "two-handed",
+              "feature": "Quick: When you make an attack, you can mark a Stress to target another creature within range.",
+              "damageType": "physical",
+              "tiers": {
+                "1": {
+                  "damage": "d6+2"
+                },
+                "2": {
+                  "damage": "d6+5"
+                },
+                "3": {
+                  "damage": "d6+8"
+                },
+                "4": {
+                  "damage": "d6+11"
+                }
+              }
+            },
+            {
+              "id": "wooden-stake",
+              "name": "Wooden Stake",
+              "weaponSlot": "secondary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "one-handed",
+              "feature": "Paired: Gain a bonus equal to 1 + your tier to primary weapon damage to targets within Melee range.",
+              "damageType": "physical",
+              "tiers": {
+                "1": {
+                  "damage": "d8"
+                },
+                "2": {
+                  "damage": "d8+2"
+                },
+                "3": {
+                  "damage": "d8+4"
+                },
+                "4": {
+                  "damage": "d8+6"
+                }
+              }
+            },
+            {
+              "id": "hallowed-shield",
+              "name": "Hallowed Shield",
+              "weaponSlot": "secondary",
+              "trait": "instinct",
+              "range": "melee",
+              "burden": "one-handed",
+              "feature": "Resonant: When you critically succeed on a primary weapon attack, you gain an additional Hope.",
+              "damageType": "magic",
+              "tiers": {
+                "1": {
+                  "damage": "d4"
+                },
+                "2": {
+                  "damage": "d4+2"
+                },
+                "3": {
+                  "damage": "d4+4"
+                },
+                "4": {
+                  "damage": "d4+6"
+                }
+              }
+            },
+            {
+              "id": "chain-whip",
+              "name": "Chain Whip",
+              "weaponSlot": "secondary",
+              "trait": "presence",
+              "range": "very-close",
+              "burden": "one-handed",
+              "feature": "Hooked: On a successful attack, you can pull the target into Melee range.",
+              "damageType": "physical",
+              "tiers": {
+                "1": {
+                  "damage": "d6+1"
+                },
+                "2": {
+                  "damage": "d6+3"
+                },
+                "3": {
+                  "damage": "d6+5"
+                },
+                "4": {
+                  "damage": "d6+7"
+                }
+              }
+            }
+          ],
+          "armor": [
+            {
+              "id": "coffinwood-armor",
+              "name": "Coffinwood Armor",
+              "feature": "Splintering: Gain a bonus to your damage thresholds equal to your unmarked Armor Slots.",
+              "tiers": {
+                "1": {
+                  "majorThreshold": 4,
+                  "severeThreshold": 10,
+                  "armorScore": 3
+                },
+                "2": {
+                  "majorThreshold": 6,
+                  "severeThreshold": 15,
+                  "armorScore": 4
+                },
+                "3": {
+                  "majorThreshold": 8,
+                  "severeThreshold": 22,
+                  "armorScore": 5
+                },
+                "4": {
+                  "majorThreshold": 10,
+                  "severeThreshold": 31,
+                  "armorScore": 6
+                }
+              }
+            },
+            {
+              "id": "leather-longcoat",
+              "name": "Leather Longcoat",
+              "feature": "Quiet: Gain a +2 bonus to rolls you make to move silently.",
+              "tiers": {
+                "1": {
+                  "majorThreshold": 5,
+                  "severeThreshold": 12,
+                  "armorScore": 3
+                },
+                "2": {
+                  "majorThreshold": 8,
+                  "severeThreshold": 18,
+                  "armorScore": 4
+                },
+                "3": {
+                  "majorThreshold": 10,
+                  "severeThreshold": 25,
+                  "armorScore": 5
+                },
+                "4": {
+                  "majorThreshold": 12,
+                  "severeThreshold": 34,
+                  "armorScore": 6
+                }
+              }
+            },
+            {
+              "id": "silverweave-armor",
+              "name": "Silverweave Armor",
+              "feature": "Warded: You reduce incoming magic damage by your Armor Score before applying it to your damage thresholds.",
+              "tiers": {
+                "1": {
+                  "majorThreshold": 5,
+                  "severeThreshold": 11,
+                  "armorScore": 3
+                },
+                "2": {
+                  "majorThreshold": 7,
+                  "severeThreshold": 16,
+                  "armorScore": 4
+                },
+                "3": {
+                  "majorThreshold": 9,
+                  "severeThreshold": 23,
+                  "armorScore": 5
+                },
+                "4": {
+                  "majorThreshold": 11,
+                  "severeThreshold": 32,
+                  "armorScore": 6
+                }
+              }
+            }
+          ]
+        },
+        "creation": {
+          "ops": [
+            {
+              "op": "add-to-pool",
+              "pool": "weapons",
+              "with": "pools.weapons"
+            },
+            {
+              "op": "add-to-pool",
+              "pool": "armor",
+              "with": "pools.armor"
+            },
+            {
+              "op": "back-sheet",
+              "title": "Reanimated",
+              "body": "When a character gains the Reanimated transformation, their maximum loadout is reduced to one. During a rest, they can use a downtime move to raise their maximum loadout by one until they reach the normal maximum loadout of five."
+            }
+          ]
+        }
+      },
+      {
+        "id": "tech",
+        "name": "Tech-Based Campaigns",
+        "frameKind": "supplement",
+        "creation": {
+          "choices": [
+            {
+              "id": "iconic-weapon",
+              "type": "builder",
+              "fields": [
+                {
+                  "key": "trait",
+                  "options": [
+                    "agility",
+                    "strength",
+                    "finesse",
+                    "instinct",
+                    "presence",
+                    "knowledge"
+                  ]
+                },
+                {
+                  "key": "range",
+                  "options": [
+                    "melee",
+                    "very-close",
+                    "close",
+                    "far",
+                    "very-far"
+                  ]
+                },
+                {
+                  "key": "damage",
+                  "options": [
+                    "d6+0",
+                    "d8+0",
+                    "d10+0",
+                    "d12+0"
+                  ]
+                },
+                {
+                  "key": "name",
+                  "free": true
+                },
+                {
+                  "key": "description",
+                  "free": true
+                }
+              ],
+              "fixed": {
+                "burden": "two-handed",
+                "feature": "Bonded: Gain a bonus to your damage rolls equal to your level."
+              }
+            }
+          ],
+          "ops": [
+            {
+              "op": "replace-pool",
+              "pool": "weapons",
+              "with": "choices.iconic-weapon"
+            },
+            {
+              "op": "set-resource",
+              "resource": "currency",
+              "name": "Credits",
+              "start": 5
+            },
+            {
+              "op": "grant",
+              "item": "Tech Link",
+              "rules": "Each tech-based campaign setting includes a worldwide data and energy network that a PC must connect to in order to perform downtime moves. The primary way most PCs connect to this network is via a Tech Link, which looks like a data cable with a hook on one end, that each PC gains at character creation."
+            },
+            {
+              "op": "add-tracker",
+              "id": "upgrade-slots",
+              "shape": "box",
+              "count": 2,
+              "perTier": 1,
+              "label": "Upgrade slots",
+              "attachTo": "choices.iconic-weapon"
+            },
+            {
+              "op": "back-sheet",
+              "title": "Upgrades",
+              "body": "A character’s Iconic Weapon starts with two Upgrade slots at Tier 1 to indicate that it has evolved from its most basic form. An Iconic Weapon gains an additional Upgrade slot at each subsequent tier. An Upgrade can be crafted as a downtime move when a PC has the Parts to do so. See the upcoming “Crafting & Trading” section for more information.\nEach Iconic Weapon begins without any installed Upgrades. A character can build as many Upgrades as they wish but can’t install more Upgrades than the number of Upgrade slots their Iconic Weapon has. An installed Upgrade is treated as a weapon feature. During downtime, a PC can freely swap Upgrades they’ve already crafted or otherwise acquired. The Iconic Weapon Sheet includes a selection of basic Upgrades. GMs are encouraged to make more, using the provided options as a template, and offer them to the players as appropriate."
+            },
+            {
+              "op": "back-sheet",
+              "title": "Crafting & Trading",
+              "body": "Gold is not used as a currency in tech-based campaign frames. Instead, PCs gather Scrap to trade for a currency known as Credits. The Iconic Weapon Sheet includes areas for tracking both Scrap and Credits. All PCs start with 5 Credits.\nUse the following conversion for Daggerheart when pricing other goods and services using quantum:\n- 10 Credits = 1 handful of gold\n- 100 Credits = 1 bag of gold\n- 1000 Credits = 1 chest of gold"
+            },
+            {
+              "op": "back-sheet",
+              "title": "Scrap",
+              "body": "PCs can collect Scrap from defeated tech-based adversaries outside of combat. Each category of Scrap is represented by a die size. When the PCs collect Scrap, the GM determines how many of each category they find, which in turn determines the total dice pool each player rolls. Compare the results of each player’s roll against your campaign’s Scrap table to determine the number of each type they acquire. PCs can also obtain specific pieces of Scrap by completing NPC contracts, hunting particular adversaries, exploring certain areas, or purchasing them from special merchants.\n### Scrap Table\nThe table below lists generic outcomes you can replace as needed to suit your campaign.\n| Scrap Type (die) | Results |\n|---|---|\n| Shards (d6) | 1: Gear · 2: Coil · 3: Wire · 4: Trigger · 5: Lens · 6: Crystal · 7–10: n/a |\n| Metals (d8) | 1–2: Aluminum · 3–4: Copper · 5: Cobalt · 6: Silver · 7: Platinum · 8: Gold · 9–10: n/a |\n| Components (d10) | 1–2: Fuse · 3–5: Circuit · 6–7: Disc · 8: Relay · 9: Capacitor · 10: Battery |\n### Parts Reward Table\nUse the following table as general guidance for Scrap rewards after encounters:\n| Adversaries | Easy Fight | Standard Fight | Difficult Fight | Very Difficult Fight |\n|---|---|---|---|---|\n| Mostly non-tech-based | 2 Shards | 2 Shards, 1 Metal | 2 Shards, 1 Metal, 1 Component | 2 Shard, 2 Metals, 1 Component |\n| Mostly tech-based | 2 Shards, 1 Metal | 2 Shards, 2 Metals, 1 Component | 3 Shards, 2 Metals, 1 Component | 3 Shards, 3 Metals, 2 Components |\n| All tech-based | 2 Shards, 1 Metal, 1 Component | 3 Shards, 2 Metals, 2 Components | 3 Shards, 3 Metals, 2 Components | 4 Shards, 3 Metals, 3 Components |\nShards (d6): 1: Gear · 2: Coil · 3: Wire · 4: Trigger · 5: Lens · 6: Crystal · 7–10: n/a\nMetals (d8): 1–2: Aluminum · 3–4: Copper · 5: Cobalt · 6: Silver · 7: Platinum · 8: Gold · 9–10: n/a\nComponents (d10): 1–2: Fuse · 3–5: Circuit · 6–7: Disc · 8: Relay · 9: Capacitor · 10: Battery"
+            }
+          ]
+        }
+      },
+      {
+        "id": "feasts",
+        "name": "Feasts",
+        "frameKind": "supplement",
+        "creation": {
+          "ops": [
+            {
+              "op": "remove-move",
+              "move": "tend-to-wounds"
+            },
+            {
+              "op": "remove-move",
+              "move": "clear-stress"
+            },
+            {
+              "op": "remove-move",
+              "move": "prepare"
+            },
+            {
+              "op": "add-move",
+              "id": "make-a-feast",
+              "name": "Make a Feast",
+              "rules": "In a feast-based campaign, players can’t choose downtime moves to clear Stress, clear Hit Points, or gain Hope. Instead, they have a new downtime move: Make a Feast. Each PC who chooses this move can remove ingredients from their inventory and contribute them to the party’s collective meal to gain the benefits of the resulting feast."
+            },
+            {
+              "op": "back-sheet",
+              "title": "Ingredients & Flavors",
+              "body": "Every ingredient is denoted by a name and a flavor profile comprising 1–3 flavors with their relative strengths. For example, “Mushroom caps: Bitter (1), Savory (2).”\nThere are six flavors, each of which is represented by an associated die size: Sweet (d4), Salty (d6), Bitter (d8), Sour (d10), Savory (d12), and Weird (d20). A flavor’s strength is represented by a value between 1 and 3. The following list provides examples of ingredients and their flavor profiles:\nWhen a PC acquires an ingredient, they add it to their inventory. The maximum number of ingredients a PC can hold in their inventory is equal to their highest trait.\nWhen the PCs cook with an ingredient, they roll a number of dice (of the flavor’s associated die size) equal to the strength of the flavor."
+            },
+            {
+              "op": "back-sheet",
+              "title": "Make a Feast",
+              "body": "Preparing the Dish\nTo begin cooking, the party designates one PC to be the chef. The chef combines each contributed ingredient’s flavor dice into a flavor pool. For example, a party might decide to make a steak dinner with the following recipe: 1 serving of direbear meat (3d12), 1 serving of mushroom caps (2d12 and 1d8), and 1 serving of ooze marrow (2d8 and 1d4). This gives the party 5d12, 3d8, and 1d4 altogether.\nThe chef makes a Prep Roll by rolling all the dice in the flavor pool and setting aside any matching values. If there are no matching values, the chef instead discards a die of their choice. The chef continues making Cooking Rolls until only one die remains in the flavor pool or all dice have been discarded or set aside.\nDetermining a Meal’s Rating\nOnce preparation is complete, the chef calculates the resulting Meal Rating. Each matching set of dice is worth a number of points equal to its matched value. For example, a d6 and a d8 that rolled matching 3s would be worth 3 points, a d10 and a d12 that rolled matching 4s would be worth 4 points, and a d8 and a d20 that rolled matching 4s on a different roll would also be worth 4 points. The chef adds the point totals together to determine the meal’s Rating. In this example, the party’s meal would have a Rating of 11 (3 + 4 + 4 = 11).\nEating the Meal\nEach PC who partakes in the meal can clear a number of Hit Points, clear a number of Stress, and gain a number of Hope such that the total of all three numbers is equal to or less than the Meal Rating. For example, if the dish has a Meal Rating of 11, a PC could choose to clear 6 Hit Points, clear 3 Stress, and gain 2 Hope, and a different PC could choose to clear 5 Hit Points, clear 2 Stress, and gain 4 Hope."
+            }
+          ]
+        }
+      },
+      {
+        "id": "fairy-tale",
+        "name": "Fairy Tale Campaigns",
+        "frameKind": "supplement",
+        "creation": {
+          "ops": [
+            {
+              "op": "insert-step",
+              "before": "creation",
+              "step": "villain-prompts",
+              "title": "Building the villain collaboratively",
+              "text": "Prior to your session zero, write approximately 40 prompts, each in the form of a question about the villain. For example, you might ask about the villain’s background, demeanor, motives, or reputation. Write each prompt on an index card or slip of paper. For inspiration, see the Reign of the Weredragon Villain Builder sheet in Hope & Fear or available online at daggerheart.com/downloads.\nDuring session zero (and prior to character creation) randomly select about 15 of your prepared prompts and place them in the center of the table so that everyone can reach them but no one can read them.\nStarting with the person to your left, each player draws one of the pre-selected prompts and reads it aloud, then chooses one of the following options:\n- The active player can answer the prompt. Other players can ask follow-up questions, though the active player can choose not to answer them.\n- The active player can remove the prompt from play and draw a new prompt.\n- The active player can pass the prompt to another player, who likewise chooses to answer, remove, or pass it.\nWhen there are no more follow-up questions to a prompt, play passes to the left. Continue in this manner until all prompts at the center of the table have been answered or removed. Then proceed to character creation."
+            },
+            {
+              "op": "back-sheet",
+              "title": "Curses",
+              "body": "A creature afflicted with a magical curse gains the Cursed condition. The Cursed condition can only be cleared by magic from a spell, ritual, magic item, location, supernatural occurrence, higher power, or some combination of these options. Discovering how to end a curse often requires research, which might prompt the PCs to undergo a quest for additional information or help from an NPC."
+            }
+          ]
+        }
+      },
+      {
+        "id": "floating-magic-school",
+        "name": "Floating Magic School Campaigns",
+        "frameKind": "supplement",
+        "creation": {
+          "choices": [
+            {
+              "id": "flight-artifact",
+              "type": "text"
+            }
+          ],
+          "ops": [
+            {
+              "op": "insert-step",
+              "before": "traits",
+              "step": "flight-artifact",
+              "choice": "flight-artifact",
+              "title": "Create a magic artifact you can use to fly"
+            },
+            {
+              "op": "back-sheet",
+              "title": "Flight",
+              "body": "During character creation, each player creates a magic artifact they can use to fly. Flying PCs use the normal movement rules and can fly within Close range as part of an action roll, but they must make an appropriate trait roll to move beyond Close range or if movement is their primary action. At the GM’s discretion, some threats, such as gaining the Restrained or Vulnerable conditions, losing their magic artifact, or taking Severe damage, can temporarily interrupt a PC’s ability to fly."
+            },
+            {
+              "op": "back-sheet",
+              "title": "Using Traits for Flight",
+              "body": "A PC can use any appropriate trait (not just Agility) to move while flying. The following are some examples of how each trait might be used:\nAgility: Swift acrobatics, speed-boosting off an adversary’s wake, maintaining an aerodynamic posture, or angling past a winged threat\nFinesse: Focused, subtle, and well-timed adjustments, threading the needle, precision flying, operating finely tuned controls, or deftly weaving between obstacles\nStrength: Blasting through floating debris, holding fast in shifting weather, or slamming into a racing rival\nInstinct: Navigating by sheer intuition, keenly spotting a shortcut, following a migratory current, or sensing hidden danger in the clouds.\nPresence: Flying with natural grace and effortless style, commanding attention, causing a distraction, creating a spectacle\nKnowledge: Charting efficient flight plans, plotting rotational momentum, or deducing the exact timing of a foe’s wingbeats"
+            },
+            {
+              "op": "back-sheet",
+              "title": "Less Lethal Campaigns",
+              "body": "In a less lethal campaign, any death move that would normally lead to a character’s demise instead puts them in the infirmary for a few weeks or sends them home for an extended period of time. While they recover, the PC is unplayable but not dead."
+            }
+          ]
+        }
+      },
+      {
+        "id": "grimdark",
+        "name": "Grimdark Campaigns",
+        "frameKind": "supplement",
+        "creation": {
+          "ops": [
+            {
+              "op": "add-tracker",
+              "id": "scars",
+              "shape": "box",
+              "count": 6,
+              "label": "Scars (marked on Hope slots)",
+              "placement": "front"
+            },
+            {
+              "op": "back-sheet",
+              "title": "Shadow-Touched (PCs)",
+              "body": "PCs can also become Shadow-Touched when corrupted by dark magic. A Shadow-Touched PC gains a damage bonus equal to the number of scars they have marked. When a Shadow-Touched PC marks their last Hope slot with a scar, they succumb to corruption and charge into the darkness instead of making a death move."
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "broken",
+  "name": "Broken fixture",
+  "version": "0.0.1",
+  "publisher": "test",
+  "content": {
+    "classes": [{ "id": "c1", "name": "C1", "domains": ["nope", "nada"], "subclasses": [] }]
+  }
+}

@@ -24,11 +24,7 @@ Guided Daggerheart character creation + level-up website. Output is a printable 
 Archived: `Docs/archive/series-1.md`.
 
 ## Series 2: Primary book data
-Status: in progress
-1. [x] Get the SRD text and decide the conversion workflow: PDF split into Markdown in `Daggerheart SRD Files/` (pending owner review); scripts in `scripts/srd-convert/`
-2. [ ] Pack shape: apply `Docs/campaign-frame-impacts.md` (choice types, frame ops, trackers) to the schema, then build the core rulebook pack: ancestries, communities, classes, subclasses, domains, domain cards, equipment
-3. [ ] Campaign frame pack(s) from the second primary book
-4. [ ] Pack validation report (counts, missing references)
+Archived: `Docs/archive/series-2.md`.
 
 ## Series 3: Guided creation wizard
 Status: in progress
