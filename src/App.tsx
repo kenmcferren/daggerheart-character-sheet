@@ -1,122 +1,45 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import type { Character, Creation } from './engine/character'
+import type { CreationSetup } from './engine/creation'
+import { Start } from './ui/Start'
+import { Wizard } from './ui/Wizard'
+import { normalize, setupOf, startCharacter, store } from './ui/data'
+import './ui/ui.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+type Screen = { kind: 'start' } | { kind: 'wizard'; opened: boolean }
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+export default function App() {
+  const [screen, setScreen] = useState<Screen>({ kind: 'start' })
+  const [ch, setCh] = useState<Character | null>(null)
+  const [status, setStatus] = useState('')
+  const dirty = useRef(false)
+  const [setup, setSetup] = useState<CreationSetup | null>(null)
 
-      <div className="ticks"></div>
+  const update = useCallback((fn: (c: Character, cr: Creation) => void) => {
+    setCh((prev) => {
+      if (!prev) return prev
+      const next = structuredClone(prev)
+      fn(next, next.creation!)
+      dirty.current = true
+      return next
+    })
+  }, [])
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+  // Autosave shortly after each change.
+  useEffect(() => {
+    if (!ch || !dirty.current) return
+    setStatus('Saving…')
+    const t = setTimeout(() => {
+      store.save(ch).then(() => { dirty.current = false; setStatus('Saved') }).catch((e) => setStatus(`Not saved: ${String(e)}`))
+    }, 400)
+    return () => clearTimeout(t)
+  }, [ch])
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+  const open = (c: Character, opened: boolean) => { dirty.current = false; setStatus(opened ? 'Saved' : ''); setCh(normalize(c)); setSetup(setupOf(c)); setScreen({ kind: 'wizard', opened }) }
+  const home = async () => { if (ch && dirty.current) await store.save(ch).catch(() => {}); dirty.current = false; setCh(null); setScreen({ kind: 'start' }) }
+
+  if (screen.kind === 'start' || !ch || !setup) {
+    return <Start onStart={(f, s) => { const c = startCharacter(f, s); dirty.current = true; setCh(normalize(c)); setSetup(setupOf(c)); setStatus(''); setScreen({ kind: 'wizard', opened: false }) }} onOpen={(c) => open(c, true)} />
+  }
+  return <Wizard key={ch.id} ch={ch} setup={setup} update={update} saveStatus={status} onHome={home} opened={screen.opened} />
 }
-
-export default App

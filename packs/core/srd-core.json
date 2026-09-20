@@ -69,7 +69,9 @@
         "features": [
           {
             "name": "Rally",
-            "rules": "Once per session, describe how you rally the party and give yourself and each of your allies a Rally Die. At level 1, your Rally Die is a d6. A PC can spend their Rally Die to roll it, adding the result to their action roll, reaction roll, damage roll, or to clear a number of Stress equal to the result. At the end of each session, clear all unspent Rally Dice. At level 5, your Rally Die increases to a d8."
+            "rules": "Once per session, describe how you rally the party and give yourself and each of your allies a Rally Die. At level 1, your Rally Die is a d6. A PC can spend their Rally Die to roll it, adding the result to their action roll, reaction roll, damage roll, or to clear a number of Stress equal to the result. At the end of each session, clear all unspent Rally Dice. At level 5, your Rally Die increases to a d8.",
+            "uses": 1,
+            "usesPer": "session"
           }
         ],
         "backgroundQuestions": [
@@ -148,24 +150,108 @@
           {
             "title": "Stance Features",
             "rules": "The following section lists all martial stances by tier."
-          },
-          {
-            "title": "Tier 1",
-            "rules": "Favored: Gain a bonus to damage rolls equal to a trait of your choice.\nInvigorating: On a successful attack, roll a d4. On a result of 4, gain a Focus.\nQuick: When you make an attack, you can spend a Focus or mark a Stress to target another creature within range with that attack.\nReliable: Gain a +1 bonus to your attack rolls."
-          },
-          {
-            "title": "Tier 2",
-            "rules": "Aggressive: Gain a −1 penalty to your Evasion. On a successful attack, roll an additional damage die and discard the lowest result.\nAnchored: Gain a +2 bonus to your damage thresholds. While in this stance, you can’t be moved against your will.\nDefensive: Attack rolls targeting you from within Melee range have disadvantage unless the attacker marks a Stress to negate the disadvantage.\nOtherworldly: On a successful attack, you can deal physical or magic damage."
-          },
-          {
-            "title": "Tier 3",
-            "rules": "Grappling: On a successful attack within Melee range, you can spend a Focus or mark a Stress to temporarily Restrain the target or throw the target up to Close range.\nScary: On a successful attack, the target must mark a Stress.\nStable: You can spend a Focus instead of an Armor Slot to reduce damage.\nVigilant: When you are targeted by an attack, you can mark a Stress to gain a d6 bonus to your Evasion against the attack."
-          },
-          {
-            "title": "Tier 4",
-            "rules": "Crushing: When you deal Severe damage, you can spend a Hope to force the target to mark an additional Hit Point.\nExacting: When you roll a 1 on a damage die, you can treat it as the highest value on the die instead.\nHoned: Spend a Focus before you make an attack roll to gain a +1 bonus to your Proficiency for that attack.\nIsolating: Gain advantage on attack rolls when there are no other creatures within Very Close range of you or your target."
           }
-        ]
+        ],
+        "stances": [
+          {
+            "id": "favored",
+            "name": "Favored",
+            "tier": 1,
+            "rules": "Gain a bonus to damage rolls equal to a trait of your choice."
+          },
+          {
+            "id": "invigorating",
+            "name": "Invigorating",
+            "tier": 1,
+            "rules": "On a successful attack, roll a d4. On a result of 4, gain a Focus."
+          },
+          {
+            "id": "quick",
+            "name": "Quick",
+            "tier": 1,
+            "rules": "When you make an attack, you can spend a Focus or mark a Stress to target another creature within range with that attack."
+          },
+          {
+            "id": "reliable",
+            "name": "Reliable",
+            "tier": 1,
+            "rules": "Gain a +1 bonus to your attack rolls."
+          },
+          {
+            "id": "aggressive",
+            "name": "Aggressive",
+            "tier": 2,
+            "rules": "Gain a −1 penalty to your Evasion. On a successful attack, roll an additional damage die and discard the lowest result."
+          },
+          {
+            "id": "anchored",
+            "name": "Anchored",
+            "tier": 2,
+            "rules": "Gain a +2 bonus to your damage thresholds. While in this stance, you can’t be moved against your will."
+          },
+          {
+            "id": "defensive",
+            "name": "Defensive",
+            "tier": 2,
+            "rules": "Attack rolls targeting you from within Melee range have disadvantage unless the attacker marks a Stress to negate the disadvantage."
+          },
+          {
+            "id": "otherworldly",
+            "name": "Otherworldly",
+            "tier": 2,
+            "rules": "On a successful attack, you can deal physical or magic damage."
+          },
+          {
+            "id": "grappling",
+            "name": "Grappling",
+            "tier": 3,
+            "rules": "On a successful attack within Melee range, you can spend a Focus or mark a Stress to temporarily Restrain the target or throw the target up to Close range."
+          },
+          {
+            "id": "scary",
+            "name": "Scary",
+            "tier": 3,
+            "rules": "On a successful attack, the target must mark a Stress."
+          },
+          {
+            "id": "stable",
+            "name": "Stable",
+            "tier": 3,
+            "rules": "You can spend a Focus instead of an Armor Slot to reduce damage."
+          },
+          {
+            "id": "vigilant",
+            "name": "Vigilant",
+            "tier": 3,
+            "rules": "When you are targeted by an attack, you can mark a Stress to gain a d6 bonus to your Evasion against the attack."
+          },
+          {
+            "id": "crushing",
+            "name": "Crushing",
+            "tier": 4,
+            "rules": "When you deal Severe damage, you can spend a Hope to force the target to mark an additional Hit Point."
+          },
+          {
+            "id": "exacting",
+            "name": "Exacting",
+            "tier": 4,
+            "rules": "When you roll a 1 on a damage die, you can treat it as the highest value on the die instead."
+          },
+          {
+            "id": "honed",
+            "name": "Honed",
+            "tier": 4,
+            "rules": "Spend a Focus before you make an attack roll to gain a +1 bonus to your Proficiency for that attack."
+          },
+          {
+            "id": "isolating",
+            "name": "Isolating",
+            "tier": 4,
+            "rules": "Gain advantage on attack rolls when there are no other creatures within Very Close range of you or your target."
+          }
+        ],
+        "focusMax": 6,
+        "knownStancesAtCreation": 2
       },
       {
         "id": "druid",
@@ -209,102 +295,726 @@
           {
             "title": "Beastform Options",
             "rules": "When you use your “Beastform” feature, choose a creature category of your tier or lower. At the GM’s discretion, you can describe yourself transforming into any animal that reasonably fits into that category.\nBeastform categories are divided by tier. Each entry includes the following details:\n- Creature Category: Each category’s name describes the common role or behavior of creatures in that category (such as Agile Scout). This name is followed by a few examples of animals that fit in that category (in this example, fox, mouse, and weasel).\n- Character Trait: While transformed, you gain a bonus to the listed trait. For example, while transformed into an Agile Scout, you gain a +1 bonus to your Agility. When this form drops, you lose this bonus.\n- Attack Rolls: When you make an attack while transformed, you use the creature’s listed range, trait, and damage dice, but you use your Proficiency. For example, as an Agile Scout, you can attack a target within Melee range using your Agility. On a success, you deal d4 physical damage using your Proficiency.\n- Evasion: While transformed, you add the creature’s Evasion bonus to your normal Evasion. For example, if your Evasion is usually 8 and your Beastform says “Evasion +2,” your Evasion becomes 10 while you’re in that form.\n- Advantages: Your form makes you especially suited to certain actions. When you make an action or reaction roll related to one of the verbs listed for that creature category, you gain advantage on that roll. For example, an Agile Scout gains advantage on rolls made to sneak around, search for objects or creatures, and related activities.\n- Features: Each form includes unique features. For example, an Agile Scout excels at silent, dexterous movement—but they’re also fragile, making you more likely to drop out of Beastform."
+          }
+        ],
+        "beastforms": [
+          {
+            "id": "agile-scout",
+            "name": "Agile Scout",
+            "tier": 1,
+            "examples": "Fox, Mouse, Weasel, etc.",
+            "traitBonus": {
+              "trait": "agility",
+              "bonus": 1
+            },
+            "evasionBonus": 2,
+            "attack": {
+              "range": "melee",
+              "trait": "agility",
+              "damage": "d4",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "deceive",
+              "locate",
+              "sneak"
+            ],
+            "features": [
+              {
+                "name": "Agile",
+                "rules": "Your movement is silent, and you can spend a Hope to move up to Far range without rolling."
+              },
+              {
+                "name": "Fragile",
+                "rules": "When you take Major or greater damage, you drop out of Beastform."
+              }
+            ]
           },
           {
-            "title": "Agile Scout",
-            "rules": "(Fox, Mouse, Weasel, etc.)\nAgility +1 | Evasion +2 Melee Agility d4 phy\nGain advantage on: deceive, locate, sneak\nAgile: Your movement is silent, and you can spend a Hope to move up to Far range without rolling.\nFragile: When you take Major or greater damage, you drop out of Beastform."
+            "id": "household-friend",
+            "name": "Household Friend",
+            "tier": 1,
+            "examples": "Cat, Dog, Rabbit, etc.",
+            "traitBonus": {
+              "trait": "instinct",
+              "bonus": 1
+            },
+            "evasionBonus": 2,
+            "attack": {
+              "range": "melee",
+              "trait": "instinct",
+              "damage": "d6",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "climb",
+              "locate",
+              "protect"
+            ],
+            "features": [
+              {
+                "name": "Companion",
+                "rules": "When you Help an Ally, you can roll a d8 as your advantage die."
+              },
+              {
+                "name": "Fragile",
+                "rules": "When you take Major or greater damage, you drop out of Beastform."
+              }
+            ]
           },
           {
-            "title": "Household Friend",
-            "rules": "(Cat, Dog, Rabbit, etc.)\nInstinct +1 | Evasion +2 Melee Instinct d6 phy\nGain advantage on: climb, locate, protect\nCompanion: When you Help an Ally, you can roll a d8 as your advantage die.\nFragile: When you take Major or greater damage, you drop out of Beastform."
+            "id": "nimble-grazer",
+            "name": "Nimble Grazer",
+            "tier": 1,
+            "examples": "Deer, Gazelle, Goat, etc.",
+            "traitBonus": {
+              "trait": "agility",
+              "bonus": 1
+            },
+            "evasionBonus": 3,
+            "attack": {
+              "range": "melee",
+              "trait": "agility",
+              "damage": "d6",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "leap",
+              "sneak",
+              "sprint"
+            ],
+            "features": [
+              {
+                "name": "Elusive Prey",
+                "rules": "When an attack roll against you would succeed, you can mark a Stress and roll a d4. Add the result to your Evasion against this attack."
+              },
+              {
+                "name": "Fragile",
+                "rules": "When you take Major or greater damage, you drop out of Beastform."
+              }
+            ]
           },
           {
-            "title": "Nimble Grazer",
-            "rules": "(Deer, Gazelle, Goat, etc.)\nAgility +1 | Evasion +3 Melee Agility d6 phy\nGain advantage on: leap, sneak, sprint\nElusive Prey: When an attack roll against you would succeed, you can mark a Stress and roll a d4. Add the result to your Evasion against this attack.\nFragile: When you take Major or greater damage, you drop out of Beastform."
+            "id": "pack-predator",
+            "name": "Pack Predator",
+            "tier": 1,
+            "examples": "Coyote, Hyena, Wolf, etc.",
+            "traitBonus": {
+              "trait": "strength",
+              "bonus": 2
+            },
+            "evasionBonus": 1,
+            "attack": {
+              "range": "melee",
+              "trait": "strength",
+              "damage": "d8+2",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "attack",
+              "sprint",
+              "track"
+            ],
+            "features": [
+              {
+                "name": "Hobbling Strike",
+                "rules": "When you succeed on an attack against a target within Melee range, you can mark a Stress to make the target temporarily Vulnerable."
+              },
+              {
+                "name": "Pack Hunting",
+                "rules": "When you succeed on an attack against the same target as an ally who acts immediately before you, add a d8 to your damage roll."
+              }
+            ]
           },
           {
-            "title": "Pack Predator",
-            "rules": "(Coyote, Hyena, Wolf, etc.)\nStrength +2 | Evasion +1 Melee Strength d8+2 phy\nGain advantage on: attack, sprint, track\nHobbling Strike: When you succeed on an attack against a target within Melee range, you can mark a Stress to make the target temporarily Vulnerable.\nPack Hunting: When you succeed on an attack against the same target as an ally who acts immediately before you, add a d8 to your damage roll."
+            "id": "aquatic-scout",
+            "name": "Aquatic Scout",
+            "tier": 1,
+            "examples": "Eel, Fish, Octopus, etc.",
+            "traitBonus": {
+              "trait": "agility",
+              "bonus": 1
+            },
+            "evasionBonus": 2,
+            "attack": {
+              "range": "melee",
+              "trait": "agility",
+              "damage": "d4",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "navigate",
+              "sneak",
+              "swim"
+            ],
+            "features": [
+              {
+                "name": "Aquatic",
+                "rules": "You can breathe and move naturally underwater."
+              },
+              {
+                "name": "Fragile",
+                "rules": "When you take Major or greater damage, you drop out of Beastform."
+              }
+            ]
           },
           {
-            "title": "Aquatic Scout",
-            "rules": "(Eel, Fish, Octopus, etc.)\nAgility +1 | Evasion +2 Melee Agility d4 phy\nGain advantage on: navigate, sneak, swim\nAquatic: You can breathe and move naturally underwater.\nFragile: When you take Major or greater damage, you drop out of Beastform."
+            "id": "stalking-arachnid",
+            "name": "Stalking Arachnid",
+            "tier": 1,
+            "examples": "Tarantula, Wolf Spider, etc.",
+            "traitBonus": {
+              "trait": "finesse",
+              "bonus": 1
+            },
+            "evasionBonus": 2,
+            "attack": {
+              "range": "melee",
+              "trait": "finesse",
+              "damage": "d6+1",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "attack",
+              "climb",
+              "sneak"
+            ],
+            "features": [
+              {
+                "name": "Venomous Bite",
+                "rules": "When you succeed on an attack against a target within Melee range, the target becomes temporarily Poisoned. A Poisoned creature takes 1d10 direct physical damage each time they act."
+              },
+              {
+                "name": "Webslinger",
+                "rules": "You can create a strong web material useful for both adventuring and battle. The web is resilient enough to support one creature. You can temporarily Restrain a target within Close range by succeeding on a Finesse Roll against them."
+              }
+            ]
           },
           {
-            "title": "Stalking Arachnid",
-            "rules": "(Tarantula, Wolf Spider, etc.)\nFinesse +1 | Evasion +2 Melee Finesse d6+1 phy\nGain advantage on: attack, climb, sneak\nVenomous Bite: When you succeed on an attack against a target within Melee range, the target becomes temporarily Poisoned. A Poisoned creature takes 1d10 direct physical damage each time they act.\nWebslinger: You can create a strong web material useful for both adventuring and battle. The web is resilient enough to support one creature. You can temporarily Restrain a target within Close range by succeeding on a Finesse Roll against them."
+            "id": "armored-sentry",
+            "name": "Armored Sentry",
+            "tier": 2,
+            "examples": "Armadillo, Pangolin, Turtle, etc.",
+            "traitBonus": {
+              "trait": "strength",
+              "bonus": 1
+            },
+            "evasionBonus": 1,
+            "attack": {
+              "range": "melee",
+              "trait": "strength",
+              "damage": "d8+2",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "dig",
+              "locate",
+              "protect"
+            ],
+            "features": [
+              {
+                "name": "Armored Shell",
+                "rules": "Your hardened exterior gives you resistance to physical damage. Additionally, mark an Armor Slot to retract into your shell. While in your shell, physical damage is reduced by a number equal to your Armor Score (after applying resistance), but you can’t perform other actions without leaving this form."
+              },
+              {
+                "name": "Cannonball",
+                "rules": "Mark a Stress to allow an ally to throw or launch you at an adversary. To do so, the ally makes an attack roll using Agility or Strength (their choice) against a target within Close range. On a success, the adversary takes d12+2 physical damage using the thrower’s Proficiency. You can spend a Hope to target an additional adversary within Very Close range of the first. The second target takes half the damage dealt to the first target."
+              }
+            ]
           },
           {
-            "title": "Armored Sentry",
-            "rules": "(Armadillo, Pangolin, Turtle, etc.)\nStrength +1 | Evasion +1 Melee Strength d8+2 phy\nGain advantage on: dig, locate, protect\nArmored Shell: Your hardened exterior gives you resistance to physical damage. Additionally, mark an Armor Slot to retract into your shell. While in your shell, physical damage is reduced by a number equal to your Armor Score (after applying resistance), but you can’t perform other actions without leaving this form.\nCannonball: Mark a Stress to allow an ally to throw or launch you at an adversary. To do so, the ally makes an attack roll using Agility or Strength (their choice) against a target within Close range. On a success, the adversary takes d12+2 physical damage using the thrower’s Proficiency. You can spend a Hope to target an additional adversary within Very Close range of the first. The second target takes half the damage dealt to the first target."
+            "id": "powerful-beast",
+            "name": "Powerful Beast",
+            "tier": 2,
+            "examples": "Bear, Bull, Moose, etc.",
+            "traitBonus": {
+              "trait": "strength",
+              "bonus": 3
+            },
+            "evasionBonus": 1,
+            "attack": {
+              "range": "melee",
+              "trait": "strength",
+              "damage": "d10+4",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "navigate",
+              "protect",
+              "scare"
+            ],
+            "features": [
+              {
+                "name": "Rampage",
+                "rules": "When you roll a 1 on a damage die, you can roll a d10 and add the result to the damage roll. Additionally, before you make an attack roll, you can mark a Stress to gain a +1 bonus to your Proficiency for that attack."
+              },
+              {
+                "name": "Thick Hide",
+                "rules": "You gain a +2 bonus to your damage thresholds."
+              }
+            ]
           },
           {
-            "title": "Powerful Beast",
-            "rules": "(Bear, Bull, Moose, etc.)\nStrength +3 | Evasion +1 Melee Strength d10+4 phy\nGain advantage on: navigate, protect, scare\nRampage: When you roll a 1 on a damage die, you can roll a d10 and add the result to the damage roll. Additionally, before you make an attack roll, you can mark a Stress to gain a +1 bonus to your Proficiency for that attack.\nThick Hide: You gain a +2 bonus to your damage thresholds."
+            "id": "mighty-strider",
+            "name": "Mighty Strider",
+            "tier": 2,
+            "examples": "Camel, Horse, Zebra, etc.",
+            "traitBonus": {
+              "trait": "agility",
+              "bonus": 1
+            },
+            "evasionBonus": 2,
+            "attack": {
+              "range": "melee",
+              "trait": "agility",
+              "damage": "d8+1",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "leap",
+              "navigate",
+              "sprint"
+            ],
+            "features": [
+              {
+                "name": "Carrier",
+                "rules": "You can carry up to two willing allies with you when you move."
+              },
+              {
+                "name": "Trample",
+                "rules": "Mark a Stress to move up to Close range in a straight line and make an attack against all targets within Melee range of the line. Targets you succeed against take d8+1 physical damage using your Proficiency and are temporarily Vulnerable."
+              }
+            ]
           },
           {
-            "title": "Mighty Strider",
-            "rules": "(Camel, Horse, Zebra, etc.)\nAgility +1 | Evasion +2 Melee Agility d8+1 phy\nGain advantage on: leap, navigate, sprint\nCarrier: You can carry up to two willing allies with you when you move.\nTrample: Mark a Stress to move up to Close range in a straight line and make an attack against all targets within Melee range of the line. Targets you succeed against take d8+1 physical damage using your Proficiency and are temporarily Vulnerable."
+            "id": "striking-serpent",
+            "name": "Striking Serpent",
+            "tier": 2,
+            "examples": "Cobra, Rattlesnake, Viper, etc.",
+            "traitBonus": {
+              "trait": "finesse",
+              "bonus": 1
+            },
+            "evasionBonus": 2,
+            "attack": {
+              "range": "very-close",
+              "trait": "finesse",
+              "damage": "d8+4",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "climb",
+              "deceive",
+              "sprint"
+            ],
+            "features": [
+              {
+                "name": "Venomous Strike",
+                "rules": "Make an attack against any number of targets within Very Close range. On a success, a target is temporarily Poisoned. A Poisoned creature takes 1d10 direct physical damage each time they act."
+              },
+              {
+                "name": "Warning Hiss",
+                "rules": "Mark a Stress to force any number of targets within Melee range to move back to Very Close range."
+              }
+            ]
           },
           {
-            "title": "Striking Serpent",
-            "rules": "(Cobra, Rattlesnake, Viper, etc.)\nFinesse +1 | Evasion +2 Very Close Finesse d8+4 phy\nGain advantage on: climb, deceive, sprint\nVenomous Strike: Make an attack against any number of targets within Very Close range. On a success, a target is temporarily Poisoned. A Poisoned creature takes 1d10 direct physical damage each time they act.\nWarning Hiss: Mark a Stress to force any number of targets within Melee range to move back to Very Close range."
+            "id": "pouncing-predator",
+            "name": "Pouncing Predator",
+            "tier": 2,
+            "examples": "Cheetah, Lion, Panther, etc.",
+            "traitBonus": {
+              "trait": "instinct",
+              "bonus": 1
+            },
+            "evasionBonus": 3,
+            "attack": {
+              "range": "melee",
+              "trait": "instinct",
+              "damage": "d8+6",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "attack",
+              "climb",
+              "sneak"
+            ],
+            "features": [
+              {
+                "name": "Fleet",
+                "rules": "Spend a Hope to move up to Far range without rolling."
+              },
+              {
+                "name": "Takedown",
+                "rules": "Mark a Stress to move into Melee range of a target and make an attack roll against them. On a success, you gain a +2 bonus to your Proficiency for this attack and the target must mark a Stress."
+              }
+            ]
           },
           {
-            "title": "Pouncing Predator",
-            "rules": "(Cheetah, Lion, Panther, etc.)\nInstinct +1 | Evasion +3 Melee Instinct d8+6 phy\nGain advantage on: attack, climb, sneak\nFleet: Spend a Hope to move up to Far range without rolling.\nTakedown: Mark a Stress to move into Melee range of a target and make an attack roll against them. On a success, you gain a +2 bonus to your Proficiency for this attack and the target must mark a Stress."
+            "id": "winged-beast",
+            "name": "Winged Beast",
+            "tier": 2,
+            "examples": "Hawk, Owl, Raven, etc.",
+            "traitBonus": {
+              "trait": "finesse",
+              "bonus": 1
+            },
+            "evasionBonus": 3,
+            "attack": {
+              "range": "melee",
+              "trait": "finesse",
+              "damage": "d4+2",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "deceive",
+              "locate",
+              "scare"
+            ],
+            "features": [
+              {
+                "name": "Bird’s-Eye View",
+                "rules": "You can fly at will. Once per rest while you are airborne, you can ask the GM a question about the scene below you without needing to roll. The first time a character makes a roll to act on this information, they gain advantage on the roll."
+              },
+              {
+                "name": "Hollow Bones",
+                "rules": "You gain a −2 penalty to your damage thresholds."
+              }
+            ]
           },
           {
-            "title": "Winged Beast",
-            "rules": "(Hawk, Owl, Raven, etc.)\nFinesse +1 | Evasion +3 Melee Finesse d4+2 phy\nGain advantage on: deceive, locate, scare\nBird’s-Eye View: You can fly at will. Once per rest while you are airborne, you can ask the GM a question about the scene below you without needing to roll. The first time a character makes a roll to act on this information, they gain advantage on the roll.\nHollow Bones: You gain a −2 penalty to your damage thresholds."
+            "id": "great-predator",
+            "name": "Great Predator",
+            "tier": 3,
+            "examples": "Dire Wolf, Velociraptor, Sabertooth Tiger, etc.",
+            "traitBonus": {
+              "trait": "strength",
+              "bonus": 2
+            },
+            "evasionBonus": 2,
+            "attack": {
+              "range": "melee",
+              "trait": "strength",
+              "damage": "d12+8",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "attack",
+              "sneak",
+              "sprint"
+            ],
+            "features": [
+              {
+                "name": "Carrier",
+                "rules": "You can carry up to two willing allies with you when you move."
+              },
+              {
+                "name": "Vicious Maul",
+                "rules": "When you succeed on an attack against a target, you can spend a Hope to make them temporarily Vulnerable and gain a +1 bonus to your Proficiency for this attack."
+              }
+            ]
           },
           {
-            "title": "Great Predator",
-            "rules": "(Dire Wolf, Velociraptor, Sabertooth Tiger, etc.)\nStrength +2 | Evasion +2 Melee Strength d12+8 phy\nGain advantage on: attack, sneak, sprint\nCarrier: You can carry up to two willing allies with you when you move.\nVicious Maul: When you succeed on an attack against a target, you can spend a Hope to make them temporarily Vulnerable and gain a +1 bonus to your Proficiency for this attack."
+            "id": "mighty-lizard",
+            "name": "Mighty Lizard",
+            "tier": 3,
+            "examples": "Alligator, Crocodile, Gila Monster, etc.",
+            "traitBonus": {
+              "trait": "instinct",
+              "bonus": 2
+            },
+            "evasionBonus": 1,
+            "attack": {
+              "range": "melee",
+              "trait": "instinct",
+              "damage": "d10+7",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "attack",
+              "sneak",
+              "track"
+            ],
+            "features": [
+              {
+                "name": "Physical Defense",
+                "rules": "You gain a +3 bonus to your damage thresholds."
+              },
+              {
+                "name": "Snapping Strike",
+                "rules": "When you succeed on an attack against a target within Melee range, you can spend a Hope to clamp that opponent in your jaws, making them temporarily Restrained and Vulnerable."
+              }
+            ]
           },
           {
-            "title": "Mighty Lizard",
-            "rules": "(Alligator, Crocodile, Gila Monster, etc.)\nInstinct +2 | Evasion +1 Melee Instinct d10+7 phy\nGain advantage on: attack, sneak, track\nPhysical Defense: You gain a +3 bonus to your damage thresholds.\nSnapping Strike: When you succeed on an attack against a target within Melee range, you can spend a Hope to clamp that opponent in your jaws, making them temporarily Restrained and Vulnerable."
+            "id": "great-winged-beast",
+            "name": "Great Winged Beast",
+            "tier": 3,
+            "examples": "Giant Eagle, Falcon, etc.",
+            "traitBonus": {
+              "trait": "finesse",
+              "bonus": 2
+            },
+            "evasionBonus": 3,
+            "attack": {
+              "range": "melee",
+              "trait": "finesse",
+              "damage": "d8+6",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "deceive",
+              "distract",
+              "locate"
+            ],
+            "features": [
+              {
+                "name": "Bird’s-Eye View",
+                "rules": "You can fly at will. Once per rest while you are airborne, you can ask the GM a question about the scene below you without needing to roll. The first time a character makes a roll to act on this information, they gain advantage on the roll."
+              },
+              {
+                "name": "Carrier",
+                "rules": "You can carry up to two willing allies with you when you move."
+              }
+            ]
           },
           {
-            "title": "Great Winged Beast",
-            "rules": "(Giant Eagle, Falcon, etc.)\nFinesse +2 | Evasion +3 Melee Finesse d8+6 phy\nGain advantage on: deceive, distract, locate\nBird’s-Eye View: You can fly at will. Once per rest while you are airborne, you can ask the GM a question about the scene below you without needing to roll. The first time a character makes a roll to act on this information, they gain advantage on the roll.\nCarrier: You can carry up to two willing allies with you when you move."
+            "id": "aquatic-predator",
+            "name": "Aquatic Predator",
+            "tier": 3,
+            "examples": "Dolphin, Orca, Shark, etc.",
+            "traitBonus": {
+              "trait": "agility",
+              "bonus": 2
+            },
+            "evasionBonus": 4,
+            "attack": {
+              "range": "melee",
+              "trait": "agility",
+              "damage": "d10+6",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "attack",
+              "swim",
+              "track"
+            ],
+            "features": [
+              {
+                "name": "Aquatic",
+                "rules": "You can breathe and move naturally underwater."
+              },
+              {
+                "name": "Vicious Maul",
+                "rules": "When you succeed on an attack against a target, you can spend a Hope to make them Vulnerable and gain a +1 bonus to your Proficiency for this attack."
+              }
+            ]
           },
           {
-            "title": "Aquatic Predator",
-            "rules": "(Dolphin, Orca, Shark, etc.)\nAgility +2 | Evasion +4 Melee Agility d10+6 phy\nGain advantage on: attack, swim, track\nAquatic: You can breathe and move naturally underwater.\nVicious Maul: When you succeed on an attack against a target, you can spend a Hope to make them Vulnerable and gain a +1 bonus to your Proficiency for this attack."
+            "id": "legendary-beast",
+            "name": "Legendary Beast",
+            "tier": 3,
+            "examples": "Upgraded Tier 1 Options",
+            "features": [
+              {
+                "name": "Evolved",
+                "rules": "Pick a Tier 1 Beastform option and become a larger, more powerful version of that creature. While you’re in this form, you retain all traits and features from the original form and gain the following bonuses:\n- A +6 bonus to damage rolls\n- A +1 bonus to the trait used by this form\n- A +2 bonus to Evasion"
+              }
+            ]
           },
           {
-            "title": "Legendary Beast",
-            "rules": "(Upgraded Tier 1 Options)\nEvolved: Pick a Tier 1 Beastform option and become a larger, more powerful version of that creature. While you’re in this form, you retain all traits and features from the original form and gain the following bonuses:\n- A +6 bonus to damage rolls\n- A +1 bonus to the trait used by this form\n- A +2 bonus to Evasion"
+            "id": "legendary-hybrid",
+            "name": "Legendary Hybrid",
+            "tier": 3,
+            "examples": "Griffon, Sphinx, etc.",
+            "traitBonus": {
+              "trait": "strength",
+              "bonus": 2
+            },
+            "evasionBonus": 3,
+            "attack": {
+              "range": "melee",
+              "trait": "strength",
+              "damage": "d10+8",
+              "damageType": "physical"
+            },
+            "features": [
+              {
+                "name": "Hybrid Features",
+                "rules": "To transform into this creature, mark an additional Stress. Choose any two Beastform options from Tiers 1–2. Choose a total of four advantages and two features from those options."
+              }
+            ]
           },
           {
-            "title": "Legendary Hybrid",
-            "rules": "(Griffon, Sphinx, etc.)\nStrength +2 | Evasion +3 Melee Strength d10+8 phy\nHybrid Features: To transform into this creature, mark an additional Stress. Choose any two Beastform options from Tiers 1–2. Choose a total of four advantages and two features from those options."
+            "id": "massive-behemoth",
+            "name": "Massive Behemoth",
+            "tier": 4,
+            "examples": "Elephant, Mammoth, Rhinoceros, etc.",
+            "traitBonus": {
+              "trait": "strength",
+              "bonus": 3
+            },
+            "evasionBonus": 1,
+            "attack": {
+              "range": "melee",
+              "trait": "strength",
+              "damage": "d12+12",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "locate",
+              "protect",
+              "scare",
+              "sprint"
+            ],
+            "features": [
+              {
+                "name": "Carrier",
+                "rules": "You can carry up to four willing allies with you when you move."
+              },
+              {
+                "name": "Demolish",
+                "rules": "Spend a Hope to move up to Far range in a straight line and make an attack against all targets within Melee range of the line. Targets you succeed against take d8+10 physical damage using your Proficiency and are temporarily Vulnerable."
+              },
+              {
+                "name": "Undaunted",
+                "rules": "You gain a +2 bonus to all your damage thresholds."
+              }
+            ]
           },
           {
-            "title": "Massive Behemoth",
-            "rules": "(Elephant, Mammoth, Rhinoceros, etc.)\nStrength +3 | Evasion +1 Melee Strength d12+12 phy\nGain advantage on: locate, protect, scare, sprint\nCarrier: You can carry up to four willing allies with you when you move.\nDemolish: Spend a Hope to move up to Far range in a straight line and make an attack against all targets within Melee range of the line. Targets you succeed against take d8+10 physical damage using your Proficiency and are temporarily Vulnerable.\nUndaunted: You gain a +2 bonus to all your damage thresholds."
+            "id": "terrible-lizard",
+            "name": "Terrible Lizard",
+            "tier": 4,
+            "examples": "Brachiosaurus, Tyrannosaurus, etc.",
+            "traitBonus": {
+              "trait": "strength",
+              "bonus": 3
+            },
+            "evasionBonus": 2,
+            "attack": {
+              "range": "melee",
+              "trait": "strength",
+              "damage": "d12+10",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "attack",
+              "deceive",
+              "scare",
+              "track"
+            ],
+            "features": [
+              {
+                "name": "Devastating Strikes",
+                "rules": "When you deal Severe damage to a target within Melee range, you can mark a Stress to force them to mark an additional Hit Point."
+              },
+              {
+                "name": "Massive Stride",
+                "rules": "You can move up to Far range without rolling. You ignore rough terain (at the GM’s discretion) due to your size."
+              }
+            ]
           },
           {
-            "title": "Terrible Lizard",
-            "rules": "(Brachiosaurus, Tyrannosaurus, etc.)\nStrength +3 | Evasion +2 Melee Strength d12+10 phy\nGain advantage on: attack, deceive, scare, track\nDevastating Strikes: When you deal Severe damage to a target within Melee range, you can mark a Stress to force them to mark an additional Hit Point.\nMassive Stride: You can move up to Far range without rolling. You ignore rough terain (at the GM’s discretion) due to your size."
+            "id": "mythic-aerial-hunter",
+            "name": "Mythic Aerial Hunter",
+            "tier": 4,
+            "examples": "Dragon, Pterodactyl, Roc, Wyvern, etc.",
+            "traitBonus": {
+              "trait": "finesse",
+              "bonus": 3
+            },
+            "evasionBonus": 4,
+            "attack": {
+              "range": "melee",
+              "trait": "finesse",
+              "damage": "d10+11",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "attack",
+              "deceive",
+              "locate",
+              "navigate"
+            ],
+            "features": [
+              {
+                "name": "Carrier",
+                "rules": "You can carry up to three willing allies with you when you move."
+              },
+              {
+                "name": "Deadly Raptor",
+                "rules": "You can fly at will and move up to Far range as part of your action. When you move in a straight line into Melee range of a target from at least Close range and make an attack against that target in the same action, you can reroll all damage dice that rolled a result lower than your Proficiency."
+              }
+            ]
           },
           {
-            "title": "Mythic Aerial Hunter",
-            "rules": "(Dragon, Pterodactyl, Roc, Wyvern, etc.)\nFinesse +3 | Evasion +4 Melee Finesse d10+11 phy\nGain advantage on: attack, deceive, locate, navigate\nCarrier: You can carry up to three willing allies with you when you move.\nDeadly Raptor: You can fly at will and move up to Far range as part of your action. When you move in a straight line into Melee range of a target from at least Close range and make an attack against that target in the same action, you can reroll all damage dice that rolled a result lower than your Proficiency."
+            "id": "epic-aquatic-beast",
+            "name": "Epic Aquatic Beast",
+            "tier": 4,
+            "examples": "Giant Squid, Whale, etc.",
+            "traitBonus": {
+              "trait": "agility",
+              "bonus": 3
+            },
+            "evasionBonus": 3,
+            "attack": {
+              "range": "melee",
+              "trait": "agility",
+              "damage": "d10+10",
+              "damageType": "physical"
+            },
+            "advantages": [
+              "locate",
+              "protect",
+              "scare",
+              "track"
+            ],
+            "features": [
+              {
+                "name": "Ocean Master",
+                "rules": "You can breathe and move naturally underwater. When you succeed on an attack against a target within Melee range, you can temporarily Restrain them."
+              },
+              {
+                "name": "Unyielding",
+                "rules": "When you would mark an Armor Slot, roll a d6. On a result of 5 or higher, reduce the severity by one threshold without marking an Armor Slot."
+              }
+            ]
           },
           {
-            "title": "Epic Aquatic Beast",
-            "rules": "(Giant Squid, Whale, etc.)\nAgility +3 | Evasion +3 Melee Agility d10+10 phy\nGain advantage on: locate, protect, scare, track\nOcean Master: You can breathe and move naturally underwater. When you succeed on an attack against a target within Melee range, you can temporarily Restrain them.\nUnyielding: When you would mark an Armor Slot, roll a d6. On a result of 5 or higher, reduce the severity by one threshold without marking an Armor Slot."
+            "id": "mythic-beast",
+            "name": "Mythic Beast",
+            "tier": 4,
+            "examples": "Upgraded Tier 1 or Tier 2 Options",
+            "features": [
+              {
+                "name": "Evolved",
+                "rules": "Pick a Tier 1 or Tier 2 Beastform option and become a larger, more powerful version of that creature. While you’re in this form, you retain all traits and features from the original form and gain the following bonuses:\n- A +9 bonus to damage rolls\n- A +2 bonus to the trait used by this form\n- A +3 bonus to Evasion\n- Your damage die increases by one size (d6 becomes d8, d8 becomes d10, etc.)"
+              }
+            ]
           },
           {
-            "title": "Mythic Beast",
-            "rules": "(Upgraded Tier 1 or Tier 2 Options)\nEvolved: Pick a Tier 1 or Tier 2 Beastform option and become a larger, more powerful version of that creature. While you’re in this form, you retain all traits and features from the original form and gain the following bonuses:\n- A +9 bonus to damage rolls\n- A +2 bonus to the trait used by this form\n- A +3 bonus to Evasion\n- Your damage die increases by one size (d6 becomes d8, d8 becomes d10, etc.)"
-          },
-          {
-            "title": "Mythic Hybrid",
-            "rules": "(Chimera, Cockatrice, Manticore, etc.)\nStrength +3 | Evasion +2 Strength Melee d12+10 phy\nHybrid Features: To transform into this creature, mark 2 additional Stress. Choose any three Beastform options from Tiers 1-3. Choose a total of five advantages and three features from those options."
+            "id": "mythic-hybrid",
+            "name": "Mythic Hybrid",
+            "tier": 4,
+            "examples": "Chimera, Cockatrice, Manticore, etc.",
+            "traitBonus": {
+              "trait": "strength",
+              "bonus": 3
+            },
+            "evasionBonus": 2,
+            "attack": {
+              "range": "melee",
+              "trait": "strength",
+              "damage": "d12+10",
+              "damageType": "physical"
+            },
+            "features": [
+              {
+                "name": "Hybrid Features",
+                "rules": "To transform into this creature, mark 2 additional Stress. Choose any three Beastform options from Tiers 1-3. Choose a total of five advantages and three features from those options."
+              }
+            ]
           }
         ]
       },
@@ -329,7 +1039,9 @@
         "features": [
           {
             "name": "Unstoppable",
-            "rules": "Once per long rest, you can become Unstoppable. You gain an Unstoppable Die. At level 1, your Unstoppable Die is a d4. Place it on your character sheet in the space provided, starting with the 1 value facing up. After you make a damage roll that deals 1 or more Hit Points to a target, increase the Unstoppable Die value by one. When the die’s value would exceed its maximum value or when the scene ends, remove the die and drop out of Unstoppable. At level 5, your Unstoppable Die increases to a d6."
+            "rules": "Once per long rest, you can become Unstoppable. You gain an Unstoppable Die. At level 1, your Unstoppable Die is a d4. Place it on your character sheet in the space provided, starting with the 1 value facing up. After you make a damage roll that deals 1 or more Hit Points to a target, increase the Unstoppable Die value by one. When the die’s value would exceed its maximum value or when the scene ends, remove the die and drop out of Unstoppable. At level 5, your Unstoppable Die increases to a d6.",
+            "uses": 1,
+            "usesPer": "long-rest"
           },
           {
             "rules": "While Unstoppable, you gain the following benefits:\n- You reduce the severity of physical damage by one threshold (Severe to Major, Major to Minor, Minor to None).\n- You add the current value of the Unstoppable Die to your damage roll.\n- You can’t be Restrained or Vulnerable."
@@ -425,7 +1137,84 @@
             "title": "Leveling Up Your Companion",
             "rules": "When your character levels up, choose one available option for your companion from the following list and mark it on your sheet:\n- Intelligent: Your companion gains a permanent +1 bonus to a Companion Experience of your choice.\n- Light in the Dark: Use this as an additional Hope slot your character can mark.\n- Creature Comfort: Once per rest, when you take time during a quiet moment to give your companion love and attention, you can gain a Hope or you can both clear a Stress.\n- Armored: When your companion takes damage, you can mark one of your Armor Slots instead of marking one of their Stress.\n- Vicious: Increase your companion’s damage dice or range by one step (d6 to d8, Close to Far, etc.).\n- Resilient: Your companion gains an additional Stress slot.\n- Bonded: When you mark your last Hit Point, your companion rushes to your side to comfort you. Roll a number of d6s equal to the unmarked Stress slots they have and mark them. If any roll a 6, your companion helps you up. Clear your last Hit Point and return to the scene.\n- Aware: Your companion gains a permanent +2 bonus to their Evasion."
           }
-        ]
+        ],
+        "companion": {
+          "startingEvasion": 10,
+          "experiences": {
+            "count": 2,
+            "bonus": 2
+          },
+          "startingDamageDie": "d6",
+          "startingRange": "melee",
+          "damageTypes": [
+            "physical",
+            "magic"
+          ],
+          "exampleExperiences": [
+            "Bold Distraction",
+            "Expert Climber",
+            "Fetch",
+            "Friendly",
+            "Guardian of the Forest",
+            "Horrifying",
+            "Intimidating",
+            "Loyal Until the End",
+            "Navigation",
+            "Nimble",
+            "Nobody Left Behind",
+            "On High Alert",
+            "Protective",
+            "Royal Companion",
+            "Scout",
+            "Service Animal",
+            "Trusted Mount",
+            "Vigilant",
+            "We Always Find Them",
+            "You Can’t Hit What You Can’t Find"
+          ],
+          "levelUpOptions": [
+            {
+              "id": "intelligent",
+              "name": "Intelligent",
+              "rules": "Your companion gains a permanent +1 bonus to a Companion Experience of your choice."
+            },
+            {
+              "id": "light-in-the-dark",
+              "name": "Light in the Dark",
+              "rules": "Use this as an additional Hope slot your character can mark."
+            },
+            {
+              "id": "creature-comfort",
+              "name": "Creature Comfort",
+              "rules": "Once per rest, when you take time during a quiet moment to give your companion love and attention, you can gain a Hope or you can both clear a Stress."
+            },
+            {
+              "id": "armored",
+              "name": "Armored",
+              "rules": "When your companion takes damage, you can mark one of your Armor Slots instead of marking one of their Stress."
+            },
+            {
+              "id": "vicious",
+              "name": "Vicious",
+              "rules": "Increase your companion’s damage dice or range by one step (d6 to d8, Close to Far, etc.)."
+            },
+            {
+              "id": "resilient",
+              "name": "Resilient",
+              "rules": "Your companion gains an additional Stress slot."
+            },
+            {
+              "id": "bonded",
+              "name": "Bonded",
+              "rules": "When you mark your last Hit Point, your companion rushes to your side to comfort you. Roll a number of d6s equal to the unmarked Stress slots they have and mark them. If any roll a 6, your companion helps you up. Clear your last Hit Point and return to the scene."
+            },
+            {
+              "id": "aware",
+              "name": "Aware",
+              "rules": "Your companion gains a permanent +2 bonus to their Evasion."
+            }
+          ]
+        }
       },
       {
         "id": "rogue",
@@ -530,7 +1319,9 @@
           },
           {
             "name": "Channel Raw Power",
-            "rules": "Once per long rest, you can place a domain card from your loadout into your vault and choose to either:\n- Gain Hope equal to the level of the card.\n- Enhance a spell that deals damage, gaining a bonus to your damage roll equal to twice the level of the card."
+            "rules": "Once per long rest, you can place a domain card from your loadout into your vault and choose to either:\n- Gain Hope equal to the level of the card.\n- Enhance a spell that deals damage, gaining a bonus to your damage roll equal to twice the level of the card.",
+            "uses": 1,
+            "usesPer": "long-rest"
           }
         ],
         "backgroundQuestions": [
@@ -651,7 +1442,9 @@
           },
           {
             "name": "Commune",
-            "rules": "Once per long rest during a moment of calm, you can commune with an ancestor, a deity, a spirit, or an otherworldly being. Ask them a question, then roll a number of d6s equal to your Spellcast trait. Choose one of the results and reference the chart below for the effect. Roll Effect You taste a flavor, smell a scent, or feel a 1–3 sensation relevant to the answer."
+            "rules": "Once per long rest during a moment of calm, you can commune with an ancestor, a deity, a spirit, or an otherworldly being. Ask them a question, then roll a number of d6s equal to your Spellcast trait. Choose one of the results and reference the chart below for the effect. Roll Effect You taste a flavor, smell a scent, or feel a 1–3 sensation relevant to the answer.",
+            "uses": 1,
+            "usesPer": "long-rest"
           },
           {
             "rules": "You hear sounds or see a vision relevant to the 4–5 answer."
@@ -2218,7 +3011,18 @@
         "level": 5,
         "type": "spell",
         "recallCost": 2,
-        "rules": "You can channel arcane energy to have visions of the future. Once per long rest, immediately after the GM conveys the consequences of a roll you made, you can rescind the move and consequences like they never happened and make another move instead."
+        "rules": "You can channel arcane energy to have visions of the future. Once per long rest, immediately after the GM conveys the consequences of a roll you made, you can rescind the move and consequences like they never happened and make another move instead.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "premonition-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "rift-walker",
@@ -2245,7 +3049,18 @@
         "level": 7,
         "type": "ability",
         "recallCost": 2,
-        "rules": "When 4 or more of the domain cards in your loadout are from the Arcana domain, gain the following benefits:\n- +1 bonus to your Spellcast Rolls\n- Once per rest, you can switch the results of your Hope and Fear Dice."
+        "rules": "When 4 or more of the domain cards in your loadout are from the Arcana domain, gain the following benefits:\n- +1 bonus to your Spellcast Rolls\n- Once per rest, you can switch the results of your Hope and Fear Dice.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "arcana-touched-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "cloaking-blast",
@@ -2272,7 +3087,18 @@
         "level": 8,
         "type": "spell",
         "recallCost": 2,
-        "rules": "Make a Spellcast Roll (14). Once per long rest on a success, you create a layer of illusion over your body that makes it hard to tell exactly where you are. Mark any number of Stress to make that many additional layers. When an adversary makes an attack against you, roll a number of d6s equal to the number of layers currently active. If any roll a 5 or higher, one layer of the aura is destroyed and the attack fails. If all the results are 4 or lower, you take the damage and this spell ends"
+        "rules": "Make a Spellcast Roll (14). Once per long rest on a success, you create a layer of illusion over your body that makes it hard to tell exactly where you are. Mark any number of Stress to make that many additional layers. When an adversary makes an attack against you, roll a number of d6s equal to the number of layers currently active. If any roll a 5 or higher, one layer of the aura is destroyed and the attack fails. If all the results are 4 or lower, you take the damage and this spell ends",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "confusing-aura-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "earthquake",
@@ -2281,7 +3107,18 @@
         "level": 9,
         "type": "spell",
         "recallCost": 2,
-        "rules": "Make a Spellcast Roll (16). Once per rest on a success, all targets within Very Far range who aren’t flying must make a Reaction Roll (18). Targets who fail take 3d10+8 physical damage and are temporarily Vulnerable. Targets who succeed take half damage.\nAdditionally, when you succeed on the Spellcast Roll, all terrain within Very Far range becomes difficult to move through and structures within this range might sustain damage or crumble."
+        "rules": "Make a Spellcast Roll (16). Once per rest on a success, all targets within Very Far range who aren’t flying must make a Reaction Roll (18). Targets who fail take 3d10+8 physical damage and are temporarily Vulnerable. Targets who succeed take half damage.\nAdditionally, when you succeed on the Spellcast Roll, all terrain within Very Far range becomes difficult to move through and structures within this range might sustain damage or crumble.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "earthquake-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "sensory-projection",
@@ -2290,7 +3127,18 @@
         "level": 9,
         "type": "spell",
         "recallCost": 0,
-        "rules": "Once per rest, make a Spellcast Roll (15). On a success, drop into a vision that lets you clearly see and hear any place you have been before as though you are standing there in this moment. You can move freely in this vision and are not constrained by the physics or impediments of a physical body. This spell cannot be detected by mundane or magical means. You drop out of this vision upon taking damage or casting another spell."
+        "rules": "Once per rest, make a Spellcast Roll (15). On a success, drop into a vision that lets you clearly see and hear any place you have been before as though you are standing there in this moment. You can move freely in this vision and are not constrained by the physics or impediments of a physical body. This spell cannot be detected by mundane or magical means. You drop out of this vision upon taking damage or casting another spell.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "sensory-projection-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "adjust-reality",
@@ -2344,7 +3192,18 @@
         "level": 2,
         "type": "ability",
         "recallCost": 1,
-        "rules": "Once per long rest, when you compliment someone or ask them about something they’re good at, you can both gain 3 Hope."
+        "rules": "Once per long rest, when you compliment someone or ask them about something they’re good at, you can both gain 3 Hope.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "a-soldiers-bond-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "reckless",
@@ -2362,7 +3221,18 @@
         "level": 3,
         "type": "ability",
         "recallCost": 1,
-        "rules": "Once per rest, when a creature within Melee range would deal damage to you, you can avoid the attack and safely move out of Melee range of the enemy."
+        "rules": "Once per rest, when a creature within Melee range would deal damage to you, you can avoid the attack and safely move out of Melee range of the enemy.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "scramble-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "versatile-fighter",
@@ -2380,7 +3250,18 @@
         "level": 4,
         "type": "ability",
         "recallCost": 2,
-        "rules": "Once per rest, you can apply all your focus toward a target of your choice. Until you attack another creature, you defeat the target, or the battle ends, gain a +1 bonus to your Proficiency."
+        "rules": "Once per rest, you can apply all your focus toward a target of your choice. Until you attack another creature, you defeat the target, or the battle ends, gain a +1 bonus to your Proficiency.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "deadly-focus-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "fortified-armor",
@@ -2416,7 +3297,18 @@
         "level": 6,
         "type": "ability",
         "recallCost": 2,
-        "rules": "Once per long rest when you would make a Death Move, you can spend a Hope to clear a Hit Point instead."
+        "rules": "Once per long rest when you would make a Death Move, you can spend a Hope to clear a Hit Point instead.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "battle-hardened-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "rage-up",
@@ -2452,7 +3344,18 @@
         "level": 8,
         "type": "ability",
         "recallCost": 2,
-        "rules": "Once per long rest, while you’re charging into danger, you can muster a rousing call that inspires your allies. All allies who can hear you each clear a Stress and gain a Hope. Additionally, your allies gain advantage on attack rolls until you or an ally rolls a failure with Fear."
+        "rules": "Once per long rest, while you’re charging into danger, you can muster a rousing call that inspires your allies. All allies who can hear you each clear a Stress and gain a Hope. Additionally, your allies gain advantage on attack rolls until you or an ally rolls a failure with Fear.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "battle-cry-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "frenzy",
@@ -2461,7 +3364,18 @@
         "level": 8,
         "type": "ability",
         "recallCost": 3,
-        "rules": "Once per long rest, you can go into a Frenzy until there are no more adversaries within sight.\nWhile Frenzied, you can’t use Armor Slots, and you gain a +10 bonus to your damage rolls and a +8 bonus to your Severe damage threshold."
+        "rules": "Once per long rest, you can go into a Frenzy until there are no more adversaries within sight.\nWhile Frenzied, you can’t use Armor Slots, and you gain a +10 bonus to your damage rolls and a +8 bonus to your Severe damage threshold.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "frenzy-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "gore-and-glory",
@@ -2479,7 +3393,18 @@
         "level": 9,
         "type": "ability",
         "recallCost": 3,
-        "rules": "Once per long rest, spend a Hope to make an attack roll. The GM tells you which targets within range it would succeed against. Choose one of these targets and force them to mark 5 Hit Points."
+        "rules": "Once per long rest, spend a Hope to make an attack roll. The GM tells you which targets within range it would succeed against. Choose one of these targets and force them to mark 5 Hit Points.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "reapers-strike-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "battle-monster",
@@ -2506,7 +3431,18 @@
         "level": 1,
         "type": "ability",
         "recallCost": 0,
-        "rules": "Once per rest, mark a Stress to sprint anywhere within Far range without making an Agility Roll to get there.\nIf you end this movement within Melee range of an adversary and immediately make an attack against them, gain a +1 bonus to the attack roll."
+        "rules": "Once per rest, mark a Stress to sprint anywhere within Far range without making an Agility Roll to get there.\nIf you end this movement within Melee range of an adversary and immediately make an attack against them, gain a +1 bonus to the attack roll.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "deft-maneuvers-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "i-see-it-coming",
@@ -2596,7 +3532,18 @@
         "level": 5,
         "type": "ability",
         "recallCost": 1,
-        "rules": "Name and describe your signature combat move. Once per rest, when you perform this signature move as part of an action you’re taking, you can roll a d20 as your Hope Die. On a success, clear a Stress."
+        "rules": "Name and describe your signature combat move. Once per rest, when you perform this signature move as part of an action you’re taking, you can roll a d20 as your Hope Die. On a success, clear a Stress.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "signature-move-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "rapid-riposte",
@@ -2623,7 +3570,18 @@
         "level": 7,
         "type": "ability",
         "recallCost": 2,
-        "rules": "When 4 or more of the domain cards in your loadout are from the Bone domain, gain the following benefits:\n- +1 bonus to Agility\n- Once per rest, you can spend 3 Hope to cause an attack that succeeded against you to fail instead."
+        "rules": "When 4 or more of the domain cards in your loadout are from the Bone domain, gain the following benefits:\n- +1 bonus to Agility\n- Once per rest, you can spend 3 Hope to cause an attack that succeeded against you to fail instead.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "bone-touched-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "cruel-precision",
@@ -2668,7 +3626,18 @@
         "level": 9,
         "type": "ability",
         "recallCost": 3,
-        "rules": "Spend a Hope and make an attack against all adversaries within your weapon’s range. Once per long rest, on a success against any targets, roll your weapon's damage and distribute that damage however you wish between the targets you succeeded against. Before you deal damage to each target, roll an additional damage die and add its result to the damage you deal to them."
+        "rules": "Spend a Hope and make an attack against all adversaries within your weapon’s range. Once per long rest, on a success against any targets, roll your weapon's damage and distribute that damage however you wish between the targets you succeeded against. Before you deal damage to each target, roll an additional damage die and add its result to the damage you deal to them.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "splintering-strike-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "deathrun",
@@ -2704,7 +3673,18 @@
         "level": 1,
         "type": "grimoire",
         "recallCost": 2,
-        "rules": "Slumber: Make a Spellcast Roll against a target within Very Close range. On a success, they’re Asleep until they take damage or the GM spends a Fear on their turn to clear this condition.\nArcane Barrage: Once per rest, spend any number of Hope and shoot magical projectiles that strike a target of your choice within Close range. Roll a number of d6s equal to the Hope spent and deal that much magic damage to the target. Telepathy: Spend a Hope to open a line of mental communication with one target you can see. This connection lasts until your next rest or you cast Telepathy again."
+        "rules": "Slumber: Make a Spellcast Roll against a target within Very Close range. On a success, they’re Asleep until they take damage or the GM spends a Fear on their turn to clear this condition.\nArcane Barrage: Once per rest, spend any number of Hope and shoot magical projectiles that strike a target of your choice within Close range. Roll a number of d6s equal to the Hope spent and deal that much magic damage to the target. Telepathy: Spend a Hope to open a line of mental communication with one target you can see. This connection lasts until your next rest or you cast Telepathy again.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "book-of-illiat-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "book-of-tyfar",
@@ -2731,7 +3711,18 @@
         "level": 2,
         "type": "grimoire",
         "recallCost": 2,
-        "rules": "Runic Lock: Make a Spellcast Roll (15) on an object you’re touching that can close (such as a lock, chest, or box). Once per rest on a success, you can lock the object so it can only be opened by creatures of your choice. Someone with access to magic and an hour of time to study the spell can break it. Arcane Door: When you have no adversaries within Melee range, make a Spellcast Roll (13). On a success, spend a Hope to create a portal from where you are to a point within Far range you can see. It closes once a creature has passed through it.\nReveal: Make a Spellcast Roll. If there is anything magically hidden within Close range, it is revealed."
+        "rules": "Runic Lock: Make a Spellcast Roll (15) on an object you’re touching that can close (such as a lock, chest, or box). Once per rest on a success, you can lock the object so it can only be opened by creatures of your choice. Someone with access to magic and an hour of time to study the spell can break it. Arcane Door: When you have no adversaries within Melee range, make a Spellcast Roll (13). On a success, spend a Hope to create a portal from where you are to a point within Far range you can see. It closes once a creature has passed through it.\nReveal: Make a Spellcast Roll. If there is anything magically hidden within Close range, it is revealed.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "book-of-vagras-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "book-of-korvax",
@@ -2758,7 +3749,18 @@
         "level": 4,
         "type": "grimoire",
         "recallCost": 3,
-        "rules": "Repudiate: You can interrupt a magical effect taking place. Make a reaction roll using your Spellcast trait. Once per rest on a success, the effect stops and any consequences are avoided. Create Construct: Spend a Hope to choose a group of objects around you and create an animated construct from them that obeys basic commands. Make a Spellcast Roll to command them to take action. When necessary, they share your Evasion and traits and their attacks deal 2d10+3 physical damage. You can only maintain one construct at a time, and they fall apart when they take any amount of damage."
+        "rules": "Repudiate: You can interrupt a magical effect taking place. Make a reaction roll using your Spellcast trait. Once per rest on a success, the effect stops and any consequences are avoided. Create Construct: Spend a Hope to choose a group of objects around you and create an animated construct from them that obeys basic commands. Make a Spellcast Roll to command them to take action. When necessary, they share your Evasion and traits and their attacks deal 2d10+3 physical damage. You can only maintain one construct at a time, and they fall apart when they take any amount of damage.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "book-of-exota-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "book-of-grynn",
@@ -2767,7 +3769,18 @@
         "level": 4,
         "type": "grimoire",
         "recallCost": 2,
-        "rules": "Arcane Deflection: Once per long rest, spend a Hope to negate the damage of an attack targeting you or an ally within Very Close range.\nTime Lock: Target an object within Far range. That object stops in time and space exactly where it is until your next rest. If a creature tries to move it, make a Spellcast Roll against them to maintain this spell.\nWall of Flame: Make a Spellcast Roll (15). On a success, create a temporary wall of magical flame between two points within Far range. All creatures in its path must choose a side to be on, and anything that subsequently passes through the wall takes 4d10+3 magic damage."
+        "rules": "Arcane Deflection: Once per long rest, spend a Hope to negate the damage of an attack targeting you or an ally within Very Close range.\nTime Lock: Target an object within Far range. That object stops in time and space exactly where it is until your next rest. If a creature tries to move it, make a Spellcast Roll against them to maintain this spell.\nWall of Flame: Make a Spellcast Roll (15). On a success, create a temporary wall of magical flame between two points within Far range. All creatures in its path must choose a side to be on, and anything that subsequently passes through the wall takes 4d10+3 magic damage.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "book-of-grynn-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "manifest-wall",
@@ -2776,7 +3789,18 @@
         "level": 5,
         "type": "spell",
         "recallCost": 2,
-        "rules": "Make a Spellcast Roll (15). Once per rest on a success, spend a Hope to create a temporary magical wall between two points within Far range. It can be up to 50 feet high and form at any angle. Creatures or objects in its path are shunted to a side of your choice. The wall stays up until your next rest or you cast Manifest Wall again."
+        "rules": "Make a Spellcast Roll (15). Once per rest on a success, spend a Hope to create a temporary magical wall between two points within Far range. It can be up to 50 feet high and form at any angle. Creatures or objects in its path are shunted to a side of your choice. The wall stays up until your next rest or you cast Manifest Wall again.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "manifest-wall-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "teleport",
@@ -2785,7 +3809,18 @@
         "level": 5,
         "type": "spell",
         "recallCost": 2,
-        "rules": "Once per long rest, you can instantly teleport yourself and any number of willing targets within Close range to a place you’ve been before. Choose one of the following options, then make a Spellcast Roll (16):\n- If you know the place very well, gain a +3 bonus.\n- If you’ve visited the place frequently, gain a +1 bonus.\n- If you’ve visited the place infrequently, gain no modifier.\n- If you’ve only been there once, gain a −2 penalty.\nOn a success, you appear where you were intending to go. On a failure, you appear off course, with the range of failure determining how far off course."
+        "rules": "Once per long rest, you can instantly teleport yourself and any number of willing targets within Close range to a place you’ve been before. Choose one of the following options, then make a Spellcast Roll (16):\n- If you know the place very well, gain a +3 bonus.\n- If you’ve visited the place frequently, gain a +1 bonus.\n- If you’ve visited the place infrequently, gain no modifier.\n- If you’ve only been there once, gain a −2 penalty.\nOn a success, you appear where you were intending to go. On a failure, you appear off course, with the range of failure determining how far off course.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "teleport-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "banish",
@@ -2794,7 +3829,18 @@
         "level": 6,
         "type": "spell",
         "recallCost": 0,
-        "rules": "Make a Spellcast Roll against a target within Close range. On a success, roll a number of d20s equal to your Spellcast trait. The target must make a reaction roll with a Difficulty equal to your highest result. On a success, the target must mark a Stress but isn’t banished. Once per rest on a failure, they are banished from this realm.\nWhen the PCs roll with Fear, the Difficulty gains a −1 penalty and the target makes another reaction roll. On a success, they return from banishment."
+        "rules": "Make a Spellcast Roll against a target within Close range. On a success, roll a number of d20s equal to your Spellcast trait. The target must make a reaction roll with a Difficulty equal to your highest result. On a success, the target must mark a Stress but isn’t banished. Once per rest on a failure, they are banished from this realm.\nWhen the PCs roll with Fear, the Difficulty gains a −1 penalty and the target makes another reaction roll. On a success, they return from banishment.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "banish-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "sigil-of-retribution",
@@ -2812,7 +3858,18 @@
         "level": 7,
         "type": "grimoire",
         "recallCost": 0,
-        "rules": "Pass Through: Make a Spellcast Roll (13). Once per rest on a success, you and all creatures touching you can pass through a wall or door within Close range. The effect ends once everyone is on the other side.\nPlane Gate: Make a Spellcast Roll (14). Once per long rest on a success, open a gateway to a location in another dimension or plane of existence you’ve been to before. This gateway lasts until your next rest."
+        "rules": "Pass Through: Make a Spellcast Roll (13). Once per rest on a success, you and all creatures touching you can pass through a wall or door within Close range. The effect ends once everyone is on the other side.\nPlane Gate: Make a Spellcast Roll (14). Once per long rest on a success, open a gateway to a location in another dimension or plane of existence you’ve been to before. This gateway lasts until your next rest.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "book-of-homet-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "codex-touched",
@@ -2821,7 +3878,18 @@
         "level": 7,
         "type": "ability",
         "recallCost": 2,
-        "rules": "When 4 or more of the domain cards in your loadout are from the Codex domain, gain the following benefits:\n- You can mark a Stress to add your Proficiency to a Spellcast Roll.\n- Once per rest, replace this card with any card from your vault without paying its Recall Cost."
+        "rules": "When 4 or more of the domain cards in your loadout are from the Codex domain, gain the following benefits:\n- You can mark a Stress to add your Proficiency to a Spellcast Roll.\n- Once per rest, replace this card with any card from your vault without paying its Recall Cost.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "codex-touched-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "book-of-vyola",
@@ -2830,7 +3898,18 @@
         "level": 8,
         "type": "grimoire",
         "recallCost": 2,
-        "rules": "Memory Delve: Make a Spellcast Roll against a target within Far range. On a success, peer into the target’s mind and ask the GM a question. The GM describes any memories the target has pertaining to the answer.\nShared Clarity: Once per long rest, spend a Hope to choose two willing creatures. When one of them would mark Stress, they can choose between the two of them who marks it. This spell lasts until their next rest."
+        "rules": "Memory Delve: Make a Spellcast Roll against a target within Far range. On a success, peer into the target’s mind and ask the GM a question. The GM describes any memories the target has pertaining to the answer.\nShared Clarity: Once per long rest, spend a Hope to choose two willing creatures. When one of them would mark Stress, they can choose between the two of them who marks it. This spell lasts until their next rest.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "book-of-vyola-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "safe-haven",
@@ -2848,7 +3927,18 @@
         "level": 9,
         "type": "grimoire",
         "recallCost": 4,
-        "rules": "Transform: Make a Spellcast Roll (15). On a success, transform into an inanimate object no larger than twice your normal size. You can remain in this shape until you take damage.\nEternal Enervation: Once per long rest, make a Spellcast Roll against a target within Close range. On a success, they become permanently Vulnerable. They can’t clear this condition by any means."
+        "rules": "Transform: Make a Spellcast Roll (15). On a success, transform into an inanimate object no larger than twice your normal size. You can remain in this shape until you take damage.\nEternal Enervation: Once per long rest, make a Spellcast Roll against a target within Close range. On a success, they become permanently Vulnerable. They can’t clear this condition by any means.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "book-of-ronin-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "disintegration-wave",
@@ -2857,7 +3947,18 @@
         "level": 9,
         "type": "spell",
         "recallCost": 4,
-        "rules": "Make a Spellcast Roll (18). Once per long rest on a success, the GM tells you which adversaries within Far range have a Difficulty of 18 or lower. Mark a Stress for each one you wish to hit with this spell. They are killed and can’t come back to life by any means."
+        "rules": "Make a Spellcast Roll (18). Once per long rest on a success, the GM tells you which adversaries within Far range have a Difficulty of 18 or lower. Mark a Stress for each one you wish to hit with this spell. They are killed and can’t come back to life by any means.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "disintegration-wave-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "book-of-yarrow",
@@ -2875,7 +3976,18 @@
         "level": 10,
         "type": "spell",
         "recallCost": 1,
-        "rules": "Once per long rest, spend 5 Hope to cast this spell on two or more willing creatures. Until your next rest, when a creature connected by this union would mark Stress or Hit Points, the connected creatures can choose who marks it."
+        "rules": "Once per long rest, spend 5 Hope to cast this spell on two or more willing creatures. Until your next rest, when a creature connected by this union would mark Stress or Hit Points, the connected creatures can choose who marks it.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "transcendent-union-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "blighting-strike",
@@ -2893,7 +4005,18 @@
         "level": 1,
         "type": "spell",
         "recallCost": 1,
-        "rules": "Once per rest, you can mark a Stress to encase yourself in shadowy energy. When you do, place a number of tokens on this card equal to the number of Fear in the GM’s pool. After an attack roll is made against you, you can spend any number of tokens to give the result a −1 penalty per token spent.\nAt the end of the scene, clear all unspent tokens."
+        "rules": "Once per rest, you can mark a Stress to encase yourself in shadowy energy. When you do, place a number of tokens on this card equal to the number of Fear in the GM’s pool. After an attack roll is made against you, you can spend any number of tokens to give the result a −1 penalty per token spent.\nAt the end of the scene, clear all unspent tokens.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "umbral-veil-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "voice-of-dread",
@@ -2920,7 +4043,18 @@
         "level": 2,
         "type": "spell",
         "recallCost": 1,
-        "rules": "Make a Spellcast Roll against a target within Very Close range. Once per long rest on a success, the target takes d12+4 magic damage using your Proficiency. On a success with Fear, you gain a +1 bonus to your Proficiency for this attack.\nYou clear a number of Hit Points equal to the number of Hit Points the target marked from this attack."
+        "rules": "Make a Spellcast Roll against a target within Very Close range. Once per long rest on a success, the target takes d12+4 magic damage using your Proficiency. On a success with Fear, you gain a +1 bonus to your Proficiency for this attack.\nYou clear a number of Hit Points equal to the number of Hit Points the target marked from this attack.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "siphon-essence-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "shared-trauma",
@@ -2929,7 +4063,18 @@
         "level": 3,
         "type": "spell",
         "recallCost": 1,
-        "rules": "You can transfer suffering from one creature to another. Once per rest, mark any number of Hit Points on a willing creature within Melee range to clear an equal number of Hit Points on another willing creature within Melee range."
+        "rules": "You can transfer suffering from one creature to another. Once per rest, mark any number of Hit Points on a willing creature within Melee range to clear an equal number of Hit Points on another willing creature within Melee range.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "shared-trauma-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "terrify",
@@ -2956,7 +4101,18 @@
         "level": 4,
         "type": "spell",
         "recallCost": 2,
-        "rules": "Once per scene, mark a Stress to summon an otherworldly creature that deals d8+1 magic damage using your Spellcast trait to a target within Far range. If the target marks any Hit Points from this attack, they must succeed on a Reaction Roll (12) to steel themselves against the horror or mark an equal number of Stress.\nAfter making the attack, the creature dissipates."
+        "rules": "Once per scene, mark a Stress to summon an otherworldly creature that deals d8+1 magic damage using your Spellcast trait to a target within Far range. If the target marks any Hit Points from this attack, they must succeed on a Reaction Roll (12) to steel themselves against the horror or mark an equal number of Stress.\nAfter making the attack, the creature dissipates.",
+        "uses": 1,
+        "usesPer": "scene",
+        "trackers": [
+          {
+            "id": "horror-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per scene",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "dire-strike",
@@ -2983,7 +4139,18 @@
         "level": 6,
         "type": "spell",
         "recallCost": 2,
-        "rules": "Once per scene, spend any number of Hope to target an equal number of adversaries within Close range. Each target makes a Reaction Roll (15). Targets who fail take d8+6 magic damage using your Spellcast trait as they are engulfed in dark fire. Targets who succeed take half damage."
+        "rules": "Once per scene, spend any number of Hope to target an equal number of adversaries within Close range. Each target makes a Reaction Roll (15). Targets who fail take d8+6 magic damage using your Spellcast trait as they are engulfed in dark fire. Targets who succeed take half damage.",
+        "uses": 1,
+        "usesPer": "scene",
+        "trackers": [
+          {
+            "id": "darkfire-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per scene",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "jump-scare",
@@ -3001,7 +4168,18 @@
         "level": 7,
         "type": "ability",
         "recallCost": 2,
-        "rules": "When 4 or more of the domain cards in your loadout are from the Dread domain, gain the following benefits:\n- When you succeed with Fear, you can mark 2 Stress to prevent the GM from gaining a Fear.\n- Once per rest when making an action roll, you can gain a bonus to the roll equal to the number of Fear in the GM’s pool."
+        "rules": "When 4 or more of the domain cards in your loadout are from the Dread domain, gain the following benefits:\n- When you succeed with Fear, you can mark 2 Stress to prevent the GM from gaining a Fear.\n- Once per rest when making an action roll, you can gain a bonus to the roll equal to the number of Fear in the GM’s pool.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "dread-touched-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "wall-of-hunger",
@@ -3019,7 +4197,18 @@
         "level": 8,
         "type": "spell",
         "recallCost": 2,
-        "rules": "Make a Spellcast Roll (14). Once per long rest on a success, you can summon fiends that surround and move with you. Place 8 tokens on this card. When you deal damage to a target within Very Close range, you can spend any number of tokens to add 1d8 for each token spent to your damage roll. Additionally, when you take damage, you can spend any number of tokens to reduce the damage by 1d8 for each token spent. Each time you spend a token, a fiend acts on your behalf, then disappears.\nWhen you take a rest, clear all unspent tokens."
+        "rules": "Make a Spellcast Roll (14). Once per long rest on a success, you can summon fiends that surround and move with you. Place 8 tokens on this card. When you deal damage to a target within Very Close range, you can spend any number of tokens to add 1d8 for each token spent to your damage roll. Additionally, when you take damage, you can spend any number of tokens to reduce the damage by 1d8 for each token spent. Each time you spend a token, a fiend acts on your behalf, then disappears.\nWhen you take a rest, clear all unspent tokens.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "dark-army-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "eldritch-flesh",
@@ -3082,7 +4271,18 @@
         "level": 1,
         "type": "spell",
         "recallCost": 0,
-        "rules": "Make a Spellcast Roll against a target within Close range. On a success, they become temporarily Enraptured. While Enraptured, a target’s attention is fixed on you, narrowing their field of view and drowning out any sound but your voice. Once per rest on a success, you can mark a Stress to force the Enraptured target to mark a Stress as well."
+        "rules": "Make a Spellcast Roll against a target within Close range. On a success, they become temporarily Enraptured. While Enraptured, a target’s attention is fixed on you, narrowing their field of view and drowning out any sound but your voice. Once per rest on a success, you can mark a Stress to force the Enraptured target to mark a Stress as well.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "enrapture-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "inspirational-words",
@@ -3109,7 +4309,18 @@
         "level": 2,
         "type": "ability",
         "recallCost": 2,
-        "rules": "When you taunt or provoke a target within Far range, make a Presence Roll against them. Once per rest on a success, roll a number of d4s equal to your Proficiency. The target must mark Stress equal to the highest result rolled."
+        "rules": "When you taunt or provoke a target within Far range, make a Presence Roll against them. Once per rest on a success, roll a number of d4s equal to your Proficiency. The target must mark Stress equal to the highest result rolled.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "troublemaker-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "hypnotic-shimmer",
@@ -3118,7 +4329,18 @@
         "level": 3,
         "type": "spell",
         "recallCost": 1,
-        "rules": "Make a Spellcast Roll against all adversaries in front of you within Close range. Once per rest on a success, create an illusion of flashing colors and lights that temporarily Stuns targets you succeed against and forces them to mark a Stress. While Stunned, they can’t use reactions and can’t take any other actions until they clear this condition."
+        "rules": "Make a Spellcast Roll against all adversaries in front of you within Close range. Once per rest on a success, create an illusion of flashing colors and lights that temporarily Stuns targets you succeed against and forces them to mark a Stress. While Stunned, they can’t use reactions and can’t take any other actions until they clear this condition.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "hypnotic-shimmer-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "invisibility",
@@ -3181,7 +4403,18 @@
         "level": 6,
         "type": "spell",
         "recallCost": 0,
-        "rules": "Once per rest, take on the Stress from a willing creature within Melee range. The target describes what intimate knowledge or emotions telepathically leak from their mind in this moment between you. Transfer any number of their marked Stress to you, then gain a Hope for each Stress transferred."
+        "rules": "Once per rest, take on the Stress from a willing creature within Melee range. The target describes what intimate knowledge or emotions telepathically leak from their mind in this moment between you. Transfer any number of their marked Stress to you, then gain a Hope for each Stress transferred.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "share-the-burden-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "endless-charisma",
@@ -3208,7 +4441,18 @@
         "level": 8,
         "type": "spell",
         "recallCost": 0,
-        "rules": "Once per long rest, mark a Stress to create a projected copy of yourself that can appear anywhere you’ve been before. You can see and hear through the projection as though it were you and affect the world as though you were there. A creature investigating the projection can tell it’s of magical origin. This effect lasts until your next rest or your projection takes any damage."
+        "rules": "Once per long rest, mark a Stress to create a projected copy of yourself that can appear anywhere you’ve been before. You can see and hear through the projection as though it were you and affect the world as though you were there. A creature investigating the projection can tell it’s of magical origin. This effect lasts until your next rest or your projection takes any damage.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "astral-projection-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "mass-enrapture",
@@ -3226,7 +4470,18 @@
         "level": 9,
         "type": "spell",
         "recallCost": 3,
-        "rules": "Once per long rest, this card can mimic the features of another domain card of level 8 or lower in another player’s loadout. Spend Hope equal to half the card’s level to gain access to the feature. It lasts until your next rest or they place the card in their vault."
+        "rules": "Once per long rest, this card can mimic the features of another domain card of level 8 or lower in another player’s loadout. Spend Hope equal to half the card’s level to gain access to the feature. It lasts until your next rest or they place the card in their vault.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "copycat-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "master-of-the-craft",
@@ -3379,7 +4634,18 @@
         "level": 7,
         "type": "ability",
         "recallCost": 2,
-        "rules": "When 4 or more of the domain cards in your loadout are from the Midnight domain, gain the following benefits:\n- Once per rest, when you have 0 Hope and the GM would gain a Fear, you can gain a Hope instead.\n- When you make a successful attack, you can mark a Stress to add the result of your Fear Die to your damage roll."
+        "rules": "When 4 or more of the domain cards in your loadout are from the Midnight domain, gain the following benefits:\n- Once per rest, when you have 0 Hope and the GM would gain a Fear, you can gain a Hope instead.\n- When you make a successful attack, you can mark a Stress to add the result of your Fear Die to your damage roll.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "midnight-touched-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "vanishing-dodge",
@@ -3415,7 +4681,18 @@
         "level": 9,
         "type": "spell",
         "recallCost": 2,
-        "rules": "Once per long rest, choose any targets within Very Close range to perceive you as a nightmarish horror. The targets must succeed on a Reaction Roll (16) or become temporarily Horrified. While Horrified, they’re Vulnerable. Steal a number of Fear from the GM equal to the number of targets that are Horrified (up to the number of Fear in the GM’s pool). Roll a number of d6s equal to the number of stolen Fear and deal the total damage to each Horrified target. Discard the stolen Fear."
+        "rules": "Once per long rest, choose any targets within Very Close range to perceive you as a nightmarish horror. The targets must succeed on a Reaction Roll (16) or become temporarily Horrified. While Horrified, they’re Vulnerable. Steal a number of Fear from the GM equal to the number of targets that are Horrified (up to the number of Fear in the GM’s pool). Roll a number of d6s equal to the number of stolen Fear and deal the total damage to each Horrified target. Discard the stolen Fear.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "night-terror-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "twilight-toll",
@@ -3433,7 +4710,18 @@
         "level": 10,
         "type": "spell",
         "recallCost": 2,
-        "rules": "Make a Spellcast Roll (16). Once per long rest on a success, plunge the entire area within Far range into complete darkness only you and your allies can see through. Attack rolls have disadvantage when targeting you or an ally within this shadow. Additionally, when you or an ally succeeds with Hope against an adversary within this shadow, the target must mark a Stress.\nThis spell lasts until the GM spends a Fear on their turn to clear this effect or you take Severe damage."
+        "rules": "Make a Spellcast Roll (16). Once per long rest on a success, plunge the entire area within Far range into complete darkness only you and your allies can see through. Attack rolls have disadvantage when targeting you or an ally within this shadow. Additionally, when you or an ally succeeds with Hope against an adversary within this shadow, the target must mark a Stress.\nThis spell lasts until the GM spends a Fear on their turn to clear this effect or you take Severe damage.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "eclipse-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "specter-of-the-dark",
@@ -3505,7 +4793,18 @@
         "level": 3,
         "type": "spell",
         "recallCost": 1,
-        "rules": "Once per rest, you can conjure a thick, twisting stalk within Close range that can be easily climbed. Its height can grow up to Far range.\nMark a Stress to use this spell as an attack. Make a Spellcast Roll against an adversary or group of adversaries within Close range. The erupting stalk lifts targets you succeed against into the air and drops them, dealing d8 physical damage using your Proficiency."
+        "rules": "Once per rest, you can conjure a thick, twisting stalk within Close range that can be easily climbed. Its height can grow up to Far range.\nMark a Stress to use this spell as an attack. Make a Spellcast Roll against an adversary or group of adversaries within Close range. The erupting stalk lifts targets you succeed against into the air and drops them, dealing d8 physical damage using your Proficiency.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "towering-stalk-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "death-grip",
@@ -3523,7 +4822,18 @@
         "level": 4,
         "type": "spell",
         "recallCost": 2,
-        "rules": "Once per long rest, you can conjure a field of healing plants around you. Everywhere within Close range of you bursts to life with vibrant nature, allowing you and all allies in the area to clear a Hit Point.\nSpend 2 Hope to allow you and all allies to clear 2 Hit Points instead."
+        "rules": "Once per long rest, you can conjure a field of healing plants around you. Everywhere within Close range of you bursts to life with vibrant nature, allowing you and all allies in the area to clear a Hit Point.\nSpend 2 Hope to allow you and all allies to clear 2 Hit Points instead.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "healing-field-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "thorn-skin",
@@ -3532,7 +4842,18 @@
         "level": 5,
         "type": "spell",
         "recallCost": 1,
-        "rules": "Once per rest, spend a Hope to sprout thorns all over your body. When you do, place a number of tokens equal to your Spellcast trait on this card. When you take damage, you can spend any number of tokens to roll that number of d6s. Add the results together and reduce the incoming damage by that amount. If you’re within Melee range of the attacker, deal that amount of damage back to them.\nWhen you take a rest, clear all unspent tokens."
+        "rules": "Once per rest, spend a Hope to sprout thorns all over your body. When you do, place a number of tokens equal to your Spellcast trait on this card. When you take damage, you can spend any number of tokens to roll that number of d6s. Add the results together and reduce the incoming damage by that amount. If you’re within Melee range of the attacker, deal that amount of damage back to them.\nWhen you take a rest, clear all unspent tokens.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "thorn-skin-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "wild-fortress",
@@ -3568,7 +4889,18 @@
         "level": 7,
         "type": "ability",
         "recallCost": 2,
-        "rules": "When 4 or more of the domain cards in your loadout are from the Sage domain, gain the following benefits:\n- While you’re in a natural environment, you gain a +2 bonus to your Spellcast Rolls.\n- Once per rest, you can double your Agility or Instinct when making a roll that uses that trait. You must choose to do this before you roll."
+        "rules": "When 4 or more of the domain cards in your loadout are from the Sage domain, gain the following benefits:\n- While you’re in a natural environment, you gain a +2 bonus to your Spellcast Rolls.\n- Once per rest, you can double your Agility or Instinct when making a roll that uses that trait. You must choose to do this before you roll.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "sage-touched-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "wild-surge",
@@ -3577,7 +4909,18 @@
         "level": 7,
         "type": "spell",
         "recallCost": 2,
-        "rules": "Once per long rest, mark a Stress to channel the natural world around you and enhance yourself. Describe how your appearance changes, then place a d6 on this card with the 1 value facing up.\nWhile the Wild Surge Die is active, you add its value to every action roll you make. After you add its value to a roll, increase the Wild Surge Die’s value by one. When the die’s value would exceed 6 or you take a rest, this form drops and you must mark an additional Stress."
+        "rules": "Once per long rest, mark a Stress to channel the natural world around you and enhance yourself. Describe how your appearance changes, then place a d6 on this card with the 1 value facing up.\nWhile the Wild Surge Die is active, you add its value to every action roll you make. After you add its value to a roll, increase the Wild Surge Die’s value by one. When the die’s value would exceed 6 or you take a rest, this form drops and you must mark an additional Stress.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "wild-surge-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "forest-sprites",
@@ -3595,7 +4938,18 @@
         "level": 8,
         "type": "spell",
         "recallCost": 1,
-        "rules": "Make a Spellcast Roll (15). Once per rest on a success, create a temporary barrier of protective energy around you at Very Close range. You and all allies within the barrier when this spell is cast clear 1d4 Hit Points. While the barrier is up, you and all allies within have resistance to physical damage from outside the barrier.\nWhen you move, the barrier follows you."
+        "rules": "Make a Spellcast Roll (15). Once per rest on a success, create a temporary barrier of protective energy around you at Very Close range. You and all allies within the barrier when this spell is cast clear 1d4 Hit Points. While the barrier is up, you and all allies within have resistance to physical damage from outside the barrier.\nWhen you move, the barrier follows you.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "rejuvenation-barrier-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "fane-of-the-wilds",
@@ -3613,7 +4967,18 @@
         "level": 9,
         "type": "spell",
         "recallCost": 1,
-        "rules": "Make a Spellcast Roll (18). Once per long rest on a success, you reshape the natural world, changing the surrounding plant life anywhere within Far range of you. For example, you can grow trees instantly, clear a path through dense vines, or create a wall of roots."
+        "rules": "Make a Spellcast Roll (18). Once per long rest on a success, you reshape the natural world, changing the surrounding plant life anywhere within Far range of you. For example, you can grow trees instantly, clear a path through dense vines, or create a wall of roots.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "plant-dominion-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "force-of-nature",
@@ -3649,7 +5014,18 @@
         "level": 1,
         "type": "spell",
         "recallCost": 1,
-        "rules": "You lay your hands upon a creature and channel healing magic to close their wounds. When you can take a few minutes to focus on the target you’re helping, you can spend 2 Hope to clear a Hit Point or a Stress on them.\nOnce per long rest, when you spend this healing time learning something new about them or revealing something about yourself, you can clear 2 Hit Points or 2 Stress on them instead."
+        "rules": "You lay your hands upon a creature and channel healing magic to close their wounds. When you can take a few minutes to focus on the target you’re helping, you can spend 2 Hope to clear a Hit Point or a Stress on them.\nOnce per long rest, when you spend this healing time learning something new about them or revealing something about yourself, you can clear 2 Hit Points or 2 Stress on them instead.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "mending-touch-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "reassurance",
@@ -3658,7 +5034,18 @@
         "level": 1,
         "type": "ability",
         "recallCost": 0,
-        "rules": "Once per rest, after an ally attempts an action roll but before the consequences take place, you can offer assistance or words of support. When you do, your ally can reroll their dice."
+        "rules": "Once per rest, after an ally attempts an action roll but before the consequences take place, you can offer assistance or words of support. When you do, your ally can reroll their dice.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "reassurance-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "final-words",
@@ -3685,7 +5072,18 @@
         "level": 3,
         "type": "ability",
         "recallCost": 2,
-        "rules": "Once per rest, when you succeed on an attack against an adversary, you can clear 3 Stress or a Hit Point. On a success with Hope, you also clear 3 Stress or a Hit Point on an ally within Close range of you."
+        "rules": "Once per rest, when you succeed on an attack against an adversary, you can clear 3 Stress or a Hit Point. On a success with Hope, you also clear 3 Stress or a Hit Point on an ally within Close range of you.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "second-wind-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "voice-of-reason",
@@ -3703,7 +5101,18 @@
         "level": 4,
         "type": "spell",
         "recallCost": 1,
-        "rules": "Once per long rest, spend 3 Hope to reach out to the forces beyond and ask one “yes or no” question about an event, person, place, or situation in the near future. For a moment, the present falls away and you see the answer before you."
+        "rules": "Once per long rest, spend 3 Hope to reach out to the forces beyond and ask one “yes or no” question about an event, person, place, or situation in the near future. For a moment, the present falls away and you see the answer before you.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "divination-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "life-ward",
@@ -3730,7 +5139,18 @@
         "level": 5,
         "type": "spell",
         "recallCost": 2,
-        "rules": "Once per rest, spend 3 Hope to charge your powerful smite. When you next successfully attack with a weapon, double the result of your damage roll. This attack deals magic damage regardless of the weapon’s damage type."
+        "rules": "Once per rest, spend 3 Hope to charge your powerful smite. When you next successfully attack with a weapon, double the result of your damage roll. This attack deals magic damage regardless of the weapon’s damage type.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "smite-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "restoration",
@@ -3748,7 +5168,18 @@
         "level": 6,
         "type": "spell",
         "recallCost": 2,
-        "rules": "Make a Spellcast Roll (16). Once per long rest on a success, choose a point within Far range and create a visible zone of protection there for all allies within Very Close range of that point. When you do, place a d6 on this card with the 1 value facing up. When an ally in this zone takes damage, they reduce it by the die’s value. You then increase the die’s value by one. When the die’s value would exceed 6, this effect ends."
+        "rules": "Make a Spellcast Roll (16). Once per long rest on a success, choose a point within Far range and create a visible zone of protection there for all allies within Very Close range of that point. When you do, place a d6 on this card with the 1 value facing up. When an ally in this zone takes damage, they reduce it by the die’s value. You then increase the die’s value by one. When the die’s value would exceed 6, this effect ends.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "zone-of-protection-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "healing-strike",
@@ -3766,7 +5197,18 @@
         "level": 7,
         "type": "ability",
         "recallCost": 2,
-        "rules": "When 4 or more of the domain cards in your loadout are from the Splendor domain, gain the following benefits:\n- +3 bonus to your Severe damage threshold\n- Once per long rest, when incoming damage would require you to mark a number of Hit Points, you can choose to mark that much Stress or spend that much Hope instead."
+        "rules": "When 4 or more of the domain cards in your loadout are from the Splendor domain, gain the following benefits:\n- +3 bonus to your Severe damage threshold\n- Once per long rest, when incoming damage would require you to mark a number of Hit Points, you can choose to mark that much Stress or spend that much Hope instead.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "splendor-touched-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "shield-aura",
@@ -3811,7 +5253,18 @@
         "level": 10,
         "type": "spell",
         "recallCost": 3,
-        "rules": "When you or an ally within Close range has used a feature that has an exhaustion limit (such as once per rest or once per session), you can spend any number of Hope and roll that many d6s. If any roll a 6, the feature can be used again."
+        "rules": "When you or an ally within Close range has used a feature that has an exhaustion limit (such as once per rest or once per session), you can spend any number of Hope and roll that many d6s. If any roll a 6, the feature can be used again.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "invigoration-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "resurrection",
@@ -3865,7 +5318,18 @@
         "level": 2,
         "type": "ability",
         "recallCost": 0,
-        "rules": "When you make a Presence Roll, you can spend a Hope to add your Strength to the roll.\nAdditionally, once per rest when you would gain a condition, you can describe how your bold presence aids you in the situation and avoid gaining the condition."
+        "rules": "When you make a Presence Roll, you can spend a Hope to add your Strength to the roll.\nAdditionally, once per rest when you would gain a condition, you can describe how your bold presence aids you in the situation and avoid gaining the condition.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "bold-presence-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "critical-inspiration",
@@ -3874,7 +5338,18 @@
         "level": 3,
         "type": "ability",
         "recallCost": 1,
-        "rules": "Once per rest, when you critically succeed on an attack, all allies within Very Close range can clear a Stress or gain a Hope."
+        "rules": "Once per rest, when you critically succeed on an attack, all allies within Very Close range can clear a Stress or gain a Hope.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "critical-inspiration-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "lean-on-me",
@@ -3883,7 +5358,18 @@
         "level": 3,
         "type": "ability",
         "recallCost": 1,
-        "rules": "Once per long rest, when you console or inspire an ally who failed an action roll, you can both clear 2 Stress."
+        "rules": "Once per long rest, when you console or inspire an ally who failed an action roll, you can both clear 2 Stress.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "lean-on-me-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "goad-them-on",
@@ -3919,7 +5405,18 @@
         "level": 5,
         "type": "ability",
         "recallCost": 1,
-        "rules": "Once per rest, when you critically succeed on an attack, you and all allies who can see or hear you can clear a Hit Point or 1d4 Stress."
+        "rules": "Once per rest, when you critically succeed on an attack, you and all allies who can see or hear you can clear a Hit Point or 1d4 Stress.",
+        "uses": 1,
+        "usesPer": "rest",
+        "trackers": [
+          {
+            "id": "rousing-strike-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "inevitable",
@@ -3964,7 +5461,18 @@
         "level": 8,
         "type": "ability",
         "recallCost": 1,
-        "rules": "Once per long rest, mark 3 Stress to push your body to its limits. Gain a +2 bonus to all of your character traits until your next rest."
+        "rules": "Once per long rest, mark 3 Stress to push your body to its limits. Gain a +2 bonus to all of your character traits until your next rest.",
+        "uses": 1,
+        "usesPer": "long-rest",
+        "trackers": [
+          {
+            "id": "full-surge-use",
+            "shape": "circle",
+            "count": 1,
+            "label": "Once per long rest",
+            "placement": "front"
+          }
+        ]
       },
       {
         "id": "ground-pound",
@@ -10524,6 +12032,14 @@
         "damageType": "magic",
         "burden": "one-handed",
         "feature": "Poisonous: When a target marks any number of Hit Points from an attack you rolled with Fear, they mark an equal number of Stress."
+      }
+    ],
+    "levelUpOptions": [
+      {
+        "id": "multiclass",
+        "name": "Multiclass",
+        "minLevel": 5,
+        "rules": "Starting at level 5, you can choose multiclassing as an option when leveling up. When you multiclass, you choose an additional class, gain access to one of its domains, and acquire its class feature. Take the appropriate multiclass module and add it to the right side of your character sheet, then choose a foundation card from one of its subclasses. If your foundation cards specify different Spellcast traits, you can choose which one to apply when making a Spellcast roll.\nWhenever you have the option to acquire a new domain card, you can choose from cards at or below half your current level (rounded up) from the domain you chose when you selected the multiclass advancement."
       }
     ]
   }

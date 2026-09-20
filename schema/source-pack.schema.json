@@ -225,6 +225,15 @@
         },
         "uses": {
           "$ref": "#/definitions/count"
+        },
+        "usesPer": {
+          "enum": [
+            "short-rest",
+            "long-rest",
+            "rest",
+            "scene",
+            "session"
+          ]
         }
       }
     },
@@ -429,6 +438,233 @@
                   }
                 }
               }
+            },
+            "beastforms": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "name",
+                  "tier",
+                  "features"
+                ],
+                "properties": {
+                  "id": {
+                    "$ref": "#/definitions/id"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "tier": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 4
+                  },
+                  "examples": {
+                    "type": "string"
+                  },
+                  "traitBonus": {
+                    "type": "object",
+                    "required": [
+                      "trait",
+                      "bonus"
+                    ],
+                    "properties": {
+                      "trait": {
+                        "enum": [
+                          "agility",
+                          "strength",
+                          "finesse",
+                          "instinct",
+                          "presence",
+                          "knowledge"
+                        ]
+                      },
+                      "bonus": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "evasionBonus": {
+                    "type": "integer"
+                  },
+                  "attack": {
+                    "type": "object",
+                    "required": [
+                      "range",
+                      "trait",
+                      "damage",
+                      "damageType"
+                    ],
+                    "properties": {
+                      "range": {
+                        "enum": [
+                          "melee",
+                          "very-close",
+                          "close",
+                          "far",
+                          "very-far"
+                        ]
+                      },
+                      "trait": {
+                        "enum": [
+                          "agility",
+                          "strength",
+                          "finesse",
+                          "instinct",
+                          "presence",
+                          "knowledge"
+                        ]
+                      },
+                      "damage": {
+                        "type": "string"
+                      },
+                      "damageType": {
+                        "enum": [
+                          "physical",
+                          "magic"
+                        ]
+                      }
+                    }
+                  },
+                  "advantages": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "features": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "name",
+                        "rules"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "rules": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "companion": {
+              "type": "object",
+              "required": [
+                "startingEvasion",
+                "experiences",
+                "levelUpOptions"
+              ],
+              "properties": {
+                "startingEvasion": {
+                  "type": "integer"
+                },
+                "experiences": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "bonus"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    },
+                    "bonus": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "startingDamageDie": {
+                  "type": "string"
+                },
+                "startingRange": {
+                  "enum": [
+                    "melee",
+                    "very-close",
+                    "close",
+                    "far",
+                    "very-far"
+                  ]
+                },
+                "damageTypes": {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      "physical",
+                      "magic"
+                    ]
+                  }
+                },
+                "exampleExperiences": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "levelUpOptions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "name",
+                      "rules"
+                    ],
+                    "properties": {
+                      "id": {
+                        "$ref": "#/definitions/id"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "rules": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "stances": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "name",
+                  "tier",
+                  "rules"
+                ],
+                "properties": {
+                  "id": {
+                    "$ref": "#/definitions/id"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "tier": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 4
+                  },
+                  "rules": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "focusMax": {
+              "type": "integer"
+            },
+            "knownStancesAtCreation": {
+              "type": "integer"
             }
           }
         }
@@ -554,6 +790,15 @@
               "items": {
                 "$ref": "#/definitions/tracker"
               }
+            },
+            "usesPer": {
+              "enum": [
+                "short-rest",
+                "long-rest",
+                "rest",
+                "scene",
+                "session"
+              ]
             }
           }
         }

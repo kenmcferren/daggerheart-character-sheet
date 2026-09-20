@@ -11,7 +11,7 @@ export interface Character {
   createdAt: string
   updatedAt: string
   level: number
-  sources: { enabledPacks: string[]; campaignFrameId: string | null }
+  sources: { enabledPacks: string[]; campaignFrameId: string | null; supplementIds?: string[] }
   choices: {
     classId: string | null
     subclassId: string | null
@@ -22,8 +22,36 @@ export interface Character {
     levelUpChoices: Record<string, string[]>
   }
   traits: Partial<Record<Trait, number>>
+  /** Wizard answers that are not plain pack-entry ids. Optional so older saves still load; see creationOf(). */
+  creation?: Creation
   notes: string
 }
+
+export interface Creation {
+  pronouns: string
+  description: string
+  /** [first feature's ancestry, second feature's ancestry]; null = one ancestry (choices.ancestryId). */
+  mixedAncestry: { first: string; second: string } | null
+  potion: 'health' | 'stamina' | null
+  classItem: string
+  backgroundAnswers: string[]
+  experiences: string[]
+  connections: string[]
+  /** Frame-defined choices by choice id: builder fields or free text. */
+  frameChoices: Record<string, Record<string, string> | string>
+  companion: { name: string; experiences: string[]; attack: string; damageType: 'physical' | 'magic' | null } | null
+  stanceIds: string[]
+}
+
+export function newCreation(): Creation {
+  return {
+    pronouns: '', description: '', mixedAncestry: null, potion: null, classItem: '',
+    backgroundAnswers: [], experiences: [], connections: [], frameChoices: {}, companion: null, stanceIds: [],
+  }
+}
+
+/** The creation block with defaults filled in (older saves may lack it). */
+export const creationOf = (c: Character): Creation => ({ ...newCreation(), ...c.creation })
 
 export class CharacterError extends Error {}
 
@@ -41,6 +69,7 @@ export function newCharacter(id: string, now = new Date().toISOString()): Charac
       domainCardIds: [], equipmentIds: [], levelUpChoices: {},
     },
     traits: {},
+    creation: newCreation(),
     notes: '',
   }
 }
@@ -64,7 +93,7 @@ export function validateCharacter(data: unknown): Character {
     errs.push('level must be an integer 1-10')
   }
   const s = data.sources
-  if (!isObj(s) || !isStrArr(s.enabledPacks) || !isStrOrNull(s.campaignFrameId)) errs.push('sources is malformed')
+  if (!isObj(s) || !isStrArr(s.enabledPacks) || !isStrOrNull(s.campaignFrameId) || (s.supplementIds !== undefined && !isStrArr(s.supplementIds))) errs.push('sources is malformed')
   const c = data.choices
   if (!isObj(c)) errs.push('choices must be an object')
   else {
@@ -81,6 +110,8 @@ export function validateCharacter(data: unknown): Character {
   if (!isObj(data.traits) || !Object.entries(data.traits).every(([k, v]) => (TRAITS as readonly string[]).includes(k) && Number.isInteger(v))) {
     errs.push('traits must map trait names to integers')
   }
+  const cr = data.creation
+  if (cr !== undefined && !isObj(cr)) errs.push('creation must be an object')
   if (errs.length) throw new CharacterError(`Invalid character: ${errs.join('; ')}`)
   return data as unknown as Character
 }

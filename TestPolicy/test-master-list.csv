@@ -11,11 +11,27 @@ character.[s1] Character store.refuses to save an invalid character,0
 character.[s1] Character store.removes,0
 character.[s1] Character store.returns null for a missing id,0
 character.[s1] Character store.saves, stamps updatedAt, and loads,0
+class-extras.[s3] structured class extras.brawler: 16 stances across four tiers, focus cap 6, two known at creation,0
+class-extras.[s3] structured class extras.druid: 24 beastforms, 6 per tier, only the two upgrade forms lack a stat line,0
+class-extras.[s3] structured class extras.multiclassing is a level-up option available from level 5,0
+class-extras.[s3] structured class extras.once-per-rest cards carry uses, usesPer and a one-circle tracker,0
+class-extras.[s3] structured class extras.ranger: companion data,0
+class-extras.[s3] structured class extras.structured entries are no longer duplicated as raw supplements,0
 core-pack.[s2] SRD core pack.carries no empty rules text,0
 core-pack.[s2] SRD core pack.every domain has 21 cards and every class has two domains,0
 core-pack.[s2] SRD core pack.has the expected counts,0
 core-pack.[s2] SRD core pack.resolves every cross-reference,0
 core-pack.[s2] SRD core pack.validates against the schema,0
+creation.[s3] creation engine.detects duplicate steps, trackers, resources, and move add/remove,0
+creation.[s3] creation engine.every supplement alone is conflict-free,0
+creation.[s3] creation engine.flags replace + add on the same pool,0
+creation.[s3] creation engine.flags two supplements replacing the weapons pool,0
+creation.[s3] creation engine.frame collects annotations by target,0
+creation.[s3] creation engine.insert-step places steps before a base step or before creation,0
+creation.[s3] creation engine.no frame: the ten SRD steps in order,0
+creation.[s3] creation engine.rejects an insert before an unknown step,0
+creation.[s3] creation engine.rejects unknown ids, wrong kind, duplicates,0
+creation.[s3] creation engine.replace and add pool ops resolve to pool entries,0
 frame-pack.[s2] SRD campaign frame pack.annotate targets resolve to core entries,0
 frame-pack.[s2] SRD campaign frame pack.every annotate/back-sheet carries text,0
 frame-pack.[s2] SRD campaign frame pack.exactly one frame; the rest are supplements,0
@@ -37,6 +53,23 @@ packs.[s1] Source pack validation.rejects bad entry ids,0
 packs.[s1] Source pack validation.rejects missing fields,0
 packs.[s1] Source pack validation.rejects unknown content kinds,0
 packs.[s1] Source pack validation.rejects unknown top-level keys,0
+rules.[s3] character rules with frames.Everyday Hero replaces the weapon and armor pools,0
+rules.[s3] character rules with frames.Feasts: Tend to Wounds, Clear Stress and Prepare replaced by Make a Feast,0
+rules.[s3] character rules with frames.Floating Magic School: flight artifact text required,0
+rules.[s3] character rules with frames.Tech: Iconic Weapon builder validated; Credits replace gold; upgrade slots scale by tier,0
+rules.[s3] character rules with frames.Western adds to the weapon pool: base weapons and revolver both allowed,0
+rules.[s3] character rules.a complete character has no issues,0
+rules.[s3] character rules.Beastbound needs a full companion; Martial Artist needs two Tier 1 stances,0
+rules.[s3] character rules.derived starting numbers,0
+rules.[s3] character rules.domain cards: two, level 1, from class domains, distinct,0
+rules.[s3] character rules.empty character flags every base step that needs input,0
+rules.[s3] character rules.exactly two Experiences,0
+rules.[s3] character rules.Mixed Ancestry: two different ancestries, first feature of one, second of the other,0
+rules.[s3] character rules.potion and class item are required,0
+rules.[s3] character rules.subclass must belong to the class,0
+rules.[s3] character rules.tiers,0
+rules.[s3] character rules.traits must be exactly +2,+1,+1,+0,+0,-1,0
+rules.[s3] character rules.weapon rules: two-handed alone, or one-handed pair; nothing else,0
 sample-packs.[s1] Sample packs end to end.a character built from pack ids resolves back against the registry,0
 sample-packs.[s1] Sample packs end to end.extension overrides core content and tags its source,0
 sample-packs.[s1] Sample packs end to end.load through the same loader as any pack,0
@@ -45,3 +78,6 @@ srd-files.[s2] SRD Markdown files.every adversary and environment has tier, diff
 srd-files.[s2] SRD Markdown files.every relative link resolves,0
 srd-files.[s2] SRD Markdown files.has the expected content counts,0
 srd-files.[s2] SRD Markdown files.leaves no glyph placeholders or page footers,0
+ui-util.[s3] ui helpers.issues map to the step that asks for the choice, else to equipment,0
+ui-util.[s3] ui helpers.normalize fills the creation block on older saves,0
+ui-util.[s3] ui helpers.titleCase,0

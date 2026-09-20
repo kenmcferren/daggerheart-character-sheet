@@ -2,6 +2,7 @@
 // Rules text only: flavor paragraphs are dropped. Run: node scripts/srd-convert/build-core-pack.mjs
 import { readFileSync, writeFileSync, readdirSync, mkdirSync } from 'node:fs'
 import { join } from 'node:path'
+import { structureClassExtras, addUses } from './class-extras.mjs'
 
 const SRD = 'Daggerheart SRD Files'
 const rd = (p) => readFileSync(join(SRD, p), 'utf8').replace(/\r\n/g, '\n')
@@ -74,6 +75,9 @@ for (const f of ls('Classes').filter((f) => f.endsWith('Class.md'))) {
   classes.push(cls)
 }
 
+structureClassExtras(classes)
+for (const c of classes) for (const f of [c.hopeFeature, ...c.features]) addUses(f, false)
+
 // ---- Ancestries, communities
 const ancestries = ls('Ancestries').filter((f) => !['Ancestries.md', 'Mixed Ancestry.md', 'Elemental Kin.md'].includes(f)).map((f) => {
   const { title, sections: secs } = sections(rd(`Ancestries/${f}`))
@@ -100,6 +104,8 @@ for (const f of ls('Domains').filter((f) => f.endsWith(' Domain.md'))) {
     domainCards.push({ id: slug(s.title), name: s.title, domain: id, level: Number(m[1]), type: m[2].toLowerCase(), recallCost: Number(m[3]), rules: para(body).replace(/\n{2,}/g, '\n') })
   }
 }
+
+for (const card of domainCards) addUses(card, true)
 
 // ---- Equipment tables
 const camel = (h) => h.replace(/\(.*\)/, '').trim().toLowerCase().replace(/[^a-z0-9]+(.)/g, (_, c) => c.toUpperCase()).replace(/[^a-z0-9]/g, '')
@@ -145,7 +151,8 @@ const dup = (arr, what) => {
   const seen = new Set()
   for (const e of arr) { if (seen.has(e.id)) throw new Error(`duplicate ${what} id ${e.id}`); seen.add(e.id) }
 }
-const content = { classes, subclasses, ancestries, communities, domains, domainCards, equipment }
+const multiclass = { id: 'multiclass', name: 'Multiclass', minLevel: 5, rules: rd('Core Mechanics/Multiclassing.md').split('\n').filter((l) => l.trim() && !l.startsWith('#') && !l.startsWith('>')).join('\n') }
+const content = { classes, subclasses, ancestries, communities, domains, domainCards, equipment, levelUpOptions: [multiclass] }
 for (const [k, v] of Object.entries(content)) dup(v, k)
 const pack = { schemaVersion: 1, id: 'srd-core', name: 'Daggerheart SRD 2.0 (core)', version: '2.0.0', publisher: 'Darrington Press (SRD)', content }
 mkdirSync('packs/core', { recursive: true })
