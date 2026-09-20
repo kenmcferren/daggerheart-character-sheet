@@ -23,7 +23,7 @@ Daggerheart guided character creation/level-up website. Output: printable PDF. L
 
 ## Unverified
 - `idbStore.ts` (real IndexedDB) untested until a UI exists.
-- Harness verified from the CLI (run, skip, ungoverned failure); the bat's browser auto-open not tried live.
+- Harness verified from the CLI (run, skip, ungoverned failure); browser auto-open fixed (path escape bug) and confirmed by owner opening the report.
 - SRD Markdown files: checked by counts and link checks, not read line by line. Pages checked against images: 101, 102 (hand-transcribed), 193, 194, 196. Details in `Daggerheart SRD Files/Conversion Notes.md`.
 
 ## Very next action

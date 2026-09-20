@@ -23,5 +23,5 @@ pre{white-space:pre-wrap;color:#e07a6a;margin:.3rem 0 0}.s{font-weight:bold}</st
 <table>${rows.map((x) => `<tr><td class="s" style="color:${color[x.status] ?? '#fff'}">${x.status}</td><td>${esc(x.name)}${x.msg ? `<pre>${esc(x.msg)}</pre>` : ''}</td></tr>`).join('')}</table>`
 writeFileSync(`${dir}/report.html`, html)
 console.log(`${n('passed')} passed, ${n('failed')} failed, ${n('skipped') + n('pending')} skipped. Report: ${dir}/report.html`)
-if (!process.env.NO_OPEN) spawnSync('cmd', ['/c', 'start', '', `${dir}\report.html`])
+if (!process.env.NO_OPEN) spawnSync('cmd', ['/c', 'start', '', `${dir}/report.html`.replace(/\//g, '\\')])
 process.exit(run.status ?? 1)
