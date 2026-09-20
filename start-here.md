@@ -9,7 +9,7 @@ Daggerheart guided character creation/level-up website. Output: printable PDF. L
 - Series 1 and 2 archived. Series 3: Guided creation wizard (not started).
 
 ## Current step
-- Series 2 archived and committed. Series 3 not started: draft its steps from `Docs/plan.md` with the owner.
+- Series 3 plan reviewed and agreed (8 steps, `Docs/plan.md`). Step 1 (creation engine) not started.
 
 ## Done
 - Series 2, step 4: `node scripts/validate-packs.mjs` (or `npm run validate-packs`) checks schema, duplicate ids, class/subclass/domain/card cross-references, 21 cards per domain, frame annotate targets and pool refs, empty rules text. Writes `TestArtifacts/pack-report/report.md`. Currently 0 problems; 1 note (Everyday Hero and Tech both replace the weapons pool: wizard must flag). `tests/pack-report.test.ts` (2 tests, `[s2]`, includes a broken-pack fixture).
@@ -32,4 +32,4 @@ Daggerheart guided character creation/level-up website. Output: printable PDF. L
 - SRD Markdown files: checked by counts and link checks, not read line by line. Pages checked against images: 101, 102 (hand-transcribed), 193, 194, 196. Details in `Daggerheart SRD Files/Conversion Notes.md`.
 
 ## Very next action
-- Start Series 3 (wizard): review its plan steps with the owner, then step 1.
+- Series 3, step 1: creation engine in `src/engine` (merge packs + frame + supplements, conflict detection, derived step list), with tests.

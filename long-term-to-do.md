@@ -8,4 +8,4 @@ Out-of-scope ideas and deferred work. Nothing here is in the current step.
 - [ ] Optional: dark mode and print-friendly ink-saver sheet variant
 - [ ] Optional: PWA/offline install
 
-- Model structured extras from the core pack: Mixed Ancestry (`pick-one-each-from`), Multiclassing, Druid beastforms, Ranger companion, Brawler stances (now raw text in class `supplements`), domain-card use counts/trackers (`uses`, `trackers` fields exist, unpopulated), Transformations.
+- (Moved into Series 3 step 3: structured class extras, Multiclassing data, card uses/trackers.) Transformations still to model.
