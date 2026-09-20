@@ -1,0 +1,13 @@
+import './build_a.mjs';
+import './build_b.mjs';
+import './build_c.mjs';
+import './build_gm.mjs';
+import './build_d.mjs';
+import './build_e.mjs';
+import './build_f.mjs';
+import './build_equip2.mjs';
+import './build_loot.mjs';
+import './conv_notes.mjs';
+import './build_final.mjs';
+import {written} from './lib.mjs';
+console.log('files written:',written.length);

@@ -1,0 +1,71 @@
+HARPY
+Tier 1 Skulk
+A fierce and foul-smelling bird with an eight-foot wingspan and the upper body and face of a human.
+Motives & Tactics: Defend nest, drop enemies from a great height, maraud from the air, screech incessantly
+Difficulty: 12 | Thresholds: 3/7 | HP: 3 | Stress: 3
+ATK: +0 | Talons: Melee | 1d8+1 phy
+Experience: Islands +3
+
+FEATURES
+Toxic Aura - Passive: The Harpy emits a foul stench that renders all non-Harpies Vulnerable while within Very Close range.
+Swooping Attack - Action: Mark a Stress to have the Harpy move in a straight line to a point within Far range and make an attack against a target in the Harpy’s path. On a success, the Harpy deals 3d6 physical damage.
+
+HARRIER
+Tier 1 Standard
+A nimble fighter armed with javelins.
+Motives & Tactics: Flank, harry, kite, profit
+Difficulty: 12 | Thresholds: 5/9 | HP: 3 | Stress: 3
+ATK: +1 | Javelin: Close | 1d6+2 phy
+Experience: Camouflage +2
+
+FEATURES
+Maintain Distance - Passive: After making a standard attack, the Harrier can move anywhere within Far range.
+Fall Back - Reaction: When a creature moves into Melee range to make an attack, you can mark a Stress before the attack roll to move anywhere within Close range and make an attack against that creature. On a success, deal 1d10+2 physical damage.
+
+JAGGED KNIFE BANDIT
+Tier 1 Standard
+A cunning criminal in a cloak bearing one of the gang’s iconic knives.
+Motives & Tactics: Escape, profit, steal, throw smoke
+Difficulty: 12 | Thresholds: 8/14 | HP: 5 | Stress: 3
+ATK: +1 | Daggers: Melee | 1d8+1 phy
+Experience: Thief +2
+
+FEATURES
+Climber - Passive: The Bandit climbs just as easily as they run.
+From Above - Passive: When the Bandit succeeds on a standard attack from above a target, they deal 1d10+1 physical damage instead of their standard damage.
+=====COL1
+JAGGED KNIFE HEXER
+Tier 1 Support
+A staff-wielding bandit in a cloak adorned with magical paraphernalia, using curses to vex their foes.
+Motives & Tactics: Command, hex, profit
+Difficulty: 13 | Thresholds: 5/9 | HP: 4 | Stress: 4
+ATK: +2 | Staff: Far | 1d6+2 mag
+Experience: Magical Knowledge +2
+
+FEATURES
+Curse - Action: Choose a target within Far range and temporarily Curse them. While the target is Cursed, you can mark a Stress when that target rolls with Hope to make the roll be with Fear instead.
+Chaotic Flux - Action: Make an attack against up to three targets within Very Close range. Mark a Stress to deal 2d6+3 magic damage to targets the Hexer succeeded against.
+
+JAGGED KNIFE KNEEBREAKER
+Tier 1 Bruiser
+An imposing brawler carrying a large club.
+Motives & Tactics: Grapple, intimidate, profit, steal
+Difficulty: 12 | Thresholds: 7/14 | HP: 7 | Stress: 4
+ATK: −3 | Club: Melee | 1d4+6 phy
+Experience: Thief +2, Unveiled Threats +3
+
+FEATURES
+I’ve Got ’Em - Passive: Creatures Restrained by the Kneebreaker take double damage from attacks by other adversaries.
+Hold Them Down - Action: Make an attack against a target within Melee range. On a success, the target takes no damage but is Restrained and Vulnerable. The target can break free, clearing both conditions, with a successful Strength Roll or is freed automatically if the Kneebreaker takes Major or greater damage.
+
+JAGGED KNIFE LACKEY
+Tier 1 Minion
+A thief with simple clothes and small daggers, eager to prove themselves.
+Motives & Tactics: Escape, profit, throw smoke
+Difficulty: 9 | Thresholds: None | HP: 1 | Stress: 1
+ATK: −2 | Daggers: Melee | 2 phy
+Experience: Thief +2
+
+FEATURES
+Minion (3) - Passive: The Lackey is defeated when they take any damage. For every 3 damage a PC deals to the Lackey, defeat an additional Minion within range the attack would succeed against.
+Group Attack - Action: Spend a Fear to choose a target and spotlight all Jagged Knife Lackeys within Close range of them. Those Minions move into Melee range of the target and make one shared attack roll. On a success, they deal 2 physical damage each. Combine this damage.

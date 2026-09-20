@@ -1,0 +1,10 @@
+import * as pdfjs from 'pdfjs-dist/legacy/build/pdf.mjs';
+import {createCanvas} from '@napi-rs/canvas';
+import fs from 'fs';
+const [,, pn, out]=process.argv;
+const data=new Uint8Array(fs.readFileSync('C:/Users/kenmc/Documents/Daggerheart Character Sheet Printable/Daggerheart SRD.pdf'));
+const doc=await pdfjs.getDocument({data,disableFontFace:true}).promise;
+const pg=await doc.getPage(+pn); const vp=pg.getViewport({scale:1.6});
+const c=createCanvas(vp.width,vp.height); const ctx=c.getContext('2d');
+await pg.render({canvasContext:ctx,viewport:vp,canvas:c}).promise;
+fs.writeFileSync(out,c.toBuffer('image/png'));

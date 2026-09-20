@@ -28,3 +28,7 @@ sample-packs.[s1] Sample packs end to end.a character built from pack ids resolv
 sample-packs.[s1] Sample packs end to end.extension overrides core content and tags its source,0
 sample-packs.[s1] Sample packs end to end.load through the same loader as any pack,0
 smoke.[evergreen] Smoke.runs,1
+srd-files.[s2] SRD Markdown files.every adversary and environment has tier, difficulty and features,1
+srd-files.[s2] SRD Markdown files.every relative link resolves,1
+srd-files.[s2] SRD Markdown files.has the expected content counts,1
+srd-files.[s2] SRD Markdown files.leaves no glyph placeholders or page footers,1
