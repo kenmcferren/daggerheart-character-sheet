@@ -22,7 +22,7 @@ Daggerheart guided character creation/level-up website. Output: printable PDF. L
 
 ## Unverified
 - `idbStore.ts` (real IndexedDB) untested until a UI exists.
-- Harness verified from the CLI (run, skip, ungoverned failure); the bat's browser auto-open not tried live. Project is not a git repo.
+- Harness verified from the CLI (run, skip, ungoverned failure); the bat's browser auto-open not tried live.
 
 ## Very next action
 - Series 2 source is the Daggerheart SRD (licensing not a blocker; attribution item in backlog). Still need the SRD files/link from the owner.
