@@ -9,7 +9,7 @@ Daggerheart guided character creation/level-up website. Output: printable PDF. L
 - Series 1 archived. Series 2: Primary book data (in progress).
 
 ## Current step
-- Series 2, step 1 (SRD text and conversion workflow): SRD converted to Markdown in `Daggerheart SRD Files/`; owner review pending. Next is step 2 (core rulebook pack).
+- Series 2, step 1 (SRD text and conversion workflow): SRD converted to Markdown in `Daggerheart SRD Files/`; owner review pending. Design note for campaign frames, tracking and print layout written: `Docs/campaign-frame-impacts.md` (owner decisions recorded). Next is step 2: schema changes, then the core rulebook pack.
 
 ## Done
 - Series 2, step 1: `Daggerheart SRD.pdf` split into 469 cross-linked Markdown files in `Daggerheart SRD Files/` (entry point `SRD Index.md`; provenance and SRD oddities in `Conversion Notes.md`). Conversion scripts in `scripts/srd-convert/` (README there). Not committed.
