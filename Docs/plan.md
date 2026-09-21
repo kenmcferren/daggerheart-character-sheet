@@ -30,13 +30,10 @@ Archived: `Docs/archive/series-2.md`.
 Archived: `Docs/archive/series-3.md`.
 
 ## Series 4: PDF output
-Status: in progress
-1. [ ] Sheet layout design (owner approves)
-2. [ ] `pdf-lib` renderer, fonts, page layout
-3. [ ] Print checks (margins, grayscale, long text overflow)
+Archived: `Docs/archive/series-4.md`.
 
 ## Series 5: Level-up
-Status: in progress
+Status: next (owner chose this ahead of the math pass)
 1. [ ] Level-up rules as data (per-tier options)
 2. [ ] Guided level-up flow, saved history per character
 3. [ ] Regenerate PDF at new level
@@ -48,3 +45,7 @@ Owner (with Claude) writes the third-party ports; no external authors. Packs liv
 2. [ ] Enable/disable packs per character, conflict handling
 3. [ ] Short internal pack-format note in `Docs/`
 4. [ ] Optional: runtime pack upload UI (only if wanted)
+
+## Series 7: Rules math pass
+Status: not started (after level-up)
+Apply number-changing features to the sheet (e.g. Mage Robes: bonus to damage thresholds equal to Spellcast trait; "+1 Evasion" style features). Start by listing every armor, weapon, card and class feature that changes a number; owner approves the list before code.

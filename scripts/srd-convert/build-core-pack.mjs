@@ -23,6 +23,10 @@ function sections(md) {
   return { title, sections: out }
 }
 
+// Grimoire spells are "Name: rules". The SRD text sometimes runs two spells together on one line
+// (Book of Illiat: Telepathy); put each spell on its own line.
+const splitSpells = (text, type) => (/grimoire/i.test(type) ? text.replace(/([.!?]) ([A-Z][A-Za-z’' ]{2,30}): (?=[A-Z])/g, '$1\n$2: ') : text)
+
 // Feature blocks: "Name: rules" followed by bullet lines; blank line ends the block.
 function features(lines) {
   const blocks = []
@@ -101,7 +105,7 @@ for (const f of ls('Domains').filter((f) => f.endsWith(' Domain.md'))) {
     const m = s.lines.find((l) => l.trim()).match(/^\*\*Level (\d+) \S+ (\S+)\*\* · Recall Cost: (\d+)/)
     if (!m) continue
     const body = s.lines.slice(s.lines.findIndex((l) => l.trim()) + 1)
-    domainCards.push({ id: slug(s.title), name: s.title, domain: id, level: Number(m[1]), type: m[2].toLowerCase(), recallCost: Number(m[3]), rules: para(body).replace(/\n{2,}/g, '\n') })
+    domainCards.push({ id: slug(s.title), name: s.title, domain: id, level: Number(m[1]), type: m[2].toLowerCase(), recallCost: Number(m[3]), rules: splitSpells(para(body).replace(/\n{2,}/g, '\n'), m[2]) })
   }
 }
 

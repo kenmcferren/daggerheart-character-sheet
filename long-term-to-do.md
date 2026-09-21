@@ -9,3 +9,8 @@ Out-of-scope ideas and deferred work. Nothing here is in the current step.
 - [ ] Optional: PWA/offline install
 
 - (Moved into Series 3 step 3: structured class extras, Multiclassing data, card uses/trackers.) Transformations still to model.
+
+- [ ] Unique iconography for Gold: separate fill-in-bubble shapes for handfuls, bags and chest (currently plain circles).
+- [ ] Rules math pass: armor/weapon/card features that change numbers (e.g. Mage Robes: bonus to damage thresholds equal to Spellcast trait; "+1 to Evasion" style features) are printed as text only and not applied to Evasion, thresholds, Armor Score. Owner wants a sweep of these "gotchas" after the layout is settled.
+
+- [ ] Render markdown tables in campaign rules on the sheet (Tech Scrap table etc. currently print as raw pipe text).

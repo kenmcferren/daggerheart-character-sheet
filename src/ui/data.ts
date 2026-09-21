@@ -14,16 +14,21 @@ export const store = new CharacterStore(idbStore)
 export const setupFor = (frame: string | null | undefined, supplements: string[] = []): CreationSetup =>
   buildCreation(PACKS, { frame: frame || undefined, supplements })
 
-export const setupOf = (c: Character) => setupFor(c.sources.campaignFrameId, c.sources.supplementIds ?? [])
-
-export function allFrames() {
-  const all = [...setupFor(null).registry.campaignFrames.values()] as FrameEntry[]
-  return { frames: all.filter((f) => f.frameKind === 'frame'), supplements: all.filter((f) => f.frameKind === 'supplement') }
+/** There is no separate frame choice; an older save's frame id is treated as a supplement. */
+export const setupOf = (c: Character) => {
+  const legacy = c.sources.campaignFrameId
+  const supps = c.sources.supplementIds ?? []
+  return setupFor(null, legacy && !supps.includes(legacy) ? [legacy, ...supps] : supps)
 }
 
-export function startCharacter(frame: string | null, supplements: string[]): Character {
+export function allSupplements() {
+  const all = [...setupFor(null).registry.campaignFrames.values()] as FrameEntry[]
+  return all.filter((f) => f.frameKind === 'supplement')
+}
+
+export function startCharacter(supplements: string[]): Character {
   const c = newCharacter(crypto.randomUUID())
-  c.sources = { enabledPacks: PACK_IDS, campaignFrameId: frame, supplementIds: supplements }
+  c.sources = { enabledPacks: PACK_IDS, campaignFrameId: null, supplementIds: supplements }
   return c
 }
 

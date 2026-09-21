@@ -9,10 +9,10 @@ describe('[s2] SRD campaign frame pack', () => {
   it('loads on top of the core pack', () => {
     const r = loadPacks([core, frames])
     expect(r.campaignFrames.size).toBe(9)
-    expect(r.campaignFrames.get('witherwild')).toMatchObject({ frameKind: 'frame' })
+    expect(r.campaignFrames.get('witherwild')).toMatchObject({ frameKind: 'supplement' })
   })
-  it('exactly one frame; the rest are supplements', () => {
-    expect(frames.content.campaignFrames.filter((f: any) => f.frameKind === 'frame').length).toBe(1)
+  it('no separate frame; every entry is a supplement', () => {
+    expect(frames.content.campaignFrames.filter((f: any) => f.frameKind !== 'supplement').length).toBe(0)
   })
   it('annotate targets resolve to core entries', () => {
     const r = loadPacks([core, frames])

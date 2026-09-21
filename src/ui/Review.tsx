@@ -22,6 +22,7 @@ export function Review({ ctx, issues, steps, onJump }: { ctx: Ctx; issues: Issue
     a.href = url; a.download = `${(ch.name || 'character').replace(/[^\w-]+/g, '-')}.json`; a.click()
     URL.revokeObjectURL(url)
   }
+  const makePdf = async () => (await import('../pdf/browser')).downloadSheet(ch, setup)
   const ancestry = cr.mixedAncestry ? ancestryFeatures(ch, setup).map((f) => f.from).join(' / ') : name('ancestries', ch.choices.ancestryId)
   const rows: [string, string, string][] = [
     ['class', 'Class', name('classes', ch.choices.classId)],
@@ -54,9 +55,9 @@ export function Review({ ctx, issues, steps, onJump }: { ctx: Ctx; issues: Issue
       </section>
       <div className="nav">
         <button type="button" onClick={download}>Export JSON</button>
-        <button type="button" className="primary" disabled title="PDF output arrives in Series 4">Make PDF (coming)</button>
+        <button type="button" className="primary" onClick={() => void makePdf()}>Make PDF</button>
       </div>
-      <p className="hint">The character sheet PDF is built in Series 4; your character is saved on this device and can be exported as JSON.</p>
+      <p className="hint">Your character is saved on this device. Make PDF downloads a printable two-page sheet; Export JSON keeps a backup.</p>
     </>
   )
 }

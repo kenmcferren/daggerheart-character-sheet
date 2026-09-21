@@ -41,3 +41,6 @@ Weapons (primary and secondary, tiers 1–4), armor (tiers 1–4), combat wheelc
 - Heading levels are approximate: every all-caps line in the PDF became a heading, whatever its size.
 - Numbered lists in a few places keep the number as text at the start of a paragraph rather than as a Markdown list.
 - Only these pages were checked against the page image: 101, 102, 193, 194, 196. Everything else was checked by automated counts (cards per domain, class sections present, table row counts, no broken links, no leftover glyph placeholders), not read line by line.
+
+## Grimoire spell lines
+In the SRD text, Book of Illiat runs Arcane Barrage and Telepathy together on one line, and Book of Vagras and Book of Exota do the same. `build-core-pack.mjs` (`splitSpells`) puts each "Name: rules" spell on its own line in the pack. The Markdown files here are unchanged.

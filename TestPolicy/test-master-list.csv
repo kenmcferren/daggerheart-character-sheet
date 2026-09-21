@@ -26,16 +26,16 @@ creation.[s3] creation engine.detects duplicate steps, trackers, resources, and 
 creation.[s3] creation engine.every supplement alone is conflict-free,0
 creation.[s3] creation engine.flags replace + add on the same pool,0
 creation.[s3] creation engine.flags two supplements replacing the weapons pool,0
-creation.[s3] creation engine.frame collects annotations by target,0
 creation.[s3] creation engine.insert-step places steps before a base step or before creation,0
 creation.[s3] creation engine.no frame: the ten SRD steps in order,0
 creation.[s3] creation engine.rejects an insert before an unknown step,0
-creation.[s3] creation engine.rejects unknown ids, wrong kind, duplicates,0
+creation.[s3] creation engine.rejects unknown ids, frame slot, duplicates,1
 creation.[s3] creation engine.replace and add pool ops resolve to pool entries,0
+creation.[s3] creation engine.supplement collects annotations by target,1
 frame-pack.[s2] SRD campaign frame pack.annotate targets resolve to core entries,0
 frame-pack.[s2] SRD campaign frame pack.every annotate/back-sheet carries text,0
-frame-pack.[s2] SRD campaign frame pack.exactly one frame; the rest are supplements,0
 frame-pack.[s2] SRD campaign frame pack.loads on top of the core pack,0
+frame-pack.[s2] SRD campaign frame pack.no separate frame; every entry is a supplement,1
 frame-pack.[s2] SRD campaign frame pack.pool entry ids are unique and tiered items carry four tiers,0
 frame-pack.[s2] SRD campaign frame pack.pool references and tracker attachments resolve inside the frame,0
 pack-report.[s2] Pack validation report.fails and names the problem when a reference is broken,0
@@ -73,6 +73,15 @@ rules.[s3] character rules.weapon rules: two-handed alone, or one-handed pair; n
 sample-packs.[s1] Sample packs end to end.a character built from pack ids resolves back against the registry,0
 sample-packs.[s1] Sample packs end to end.extension overrides core content and tags its source,0
 sample-packs.[s1] Sample packs end to end.load through the same loader as any pack,0
+sheet-print.[s4] print checks.${sc.name}: everything stays inside the 0.5" margins and prints in grayscale,0
+sheet.[s4] sheet details.renders grimoire and once-per-rest cards,0
+sheet.[s4] sheet details.renders the Tech credit box in place of gold circles,0
+sheet.[s4] sheet renderer.adds overflow pages for very long notes,0
+sheet.[s4] sheet renderer.puts Proficiency dice in front of weapon damage only when above 1,0
+sheet.[s4] sheet renderer.renders an empty character,0
+sheet.[s4] sheet renderer.renders every class without error,0
+sheet.[s4] sheet renderer.renders front, back and a separate domain-card sheet for a level 1 wizard,0
+sheet.[s4] sheet renderer.renders supplements with trackers and back-sheet rules,0
 smoke.[evergreen] Smoke.runs,1
 srd-files.[s2] SRD Markdown files.every adversary and environment has tier, difficulty and features,0
 srd-files.[s2] SRD Markdown files.every relative link resolves,0

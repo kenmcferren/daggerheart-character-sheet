@@ -88,7 +88,7 @@ function communityOps() {
   return out
 }
 const witherwild = {
-  id: 'witherwild', name: 'The Witherwild', frameKind: 'frame',
+  id: 'witherwild', name: 'The Witherwild', frameKind: 'supplement',
   sessionZeroQuestions: para(C('Witherwild Session Zero Questions').split('\n').slice(4).join('\n')).split('\n').filter((q) => q.endsWith('?')),
 
   creation: {

@@ -33,7 +33,7 @@ export function Wizard({ ch, setup, update, saveStatus, onHome, opened }: {
   const state = (i: number) => (i === at ? 'current' : i > furthest ? 'todo' : by(all[i].id).length ? 'issue' : 'done')
   const doneCount = steps.filter((s, i) => i <= furthest && !by(s.id).length).length
   const canNext = cur.id === REVIEW || by(cur.id).length === 0
-  const frame = setup.frame
+  const withQuestions = [setup.frame, ...setup.supplements].filter((f) => f?.sessionZeroQuestions?.length)
 
   return (
     <div className="wizard">
@@ -59,11 +59,11 @@ export function Wizard({ ch, setup, update, saveStatus, onHome, opened }: {
         </nav>
         <main>
           <h2>{cur.title}</h2>
-          {frame && at === 0 && !!frame.sessionZeroQuestions?.length && (
-            <details className="details"><summary>{frame.name}: session zero questions</summary>
-              <ul>{frame.sessionZeroQuestions.map((q, i) => <li key={i}>{q}</li>)}</ul>
+          {at === 0 && withQuestions.map((f) => (
+            <details key={f!.id} className="details"><summary>{f!.name}: session zero questions</summary>
+              <ul>{f!.sessionZeroQuestions!.map((q, i) => <li key={i}>{q}</li>)}</ul>
             </details>
-          )}
+          ))}
           {cur.id === REVIEW ? <Review ctx={ctx} issues={issues} steps={steps} onJump={(id) => go(all.findIndex((s) => s.id === id))} />
             : cur.source ? <FrameStep {...ctx} step={cur} /> : BODY[cur.id](ctx)}
           {cur.id !== REVIEW && furthest >= at && <StepIssues issues={by(cur.id)} />}

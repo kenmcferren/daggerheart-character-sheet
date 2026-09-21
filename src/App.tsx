@@ -39,7 +39,7 @@ export default function App() {
   const home = async () => { if (ch && dirty.current) await store.save(ch).catch(() => {}); dirty.current = false; setCh(null); setScreen({ kind: 'start' }) }
 
   if (screen.kind === 'start' || !ch || !setup) {
-    return <Start onStart={(f, s) => { const c = startCharacter(f, s); dirty.current = true; setCh(normalize(c)); setSetup(setupOf(c)); setStatus(''); setScreen({ kind: 'wizard', opened: false }) }} onOpen={(c) => open(c, true)} />
+    return <Start onStart={(s) => { const c = startCharacter(s); dirty.current = true; setCh(normalize(c)); setSetup(setupOf(c)); setStatus(''); setScreen({ kind: 'wizard', opened: false }) }} onOpen={(c) => open(c, true)} />
   }
   return <Wizard key={ch.id} ch={ch} setup={setup} update={update} saveStatus={status} onHome={home} opened={screen.opened} />
 }

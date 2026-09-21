@@ -1,24 +1,23 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { Character } from '../engine/character'
 import { importCharacter } from '../engine/character'
-import { allFrames, setupFor, store } from './data'
+import { allSupplements, setupFor, store } from './data'
 
 const CHECK_BLOCKED = 'Fix the conflicts above (deselect one of the sources) to start.'
 
-export function Start({ onStart, onOpen }: { onStart: (frame: string | null, supplements: string[]) => void; onOpen: (c: Character) => void }) {
-  const { frames, supplements } = useMemo(() => allFrames(), [])
-  const [frame, setFrame] = useState<string | null>(null)
+export function Start({ onStart, onOpen }: { onStart: (supplements: string[]) => void; onOpen: (c: Character) => void }) {
+  const supplements = useMemo(() => allSupplements(), [])
   const [supps, setSupps] = useState<string[]>([])
   const [saved, setSaved] = useState<Character[]>([])
   const [corrupt, setCorrupt] = useState<string[]>([])
   const [msg, setMsg] = useState('')
-  const setup = useMemo(() => setupFor(frame, supps), [frame, supps])
+  const setup = useMemo(() => setupFor(null, supps), [supps])
   const refresh = () => store.list().then((r) => { setSaved(r.characters); setCorrupt(r.corruptIds) }).catch((e) => setMsg(String(e)))
   useEffect(() => { void refresh() }, [])
 
   const toggle = (id: string) => setSupps((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]))
   const blocked = setup.conflicts.length > 0
-  const nameOf = (id: string | null) => frames.find((f) => f.id === id)?.name ?? null
+  const namesOf = (c: Character) => [c.sources.campaignFrameId, ...(c.sources.supplementIds ?? [])].map((id) => supplements.find((f) => f.id === id)?.name).filter(Boolean).join(', ')
 
   async function importFile(file: File | undefined) {
     if (!file) return
@@ -38,14 +37,7 @@ export function Start({ onStart, onOpen }: { onStart: (frame: string | null, sup
       <section className="panel">
         <h2>New character</h2>
         <fieldset>
-          <legend>Campaign frame</legend>
-          <label className="inline"><input type="radio" name="frame" checked={frame === null} onChange={() => setFrame(null)} />No campaign frame</label>
-          {frames.map((f) => (
-            <label key={f.id} className="inline"><input type="radio" name="frame" checked={frame === f.id} onChange={() => setFrame(f.id)} />{f.name}</label>
-          ))}
-        </fieldset>
-        <fieldset>
-          <legend>Campaign supplements (optional)</legend>
+          <legend>Campaign options (optional)</legend>
           {supplements.map((s) => (
             <label key={s.id} className="inline"><input type="checkbox" checked={supps.includes(s.id)} onChange={() => toggle(s.id)} />{s.name}</label>
           ))}
@@ -56,7 +48,7 @@ export function Start({ onStart, onOpen }: { onStart: (frame: string | null, sup
             <ul>{setup.conflicts.map((c, i) => <li key={i}>{c.message}</li>)}</ul>
           </div>
         )}
-        <button type="button" className="primary" disabled={blocked} onClick={() => onStart(frame, supps)}>Start creating</button>
+        <button type="button" className="primary" disabled={blocked} onClick={() => onStart(supps)}>Start creating</button>
         {blocked && <p className="hint">{CHECK_BLOCKED}</p>}
       </section>
 
@@ -68,7 +60,7 @@ export function Start({ onStart, onOpen }: { onStart: (frame: string | null, sup
           {saved.map((c) => (
             <li key={c.id}>
               <button type="button" className="link" onClick={() => onOpen(c)}>{c.name || 'Unnamed character'}</button>
-              <span className="meta">{c.choices.classId ?? 'no class yet'} · {nameOf(c.sources.campaignFrameId) ?? 'no frame'} · {new Date(c.updatedAt).toLocaleString()}</span>
+              <span className="meta">{c.choices.classId ?? 'no class yet'} · {namesOf(c) || 'no campaign options'} · {new Date(c.updatedAt).toLocaleString()}</span>
               <button type="button" onClick={async () => { if (confirm(`Delete ${c.name || 'this character'}?`)) { await store.remove(c.id); await refresh() } }}>Delete</button>
             </li>
           ))}

@@ -14,8 +14,8 @@ describe('[s3] creation engine', () => {
     ])
     expect(c.conflicts).toEqual([])
   })
-  it('frame collects annotations by target', () => {
-    const c = buildCreation(packs, { frame: 'witherwild' })
+  it('supplement collects annotations by target', () => {
+    const c = buildCreation(packs, { supplements: ['witherwild'] })
     expect(c.annotations.get('classes.druid')?.[0].source).toBe('witherwild')
     expect(c.annotations.get('classes.ranger')).toBeDefined()
   })
@@ -45,10 +45,9 @@ describe('[s3] creation engine', () => {
       expect(buildCreation(packs, { supplements: [f.id] }).conflicts, f.id).toEqual([])
     }
   })
-  it('rejects unknown ids, wrong kind, duplicates', () => {
+  it('rejects unknown ids, frame slot, duplicates', () => {
     expect(() => buildCreation(packs, { frame: 'nope' })).toThrow(CreationError)
     expect(() => buildCreation(packs, { frame: 'tech' })).toThrow(/supplement/)
-    expect(() => buildCreation(packs, { supplements: ['witherwild'] })).toThrow(/frame/)
     expect(() => buildCreation(packs, { supplements: ['tech', 'tech'] })).toThrow(/twice/)
   })
   it('detects duplicate steps, trackers, resources, and move add/remove', () => {
