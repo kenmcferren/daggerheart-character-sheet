@@ -1,0 +1,20 @@
+{
+  "hope": "Spend 3 Hope for +1 to your attack rolls until your next rest.",
+  "features": [
+    { "name": "Attack of Opportunity", "short": "When an adversary within Melee range tries to leave it, make a reaction roll with a trait of your choice against their Difficulty. On a success choose one effect, or two on a critical success: they can’t move from where they are; you deal them your primary weapon’s damage; you move with them." },
+    { "name": "Combat Training", "short": "You ignore burden when equipping weapons. When you deal physical damage, add your level to the damage roll." }
+  ],
+  "subclasses": {
+    "warrior.call-of-the-brave": [
+      { "name": "Courage", "short": "When you fail a roll with Fear, gain a Hope." },
+      { "name": "Battle Ritual", "short": "Once per long rest, before something incredibly dangerous or a foe who clearly outmatches you, describe your ritual or preparations, then clear 2 Stress and gain 2 Hope." },
+      { "name": "Rise to the Challenge", "short": "While you have 2 or fewer Hit Points unmarked, you can roll a d20 as your Hope Die." },
+      { "name": "Camaraderie", "short": "Initiate a Tag Team Roll one additional time per session. When an ally initiates one with you, they spend only 2 Hope." }
+    ],
+    "warrior.call-of-the-slayer": [
+      { "name": "Slayer", "short": "You have a pool of Slayer Dice. On a roll with Hope, place a d6 on this card instead of gaining a Hope, up to your Proficiency in dice. When you make an attack or damage roll, spend any number of them, rolling them and adding the result. At session end, clear unspent dice and gain a Hope per die cleared." },
+      { "name": "Weapon Specialist", "short": "When you succeed on an attack, spend a Hope to add one damage die from your secondary weapon to the damage roll. Once per long rest, when you roll Slayer Dice, reroll any 1s." },
+      { "name": "Martial Preparation", "short": "Your party gains the Martial Preparation downtime move: describe how you train with them, and you and each ally who chooses it gain a d6 Slayer Die. A PC with one can spend it to roll it and add the result to an attack or damage roll." }
+    ]
+  }
+}

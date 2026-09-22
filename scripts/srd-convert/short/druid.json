@@ -1,0 +1,39 @@
+{
+  "hope": "Spend 3 Hope to transform into a Beastform without marking a Stress; choose one trait to raise by +1 until you drop out of it.",
+  "features": [
+    { "name": "Beastform", "short": "Mark a Stress to transform into a creature of your tier or lower from the Beastform list (see SRD for the forms); drop out at any time or when you mark your last Hit Point. While transformed you can’t use weapons or cast domain card spells (spells already cast persist; you can still use other features and talk normally). You gain the Beastform’s features, add its Evasion bonus, and attack with its trait. Your armor becomes part of your body: mark Armor Slots as usual; they stay marked when you drop out." },
+    { "name": "Wildtouch", "short": "Perform harmless, subtle nature effects at will (grow a flower, a gust of wind, a campfire)." }
+  ],
+  "subclasses": {
+    "druid.warden-of-the-elements": [
+      { "name": "Elemental Incarnation", "short": "Mark a Stress to Channel an element until you take Severe damage or next rest (see the Elements table on the domain card sheet).",
+        "table": { "title": "Elements", "rows": [
+          { "name": "Fire", "short": "Adversaries in Melee range that damage you take 1d10 magic damage." },
+          { "name": "Earth", "short": "Add your Proficiency to your damage thresholds." },
+          { "name": "Water", "short": "When you damage an adversary in Melee range, all others within Very Close range mark a Stress." },
+          { "name": "Air", "short": "Hover; advantage on Agility Rolls." }
+        ] } },
+      { "name": "Elemental Aura", "short": "Once per rest while Channeling, assume an aura affecting targets within Close range until Channeling ends (see the Elements table).",
+        "table": { "title": "Elements", "rows": [
+          { "name": "Fire", "short": "Adversaries that mark Hit Points also mark a Stress." },
+          { "name": "Earth", "short": "Allies get +1 Strength." },
+          { "name": "Water", "short": "When an adversary damages you, mark a Stress to move them anywhere within Very Close range of where they are." },
+          { "name": "Air", "short": "When you or an ally takes damage from an attack beyond Melee range, reduce it by 1d8." }
+        ] } },
+      { "name": "Elemental Dominion", "short": "While Channeling, gain your element’s benefit (see the Elements table).",
+        "table": { "title": "Elements", "rows": [
+          { "name": "Fire", "short": "+1 Proficiency for attacks and spells that deal damage." },
+          { "name": "Earth", "short": "When you would mark Hit Points, roll a d6 per Hit Point; each 6 reduces the number marked by 1." },
+          { "name": "Water", "short": "When an attack against you succeeds, mark a Stress to make the attacker temporarily Vulnerable." },
+          { "name": "Air", "short": "+1 Evasion and you can fly." }
+        ] } }
+    ],
+    "druid.warden-of-renewal": [
+      { "name": "Clarity of Nature", "short": "Once per long rest, create a space of natural serenity within Close range. After a few minutes resting there, clear Stress equal to your Instinct, split as you choose between you and allies." },
+      { "name": "Regeneration", "short": "Touch a creature and spend 3 Hope: it clears 1d4 Hit Points." },
+      { "name": "Regenerative Reach", "short": "Regeneration can target creatures within Very Close range." },
+      { "name": "Warden’s Protection", "short": "Once per long rest, spend 2 Hope to clear 2 Hit Points on 1d4 allies within Close range." },
+      { "name": "Defender", "short": "In Beastform, when an ally within Close range marks 2 or more Hit Points, mark a Stress to reduce the number they mark by 1." }
+    ]
+  }
+}

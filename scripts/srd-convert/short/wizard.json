@@ -1,0 +1,26 @@
+{
+  "hope": "Spend 3 Hope to force an adversary within Far range to reroll an attack or damage roll.",
+  "features": [
+    { "name": "Prestidigitation", "short": "Perform harmless, subtle magical effects at will, such as changing an object’s color, creating a smell, lighting a candle, floating a tiny object, illuminating a room, or repairing a small object." },
+    { "name": "Strange Patterns", "short": "Choose a number from 1 to 12. When you roll it on a Duality Die, gain a Hope or clear a Stress. You can change the number when you take a long rest." },
+    { "short": "" }
+  ],
+  "subclasses": {
+    "wizard.school-of-knowledge": [
+      { "name": "Prepared", "short": "Take an additional domain card of your level or lower from a domain you have access to." },
+      { "name": "Adept", "short": "When you Utilize an Experience, you can mark a Stress instead of spending a Hope, and double your Experience modifier for that roll." },
+      { "name": "Accomplished", "short": "Take an additional domain card of your level or lower from a domain you have access to." },
+      { "name": "Perfect Recall", "short": "Once per rest, when you recall a domain card from your vault, reduce its Recall Cost by 1." },
+      { "name": "Brilliant", "short": "Take an additional domain card of your level or lower from a domain you have access to." },
+      { "name": "Honed Expertise", "short": "When you use an Experience, roll a d6. On a 5 or higher, use it without spending Hope." }
+    ],
+    "wizard.school-of-war": [
+      { "name": "Battlemage", "short": "Gain an additional Hit Point slot." },
+      { "name": "Face Your Fear", "short": "When you succeed with Fear on an attack roll, deal an extra 1d10 magic damage." },
+      { "name": "Conjure Shield", "short": "While you have at least 2 Hope, add your Proficiency to your Evasion." },
+      { "name": "Fueled by Fear", "short": "Face Your Fear’s extra magic damage becomes 2d10." },
+      { "name": "Thrive in Chaos", "short": "When you succeed on an attack, mark a Stress after rolling damage to make the target mark an additional Hit Point." },
+      { "name": "Have No Fear", "short": "Face Your Fear’s extra magic damage becomes 3d10." }
+    ]
+  }
+}

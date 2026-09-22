@@ -22,19 +22,23 @@
         "classItems": "A list of names with several marked off or a rusted blade inscribed with an insignia",
         "hopeFeature": {
           "name": "Deadly Determination",
-          "rules": "Spend 3 Hope to clear 2 Stress."
+          "rules": "Spend 3 Hope to clear 2 Stress.",
+          "short": "Spend 3 Hope: clear 2 Stress."
         },
         "features": [
           {
             "name": "Marked for Death",
-            "rules": "On a successful weapon attack, you can mark a Stress to make the target Marked for Death. When you deal damage to a target you’ve Marked for Death, add a number of d4s equal to your tier to the damage roll."
+            "rules": "On a successful weapon attack, you can mark a Stress to make the target Marked for Death. When you deal damage to a target you’ve Marked for Death, add a number of d4s equal to your tier to the damage roll.",
+            "short": "On a successful weapon attack, mark a Stress to make the target Marked for Death. Your damage against it adds d4s equal to your tier. Only one adversary at a time; lasts until you rest, it is defeated, or the GM spends Fear equal to your tier to clear it."
           },
           {
-            "rules": "You can have only one adversary Marked for Death at a time. This condition lasts until you take a rest, the current adversary Marked for Death is defeated, or the GM spends a number of Fear equal to your tier to clear it."
+            "rules": "You can have only one adversary Marked for Death at a time. This condition lasts until you take a rest, the current adversary Marked for Death is defeated, or the GM spends a number of Fear equal to your tier to clear it.",
+            "short": ""
           },
           {
             "name": "Get In & Get Out",
-            "rules": "Spend a Hope to ask the GM for a quick or inconspicuous way into or out of a place you can see. The next roll you make that acts on this information has advantage."
+            "rules": "Spend a Hope to ask the GM for a quick or inconspicuous way into or out of a place you can see. The next roll you make that acts on this information has advantage.",
+            "short": "Spend a Hope to ask the GM for a quick or inconspicuous way into or out of a place you can see; your next roll acting on it has advantage."
           }
         ],
         "backgroundQuestions": [
@@ -64,14 +68,16 @@
         "classItems": "A romance novel or a letter never opened",
         "hopeFeature": {
           "name": "Make a Scene",
-          "rules": "Spend 3 Hope to temporarily Distract a target within Close range, giving them a -2 penalty to their Difficulty."
+          "rules": "Spend 3 Hope to temporarily Distract a target within Close range, giving them a -2 penalty to their Difficulty.",
+          "short": "Spend 3 Hope to temporarily Distract a target within Close range: -2 to their Difficulty."
         },
         "features": [
           {
             "name": "Rally",
             "rules": "Once per session, describe how you rally the party and give yourself and each of your allies a Rally Die. At level 1, your Rally Die is a d6. A PC can spend their Rally Die to roll it, adding the result to their action roll, reaction roll, damage roll, or to clear a number of Stress equal to the result. At the end of each session, clear all unspent Rally Dice. At level 5, your Rally Die increases to a d8.",
             "uses": 1,
-            "usesPer": "session"
+            "usesPer": "session",
+            "short": "Once per session, give yourself and each ally a Rally Die (d6; d8 at level 5). A PC can spend it to roll and add the result to an action, reaction or damage roll, or to clear that many Stress. Clear unspent Rally Dice at session end."
           }
         ],
         "backgroundQuestions": [
@@ -101,19 +107,23 @@
         "classItems": "Hand wraps from a mentor or a book about your secret hobby",
         "hopeFeature": {
           "name": "Square Up",
-          "rules": "Spend 3 Hope to intimidate a target within Close range, making them temporarily Vulnerable."
+          "rules": "Spend 3 Hope to intimidate a target within Close range, making them temporarily Vulnerable.",
+          "short": "Spend 3 Hope to make a target within Close range temporarily Vulnerable."
         },
         "features": [
           {
             "name": "I Am the Weapon",
-            "rules": "Your barehanded attacks are as strong as any blade. You have a primary weapon called Brawler’s Strike equipped while you have no other Active Weapons. It uses a trait of your choice, has Melee range, and deals d8+d6 physical damage using your Proficiency (both the d8 and d6 scale off your Proficiency). While this weapon is active, you gain a +1 bonus to your Evasion."
+            "rules": "Your barehanded attacks are as strong as any blade. You have a primary weapon called Brawler’s Strike equipped while you have no other Active Weapons. It uses a trait of your choice, has Melee range, and deals d8+d6 physical damage using your Proficiency (both the d8 and d6 scale off your Proficiency). While this weapon is active, you gain a +1 bonus to your Evasion.",
+            "short": "With no other Active Weapon, you wield Brawler’s Strike as a primary weapon: trait of your choice, Melee range, d8+d6 physical damage (both dice scale with Proficiency). While it is active, +1 Evasion."
           },
           {
             "name": "Combo Strike",
-            "rules": "After rolling damage on a successful attack with a Melee weapon, you can mark a Stress to start a combo strike. When you do, roll your Combo Die and note the result, then continue rolling your Combo Die until the result of your latest roll is lower than the roll that preceded it. You deal extra damage equal to the total of all rolled Combo Die results on this attack. The results can’t be modified by any means."
+            "rules": "After rolling damage on a successful attack with a Melee weapon, you can mark a Stress to start a combo strike. When you do, roll your Combo Die and note the result, then continue rolling your Combo Die until the result of your latest roll is lower than the roll that preceded it. You deal extra damage equal to the total of all rolled Combo Die results on this attack. The results can’t be modified by any means.",
+            "short": "After rolling damage on a successful Melee weapon attack, mark a Stress to start a combo strike: roll your Combo Die and keep rolling until a result is lower than the one before. Deal extra damage equal to the total of all results (they can’t be modified). Combo Die starts as a d4; once per tier, increase it one step as a level advancement option."
           },
           {
-            "rules": "Your Combo Die starts as a d4. Once per tier, you can increase your Combo Die by one step as a level advancement option."
+            "rules": "Your Combo Die starts as a d4. Once per tier, you can increase your Combo Die by one step as a level advancement option.",
+            "short": ""
           }
         ],
         "backgroundQuestions": [
@@ -157,97 +167,113 @@
             "id": "favored",
             "name": "Favored",
             "tier": 1,
-            "rules": "Gain a bonus to damage rolls equal to a trait of your choice."
+            "rules": "Gain a bonus to damage rolls equal to a trait of your choice.",
+            "short": "Bonus to damage rolls equal to a trait of your choice."
           },
           {
             "id": "invigorating",
             "name": "Invigorating",
             "tier": 1,
-            "rules": "On a successful attack, roll a d4. On a result of 4, gain a Focus."
+            "rules": "On a successful attack, roll a d4. On a result of 4, gain a Focus.",
+            "short": "On a successful attack, roll a d4; on a 4, gain a Focus."
           },
           {
             "id": "quick",
             "name": "Quick",
             "tier": 1,
-            "rules": "When you make an attack, you can spend a Focus or mark a Stress to target another creature within range with that attack."
+            "rules": "When you make an attack, you can spend a Focus or mark a Stress to target another creature within range with that attack.",
+            "short": "When you attack, spend a Focus or mark a Stress to also target another creature in range."
           },
           {
             "id": "reliable",
             "name": "Reliable",
             "tier": 1,
-            "rules": "Gain a +1 bonus to your attack rolls."
+            "rules": "Gain a +1 bonus to your attack rolls.",
+            "short": "+1 to attack rolls."
           },
           {
             "id": "aggressive",
             "name": "Aggressive",
             "tier": 2,
-            "rules": "Gain a −1 penalty to your Evasion. On a successful attack, roll an additional damage die and discard the lowest result."
+            "rules": "Gain a −1 penalty to your Evasion. On a successful attack, roll an additional damage die and discard the lowest result.",
+            "short": "-1 Evasion. On a successful attack, roll an additional damage die and drop the lowest."
           },
           {
             "id": "anchored",
             "name": "Anchored",
             "tier": 2,
-            "rules": "Gain a +2 bonus to your damage thresholds. While in this stance, you can’t be moved against your will."
+            "rules": "Gain a +2 bonus to your damage thresholds. While in this stance, you can’t be moved against your will.",
+            "short": "+2 to damage thresholds; you can’t be moved against your will."
           },
           {
             "id": "defensive",
             "name": "Defensive",
             "tier": 2,
-            "rules": "Attack rolls targeting you from within Melee range have disadvantage unless the attacker marks a Stress to negate the disadvantage."
+            "rules": "Attack rolls targeting you from within Melee range have disadvantage unless the attacker marks a Stress to negate the disadvantage.",
+            "short": "Melee-range attacks against you have disadvantage unless the attacker marks a Stress."
           },
           {
             "id": "otherworldly",
             "name": "Otherworldly",
             "tier": 2,
-            "rules": "On a successful attack, you can deal physical or magic damage."
+            "rules": "On a successful attack, you can deal physical or magic damage.",
+            "short": "On a successful attack, deal physical or magic damage."
           },
           {
             "id": "grappling",
             "name": "Grappling",
             "tier": 3,
-            "rules": "On a successful attack within Melee range, you can spend a Focus or mark a Stress to temporarily Restrain the target or throw the target up to Close range."
+            "rules": "On a successful attack within Melee range, you can spend a Focus or mark a Stress to temporarily Restrain the target or throw the target up to Close range.",
+            "short": "On a successful Melee-range attack, spend a Focus or mark a Stress to temporarily Restrain the target or throw it up to Close range."
           },
           {
             "id": "scary",
             "name": "Scary",
             "tier": 3,
-            "rules": "On a successful attack, the target must mark a Stress."
+            "rules": "On a successful attack, the target must mark a Stress.",
+            "short": "On a successful attack, the target marks a Stress."
           },
           {
             "id": "stable",
             "name": "Stable",
             "tier": 3,
-            "rules": "You can spend a Focus instead of an Armor Slot to reduce damage."
+            "rules": "You can spend a Focus instead of an Armor Slot to reduce damage.",
+            "short": "Spend a Focus instead of an Armor Slot to reduce damage."
           },
           {
             "id": "vigilant",
             "name": "Vigilant",
             "tier": 3,
-            "rules": "When you are targeted by an attack, you can mark a Stress to gain a d6 bonus to your Evasion against the attack."
+            "rules": "When you are targeted by an attack, you can mark a Stress to gain a d6 bonus to your Evasion against the attack.",
+            "short": "When targeted by an attack, mark a Stress for a d6 bonus to Evasion against it."
           },
           {
             "id": "crushing",
             "name": "Crushing",
             "tier": 4,
-            "rules": "When you deal Severe damage, you can spend a Hope to force the target to mark an additional Hit Point."
+            "rules": "When you deal Severe damage, you can spend a Hope to force the target to mark an additional Hit Point.",
+            "short": "On Severe damage, spend a Hope to force the target to mark an additional Hit Point."
           },
           {
             "id": "exacting",
             "name": "Exacting",
             "tier": 4,
-            "rules": "When you roll a 1 on a damage die, you can treat it as the highest value on the die instead."
+            "rules": "When you roll a 1 on a damage die, you can treat it as the highest value on the die instead.",
+            "short": "A 1 on a damage die counts as the die’s highest value."
           },
           {
             "id": "honed",
             "name": "Honed",
             "tier": 4,
-            "rules": "Spend a Focus before you make an attack roll to gain a +1 bonus to your Proficiency for that attack."
+            "rules": "Spend a Focus before you make an attack roll to gain a +1 bonus to your Proficiency for that attack.",
+            "short": "Spend a Focus before an attack roll for +1 Proficiency on that attack."
           },
           {
             "id": "isolating",
             "name": "Isolating",
             "tier": 4,
-            "rules": "Gain advantage on attack rolls when there are no other creatures within Very Close range of you or your target."
+            "rules": "Gain advantage on attack rolls when there are no other creatures within Very Close range of you or your target.",
+            "short": "Advantage on attack rolls when no other creatures are within Very Close range of you or your target."
           }
         ],
         "focusMax": 6,
@@ -269,16 +295,19 @@
         "classItems": "A small bag of rocks and bones or a strange pendant found in the dirt",
         "hopeFeature": {
           "name": "Evolution",
-          "rules": "Spend 3 Hope to transform into a Beastform without marking a Stress. When you do, choose one trait to raise by +1 until you drop out of that Beastform."
+          "rules": "Spend 3 Hope to transform into a Beastform without marking a Stress. When you do, choose one trait to raise by +1 until you drop out of that Beastform.",
+          "short": "Spend 3 Hope to transform into a Beastform without marking a Stress; choose one trait to raise by +1 until you drop out of it."
         },
         "features": [
           {
             "name": "Beastform",
-            "rules": "Mark a Stress to magically transform into a creature of your tier or lower from the Beastform list. You can drop out of this form at any time. While transformed, you can’t use weapons or cast spells from domain cards, but you can still use other features or abilities you have access to. Spells you cast before you transform stay active and last for their normal duration, and you can talk and communicate as normal. Additionally, you gain the Beastform’s features, add their Evasion bonus to your Evasion, and use the trait specified in their statistics for your attack. While you’re in a Beastform, your armor becomes part of your body and you mark Armor Slots as usual; when you drop out of a Beastform, those marked Armor Slots remain marked. If you mark your last Hit Point, you automatically drop out of this form."
+            "rules": "Mark a Stress to magically transform into a creature of your tier or lower from the Beastform list. You can drop out of this form at any time. While transformed, you can’t use weapons or cast spells from domain cards, but you can still use other features or abilities you have access to. Spells you cast before you transform stay active and last for their normal duration, and you can talk and communicate as normal. Additionally, you gain the Beastform’s features, add their Evasion bonus to your Evasion, and use the trait specified in their statistics for your attack. While you’re in a Beastform, your armor becomes part of your body and you mark Armor Slots as usual; when you drop out of a Beastform, those marked Armor Slots remain marked. If you mark your last Hit Point, you automatically drop out of this form.",
+            "short": "Mark a Stress to transform into a creature of your tier or lower from the Beastform list (see SRD for the forms); drop out at any time or when you mark your last Hit Point. While transformed you can’t use weapons or cast domain card spells (spells already cast persist; you can still use other features and talk normally). You gain the Beastform’s features, add its Evasion bonus, and attack with its trait. Your armor becomes part of your body: mark Armor Slots as usual; they stay marked when you drop out."
           },
           {
             "name": "Wildtouch",
-            "rules": "You can perform harmless, subtle effects that involve nature—such as causing a flower to rapidly grow, summoning a slight gust of wind, or starting a campfire— at will."
+            "rules": "You can perform harmless, subtle effects that involve nature—such as causing a flower to rapidly grow, summoning a slight gust of wind, or starting a campfire— at will.",
+            "short": "Perform harmless, subtle nature effects at will (grow a flower, a gust of wind, a campfire)."
           }
         ],
         "backgroundQuestions": [
@@ -1034,21 +1063,25 @@
         "classItems": "A totem from your mentor or a secret key",
         "hopeFeature": {
           "name": "Frontline Tank",
-          "rules": "Spend 3 Hope to clear 2 Armor Slots."
+          "rules": "Spend 3 Hope to clear 2 Armor Slots.",
+          "short": "Spend 3 Hope to clear 2 Armor Slots."
         },
         "features": [
           {
             "name": "Unstoppable",
             "rules": "Once per long rest, you can become Unstoppable. You gain an Unstoppable Die. At level 1, your Unstoppable Die is a d4. Place it on your character sheet in the space provided, starting with the 1 value facing up. After you make a damage roll that deals 1 or more Hit Points to a target, increase the Unstoppable Die value by one. When the die’s value would exceed its maximum value or when the scene ends, remove the die and drop out of Unstoppable. At level 5, your Unstoppable Die increases to a d6.",
             "uses": 1,
-            "usesPer": "long-rest"
+            "usesPer": "long-rest",
+            "short": "Once per long rest, become Unstoppable and gain an Unstoppable Die (d4; d6 at level 5) on your sheet, starting on 1. After each damage roll that deals Hit Points to a target, raise it by one. When it would pass its maximum or the scene ends, remove it and drop out. While Unstoppable: reduce physical damage by one threshold; add the die’s value to damage rolls; you can’t be Restrained or Vulnerable."
           },
           {
-            "rules": "While Unstoppable, you gain the following benefits:\n- You reduce the severity of physical damage by one threshold (Severe to Major, Major to Minor, Minor to None).\n- You add the current value of the Unstoppable Die to your damage roll.\n- You can’t be Restrained or Vulnerable."
+            "rules": "While Unstoppable, you gain the following benefits:\n- You reduce the severity of physical damage by one threshold (Severe to Major, Major to Minor, Minor to None).\n- You add the current value of the Unstoppable Die to your damage roll.\n- You can’t be Restrained or Vulnerable.",
+            "short": ""
           },
           {
             "name": "Tip",
-            "rules": "If your Unstoppable Die is a d4 and the 4 is currently facing up, you remove the die the next time you would increase it. However, if your Unstoppable Die has increased to a d6 and the 4 is currently facing up, you’ll turn it to 5 the next time you would increase it. In this case, you’ll remove the die after you would need to increase it higher than 6."
+            "rules": "If your Unstoppable Die is a d4 and the 4 is currently facing up, you remove the die the next time you would increase it. However, if your Unstoppable Die has increased to a d6 and the 4 is currently facing up, you’ll turn it to 5 the next time you would increase it. In this case, you’ll remove the die after you would need to increase it higher than 6.",
+            "short": "A d4 showing 4 is removed the next time you would raise it. A d6 showing 4 goes to 5 next; remove it when you would need to go past 6."
           }
         ],
         "backgroundQuestions": [
@@ -1078,12 +1111,14 @@
         "classItems": "A trophy from your first kill or a seemingly broken compass",
         "hopeFeature": {
           "name": "Hold Them Off",
-          "rules": "Spend 3 Hope when you succeed on an attack with a weapon to use that same roll against two additional adversaries within range of the attack."
+          "rules": "Spend 3 Hope when you succeed on an attack with a weapon to use that same roll against two additional adversaries within range of the attack.",
+          "short": "Spend 3 Hope when you succeed on a weapon attack to use that roll against two additional adversaries within range."
         },
         "features": [
           {
             "name": "Ranger’s Focus",
-            "rules": "Spend a Hope and make an attack against a target. On a success, deal your attack’s normal damage and temporarily make the attack’s target your Focus. Until this feature ends or you make a different creature your Focus, you gain the following benefits against your Focus:\n- You know precisely what direction they are in.\n- When you deal damage to them, they must mark a Stress.\n- When you fail an attack against them, you can end your Ranger’s Focus feature to reroll your Duality Dice."
+            "rules": "Spend a Hope and make an attack against a target. On a success, deal your attack’s normal damage and temporarily make the attack’s target your Focus. Until this feature ends or you make a different creature your Focus, you gain the following benefits against your Focus:\n- You know precisely what direction they are in.\n- When you deal damage to them, they must mark a Stress.\n- When you fail an attack against them, you can end your Ranger’s Focus feature to reroll your Duality Dice.",
+            "short": "Spend a Hope and make an attack. On a success, deal normal damage and make the target your Focus until this ends or you choose a different Focus. Against your Focus: you know their exact direction; when you deal damage to them, they mark a Stress; when you fail an attack against them, you can end this feature to reroll your Duality Dice."
           }
         ],
         "backgroundQuestions": [
@@ -1176,42 +1211,50 @@
             {
               "id": "intelligent",
               "name": "Intelligent",
-              "rules": "Your companion gains a permanent +1 bonus to a Companion Experience of your choice."
+              "rules": "Your companion gains a permanent +1 bonus to a Companion Experience of your choice.",
+              "short": "+1 to a Companion Experience of your choice."
             },
             {
               "id": "light-in-the-dark",
               "name": "Light in the Dark",
-              "rules": "Use this as an additional Hope slot your character can mark."
+              "rules": "Use this as an additional Hope slot your character can mark.",
+              "short": "An additional Hope slot you can mark."
             },
             {
               "id": "creature-comfort",
               "name": "Creature Comfort",
-              "rules": "Once per rest, when you take time during a quiet moment to give your companion love and attention, you can gain a Hope or you can both clear a Stress."
+              "rules": "Once per rest, when you take time during a quiet moment to give your companion love and attention, you can gain a Hope or you can both clear a Stress.",
+              "short": "Once per rest, in a quiet moment of attention to your companion, gain a Hope or both clear a Stress."
             },
             {
               "id": "armored",
               "name": "Armored",
-              "rules": "When your companion takes damage, you can mark one of your Armor Slots instead of marking one of their Stress."
+              "rules": "When your companion takes damage, you can mark one of your Armor Slots instead of marking one of their Stress.",
+              "short": "When your companion takes damage, you can mark one of your Armor Slots instead of one of their Stress."
             },
             {
               "id": "vicious",
               "name": "Vicious",
-              "rules": "Increase your companion’s damage dice or range by one step (d6 to d8, Close to Far, etc.)."
+              "rules": "Increase your companion’s damage dice or range by one step (d6 to d8, Close to Far, etc.).",
+              "short": "Raise your companion’s damage dice or range one step (d6 to d8, Close to Far, etc.)."
             },
             {
               "id": "resilient",
               "name": "Resilient",
-              "rules": "Your companion gains an additional Stress slot."
+              "rules": "Your companion gains an additional Stress slot.",
+              "short": "Your companion gains an additional Stress slot."
             },
             {
               "id": "bonded",
               "name": "Bonded",
-              "rules": "When you mark your last Hit Point, your companion rushes to your side to comfort you. Roll a number of d6s equal to the unmarked Stress slots they have and mark them. If any roll a 6, your companion helps you up. Clear your last Hit Point and return to the scene."
+              "rules": "When you mark your last Hit Point, your companion rushes to your side to comfort you. Roll a number of d6s equal to the unmarked Stress slots they have and mark them. If any roll a 6, your companion helps you up. Clear your last Hit Point and return to the scene.",
+              "short": "When you mark your last Hit Point, your companion rushes to you: roll d6s equal to their unmarked Stress slots and mark them. If any roll a 6, clear your last Hit Point and return to the scene."
             },
             {
               "id": "aware",
               "name": "Aware",
-              "rules": "Your companion gains a permanent +2 bonus to their Evasion."
+              "rules": "Your companion gains a permanent +2 bonus to their Evasion.",
+              "short": "Your companion gains +2 Evasion."
             }
           ]
         }
@@ -1232,16 +1275,19 @@
         "classItems": "A set of forgery tools or a grappling hook",
         "hopeFeature": {
           "name": "Rogue’s Dodge",
-          "rules": "Spend 3 Hope to gain a +2 bonus to your Evasion until the next time an attack succeeds against you. Otherwise, this bonus lasts until your next rest."
+          "rules": "Spend 3 Hope to gain a +2 bonus to your Evasion until the next time an attack succeeds against you. Otherwise, this bonus lasts until your next rest.",
+          "short": "Spend 3 Hope for +2 Evasion until an attack next succeeds against you; otherwise it lasts until your next rest."
         },
         "features": [
           {
             "name": "Cloaked",
-            "rules": "Any time you would be Hidden, you are instead Cloaked. In addition to the benefits of the Hidden condition, while Cloaked you remain unseen if you are stationary when an adversary moves to where they would normally see you. After you make an attack or end a move within line of sight of an adversary, you are no longer Cloaked."
+            "rules": "Any time you would be Hidden, you are instead Cloaked. In addition to the benefits of the Hidden condition, while Cloaked you remain unseen if you are stationary when an adversary moves to where they would normally see you. After you make an attack or end a move within line of sight of an adversary, you are no longer Cloaked.",
+            "short": "When you would be Hidden, you are Cloaked instead: the benefits of Hidden, and you stay unseen if stationary when an adversary moves to where they would see you. You stop being Cloaked after you attack or end a move in an adversary’s line of sight."
           },
           {
             "name": "Sneak Attack",
-            "rules": "When you succeed on an attack while Cloaked or while an ally is within Melee range of your target, add a number of d6s equal to your tier to your damage roll.\n- Level 1 → Tier 1\n- Levels 2–4 → Tier 2\n- Levels 5–7 → Tier 3\n- Levels 8–10 → Tier 4"
+            "rules": "When you succeed on an attack while Cloaked or while an ally is within Melee range of your target, add a number of d6s equal to your tier to your damage roll.\n- Level 1 → Tier 1\n- Levels 2–4 → Tier 2\n- Levels 5–7 → Tier 3\n- Levels 8–10 → Tier 4",
+            "short": "When you succeed on an attack while Cloaked or while an ally is within Melee range of your target, add d6s equal to your tier to the damage roll (level 1: Tier 1; 2–4: Tier 2; 5–7: Tier 3; 8–10: Tier 4)."
           }
         ],
         "backgroundQuestions": [
@@ -1271,12 +1317,14 @@
         "classItems": "A bundle of offerings or a sigil of your god",
         "hopeFeature": {
           "name": "Life Support",
-          "rules": "Spend 3 Hope to clear a Hit Point on an ally within Close range."
+          "rules": "Spend 3 Hope to clear a Hit Point on an ally within Close range.",
+          "short": "Spend 3 Hope to clear a Hit Point on an ally within Close range."
         },
         "features": [
           {
             "name": "Prayer Dice",
-            "rules": "At the beginning of each session, roll a number of d4s equal to your subclass’s Spellcast trait and place them on your character sheet in the space provided. These are your Prayer Dice. You can spend any number of Prayer Dice to aid yourself or an ally within Far range. You can use a spent die’s value to reduce incoming damage, add to a roll’s result after the roll is made, or gain Hope equal to the result. At the end of each session, clear all unspent Prayer Dice."
+            "rules": "At the beginning of each session, roll a number of d4s equal to your subclass’s Spellcast trait and place them on your character sheet in the space provided. These are your Prayer Dice. You can spend any number of Prayer Dice to aid yourself or an ally within Far range. You can use a spent die’s value to reduce incoming damage, add to a roll’s result after the roll is made, or gain Hope equal to the result. At the end of each session, clear all unspent Prayer Dice.",
+            "short": "At the start of each session, roll d4s equal to your subclass’s Spellcast trait and place them on your sheet. Spend any number to aid yourself or an ally within Far range: reduce incoming damage by a die’s value, add it to a roll’s result after the roll, or gain Hope equal to it. Clear unspent dice at session end."
           }
         ],
         "backgroundQuestions": [
@@ -1306,22 +1354,26 @@
         "classItems": "A whispering orb or a family heirloom",
         "hopeFeature": {
           "name": "Volatile Magic",
-          "rules": "Spend 3 Hope to reroll any number of your damage dice on an attack that deals magic damage."
+          "rules": "Spend 3 Hope to reroll any number of your damage dice on an attack that deals magic damage.",
+          "short": "Spend 3 Hope to reroll any number of damage dice on an attack that deals magic damage."
         },
         "features": [
           {
             "name": "Arcane Sense",
-            "rules": "You can sense the presence of magical people and objects within Close range."
+            "rules": "You can sense the presence of magical people and objects within Close range.",
+            "short": "Sense magical people and objects within Close range."
           },
           {
             "name": "Minor Illusion",
-            "rules": "Make a Spellcast Roll (10). On a success, you create a minor visual illusion no larger than yourself within Close range. This illusion is convincing to anyone at Close range or farther."
+            "rules": "Make a Spellcast Roll (10). On a success, you create a minor visual illusion no larger than yourself within Close range. This illusion is convincing to anyone at Close range or farther.",
+            "short": "Spellcast Roll (10): create a minor visual illusion no larger than yourself within Close range, convincing to anyone at Close range or farther."
           },
           {
             "name": "Channel Raw Power",
             "rules": "Once per long rest, you can place a domain card from your loadout into your vault and choose to either:\n- Gain Hope equal to the level of the card.\n- Enhance a spell that deals damage, gaining a bonus to your damage roll equal to twice the level of the card.",
             "uses": 1,
-            "usesPer": "long-rest"
+            "usesPer": "long-rest",
+            "short": "Once per long rest, move a domain card from your loadout to your vault and either gain Hope equal to its level, or enhance a damage spell for a bonus to the damage roll equal to twice its level."
           }
         ],
         "backgroundQuestions": [
@@ -1351,20 +1403,33 @@
         "classItems": "A carving that symbolizes your patron or a ring you can’t remove",
         "hopeFeature": {
           "name": "Patron’s Boon",
-          "rules": "When you fail a roll, you can spend 3 Hope to reroll with advantage."
+          "rules": "When you fail a roll, you can spend 3 Hope to reroll with advantage.",
+          "short": "When you fail a roll, spend 3 Hope to reroll with advantage."
         },
         "features": [
           {
             "name": "Patron’s Pact",
-            "rules": "You have committed yourself to a supernatural entity —such as a god, fae, or demon—in exchange for power. Write their name on your character sheet, then work with your GM to determine their sphere of influence (such as Nature, Chaos, Wisdom, Mischief, Love, War, Justice, or Death). Before making an action roll that relates to your patron’s sphere of influence, you can spend a Favor to call upon their aid, rolling your Patron Die and adding its result to the total. Your Patron Die starts at a d6 and increases to a d8 at level 5."
+            "rules": "You have committed yourself to a supernatural entity —such as a god, fae, or demon—in exchange for power. Write their name on your character sheet, then work with your GM to determine their sphere of influence (such as Nature, Chaos, Wisdom, Mischief, Love, War, Justice, or Death). Before making an action roll that relates to your patron’s sphere of influence, you can spend a Favor to call upon their aid, rolling your Patron Die and adding its result to the total. Your Patron Die starts at a d6 and increases to a d8 at level 5.",
+            "short": "You are committed to a supernatural entity (a god, fae, demon, etc.) in exchange for power. Write their name here and work with the GM on their sphere of influence (Nature, Chaos, Wisdom, Mischief, Love, War, Justice, Death, etc.). Before an action roll related to that sphere, spend a Favor to roll your Patron Die and add it to the total. It starts at a d6 and becomes a d8 at level 5."
           },
           {
             "name": "Favor",
-            "rules": "You start with 3 Favor. You can use a downtime move to show tribute to your patron. Describe how and gain Favor equal to your Spellcast trait. Additionally, when you succeed on an action roll with Hope, you can choose to gain a Favor instead of a Hope."
+            "rules": "You start with 3 Favor. You can use a downtime move to show tribute to your patron. Describe how and gain Favor equal to your Spellcast trait. Additionally, when you succeed on an action roll with Hope, you can choose to gain a Favor instead of a Hope.",
+            "trackers": [
+              {
+                "id": "favor",
+                "label": "Favor (max 6)",
+                "count": 6,
+                "shape": "box",
+                "placement": "front"
+              }
+            ],
+            "short": "Start with 3 Favor, holding at most 6. As a downtime move, show tribute to your patron and gain Favor equal to your Spellcast trait. When you succeed on an action roll with Hope, you can gain a Favor instead of a Hope."
           },
           {
             "name": "Note",
-            "rules": "The maximum Favor you can hold at one time is 6."
+            "rules": "The maximum Favor you can hold at one time is 6.",
+            "short": ""
           }
         ],
         "backgroundQuestions": [
@@ -1394,16 +1459,19 @@
         "classItems": "The drawing of a lover or a sharpening stone",
         "hopeFeature": {
           "name": "No Mercy",
-          "rules": "Spend 3 Hope to gain a +1 bonus to your attack rolls until your next rest."
+          "rules": "Spend 3 Hope to gain a +1 bonus to your attack rolls until your next rest.",
+          "short": "Spend 3 Hope for +1 to your attack rolls until your next rest."
         },
         "features": [
           {
             "name": "Attack of Opportunity",
-            "rules": "If an adversary within Melee range attempts to leave that range, make a reaction roll using a trait of your choice against their Difficulty. Choose one effect on a success, or two if you critically succeed:\n- They can’t move from where they are.\n- You deal damage to them equal to your primary weapon’s damage.\n- You move with them."
+            "rules": "If an adversary within Melee range attempts to leave that range, make a reaction roll using a trait of your choice against their Difficulty. Choose one effect on a success, or two if you critically succeed:\n- They can’t move from where they are.\n- You deal damage to them equal to your primary weapon’s damage.\n- You move with them.",
+            "short": "When an adversary within Melee range tries to leave it, make a reaction roll with a trait of your choice against their Difficulty. On a success choose one effect, or two on a critical success: they can’t move from where they are; you deal them your primary weapon’s damage; you move with them."
           },
           {
             "name": "Combat Training",
-            "rules": "You ignore burden when equipping weapons. When you deal physical damage, you gain a bonus to your damage roll equal to your level."
+            "rules": "You ignore burden when equipping weapons. When you deal physical damage, you gain a bonus to your damage roll equal to your level.",
+            "short": "You ignore burden when equipping weapons. When you deal physical damage, add your level to the damage roll."
           }
         ],
         "backgroundQuestions": [
@@ -1433,24 +1501,40 @@
         "classItems": "A small, harmless pet or a scrying stone",
         "hopeFeature": {
           "name": "Witch’s Charm",
-          "rules": "When you or an ally within Far range fails an action roll, you can spend 3 Hope to change it into a success with Fear instead."
+          "rules": "When you or an ally within Far range fails an action roll, you can spend 3 Hope to change it into a success with Fear instead.",
+          "short": "When you or an ally within Far range fails an action roll, spend 3 Hope to turn it into a success with Fear."
         },
         "features": [
           {
             "name": "Hex",
-            "rules": "Mark a Stress to temporarily Hex a target within Far range. While Hexed, the target gains a penalty to their damage rolls and Difficulty equal to your tier. The maximum number of creatures you can Hex at one time is equal to your Spellcast trait."
+            "rules": "Mark a Stress to temporarily Hex a target within Far range. While Hexed, the target gains a penalty to their damage rolls and Difficulty equal to your tier. The maximum number of creatures you can Hex at one time is equal to your Spellcast trait.",
+            "trackers": [
+              {
+                "id": "hexed",
+                "label": "Hexed (max Spellcast)",
+                "count": {
+                  "trait": "spellcast"
+                },
+                "shape": "box",
+                "placement": "front"
+              }
+            ],
+            "short": "Mark a Stress to temporarily Hex a target within Far range. A Hexed target takes a penalty to damage rolls and Difficulty equal to your tier. You can Hex creatures up to your Spellcast trait at once."
           },
           {
             "name": "Commune",
             "rules": "Once per long rest during a moment of calm, you can commune with an ancestor, a deity, a spirit, or an otherworldly being. Ask them a question, then roll a number of d6s equal to your Spellcast trait. Choose one of the results and reference the chart below for the effect. Roll Effect You taste a flavor, smell a scent, or feel a 1–3 sensation relevant to the answer.",
             "uses": 1,
-            "usesPer": "long-rest"
+            "usesPer": "long-rest",
+            "short": "Once per long rest, in a moment of calm, commune with an ancestor, deity, spirit, or otherworldly being. Ask a question, roll d6s equal to your Spellcast trait, and choose one result: 1–3 you taste, smell, or feel a sensation relevant to the answer; 4–5 you hear sounds or see a vision relevant to it; 6 you psychically experience a scene relevant to it as if there."
           },
           {
-            "rules": "You hear sounds or see a vision relevant to the 4–5 answer."
+            "rules": "You hear sounds or see a vision relevant to the 4–5 answer.",
+            "short": ""
           },
           {
-            "rules": "You psychically experience a scene relevant to 6 the answer as if you were there."
+            "rules": "You psychically experience a scene relevant to 6 the answer as if you were there.",
+            "short": ""
           }
         ],
         "backgroundQuestions": [
@@ -1480,19 +1564,23 @@
         "classItems": "A book you’re trying to translate or a tiny, harmless elemental pet",
         "hopeFeature": {
           "name": "Not This Time",
-          "rules": "Spend 3 Hope to force an adversary within Far range to reroll an attack or damage roll."
+          "rules": "Spend 3 Hope to force an adversary within Far range to reroll an attack or damage roll.",
+          "short": "Spend 3 Hope to force an adversary within Far range to reroll an attack or damage roll."
         },
         "features": [
           {
             "name": "Prestidigitation",
-            "rules": "You can perform harmless, subtle magical effects at will. For example, you can change an object’s color, create a smell, light a candle, cause a tiny object to float, illuminate a room, or repair a small object."
+            "rules": "You can perform harmless, subtle magical effects at will. For example, you can change an object’s color, create a smell, light a candle, cause a tiny object to float, illuminate a room, or repair a small object.",
+            "short": "Perform harmless, subtle magical effects at will, such as changing an object’s color, creating a smell, lighting a candle, floating a tiny object, illuminating a room, or repairing a small object."
           },
           {
             "name": "Strange Patterns",
-            "rules": "Choose a number between 1 and 12. When you roll that number on a Duality Die, gain a Hope or clear a Stress."
+            "rules": "Choose a number between 1 and 12. When you roll that number on a Duality Die, gain a Hope or clear a Stress.",
+            "short": "Choose a number from 1 to 12. When you roll it on a Duality Die, gain a Hope or clear a Stress. You can change the number when you take a long rest."
           },
           {
-            "rules": "You can change this number when you take a long rest."
+            "rules": "You can change this number when you take a long rest.",
+            "short": ""
           }
         ],
         "backgroundQuestions": [
@@ -1516,32 +1604,38 @@
           {
             "name": "First Strike",
             "rules": "The first time in a scene you succeed on an attack, you deal double damage.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Your first successful attack each scene deals double damage."
           },
           {
             "name": "Ambush",
             "rules": "Your “Marked for Death” feature uses d6s instead of d4s.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Marked for Death uses d6s."
           },
           {
             "name": "Death Strike",
             "rules": "When you deal Severe damage to a creature, you can mark a Stress to force them to mark an additional Hit Point.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "On Severe damage, mark a Stress to make the target mark an additional Hit Point."
           },
           {
             "name": "Scorpion’s Poise",
             "rules": "You gain a +2 bonus to your Evasion against attacks made by a creature you’ve Marked for Death.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "+2 Evasion against creatures you’ve Marked for Death."
           },
           {
             "name": "True Strike",
             "rules": "Once per long rest when you fail an attack, you can spend a Hope to make it a success instead.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Once per long rest, when you fail an attack, spend a Hope to make it a success."
           },
           {
             "name": "Backstab",
             "rules": "Your “Marked for Death” feature uses d8s instead of d6s.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Marked for Death uses d8s."
           }
         ],
         "spellcastTrait": "agility"
@@ -1554,31 +1648,93 @@
           {
             "name": "Toxic Concoctions",
             "rules": "Mark a Stress to place 1d4+1 tokens on this card. When you make a successful weapon attack, you can spend a token to afflict the target with a poison. You know these poisons:\n- Ghost Petal: The target becomes temporarily Vulnerable.\n- Grave Spore: The target must also mark a Stress.\n- Leech Weed: You deal an extra 1d6 damage on this attack.",
-            "level": "foundation"
+            "level": "foundation",
+            "trackers": [
+              {
+                "id": "toxic-tokens",
+                "label": "Toxic tokens (max 5)",
+                "count": 5,
+                "shape": "box",
+                "placement": "front"
+              }
+            ],
+            "short": "Mark a Stress to place 1d4+1 tokens on this card. On a successful weapon attack, spend a token to poison the target with a poison you know (see Poisons on the domain card sheet). Long rest: clear unspent tokens.",
+            "sheetCards": {
+              "label": "Poison",
+              "items": [
+                {
+                  "name": "Ghost Petal",
+                  "short": "The target becomes temporarily Vulnerable."
+                },
+                {
+                  "name": "Grave Spore",
+                  "short": "The target also marks a Stress."
+                },
+                {
+                  "name": "Leech Weed",
+                  "short": "Deal an extra 1d6 damage on this attack."
+                }
+              ]
+            }
           },
           {
             "rules": "When you take a long rest, clear all unspent tokens.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": ""
           },
           {
             "name": "Poison Compendium",
             "rules": "You also know these poisons:\n- Midnight Vine: The target has disadvantage on attack rolls until it marks a Stress to clear this condition.\n- Gorgon Root: The target becomes temporarily Restrained.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "You also know more poisons (see the domain card sheet).",
+            "sheetCards": {
+              "label": "Poison",
+              "items": [
+                {
+                  "name": "Midnight Vine",
+                  "short": "The target has disadvantage on attack rolls until it marks a Stress to clear this."
+                },
+                {
+                  "name": "Gorgon Root",
+                  "short": "The target becomes temporarily Restrained."
+                }
+              ]
+            }
           },
           {
             "name": "Twin Fang",
             "rules": "When you afflict a target Marked for Death with a poison you know, you can spend an additional token to also inflict the effect of a second poison you know.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "When you poison a Marked for Death target, spend one more token to also apply a second poison you know."
           },
           {
             "name": "Venomancer",
             "rules": "You also know these poisons:\n- Blight Seed: The target gains a −3 penalty to their damage thresholds until the end of the scene. This effect can’t stack.\n- Fear Leaf: You deal extra damage equal to the result of your Fear Die on this attack.\n- Corpse Thorn: The target gains disadvantage on reaction rolls until the end of the scene.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "You also know more poisons (see the domain card sheet).",
+            "sheetCards": {
+              "label": "Poison",
+              "items": [
+                {
+                  "name": "Blight Seed",
+                  "short": "The target gets -3 to its damage thresholds until the end of the scene; it doesn’t stack."
+                },
+                {
+                  "name": "Fear Leaf",
+                  "short": "Deal extra damage equal to your Fear Die result on this attack."
+                },
+                {
+                  "name": "Corpse Thorn",
+                  "short": "The target has disadvantage on reaction rolls until the end of the scene."
+                }
+              ]
+            }
           },
           {
             "name": "Adder’s Blessing",
             "rules": "You are immune to poisons and other toxins.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "You are immune to poisons and other toxins."
           }
         ],
         "spellcastTrait": "knowledge"
@@ -1591,15 +1747,18 @@
           {
             "name": "Gifted Performer",
             "rules": "You can play three different types of songs, once each per long rest; describe how you perform for others to gain the listed benefit:\n- Relaxing Song: You and all allies within Close range clear a Hit Point.\n- Epic Song: Make a target within Close range temporarily Vulnerable.\n- Heartbreaking Song: You and all allies within Close range gain a Hope.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Describe your performance to play each song once per long rest: Relaxing (you and allies within Close range clear a Hit Point), Epic (a target within Close range is temporarily Vulnerable), Heartbreaking (you and allies within Close range gain a Hope)."
           },
           {
             "rules": "Maestro. Your rallying songs steel the courage of those who listen. When you give a Rally Die to an ally, they can gain a Hope or clear a Stress.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Maestro. When you give an ally a Rally Die, they can gain a Hope or clear a Stress."
           },
           {
             "rules": "Virtuoso. You are among the greatest of your craft and your skill is boundless. You can perform each of your “Gifted Performer” feature’s songs twice per long rest.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Virtuoso. Perform each Gifted Performer song twice per long rest."
           }
         ],
         "spellcastTrait": "presence"
@@ -1612,20 +1771,24 @@
           {
             "name": "Rousing Speech",
             "rules": "Once per long rest, you can give a heartfelt, inspiring speech. All allies within Far range clear 2 Stress.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Once per long rest, give a speech: all allies within Far range clear 2 Stress."
           },
           {
             "name": "Heart of a Poet",
             "rules": "After you make an action roll to impress, persuade, or offend someone, you can spend a Hope to add a d4 to the roll.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "After an action roll to impress, persuade, or offend, spend a Hope to add a d4."
           },
           {
             "rules": "Eloquent. Your moving words boost morale. Once per session, when you encourage an ally, you can do one of the following:\n- Allow them to find a mundane object or tool they need.\n- Help an Ally without spending Hope.\n- Give them an additional downtime move during their next rest.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Eloquent. Once per session, when you encourage an ally, choose one: they find a mundane object or tool they need; Help an Ally without spending Hope; or they get an additional downtime move next rest."
           },
           {
             "rules": "Epic Poetry. Your Rally Die increases to a d10. Additionally, when you Help an Ally, you can narrate the moment as if you were writing the tale of their heroism in a memoir. When you do, roll a d10 as your advantage die.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Epic Poetry. Your Rally Die is a d10. When you Help an Ally, you can narrate it as the tale of their heroism and roll a d10 as your advantage die."
           }
         ],
         "spellcastTrait": "presence"
@@ -1638,32 +1801,38 @@
           {
             "name": "Rugged",
             "rules": "Gain a permanent +3 bonus to your Severe damage threshold.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Permanent +3 to your Severe damage threshold."
           },
           {
             "name": "Overwhelm",
             "rules": "When you succeed on an attack against a target, you can spend a Hope to throw the target within Close range or to force them to mark a Stress.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "On a successful attack, spend a Hope to throw the target (within Close range) or force them to mark a Stress."
           },
           {
             "name": "Surrounded",
             "rules": "When you make an attack with a Melee weapon, you can spend any number of Hope to target an equal number of additional creatures within Melee range.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "When you attack with a Melee weapon, spend any number of Hope to target that many additional creatures within Melee range."
           },
           {
             "name": "Eye for an Eye",
             "rules": "Once per rest when an adversary within Melee range forces you to mark any number of Hit Points, you can mark a Stress to force them to mark the same number of Hit Points.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Once per rest, when an adversary within Melee range forces you to mark Hit Points, mark a Stress to force them to mark the same number."
           },
           {
             "name": "Pummeljoy",
             "rules": "When you critically succeed on a Melee weapon attack, you gain an additional Hope, clear an additional Stress, and gain a +1 bonus to your Proficiency for that attack.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "On a critical success with a Melee weapon attack: gain a Hope, clear a Stress, and +1 Proficiency for that attack."
           },
           {
             "name": "Not Done Yet",
             "rules": "When you take Severe damage, you can gain a Hope or clear a Stress.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "When you take Severe damage, gain a Hope or clear a Stress."
           }
         ]
       },
@@ -1675,31 +1844,37 @@
           {
             "name": "Stance Fighter",
             "rules": "You can channel your inner resolve to shift into martial stances that grant you special benefits in combat.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Shift into martial stances for special combat benefits. Take the Martial Stances sheet and choose two Tier 1 stances; each level-up, choose another from your tier or lower."
           },
           {
             "rules": "Take the Martial Stances sheet and choose two martial stances from Tier 1. Each time you level up your character, choose an additional stance from your tier or lower.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": ""
           },
           {
             "name": "Keen Defenses",
             "rules": "When you’re targeted by an attack, you can spend a Focus to gain a bonus to your Evasion equal to your tier against the attack.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "When targeted by an attack, spend a Focus for a bonus to Evasion equal to your tier against it."
           },
           {
             "name": "Focus Cannon",
             "rules": "Spend a Focus to make an Instinct Roll against an adversary within Far range. On a success, deal d20+3 magic damage using your Proficiency.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Spend a Focus to make an Instinct Roll against an adversary within Far range. On a success, deal d20+3 magic damage using your Proficiency."
           },
           {
             "name": "Limit Breaker",
             "rules": "Once per rest, you can perform an unbelievable feat of athletic prowess, such as running across water, leaping between distant rooftops, or scaling a building without needing to roll. When you do, gain a Hope and clear a Stress.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Once per rest, perform an unbelievable athletic feat (run across water, leap between rooftops, scale a building) without rolling; gain a Hope and clear a Stress."
           },
           {
             "name": "Flow State",
             "rules": "You can mark a Stress instead of spending a Focus to shift into a different stance. Additionally, you can spend a Focus instead of marking a Stress to start a combo strike.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Mark a Stress instead of spending a Focus to change stance. Spend a Focus instead of marking a Stress to start a combo strike."
           }
         ]
       },
@@ -1711,17 +1886,83 @@
           {
             "name": "Elemental Incarnation",
             "rules": "Mark a Stress to Channel one of the following elements until you take Severe damage or until your next rest:\n- Fire: When an adversary within Melee range deals damage to you, they take 1d10 magic damage.\n- Earth: Gain a bonus to your damage thresholds equal to your Proficiency.\n- Water: When you deal damage to an adversary within Melee range, all other adversaries within Very Close range must mark a Stress.\n- Air: You can hover, gaining advantage on Agility Rolls.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Mark a Stress to Channel an element until you take Severe damage or next rest (see the Elements table on the domain card sheet).",
+            "sheetTable": {
+              "title": "Elements",
+              "rows": [
+                {
+                  "name": "Fire",
+                  "short": "Adversaries in Melee range that damage you take 1d10 magic damage."
+                },
+                {
+                  "name": "Earth",
+                  "short": "Add your Proficiency to your damage thresholds."
+                },
+                {
+                  "name": "Water",
+                  "short": "When you damage an adversary in Melee range, all others within Very Close range mark a Stress."
+                },
+                {
+                  "name": "Air",
+                  "short": "Hover; advantage on Agility Rolls."
+                }
+              ]
+            }
           },
           {
             "name": "Elemental Aura",
             "rules": "Once per rest while Channeling, you can assume an aura matching your element. The aura affects targets within Close range until your Channeling ends.\n- Fire: When an adversary marks 1 or more Hit Points, they must also mark a Stress.\n- Earth: Your allies gain a +1 bonus to Strength.\n- Water: When an adversary deals damage to you, you can mark a Stress to move them anywhere within Very Close range of where they are.\n- Air: When you or an ally takes damage from an attack beyond Melee range, reduce the damage by 1d8.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Once per rest while Channeling, assume an aura affecting targets within Close range until Channeling ends (see the Elements table).",
+            "sheetTable": {
+              "title": "Elements",
+              "rows": [
+                {
+                  "name": "Fire",
+                  "short": "Adversaries that mark Hit Points also mark a Stress."
+                },
+                {
+                  "name": "Earth",
+                  "short": "Allies get +1 Strength."
+                },
+                {
+                  "name": "Water",
+                  "short": "When an adversary damages you, mark a Stress to move them anywhere within Very Close range of where they are."
+                },
+                {
+                  "name": "Air",
+                  "short": "When you or an ally takes damage from an attack beyond Melee range, reduce it by 1d8."
+                }
+              ]
+            }
           },
           {
             "name": "Elemental Dominion",
             "rules": "You further embody your element. While Channeling, you gain the following benefit:\n- Fire: You gain a +1 bonus to your Proficiency for attacks and spells that deal damage.\n- Earth: When you would mark Hit Points, roll a d6 per Hit Point marked. For each result of 6, reduce the number of Hit Points you mark by 1.\n- Water: When an attack against you succeeds, you can mark a Stress to make the attacker temporarily Vulnerable.\n- Air: You gain a +1 bonus to your Evasion and can fly.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "While Channeling, gain your element’s benefit (see the Elements table).",
+            "sheetTable": {
+              "title": "Elements",
+              "rows": [
+                {
+                  "name": "Fire",
+                  "short": "+1 Proficiency for attacks and spells that deal damage."
+                },
+                {
+                  "name": "Earth",
+                  "short": "When you would mark Hit Points, roll a d6 per Hit Point; each 6 reduces the number marked by 1."
+                },
+                {
+                  "name": "Water",
+                  "short": "When an attack against you succeeds, mark a Stress to make the attacker temporarily Vulnerable."
+                },
+                {
+                  "name": "Air",
+                  "short": "+1 Evasion and you can fly."
+                }
+              ]
+            }
           }
         ],
         "spellcastTrait": "instinct"
@@ -1734,27 +1975,32 @@
           {
             "name": "Clarity of Nature",
             "rules": "Once per long rest, you can create a space of natural serenity within Close range. When you spend a few minutes resting within the space, clear Stress equal to your Instinct, distributed as you choose between you and your allies.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Once per long rest, create a space of natural serenity within Close range. After a few minutes resting there, clear Stress equal to your Instinct, split as you choose between you and allies."
           },
           {
             "name": "Regeneration",
             "rules": "Touch a creature and spend 3 Hope. That creature clears 1d4 Hit Points.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Touch a creature and spend 3 Hope: it clears 1d4 Hit Points."
           },
           {
             "name": "Regenerative Reach",
             "rules": "You can target creatures within Very Close range with your “Regeneration” feature.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Regeneration can target creatures within Very Close range."
           },
           {
             "name": "Warden’s Protection",
             "rules": "Once per long rest, spend 2 Hope to clear 2 Hit Points on 1d4 allies within Close range.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Once per long rest, spend 2 Hope to clear 2 Hit Points on 1d4 allies within Close range."
           },
           {
             "name": "Defender",
             "rules": "Your animal transformation embodies a healing guardian spirit. When you’re in Beastform and an ally within Close range marks 2 or more Hit Points, you can mark a Stress to reduce the number of Hit Points they mark by 1.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "In Beastform, when an ally within Close range marks 2 or more Hit Points, mark a Stress to reduce the number they mark by 1."
           }
         ],
         "spellcastTrait": "instinct"
@@ -1767,32 +2013,38 @@
           {
             "name": "Unwavering",
             "rules": "Gain a permanent +1 bonus to your damage thresholds.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Permanent +1 to your damage thresholds."
           },
           {
             "name": "Iron Will",
             "rules": "When you take physical damage, you can mark an additional Armor Slot to reduce the severity.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "When you take physical damage, you can mark an additional Armor Slot to reduce its severity."
           },
           {
             "name": "Unrelenting",
             "rules": "Gain a permanent +2 bonus to your damage thresholds.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Permanent +2 to your damage thresholds."
           },
           {
             "name": "Partners-in-Arms",
             "rules": "When an ally within Very Close range takes damage, you can mark an Armor Slot to reduce the severity by one threshold.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "When an ally within Very Close range takes damage, mark an Armor Slot to reduce its severity by one threshold."
           },
           {
             "name": "Undaunted",
             "rules": "Gain a permanent +3 bonus to your damage thresholds.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Permanent +3 to your damage thresholds."
           },
           {
             "name": "Loyal Protector",
             "rules": "When an ally within Close range has 2 or fewer Hit Points and would take damage, you can mark a Stress to sprint to their side and take the damage instead.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "When an ally within Close range with 2 or fewer Hit Points would take damage, mark a Stress to sprint to their side and take it instead."
           }
         ]
       },
@@ -1804,22 +2056,26 @@
           {
             "name": "At Ease",
             "rules": "Gain an additional Stress slot.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Gain an additional Stress slot."
           },
           {
             "name": "Revenge",
             "rules": "When an adversary within Melee range succeeds on an attack against you, you can mark 2 Stress to force the attacker to mark a Hit Point.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "When an adversary within Melee range hits you, mark 2 Stress to force it to mark a Hit Point."
           },
           {
             "name": "Act of Reprisal",
             "rules": "When an adversary damages an ally within Melee range, you gain a +1 bonus to your Proficiency for the next successful attack you make against that adversary.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "When an adversary damages an ally within Melee range, +1 Proficiency on your next successful attack against it."
           },
           {
             "name": "Nemesis",
             "rules": "Spend 2 Hope to Prioritize an adversary until your next rest. When you make an attack against your Prioritized adversary, you can swap the results of your Hope and Fear Dice. You can only Prioritize one adversary at a time.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Spend 2 Hope to Prioritize an adversary until your next rest (one at a time). When you attack it, you can swap your Hope and Fear Dice results."
           }
         ]
       },
@@ -1831,31 +2087,37 @@
           {
             "name": "Companion",
             "rules": "You have an animal companion of your choice (at the GM’s discretion). They stay by your side unless you tell them otherwise.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "You have an animal companion (GM’s discretion) who stays by your side unless you say otherwise."
           },
           {
             "rules": "Take the Ranger Companion sheet. When you level up your character, choose a level-up option for your companion from this sheet as well.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Take the Ranger Companion sheet. When you level up, also choose a level-up option for your companion."
           },
           {
             "name": "Expert Training",
             "rules": "Choose an additional level-up option for your companion.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Choose an additional companion level-up option."
           },
           {
             "name": "Battle-Bonded",
             "rules": "When an adversary attacks you while they’re within your companion’s Melee range, you gain a +2 bonus to your Evasion against the attack.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "When an adversary attacks you within your companion’s Melee range, +2 Evasion against the attack."
           },
           {
             "name": "Advanced Training",
             "rules": "Choose two additional level-up options for your companion.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Choose two additional companion level-up options."
           },
           {
             "name": "Loyal Friend",
             "rules": "Once per long rest, when the damage from an attack would mark your companion’s last Stress or your last Hit Point and you’re within Close range of each other, you or your companion can rush to the other’s side and take that damage instead.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Once per long rest, when damage would mark your companion’s last Stress or your last Hit Point and you’re within Close range of each other, either of you can rush to the other’s side and take it instead."
           }
         ],
         "spellcastTrait": "agility"
@@ -1868,22 +2130,26 @@
           {
             "name": "Ruthless Predator",
             "rules": "When you make a damage roll, you can mark a Stress to gain a +1 bonus to your Proficiency. Additionally, when you deal Severe damage to an adversary, they must mark a Stress.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "When you make a damage roll, mark a Stress for +1 Proficiency. When you deal Severe damage to an adversary, they mark a Stress."
           },
           {
             "name": "Path Forward",
             "rules": "When you’re traveling to a place you’ve previously visited or you carry an object that has been at the location before, you can identify the shortest, most direct path to your destination.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "When traveling to a place you’ve visited, or carrying an object that has been there, you can identify the shortest, most direct path."
           },
           {
             "name": "Elusive Predator",
             "rules": "When your Focus makes an attack against you, you gain a +2 bonus to your Evasion against the attack.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "When your Focus attacks you, +2 Evasion against the attack."
           },
           {
             "name": "Apex Predator",
             "rules": "Before you make an attack roll against your Focus, you can spend a Hope. On a successful attack, you remove a Fear from the GM’s Fear pool.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Before you attack your Focus, you can spend a Hope. On a success, remove a Fear from the GM’s Fear pool."
           }
         ],
         "spellcastTrait": "agility"
@@ -1896,27 +2162,32 @@
           {
             "name": "Shadow Stepper",
             "rules": "You can move from shadow to shadow. When you move into an area of darkness or a shadow cast by another creature or object, you can mark a Stress to disappear from where you are and reappear inside another shadow within Far range. When you reappear, you are Cloaked.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "When you move into darkness or another creature’s or object’s shadow, mark a Stress to vanish and reappear in another shadow within Far range, Cloaked."
           },
           {
             "name": "Dark Cloud",
             "rules": "Make a Spellcast Roll (15). On a success, create a temporary dark cloud that covers any area within Close range. Anyone in this cloud can’t see outside of it, and anyone outside of it can’t see in. You’re considered Cloaked from any adversary for whom the cloud blocks line of sight.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Spellcast Roll (15): create a temporary dark cloud over an area within Close range. No one can see into or out of it, and you’re Cloaked from any adversary it blocks."
           },
           {
             "name": "Adrenaline",
             "rules": "While you're Vulnerable, add your level to your damage rolls.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "While Vulnerable, add your level to your damage rolls."
           },
           {
             "name": "Fleeting Shadow",
             "rules": "Gain a permanent +1 bonus to your Evasion. You can use your “Shadow Stepper” feature to move within Very Far range.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Permanent +1 Evasion. Shadow Stepper works within Very Far range."
           },
           {
             "name": "Vanishing Act",
             "rules": "Mark a Stress to become Cloaked at any time. When Cloaked from this feature, you automatically clear the Restrained condition if you have it. You remain Cloaked in this way until you roll with Fear or until your next rest.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Mark a Stress to become Cloaked at any time, and automatically clear Restrained. You stay Cloaked this way until you roll with Fear or your next rest."
           }
         ],
         "spellcastTrait": "finesse"
@@ -1929,17 +2200,20 @@
           {
             "name": "Well-Connected",
             "rules": "When you arrive in a prominent town or environment, you know somebody who calls this place home. Give them a name, note how you think they could be useful, and choose one fact from the following list:\n- They owe me a favor, but they’ll be hard to find.\n- They’re going to ask for something in exchange.\n- They’re always in a great deal of trouble.\n- We used to be together. It’s a long story.\n- We didn’t part on great terms.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "When you arrive in a prominent town or environment, you know someone who lives there. Name them, note how they could help, and choose one: they owe you a favor but are hard to find; they’ll want something in exchange; they’re always in trouble; you used to be together; you didn’t part on good terms."
           },
           {
             "name": "Contacts Everywhere",
             "rules": "Once per session, you can briefly call on a shady contact. Choose one of the following benefits and describe what brought them here to help you in this moment:\n- They provide 1 handful of gold, a unique tool, or a mundane object that the situation requires.\n- On your next action roll, their help provides a +3 bonus to the result of your Hope or Fear Die.\n- The next time you deal damage, they snipe from the shadows, adding 2d8 to your damage roll.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Once per session, call on a shady contact and choose one: 1 handful of gold, a unique tool, or a mundane object the situation needs; +3 to the result of your next action roll’s Hope or Fear Die; the next time you deal damage, they add 2d8 to it."
           },
           {
             "name": "Reliable Backup",
             "rules": "You can use your “Contacts Everywhere” feature three times per session. The following options are added to the list of benefits you can choose from when you use that feature:\n- When you mark 1 or more Hit Points, they can rush out to shield you, reducing the Hit Points marked by 1.\n- When you make a Presence Roll in conversation, they back you up. You can roll a d20 as your Hope Die.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Use Contacts Everywhere three times per session. Added options: when you mark Hit Points, they reduce the Hit Points marked by 1; when you make a Presence Roll in conversation, you can roll a d20 as your Hope Die."
           }
         ],
         "spellcastTrait": "finesse"
@@ -1952,22 +2226,26 @@
           {
             "name": "Spirit Weapon",
             "rules": "When you have an equipped weapon with a range of Melee or Very Close, it can fly from your hand to attack an adversary within Close range and then return to you. You can mark a Stress to target an additional adversary within range with the same attack roll.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "An equipped Melee or Very Close weapon can fly from your hand to attack an adversary within Close range and return. Mark a Stress to target an additional adversary within range with the same roll."
           },
           {
             "name": "Sparing Touch",
             "rules": "Once per long rest, touch a creature and clear 2 Hit Points or 2 Stress from them.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Once per long rest, touch a creature and clear 2 Hit Points or 2 Stress from them."
           },
           {
             "name": "Devout",
             "rules": "When you roll your Prayer Dice, you can roll an additional die and discard the lowest result. Additionally, you can use your “Sparing Touch” feature twice instead of once per long rest.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "When you roll Prayer Dice, roll an additional die and discard the lowest. Use Sparing Touch twice per long rest."
           },
           {
             "name": "Sacred Resonance",
             "rules": "When you roll damage for your “Spirit Weapon” feature, if any of the die results match, double the value of each matching die. For example, if you roll two 5s, they count as two 10s.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "When you roll Spirit Weapon damage, matching dice double their value (two 5s count as two 10s)."
           }
         ],
         "spellcastTrait": "strength"
@@ -1980,22 +2258,26 @@
           {
             "name": "Wings of Light",
             "rules": "You can fly. While flying, you can do the following:\n- Mark a Stress to pick up and carry another willing creature approximately your size or smaller.\n- Spend a Hope to deal an extra 1d8 damage on a successful attack.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "You can fly. While flying: mark a Stress to carry another willing creature of about your size or smaller; spend a Hope to deal an extra 1d8 damage on a successful attack."
           },
           {
             "name": "Ethereal Visage",
             "rules": "Your supernatural visage strikes awe and fear. While flying, you have advantage on Presence Rolls. When you succeed with Hope on a Presence Roll, you can remove a Fear from the GM’s Fear pool instead of gaining Hope.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "While flying, advantage on Presence Rolls. When you succeed with Hope on a Presence Roll, you can remove a Fear from the GM’s Fear pool instead of gaining Hope."
           },
           {
             "name": "Ascendant",
             "rules": "Gain a permanent +4 bonus to your Severe damage threshold.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Permanent +4 to your Severe damage threshold."
           },
           {
             "name": "Power of the Gods",
             "rules": "While flying, you deal an extra 1d12 damage instead of 1d8 from your “Wings of Light” feature.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "While flying, Wings of Light deals an extra 1d12 instead of 1d8."
           }
         ],
         "spellcastTrait": "strength"
@@ -2008,25 +2290,30 @@
           {
             "name": "Elementalist",
             "rules": "Choose one of the following elements at character creation: air, earth, fire, lightning, water.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "At character creation, choose an element: air, earth, fire, lightning, or water. You can shape it into harmless effects. Spend a Hope and describe how your control of it helps an action roll you’re about to make, for +2 to the roll or +3 to its damage."
           },
           {
             "rules": "You can shape this element into harmless effects.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": ""
           },
           {
             "rules": "Additionally, spend a Hope and describe how your control over this element helps an action roll you’re about to make, then either gain a +2 bonus to the roll or a +3 bonus to the roll’s damage.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": ""
           },
           {
             "name": "Natural Evasion",
             "rules": "You can call forth your element to protect you from harm. When an attack roll against you succeeds, you can mark a Stress and describe how you use your element to defend you. When you do, roll a d6 and add its result to your Evasion against the attack.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "When an attack roll against you succeeds, mark a Stress and describe how your element defends you; roll a d6 and add it to your Evasion against the attack."
           },
           {
             "name": "Transcendence",
             "rules": "Once per long rest, you can transform into a physical manifestation of your element. When you do, describe your transformation and choose two of the following benefits to gain until your next rest:\n- +4 bonus to your Severe threshold\n- +1 bonus to a character trait of your choice\n- +1 bonus to your Proficiency\n- +2 bonus to your Evasion",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Once per long rest, transform into a manifestation of your element and choose two benefits until your next rest: +4 Severe threshold; +1 to a trait of your choice; +1 Proficiency; +2 Evasion."
           }
         ],
         "spellcastTrait": "instinct"
@@ -2039,17 +2326,20 @@
           {
             "name": "Manipulate Magic",
             "rules": "Your primal origin allows you to modify the essence of magic itself. After you cast a spell or make an attack using a weapon that deals magic damage, you can mark a Stress to do one of the following:\n- Extend the spell or attack’s reach by one range\n- Gain a +2 bonus to the action roll’s result\n- Double a damage die of your choice\n- Hit an additional target within range",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "After you cast a spell or make a magic-damage weapon attack, mark a Stress to do one: extend its reach by one range; +2 to the action roll’s result; double a damage die of your choice; hit an additional target within range."
           },
           {
             "name": "Enchanted Aid",
             "rules": "You can enhance the magic of others with your essence. When you Help an Ally with a Spellcast Roll, you can roll a d8 as your advantage die. Once per long rest, after an ally has made a Spellcast Roll with your help, you can swap the results of their Duality Dice.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "When you Help an Ally with a Spellcast Roll, roll a d8 as your advantage die. Once per long rest, after an ally’s helped Spellcast Roll, swap the results of their Duality Dice."
           },
           {
             "name": "Arcane Charge",
             "rules": "You can gather magical energy to enhance your capabilities. When you take magic damage, you become Charged. Alternatively, you can spend 2 Hope to become Charged. When you successfully make an attack that deals magic damage while Charged, you can clear your Charge to either gain a +10 bonus to the damage roll or gain a +3 bonus to the Difficulty of a reaction roll the spell causes the target to make. You stop being Charged at your next long rest.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "When you take magic damage, or spend 2 Hope, you become Charged. When you succeed on a magic-damage attack while Charged, clear the Charge for +10 to the damage roll or +3 to the Difficulty of a reaction roll the spell forces on the target. You stop being Charged at your next long rest."
           }
         ],
         "spellcastTrait": "instinct"
@@ -2062,32 +2352,38 @@
           {
             "name": "Patron’s Mantle",
             "rules": "Spend a Favor to cloak yourself in a terrifying aspect of your Patron that lasts until you take Severe damage or the scene ends. While this effect is active, you gain a bonus to your damage thresholds equal to your tier and have advantage on action rolls to intimidate a target.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Spend a Favor to cloak yourself in a terrifying aspect of your Patron until you take Severe damage or the scene ends. While active, +your tier to damage thresholds and advantage on rolls to intimidate."
           },
           {
             "name": "Deathless Embrace",
             "rules": "Once per rest, spend any number of Favor to roll an equal number of Patron Dice. For each result of 4 or higher, clear a Hit Point.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Once per rest, spend any number of Favor to roll that many Patron Dice. For each 4 or higher, clear a Hit Point."
           },
           {
             "name": "Harrowing Invocation",
             "rules": "When an adversary targets you or an ally within Very Close range with an attack, you can spend a Favor to give them disadvantage on the roll. If the adversary fails the roll, they must also mark a Stress.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "When an adversary attacks you or an ally within Very Close range, spend a Favor to give them disadvantage. If they fail, they also mark a Stress."
           },
           {
             "name": "Damage Sink",
             "rules": "Once per rest, you can spend a Favor to halve incoming damage.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Once per rest, spend a Favor to halve incoming damage."
           },
           {
             "name": "Dark Aegis",
             "rules": "Once per long rest when you would take damage, you can spend a Favor instead of marking Hit Points.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Once per long rest, when you would take damage, spend a Favor instead of marking Hit Points."
           },
           {
             "name": "Draining Bane",
             "rules": "When an adversary targets you or an ally within Very Close range with an attack, you can spend a Favor to Drain them. When you do, they must mark a Stress, and you can clear a Stress. While Drained, the target uses a d12 instead of a d20 for attack rolls (including for advantage or disadvantage) until they fail a roll.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "When an adversary attacks you or an ally within Very Close range, spend a Favor to Drain them: they mark a Stress and you can clear a Stress. A Drained target uses a d12 instead of a d20 for attack rolls (including advantage or disadvantage) until they fail a roll."
           }
         ],
         "spellcastTrait": "presence"
@@ -2100,32 +2396,38 @@
           {
             "name": "Patron’s Fury",
             "rules": "Spend a Favor to imbue your attacks with your Patron’s power until you deal Severe damage or the scene ends. When you roll damage while this effect is active, you also roll a number of Patron Dice equal to your tier and add their total to the damage dealt.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Spend a Favor to imbue your attacks until you deal Severe damage or the scene ends. When you roll damage while active, also roll Patron Dice equal to your tier and add their total to the damage."
           },
           {
             "name": "Deadly Vengeance",
             "rules": "When you mark any number of Hit Points from an attack, you can spend a Favor to roll an equal number of Patron Dice. For each result of 4 or higher, the attacker marks a Hit Point.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "When you mark Hit Points from an attack, spend a Favor to roll that many Patron Dice. For each 4 or higher, the attacker marks a Hit Point."
           },
           {
             "name": "Menacing Reach",
             "rules": "Spend a Favor to increase the range of your primary weapon by one step (such as Melee to Very Close or Very Close to Close) to a maximum of Very Far range. This effect ends when you make a successful attack with that weapon.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Spend a Favor to raise your primary weapon’s range one step (Melee to Very Close, etc.), up to Very Far. It ends when you make a successful attack with that weapon."
           },
           {
             "name": "Diminish My Foes",
             "rules": "When you succeed with Hope on an action roll against a target, you can spend any number of Favor to force the target to mark an equal number of Stress.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "When you succeed with Hope on an action roll against a target, spend any number of Favor to make them mark that many Stress."
           },
           {
             "name": "Fearsome Attack",
             "rules": "Spend a Favor to reroll any number of your damage dice. You can continue spending Favor to use this feature on the same damage roll.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Spend a Favor to reroll any number of your damage dice. You can keep spending Favor on the same damage roll."
           },
           {
             "name": "Otherworldly Ire",
             "rules": "Once per rest when you take damage, you can spend any number of Favor to roll that many Patron Dice and target a number of creatures within Close range equal to the highest result. Each target must mark a Hit Point.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Once per rest, when you take damage, spend any number of Favor to roll that many Patron Dice and target creatures within Close range equal to the highest result. Each marks a Hit Point."
           }
         ],
         "spellcastTrait": "presence"
@@ -2138,22 +2440,26 @@
           {
             "name": "Courage",
             "rules": "When you fail a roll with Fear, you gain a Hope.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "When you fail a roll with Fear, gain a Hope."
           },
           {
             "name": "Battle Ritual",
             "rules": "Once per long rest, before you attempt something incredibly dangerous or face off against a foe who clearly outmatches you, describe what ritual you perform or preparations you make. When you do, clear 2 Stress and gain 2 Hope.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Once per long rest, before something incredibly dangerous or a foe who clearly outmatches you, describe your ritual or preparations, then clear 2 Stress and gain 2 Hope."
           },
           {
             "name": "Rise to the Challenge",
             "rules": "You are vigilant in the face of mounting danger. While you have 2 or fewer Hit Points unmarked, you can roll a d20 as your Hope Die.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "While you have 2 or fewer Hit Points unmarked, you can roll a d20 as your Hope Die."
           },
           {
             "name": "Camaraderie",
             "rules": "Your unwavering bravery is a rallying point for your allies. You can initiate a Tag Team Roll one additional time per session. Additionally, when an ally initiates a Tag Team Roll with you, they only need to spend 2 Hope to do so.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Initiate a Tag Team Roll one additional time per session. When an ally initiates one with you, they spend only 2 Hope."
           }
         ]
       },
@@ -2165,17 +2471,20 @@
           {
             "name": "Slayer",
             "rules": "You gain a pool of dice called Slayer Dice. On a roll with Hope, you can place a d6 on this card instead of gaining a Hope, adding the die to the pool. You can store a number of Slayer Dice equal to your Proficiency. When you make an attack roll or damage roll, you can spend any number of these Slayer Dice, rolling them and adding their result to the roll. At the end of each session, clear any unspent Slayer Dice on this card and gain a Hope per die cleared.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "You have a pool of Slayer Dice. On a roll with Hope, place a d6 on this card instead of gaining a Hope, up to your Proficiency in dice. When you make an attack or damage roll, spend any number of them, rolling them and adding the result. At session end, clear unspent dice and gain a Hope per die cleared."
           },
           {
             "name": "Weapon Specialist",
             "rules": "You can wield multiple weapons with dangerous ease. When you succeed on an attack, you can spend a Hope to add one of the damage dice from your secondary weapon to the damage roll. Additionally, once per long rest when you roll your Slayer Dice, reroll any 1s.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "When you succeed on an attack, spend a Hope to add one damage die from your secondary weapon to the damage roll. Once per long rest, when you roll Slayer Dice, reroll any 1s."
           },
           {
             "name": "Martial Preparation",
             "rules": "You’re an inspirational warrior to all who travel with you. Your party gains access to the Martial Preparation downtime move. To use this move during a rest, describe how you instruct and train with your party. You and each ally who chooses this downtime move gain a d6 Slayer Die. A PC with a Slayer Die can spend it to roll the die and add the result to an attack or damage roll of their choice.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Your party gains the Martial Preparation downtime move: describe how you train with them, and you and each ally who chooses it gain a d6 Slayer Die. A PC with one can spend it to roll it and add the result to an attack or damage roll."
           }
         ]
       },
@@ -2187,27 +2496,63 @@
           {
             "name": "Herbal Remedies",
             "rules": "When you or an ally in the scene clears 1 or more Hit Points or Stress as the result of using a consumable, increase the number cleared by 1.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "When you or an ally in the scene clears Hit Points or Stress using a consumable, increase the amount cleared by 1."
           },
           {
             "name": "Enchanted Talisman",
             "rules": "Once per rest, you can imbue a small item with your protective essence. Spend any number of Hope to place an equal number of tokens on this card. When the person holding the talisman takes damage, spend a token to reduce the number of Hit Points they mark by one. Clear all tokens from this card when you take a rest.",
-            "level": "foundation"
+            "level": "foundation",
+            "trackers": [
+              {
+                "id": "talisman-tokens",
+                "label": "Talisman tokens (max Hope)",
+                "count": 6,
+                "shape": "box",
+                "placement": "front"
+              }
+            ],
+            "short": "Once per rest, imbue a small item: spend any number of Hope to place that many tokens on this card. When the holder takes damage, spend a token to reduce the Hit Points they mark by one. Clear all tokens when you rest."
           },
           {
             "name": "Walk Between Worlds",
             "rules": "During a moment of calm, make a Spellcast Roll (13). Once per rest on a success, you can mark a Stress to step beyond the veil of death and converse with any nearby spirits. Place a number of tokens equal to your Spellcast trait on this card and remove one each time a spirit answers a question. When the last token is removed or at the end of the scene, you return to the Mortal Realm in the same spot you left it.",
-            "level": "specialization"
+            "level": "specialization",
+            "trackers": [
+              {
+                "id": "walk-tokens",
+                "label": "Walk tokens (max Spellcast)",
+                "count": {
+                  "trait": "spellcast"
+                },
+                "shape": "box",
+                "placement": "front"
+              }
+            ],
+            "short": "In a moment of calm, make a Spellcast Roll (13). Once per rest, on a success, mark a Stress to step beyond the veil and converse with nearby spirits. Place tokens equal to your Spellcast trait on this card and remove one each time a spirit answers. When the last is removed or the scene ends, you return to where you left."
           },
           {
             "name": "Vexing Malison",
             "rules": "You have advantage on attacks against Hexed creatures.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Advantage on attacks against Hexed creatures."
           },
           {
             "name": "Circle of Power",
             "rules": "Once per rest, mark a circle on the ground outlining a Very Close area around you, and place a number of tokens equal to your Spellcast trait on this card. While within this circle, you and your allies gain a +2 bonus to damage thresholds, attack rolls, and Evasion. Remove a token each time you or an ally within the circle makes an action roll or evades an attack. This spell lasts until the last token is removed or you exit the circle.",
-            "level": "mastery"
+            "level": "mastery",
+            "trackers": [
+              {
+                "id": "circle-tokens",
+                "label": "Circle tokens (max Spellcast)",
+                "count": {
+                  "trait": "spellcast"
+                },
+                "shape": "box",
+                "placement": "front"
+              }
+            ],
+            "short": "Once per rest, mark a circle outlining a Very Close area around you and place tokens equal to your Spellcast trait on this card. While in it, you and allies get +2 to damage thresholds, attack rolls, and Evasion. Remove a token each time you or an ally in it makes an action roll or evades an attack. It lasts until the last token is removed or you leave the circle."
           }
         ],
         "spellcastTrait": "knowledge"
@@ -2220,34 +2565,41 @@
           {
             "name": "Night’s Glamour",
             "rules": "Make a Spellcast Roll (13) to Glamour yourself in a bewitching facade. While Glamoured, you have advantage on rolls that leverage your illusory appearance. Additionally, adversaries within Close range must mark a Stress to attack you.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Spellcast Roll (13): Glamour yourself in a bewitching facade. While Glamoured, you have advantage on rolls that use your illusory appearance, and adversaries within Close range must mark a Stress to attack you. Unless you mark a Stress to maintain it, the Glamour drops when you mark a Hit Point or deal damage."
           },
           {
             "rules": "Unless you mark a Stress to maintain your Glamour, it drops when you mark a Hit Point or deal damage.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": ""
           },
           {
             "name": "Moonbeam",
             "rules": "Once per session, you can conjure a column of moonlight that illuminates the area within Close range until the end of the scene. While bathed in this moonlight, you and your allies gain a +1 bonus to Spellcast Rolls and can see through illusions.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Once per session, conjure a column of moonlight lighting the area within Close range until the scene ends. In it, you and allies get +1 to Spellcast Rolls and see through illusions."
           },
           {
             "name": "Ire of Pale Light",
             "rules": "When a Hexed creature within Very Far range fails an attack, they must mark a Stress.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "When a Hexed creature within Very Far range fails an attack, it marks a Stress."
           },
           {
             "name": "Lunar Phases",
             "rules": "At the beginning of each session, roll a d6 and place it on this card. You gain the matching effect until the end of session.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "At the start of each session, roll a d6 and place it on this card for the matching effect until session end: 1 New: spend a Hope to negate Minor damage; 2–3 Waxing: +2 to damage rolls; 4 Full: +3 to damage thresholds; 5–6 Waning: +1 to Evasion. Once per rest, spend a Hope to raise the die by one (a 6 becomes a 1)."
           },
           {
             "rules": "Roll Phase Effect 1 New Spend a Hope to negate Minor damage. 2 – 3 Waxing + 2 to damage rolls 4 Full + 3 to damage thresholds 5 – 6 Waning + 1 to Evasion",
-            "level": "mastery"
+            "level": "mastery",
+            "short": ""
           },
           {
             "rules": "Once per rest, you can spend a Hope to increase the value of this die by one. If you increase the value of a 6, it becomes a 1.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": ""
           }
         ],
         "spellcastTrait": "instinct"
@@ -2260,32 +2612,38 @@
           {
             "name": "Prepared",
             "rules": "Take an additional domain card of your level or lower from a domain you have access to.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Take an additional domain card of your level or lower from a domain you have access to."
           },
           {
             "name": "Adept",
             "rules": "When you Utilize an Experience, you can mark a Stress instead of spending a Hope. If you do, double your Experience modifier for that roll.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "When you Utilize an Experience, you can mark a Stress instead of spending a Hope, and double your Experience modifier for that roll."
           },
           {
             "name": "Accomplished",
             "rules": "Take an additional domain card of your level or lower from a domain you have access to.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Take an additional domain card of your level or lower from a domain you have access to."
           },
           {
             "name": "Perfect Recall",
             "rules": "Once per rest, when you recall a domain card in your vault, you can reduce its Recall Cost by 1.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Once per rest, when you recall a domain card from your vault, reduce its Recall Cost by 1."
           },
           {
             "name": "Brilliant",
             "rules": "Take an additional domain card of your level or lower from a domain you have access to.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Take an additional domain card of your level or lower from a domain you have access to."
           },
           {
             "name": "Honed Expertise",
             "rules": "When you use an Experience, roll a d6. On a result of 5 or higher, you can use it without spending Hope.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "When you use an Experience, roll a d6. On a 5 or higher, use it without spending Hope."
           }
         ],
         "spellcastTrait": "knowledge"
@@ -2298,32 +2656,38 @@
           {
             "name": "Battlemage",
             "rules": "You’ve focused your studies on becoming an unconquerable force on the battlefield. Gain an additional Hit Point slot.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "Gain an additional Hit Point slot."
           },
           {
             "name": "Face Your Fear",
             "rules": "When you succeed with Fear on an attack roll, you deal an extra 1d10 magic damage.",
-            "level": "foundation"
+            "level": "foundation",
+            "short": "When you succeed with Fear on an attack roll, deal an extra 1d10 magic damage."
           },
           {
             "name": "Conjure Shield",
             "rules": "You can maintain a protective barrier of magic. While you have at least 2 Hope, you add your Proficiency to your Evasion.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "While you have at least 2 Hope, add your Proficiency to your Evasion."
           },
           {
             "name": "Fueled by Fear",
             "rules": "The extra magic damage from your “Face Your Fear” feature increases to 2d10.",
-            "level": "specialization"
+            "level": "specialization",
+            "short": "Face Your Fear’s extra magic damage becomes 2d10."
           },
           {
             "name": "Thrive in Chaos",
             "rules": "When you succeed on an attack, you can mark a Stress after rolling damage to force the target to mark an additional Hit Point.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "When you succeed on an attack, mark a Stress after rolling damage to make the target mark an additional Hit Point."
           },
           {
             "name": "Have No Fear",
             "rules": "The extra magic damage from your “Face Your Fear” feature increases to 3d10.",
-            "level": "mastery"
+            "level": "mastery",
+            "short": "Face Your Fear’s extra magic damage becomes 3d10."
           }
         ],
         "spellcastTrait": "knowledge"
@@ -12036,10 +12400,214 @@
     ],
     "levelUpOptions": [
       {
+        "id": "tier-achievement-2",
+        "name": "Level 2 tier achievement",
+        "kind": "tier-achievement",
+        "level": 2,
+        "newExperience": 2,
+        "proficiency": 1,
+        "clearTraitMarks": false,
+        "rules": "At level 2, you gain a new Experience at +2 and permanently increase your Proficiency by 1."
+      },
+      {
+        "id": "tier-achievement-5",
+        "name": "Level 5 tier achievement",
+        "kind": "tier-achievement",
+        "level": 5,
+        "newExperience": 2,
+        "proficiency": 1,
+        "clearTraitMarks": true,
+        "rules": "At level 5, you gain a new Experience at +2, permanently increase your Proficiency by 1, and clear any marked traits."
+      },
+      {
+        "id": "tier-achievement-8",
+        "name": "Level 8 tier achievement",
+        "kind": "tier-achievement",
+        "level": 8,
+        "newExperience": 2,
+        "proficiency": 1,
+        "clearTraitMarks": true,
+        "rules": "At level 8, you gain a new Experience at +2, permanently increase your Proficiency by 1, and clear any marked traits."
+      },
+      {
+        "kind": "advancement",
+        "cost": 1,
+        "id": "traits",
+        "name": "Increase two traits",
+        "effect": "traits",
+        "slots": {
+          "2": 3,
+          "3": 3,
+          "4": 3
+        },
+        "marksTraits": true,
+        "rules": "Choose two unmarked character traits and gain a permanent +1 bonus to them. You can’t increase these stats again until the next tier (when your tier achievement allows you to clear those marks)."
+      },
+      {
+        "kind": "advancement",
+        "cost": 1,
+        "id": "hit-point",
+        "name": "Add a Hit Point slot",
+        "effect": "hit-point",
+        "slots": {
+          "2": 2,
+          "3": 2,
+          "4": 2
+        },
+        "rules": "Darken the outline of the next rectangle in the Hit Point section of your character sheet in pen or permanent marker."
+      },
+      {
+        "kind": "advancement",
+        "cost": 1,
+        "id": "stress",
+        "name": "Add a Stress slot",
+        "effect": "stress",
+        "slots": {
+          "2": 2,
+          "3": 2,
+          "4": 2
+        },
+        "rules": "Darken the outline of the next rectangle in the Stress section of your character sheet in pen or permanent marker."
+      },
+      {
+        "kind": "advancement",
+        "cost": 1,
+        "id": "experience",
+        "name": "Increase two Experiences",
+        "effect": "experience",
+        "slots": {
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "rules": "Choose two Experiences on your character sheet and gain a permanent +1 bonus to both."
+      },
+      {
+        "kind": "advancement",
+        "cost": 1,
+        "id": "domain-card",
+        "name": "Take an additional domain card",
+        "effect": "domain-card",
+        "slots": {
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "rules": "You can choose an additional domain card at or below your level or from your class’s domains. If you’ve multiclassed, you can instead select a card at or below half your level from your chosen multiclass domain."
+      },
+      {
+        "kind": "advancement",
+        "cost": 1,
+        "id": "evasion",
+        "name": "Increase Evasion",
+        "effect": "evasion",
+        "slots": {
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "rules": "Gain a permanent +1 bonus to your Evasion."
+      },
+      {
+        "kind": "advancement",
+        "cost": 1,
+        "id": "subclass-upgrade",
+        "name": "Take an upgraded subclass card",
+        "effect": "subclass-upgrade",
+        "slots": {
+          "3": 1,
+          "4": 1
+        },
+        "minLevel": 5,
+        "crossesOut": [
+          {
+            "option": "multiclass",
+            "scope": "tier"
+          }
+        ],
+        "rules": "Take the next card for your subclass. If you have only the foundation card, take a specialization; if you have a specialization already, take a mastery. Then cross out this tier’s multiclass option."
+      },
+      {
+        "kind": "advancement",
+        "cost": 2,
+        "id": "proficiency",
+        "name": "Increase Proficiency",
+        "effect": "proficiency",
+        "slots": {
+          "3": 2,
+          "4": 2
+        },
+        "minLevel": 5,
+        "rules": "Fill in one of the open circles in the “Proficiency” section of your character sheet, then increase your weapon’s number of damage dice by 1. The black box around this advancement’s slots indicates you must spend two advancements and mark both level-up slots in order to take it as an option."
+      },
+      {
+        "kind": "advancement",
+        "cost": 2,
         "id": "multiclass",
         "name": "Multiclass",
+        "effect": "multiclass",
+        "slots": {
+          "3": 2,
+          "4": 2
+        },
         "minLevel": 5,
-        "rules": "Starting at level 5, you can choose multiclassing as an option when leveling up. When you multiclass, you choose an additional class, gain access to one of its domains, and acquire its class feature. Take the appropriate multiclass module and add it to the right side of your character sheet, then choose a foundation card from one of its subclasses. If your foundation cards specify different Spellcast traits, you can choose which one to apply when making a Spellcast roll.\nWhenever you have the option to acquire a new domain card, you can choose from cards at or below half your current level (rounded up) from the domain you chose when you selected the multiclass advancement."
+        "crossesOut": [
+          {
+            "option": "subclass-upgrade",
+            "scope": "one"
+          },
+          {
+            "option": "multiclass",
+            "scope": "all"
+          }
+        ],
+        "rules": "Choose an additional class, select one of its domains, and gain its class feature. Add the appropriate multiclass module to your character sheet and take the foundation card from one of its subclasses. Then cross out the “upgraded subclass” advancement option in this tier and all other “multiclass” advancement options on your character sheet. The black box around this advancement’s slots indicates you must spend two advancements and mark both level-up slots in order to take it as an option.\nStarting at level 5, you can choose multiclassing as an option when leveling up. When you multiclass, you choose an additional class, gain access to one of its domains, and acquire its class feature. Take the appropriate multiclass module and add it to the right side of your character sheet, then choose a foundation card from one of its subclasses. If your foundation cards specify different Spellcast traits, you can choose which one to apply when making a Spellcast roll.\nWhenever you have the option to acquire a new domain card, you can choose from cards at or below half your current level (rounded up) from the domain you chose when you selected the multiclass advancement."
+      },
+      {
+        "id": "damage-thresholds",
+        "name": "Damage thresholds",
+        "kind": "level-step",
+        "effect": "thresholds",
+        "rules": "Step Three: Damage Thresholds Increase all damage thresholds by 1."
+      },
+      {
+        "id": "level-domain-card",
+        "name": "New domain card",
+        "kind": "level-step",
+        "effect": "level-domain-card",
+        "rules": "Step Four: Domain Cards Acquire a new domain card at your level or lower from one of your class’s domains and add it to your loadout or vault. If your loadout is already full, you can’t add the new card to it until you move another into your vault. You can also exchange one domain card you’ve previously acquired for a different domain card of the same level or lower."
+      },
+      {
+        "id": "brawler-combo-die",
+        "name": "Increase Combo Die",
+        "kind": "advancement",
+        "classId": "brawler",
+        "effect": "combo-die",
+        "slots": {
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "cost": 1,
+        "rules": "Your Combo Die starts as a d4. Once per tier, you can increase your Combo Die by one step as a level advancement option."
+      },
+      {
+        "id": "brawler-stance",
+        "name": "Choose an additional stance",
+        "kind": "level-step",
+        "classId": "brawler",
+        "effect": "stance",
+        "count": 1,
+        "rules": "Take the Martial Stances sheet and choose two martial stances from Tier 1. Each time you level up your character, choose an additional stance from your tier or lower."
+      },
+      {
+        "id": "ranger-companion-option",
+        "name": "Choose a companion level-up option",
+        "kind": "level-step",
+        "classId": "ranger",
+        "effect": "companion-option",
+        "count": 1,
+        "rules": "Take the Ranger Companion sheet. When you level up your character, choose a level-up option for your companion from this sheet as well."
       }
     ]
   }

@@ -3,6 +3,9 @@
 import { readFileSync, writeFileSync, readdirSync, mkdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { structureClassExtras, addUses } from './class-extras.mjs'
+import { buildLevelUpRules } from './level-up-rules.mjs'
+import { applyShortText } from './short-text.mjs'
+import { applyResourceTrackers } from './resource-trackers.mjs'
 
 const SRD = 'Daggerheart SRD Files'
 const rd = (p) => readFileSync(join(SRD, p), 'utf8').replace(/\r\n/g, '\n')
@@ -82,6 +85,10 @@ for (const f of ls('Classes').filter((f) => f.endsWith('Class.md'))) {
 structureClassExtras(classes)
 for (const c of classes) for (const f of [c.hopeFeature, ...c.features]) addUses(f, false)
 
+// ---- Condensed wording for the printed sheet (hand-edited files in short/)
+console.log(`resource trackers: ${applyResourceTrackers(classes, subclasses)}`)
+console.log(`short text applied to ${applyShortText(classes, subclasses)} entries`)
+
 // ---- Ancestries, communities
 const ancestries = ls('Ancestries').filter((f) => !['Ancestries.md', 'Mixed Ancestry.md', 'Elemental Kin.md'].includes(f)).map((f) => {
   const { title, sections: secs } = sections(rd(`Ancestries/${f}`))
@@ -155,8 +162,7 @@ const dup = (arr, what) => {
   const seen = new Set()
   for (const e of arr) { if (seen.has(e.id)) throw new Error(`duplicate ${what} id ${e.id}`); seen.add(e.id) }
 }
-const multiclass = { id: 'multiclass', name: 'Multiclass', minLevel: 5, rules: rd('Core Mechanics/Multiclassing.md').split('\n').filter((l) => l.trim() && !l.startsWith('#') && !l.startsWith('>')).join('\n') }
-const content = { classes, subclasses, ancestries, communities, domains, domainCards, equipment, levelUpOptions: [multiclass] }
+const content = { classes, subclasses, ancestries, communities, domains, domainCards, equipment, levelUpOptions: buildLevelUpRules(rd) }
 for (const [k, v] of Object.entries(content)) dup(v, k)
 const pack = { schemaVersion: 1, id: 'srd-core', name: 'Daggerheart SRD 2.0 (core)', version: '2.0.0', publisher: 'Darrington Press (SRD)', content }
 mkdirSync('packs/core', { recursive: true })

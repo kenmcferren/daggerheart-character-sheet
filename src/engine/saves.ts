@@ -49,4 +49,23 @@ export class CharacterStore {
     characters.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
     return { characters, corruptIds }
   }
+
+  /** Every saved version of one character, lowest level first (ties: oldest first). */
+  async versionsOf(lineageId: string): Promise<Character[]> {
+    const { characters } = await this.list()
+    return characters.filter((c) => c.lineageId === lineageId).sort((a, b) => a.level - b.level || a.createdAt.localeCompare(b.createdAt))
+  }
+
+  /** One entry per character: its most recently saved version, plus how many versions exist. Newest first. */
+  async lineages(): Promise<{ latest: Character; versionCount: number }[]> {
+    const { characters } = await this.list()
+    const by = new Map<string, Character[]>()
+    for (const c of characters) by.set(c.lineageId, [...(by.get(c.lineageId) ?? []), c])
+    return [...by.values()].map((vs) => ({ latest: vs[0], versionCount: vs.length }))
+  }
+
+  /** Deletes every version of a character. */
+  async removeLineage(lineageId: string): Promise<void> {
+    for (const v of await this.versionsOf(lineageId)) await this.remove(v.id)
+  }
 }

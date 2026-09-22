@@ -1,0 +1,27 @@
+{
+  "hope": "When you or an ally within Far range fails an action roll, spend 3 Hope to turn it into a success with Fear.",
+  "features": [
+    { "name": "Hex", "short": "Mark a Stress to temporarily Hex a target within Far range. A Hexed target takes a penalty to damage rolls and Difficulty equal to your tier. You can Hex creatures up to your Spellcast trait at once." },
+    { "name": "Commune", "short": "Once per long rest, in a moment of calm, commune with an ancestor, deity, spirit, or otherworldly being. Ask a question, roll d6s equal to your Spellcast trait, and choose one result: 1–3 you taste, smell, or feel a sensation relevant to the answer; 4–5 you hear sounds or see a vision relevant to it; 6 you psychically experience a scene relevant to it as if there." },
+    { "short": "" },
+    { "short": "" }
+  ],
+  "subclasses": {
+    "witch.hedge": [
+      { "name": "Herbal Remedies", "short": "When you or an ally in the scene clears Hit Points or Stress using a consumable, increase the amount cleared by 1." },
+      { "name": "Enchanted Talisman", "short": "Once per rest, imbue a small item: spend any number of Hope to place that many tokens on this card. When the holder takes damage, spend a token to reduce the Hit Points they mark by one. Clear all tokens when you rest." },
+      { "name": "Walk Between Worlds", "short": "In a moment of calm, make a Spellcast Roll (13). Once per rest, on a success, mark a Stress to step beyond the veil and converse with nearby spirits. Place tokens equal to your Spellcast trait on this card and remove one each time a spirit answers. When the last is removed or the scene ends, you return to where you left." },
+      { "name": "Vexing Malison", "short": "Advantage on attacks against Hexed creatures." },
+      { "name": "Circle of Power", "short": "Once per rest, mark a circle outlining a Very Close area around you and place tokens equal to your Spellcast trait on this card. While in it, you and allies get +2 to damage thresholds, attack rolls, and Evasion. Remove a token each time you or an ally in it makes an action roll or evades an attack. It lasts until the last token is removed or you leave the circle." }
+    ],
+    "witch.moon": [
+      { "name": "Night’s Glamour", "short": "Spellcast Roll (13): Glamour yourself in a bewitching facade. While Glamoured, you have advantage on rolls that use your illusory appearance, and adversaries within Close range must mark a Stress to attack you. Unless you mark a Stress to maintain it, the Glamour drops when you mark a Hit Point or deal damage." },
+      { "short": "" },
+      { "name": "Moonbeam", "short": "Once per session, conjure a column of moonlight lighting the area within Close range until the scene ends. In it, you and allies get +1 to Spellcast Rolls and see through illusions." },
+      { "name": "Ire of Pale Light", "short": "When a Hexed creature within Very Far range fails an attack, it marks a Stress." },
+      { "name": "Lunar Phases", "short": "At the start of each session, roll a d6 and place it on this card for the matching effect until session end: 1 New: spend a Hope to negate Minor damage; 2–3 Waxing: +2 to damage rolls; 4 Full: +3 to damage thresholds; 5–6 Waning: +1 to Evasion. Once per rest, spend a Hope to raise the die by one (a 6 becomes a 1)." },
+      { "short": "" },
+      { "short": "" }
+    ]
+  }
+}

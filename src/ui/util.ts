@@ -10,3 +10,13 @@ export function issueStep(issue: Issue, steps: WizardStep[]): string {
   if (steps.some((s) => s.id === issue.step)) return issue.step
   return steps.find((s) => s.choice === issue.step)?.id ?? 'equipment'
 }
+
+/** Saves text as a file through the browser. */
+export function download(name: string, text: string, type = 'application/json') {
+  const url = URL.createObjectURL(new Blob([text], { type }))
+  const a = document.createElement('a')
+  a.href = url
+  a.download = name.replace(/[^w.-]+/g, '-')
+  a.click()
+  URL.revokeObjectURL(url)
+}

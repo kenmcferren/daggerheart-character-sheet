@@ -1,0 +1,19 @@
+{
+  "hope": "Spend 3 Hope to temporarily Distract a target within Close range: -2 to their Difficulty.",
+  "features": [
+    { "name": "Rally", "short": "Once per session, give yourself and each ally a Rally Die (d6; d8 at level 5). A PC can spend it to roll and add the result to an action, reaction or damage roll, or to clear that many Stress. Clear unspent Rally Dice at session end." }
+  ],
+  "subclasses": {
+    "bard.troubadour": [
+      { "name": "Gifted Performer", "short": "Describe your performance to play each song once per long rest: Relaxing (you and allies within Close range clear a Hit Point), Epic (a target within Close range is temporarily Vulnerable), Heartbreaking (you and allies within Close range gain a Hope)." },
+      { "short": "Maestro. When you give an ally a Rally Die, they can gain a Hope or clear a Stress." },
+      { "short": "Virtuoso. Perform each Gifted Performer song twice per long rest." }
+    ],
+    "bard.wordsmith": [
+      { "name": "Rousing Speech", "short": "Once per long rest, give a speech: all allies within Far range clear 2 Stress." },
+      { "name": "Heart of a Poet", "short": "After an action roll to impress, persuade, or offend, spend a Hope to add a d4." },
+      { "short": "Eloquent. Once per session, when you encourage an ally, choose one: they find a mundane object or tool they need; Help an Ally without spending Hope; or they get an additional downtime move next rest." },
+      { "short": "Epic Poetry. Your Rally Die is a d10. When you Help an Ally, you can narrate it as the tale of their heroism and roll a d10 as your advantage die." }
+    ]
+  }
+}

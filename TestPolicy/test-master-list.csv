@@ -38,6 +38,53 @@ frame-pack.[s2] SRD campaign frame pack.loads on top of the core pack,0
 frame-pack.[s2] SRD campaign frame pack.no separate frame; every entry is a supplement,1
 frame-pack.[s2] SRD campaign frame pack.pool entry ids are unique and tiered items carry four tiers,0
 frame-pack.[s2] SRD campaign frame pack.pool references and tracker attachments resolve inside the frame,0
+level-patterns.[s5] leveling-pattern matrix.${classId}: named and random legal paths to level 10 replay, print inside the margins in grayscale, and stay within the page budget,0
+levelup-rules.[s5] level-up rules as data.costs, minimum level, marks, and cross-outs,0
+levelup-rules.[s5] level-up rules as data.every cross-out and class reference resolves; every entry has SRD rules text,0
+levelup-rules.[s5] level-up rules as data.has 3 achievements, 9 core advancements, 2 level steps, 3 class-specific entries,0
+levelup-rules.[s5] level-up rules as data.schema rejects a malformed option,0
+levelup-rules.[s5] level-up rules as data.slot counts per tier match the printed level-up sheet,0
+levelup-rules.[s5] level-up rules as data.tier achievements: +2 Experience and +1 Proficiency each; marks cleared at 5 and 8 only,0
+levelup.[s5] character history and versions.a tampered history is caught on replay,0
+levelup.[s5] character history and versions.history length must match the level,0
+levelup.[s5] character history and versions.leveling makes a new version and leaves the old one untouched,0
+levelup.[s5] character history and versions.replaying a built history gives no errors and matches what each level added,0
+levelup.[s5] character history and versions.version 1 saves migrate: level 1, own lineage, empty history, levelUpChoices dropped,0
+levelup.[s5] class-specific level-up steps.brawler: combo die advancement, one slot per tier,0
+levelup.[s5] class-specific level-up steps.brawler: one new stance per level from your tier or lower,0
+levelup.[s5] class-specific level-up steps.ranger: at least one companion option per level, each once; more with Expert/Advanced Training,0
+levelup.[s5] level-up rules.advancements must cost exactly 2,0
+levelup.[s5] level-up rules.each level must be the next one; max level 10,0
+levelup.[s5] level-up rules.earlier-tier slots stay open in later tiers; later tiers stay closed early,0
+levelup.[s5] level-up rules.Experience advancement: two different existing Experiences,0
+levelup.[s5] level-up rules.extra domain card: class domains, level cap by tier, no duplicates,0
+levelup.[s5] level-up rules.proficiency: +1 from the achievement at 2, 5, 8 and +1 per Proficiency advancement (costs both),0
+levelup.[s5] level-up rules.slots run out: tier 2 has 2 Hit Point slots; later tiers add their own,0
+levelup.[s5] level-up rules.swap: a previously held card for one of the same level or lower,0
+levelup.[s5] level-up rules.the level card must be at or below the level, from the class domains,0
+levelup.[s5] level-up rules.tier achievement Experience is required at 2, 5, 8 and not elsewhere,0
+levelup.[s5] level-up rules.traits: two different, unmarked; marks clear at levels 5 and 8,0
+levelup.[s5] saved versions and branches.applyLevelUp throws LevelUpError with every problem listed,0
+levelup.[s5] saved versions and branches.branch differences: only same-level versions, only the areas that differ,0
+levelup.[s5] saved versions and branches.lineages list one entry per character; versions stay separate; re-leveling an old version branches,0
+levelup.[s5] slot cap.Hit Points never pass 12: a 7 Hit Point class can take only five Hit Point slots,0
+levelup.[s5] slot cap.the level-up screen greys the option out once the cap is reached,0
+levelup.[s5] subclass upgrades and multiclass.an upgrade can target the multiclass subclass,0
+levelup.[s5] subclass upgrades and multiclass.multiclass can be taken once only,0
+levelup.[s5] subclass upgrades and multiclass.multiclass costs both advancements and adds class, domain, subclass foundation,0
+levelup.[s5] subclass upgrades and multiclass.multiclass crosses out one unused subclass upgrade, this or next tier (default this tier),0
+levelup.[s5] subclass upgrades and multiclass.multiclass domain cards are limited to half your level (rounded up),0
+levelup.[s5] subclass upgrades and multiclass.multiclass input is checked: different class, its own domain, its own subclass,0
+levelup.[s5] subclass upgrades and multiclass.multiclass needs an unused subclass upgrade left to cross out,0
+levelup.[s5] subclass upgrades and multiclass.not before level 5,0
+levelup.[s5] subclass upgrades and multiclass.only one upgraded subclass slot per tier box,0
+levelup.[s5] subclass upgrades and multiclass.subclass card goes foundation -> specialization -> mastery, then no more,0
+levelup.[s5] subclass upgrades and multiclass.subclass upgrade closes that tier multiclass box; multiclass cannot then use it,0
+multiclass-extras.[s5] multiclass extras (stances and companion follow the subclass).a Wayfinder Ranger has no companion steps,0
+multiclass-extras.[s5] multiclass extras (stances and companion follow the subclass).multiclass into Beastbound: the companion sheet now, one option per level after,0
+multiclass-extras.[s5] multiclass extras (stances and companion follow the subclass).multiclass into Juggernaut asks for no stances; a Juggernaut Brawler is never asked either,0
+multiclass-extras.[s5] multiclass extras (stances and companion follow the subclass).multiclass into Martial Artist: two Tier 1 stances now, one more per level after,0
+multiclass-extras.[s5] multiclass extras (stances and companion follow the subclass).sample sheets: a Wizard multiclassed into Martial Artist (stances) and into Beastbound (companion) print their blocks,0
 pack-report.[s2] Pack validation report.fails and names the problem when a reference is broken,0
 pack-report.[s2] Pack validation report.reports no problems for packs/core,0
 packs.[s1] Source pack loader.applies extended packs first, so overrides work regardless of input order,0
@@ -53,6 +100,12 @@ packs.[s1] Source pack validation.rejects bad entry ids,0
 packs.[s1] Source pack validation.rejects missing fields,0
 packs.[s1] Source pack validation.rejects unknown content kinds,0
 packs.[s1] Source pack validation.rejects unknown top-level keys,0
+resource-trackers.[s5] resource trackers (tokens and counters with an upper limit).Assassin tracks Toxic Concoction tokens only with the Poisoners Guild,0
+resource-trackers.[s5] resource trackers (tokens and counters with an upper limit).classes without a limited resource show none,0
+resource-trackers.[s5] resource trackers (tokens and counters with an upper limit).once-per-rest features get a circle inline after the phrase (one per use),0
+resource-trackers.[s5] resource trackers (tokens and counters with an upper limit).sample sheets render inside the margins (TestArtifacts/sheet-samples),0
+resource-trackers.[s5] resource trackers (tokens and counters with an upper limit).Warlock tracks Favor (max 6),0
+resource-trackers.[s5] resource trackers (tokens and counters with an upper limit).Witch counts Hex and token rows from the Spellcast trait,0
 rules.[s3] character rules with frames.Everyday Hero replaces the weapon and armor pools,0
 rules.[s3] character rules with frames.Feasts: Tend to Wounds, Clear Stress and Prepare replaced by Make a Feast,0
 rules.[s3] character rules with frames.Floating Magic School: flight artifact text required,0
@@ -73,6 +126,18 @@ rules.[s3] character rules.weapon rules: two-handed alone, or one-handed pair; n
 sample-packs.[s1] Sample packs end to end.a character built from pack ids resolves back against the registry,0
 sample-packs.[s1] Sample packs end to end.extension overrides core content and tags its source,0
 sample-packs.[s1] Sample packs end to end.load through the same loader as any pack,0
+sheet-levelup.[s5] sheet at level N.a level 1 character is unchanged: same numbers as deriveStats,0
+sheet-levelup.[s5] sheet at level N.assassin poisons print on the domain card sheet before any card; only the ones known at the subclass rank,0
+sheet-levelup.[s5] sheet at level N.beastbound ranger: companion block numbers follow the options taken,0
+sheet-levelup.[s5] sheet at level N.brawler stances print on the domain card sheet before any card, only the chosen ones,0
+sheet-levelup.[s5] sheet at level N.brawler: Combo Die and stances; ranger: companion options,0
+sheet-levelup.[s5] sheet at level N.damage thresholds rise with level,0
+sheet-levelup.[s5] sheet at level N.domain cards printed = every card held after swaps,0
+sheet-levelup.[s5] sheet at level N.druid elements print as a table across the top of the domain card sheet: element rows, one column per held Elemental feature,0
+sheet-levelup.[s5] sheet at level N.multiclass adds the class features, the subclass foundation and the second domain's cards,0
+sheet-levelup.[s5] sheet at level N.numbers come from the history: level, tier, Proficiency, Evasion, traits, Experience bonuses,0
+sheet-levelup.[s5] sheet at level N.sample sheets at levels 3, 5, 8 and 10 render inside the margins (files in TestArtifacts/sheet-samples),0
+sheet-levelup.[s5] sheet at level N.subclass specialization and mastery show as they are taken,0
 sheet-print.[s4] print checks.${sc.name}: everything stays inside the 0.5" margins and prints in grayscale,0
 sheet.[s4] sheet details.renders grimoire and once-per-rest cards,0
 sheet.[s4] sheet details.renders the Tech credit box in place of gold circles,0
@@ -82,6 +147,8 @@ sheet.[s4] sheet renderer.renders an empty character,0
 sheet.[s4] sheet renderer.renders every class without error,0
 sheet.[s4] sheet renderer.renders front, back and a separate domain-card sheet for a level 1 wizard,0
 sheet.[s4] sheet renderer.renders supplements with trackers and back-sheet rules,0
+short-text.[s5] condensed sheet wording.${id}: every short is no longer than the SRD text it replaces and adds no numbers,0
+short-text.[s5] condensed sheet wording.there is at least one class with condensed wording,0
 smoke.[evergreen] Smoke.runs,1
 srd-files.[s2] SRD Markdown files.every adversary and environment has tier, difficulty and features,0
 srd-files.[s2] SRD Markdown files.every relative link resolves,0

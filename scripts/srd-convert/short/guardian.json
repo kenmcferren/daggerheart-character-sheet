@@ -1,0 +1,24 @@
+{
+  "hope": "Spend 3 Hope to clear 2 Armor Slots.",
+  "features": [
+    { "name": "Unstoppable", "short": "Once per long rest, become Unstoppable and gain an Unstoppable Die (d4; d6 at level 5) on your sheet, starting on 1. After each damage roll that deals Hit Points to a target, raise it by one. When it would pass its maximum or the scene ends, remove it and drop out. While Unstoppable: reduce physical damage by one threshold; add the die’s value to damage rolls; you can’t be Restrained or Vulnerable." },
+    { "short": "" },
+    { "name": "Tip", "short": "A d4 showing 4 is removed the next time you would raise it. A d6 showing 4 goes to 5 next; remove it when you would need to go past 6." }
+  ],
+  "subclasses": {
+    "guardian.stalwart": [
+      { "name": "Unwavering", "short": "Permanent +1 to your damage thresholds." },
+      { "name": "Iron Will", "short": "When you take physical damage, you can mark an additional Armor Slot to reduce its severity." },
+      { "name": "Unrelenting", "short": "Permanent +2 to your damage thresholds." },
+      { "name": "Partners-in-Arms", "short": "When an ally within Very Close range takes damage, mark an Armor Slot to reduce its severity by one threshold." },
+      { "name": "Undaunted", "short": "Permanent +3 to your damage thresholds." },
+      { "name": "Loyal Protector", "short": "When an ally within Close range with 2 or fewer Hit Points would take damage, mark a Stress to sprint to their side and take it instead." }
+    ],
+    "guardian.vengeance": [
+      { "name": "At Ease", "short": "Gain an additional Stress slot." },
+      { "name": "Revenge", "short": "When an adversary within Melee range hits you, mark 2 Stress to force it to mark a Hit Point." },
+      { "name": "Act of Reprisal", "short": "When an adversary damages an ally within Melee range, +1 Proficiency on your next successful attack against it." },
+      { "name": "Nemesis", "short": "Spend 2 Hope to Prioritize an adversary until your next rest (one at a time). When you attack it, you can swap your Hope and Fear Dice results." }
+    ]
+  }
+}

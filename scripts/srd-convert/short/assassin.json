@@ -1,0 +1,40 @@
+{
+  "hope": "Spend 3 Hope: clear 2 Stress.",
+  "features": [
+    { "name": "Marked for Death", "short": "On a successful weapon attack, mark a Stress to make the target Marked for Death. Your damage against it adds d4s equal to your tier. Only one adversary at a time; lasts until you rest, it is defeated, or the GM spends Fear equal to your tier to clear it." },
+    { "short": "" },
+    { "name": "Get In & Get Out", "short": "Spend a Hope to ask the GM for a quick or inconspicuous way into or out of a place you can see; your next roll acting on it has advantage." }
+  ],
+  "subclasses": {
+    "assassin.executioners-guild": [
+      { "name": "First Strike", "short": "Your first successful attack each scene deals double damage." },
+      { "name": "Ambush", "short": "Marked for Death uses d6s." },
+      { "name": "Death Strike", "short": "On Severe damage, mark a Stress to make the target mark an additional Hit Point." },
+      { "name": "Scorpion’s Poise", "short": "+2 Evasion against creatures you’ve Marked for Death." },
+      { "name": "True Strike", "short": "Once per long rest, when you fail an attack, spend a Hope to make it a success." },
+      { "name": "Backstab", "short": "Marked for Death uses d8s." }
+    ],
+    "assassin.poisoners-guild": [
+      { "name": "Toxic Concoctions", "short": "Mark a Stress to place 1d4+1 tokens on this card. On a successful weapon attack, spend a token to poison the target with a poison you know (see Poisons on the domain card sheet). Long rest: clear unspent tokens.",
+        "cards": { "label": "Poison", "items": [
+          { "name": "Ghost Petal", "short": "The target becomes temporarily Vulnerable." },
+          { "name": "Grave Spore", "short": "The target also marks a Stress." },
+          { "name": "Leech Weed", "short": "Deal an extra 1d6 damage on this attack." }
+        ] } },
+      { "short": "" },
+      { "name": "Poison Compendium", "short": "You also know more poisons (see the domain card sheet).",
+        "cards": { "label": "Poison", "items": [
+          { "name": "Midnight Vine", "short": "The target has disadvantage on attack rolls until it marks a Stress to clear this." },
+          { "name": "Gorgon Root", "short": "The target becomes temporarily Restrained." }
+        ] } },
+      { "name": "Twin Fang", "short": "When you poison a Marked for Death target, spend one more token to also apply a second poison you know." },
+      { "name": "Venomancer", "short": "You also know more poisons (see the domain card sheet).",
+        "cards": { "label": "Poison", "items": [
+          { "name": "Blight Seed", "short": "The target gets -3 to its damage thresholds until the end of the scene; it doesn’t stack." },
+          { "name": "Fear Leaf", "short": "Deal extra damage equal to your Fear Die result on this attack." },
+          { "name": "Corpse Thorn", "short": "The target has disadvantage on reaction rolls until the end of the scene." }
+        ] } },
+      { "name": "Adder’s Blessing", "short": "You are immune to poisons and other toxins." }
+    ]
+  }
+}

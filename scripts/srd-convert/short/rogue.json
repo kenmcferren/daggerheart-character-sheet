@@ -1,0 +1,21 @@
+{
+  "hope": "Spend 3 Hope for +2 Evasion until an attack next succeeds against you; otherwise it lasts until your next rest.",
+  "features": [
+    { "name": "Cloaked", "short": "When you would be Hidden, you are Cloaked instead: the benefits of Hidden, and you stay unseen if stationary when an adversary moves to where they would see you. You stop being Cloaked after you attack or end a move in an adversary’s line of sight." },
+    { "name": "Sneak Attack", "short": "When you succeed on an attack while Cloaked or while an ally is within Melee range of your target, add d6s equal to your tier to the damage roll (level 1: Tier 1; 2–4: Tier 2; 5–7: Tier 3; 8–10: Tier 4)." }
+  ],
+  "subclasses": {
+    "rogue.nightwalker": [
+      { "name": "Shadow Stepper", "short": "When you move into darkness or another creature’s or object’s shadow, mark a Stress to vanish and reappear in another shadow within Far range, Cloaked." },
+      { "name": "Dark Cloud", "short": "Spellcast Roll (15): create a temporary dark cloud over an area within Close range. No one can see into or out of it, and you’re Cloaked from any adversary it blocks." },
+      { "name": "Adrenaline", "short": "While Vulnerable, add your level to your damage rolls." },
+      { "name": "Fleeting Shadow", "short": "Permanent +1 Evasion. Shadow Stepper works within Very Far range." },
+      { "name": "Vanishing Act", "short": "Mark a Stress to become Cloaked at any time, and automatically clear Restrained. You stay Cloaked this way until you roll with Fear or your next rest." }
+    ],
+    "rogue.syndicate": [
+      { "name": "Well-Connected", "short": "When you arrive in a prominent town or environment, you know someone who lives there. Name them, note how they could help, and choose one: they owe you a favor but are hard to find; they’ll want something in exchange; they’re always in trouble; you used to be together; you didn’t part on good terms." },
+      { "name": "Contacts Everywhere", "short": "Once per session, call on a shady contact and choose one: 1 handful of gold, a unique tool, or a mundane object the situation needs; +3 to the result of your next action roll’s Hope or Fear Die; the next time you deal damage, they add 2d8 to it." },
+      { "name": "Reliable Backup", "short": "Use Contacts Everywhere three times per session. Added options: when you mark Hit Points, they reduce the Hit Points marked by 1; when you make a Presence Roll in conversation, you can roll a d20 as your Hope Die." }
+    ]
+  }
+}

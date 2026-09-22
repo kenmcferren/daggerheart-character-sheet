@@ -1,18 +1,26 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { Character } from '../engine/character'
 import { importCharacter } from '../engine/character'
-import { allSupplements, setupFor, store } from './data'
+import { validateCreation } from '../engine/rules'
+import { MAX_LEVEL } from '../engine/levelup'
+import { allSupplements, setupFor, setupOf, store } from './data'
+import { Versions } from './Versions'
 
 const CHECK_BLOCKED = 'Fix the conflicts above (deselect one of the sources) to start.'
 
-export function Start({ onStart, onOpen }: { onStart: (supplements: string[]) => void; onOpen: (c: Character) => void }) {
+export function Start({ onStart, onOpen, onLevelUp }: { onStart: (supplements: string[]) => void; onOpen: (c: Character) => void; onLevelUp: (c: Character) => void }) {
   const supplements = useMemo(() => allSupplements(), [])
   const [supps, setSupps] = useState<string[]>([])
-  const [saved, setSaved] = useState<Character[]>([])
+  const [saved, setSaved] = useState<{ latest: Character; versionCount: number }[]>([])
+  const [showVersions, setShowVersions] = useState<string | null>(null)
+  const [versions, setVersions] = useState<Character[]>([])
   const [corrupt, setCorrupt] = useState<string[]>([])
   const [msg, setMsg] = useState('')
   const setup = useMemo(() => setupFor(null, supps), [supps])
-  const refresh = () => store.list().then((r) => { setSaved(r.characters); setCorrupt(r.corruptIds) }).catch((e) => setMsg(String(e)))
+  const refresh = () => Promise.all([store.lineages(), store.list()]).then(([l, r]) => { setSaved(l); setCorrupt(r.corruptIds) }).catch((e) => setMsg(String(e)))
+  const openVersions = async (lineageId: string | null) => { setShowVersions(lineageId); setVersions(lineageId ? await store.versionsOf(lineageId) : []) }
+  /** Level 1 characters can level up once creation is complete; the reason is shown otherwise. */
+  const blockReason = (c: Character) => (c.level >= MAX_LEVEL ? 'Highest level reached' : validateCreation(c, setupOf(c)).length ? 'Finish creation first' : '')
   useEffect(() => { void refresh() }, [])
 
   const toggle = (id: string) => setSupps((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]))
@@ -57,11 +65,14 @@ export function Start({ onStart, onOpen }: { onStart: (supplements: string[]) =>
         {msg && <p className="issues" role="alert">{msg}</p>}
         {saved.length === 0 && <p className="hint">None yet.</p>}
         <ul className="saved">
-          {saved.map((c) => (
-            <li key={c.id}>
+          {saved.map(({ latest: c, versionCount }) => (
+            <li key={c.lineageId}>
               <button type="button" className="link" onClick={() => onOpen(c)}>{c.name || 'Unnamed character'}</button>
-              <span className="meta">{c.choices.classId ?? 'no class yet'} · {namesOf(c) || 'no campaign options'} · {new Date(c.updatedAt).toLocaleString()}</span>
-              <button type="button" onClick={async () => { if (confirm(`Delete ${c.name || 'this character'}?`)) { await store.remove(c.id); await refresh() } }}>Delete</button>
+              <span className="meta">{c.choices.classId ?? 'no class yet'} · level {c.level} · {namesOf(c) || 'no campaign options'} · {new Date(c.updatedAt).toLocaleString()}</span>
+              <button type="button" className="primary" disabled={!!blockReason(c)} title={blockReason(c)} onClick={() => onLevelUp(c)}>Level up</button>
+              {versionCount > 1 && <button type="button" onClick={() => void openVersions(showVersions === c.lineageId ? null : c.lineageId)}>{versionCount} versions</button>}
+              <button type="button" onClick={async () => { if (confirm(`Delete ${c.name || 'this character'} and all ${versionCount} saved version(s)?`)) { await store.removeLineage(c.lineageId); await refresh() } }}>Delete</button>
+              {showVersions === c.lineageId && <div style={{ flexBasis: '100%' }}><Versions versions={versions} onOpen={onOpen} onLevelUp={onLevelUp} onChanged={() => { void refresh(); void openVersions(c.lineageId) }} /></div>}
             </li>
           ))}
         </ul>

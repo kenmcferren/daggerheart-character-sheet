@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import type { Character, Creation } from '../engine/character'
 import type { CreationSetup } from '../engine/creation'
 import type { Issue } from '../engine/rules'
+import { titleCase } from './util'
 
 export interface Ctx {
   ch: Character
@@ -32,12 +33,12 @@ export function Notes({ setup, target }: { setup: CreationSetup; target: string 
   return <div className="note">{notes.map((n, i) => <p key={i}>{n.text}</p>)}</div>
 }
 
-export function Choice({ selected, onPick, title, meta, children }: {
-  selected: boolean; onPick: () => void; title: string; meta?: string; children?: ReactNode
+export function Choice({ selected, onPick, title, meta, disabled, children }: {
+  selected: boolean; onPick: () => void; title: string; meta?: string; disabled?: boolean; children?: ReactNode
 }) {
   return (
     <div className={`choice${selected ? ' selected' : ''}`}>
-      <button type="button" className="pick" aria-pressed={selected} onClick={onPick}>
+      <button type="button" className="pick" aria-pressed={selected} disabled={disabled} onClick={onPick}>
         <span className="title">{title}</span>{meta && <span className="meta">{meta}</span>}
       </button>
       {children}
@@ -48,3 +49,40 @@ export function Choice({ selected, onPick, title, meta, children }: {
 export const StepIssues = ({ issues }: { issues: Issue[] }) =>
   issues.length ? <ul className="issues" role="alert">{issues.map((i, n) => <li key={n}>{i.message}</li>)}</ul> : null
 
+
+export interface PickItem { id: string; title: string; meta?: string; details?: ReactNode; disabled?: boolean }
+
+/** A set of buttons, each with its details in a light dropdown; use instead of a select. */
+export function PickGrid({ items, selected, onPick }: { items: PickItem[]; selected: string[]; onPick: (id: string) => void }) {
+  return (
+    <div className="grid">
+      {items.map((i) => (
+        <Choice key={i.id} title={i.title} meta={i.meta} disabled={i.disabled} selected={selected.includes(i.id)} onPick={() => onPick(i.id)}>
+          {i.details && <Details>{i.details}</Details>}
+        </Choice>
+      ))}
+    </div>
+  )
+}
+
+/** Domain cards as one section per domain (class domains first), each card a button with its rules in a dropdown. */
+export function CardPicker({ cards, selected, onPick, domainOrder = [] }: {
+  cards: { id: string; name: string; domain: string; level: number; type: string; recallCost: number; rules: string }[]
+  selected: string[]; onPick: (id: string) => void; domainOrder?: string[]
+}) {
+  const domains = [...new Set([...domainOrder, ...cards.map((c) => c.domain).sort()])].filter((d) => cards.some((c) => c.domain === d))
+  if (!cards.length) return <p className="hint">No cards are available.</p>
+  return (
+    <>
+      {domains.map((d) => (
+        <section key={d}>
+          <h3>{titleCase(d)}</h3>
+          <PickGrid selected={selected} onPick={onPick}
+            items={cards.filter((c) => c.domain === d).sort((a, b) => a.level - b.level || a.name.localeCompare(b.name)).map((c) => ({
+              id: c.id, title: c.name, meta: `Level ${c.level} · ${titleCase(c.type)} · Recall ${c.recallCost}`, details: <Rules text={c.rules} />,
+            }))} />
+        </section>
+      ))}
+    </>
+  )
+}

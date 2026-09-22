@@ -1,0 +1,44 @@
+{
+  "hope": "Spend 3 Hope to make a target within Close range temporarily Vulnerable.",
+  "features": [
+    { "name": "I Am the Weapon", "short": "With no other Active Weapon, you wield Brawler’s Strike as a primary weapon: trait of your choice, Melee range, d8+d6 physical damage (both dice scale with Proficiency). While it is active, +1 Evasion." },
+    { "name": "Combo Strike", "short": "After rolling damage on a successful Melee weapon attack, mark a Stress to start a combo strike: roll your Combo Die and keep rolling until a result is lower than the one before. Deal extra damage equal to the total of all results (they can’t be modified). Combo Die starts as a d4; once per tier, increase it one step as a level advancement option." },
+    { "short": "" }
+  ],
+  "subclasses": {
+    "brawler.juggernaut": [
+      { "name": "Rugged", "short": "Permanent +3 to your Severe damage threshold." },
+      { "name": "Overwhelm", "short": "On a successful attack, spend a Hope to throw the target (within Close range) or force them to mark a Stress." },
+      { "name": "Surrounded", "short": "When you attack with a Melee weapon, spend any number of Hope to target that many additional creatures within Melee range." },
+      { "name": "Eye for an Eye", "short": "Once per rest, when an adversary within Melee range forces you to mark Hit Points, mark a Stress to force them to mark the same number." },
+      { "name": "Pummeljoy", "short": "On a critical success with a Melee weapon attack: gain a Hope, clear a Stress, and +1 Proficiency for that attack." },
+      { "name": "Not Done Yet", "short": "When you take Severe damage, gain a Hope or clear a Stress." }
+    ],
+    "brawler.martial-artist": [
+      { "name": "Stance Fighter", "short": "Shift into martial stances for special combat benefits. Take the Martial Stances sheet and choose two Tier 1 stances; each level-up, choose another from your tier or lower." },
+      { "short": "" },
+      { "name": "Keen Defenses", "short": "When targeted by an attack, spend a Focus for a bonus to Evasion equal to your tier against it." },
+      { "name": "Focus Cannon", "short": "Spend a Focus to make an Instinct Roll against an adversary within Far range. On a success, deal d20+3 magic damage using your Proficiency." },
+      { "name": "Limit Breaker", "short": "Once per rest, perform an unbelievable athletic feat (run across water, leap between rooftops, scale a building) without rolling; gain a Hope and clear a Stress." },
+      { "name": "Flow State", "short": "Mark a Stress instead of spending a Focus to change stance. Spend a Focus instead of marking a Stress to start a combo strike." }
+    ]
+  },
+  "stances": {
+    "favored": "Bonus to damage rolls equal to a trait of your choice.",
+    "invigorating": "On a successful attack, roll a d4; on a 4, gain a Focus.",
+    "quick": "When you attack, spend a Focus or mark a Stress to also target another creature in range.",
+    "reliable": "+1 to attack rolls.",
+    "aggressive": "-1 Evasion. On a successful attack, roll an additional damage die and drop the lowest.",
+    "anchored": "+2 to damage thresholds; you can’t be moved against your will.",
+    "defensive": "Melee-range attacks against you have disadvantage unless the attacker marks a Stress.",
+    "otherworldly": "On a successful attack, deal physical or magic damage.",
+    "grappling": "On a successful Melee-range attack, spend a Focus or mark a Stress to temporarily Restrain the target or throw it up to Close range.",
+    "scary": "On a successful attack, the target marks a Stress.",
+    "stable": "Spend a Focus instead of an Armor Slot to reduce damage.",
+    "vigilant": "When targeted by an attack, mark a Stress for a d6 bonus to Evasion against it.",
+    "crushing": "On Severe damage, spend a Hope to force the target to mark an additional Hit Point.",
+    "exacting": "A 1 on a damage die counts as the die’s highest value.",
+    "honed": "Spend a Focus before an attack roll for +1 Proficiency on that attack.",
+    "isolating": "Advantage on attack rolls when no other creatures are within Very Close range of you or your target."
+  }
+}

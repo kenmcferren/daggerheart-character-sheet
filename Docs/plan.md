@@ -33,10 +33,7 @@ Archived: `Docs/archive/series-3.md`.
 Archived: `Docs/archive/series-4.md`.
 
 ## Series 5: Level-up
-Status: next (owner chose this ahead of the math pass)
-1. [ ] Level-up rules as data (per-tier options)
-2. [ ] Guided level-up flow, saved history per character
-3. [ ] Regenerate PDF at new level
+Archived: `Docs/archive/series-5.md`.
 
 ## Series 6: Custom sources
 Status: in progress
@@ -48,4 +45,5 @@ Owner (with Claude) writes the third-party ports; no external authors. Packs liv
 
 ## Series 7: Rules math pass
 Status: not started (after level-up)
+Also condense the class, subclass and rules text for the 4-page level 10 target (see long-term list).
 Apply number-changing features to the sheet (e.g. Mage Robes: bonus to damage thresholds equal to Spellcast trait; "+1 Evasion" style features). Start by listing every armor, weapon, card and class feature that changes a number; owner approves the list before code.

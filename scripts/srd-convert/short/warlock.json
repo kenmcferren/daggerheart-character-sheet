@@ -1,0 +1,26 @@
+{
+  "hope": "When you fail a roll, spend 3 Hope to reroll with advantage.",
+  "features": [
+    { "name": "Patron’s Pact", "short": "You are committed to a supernatural entity (a god, fae, demon, etc.) in exchange for power. Write their name here and work with the GM on their sphere of influence (Nature, Chaos, Wisdom, Mischief, Love, War, Justice, Death, etc.). Before an action roll related to that sphere, spend a Favor to roll your Patron Die and add it to the total. It starts at a d6 and becomes a d8 at level 5." },
+    { "name": "Favor", "short": "Start with 3 Favor, holding at most 6. As a downtime move, show tribute to your patron and gain Favor equal to your Spellcast trait. When you succeed on an action roll with Hope, you can gain a Favor instead of a Hope." },
+    { "name": "Note", "short": "" }
+  ],
+  "subclasses": {
+    "warlock.pact-of-the-endless": [
+      { "name": "Patron’s Mantle", "short": "Spend a Favor to cloak yourself in a terrifying aspect of your Patron until you take Severe damage or the scene ends. While active, +your tier to damage thresholds and advantage on rolls to intimidate." },
+      { "name": "Deathless Embrace", "short": "Once per rest, spend any number of Favor to roll that many Patron Dice. For each 4 or higher, clear a Hit Point." },
+      { "name": "Harrowing Invocation", "short": "When an adversary attacks you or an ally within Very Close range, spend a Favor to give them disadvantage. If they fail, they also mark a Stress." },
+      { "name": "Damage Sink", "short": "Once per rest, spend a Favor to halve incoming damage." },
+      { "name": "Dark Aegis", "short": "Once per long rest, when you would take damage, spend a Favor instead of marking Hit Points." },
+      { "name": "Draining Bane", "short": "When an adversary attacks you or an ally within Very Close range, spend a Favor to Drain them: they mark a Stress and you can clear a Stress. A Drained target uses a d12 instead of a d20 for attack rolls (including advantage or disadvantage) until they fail a roll." }
+    ],
+    "warlock.pact-of-the-wrathful": [
+      { "name": "Patron’s Fury", "short": "Spend a Favor to imbue your attacks until you deal Severe damage or the scene ends. When you roll damage while active, also roll Patron Dice equal to your tier and add their total to the damage." },
+      { "name": "Deadly Vengeance", "short": "When you mark Hit Points from an attack, spend a Favor to roll that many Patron Dice. For each 4 or higher, the attacker marks a Hit Point." },
+      { "name": "Menacing Reach", "short": "Spend a Favor to raise your primary weapon’s range one step (Melee to Very Close, etc.), up to Very Far. It ends when you make a successful attack with that weapon." },
+      { "name": "Diminish My Foes", "short": "When you succeed with Hope on an action roll against a target, spend any number of Favor to make them mark that many Stress." },
+      { "name": "Fearsome Attack", "short": "Spend a Favor to reroll any number of your damage dice. You can keep spending Favor on the same damage roll." },
+      { "name": "Otherworldly Ire", "short": "Once per rest, when you take damage, spend any number of Favor to roll that many Patron Dice and target creatures within Close range equal to the highest result. Each marks a Hit Point." }
+    ]
+  }
+}

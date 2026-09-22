@@ -90,7 +90,10 @@
           }
         },
         "levelUpOptions": {
-          "$ref": "#/definitions/entries"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/levelUpOption"
+          }
         }
       }
     },
@@ -234,6 +237,78 @@
             "scene",
             "session"
           ]
+        },
+        "short": {
+          "type": "string",
+          "description": "Condensed wording for the printed sheet; \"\" = print nothing (folded into the previous feature)."
+        },
+        "sheetCards": {
+          "type": "object",
+          "required": [
+            "label",
+            "items"
+          ],
+          "description": "Items printed as their own blocks on the domain card sheet (e.g. poisons).",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "short"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "short": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "sheetTable": {
+          "type": "object",
+          "required": [
+            "title",
+            "rows"
+          ],
+          "description": "One column of a table printed across the top of the domain card sheet; the row names are shared by the subclass features.",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "rows": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "short"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "short": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "trackers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/tracker"
+          }
         }
       }
     },
@@ -626,6 +701,10 @@
                       },
                       "rules": {
                         "type": "string"
+                      },
+                      "short": {
+                        "type": "string",
+                        "description": "Condensed wording for the printed sheet; \"\" = print nothing (folded into the previous feature)."
                       }
                     }
                   }
@@ -656,6 +735,10 @@
                   },
                   "rules": {
                     "type": "string"
+                  },
+                  "short": {
+                    "type": "string",
+                    "description": "Condensed wording for the printed sheet; \"\" = print nothing (folded into the previous feature)."
                   }
                 }
               }
@@ -948,6 +1031,119 @@
                   }
                 }
               }
+            }
+          }
+        }
+      ]
+    },
+    "levelUpOption": {
+      "description": "A level-up rule: a tier achievement, a choosable advancement (slots per tier), a fixed per-level step, or a class-specific one (classId).",
+      "allOf": [
+        {
+          "$ref": "#/definitions/entry"
+        },
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "rules"
+          ],
+          "properties": {
+            "kind": {
+              "enum": [
+                "tier-achievement",
+                "advancement",
+                "level-step"
+              ]
+            },
+            "rules": {
+              "type": "string",
+              "minLength": 1
+            },
+            "classId": {
+              "$ref": "#/definitions/id"
+            },
+            "effect": {
+              "enum": [
+                "traits",
+                "hit-point",
+                "stress",
+                "experience",
+                "domain-card",
+                "evasion",
+                "subclass-upgrade",
+                "proficiency",
+                "multiclass",
+                "combo-die",
+                "thresholds",
+                "level-domain-card",
+                "stance",
+                "companion-option"
+              ]
+            },
+            "slots": {
+              "type": "object",
+              "additionalProperties": false,
+              "patternProperties": {
+                "^[234]$": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "cost": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2
+            },
+            "minLevel": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10
+            },
+            "marksTraits": {
+              "type": "boolean"
+            },
+            "crossesOut": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "option",
+                  "scope"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "option": {
+                    "$ref": "#/definitions/id"
+                  },
+                  "scope": {
+                    "enum": [
+                      "tier",
+                      "one",
+                      "all"
+                    ]
+                  }
+                }
+              }
+            },
+            "count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "level": {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 10
+            },
+            "newExperience": {
+              "type": "integer"
+            },
+            "proficiency": {
+              "type": "integer"
+            },
+            "clearTraitMarks": {
+              "type": "boolean"
             }
           }
         }

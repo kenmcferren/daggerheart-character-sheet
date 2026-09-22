@@ -1,0 +1,22 @@
+{
+  "hope": "Spend 3 Hope to reroll any number of damage dice on an attack that deals magic damage.",
+  "features": [
+    { "name": "Arcane Sense", "short": "Sense magical people and objects within Close range." },
+    { "name": "Minor Illusion", "short": "Spellcast Roll (10): create a minor visual illusion no larger than yourself within Close range, convincing to anyone at Close range or farther." },
+    { "name": "Channel Raw Power", "short": "Once per long rest, move a domain card from your loadout to your vault and either gain Hope equal to its level, or enhance a damage spell for a bonus to the damage roll equal to twice its level." }
+  ],
+  "subclasses": {
+    "sorcerer.elemental-origin": [
+      { "name": "Elementalist", "short": "At character creation, choose an element: air, earth, fire, lightning, or water. You can shape it into harmless effects. Spend a Hope and describe how your control of it helps an action roll you’re about to make, for +2 to the roll or +3 to its damage." },
+      { "short": "" },
+      { "short": "" },
+      { "name": "Natural Evasion", "short": "When an attack roll against you succeeds, mark a Stress and describe how your element defends you; roll a d6 and add it to your Evasion against the attack." },
+      { "name": "Transcendence", "short": "Once per long rest, transform into a manifestation of your element and choose two benefits until your next rest: +4 Severe threshold; +1 to a trait of your choice; +1 Proficiency; +2 Evasion." }
+    ],
+    "sorcerer.primal-origin": [
+      { "name": "Manipulate Magic", "short": "After you cast a spell or make a magic-damage weapon attack, mark a Stress to do one: extend its reach by one range; +2 to the action roll’s result; double a damage die of your choice; hit an additional target within range." },
+      { "name": "Enchanted Aid", "short": "When you Help an Ally with a Spellcast Roll, roll a d8 as your advantage die. Once per long rest, after an ally’s helped Spellcast Roll, swap the results of their Duality Dice." },
+      { "name": "Arcane Charge", "short": "When you take magic damage, or spend 2 Hope, you become Charged. When you succeed on a magic-damage attack while Charged, clear the Charge for +10 to the damage roll or +3 to the Difficulty of a reaction roll the spell forces on the target. You stop being Charged at your next long rest." }
+    ]
+  }
+}

@@ -15,7 +15,7 @@ export async function downloadSheet(ch: Character, setup: CreationSetup) {
   const url = URL.createObjectURL(new Blob([pdf as BlobPart], { type: 'application/pdf' }))
   const a = document.createElement('a')
   a.href = url
-  a.download = `${(ch.name || 'character').replace(/[^\w-]+/g, '-')}.pdf`
+  a.download = `${(ch.name || 'character').replace(/[^\w-]+/g, '-')}-level-${ch.level}.pdf`
   a.click()
   URL.revokeObjectURL(url)
 }

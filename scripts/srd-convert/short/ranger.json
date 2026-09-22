@@ -1,0 +1,32 @@
+{
+  "hope": "Spend 3 Hope when you succeed on a weapon attack to use that roll against two additional adversaries within range.",
+  "features": [
+    { "name": "Ranger’s Focus", "short": "Spend a Hope and make an attack. On a success, deal normal damage and make the target your Focus until this ends or you choose a different Focus. Against your Focus: you know their exact direction; when you deal damage to them, they mark a Stress; when you fail an attack against them, you can end this feature to reroll your Duality Dice." }
+  ],
+  "subclasses": {
+    "ranger.beastbound": [
+      { "name": "Companion", "short": "You have an animal companion (GM’s discretion) who stays by your side unless you say otherwise." },
+      { "short": "Take the Ranger Companion sheet. When you level up, also choose a level-up option for your companion." },
+      { "name": "Expert Training", "short": "Choose an additional companion level-up option." },
+      { "name": "Battle-Bonded", "short": "When an adversary attacks you within your companion’s Melee range, +2 Evasion against the attack." },
+      { "name": "Advanced Training", "short": "Choose two additional companion level-up options." },
+      { "name": "Loyal Friend", "short": "Once per long rest, when damage would mark your companion’s last Stress or your last Hit Point and you’re within Close range of each other, either of you can rush to the other’s side and take it instead." }
+    ],
+    "ranger.wayfinder": [
+      { "name": "Ruthless Predator", "short": "When you make a damage roll, mark a Stress for +1 Proficiency. When you deal Severe damage to an adversary, they mark a Stress." },
+      { "name": "Path Forward", "short": "When traveling to a place you’ve visited, or carrying an object that has been there, you can identify the shortest, most direct path." },
+      { "name": "Elusive Predator", "short": "When your Focus attacks you, +2 Evasion against the attack." },
+      { "name": "Apex Predator", "short": "Before you attack your Focus, you can spend a Hope. On a success, remove a Fear from the GM’s Fear pool." }
+    ]
+  },
+  "companion": {
+    "intelligent": "+1 to a Companion Experience of your choice.",
+    "light-in-the-dark": "An additional Hope slot you can mark.",
+    "creature-comfort": "Once per rest, in a quiet moment of attention to your companion, gain a Hope or both clear a Stress.",
+    "armored": "When your companion takes damage, you can mark one of your Armor Slots instead of one of their Stress.",
+    "vicious": "Raise your companion’s damage dice or range one step (d6 to d8, Close to Far, etc.).",
+    "resilient": "Your companion gains an additional Stress slot.",
+    "bonded": "When you mark your last Hit Point, your companion rushes to you: roll d6s equal to their unmarked Stress slots and mark them. If any roll a 6, clear your last Hit Point and return to the scene.",
+    "aware": "Your companion gains +2 Evasion."
+  }
+}

@@ -14,3 +14,9 @@ Out-of-scope ideas and deferred work. Nothing here is in the current step.
 - [ ] Rules math pass: armor/weapon/card features that change numbers (e.g. Mage Robes: bonus to damage thresholds equal to Spellcast trait; "+1 to Evasion" style features) are printed as text only and not applied to Evasion, thresholds, Armor Score. Owner wants a sweep of these "gotchas" after the layout is settled.
 
 - [ ] Render markdown tables in campaign rules on the sheet (Tech Scrap table etc. currently print as raw pipe text).
+
+- [ ] Saved versions list (Start screen and character screen) needs a visual touch-up: layout, tree indentation, and how the branch differences (Subclass, Domain cards, Experiences, Multiclass) are shown. Owner to specify.
+
+- [ ] Condense class, subclass, ancestry/community and campaign rules text (pithier wording, fewer line breaks in domain cards) so level 10 sheets fit in 4 pages; do alongside the Series 7 rules math pass. Current level 10 audit: max 6 pages, 63 of 208 paths at 4, 39 at 5, 7 at 6.
+
+- [ ] Druid forms special page: print the Beastform definitions (the Druid sheet now says "see SRD for the forms"; the 24 beastforms are not printed anywhere).
