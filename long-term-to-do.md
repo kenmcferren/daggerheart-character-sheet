@@ -19,4 +19,4 @@ Out-of-scope ideas and deferred work. Nothing here is in the current step.
 
 - [ ] Condense class, subclass, ancestry/community and campaign rules text (pithier wording, fewer line breaks in domain cards) so level 10 sheets fit in 4 pages; do alongside the Series 7 rules math pass. Current level 10 audit: max 6 pages, 63 of 208 paths at 4, 39 at 5, 7 at 6.
 
-- [ ] Druid forms special page: print the Beastform definitions (the Druid sheet now says "see SRD for the forms"; the 24 beastforms are not printed anywhere).
+- [ ] Druid forms special page: print the Beastform definitions (the Druid sheet now says "see SRD for the forms"; the 24 beastforms are not printed anywhere). Owner (2026-09-22): each form should show its own derived stats (Evasion, thresholds, etc.), computed from the character's own sheet plus that form's modifications, not just the raw SRD form text.

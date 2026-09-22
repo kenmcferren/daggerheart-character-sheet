@@ -1623,7 +1623,14 @@
             "name": "Scorpion’s Poise",
             "rules": "You gain a +2 bonus to your Evasion against attacks made by a creature you’ve Marked for Death.",
             "level": "specialization",
-            "short": "+2 Evasion against creatures you’ve Marked for Death."
+            "short": "+2 Evasion against creatures you’ve Marked for Death.",
+            "statNote": {
+              "kind": "situational",
+              "stats": [
+                "evasion"
+              ],
+              "text": "+2 Evasion against a creature you’ve Marked for Death."
+            }
           },
           {
             "name": "True Strike",
@@ -1802,7 +1809,10 @@
             "name": "Rugged",
             "rules": "Gain a permanent +3 bonus to your Severe damage threshold.",
             "level": "foundation",
-            "short": "Permanent +3 to your Severe damage threshold."
+            "short": "Permanent +3 to your Severe damage threshold.",
+            "statBonus": {
+              "severeThreshold": 3
+            }
           },
           {
             "name": "Overwhelm",
@@ -2014,7 +2024,11 @@
             "name": "Unwavering",
             "rules": "Gain a permanent +1 bonus to your damage thresholds.",
             "level": "foundation",
-            "short": "Permanent +1 to your damage thresholds."
+            "short": "Permanent +1 to your damage thresholds.",
+            "statBonus": {
+              "majorThreshold": 1,
+              "severeThreshold": 1
+            }
           },
           {
             "name": "Iron Will",
@@ -2026,7 +2040,11 @@
             "name": "Unrelenting",
             "rules": "Gain a permanent +2 bonus to your damage thresholds.",
             "level": "specialization",
-            "short": "Permanent +2 to your damage thresholds."
+            "short": "Permanent +2 to your damage thresholds.",
+            "statBonus": {
+              "majorThreshold": 2,
+              "severeThreshold": 2
+            }
           },
           {
             "name": "Partners-in-Arms",
@@ -2038,7 +2056,11 @@
             "name": "Undaunted",
             "rules": "Gain a permanent +3 bonus to your damage thresholds.",
             "level": "mastery",
-            "short": "Permanent +3 to your damage thresholds."
+            "short": "Permanent +3 to your damage thresholds.",
+            "statBonus": {
+              "majorThreshold": 3,
+              "severeThreshold": 3
+            }
           },
           {
             "name": "Loyal Protector",
@@ -2105,7 +2127,14 @@
             "name": "Battle-Bonded",
             "rules": "When an adversary attacks you while they’re within your companion’s Melee range, you gain a +2 bonus to your Evasion against the attack.",
             "level": "specialization",
-            "short": "When an adversary attacks you within your companion’s Melee range, +2 Evasion against the attack."
+            "short": "When an adversary attacks you within your companion’s Melee range, +2 Evasion against the attack.",
+            "statNote": {
+              "kind": "situational",
+              "stats": [
+                "evasion"
+              ],
+              "text": "+2 Evasion against an attack from within your companion’s Melee range."
+            }
           },
           {
             "name": "Advanced Training",
@@ -2143,7 +2172,14 @@
             "name": "Elusive Predator",
             "rules": "When your Focus makes an attack against you, you gain a +2 bonus to your Evasion against the attack.",
             "level": "specialization",
-            "short": "When your Focus attacks you, +2 Evasion against the attack."
+            "short": "When your Focus attacks you, +2 Evasion against the attack.",
+            "statNote": {
+              "kind": "situational",
+              "stats": [
+                "evasion"
+              ],
+              "text": "+2 Evasion against an attack from your Focus target."
+            }
           },
           {
             "name": "Apex Predator",
@@ -2181,7 +2217,10 @@
             "name": "Fleeting Shadow",
             "rules": "Gain a permanent +1 bonus to your Evasion. You can use your “Shadow Stepper” feature to move within Very Far range.",
             "level": "mastery",
-            "short": "Permanent +1 Evasion. Shadow Stepper works within Very Far range."
+            "short": "Permanent +1 Evasion. Shadow Stepper works within Very Far range.",
+            "statBonus": {
+              "evasion": 1
+            }
           },
           {
             "name": "Vanishing Act",
@@ -2271,7 +2310,10 @@
             "name": "Ascendant",
             "rules": "Gain a permanent +4 bonus to your Severe damage threshold.",
             "level": "mastery",
-            "short": "Permanent +4 to your Severe damage threshold."
+            "short": "Permanent +4 to your Severe damage threshold.",
+            "statBonus": {
+              "severeThreshold": 4
+            }
           },
           {
             "name": "Power of the Gods",
@@ -2756,7 +2798,12 @@
         "features": [
           {
             "name": "Stoneskin",
-            "rules": "Gain a permanent +1 bonus to your Armor Score and damage thresholds at character creation."
+            "rules": "Gain a permanent +1 bonus to your Armor Score and damage thresholds at character creation.",
+            "statBonus": {
+              "armorScore": 1,
+              "majorThreshold": 1,
+              "severeThreshold": 1
+            }
           },
           {
             "name": "Immovable",
@@ -2998,7 +3045,10 @@
           },
           {
             "name": "Nimble",
-            "rules": "Gain a permanent +1 bonus to your Evasion at character creation."
+            "rules": "Gain a permanent +1 bonus to your Evasion at character creation.",
+            "statBonus": {
+              "evasion": 1
+            }
           }
         ]
       },
@@ -3634,7 +3684,15 @@
         "level": 4,
         "type": "ability",
         "recallCost": 0,
-        "rules": "While you are wearing armor, gain a +2 bonus to your damage thresholds."
+        "rules": "While you are wearing armor, gain a +2 bonus to your damage thresholds.",
+        "statNote": {
+          "kind": "build",
+          "stats": [
+            "majorThreshold",
+            "severeThreshold"
+          ],
+          "text": "+2 damage thresholds while wearing armor."
+        }
       },
       {
         "id": "champions-edge",
@@ -5027,7 +5085,14 @@
         "level": 8,
         "type": "ability",
         "recallCost": 2,
-        "rules": "Your prowess is enhanced under the cover of shadow. While you’re shrouded in low light or darkness, you gain a +1 bonus to your Evasion and make attack rolls with advantage."
+        "rules": "Your prowess is enhanced under the cover of shadow. While you’re shrouded in low light or darkness, you gain a +1 bonus to your Evasion and make attack rolls with advantage.",
+        "statNote": {
+          "kind": "situational",
+          "stats": [
+            "evasion"
+          ],
+          "text": "+1 Evasion while shrouded in low light or darkness."
+        }
       },
       {
         "id": "spellcharge",
@@ -5760,7 +5825,14 @@
         "level": 5,
         "type": "ability",
         "recallCost": 1,
-        "rules": "While you’re wearing armor, gain a +1 bonus to your Armor Score.\nDuring a rest, when you choose to repair your armor as a downtime move, your allies also clear an Armor Slot."
+        "rules": "While you’re wearing armor, gain a +1 bonus to your Armor Score.\nDuring a rest, when you choose to repair your armor as a downtime move, your allies also clear an Armor Slot.",
+        "statNote": {
+          "kind": "build",
+          "stats": [
+            "armorScore"
+          ],
+          "text": "+1 Armor Score while wearing armor."
+        }
       },
       {
         "id": "rousing-strike",
@@ -5893,7 +5965,15 @@
         "majorThreshold": 4,
         "severeThreshold": 10,
         "armorScore": 2,
-        "feature": "Enchanted: Gain a bonus to your damage thresholds equal to your Spellcast trait."
+        "feature": "Enchanted: Gain a bonus to your damage thresholds equal to your Spellcast trait.",
+        "statNote": {
+          "kind": "build",
+          "stats": [
+            "majorThreshold",
+            "severeThreshold"
+          ],
+          "text": "Damage thresholds bonus equal to Spellcast trait (Enchanted)."
+        }
       },
       {
         "id": "armor.gambeson-armor",
@@ -5972,7 +6052,15 @@
         "majorThreshold": 6,
         "severeThreshold": 15,
         "armorScore": 3,
-        "feature": "Enchanted: Gain a bonus to your damage thresholds equal to your Spellcast trait."
+        "feature": "Enchanted: Gain a bonus to your damage thresholds equal to your Spellcast trait.",
+        "statNote": {
+          "kind": "build",
+          "stats": [
+            "majorThreshold",
+            "severeThreshold"
+          ],
+          "text": "Damage thresholds bonus equal to Spellcast trait (Enchanted)."
+        }
       },
       {
         "id": "armor.improved-gambeson-armor",
@@ -6081,7 +6169,15 @@
         "majorThreshold": 8,
         "severeThreshold": 22,
         "armorScore": 4,
-        "feature": "Enchanted: Gain a bonus to your damage thresholds equal to your Spellcast trait."
+        "feature": "Enchanted: Gain a bonus to your damage thresholds equal to your Spellcast trait.",
+        "statNote": {
+          "kind": "build",
+          "stats": [
+            "majorThreshold",
+            "severeThreshold"
+          ],
+          "text": "Damage thresholds bonus equal to Spellcast trait (Enchanted)."
+        }
       },
       {
         "id": "armor.advanced-gambeson-armor",
@@ -6160,7 +6256,14 @@
         "majorThreshold": 11,
         "severeThreshold": 27,
         "armorScore": 2,
-        "feature": "Magnificent: Gain a bonus to your Armor Score equal to your Presence."
+        "feature": "Magnificent: Gain a bonus to your Armor Score equal to your Presence.",
+        "statNote": {
+          "kind": "build",
+          "stats": [
+            "armorScore"
+          ],
+          "text": "Armor Score bonus equal to Presence (Magnificent)."
+        }
       },
       {
         "id": "armor.spiked-plate-armor",
@@ -6280,7 +6383,15 @@
         "majorThreshold": 10,
         "severeThreshold": 31,
         "armorScore": 5,
-        "feature": "Enchanted: Gain a bonus to your damage thresholds equal to your Spellcast trait."
+        "feature": "Enchanted: Gain a bonus to your damage thresholds equal to your Spellcast trait.",
+        "statNote": {
+          "kind": "build",
+          "stats": [
+            "majorThreshold",
+            "severeThreshold"
+          ],
+          "text": "Damage thresholds bonus equal to Spellcast trait (Enchanted)."
+        }
       },
       {
         "id": "armor.legendary-gambeson-armor",
@@ -6753,7 +6864,14 @@
         "category": "consumable",
         "roll": 16,
         "rules": "When an adversary attacks you, use this vial and roll a number of d6s equal to your Agility. Add the highest result to your Evasion against the attack.",
-        "expansion": "core"
+        "expansion": "core",
+        "statNote": {
+          "kind": "situational",
+          "stats": [
+            "evasion"
+          ],
+          "text": "Roll d6s equal to Agility; add the highest to Evasion against one attack."
+        }
       },
       {
         "id": "consumable.jumping-root",

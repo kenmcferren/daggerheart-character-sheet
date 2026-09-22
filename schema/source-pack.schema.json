@@ -309,6 +309,9 @@
           "items": {
             "$ref": "#/definitions/tracker"
           }
+        },
+        "statNote": {
+          "$ref": "#/definitions/statNote"
         }
       }
     },
@@ -356,6 +359,40 @@
         "perTier": {
           "type": "integer",
           "minimum": 0
+        }
+      }
+    },
+    "statNote": {
+      "description": "Flags a headline stat this feature/card/item can change, that the printed sheet does not (and, for 'situational', cannot) bake into the number: a footnote symbol goes on the stat's label and on this entry's name, with `text` in the page's legend. 'build' = depends on the character's own gear/loadout, knowable from the sheet but not modelled (e.g. an Armor Score bonus while wearing armor); 'situational' = depends on what happens at the table (e.g. an Evasion bonus against one kind of attack).",
+      "type": "object",
+      "required": [
+        "kind",
+        "stats",
+        "text"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "build",
+            "situational"
+          ]
+        },
+        "stats": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "evasion",
+              "majorThreshold",
+              "severeThreshold",
+              "armorScore",
+              "proficiency"
+            ]
+          },
+          "minItems": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
         }
       }
     },
@@ -882,6 +919,9 @@
                 "scene",
                 "session"
               ]
+            },
+            "statNote": {
+              "$ref": "#/definitions/statNote"
             }
           }
         }

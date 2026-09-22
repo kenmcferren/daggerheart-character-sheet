@@ -6,6 +6,7 @@ import { structureClassExtras, addUses } from './class-extras.mjs'
 import { buildLevelUpRules } from './level-up-rules.mjs'
 import { applyShortText } from './short-text.mjs'
 import { applyResourceTrackers } from './resource-trackers.mjs'
+import { applyStatBonuses, applyStatNotes } from './stat-notes.mjs'
 
 const SRD = 'Daggerheart SRD Files'
 const rd = (p) => readFileSync(join(SRD, p), 'utf8').replace(/\r\n/g, '\n')
@@ -156,6 +157,9 @@ for (const f of ls('Equipment')) {
     }
   }
 }
+
+console.log(`stat bonuses applied to ${applyStatBonuses(classes, subclasses, ancestries)} features`)
+console.log(`stat notes applied to ${applyStatNotes(subclasses, domainCards, equipment)} entries`)
 
 // ---- Assemble and check
 const dup = (arr, what) => {

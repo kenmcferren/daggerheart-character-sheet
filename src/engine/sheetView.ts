@@ -1,13 +1,16 @@
 import type { Character, Trait } from './character'
 import type { CreationSetup } from './creation'
 import { COMPANION_SUBCLASS, extrasOf, progressOf, SLOT_CAP, type Progress } from './levelup'
-import { deriveStats, type DerivedStats } from './rules'
+import { ancestryFeatures, deriveStats, type DerivedStats } from './rules'
 
 type Any = any
 /** `short` is the condensed sheet wording ('' = print nothing); the Creator always shows `rules`. */
 export type SheetCards = { label: string; items: { name: string; short: string }[] }
 export type SheetTable = { title: string; rows: { name: string; short: string }[] }
-export type Feature = { name?: string; rules: string; short?: string; sheetCards?: SheetCards; sheetTable?: SheetTable; level?: string; trackers?: { id: string; label: string; count: number | { trait: string } }[] }
+export type StatBonus = { evasion?: number; majorThreshold?: number; severeThreshold?: number; armorScore?: number }
+/** A footnote on a stat: 'build' = depends on gear/loadout (knowable from the sheet, not baked into the number); 'situational' = depends on what happens at the table. */
+export type StatNote = { kind: 'build' | 'situational'; stats: string[]; text: string }
+export type Feature = { name?: string; rules: string; short?: string; sheetCards?: SheetCards; sheetTable?: SheetTable; level?: string; trackers?: { id: string; label: string; count: number | { trait: string } }[]; statBonus?: StatBonus; statNote?: StatNote }
 
 /** Everything the printable sheet shows for a character at its current level: level 1 choices plus the replayed level-up history. */
 export interface SheetView {
@@ -39,6 +42,8 @@ export interface SheetView {
   extraHope: number
   /** Brawler Combo Die, e.g. "d6"; null for other classes. */
   comboDie: string | null
+  /** Footnotes on Evasion/thresholds/Armor Score/Proficiency from held class/subclass/ancestry features, held domain cards and equipped gear. */
+  statNotes: { name: string; kind: StatNote['kind']; stats: string[]; text: string }[]
 }
 
 export interface CompanionView {
@@ -67,17 +72,8 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
   const reg: Any = setup.registry
   const progress = progressOf(ch, setup.registry)
   const base = deriveStats(ch, setup)
-  const stats: DerivedStats = {
-    ...base,
-    evasion: base.evasion + progress.evasionBonus,
-    hitPoints: Math.min(SLOT_CAP, base.hitPoints + progress.hitPointSlots),
-    stress: Math.min(SLOT_CAP, base.stress + progress.stressSlots),
-    armorScore: Math.min(SLOT_CAP, base.armorScore),
-    proficiency: progress.proficiency,
-  }
-  const traits: Partial<Record<Trait, number>> = { ...ch.traits }
-  for (const [t, n] of Object.entries(progress.traitBonus)) traits[t as Trait] = (traits[t as Trait] ?? 0) + (n as number)
 
+  const cls: Any = reg.classes.get(ch.choices.classId ?? '')
   const subclasses = Object.entries(progress.subclassRanks).map(([id, rank]) => {
     const sc = reg.subclasses.get(id) as Any
     return {
@@ -85,10 +81,37 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
       features: ((sc?.features ?? []) as Feature[]).filter((f) => RANKS.indexOf(f.level ?? '') < rank),
     }
   }).sort((a, b) => Number(a.multiclass) - Number(b.multiclass))
-
   const mc = progress.multiclass
   const mcClass: Any = mc ? reg.classes.get(mc.classId) : undefined
-  const cls: Any = reg.classes.get(ch.choices.classId ?? '')
+
+  // Permanent, unconditional stat bonuses (owner-approved list, Series 7 step 1: SRD "permanent +N" features
+  // with no condition to track). Guardian's Unwavering/Unrelenting/Undaunted stack as the subclass ranks up
+  // (owner confirmed). Bonuses that depend on gear or loadout instead get a footnote (statNote), not baked in.
+  const bonusSources: Feature[] = [
+    ...((cls?.features ?? []) as Feature[]),
+    ...subclasses.flatMap((s) => s.features),
+    ...(mc && mcClass ? ((mcClass.features ?? []) as Feature[]) : []),
+    ...ancestryFeatures(ch, setup),
+  ]
+  const statBonus = bonusSources.reduce((acc, f) => {
+    const b = f.statBonus
+    if (!b) return acc
+    return { evasion: acc.evasion + (b.evasion ?? 0), majorThreshold: acc.majorThreshold + (b.majorThreshold ?? 0), severeThreshold: acc.severeThreshold + (b.severeThreshold ?? 0), armorScore: acc.armorScore + (b.armorScore ?? 0) }
+  }, { evasion: 0, majorThreshold: 0, severeThreshold: 0, armorScore: 0 })
+
+  const stats: DerivedStats = {
+    ...base,
+    evasion: base.evasion + progress.evasionBonus + statBonus.evasion,
+    hitPoints: Math.min(SLOT_CAP, base.hitPoints + progress.hitPointSlots),
+    stress: Math.min(SLOT_CAP, base.stress + progress.stressSlots),
+    majorThreshold: base.majorThreshold + statBonus.majorThreshold,
+    severeThreshold: base.severeThreshold + statBonus.severeThreshold,
+    armorScore: Math.min(SLOT_CAP, base.armorScore + statBonus.armorScore),
+    proficiency: progress.proficiency,
+  }
+  const traits: Partial<Record<Trait, number>> = { ...ch.traits }
+  for (const [t, n] of Object.entries(progress.traitBonus)) traits[t as Trait] = (traits[t as Trait] ?? 0) + (n as number)
+
   const spellcastTraits = subclasses.map((s) => (reg.subclasses.get(s.id) as Any)?.spellcastTrait as string | undefined).filter((t): t is string => !!t)
   const hasCombo = [...reg.levelUpOptions.values()].some((o: Any) => o.effect === 'combo-die' && o.classId === ch.choices.classId)
 
@@ -133,6 +156,13 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
   for (const sc of subclasses) collect(sc.features, sc.id)
   if (stanceClass?.focusMax) resourceTrackers.push({ label: 'Focus', count: stanceClass.focusMax })
 
+  // Stat footnotes (Series 7 step 1): from the same held class/subclass/ancestry features as statBonus above,
+  // plus held domain cards (loadout and vault) and equipped gear.
+  const heldCards = progress.domainCardIds.map((id) => reg.domainCards.get(id) as Any).filter(Boolean)
+  const equippedGear = ch.choices.equipmentIds.map((id) => reg.equipment.get(id) as Any).filter(Boolean)
+  const noteSources: { name?: string; statNote?: StatNote }[] = [...bonusSources, ...heldCards, ...equippedGear]
+  const statNotes = noteSources.filter((f) => f.statNote).map((f) => ({ name: f.name ?? '', kind: f.statNote!.kind, stats: f.statNote!.stats, text: f.statNote!.text }))
+
   return {
     progress, stats, traits,
     experiences: progress.experiences,
@@ -149,5 +179,6 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
     companion,
     extraHope: has('light-in-the-dark') ? 1 : 0,
     comboDie: hasCombo ? DICE[Math.min(progress.comboDieSteps, DICE.length - 1)] : null,
+    statNotes,
   }
 }

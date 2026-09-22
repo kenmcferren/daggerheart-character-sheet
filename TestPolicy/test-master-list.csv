@@ -154,6 +154,10 @@ srd-files.[s2] SRD Markdown files.every adversary and environment has tier, diff
 srd-files.[s2] SRD Markdown files.every relative link resolves,0
 srd-files.[s2] SRD Markdown files.has the expected content counts,0
 srd-files.[s2] SRD Markdown files.leaves no glyph placeholders or page footers,0
+stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.a mastery Stalwart carries all three of Unwavering/Unrelenting/Undaunted, stacked (+1+2+3 = +6 to both thresholds),1
+stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.Armorer (domain card) carries a build note instead of a baked-in Armor Score bonus,1
+stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.sample sheets: baked-in Stalwart thresholds, and footnoted Armorer / Scorpion’s Poise,1
+stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.Scorpion’s Poise (Executioners Guild, specialization) carries a situational Evasion note once held,1
 ui-util.[s3] ui helpers.issues map to the step that asks for the choice, else to equipment,0
 ui-util.[s3] ui helpers.normalize fills the creation block on older saves,0
 ui-util.[s3] ui helpers.titleCase,0
