@@ -61,3 +61,45 @@ export function applyShortText(classes, subclasses, dir = 'scripts/srd-convert/s
   }
   return applied
 }
+
+// Ancestries and communities: scripts/srd-convert/short-heritage/<ancestries|communities>.json = { "<entryId>": [{ "name": "...", "short": "..." }] }
+// One item per feature, in order, name checked (a nameless feature has no "name"); "" folds a feature into the one above.
+export function applyHeritageShort(entries, file) {
+  if (!existsSync(file)) return 0
+  const src = JSON.parse(readFileSync(file, 'utf8'))
+  let applied = 0
+  for (const [id, shorts] of Object.entries(src)) {
+    const e = entries.find((x) => x.id === id)
+    if (!e) throw new Error(`${file}: unknown entry ${id}`)
+    if (shorts.length !== e.features.length) throw new Error(`${file}: ${id} expects ${e.features.length} entries, got ${shorts.length}`)
+    e.features.forEach((f, i) => {
+      const s = shorts[i]
+      if (typeof s.short !== 'string') throw new Error(`${file}: ${id}[${i}] short must be a string`)
+      if ((s.name ?? undefined) !== (f.name ?? undefined)) throw new Error(`${file}: ${id}[${i}] name "${s.name}" does not match "${f.name}"`)
+      f.short = s.short
+      applied++
+    })
+  }
+  return applied
+}
+
+// Domain cards: scripts/srd-convert/short-heritage/domains/<domainId>.json = { "<cardId>": "condensed rules" }, one file per domain, every card of the domain present.
+// Same shape as `rules`: lines separated by "\n" (a grimoire keeps one "Spell: text" line per spell). Keep "once per rest / long rest" wording so the circle logic still finds it.
+export function applyDomainShort(domainCards, domains, dir = 'scripts/srd-convert/short-heritage/domains') {
+  let applied = 0
+  for (const d of domains) {
+    const file = `${dir}/${d.id}.json`
+    if (!existsSync(file)) continue
+    const src = JSON.parse(readFileSync(file, 'utf8'))
+    const cards = domainCards.filter((c) => c.domain === d.id)
+    for (const id of Object.keys(src)) if (!cards.some((c) => c.id === id)) throw new Error(`${file}: unknown card ${id}`)
+    for (const c of cards) {
+      const v = src[c.id] // a string, or { short, table: { head, rows } } for a card that reads better with a table
+      if (typeof v !== 'string' && typeof v?.short !== 'string') throw new Error(`${file}: missing short for ${c.id}`)
+      c.short = typeof v === 'string' ? v : v.short
+      if (v.table) c.sheetTable = v.table
+      applied++
+    }
+  }
+  return applied
+}

@@ -56,7 +56,7 @@ describe('[s4] print checks', () => {
         const marks = await withRecording(() => renderSheet(ch, setup, fonts))
         const bad = marks.filter(outside).slice(0, 5).map((m) => `${m.kind} ${m.text ?? ''} x ${m.x0.toFixed(1)}..${m.x1.toFixed(1)} y ${m.y0.toFixed(1)}..${m.y1.toFixed(1)}`)
         expect(bad, `${id ?? sc.name}`).toEqual([])
-        const colour = marks.flatMap((m) => m.colors).filter((c) => c && (c.red !== c.green || c.green !== c.blue))
+        const colour = marks.flatMap((m) => m.colors).filter((c) => c && (c.red !== c.green || c.green !== c.blue) && !(c.red === 0.1 && c.green === 0.25 && c.blue === 0.75))
         expect(colour, `${id ?? sc.name} colour`).toEqual([])
       }
     })

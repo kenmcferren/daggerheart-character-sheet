@@ -1,0 +1,23 @@
+{
+  "deft-maneuvers": "Once per rest, mark a Stress to sprint anywhere within Far range without an Agility Roll.\nIf you end this movement within Melee range of an adversary and immediately attack them, gain a +1 bonus to the attack roll.",
+  "i-see-it-coming": "When you’re targeted by an attack from beyond Melee range, mark a Stress to roll a d4 and gain a bonus to your Evasion equal to the result against that attack.",
+  "untouchable": "Gain {{halfAgilityUp|a +# bonus|a bonus equal to half your Agility}} to your Evasion.",
+  "ferocity": "When you cause an adversary to mark 1 or more Hit Points, spend 2 Hope to increase your Evasion by the number they marked, until after the next attack made against you.",
+  "strategic-approach": "After a long rest, place {{knowledgeMin1|# tokens|tokens equal to your Knowledge (minimum 1)}} on this card. The first time you move within Close range of an adversary and attack them, spend a token to choose one:\n- You attack with advantage.\n- You clear a Stress on an ally within Melee range of the adversary.\n- You add a d8 to your damage roll.\nWhen you take a long rest, clear unspent tokens.",
+  "brace": "When you mark an Armor Slot to reduce incoming damage, mark a Stress to mark an additional Armor Slot.",
+  "tactician": "When you Help an Ally, they can spend a Hope to add one of your Experiences to their roll alongside your advantage die. On a Tag Team Roll, you can roll a d20 as your Hope Die.",
+  "boost": "Mark a Stress to boost off a willing ally within Close range and make an aerial attack against a target within Far range: advantage on the attack, add a d10 to the damage roll, and end your move within Melee range of the target.",
+  "redirect": "When an attack from beyond Melee range against you fails, roll {{proficiency|#d6|a number of d6s equal to your Proficiency}}. If any roll a 6, mark a Stress to redirect the attack to damage an adversary within Very Close range.",
+  "know-thy-enemy": "When observing a creature, make an Instinct Roll against them. On a success, spend a Hope and ask the GM for one set of information about the target:\n- Their unmarked Hit Points and Stress.\n- Their Difficulty and damage thresholds.\n- Their tactics and standard attack damage dice.\n- Their features and Experiences.\nAlso on a success, you can mark a Stress to remove a Fear from the GM’s Fear Pool.",
+  "signature-move": "Name and describe your signature combat move. Once per rest, when you perform it as part of an action, you can roll a d20 as your Hope Die. On a success, clear a Stress.",
+  "rapid-riposte": "When an attack against you from within Melee range fails, mark a Stress to deal the weapon damage of one of your active weapons to the attacker.",
+  "recovery": "During a short rest, you can choose a long rest downtime move instead. Spend a Hope to let an ally do the same.",
+  "bone-touched": "When 4 or more loadout cards are from the Bone domain, gain:\n- +1 bonus to Agility\n- Once per rest, spend 3 Hope to make an attack that succeeded against you fail instead.",
+  "cruel-precision": "When you make a successful weapon attack, gain {{finesseOrAgility|a # bonus to your damage roll|a bonus to your damage roll equal to either your Finesse or Agility}}.",
+  "breaking-blow": "When you make a successful attack, mark a Stress to make the next successful attack against the same target deal an extra 2d12 damage.",
+  "wrangle": "Make an Agility Roll against all targets within Close range. Spend a Hope to move targets you succeed against and willing allies within Close range to another point within Close range.",
+  "on-the-brink": "When you have 2 or fewer Hit Points unmarked, you don’t take Minor damage.",
+  "splintering-strike": "Spend a Hope and attack all adversaries within your weapon’s range. Once per long rest, on a success against any targets, roll your weapon’s damage and distribute it among the targets you succeeded against as you wish. Before dealing damage to each target, roll an additional damage die and add it to that target’s damage.",
+  "deathrun": "Spend 3 Hope to run a straight path to a point within Far range, attacking all adversaries within your weapon’s range along it. Choose the order you damage the targets you succeeded against. For the first, roll your weapon damage with a +1 bonus to your Proficiency; then remove a die from the roll for each subsequent target and deal the rest to the next, until no dice or adversaries remain.\nYou can’t target the same adversary more than once per attack.",
+  "swift-step": "When an attack against you fails, clear a Stress. If you can’t, gain a Hope."
+}

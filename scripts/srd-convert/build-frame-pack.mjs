@@ -181,6 +181,24 @@ const grimdark = {
 }
 
 const campaignFrames = [witherwild, everydayHero, western, monsterHunting, techFrame, feasts, fairy, floating, grimdark]
+
+// Condensed sheet wording and tables for the printed campaign rules (hand-edited): short-heritage/campaign-rules.json
+// { "<frameId>": { "<back-sheet title>" | "move:<add-move name>" | "grant:<item>": { "short": "...", "table"?: { "head": [...], "rows": [[...]] } } } }
+// The SRD wording stays in `body` / `rules`; the sheet prints `short` (then the table). Every key must match an op, every op with an entry is used once.
+const shortRules = JSON.parse(readFileSync('scripts/srd-convert/short-heritage/campaign-rules.json', 'utf8'))
+let shortApplied = 0
+for (const [frameId, entries] of Object.entries(shortRules)) {
+  const frame = campaignFrames.find((f) => f.id === frameId)
+  if (!frame) throw new Error(`campaign-rules.json: unknown frame ${frameId}`)
+  for (const [key, e] of Object.entries(entries)) {
+    const op = frame.creation.ops.find((o) => (o.op === 'back-sheet' && o.title === key) || (o.op === 'add-move' && `move:${o.name}` === key) || (o.op === 'grant' && `grant:${o.item}` === key))
+    if (!op) throw new Error(`campaign-rules.json: ${frameId} has no rule "${key}"`)
+    op.short = e.short
+    if (e.table) op.table = e.table
+    shortApplied++
+  }
+}
+console.log(`campaign rule shorts applied: ${shortApplied}`)
 const pack = { schemaVersion: 1, id: 'srd-frames', name: 'Daggerheart SRD 2.0 (campaign frames and supplements)', version: '2.0.0', publisher: 'Darrington Press (SRD)', extends: ['srd-core'], content: { campaignFrames } }
 writeFileSync('packs/core/srd-frames.json', JSON.stringify(pack, null, 2) + '\n')
 console.log(campaignFrames.map((f) => `${f.id}: ${f.creation.ops.length} ops`).join(', '))

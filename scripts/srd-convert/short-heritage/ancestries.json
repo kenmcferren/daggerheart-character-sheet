@@ -1,0 +1,99 @@
+{
+  "aetheris": [
+    { "name": "Hallowed Aura", "short": "Once per long rest, when an ally within Close range rolls with Fear, change it to Hope." },
+    { "name": "Celestial Wings", "short": "You can fly. Once per scene while flying, spend a Hope instead of marking an Armor Slot." }
+  ],
+  "clank": [
+    { "name": "Purposeful Design", "short": "Decide who made you and why. Choose one Experience that fits; it gets a permanent +1." },
+    { "name": "Efficient", "short": "On a short rest, you can choose a long rest move instead." }
+  ],
+  "drakona": [
+    { "name": "Scales", "short": "When you would take Severe damage, mark a Stress to mark 1 fewer Hit Points." },
+    { "name": "Elemental Breath", "short": "Choose an element. Breathe on targets within Very Close range as an Instinct weapon: d8 magic damage using your Proficiency." }
+  ],
+  "dwarf": [
+    { "name": "Thick Skin", "short": "When you take Minor damage, mark 2 Stress instead of a Hit Point." },
+    { "name": "Increased Fortitude", "short": "Spend 3 Hope to halve incoming physical damage." }
+  ],
+  "earthkin": [
+    { "name": "Stoneskin", "short": "Permanent +1 to Armor Score and damage thresholds at creation." },
+    { "name": "Immovable", "short": "While touching the ground, you can't be lifted or moved against your will." }
+  ],
+  "elf": [
+    { "name": "Quick Reactions", "short": "Mark a Stress to gain advantage on a reaction roll." },
+    { "name": "Celestial Trance", "short": "During a rest, enter a trance to choose an additional downtime move." }
+  ],
+  "emberkin": [
+    { "name": "Fireproof", "short": "Immune to magical and mundane flame damage." },
+    { "name": "Ignition", "short": "Mark a Stress to set your primary weapon ablaze until scene end: bright light, and +1d6 damage with it." }
+  ],
+  "faerie": [
+    { "name": "Luckbender", "short": "Once per session, after you or a willing ally within Close range makes an action roll, spend 3 Hope to reroll the Duality Dice." },
+    { "name": "Wings", "short": "You can fly. While flying, mark a Stress after an adversary attacks you for +2 Evasion against that attack." }
+  ],
+  "faun": [
+    { "name": "Caprine Leap", "short": "Leap anywhere within Close range as normal movement, vaulting obstacles, gaps and barriers." },
+    { "name": "Kick", "short": "When you succeed on a Melee attack, mark a Stress to kick off the target: +2d6 damage and knock back yourself or the target to Very Close range." }
+  ],
+  "firbolg": [
+    { "name": "Charge", "short": "When you succeed on an Agility Roll to move from Far or Very Far into Melee range, mark a Stress to deal 1d12 physical damage to all targets within Melee range." },
+    { "name": "Unshakable", "short": "When you would mark a Stress, roll a d6; on a 6, don't." }
+  ],
+  "fungril": [
+    { "name": "Fungril Network", "short": "Instinct Roll (12) to speak with others of your ancestry across any distance." },
+    { "name": "Death Connection", "short": "Touching a recent corpse, mark a Stress to extract one memory tied to an emotion or sensation you choose." }
+  ],
+  "galapa": [
+    { "name": "Shell", "short": "Bonus to damage thresholds equal to your Proficiency." },
+    { "name": "Retract", "short": "Mark a Stress to retract into your shell: resistance to physical damage, disadvantage on action rolls, can't move." }
+  ],
+  "giant": [
+    { "name": "Endurance", "short": "Additional Hit Point slot at creation." },
+    { "name": "Reach", "short": "Treat Melee range as Very Close range for any weapon, ability, spell or feature." }
+  ],
+  "gnome": [
+    { "name": "Nimble Fingers", "short": "On a Finesse Roll, spend 2 Hope to reroll your Hope Die." },
+    { "name": "Flicker Step", "short": "Once per scene, teleport to a point you can see within Far range." }
+  ],
+  "goblin": [
+    { "name": "Surefooted", "short": "Ignore disadvantage on Agility Rolls." },
+    { "name": "Danger Sense", "short": "Once per rest, mark a Stress to force an adversary to reroll an attack against you or an ally within Very Close range." }
+  ],
+  "halfling": [
+    { "name": "Luckbringer", "short": "At the start of each session, everyone in your party gains a Hope." },
+    { "name": "Internal Compass", "short": "When you roll a 1 on your Hope Die, reroll it." }
+  ],
+  "human": [
+    { "name": "High Stamina", "short": "Additional Stress slot at creation." },
+    { "name": "Adaptability", "short": "When you fail a roll using an Experience, mark a Stress to reroll." }
+  ],
+  "infernis": [
+    { "name": "Fearless", "short": "When you roll with Fear, mark 2 Stress to change it to Hope." },
+    { "name": "Dread Visage", "short": "Advantage on rolls to intimidate hostile creatures." }
+  ],
+  "katari": [
+    { "name": "Feline Instincts", "short": "On an Agility Roll, spend 2 Hope to reroll your Hope Die." },
+    { "name": "Retracting Claws", "short": "Agility Roll to scratch a target within Melee range; on a success, they become temporarily Vulnerable." }
+  ],
+  "orc": [
+    { "name": "Sturdy", "short": "At 1 Hit Point remaining, attacks against you have disadvantage." },
+    { "name": "Tusks", "short": "When you succeed on a Melee attack, spend a Hope to gore the target for an extra 1d6 damage." }
+  ],
+  "ribbet": [
+    { "name": "Amphibious", "short": "Breathe and move naturally underwater." },
+    { "name": "Long Tongue", "short": "Grab things within Close range. Mark a Stress to use it as a Finesse Close weapon: d12 physical damage using your Proficiency." }
+  ],
+  "simiah": [
+    { "name": "Natural Climber", "short": "Advantage on Agility Rolls to balance and climb." },
+    { "name": "Nimble", "short": "Permanent +1 to Evasion at creation." }
+  ],
+  "skykin": [
+    { "name": "Gale Force", "short": "Mark a Stress to carry yourself or a Very Close ally on a gust up to Very Far range." },
+    { "short": "You can always control the speed at which you fall." },
+    { "name": "Eye of the Storm", "short": "Spend 2 Hope to give yourself or an ally within Melee range +1 Evasion until you take Severe damage or use this again." }
+  ],
+  "tidekin": [
+    { "name": "Amphibious", "short": "Breathe and move naturally underwater." },
+    { "name": "Lifespring", "short": "Once per rest with a little water on hand, mark a Stress to clear a Hit Point on yourself or an ally within Very Close range." }
+  ]
+}

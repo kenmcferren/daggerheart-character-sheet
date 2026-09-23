@@ -1,0 +1,26 @@
+{
+  "bare-bones": {
+    "short": "When you choose not to equip armor, you have a base Armor Score of {{strengthPlus3|#|3 + your Strength}} and use these base damage thresholds:",
+    "table": { "head": ["Tier", "Thresholds"], "rows": [["1", "9/19"], ["2", "11/24"], ["3", "13/31"], ["4", "15/38"]] }
+  },
+  "forceful-push": "Make an attack with your primary weapon against a target within Melee range. On a success, deal damage and knock them back to Close range. On a success with Hope, add a d6 to your damage roll.\nYou can also spend a Hope to make them temporarily Vulnerable.",
+  "i-am-your-shield": "When an ally within Very Close range would take damage, mark a Stress to stand in the way and become the target of the attack instead. When you take damage from it, you can mark any number of Armor Slots.",
+  "body-basher": "On a successful attack with a Melee-range weapon, gain {{strength|a # bonus to your damage roll|a bonus to your damage roll equal to your Strength}}.",
+  "bold-presence": "When you make a Presence Roll, spend a Hope to add {{strength|#|your Strength}} to the roll.\nOnce per rest, when you would gain a condition, describe how your bold presence helps and avoid gaining it.",
+  "critical-inspiration": "Once per rest, when you critically succeed on an attack, all allies within Very Close range can clear a Stress or gain a Hope.",
+  "lean-on-me": "Once per long rest, when you console or inspire an ally who failed an action roll, you both clear 2 Stress.",
+  "goad-them-on": "Describe how you taunt a target within Close range, then make a Presence Roll against them. On a success, they mark a Stress, and the next time the GM spotlights them, they must target you with an attack made with disadvantage.",
+  "support-tank": "When an ally within Close range fails a roll, spend 2 Hope to let them reroll their Hope or Fear Die.",
+  "armorer": "While wearing armor, gain a +1 bonus to your Armor Score.\nWhen you repair your armor as a downtime move during a rest, your allies also clear an Armor Slot.",
+  "rousing-strike": "Once per rest, when you critically succeed on an attack, you and all allies who can see or hear you can clear a Hit Point or 1d4 Stress.",
+  "inevitable": "When you fail an action roll, your next action roll has advantage.",
+  "rise-up": "Gain {{proficiency|a +# bonus|a bonus equal to your Proficiency}} to your Severe threshold.\nWhen you mark 1 or more Hit Points from an attack, clear a Stress.",
+  "shrug-it-off": "When you would take damage, mark a Stress to reduce the severity by one threshold, then roll a d6. On a 3 or lower, place this card in your vault.",
+  "valor-touched": "When 4 or more loadout cards are from the Valor domain, gain:\n- +1 bonus to your Armor Score\n- When you mark 1 or more Hit Points without marking an Armor Slot, clear an Armor Slot.",
+  "full-surge": "Once per long rest, mark 3 Stress to push your body to its limits: gain a +2 bonus to all your traits until your next rest.",
+  "ground-pound": "Spend 2 Hope to strike the ground and make a Strength Roll against all targets within Very Close range. Targets you succeed against are thrown back to Far range and make a Reaction Roll (17); those who fail take 4d10+8 damage, and those who succeed take half.",
+  "hold-the-line": "Describe your defensive stance and spend a Hope. If an adversary moves within Very Close range, they’re pulled into Melee range and Restrained.\nThis lasts until you move or fail a roll with Fear, or the GM spends 2 Fear on their turn to clear it.",
+  "lead-by-example": "When you deal damage to an adversary, mark a Stress and describe how you encourage your allies. The next PC to attack that adversary can clear a Stress or gain a Hope.",
+  "unbreakable": "When you mark your last Hit Point, instead of making a death move, roll a d6 and clear Hit Points equal to the result. Then place this card in your vault.",
+  "unyielding-armor": "When you would mark an Armor Slot, roll {{proficiency|#d6|a number of d6s equal to your Proficiency}}. If any roll a 6, reduce the severity by one threshold without marking an Armor Slot."
+}

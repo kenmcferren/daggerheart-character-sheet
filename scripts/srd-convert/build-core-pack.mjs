@@ -4,7 +4,7 @@ import { readFileSync, writeFileSync, readdirSync, mkdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { structureClassExtras, addUses } from './class-extras.mjs'
 import { buildLevelUpRules } from './level-up-rules.mjs'
-import { applyShortText } from './short-text.mjs'
+import { applyShortText, applyHeritageShort, applyDomainShort } from './short-text.mjs'
 import { applyResourceTrackers } from './resource-trackers.mjs'
 import { applyStatBonuses, applyStatNotes } from './stat-notes.mjs'
 
@@ -99,6 +99,7 @@ const communities = ls('Communities').filter((f) => f !== 'Communities.md').map(
   const { title, sections: secs } = sections(rd(`Communities/${f}`))
   return { id: slug(title), name: title, features: features(secs.find((s) => /^Community Features?$/.test(s.title)).lines) }
 })
+console.log(`heritage short text applied to ${applyHeritageShort(ancestries, 'scripts/srd-convert/short-heritage/ancestries.json') + applyHeritageShort(communities, 'scripts/srd-convert/short-heritage/communities.json')} entries`)
 
 // ---- Domains and cards
 const domains = []
@@ -118,6 +119,7 @@ for (const f of ls('Domains').filter((f) => f.endsWith(' Domain.md'))) {
 }
 
 for (const card of domainCards) addUses(card, true)
+console.log(`domain card short text applied to ${applyDomainShort(domainCards, domains)} cards`)
 
 // ---- Equipment tables
 const camel = (h) => h.replace(/\(.*\)/, '').trim().toLowerCase().replace(/[^a-z0-9]+(.)/g, (_, c) => c.toUpperCase()).replace(/[^a-z0-9]/g, '')

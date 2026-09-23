@@ -44,8 +44,14 @@ Owner (with Claude) writes the third-party ports; no external authors. Packs liv
 4. [ ] Optional: runtime pack upload UI (only if wanted)
 
 ## Series 7: Rules math pass
-Status: step 1 done, owner-reviewed 2026-09-23. Step 2 (condensing text for the 4-page level 10 target) not started.
+Status: step 1 done, owner-reviewed 2026-09-23. Step 2 (condense text for the 4-page level 10 target): 2a-2d done, owner "checks out at first glance" 2026-09-23 (Cruel Precision prints the higher of Finesse/Agility, approved). Every non-Druid level 10 path is 3-4 pages; Druid paths are 6 (Beastform page). Bare Bones armor math left as text (Series 7 math, not scheduled).
 Apply number-changing features to the sheet (e.g. Mage Robes: bonus to damage thresholds equal to Spellcast trait; "+1 Evasion" style features). Start by listing every armor, weapon, card and class feature that changes a number; owner approves the list before code.
+
+Step 2: condense text for the 4-page level 10 target (owner, 2026-09-23). Same procedure as the class shorts (hand-edited `short` wording, draft, owner approves each step). Look for chances to present material as tables. Each step gets its own owner review before the next.
+- [x] 2a. All ancestries (`scripts/srd-convert/short-heritage/ancestries.json`)
+- [x] 2b. All communities (`short-heritage/communities.json`)
+- [x] 2c. All campaign rules (owner decision: Witherwild class/ancestry/community notes are creator-only, not printed)
+- [x] 2d. Domain cards, one domain per step, alphabetical, all 10 drafted (owner reviews at the end; review files `TestArtifacts/short-review/domain-<id>.md`) (Arcana, Blade, Bone, Codex, Dread, Grace, Midnight, Sage, Splendor, Valor) via `short-heritage/domains/<domain>.json`, each its own owner review
 
 ## Series 8: Druid forms page
 Status: step 1 done, pending owner review.

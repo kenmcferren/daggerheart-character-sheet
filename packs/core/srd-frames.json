@@ -189,7 +189,8 @@
             {
               "op": "back-sheet",
               "title": "Serpent’s Sickness",
-              "body": "Anyone, but especially those from Haven, may carry the Serpent’s Sickness, which stiffens their movements and gives them limited time to survive without a cure."
+              "body": "Anyone, but especially those from Haven, may carry the Serpent’s Sickness, which stiffens their movements and gives them limited time to survive without a cure.",
+              "short": "Anyone, especially those from Haven, may carry the Serpent’s Sickness, which stiffens movement and limits survival time without a cure."
             },
             {
               "op": "add-tracker",
@@ -202,7 +203,8 @@
             {
               "op": "back-sheet",
               "title": "Corruption From the Witherwild",
-              "body": "Any time a PC takes Severe damage from a Withered adversary or environment, gain a Wither token and place it on that PC’s character sheet. When you do, the PC must roll their Fear Die. If they roll equal to or below the number of Wither tokens on their sheet, they immediately gain a scar and clear all tokens, describing how the Witherwild changes them permanently.\nAt the end of each session, clear all Wither tokens from the PCs’ sheets and gain an equal amount of Fear. If a character ever dies with Wither tokens on their sheet, their body is permanently taken over by the Witherwild."
+              "body": "Any time a PC takes Severe damage from a Withered adversary or environment, gain a Wither token and place it on that PC’s character sheet. When you do, the PC must roll their Fear Die. If they roll equal to or below the number of Wither tokens on their sheet, they immediately gain a scar and clear all tokens, describing how the Witherwild changes them permanently.\nAt the end of each session, clear all Wither tokens from the PCs’ sheets and gain an equal amount of Fear. If a character ever dies with Wither tokens on their sheet, their body is permanently taken over by the Witherwild.",
+              "short": "When a PC takes Severe damage from a Withered adversary or environment, they gain a Wither token and roll their Fear Die. If it is equal to or below their Wither tokens, they gain a scar and clear all tokens, describing how the Witherwild changes them permanently.\nAt the end of each session, clear all Wither tokens and gain that much Fear. A character who dies with Wither tokens is permanently taken over by the Witherwild."
             }
           ]
         }
@@ -1005,7 +1007,8 @@
             {
               "op": "back-sheet",
               "title": "Reanimated",
-              "body": "When a character gains the Reanimated transformation, their maximum loadout is reduced to one. During a rest, they can use a downtime move to raise their maximum loadout by one until they reach the normal maximum loadout of five."
+              "body": "When a character gains the Reanimated transformation, their maximum loadout is reduced to one. During a rest, they can use a downtime move to raise their maximum loadout by one until they reach the normal maximum loadout of five.",
+              "short": "With the Reanimated transformation, your maximum loadout drops to one. During a rest, use a downtime move to raise it by one, up to the normal maximum of five."
             }
           ]
         }
@@ -1080,7 +1083,8 @@
             {
               "op": "grant",
               "item": "Tech Link",
-              "rules": "Each tech-based campaign setting includes a worldwide data and energy network that a PC must connect to in order to perform downtime moves. The primary way most PCs connect to this network is via a Tech Link, which looks like a data cable with a hook on one end, that each PC gains at character creation."
+              "rules": "Each tech-based campaign setting includes a worldwide data and energy network that a PC must connect to in order to perform downtime moves. The primary way most PCs connect to this network is via a Tech Link, which looks like a data cable with a hook on one end, that each PC gains at character creation.",
+              "short": "You gain a Tech Link (a data cable with a hook) at creation. Downtime moves require connecting to the campaign’s worldwide data and energy network, usually via a Tech Link."
             },
             {
               "op": "add-tracker",
@@ -1094,17 +1098,110 @@
             {
               "op": "back-sheet",
               "title": "Upgrades",
-              "body": "A character’s Iconic Weapon starts with two Upgrade slots at Tier 1 to indicate that it has evolved from its most basic form. An Iconic Weapon gains an additional Upgrade slot at each subsequent tier. An Upgrade can be crafted as a downtime move when a PC has the Parts to do so. See the upcoming “Crafting & Trading” section for more information.\nEach Iconic Weapon begins without any installed Upgrades. A character can build as many Upgrades as they wish but can’t install more Upgrades than the number of Upgrade slots their Iconic Weapon has. An installed Upgrade is treated as a weapon feature. During downtime, a PC can freely swap Upgrades they’ve already crafted or otherwise acquired. The Iconic Weapon Sheet includes a selection of basic Upgrades. GMs are encouraged to make more, using the provided options as a template, and offer them to the players as appropriate."
+              "body": "A character’s Iconic Weapon starts with two Upgrade slots at Tier 1 to indicate that it has evolved from its most basic form. An Iconic Weapon gains an additional Upgrade slot at each subsequent tier. An Upgrade can be crafted as a downtime move when a PC has the Parts to do so. See the upcoming “Crafting & Trading” section for more information.\nEach Iconic Weapon begins without any installed Upgrades. A character can build as many Upgrades as they wish but can’t install more Upgrades than the number of Upgrade slots their Iconic Weapon has. An installed Upgrade is treated as a weapon feature. During downtime, a PC can freely swap Upgrades they’ve already crafted or otherwise acquired. The Iconic Weapon Sheet includes a selection of basic Upgrades. GMs are encouraged to make more, using the provided options as a template, and offer them to the players as appropriate.",
+              "short": "Your Iconic Weapon starts with two Upgrade slots at Tier 1 and gains one more each tier. Craft an Upgrade as a downtime move when you have the Parts. You can build any number, but can’t install more than your slots. An installed Upgrade counts as a weapon feature. In downtime, freely swap Upgrades you have crafted or acquired."
             },
             {
               "op": "back-sheet",
               "title": "Crafting & Trading",
-              "body": "Gold is not used as a currency in tech-based campaign frames. Instead, PCs gather Scrap to trade for a currency known as Credits. The Iconic Weapon Sheet includes areas for tracking both Scrap and Credits. All PCs start with 5 Credits.\nUse the following conversion for Daggerheart when pricing other goods and services using quantum:\n- 10 Credits = 1 handful of gold\n- 100 Credits = 1 bag of gold\n- 1000 Credits = 1 chest of gold"
+              "body": "Gold is not used as a currency in tech-based campaign frames. Instead, PCs gather Scrap to trade for a currency known as Credits. The Iconic Weapon Sheet includes areas for tracking both Scrap and Credits. All PCs start with 5 Credits.\nUse the following conversion for Daggerheart when pricing other goods and services using quantum:\n- 10 Credits = 1 handful of gold\n- 100 Credits = 1 bag of gold\n- 1000 Credits = 1 chest of gold",
+              "short": "No gold in tech campaigns. Gather Scrap to trade for Credits (tracked on the Iconic Weapon Sheet). All PCs start with 5 Credits. Pricing conversion:",
+              "table": {
+                "head": [
+                  "Credits",
+                  "Gold"
+                ],
+                "rows": [
+                  [
+                    "10",
+                    "1 handful"
+                  ],
+                  [
+                    "100",
+                    "1 bag"
+                  ],
+                  [
+                    "1000",
+                    "1 chest"
+                  ]
+                ]
+              }
             },
             {
               "op": "back-sheet",
               "title": "Scrap",
-              "body": "PCs can collect Scrap from defeated tech-based adversaries outside of combat. Each category of Scrap is represented by a die size. When the PCs collect Scrap, the GM determines how many of each category they find, which in turn determines the total dice pool each player rolls. Compare the results of each player’s roll against your campaign’s Scrap table to determine the number of each type they acquire. PCs can also obtain specific pieces of Scrap by completing NPC contracts, hunting particular adversaries, exploring certain areas, or purchasing them from special merchants.\n### Scrap Table\nThe table below lists generic outcomes you can replace as needed to suit your campaign.\n| Scrap Type (die) | Results |\n|---|---|\n| Shards (d6) | 1: Gear · 2: Coil · 3: Wire · 4: Trigger · 5: Lens · 6: Crystal · 7–10: n/a |\n| Metals (d8) | 1–2: Aluminum · 3–4: Copper · 5: Cobalt · 6: Silver · 7: Platinum · 8: Gold · 9–10: n/a |\n| Components (d10) | 1–2: Fuse · 3–5: Circuit · 6–7: Disc · 8: Relay · 9: Capacitor · 10: Battery |\n### Parts Reward Table\nUse the following table as general guidance for Scrap rewards after encounters:\n| Adversaries | Easy Fight | Standard Fight | Difficult Fight | Very Difficult Fight |\n|---|---|---|---|---|\n| Mostly non-tech-based | 2 Shards | 2 Shards, 1 Metal | 2 Shards, 1 Metal, 1 Component | 2 Shard, 2 Metals, 1 Component |\n| Mostly tech-based | 2 Shards, 1 Metal | 2 Shards, 2 Metals, 1 Component | 3 Shards, 2 Metals, 1 Component | 3 Shards, 3 Metals, 2 Components |\n| All tech-based | 2 Shards, 1 Metal, 1 Component | 3 Shards, 2 Metals, 2 Components | 3 Shards, 3 Metals, 2 Components | 4 Shards, 3 Metals, 3 Components |\nShards (d6): 1: Gear · 2: Coil · 3: Wire · 4: Trigger · 5: Lens · 6: Crystal · 7–10: n/a\nMetals (d8): 1–2: Aluminum · 3–4: Copper · 5: Cobalt · 6: Silver · 7: Platinum · 8: Gold · 9–10: n/a\nComponents (d10): 1–2: Fuse · 3–5: Circuit · 6–7: Disc · 8: Relay · 9: Capacitor · 10: Battery"
+              "body": "PCs can collect Scrap from defeated tech-based adversaries outside of combat. Each category of Scrap is represented by a die size. When the PCs collect Scrap, the GM determines how many of each category they find, which in turn determines the total dice pool each player rolls. Compare the results of each player’s roll against your campaign’s Scrap table to determine the number of each type they acquire. PCs can also obtain specific pieces of Scrap by completing NPC contracts, hunting particular adversaries, exploring certain areas, or purchasing them from special merchants.\n### Scrap Table\nThe table below lists generic outcomes you can replace as needed to suit your campaign.\n| Scrap Type (die) | Results |\n|---|---|\n| Shards (d6) | 1: Gear · 2: Coil · 3: Wire · 4: Trigger · 5: Lens · 6: Crystal · 7–10: n/a |\n| Metals (d8) | 1–2: Aluminum · 3–4: Copper · 5: Cobalt · 6: Silver · 7: Platinum · 8: Gold · 9–10: n/a |\n| Components (d10) | 1–2: Fuse · 3–5: Circuit · 6–7: Disc · 8: Relay · 9: Capacitor · 10: Battery |\n### Parts Reward Table\nUse the following table as general guidance for Scrap rewards after encounters:\n| Adversaries | Easy Fight | Standard Fight | Difficult Fight | Very Difficult Fight |\n|---|---|---|---|---|\n| Mostly non-tech-based | 2 Shards | 2 Shards, 1 Metal | 2 Shards, 1 Metal, 1 Component | 2 Shard, 2 Metals, 1 Component |\n| Mostly tech-based | 2 Shards, 1 Metal | 2 Shards, 2 Metals, 1 Component | 3 Shards, 2 Metals, 1 Component | 3 Shards, 3 Metals, 2 Components |\n| All tech-based | 2 Shards, 1 Metal, 1 Component | 3 Shards, 2 Metals, 2 Components | 3 Shards, 3 Metals, 2 Components | 4 Shards, 3 Metals, 3 Components |\nShards (d6): 1: Gear · 2: Coil · 3: Wire · 4: Trigger · 5: Lens · 6: Crystal · 7–10: n/a\nMetals (d8): 1–2: Aluminum · 3–4: Copper · 5: Cobalt · 6: Silver · 7: Platinum · 8: Gold · 9–10: n/a\nComponents (d10): 1–2: Fuse · 3–5: Circuit · 6–7: Disc · 8: Relay · 9: Capacitor · 10: Battery",
+              "short": "Collect Scrap from defeated tech-based adversaries outside combat, NPC contracts, hunting, exploring, or special merchants. Each Scrap category has a die size; the GM sets how many of each you find, which makes your dice pool. Compare your rolls to the Scrap table for how many of each type you get.",
+              "table": {
+                "head": [
+                  "Roll",
+                  "Shards (d6)",
+                  "Metals (d8)",
+                  "Components (d10)"
+                ],
+                "rows": [
+                  [
+                    "1",
+                    "Gear",
+                    "Aluminum",
+                    "Fuse"
+                  ],
+                  [
+                    "2",
+                    "Coil",
+                    "Aluminum",
+                    "Fuse"
+                  ],
+                  [
+                    "3",
+                    "Wire",
+                    "Copper",
+                    "Circuit"
+                  ],
+                  [
+                    "4",
+                    "Trigger",
+                    "Copper",
+                    "Circuit"
+                  ],
+                  [
+                    "5",
+                    "Lens",
+                    "Cobalt",
+                    "Circuit"
+                  ],
+                  [
+                    "6",
+                    "Crystal",
+                    "Silver",
+                    "Disc"
+                  ],
+                  [
+                    "7",
+                    "n/a",
+                    "Platinum",
+                    "Disc"
+                  ],
+                  [
+                    "8",
+                    "n/a",
+                    "Gold",
+                    "Relay"
+                  ],
+                  [
+                    "9",
+                    "n/a",
+                    "n/a",
+                    "Capacitor"
+                  ],
+                  [
+                    "10",
+                    "n/a",
+                    "n/a",
+                    "Battery"
+                  ]
+                ]
+              }
             }
           ]
         }
@@ -1131,17 +1228,52 @@
               "op": "add-move",
               "id": "make-a-feast",
               "name": "Make a Feast",
-              "rules": "In a feast-based campaign, players can’t choose downtime moves to clear Stress, clear Hit Points, or gain Hope. Instead, they have a new downtime move: Make a Feast. Each PC who chooses this move can remove ingredients from their inventory and contribute them to the party’s collective meal to gain the benefits of the resulting feast."
+              "rules": "In a feast-based campaign, players can’t choose downtime moves to clear Stress, clear Hit Points, or gain Hope. Instead, they have a new downtime move: Make a Feast. Each PC who chooses this move can remove ingredients from their inventory and contribute them to the party’s collective meal to gain the benefits of the resulting feast.",
+              "short": "You can’t choose downtime moves to clear Stress, clear Hit Points, or gain Hope. Instead, Make a Feast: remove ingredients from your inventory and contribute them to the party’s meal."
             },
             {
               "op": "back-sheet",
               "title": "Ingredients & Flavors",
-              "body": "Every ingredient is denoted by a name and a flavor profile comprising 1–3 flavors with their relative strengths. For example, “Mushroom caps: Bitter (1), Savory (2).”\nThere are six flavors, each of which is represented by an associated die size: Sweet (d4), Salty (d6), Bitter (d8), Sour (d10), Savory (d12), and Weird (d20). A flavor’s strength is represented by a value between 1 and 3. The following list provides examples of ingredients and their flavor profiles:\nWhen a PC acquires an ingredient, they add it to their inventory. The maximum number of ingredients a PC can hold in their inventory is equal to their highest trait.\nWhen the PCs cook with an ingredient, they roll a number of dice (of the flavor’s associated die size) equal to the strength of the flavor."
+              "body": "Every ingredient is denoted by a name and a flavor profile comprising 1–3 flavors with their relative strengths. For example, “Mushroom caps: Bitter (1), Savory (2).”\nThere are six flavors, each of which is represented by an associated die size: Sweet (d4), Salty (d6), Bitter (d8), Sour (d10), Savory (d12), and Weird (d20). A flavor’s strength is represented by a value between 1 and 3. The following list provides examples of ingredients and their flavor profiles:\nWhen a PC acquires an ingredient, they add it to their inventory. The maximum number of ingredients a PC can hold in their inventory is equal to their highest trait.\nWhen the PCs cook with an ingredient, they roll a number of dice (of the flavor’s associated die size) equal to the strength of the flavor.",
+              "short": "Each ingredient has a name and 1–3 flavors with strengths (e.g. Mushroom caps: Bitter (1), Savory (2)). Add acquired ingredients to your inventory, up to your highest trait. Cooking with an ingredient rolls dice of each flavor’s die size equal to its strength.",
+              "table": {
+                "head": [
+                  "Flavor",
+                  "Die"
+                ],
+                "rows": [
+                  [
+                    "Sweet",
+                    "d4"
+                  ],
+                  [
+                    "Salty",
+                    "d6"
+                  ],
+                  [
+                    "Bitter",
+                    "d8"
+                  ],
+                  [
+                    "Sour",
+                    "d10"
+                  ],
+                  [
+                    "Savory",
+                    "d12"
+                  ],
+                  [
+                    "Weird",
+                    "d20"
+                  ]
+                ]
+              }
             },
             {
               "op": "back-sheet",
               "title": "Make a Feast",
-              "body": "Preparing the Dish\nTo begin cooking, the party designates one PC to be the chef. The chef combines each contributed ingredient’s flavor dice into a flavor pool. For example, a party might decide to make a steak dinner with the following recipe: 1 serving of direbear meat (3d12), 1 serving of mushroom caps (2d12 and 1d8), and 1 serving of ooze marrow (2d8 and 1d4). This gives the party 5d12, 3d8, and 1d4 altogether.\nThe chef makes a Prep Roll by rolling all the dice in the flavor pool and setting aside any matching values. If there are no matching values, the chef instead discards a die of their choice. The chef continues making Cooking Rolls until only one die remains in the flavor pool or all dice have been discarded or set aside.\nDetermining a Meal’s Rating\nOnce preparation is complete, the chef calculates the resulting Meal Rating. Each matching set of dice is worth a number of points equal to its matched value. For example, a d6 and a d8 that rolled matching 3s would be worth 3 points, a d10 and a d12 that rolled matching 4s would be worth 4 points, and a d8 and a d20 that rolled matching 4s on a different roll would also be worth 4 points. The chef adds the point totals together to determine the meal’s Rating. In this example, the party’s meal would have a Rating of 11 (3 + 4 + 4 = 11).\nEating the Meal\nEach PC who partakes in the meal can clear a number of Hit Points, clear a number of Stress, and gain a number of Hope such that the total of all three numbers is equal to or less than the Meal Rating. For example, if the dish has a Meal Rating of 11, a PC could choose to clear 6 Hit Points, clear 3 Stress, and gain 2 Hope, and a different PC could choose to clear 5 Hit Points, clear 2 Stress, and gain 4 Hope."
+              "body": "Preparing the Dish\nTo begin cooking, the party designates one PC to be the chef. The chef combines each contributed ingredient’s flavor dice into a flavor pool. For example, a party might decide to make a steak dinner with the following recipe: 1 serving of direbear meat (3d12), 1 serving of mushroom caps (2d12 and 1d8), and 1 serving of ooze marrow (2d8 and 1d4). This gives the party 5d12, 3d8, and 1d4 altogether.\nThe chef makes a Prep Roll by rolling all the dice in the flavor pool and setting aside any matching values. If there are no matching values, the chef instead discards a die of their choice. The chef continues making Cooking Rolls until only one die remains in the flavor pool or all dice have been discarded or set aside.\nDetermining a Meal’s Rating\nOnce preparation is complete, the chef calculates the resulting Meal Rating. Each matching set of dice is worth a number of points equal to its matched value. For example, a d6 and a d8 that rolled matching 3s would be worth 3 points, a d10 and a d12 that rolled matching 4s would be worth 4 points, and a d8 and a d20 that rolled matching 4s on a different roll would also be worth 4 points. The chef adds the point totals together to determine the meal’s Rating. In this example, the party’s meal would have a Rating of 11 (3 + 4 + 4 = 11).\nEating the Meal\nEach PC who partakes in the meal can clear a number of Hit Points, clear a number of Stress, and gain a number of Hope such that the total of all three numbers is equal to or less than the Meal Rating. For example, if the dish has a Meal Rating of 11, a PC could choose to clear 6 Hit Points, clear 3 Stress, and gain 2 Hope, and a different PC could choose to clear 5 Hit Points, clear 2 Stress, and gain 4 Hope.",
+              "short": "Preparing the Dish: the party picks a chef, who combines each contributed ingredient’s flavor dice into a flavor pool. The chef makes a Prep Roll, rolling all the dice and setting aside matching values; with no match, the chef discards a die of their choice. The chef keeps making Cooking Rolls until one die remains or all are discarded or set aside.\nMeal Rating: each matching set is worth its matched value; add them together for the Rating (matching 3s, 4s and 4s give 3 + 4 + 4 = 11).\nEating the Meal: each PC who partakes can clear Hit Points, clear Stress, and gain Hope, in amounts totaling no more than the Rating."
             }
           ]
         }
@@ -1162,7 +1294,8 @@
             {
               "op": "back-sheet",
               "title": "Curses",
-              "body": "A creature afflicted with a magical curse gains the Cursed condition. The Cursed condition can only be cleared by magic from a spell, ritual, magic item, location, supernatural occurrence, higher power, or some combination of these options. Discovering how to end a curse often requires research, which might prompt the PCs to undergo a quest for additional information or help from an NPC."
+              "body": "A creature afflicted with a magical curse gains the Cursed condition. The Cursed condition can only be cleared by magic from a spell, ritual, magic item, location, supernatural occurrence, higher power, or some combination of these options. Discovering how to end a curse often requires research, which might prompt the PCs to undergo a quest for additional information or help from an NPC.",
+              "short": "A creature afflicted by a magical curse gains the Cursed condition, clearable only by magic (spell, ritual, magic item, location, supernatural occurrence, higher power, or a mix). Ending a curse often requires research, a quest, or help from an NPC."
             }
           ]
         }
@@ -1189,17 +1322,52 @@
             {
               "op": "back-sheet",
               "title": "Flight",
-              "body": "During character creation, each player creates a magic artifact they can use to fly. Flying PCs use the normal movement rules and can fly within Close range as part of an action roll, but they must make an appropriate trait roll to move beyond Close range or if movement is their primary action. At the GM’s discretion, some threats, such as gaining the Restrained or Vulnerable conditions, losing their magic artifact, or taking Severe damage, can temporarily interrupt a PC’s ability to fly."
+              "body": "During character creation, each player creates a magic artifact they can use to fly. Flying PCs use the normal movement rules and can fly within Close range as part of an action roll, but they must make an appropriate trait roll to move beyond Close range or if movement is their primary action. At the GM’s discretion, some threats, such as gaining the Restrained or Vulnerable conditions, losing their magic artifact, or taking Severe damage, can temporarily interrupt a PC’s ability to fly.",
+              "short": "Each player creates a magic artifact they can fly with. Fly within Close range as part of an action roll; make an appropriate trait roll to go beyond Close range or when movement is your primary action. The GM may interrupt flight for threats such as being Restrained or Vulnerable, losing your artifact, or taking Severe damage."
             },
             {
               "op": "back-sheet",
               "title": "Using Traits for Flight",
-              "body": "A PC can use any appropriate trait (not just Agility) to move while flying. The following are some examples of how each trait might be used:\nAgility: Swift acrobatics, speed-boosting off an adversary’s wake, maintaining an aerodynamic posture, or angling past a winged threat\nFinesse: Focused, subtle, and well-timed adjustments, threading the needle, precision flying, operating finely tuned controls, or deftly weaving between obstacles\nStrength: Blasting through floating debris, holding fast in shifting weather, or slamming into a racing rival\nInstinct: Navigating by sheer intuition, keenly spotting a shortcut, following a migratory current, or sensing hidden danger in the clouds.\nPresence: Flying with natural grace and effortless style, commanding attention, causing a distraction, creating a spectacle\nKnowledge: Charting efficient flight plans, plotting rotational momentum, or deducing the exact timing of a foe’s wingbeats"
+              "body": "A PC can use any appropriate trait (not just Agility) to move while flying. The following are some examples of how each trait might be used:\nAgility: Swift acrobatics, speed-boosting off an adversary’s wake, maintaining an aerodynamic posture, or angling past a winged threat\nFinesse: Focused, subtle, and well-timed adjustments, threading the needle, precision flying, operating finely tuned controls, or deftly weaving between obstacles\nStrength: Blasting through floating debris, holding fast in shifting weather, or slamming into a racing rival\nInstinct: Navigating by sheer intuition, keenly spotting a shortcut, following a migratory current, or sensing hidden danger in the clouds.\nPresence: Flying with natural grace and effortless style, commanding attention, causing a distraction, creating a spectacle\nKnowledge: Charting efficient flight plans, plotting rotational momentum, or deducing the exact timing of a foe’s wingbeats",
+              "short": "Any appropriate trait (not just Agility) can move you while flying:",
+              "table": {
+                "head": [
+                  "Trait",
+                  "Flight use"
+                ],
+                "rows": [
+                  [
+                    "Agility",
+                    "Acrobatics, speed-boosting off an adversary’s wake, angling past a winged threat"
+                  ],
+                  [
+                    "Finesse",
+                    "Precision flying, fine controls, weaving between obstacles"
+                  ],
+                  [
+                    "Strength",
+                    "Blasting through debris, holding fast in weather, slamming a rival"
+                  ],
+                  [
+                    "Instinct",
+                    "Intuitive navigation, spotting a shortcut, sensing hidden danger"
+                  ],
+                  [
+                    "Presence",
+                    "Graceful style, commanding attention, creating a distraction or spectacle"
+                  ],
+                  [
+                    "Knowledge",
+                    "Charting flight plans, plotting momentum, timing a foe’s wingbeats"
+                  ]
+                ]
+              }
             },
             {
               "op": "back-sheet",
               "title": "Less Lethal Campaigns",
-              "body": "In a less lethal campaign, any death move that would normally lead to a character’s demise instead puts them in the infirmary for a few weeks or sends them home for an extended period of time. While they recover, the PC is unplayable but not dead."
+              "body": "In a less lethal campaign, any death move that would normally lead to a character’s demise instead puts them in the infirmary for a few weeks or sends them home for an extended period of time. While they recover, the PC is unplayable but not dead.",
+              "short": "In a less lethal campaign, a death move that would end a character instead puts them in the infirmary for a few weeks or sends them home for an extended period. While they recover, the PC is unplayable but not dead."
             }
           ]
         }
@@ -1221,7 +1389,8 @@
             {
               "op": "back-sheet",
               "title": "Shadow-Touched (PCs)",
-              "body": "PCs can also become Shadow-Touched when corrupted by dark magic. A Shadow-Touched PC gains a damage bonus equal to the number of scars they have marked. When a Shadow-Touched PC marks their last Hope slot with a scar, they succumb to corruption and charge into the darkness instead of making a death move."
+              "body": "PCs can also become Shadow-Touched when corrupted by dark magic. A Shadow-Touched PC gains a damage bonus equal to the number of scars they have marked. When a Shadow-Touched PC marks their last Hope slot with a scar, they succumb to corruption and charge into the darkness instead of making a death move.",
+              "short": "A PC corrupted by dark magic can become Shadow-Touched: a damage bonus equal to their marked scars. When they mark their last Hope slot with a scar, they charge into the darkness instead of making a death move."
             }
           ]
         }

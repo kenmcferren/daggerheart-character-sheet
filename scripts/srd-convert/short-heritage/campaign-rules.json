@@ -1,0 +1,215 @@
+{
+  "witherwild": {
+    "Serpent’s Sickness": {
+      "short": "Anyone, especially those from Haven, may carry the Serpent’s Sickness, which stiffens movement and limits survival time without a cure."
+    },
+    "Corruption From the Witherwild": {
+      "short": "When a PC takes Severe damage from a Withered adversary or environment, they gain a Wither token and roll their Fear Die. If it is equal to or below their Wither tokens, they gain a scar and clear all tokens, describing how the Witherwild changes them permanently.\nAt the end of each session, clear all Wither tokens and gain that much Fear. A character who dies with Wither tokens is permanently taken over by the Witherwild."
+    }
+  },
+  "monster-hunting": {
+    "Reanimated": {
+      "short": "With the Reanimated transformation, your maximum loadout drops to one. During a rest, use a downtime move to raise it by one, up to the normal maximum of five."
+    }
+  },
+  "tech": {
+    "grant:Tech Link": {
+      "short": "You gain a Tech Link (a data cable with a hook) at creation. Downtime moves require connecting to the campaign’s worldwide data and energy network, usually via a Tech Link."
+    },
+    "Upgrades": {
+      "short": "Your Iconic Weapon starts with two Upgrade slots at Tier 1 and gains one more each tier. Craft an Upgrade as a downtime move when you have the Parts. You can build any number, but can’t install more than your slots. An installed Upgrade counts as a weapon feature. In downtime, freely swap Upgrades you have crafted or acquired."
+    },
+    "Crafting & Trading": {
+      "short": "No gold in tech campaigns. Gather Scrap to trade for Credits (tracked on the Iconic Weapon Sheet). All PCs start with 5 Credits. Pricing conversion:",
+      "table": {
+        "head": [
+          "Credits",
+          "Gold"
+        ],
+        "rows": [
+          [
+            "10",
+            "1 handful"
+          ],
+          [
+            "100",
+            "1 bag"
+          ],
+          [
+            "1000",
+            "1 chest"
+          ]
+        ]
+      }
+    },
+    "Scrap": {
+      "short": "Collect Scrap from defeated tech-based adversaries outside combat, NPC contracts, hunting, exploring, or special merchants. Each Scrap category has a die size; the GM sets how many of each you find, which makes your dice pool. Compare your rolls to the Scrap table for how many of each type you get.",
+      "table": {
+        "head": [
+          "Roll",
+          "Shards (d6)",
+          "Metals (d8)",
+          "Components (d10)"
+        ],
+        "rows": [
+          [
+            "1",
+            "Gear",
+            "Aluminum",
+            "Fuse"
+          ],
+          [
+            "2",
+            "Coil",
+            "Aluminum",
+            "Fuse"
+          ],
+          [
+            "3",
+            "Wire",
+            "Copper",
+            "Circuit"
+          ],
+          [
+            "4",
+            "Trigger",
+            "Copper",
+            "Circuit"
+          ],
+          [
+            "5",
+            "Lens",
+            "Cobalt",
+            "Circuit"
+          ],
+          [
+            "6",
+            "Crystal",
+            "Silver",
+            "Disc"
+          ],
+          [
+            "7",
+            "n/a",
+            "Platinum",
+            "Disc"
+          ],
+          [
+            "8",
+            "n/a",
+            "Gold",
+            "Relay"
+          ],
+          [
+            "9",
+            "n/a",
+            "n/a",
+            "Capacitor"
+          ],
+          [
+            "10",
+            "n/a",
+            "n/a",
+            "Battery"
+          ]
+        ]
+      }
+    }
+  },
+  "feasts": {
+    "move:Make a Feast": {
+      "short": "You can’t choose downtime moves to clear Stress, clear Hit Points, or gain Hope. Instead, Make a Feast: remove ingredients from your inventory and contribute them to the party’s meal."
+    },
+    "Ingredients & Flavors": {
+      "short": "Each ingredient has a name and 1–3 flavors with strengths (e.g. Mushroom caps: Bitter (1), Savory (2)). Add acquired ingredients to your inventory, up to your highest trait. Cooking with an ingredient rolls dice of each flavor’s die size equal to its strength.",
+      "table": {
+        "head": [
+          "Flavor",
+          "Die"
+        ],
+        "rows": [
+          [
+            "Sweet",
+            "d4"
+          ],
+          [
+            "Salty",
+            "d6"
+          ],
+          [
+            "Bitter",
+            "d8"
+          ],
+          [
+            "Sour",
+            "d10"
+          ],
+          [
+            "Savory",
+            "d12"
+          ],
+          [
+            "Weird",
+            "d20"
+          ]
+        ]
+      }
+    },
+    "Make a Feast": {
+      "short": "Preparing the Dish: the party picks a chef, who combines each contributed ingredient’s flavor dice into a flavor pool. The chef makes a Prep Roll, rolling all the dice and setting aside matching values; with no match, the chef discards a die of their choice. The chef keeps making Cooking Rolls until one die remains or all are discarded or set aside.\nMeal Rating: each matching set is worth its matched value; add them together for the Rating (matching 3s, 4s and 4s give 3 + 4 + 4 = 11).\nEating the Meal: each PC who partakes can clear Hit Points, clear Stress, and gain Hope, in amounts totaling no more than the Rating."
+    }
+  },
+  "fairy-tale": {
+    "Curses": {
+      "short": "A creature afflicted by a magical curse gains the Cursed condition, clearable only by magic (spell, ritual, magic item, location, supernatural occurrence, higher power, or a mix). Ending a curse often requires research, a quest, or help from an NPC."
+    }
+  },
+  "floating-magic-school": {
+    "Flight": {
+      "short": "Each player creates a magic artifact they can fly with. Fly within Close range as part of an action roll; make an appropriate trait roll to go beyond Close range or when movement is your primary action. The GM may interrupt flight for threats such as being Restrained or Vulnerable, losing your artifact, or taking Severe damage."
+    },
+    "Using Traits for Flight": {
+      "short": "Any appropriate trait (not just Agility) can move you while flying:",
+      "table": {
+        "head": [
+          "Trait",
+          "Flight use"
+        ],
+        "rows": [
+          [
+            "Agility",
+            "Acrobatics, speed-boosting off an adversary’s wake, angling past a winged threat"
+          ],
+          [
+            "Finesse",
+            "Precision flying, fine controls, weaving between obstacles"
+          ],
+          [
+            "Strength",
+            "Blasting through debris, holding fast in weather, slamming a rival"
+          ],
+          [
+            "Instinct",
+            "Intuitive navigation, spotting a shortcut, sensing hidden danger"
+          ],
+          [
+            "Presence",
+            "Graceful style, commanding attention, creating a distraction or spectacle"
+          ],
+          [
+            "Knowledge",
+            "Charting flight plans, plotting momentum, timing a foe’s wingbeats"
+          ]
+        ]
+      }
+    },
+    "Less Lethal Campaigns": {
+      "short": "In a less lethal campaign, a death move that would end a character instead puts them in the infirmary for a few weeks or sends them home for an extended period. While they recover, the PC is unplayable but not dead."
+    }
+  },
+  "grimdark": {
+    "Shadow-Touched (PCs)": {
+      "short": "A PC corrupted by dark magic can become Shadow-Touched: a damage bonus equal to their marked scars. When they mark their last Hope slot with a scar, they charge into the darkness instead of making a death move."
+    }
+  }
+}

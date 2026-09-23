@@ -3,6 +3,7 @@ import { readFileSync, mkdirSync, writeFileSync } from 'node:fs'
 import { PDFDocument } from 'pdf-lib'
 import { buildCreation, type CreationSetup } from '../src/engine/creation'
 import { newCharacter, creationOf, type Character } from '../src/engine/character'
+import { withRecording, outside } from './lib/record'
 import { renderSheet, damageText, type SheetFonts } from '../src/pdf/sheet'
 
 const packs = [JSON.parse(readFileSync('packs/core/srd-core.json', 'utf8')), JSON.parse(readFileSync('packs/core/srd-frames.json', 'utf8'))]
@@ -84,5 +85,54 @@ describe('[s4] sheet details', () => {
     const setup = buildCreation(packs, { supplements: ['tech'] })
     const doc = await render(character(setup, 'wizard'), setup, 'tech')
     expect(doc.getPageCount()).toBeGreaterThanOrEqual(3)
+  })
+})
+
+describe('[s7] campaign rule tables', () => {
+  it('renders condensed campaign rules with zebra tables (Tech + Floating Magic School; Feasts + Witherwild + Fairy Tale + Grimdark)', async () => {
+    const a = buildCreation(packs, { supplements: ['tech', 'floating-magic-school'] })
+    expect((await render(character(a, 'wizard'), a, 'campaign-tables-tech')).getPageCount()).toBeGreaterThanOrEqual(3)
+    const b = buildCreation(packs, { supplements: ['feasts', 'witherwild', 'fairy-tale', 'grimdark'] })
+    expect((await render(character(b, 'ranger'), b, 'campaign-tables-feasts')).getPageCount()).toBeGreaterThanOrEqual(3)
+  })
+})
+
+describe('[s7] zebra table words', () => {
+  it('never breaks a table word into pieces (Aluminum, Capacitor, Components, Knowledge, Roll, 10)', async () => {
+    const setup = buildCreation(packs, { supplements: ['tech', 'floating-magic-school'] })
+    const marks = await withRecording(() => renderSheet(character(setup, 'wizard'), setup, fonts))
+    const drawn = marks.filter((m) => m.kind === 'text').map((m) => (m.text ?? '').trim())
+    expect(marks.filter(outside).map((m) => m.text ?? m.kind), 'marks outside the margins').toEqual([])
+    for (const w of ['Aluminum', 'Platinum', 'Capacitor', 'Components', 'Knowledge', 'Instinct', 'Roll', '10']) expect(drawn, w).toContain(w)
+  })
+})
+
+describe('[s7] substituted card numbers', () => {
+  it('substitute() puts the character value in, or the SRD wording when it has none', async () => {
+    const { substitute } = await import('../src/pdf/sheet')
+    const t = 'place {{spellcast|# tokens|tokens equal to your Spellcast trait}} now'
+    expect(substitute(t, { spellcast: 3 })).toBe('place \u00a73\u00a7 tokens now')
+    expect(substitute(t, {})).toBe('place tokens equal to your Spellcast trait now')
+  })
+  it('Arcana cards print the numbers in bold blue', async () => {
+    const setup = buildCreation(packs)
+    const ch = character(setup, 'sorcerer', (c) => { c.choices.domainCardIds = ['unleash-chaos', 'flight', 'telekinesis', 'rune-ward']; c.traits = { agility: 2, strength: 0, finesse: 1, instinct: 1, presence: 0, knowledge: -1 } })
+    await render(ch, setup, 'arcana-substituted')
+    const marks = await withRecording(() => renderSheet(ch, setup, fonts))
+    const blue = marks.filter((m) => m.kind === 'text' && m.colors.some((c: any) => c && c.blue === 0.75 && c.red === 0.1)).map((m) => (m.text ?? '').trim())
+    expect(blue.length, JSON.stringify(blue)).toBeGreaterThanOrEqual(3)
+    expect(blue.every((t) => /\d/.test(t)), JSON.stringify(blue)).toBe(true)
+  })
+})
+
+describe('[s7] domain card tables', () => {
+  it('renders cards with tables (Teleport, Forager, Tempest, Bare Bones) inside the margins', async () => {
+    const setup = buildCreation(packs)
+    const ch = character(setup, 'wizard', (c) => { c.choices.domainCardIds = ['teleport', 'forager', 'tempest', 'bare-bones', 'rage-up', 'cruel-precision', 'sigil-of-retribution', 'inspirational-words'] })
+    const bytes = await renderSheet(ch, setup, fonts)
+    mkdirSync('TestArtifacts/sheet-samples', { recursive: true })
+    writeFileSync('TestArtifacts/sheet-samples/domain-card-tables.pdf', bytes)
+    const marks = await withRecording(() => renderSheet(ch, setup, fonts))
+    expect(marks.filter(outside).map((m) => m.text ?? m.kind)).toEqual([])
   })
 })

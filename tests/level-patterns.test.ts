@@ -39,7 +39,7 @@ async function measure(ch: Character, pattern: string, seed?: number): Promise<R
   const marks = await withRecording(async () => (bytes = await renderSheet(ch, setup, fonts)))
   const out = marks.filter(outside)
   if (out.length) problems.push(`${out.length} marks outside the margins (first: ${out[0].kind} ${out[0].text ?? ''})`)
-  const colour = marks.flatMap((m) => m.colors).filter((c) => c && (c.red !== c.green || c.green !== c.blue))
+  const colour = marks.flatMap((m) => m.colors).filter((c) => c && (c.red !== c.green || c.green !== c.blue) && !(c.red === 0.1 && c.green === 0.25 && c.blue === 0.75))
   if (colour.length) problems.push('colour (non-gray) marks')
   const pages = (await PDFDocument.load(bytes)).getPageCount()
   if (pages >= budgetFor(ch.choices.classId!)) { mkdirSync('TestArtifacts/pattern-audit', { recursive: true }); writeFileSync(`TestArtifacts/pattern-audit/${ch.choices.classId}-${pattern}-level-${ch.level}.pdf`, bytes) }

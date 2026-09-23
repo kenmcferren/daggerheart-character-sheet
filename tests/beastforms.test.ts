@@ -54,6 +54,9 @@ describe('[s8] Druid Beastform page', () => {
     expect(texts).toContain('Legendary Beast')
     expect(texts.some((t) => t.startsWith('Ev. '))).toBe(true)
     expect(marks.filter(outside)).toEqual([])
+    // Beastforms start on a fresh sheet: every page before them is an even count (double-sided printing).
+    const { PDFDocument } = await import('pdf-lib')
+    expect(((await PDFDocument.load(bytes)).getPageCount() - lastLayout.beastformPages) % 2).toBe(0)
     // 2-page target not yet reached (owner, 2026-09-23): logged, not asserted, until text/layout condensing lands.
     console.log(`Beastform page(s) at Tier 4 (24 forms): ${lastLayout.beastformPages}`)
     mkdirSync('TestArtifacts/sheet-samples', { recursive: true })

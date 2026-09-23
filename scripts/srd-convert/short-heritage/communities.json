@@ -1,0 +1,48 @@
+{
+  "duneborne": [
+    { "name": "Oasis", "short": "On a short rest, you or an ally can reroll a downtime move die and take the higher result." }
+  ],
+  "freeborne": [
+    { "name": "Unbound", "short": "Once per session, when you roll with Fear, change it to Hope." }
+  ],
+  "frostborne": [
+    { "name": "Hardy", "short": "When you take a rest, clear a Hit Point." }
+  ],
+  "hearthborne": [
+    { "name": "Close-Knit", "short": "Once per long rest, spend any number of Hope to give an ally within Far range that many Hope." }
+  ],
+  "highborne": [
+    { "name": "Privilege", "short": "Advantage on rolls to consort with nobles, negotiate prices, or leverage your reputation." }
+  ],
+  "loreborne": [
+    { "name": "Well-Read", "short": "Advantage on rolls involving the history, culture, or politics of a prominent person or place." }
+  ],
+  "orderborne": [
+    { "name": "Dedicated", "short": "Record three sayings or values from your upbringing. Once per rest, when your action embodies one, roll a d20 as your Hope Die." }
+  ],
+  "reborne": [
+    { "name": "Found Family", "short": "Once per rest, spend a Hope to use an ally's Experience as your own, describing how they prepared you for this moment." },
+    { "short": "When you join a new community or rediscover your old one, you can permanently trade this card for it." }
+  ],
+  "ridgeborne": [
+    { "name": "Steady", "short": "Advantage on rolls to traverse dangerous cliffs and ledges, navigate harsh environments, and use survival knowledge." }
+  ],
+  "seaborne": [
+    { "name": "Know the Tide", "short": "When you roll with Fear, place a token on your community card (max your level). Before an action roll, spend any number of tokens for +1 each. Clear unspent tokens at session end." }
+  ],
+  "slyborne": [
+    { "name": "Scoundrel", "short": "Advantage on rolls to negotiate with criminals, detect lies, or find a safe place to hide." }
+  ],
+  "underborne": [
+    { "name": "Low-Light Living", "short": "In low light or heavy shadow, advantage on rolls to hide, investigate, or perceive details there." }
+  ],
+  "wanderborne": [
+    { "name": "Nomadic Pack", "short": "Add a Nomadic Pack to your inventory. Once per session, spend a Hope to pull a useful mundane item from it (work with the GM)." }
+  ],
+  "warborne": [
+    { "name": "Brave Face", "short": "Once per session, when you would mark a Stress, spend a Hope instead." }
+  ],
+  "wildborne": [
+    { "name": "Lightfoot", "short": "Your movement is silent. Advantage on rolls to move without being heard." }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "get-back-up": "When you take Severe damage, mark a Stress to reduce the severity by one threshold.",
+  "not-good-enough": "When you roll damage dice, reroll any 1s or 2s.",
+  "whirlwind": "When you succeed on an attack against a target within Very Close range, spend a Hope to use the attack against all other targets within Very Close range. Additional adversaries you succeed against take half damage.",
+  "a-soldiers-bond": "Once per long rest, when you compliment someone or ask them about something they’re good at, you both gain 3 Hope.",
+  "reckless": "Mark a Stress to gain advantage on an attack.",
+  "scramble": "Once per rest, when a creature within Melee range would deal damage to you, avoid the attack and safely move out of Melee range.",
+  "versatile-fighter": "Use a different trait for an equipped weapon than the one it calls for.\nWhen you deal damage, mark a Stress to use the maximum result of one damage die instead of rolling it.",
+  "deadly-focus": "Once per rest, apply all your focus to a target of your choice: gain a +1 bonus to your Proficiency until you attack another creature, defeat the target, or the battle ends.",
+  "fortified-armor": "While wearing armor, gain a +2 bonus to your damage thresholds.",
+  "champions-edge": "When you critically succeed on an attack, spend up to 3 Hope, choosing one option per Hope (each only once):\n- You clear a Hit Point.\n- You clear an Armor Slot.\n- The target marks an additional Hit Point.",
+  "vitality": "When you choose this card, permanently gain two of the following benefits:\n- One Stress slot\n- One Hit Point slot\n- +2 bonus to your damage thresholds\nThen place this card in your vault permanently.",
+  "battle-hardened": "Once per long rest, when you would make a Death Move, spend a Hope to clear a Hit Point instead.",
+  "rage-up": "Before you attack, mark a Stress to gain {{strength2|a # bonus to your damage roll|a bonus to your damage roll equal to twice your Strength}}. You can Rage Up twice per attack.",
+  "blade-touched": "When 4 or more loadout cards are from the Blade domain, gain:\n- +2 bonus to your attack rolls\n- +4 bonus to your Severe damage threshold",
+  "glancing-blow": "When you fail an attack, mark a Stress to deal weapon damage using {{halfProfUp|a Proficiency of #|half your Proficiency}}.",
+  "battle-cry": "Once per long rest, while charging into danger, rally your allies: all allies who can hear you each clear a Stress and gain a Hope. They also gain advantage on attack rolls until you or an ally rolls a failure with Fear.",
+  "frenzy": "Once per long rest, go into a Frenzy until there are no adversaries within sight.\nWhile Frenzied, you can’t use Armor Slots and gain a +10 bonus to damage rolls and a +8 bonus to your Severe damage threshold.",
+  "gore-and-glory": "When you critically succeed on a weapon attack, gain an additional Hope or clear an additional Stress.\nWhen you deal enough damage to defeat an enemy, gain a Hope or clear a Stress.",
+  "reapers-strike": "Once per long rest, spend a Hope to make an attack roll. The GM tells you which targets within range it would succeed against; choose one and force it to mark 5 Hit Points.",
+  "battle-monster": "When you succeed on an attack against an adversary, mark 4 Stress to force the target to mark Hit Points equal to the Hit Points you currently have marked, instead of rolling for damage.",
+  "onslaught": "When you successfully attack with your weapon, you never deal damage below the target’s Major damage threshold (it always marks at least 2 Hit Points).\nWhen a creature within your weapon’s range damages an ally with an attack that doesn’t include you, mark a Stress to force them to make a Reaction Roll (15); on a failure, the target marks a Hit Point."
+}
