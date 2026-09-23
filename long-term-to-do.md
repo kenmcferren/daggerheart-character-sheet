@@ -11,7 +11,6 @@ Completed items move to `Docs/archive/long-term-done.md`.
 - [ ] Unique iconography for Gold: separate fill-in-bubble shapes for handfuls, bags and chest (currently plain circles).
 
 
-- [ ] Class/subclass related tables (e.g. the Druid Elements table) should keep the bold header values but use alternating grey and white row fill instead of gridlines (matches the Beastform page's zebra rows). Owner, 2026-09-23.
 
 - [ ] Saved versions list (Start screen and character screen) needs a visual touch-up: layout, tree indentation, and how the branch differences (Subclass, Domain cards, Experiences, Multiclass) are shown. Owner to specify.
 
