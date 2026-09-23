@@ -95,6 +95,9 @@ export function LevelUp({ from, onDone, onCancel }: Props) {
               cardChoices={cardChoices} domainOrder={domainOrder}
             />
           )}
+          {step === 'advancements' && draft.advancements.some((a) => a.cardId === 'vitality') && (
+            <VitalityPicker choice={draft.vitalityChoice} onChange={(vitalityChoice) => change({ vitalityChoice })} />
+          )}
 
           {step === 'cards' && (
             <>
@@ -114,6 +117,9 @@ export function LevelUp({ from, onDone, onCancel }: Props) {
                   </>
                 )}
               </fieldset>
+              {(draft.newCardId === 'vitality' || draft.swap?.in === 'vitality') && (
+                <VitalityPicker choice={draft.vitalityChoice} onChange={(vitalityChoice) => change({ vitalityChoice })} />
+              )}
             </>
           )}
 
@@ -204,6 +210,7 @@ export function LevelUp({ from, onDone, onCancel }: Props) {
                 {draft.startStanceIds?.length ? <div><dt>Stances</dt><dd>{draft.startStanceIds.map(titleCase).join(', ')}</dd></div> : null}
                 {draft.newCompanion ? <div><dt>Companion</dt><dd>{draft.newCompanion.name}</dd></div> : null}
                 {draft.companionOptionIds?.length ? <div><dt>Companion</dt><dd>{draft.companionOptionIds.map(titleCase).join(', ')}</dd></div> : null}
+                {draft.vitalityChoice?.length ? <div><dt>Vitality</dt><dd>{draft.vitalityChoice.map((c) => VITALITY_OPTIONS.find((o) => o.id === c)?.title ?? c).join(', ')}</dd></div> : null}
               </dl>
               {errors.length > 0 && <ul className="issues" role="alert">{errors.map((e, i) => <li key={i}>{e}</li>)}</ul>}
               {busy && <p className="hint" role="status">{busy}</p>}
@@ -218,6 +225,27 @@ export function LevelUp({ from, onDone, onCancel }: Props) {
         </main>
       </div>
     </div>
+  )
+}
+
+type VitalityOption = NonNullable<LevelRecord['vitalityChoice']>[number]
+const VITALITY_OPTIONS: { id: VitalityOption; title: string }[] = [
+  { id: 'hitPoint', title: 'One Hit Point slot' },
+  { id: 'stress', title: 'One Stress slot' },
+  { id: 'thresholds', title: '+2 damage thresholds' },
+]
+
+/** Vitality: a one-time permanent choice of 2 of 3 benefits, made the level the card is taken. Cannot be changed later. */
+function VitalityPicker({ choice, onChange }: { choice: VitalityOption[] | undefined; onChange: (c: VitalityOption[]) => void }) {
+  const chosen = choice ?? []
+  const toggle = (id: VitalityOption) => onChange(chosen.includes(id) ? chosen.filter((x) => x !== id) : [...chosen, id])
+  return (
+    <fieldset>
+      <legend>Vitality: choose 2 (permanent, cannot be changed later)</legend>
+      <p className="hint">{chosen.length} of 2 chosen.</p>
+      <PickGrid selected={chosen} onPick={(id) => toggle(id as VitalityOption)}
+        items={VITALITY_OPTIONS.map((o) => ({ ...o, disabled: !chosen.includes(o.id) && chosen.length >= 2 }))} />
+    </fieldset>
   )
 }
 

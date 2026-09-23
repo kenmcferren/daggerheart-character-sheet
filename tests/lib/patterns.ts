@@ -96,6 +96,8 @@ export function nextRecord(ch: Character, pattern: Pattern, rand: () => number, 
       rec.swap = { out: out.id, in: choose(ins).id }
     }
   }
+  const vitalityNew = [...drafts.map((d) => d.cardId), rec.newCardId, rec.swap?.in].includes('vitality') && !prev.domainCardIds.includes('vitality')
+  if (vitalityNew) rec.vitalityChoice = ['hitPoint', 'thresholds']
   const { stanceClass, companionClass } = extrasOf(after.subclassRanks, reg)
   if (stanceClass) {
     if (!(STANCE_SUBCLASS in prev.subclassRanks)) rec.startStanceIds = (stanceClass.stances as any[]).filter((x) => x.tier === 1).slice(0, 2).map((x) => x.id)

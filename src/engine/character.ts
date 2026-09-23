@@ -42,6 +42,8 @@ export interface LevelRecord {
   companionExperience?: number
   /** Ranger Vicious: raise the companion's damage die or its range by one step. */
   viciousChoice?: 'die' | 'range'
+  /** Vitality (Blade domain card): a one-time permanent choice of 2 of 3 benefits, made when the card is taken (new card, an advancement, or a swap-in). Cannot be changed later. */
+  vitalityChoice?: ('hitPoint' | 'stress' | 'thresholds')[]
 }
 
 /** Everything is a reference by id into the loaded source packs; no book content is stored here. */

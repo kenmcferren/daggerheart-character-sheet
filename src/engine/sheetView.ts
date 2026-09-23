@@ -99,20 +99,38 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
     return { evasion: acc.evasion + (b.evasion ?? 0), majorThreshold: acc.majorThreshold + (b.majorThreshold ?? 0), severeThreshold: acc.severeThreshold + (b.severeThreshold ?? 0), armorScore: acc.armorScore + (b.armorScore ?? 0) }
   }, { evasion: 0, majorThreshold: 0, severeThreshold: 0, armorScore: 0 })
 
+  const traits: Partial<Record<Trait, number>> = { ...ch.traits }
+  for (const [t, n] of Object.entries(progress.traitBonus)) traits[t as Trait] = (traits[t as Trait] ?? 0) + (n as number)
+
+  const spellcastTraits = subclasses.map((s) => (reg.subclasses.get(s.id) as Any)?.spellcastTrait as string | undefined).filter((t): t is string => !!t)
+  const higherSpellcastTrait = spellcastTraits.length ? [...new Set(spellcastTraits)].sort((x, y) => (traits[y as Trait] ?? 0) - (traits[x as Trait] ?? 0))[0] : null
+
+  // Gear-conditional bonuses (owner, 2026-09-23): the sheet's displayed weapons/armor are assumed equipped, so
+  // "while wearing armor" and "equal to [trait]" bonuses from held domain cards and equipped armor are computed
+  // straight into the printed numbers, not left as a footnote — unlike loadout-vs-vault (never modelled).
+  const heldCards = progress.domainCardIds.map((id) => reg.domainCards.get(id) as Any).filter(Boolean)
+  const equippedGear = ch.choices.equipmentIds.map((id) => reg.equipment.get(id) as Any).filter(Boolean)
+  const wornArmor = equippedGear.find((e) => e.category === 'armor')
+  const hasCard = (id: string) => progress.domainCardIds.includes(id)
+  const gearBonus = { majorThreshold: 0, severeThreshold: 0, armorScore: 0 }
+  if (wornArmor && hasCard('armorer')) gearBonus.armorScore += 1
+  if (wornArmor && hasCard('fortified-armor')) { gearBonus.majorThreshold += 2; gearBonus.severeThreshold += 2 }
+  if (wornArmor?.id && ['armor.mage-robes', 'armor.improved-mage-robes', 'armor.advanced-mage-robes', 'armor.legendary-mage-robes'].includes(wornArmor.id) && higherSpellcastTrait) {
+    const t = traits[higherSpellcastTrait as Trait] ?? 0
+    gearBonus.majorThreshold += t; gearBonus.severeThreshold += t
+  }
+  if (wornArmor?.id === 'armor.granminsters-finery') gearBonus.armorScore += traits.presence ?? 0
+
   const stats: DerivedStats = {
     ...base,
     evasion: base.evasion + progress.evasionBonus + statBonus.evasion,
     hitPoints: Math.min(SLOT_CAP, base.hitPoints + progress.hitPointSlots),
     stress: Math.min(SLOT_CAP, base.stress + progress.stressSlots),
-    majorThreshold: base.majorThreshold + statBonus.majorThreshold,
-    severeThreshold: base.severeThreshold + statBonus.severeThreshold,
-    armorScore: Math.min(SLOT_CAP, base.armorScore + statBonus.armorScore),
+    majorThreshold: base.majorThreshold + statBonus.majorThreshold + gearBonus.majorThreshold + (progress.vitalityThresholds ? 2 : 0),
+    severeThreshold: base.severeThreshold + statBonus.severeThreshold + gearBonus.severeThreshold + (progress.vitalityThresholds ? 2 : 0),
+    armorScore: Math.min(SLOT_CAP, base.armorScore + statBonus.armorScore + gearBonus.armorScore),
     proficiency: progress.proficiency,
   }
-  const traits: Partial<Record<Trait, number>> = { ...ch.traits }
-  for (const [t, n] of Object.entries(progress.traitBonus)) traits[t as Trait] = (traits[t as Trait] ?? 0) + (n as number)
-
-  const spellcastTraits = subclasses.map((s) => (reg.subclasses.get(s.id) as Any)?.spellcastTrait as string | undefined).filter((t): t is string => !!t)
   const hasCombo = [...reg.levelUpOptions.values()].some((o: Any) => o.effect === 'combo-die' && o.classId === ch.choices.classId)
 
   const tableFeatures = subclasses.flatMap((sc) => sc.features.filter((f) => f.sheetTable))
@@ -157,9 +175,9 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
   if (stanceClass?.focusMax) resourceTrackers.push({ label: 'Focus', count: stanceClass.focusMax })
 
   // Stat footnotes (Series 7 step 1): from the same held class/subclass/ancestry features as statBonus above,
-  // plus held domain cards (loadout and vault) and equipped gear.
-  const heldCards = progress.domainCardIds.map((id) => reg.domainCards.get(id) as Any).filter(Boolean)
-  const equippedGear = ch.choices.equipmentIds.map((id) => reg.equipment.get(id) as Any).filter(Boolean)
+  // plus held domain cards (loadout and vault) and equipped gear. Gear-conditional bonuses that are actually
+  // computed above (Armorer, Fortified Armor, Mage Robes, Granminster's Finery) no longer carry a statNote in
+  // the pack data, so they don't double up as a footnote here.
   const noteSources: { name?: string; statNote?: StatNote }[] = [...bonusSources, ...heldCards, ...equippedGear]
   const statNotes = noteSources.filter((f) => f.statNote).map((f) => ({ name: f.name ?? '', kind: f.statNote!.kind, stats: f.statNote!.stats, text: f.statNote!.text }))
 

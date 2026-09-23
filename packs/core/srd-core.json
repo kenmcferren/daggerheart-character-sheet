@@ -3684,15 +3684,7 @@
         "level": 4,
         "type": "ability",
         "recallCost": 0,
-        "rules": "While you are wearing armor, gain a +2 bonus to your damage thresholds.",
-        "statNote": {
-          "kind": "build",
-          "stats": [
-            "majorThreshold",
-            "severeThreshold"
-          ],
-          "text": "+2 damage thresholds while wearing armor."
-        }
+        "rules": "While you are wearing armor, gain a +2 bonus to your damage thresholds."
       },
       {
         "id": "champions-edge",
@@ -3748,7 +3740,14 @@
         "level": 7,
         "type": "ability",
         "recallCost": 1,
-        "rules": "When 4 or more of the domain cards in your loadout are from the Blade domain, gain the following benefits:\n- +2 bonus to your attack rolls\n- +4 bonus to your Severe damage threshold"
+        "rules": "When 4 or more of the domain cards in your loadout are from the Blade domain, gain the following benefits:\n- +2 bonus to your attack rolls\n- +4 bonus to your Severe damage threshold",
+        "statNote": {
+          "kind": "build",
+          "stats": [
+            "severeThreshold"
+          ],
+          "text": "+2 attack rolls, +4 Severe threshold when 4+ loadout cards are from the Blade domain."
+        }
       },
       {
         "id": "glancing-blow",
@@ -4639,7 +4638,15 @@
         "level": 8,
         "type": "spell",
         "recallCost": 1,
-        "rules": "Gain a +1 bonus to your damage thresholds for each Stress you have marked.\nAdditionally, when you roll with Fear, you can spend 2 Hope to clear an Armor Slot."
+        "rules": "Gain a +1 bonus to your damage thresholds for each Stress you have marked.\nAdditionally, when you roll with Fear, you can spend 2 Hope to clear an Armor Slot.",
+        "statNote": {
+          "kind": "situational",
+          "stats": [
+            "majorThreshold",
+            "severeThreshold"
+          ],
+          "text": "+1 damage thresholds for each Stress you have marked."
+        }
       },
       {
         "id": "damnation",
@@ -5637,7 +5644,14 @@
             "label": "Once per long rest",
             "placement": "front"
           }
-        ]
+        ],
+        "statNote": {
+          "kind": "build",
+          "stats": [
+            "severeThreshold"
+          ],
+          "text": "+3 Severe threshold when 4+ loadout cards are from the Splendor domain."
+        }
       },
       {
         "id": "shield-aura",
@@ -5825,14 +5839,7 @@
         "level": 5,
         "type": "ability",
         "recallCost": 1,
-        "rules": "While you’re wearing armor, gain a +1 bonus to your Armor Score.\nDuring a rest, when you choose to repair your armor as a downtime move, your allies also clear an Armor Slot.",
-        "statNote": {
-          "kind": "build",
-          "stats": [
-            "armorScore"
-          ],
-          "text": "+1 Armor Score while wearing armor."
-        }
+        "rules": "While you’re wearing armor, gain a +1 bonus to your Armor Score.\nDuring a rest, when you choose to repair your armor as a downtime move, your allies also clear an Armor Slot."
       },
       {
         "id": "rousing-strike",
@@ -5888,7 +5895,14 @@
         "level": 7,
         "type": "ability",
         "recallCost": 1,
-        "rules": "When 4 or more of the domain cards in your loadout are from the Valor domain, gain the following benefits:\n- +1 bonus to your Armor Score\n- When you mark 1 or more Hit Points without marking an Armor Slot, clear an Armor Slot."
+        "rules": "When 4 or more of the domain cards in your loadout are from the Valor domain, gain the following benefits:\n- +1 bonus to your Armor Score\n- When you mark 1 or more Hit Points without marking an Armor Slot, clear an Armor Slot.",
+        "statNote": {
+          "kind": "build",
+          "stats": [
+            "armorScore"
+          ],
+          "text": "+1 Armor Score when 4+ loadout cards are from the Valor domain."
+        }
       },
       {
         "id": "full-surge",
@@ -5965,15 +5979,7 @@
         "majorThreshold": 4,
         "severeThreshold": 10,
         "armorScore": 2,
-        "feature": "Enchanted: Gain a bonus to your damage thresholds equal to your Spellcast trait.",
-        "statNote": {
-          "kind": "build",
-          "stats": [
-            "majorThreshold",
-            "severeThreshold"
-          ],
-          "text": "Damage thresholds bonus equal to Spellcast trait (Enchanted)."
-        }
+        "feature": "Enchanted: Gain a bonus to your damage thresholds equal to your Spellcast trait."
       },
       {
         "id": "armor.gambeson-armor",
@@ -6052,15 +6058,7 @@
         "majorThreshold": 6,
         "severeThreshold": 15,
         "armorScore": 3,
-        "feature": "Enchanted: Gain a bonus to your damage thresholds equal to your Spellcast trait.",
-        "statNote": {
-          "kind": "build",
-          "stats": [
-            "majorThreshold",
-            "severeThreshold"
-          ],
-          "text": "Damage thresholds bonus equal to Spellcast trait (Enchanted)."
-        }
+        "feature": "Enchanted: Gain a bonus to your damage thresholds equal to your Spellcast trait."
       },
       {
         "id": "armor.improved-gambeson-armor",
@@ -6169,15 +6167,7 @@
         "majorThreshold": 8,
         "severeThreshold": 22,
         "armorScore": 4,
-        "feature": "Enchanted: Gain a bonus to your damage thresholds equal to your Spellcast trait.",
-        "statNote": {
-          "kind": "build",
-          "stats": [
-            "majorThreshold",
-            "severeThreshold"
-          ],
-          "text": "Damage thresholds bonus equal to Spellcast trait (Enchanted)."
-        }
+        "feature": "Enchanted: Gain a bonus to your damage thresholds equal to your Spellcast trait."
       },
       {
         "id": "armor.advanced-gambeson-armor",
@@ -6256,14 +6246,7 @@
         "majorThreshold": 11,
         "severeThreshold": 27,
         "armorScore": 2,
-        "feature": "Magnificent: Gain a bonus to your Armor Score equal to your Presence.",
-        "statNote": {
-          "kind": "build",
-          "stats": [
-            "armorScore"
-          ],
-          "text": "Armor Score bonus equal to Presence (Magnificent)."
-        }
+        "feature": "Magnificent: Gain a bonus to your Armor Score equal to your Presence."
       },
       {
         "id": "armor.spiked-plate-armor",
@@ -6383,15 +6366,7 @@
         "majorThreshold": 10,
         "severeThreshold": 31,
         "armorScore": 5,
-        "feature": "Enchanted: Gain a bonus to your damage thresholds equal to your Spellcast trait.",
-        "statNote": {
-          "kind": "build",
-          "stats": [
-            "majorThreshold",
-            "severeThreshold"
-          ],
-          "text": "Damage thresholds bonus equal to Spellcast trait (Enchanted)."
-        }
+        "feature": "Enchanted: Gain a bonus to your damage thresholds equal to your Spellcast trait."
       },
       {
         "id": "armor.legendary-gambeson-armor",

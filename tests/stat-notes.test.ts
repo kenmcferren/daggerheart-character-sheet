@@ -5,7 +5,8 @@ import { deriveStats } from '../src/engine/rules'
 import { sheetView } from '../src/engine/sheetView'
 import { renderSheet, type SheetFonts } from '../src/pdf/sheet'
 import { withRecording, outside } from './lib/record'
-import { adv, equipped, hp, stress, up } from './lib/levelup-paths'
+import { progressOf } from '../src/engine/levelup'
+import { adv, equipped, hp, level1, problems, reg, stress, toLevel, up } from './lib/levelup-paths'
 
 const setup = buildCreation([JSON.parse(readFileSync('packs/core/srd-core.json', 'utf8')), JSON.parse(readFileSync('packs/core/srd-frames.json', 'utf8'))])
 const font = (f: string) => new Uint8Array(readFileSync(`assets/fonts/${f}`))
@@ -34,16 +35,44 @@ describe('[s7] rules-math step 1: stat bonuses and stat-note footnotes', () => {
     const ch = stalwartToMastery()
     const v = sheetView(ch, setup)
     expect(v.progress.subclassRanks['guardian.stalwart']).toBe(3)
+    // The auto-picked level cards happen to include Fortified Armor (Blade lvl 4); it's worn armor, so its
+    // own +2 damage thresholds is now computed too (owner, 2026-09-23) — on top of Stalwart's stacked +6.
+    expect(v.progress.domainCardIds).toContain('fortified-armor')
     const base = deriveStats(ch, setup)
-    expect(v.stats.majorThreshold).toBe(base.majorThreshold + 6)
-    expect(v.stats.severeThreshold).toBe(base.severeThreshold + 6)
+    expect(v.stats.majorThreshold).toBe(base.majorThreshold + 6 + 2)
+    expect(v.stats.severeThreshold).toBe(base.severeThreshold + 6 + 2)
   })
 
-  it('Armorer (domain card) carries a build note instead of a baked-in Armor Score bonus', () => {
+  it('Armorer / Fortified Armor (domain cards): computed while armor is equipped, not a footnote (owner, 2026-09-23)', () => {
+    const base = equipped('guardian')
     const g = equipped('guardian')
-    g.choices.domainCardIds = [g.choices.domainCardIds[0], 'armorer']
+    g.choices.domainCardIds = [g.choices.domainCardIds[0], 'armorer', 'fortified-armor']
+    const bv = sheetView(base, setup), gv = sheetView(g, setup)
+    expect(gv.stats.armorScore).toBe(bv.stats.armorScore + 1)
+    expect(gv.stats.majorThreshold).toBe(bv.stats.majorThreshold + 2)
+    expect(gv.stats.severeThreshold).toBe(bv.stats.severeThreshold + 2)
+    expect(gv.statNotes.some((n) => n.name === 'Armorer' || n.name === 'Fortified Armor')).toBe(false)
+  })
+
+  it('Armorer / Fortified Armor do nothing without armor equipped', () => {
+    const g = equipped('guardian')
+    g.choices.equipmentIds = g.choices.equipmentIds.filter((id) => !id.startsWith('armor.'))
+    g.choices.domainCardIds = [g.choices.domainCardIds[0], 'armorer', 'fortified-armor']
+    const base = { ...g, choices: { ...g.choices, domainCardIds: [g.choices.domainCardIds[0]] } }
+    expect(sheetView(g, setup).stats.armorScore).toBe(sheetView(base, setup).stats.armorScore)
+  })
+
+  it('Mage Robes / Granminster’s Finery (equipped armor): threshold bonus = Spellcast trait, Armor Score bonus = Presence', () => {
+    const w = equipped('wizard')
+    w.choices.equipmentIds = [...w.choices.equipmentIds.filter((id) => !id.startsWith('armor.')), 'armor.mage-robes']
+    const wv = sheetView(w, setup)
+    const spellcastTrait = wv.spellcastTraits[0] as keyof typeof w.traits
+    expect(wv.stats.majorThreshold).toBe(deriveStats(w, setup).majorThreshold + (w.traits[spellcastTrait] ?? 0))
+
+    const g = equipped('guardian')
+    g.choices.equipmentIds = [...g.choices.equipmentIds.filter((id) => !id.startsWith('armor.')), 'armor.granminsters-finery']
     const gv = sheetView(g, setup)
-    expect(gv.statNotes).toContainEqual(expect.objectContaining({ name: 'Armorer', kind: 'build', stats: ['armorScore'] }))
+    expect(gv.stats.armorScore).toBe(deriveStats(g, setup).armorScore + (g.traits.presence ?? 0))
   })
 
   it('Scorpion’s Poise (Executioners Guild, specialization) carries a situational Evasion note once held', () => {
@@ -58,7 +87,37 @@ describe('[s7] rules-math step 1: stat bonuses and stat-note footnotes', () => {
     expect(av.statNotes).toContainEqual(expect.objectContaining({ name: 'Scorpion’s Poise', kind: 'situational', stats: ['evasion'] }))
   })
 
-  it('sample sheets: baked-in Stalwart thresholds, and footnoted Armorer / Scorpion’s Poise', async () => {
+  it('Blade-Touched / Splendor-Touched / Valor-Touched carry a build note (loadout composition is never modelled)', () => {
+    const g = equipped('guardian')
+    g.choices.domainCardIds = [g.choices.domainCardIds[0], 'blade-touched']
+    const gv = sheetView(g, setup)
+    expect(gv.statNotes).toContainEqual(expect.objectContaining({ name: 'Blade-Touched', kind: 'build', stats: ['severeThreshold'] }))
+  })
+
+  it('Vitality: a one-time permanent choice of 2 of 3 benefits, baked in the level it is taken, not a footnote', () => {
+    const ch = toLevel(4, level1('warrior'))
+    const before = progressOf(ch, reg)
+    const leveled = up(ch, [adv('evasion', 3), adv('experience', 3, { experienceIndexes: [0, 1] })], { newCardId: 'vitality', vitalityChoice: ['hitPoint', 'thresholds'] })
+    const after = progressOf(leveled, reg)
+    expect(after.hitPointSlots).toBe(before.hitPointSlots + 1)
+    expect(after.stressSlots).toBe(before.stressSlots)
+    expect(after.vitalityThresholds).toBe(true)
+    const v = sheetView(leveled, setup)
+    const base = deriveStats(leveled, setup)
+    expect(v.stats.majorThreshold).toBe(base.majorThreshold + 2)
+    expect(v.stats.severeThreshold).toBe(base.severeThreshold + 2)
+    expect(v.statNotes.some((n) => n.name === 'Vitality')).toBe(false)
+  })
+
+  it('Vitality requires exactly 2 different choices, and rejects a choice on a level that did not take the card', () => {
+    const ch = toLevel(4, level1('warrior'))
+    const adv5 = [adv('evasion', 3), adv('experience', 3, { experienceIndexes: [0, 1] })]
+    expect(problems(ch, adv5, { newCardId: 'vitality', vitalityChoice: ['hitPoint'] }).join()).toMatch(/choose 2 of/)
+    expect(problems(ch, adv5, { newCardId: 'vitality' }).join()).toMatch(/choose 2 of/)
+    expect(problems(ch, adv5, { vitalityChoice: ['hitPoint', 'stress'] }).join()).toMatch(/not taken this level/)
+  })
+
+  it('sample sheets: baked-in Stalwart/Armorer thresholds, and footnoted Scorpion’s Poise', async () => {
     mkdirSync('TestArtifacts/sheet-samples', { recursive: true })
     const g = stalwartToMastery()
     g.choices.domainCardIds = [...g.choices.domainCardIds, 'armorer']

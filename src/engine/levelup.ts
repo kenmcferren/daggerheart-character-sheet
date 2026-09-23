@@ -34,6 +34,8 @@ export interface Progress {
   companionExperienceBonus: number[]
   /** What Vicious raised; null if not taken (or no companion to choose for). */
   companionVicious: 'die' | 'range' | null
+  /** Vitality's one-time permanent choice: which 2 of {hitPoint, stress, thresholds} were picked when the card was taken. hitPoint/stress add to hitPointSlots/stressSlots directly; thresholds adds +2 to both damage thresholds. */
+  vitalityThresholds: boolean
 }
 
 export class LevelUpError extends Error {
@@ -79,6 +81,7 @@ export function initialProgress(ch: Character, reg: Registry): Progress {
     companionOptionIds: [],
     companionExperienceBonus: [],
     companionVicious: null,
+    vitalityThresholds: false,
   }
 }
 
@@ -249,6 +252,28 @@ export function applyRecord(prev: Progress, rec: LevelRecord, ch: Character, reg
       if (q) err(`swap: ${q}`, 'cards')
       else st.domainCardIds = [...owned, rec.swap.in]
     }
+  }
+
+  // Vitality (Blade domain card): a one-time permanent choice of 2 of 3 benefits, made the level the card is taken.
+  // Cannot be changed later (the choice lives only on this level record).
+  if (st.domainCardIds.includes('vitality') && !prev.domainCardIds.includes('vitality')) {
+    const choice = rec.vitalityChoice ?? []
+    const valid: NonNullable<typeof rec.vitalityChoice> = ['hitPoint', 'stress', 'thresholds']
+    if (choice.length !== 2 || new Set(choice).size !== 2 || choice.some((c) => !valid.includes(c))) {
+      err('Vitality: choose 2 of Stress slot / Hit Point slot / +2 damage thresholds', 'cards')
+    } else {
+      for (const c of choice) {
+        if (c === 'hitPoint') {
+          if (st.hitPointSlots >= st.room.hitPoint) err(`Vitality: Hit Points are already at ${SLOT_CAP}`, 'cards')
+          else st.hitPointSlots += 1
+        } else if (c === 'stress') {
+          if (st.stressSlots >= st.room.stress) err(`Vitality: Stress is already at ${SLOT_CAP}`, 'cards')
+          else st.stressSlots += 1
+        } else st.vitalityThresholds = true
+      }
+    }
+  } else if (rec.vitalityChoice?.length) {
+    err('Vitality choice given but Vitality was not taken this level', 'cards')
   }
 
   // Class extras follow the subclass that holds them (main or multiclass). The turn a multiclass takes the subclass, the foundation's starting choices replace that level's per-level pick.
