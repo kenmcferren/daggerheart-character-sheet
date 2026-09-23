@@ -44,6 +44,27 @@ export interface SheetView {
   comboDie: string | null
   /** Footnotes on Evasion/thresholds/Armor Score/Proficiency from held class/subclass/ancestry features, held domain cards and equipped gear. */
   statNotes: { name: string; kind: StatNote['kind']; stats: string[]; text: string }[]
+  /** Druid (main class) Beastforms of the character's tier or lower, with stats worked out against this sheet (Series 8 step 1). Empty for other characters. */
+  beastforms: BeastformView[]
+}
+
+export type BeastformView = {
+  id: string
+  name: string
+  tier: number
+  examples?: string
+  /** Undefined for the two "upgrade template" forms (Legendary Beast, Mythic Beast), which modify a form chosen in play rather than having fixed stats. */
+  traitLabel?: string
+  traitTotal?: number
+  evasion?: number
+  attackRange?: string
+  attackTrait?: string
+  damage?: string
+  damageType?: string
+  majorThreshold?: number
+  severeThreshold?: number
+  advantages?: string[]
+  features: { name?: string; rules: string }[]
 }
 
 export interface CompanionView {
@@ -133,6 +154,22 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
   }
   const hasCombo = [...reg.levelUpOptions.values()].some((o: Any) => o.effect === 'combo-die' && o.classId === ch.choices.classId)
 
+  // Druid forms page (Series 8 step 1, main class only): a form of the character's tier or lower "or lower" per the
+  // Beastform feature text, with the trait/Evasion/threshold numbers worked out against this sheet (owner: derived
+  // stats, not just the raw SRD text). Legendary Beast / Mythic Beast are upgrade templates with no fixed stats of
+  // their own (they buff a form chosen in play), so they print as text only.
+  const beastforms: BeastformView[] = cls?.id === 'druid'
+    ? ((cls.beastforms ?? []) as Any[]).filter((b) => b.tier <= stats.tier).map((b): BeastformView => ({
+        id: b.id, name: b.name, tier: b.tier, examples: b.examples,
+        traitLabel: b.traitBonus?.trait, traitTotal: b.traitBonus ? (traits[b.traitBonus.trait as Trait] ?? 0) + b.traitBonus.bonus : undefined,
+        evasion: b.evasionBonus !== undefined ? stats.evasion + b.evasionBonus : undefined,
+        attackRange: b.attack?.range, attackTrait: b.attack?.trait, damage: b.attack?.damage, damageType: b.attack?.damageType,
+        majorThreshold: b.attack ? stats.majorThreshold + (b.thresholdBonus ?? 0) : undefined,
+        severeThreshold: b.attack ? stats.severeThreshold + (b.thresholdBonus ?? 0) : undefined,
+        advantages: b.advantages, features: (b.features as Any[]).map((f) => ({ name: f.name, rules: f.short ?? f.rules })),
+      }))
+    : []
+
   const tableFeatures = subclasses.flatMap((sc) => sc.features.filter((f) => f.sheetTable))
   const sheetTable = tableFeatures.length
     ? {
@@ -198,5 +235,6 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
     extraHope: has('light-in-the-dark') ? 1 : 0,
     comboDie: hasCombo ? DICE[Math.min(progress.comboDieSteps, DICE.length - 1)] : null,
     statNotes,
+    beastforms,
   }
 }

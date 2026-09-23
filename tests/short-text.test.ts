@@ -25,7 +25,7 @@ describe('[s5] condensed sheet wording', () => {
     it(`${id}: every short is no longer than the SRD text it replaces and adds no numbers`, () => {
       const cls = reg.classes.get(id)
       const subs = [...reg.subclasses.values()].filter((s: any) => s.class === id) as any[]
-      const lists = [[cls.hopeFeature], cls.features, ...subs.map((s) => s.features), cls.stances ?? [], cls.companion?.levelUpOptions ?? []]
+      const lists = [[cls.hopeFeature], cls.features, ...subs.map((s) => s.features), cls.stances ?? [], cls.companion?.levelUpOptions ?? [], ...(cls.beastforms ?? []).map((b: any) => b.features)]
       const items = lists.flatMap(groups)
       expect(items.length).toBeGreaterThan(0)
       for (const f of items) {

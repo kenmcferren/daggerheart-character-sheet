@@ -601,6 +601,9 @@
                   "evasionBonus": {
                     "type": "integer"
                   },
+                  "thresholdBonus": {
+                    "type": "integer"
+                  },
                   "attack": {
                     "type": "object",
                     "required": [

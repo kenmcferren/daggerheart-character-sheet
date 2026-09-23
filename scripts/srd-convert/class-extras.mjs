@@ -36,6 +36,12 @@ function beastform(s, tier) {
   const adv = lines[i]?.match(/^Gain advantage on: (.*)$/)
   if (adv) { bf.advantages = adv[1].split(',').map((x) => x.trim()); i++ }
   bf.features = nameRules(lines.slice(i))
+  // Some features change damage thresholds outright (Thick Hide, Hollow Bones, Physical Defense); pull the number
+  // out of the rules text into a structured field so the sheet can print the modified threshold, not just the text.
+  for (const f of bf.features) {
+    const tm = f.rules.match(/(\d+) (bonus|penalty) to (?:all )?(?:your )?damage thresholds/i)
+    if (tm) bf.thresholdBonus = tm[2].toLowerCase() === 'penalty' ? -Number(tm[1]) : Number(tm[1])
+  }
   return bf
 }
 

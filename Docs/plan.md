@@ -44,6 +44,9 @@ Owner (with Claude) writes the third-party ports; no external authors. Packs liv
 4. [ ] Optional: runtime pack upload UI (only if wanted)
 
 ## Series 7: Rules math pass
-Status: not started (after level-up)
-Also condense the class, subclass and rules text for the 4-page level 10 target (see long-term list).
+Status: step 1 done, owner-reviewed 2026-09-23. Step 2 (condensing text for the 4-page level 10 target) not started.
 Apply number-changing features to the sheet (e.g. Mage Robes: bonus to damage thresholds equal to Spellcast trait; "+1 Evasion" style features). Start by listing every armor, weapon, card and class feature that changes a number; owner approves the list before code.
+
+## Series 8: Druid forms page
+Status: step 1 done, pending owner review.
+1. [x] Print all 24 Beastforms (Tier <= character's tier) as their own page after the domain cards, Druid main class only. Derived stats per form (trait total, Evasion, thresholds, Proficiency dice for damage) computed against the character's own sheet, not raw SRD text. Legendary Beast / Mythic Beast (upgrade templates, no fixed stats) print as text only.

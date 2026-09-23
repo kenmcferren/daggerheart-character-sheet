@@ -11,7 +11,7 @@ Out-of-scope ideas and deferred work. Nothing here is in the current step.
 - (Moved into Series 3 step 3: structured class extras, Multiclassing data, card uses/trackers.) Transformations still to model.
 
 - [ ] Unique iconography for Gold: separate fill-in-bubble shapes for handfuls, bags and chest (currently plain circles).
-- [ ] Rules math pass: armor/weapon/card features that change numbers (e.g. Mage Robes: bonus to damage thresholds equal to Spellcast trait; "+1 to Evasion" style features) are printed as text only and not applied to Evasion, thresholds, Armor Score. Owner wants a sweep of these "gotchas" after the layout is settled.
+- [x] Rules math pass: armor/weapon/card features that change numbers (e.g. Mage Robes: bonus to damage thresholds equal to Spellcast trait; "+1 to Evasion" style features) are printed as text only and not applied to Evasion, thresholds, Armor Score. Owner wants a sweep of these "gotchas" after the layout is settled. (Done: Series 7 step 1, owner-reviewed 2026-09-23.)
 
 - [ ] Render markdown tables in campaign rules on the sheet (Tech Scrap table etc. currently print as raw pipe text).
 
@@ -19,7 +19,7 @@ Out-of-scope ideas and deferred work. Nothing here is in the current step.
 
 - [ ] Condense class, subclass, ancestry/community and campaign rules text (pithier wording, fewer line breaks in domain cards) so level 10 sheets fit in 4 pages; do alongside the Series 7 rules math pass. Current level 10 audit: max 6 pages, 63 of 208 paths at 4, 39 at 5, 7 at 6.
 
-- [ ] Druid forms special page: print the Beastform definitions (the Druid sheet now says "see SRD for the forms"; the 24 beastforms are not printed anywhere). Owner (2026-09-22): each form should show its own derived stats (Evasion, thresholds, etc.), computed from the character's own sheet plus that form's modifications, not just the raw SRD form text.
+- [x] Druid forms special page: print the Beastform definitions (the Druid sheet now says "see SRD for the forms"; the 24 beastforms are not printed anywhere). Owner (2026-09-22): each form should show its own derived stats (Evasion, thresholds, etc.), computed from the character's own sheet plus that form's modifications, not just the raw SRD form text. (Done: Series 8 step 1, 2026-09-23, pending owner review of the sample PDF.)
 
 - [ ] Wizard/character-screen UI touch-up pass (owner, 2026-09-23):
   - [ ] Trait selection layout: 3 per row (physical then mental), or all 6 together. No other row split (currently 5, 1).

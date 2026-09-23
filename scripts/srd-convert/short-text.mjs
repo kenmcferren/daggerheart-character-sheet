@@ -53,6 +53,11 @@ export function applyShortText(classes, subclasses, dir = 'scripts/srd-convert/s
       if (!o) throw new Error(`${cls.id}: unknown companion option ${id}`)
       o.short = short; applied++
     }
+    for (const [id, shorts] of Object.entries(src.beastforms ?? {})) {
+      const bf = cls.beastforms?.find((x) => x.id === id)
+      if (!bf) throw new Error(`${cls.id}: unknown beastform ${id}`)
+      list(bf.features, shorts, `${cls.id}.beastforms.${id}`)
+    }
   }
   return applied
 }

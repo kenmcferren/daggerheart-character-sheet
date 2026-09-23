@@ -23,6 +23,8 @@ const fonts: SheetFonts = {
 const SEEDS = [1, 2, 3, 4, 5, 6]
 /** Most pages a fully leveled sheet may take (first audit: 208 paths, max 6, level 1 sheets are 3). A longer sheet means the overflow policy needs another look. */
 const PAGE_BUDGET = 6
+/** The Beastforms page (Series 8 step 1) fits Druid back inside the shared budget after condensing to 2 pages; no per-class exception needed. */
+const budgetFor = (_classId: string) => PAGE_BUDGET
 
 interface Row { classId: string; pattern: string; seed?: number; level: number; pages: number; front: number; blank: number; cardPages: number; basePages: number; hp: number; stress: number; cards: number; subclassCards: number; multiclass: string; problems: string[]; ms: number }
 const rows: Row[] = []
@@ -40,7 +42,7 @@ async function measure(ch: Character, pattern: string, seed?: number): Promise<R
   const colour = marks.flatMap((m) => m.colors).filter((c) => c && (c.red !== c.green || c.green !== c.blue))
   if (colour.length) problems.push('colour (non-gray) marks')
   const pages = (await PDFDocument.load(bytes)).getPageCount()
-  if (pages >= PAGE_BUDGET) { mkdirSync('TestArtifacts/pattern-audit', { recursive: true }); writeFileSync(`TestArtifacts/pattern-audit/${ch.choices.classId}-${pattern}-level-${ch.level}.pdf`, bytes) }
+  if (pages >= budgetFor(ch.choices.classId!)) { mkdirSync('TestArtifacts/pattern-audit', { recursive: true }); writeFileSync(`TestArtifacts/pattern-audit/${ch.choices.classId}-${pattern}-level-${ch.level}.pdf`, bytes) }
   const v = sheetView(ch, setup)
   return {
     classId: ch.choices.classId!, pattern, seed, level: ch.level,
@@ -69,7 +71,7 @@ describe('[s5] leveling-pattern matrix', () => {
       }
       const bad = rows.filter((r) => r.classId === classId && r.problems.length)
       expect(bad.map((r) => `${r.pattern}: ${r.problems.join('; ')}`)).toEqual([])
-      const over = rows.filter((r) => r.classId === classId && r.pages > PAGE_BUDGET)
+      const over = rows.filter((r) => r.classId === classId && r.pages > budgetFor(classId))
       expect(over.map((r) => `${r.pattern}: ${r.pages} pages`)).toEqual([])
     })
   }
