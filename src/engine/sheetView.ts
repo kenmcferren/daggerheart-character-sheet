@@ -1,7 +1,7 @@
 import type { Character, Trait } from './character'
 import type { CreationSetup } from './creation'
 import { COMPANION_SUBCLASS, extrasOf, progressOf, SLOT_CAP, type Progress } from './levelup'
-import { ancestryFeatures, deriveStats, type DerivedStats } from './rules'
+import { ancestryFeatures, armorPool, deriveStats, weaponPool, type DerivedStats } from './rules'
 
 type Any = any
 /** `short` is the condensed sheet wording ('' = print nothing); the Creator always shows `rules`. */
@@ -133,8 +133,9 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
   // "while wearing armor" and "equal to [trait]" bonuses from held domain cards and equipped armor are computed
   // straight into the printed numbers, not left as a footnote — unlike loadout-vs-vault (never modelled).
   const heldCards = progress.domainCardIds.map((id) => reg.domainCards.get(id) as Any).filter(Boolean)
-  const equippedGear = ch.choices.equipmentIds.map((id) => reg.equipment.get(id) as Any).filter(Boolean)
-  const wornArmor = equippedGear.find((e) => e.category === 'armor')
+  const gearEntries = [...weaponPool(setup).entries, ...armorPool(setup)] as Any[]
+  const equippedGear = ch.choices.equipmentIds.map((id) => gearEntries.find((e) => e.id === id)).filter(Boolean) as Any[]
+  const wornArmor = armorPool(setup).find((a) => ch.choices.equipmentIds.includes(a.id)) as Any | undefined
   const hasCard = (id: string) => progress.domainCardIds.includes(id)
   const gearBonus = { majorThreshold: 0, severeThreshold: 0, armorScore: 0 }
   if (wornArmor && hasCard('armorer')) gearBonus.armorScore += 1

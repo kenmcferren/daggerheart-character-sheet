@@ -148,7 +148,7 @@ function validateEquipment(ch: Character, setup: CreationSetup, bad: (s: string,
   const weaponIds = picked.filter((id) => weapons.some((w) => w.id === id))
   const armorIds = picked.filter((id) => armorPool(setup).some((a) => a.id === id))
   const unknown = picked.filter((id) => !weaponIds.includes(id) && !armorIds.includes(id))
-  for (const id of unknown) bad('equipment', `"${id}" is not available as starting equipment.`)
+  for (const id of unknown) bad('equipment', `"${id}" is not normally available as starting equipment. Check with your GM before using.`)
 
   const ws = weaponIds.map((id) => weapons.find((w) => w.id === id)!)
   if (builder && weapons.length === 0) {
