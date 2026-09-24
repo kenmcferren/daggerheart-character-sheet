@@ -93,5 +93,10 @@ Daggerheart guided character creation/level-up website. Output: printable PDF. L
 
 - Live sheet preview (2026-09-24, not yet owner-reviewed): `PdfPreview.tsx` draws the real PDF's pages onto canvases with pdfjs-dist (bytes from `previewSheetBytes` in `pdf/browser.ts`; works on phones), on the Review step and the level 2+ character screen. "Show preview" toggle; re-renders 400 ms after any change. Level 2+ gear Edit panel and page targets confirmed by owner. Cloud/share-link item dropped from the backlog (security cost, owner decision).
 
+## Current mode: ad hoc, going live
+- Working outside the numbered series on getting this onto a live website. It is a static site: no accounts, no login, no server-side storage; every character lives on the user's own machine (browser storage plus JSON export). No user data ever leaves the device.
+- Hosting must therefore be free and lightweight: static-file hosting only (build output is `dist/`, base `./`, with an offline service worker). To explore: GitHub Pages, Cloudflare Pages, Netlify, and similar free static hosts; compare limits, custom domain, HTTPS (needed for the service worker), and how the DPCGL attribution/license notice is served.
+- Cloud sync and share links are off the table (owner decision).
+
 ## Very next action
-- Owner to try the preview in a normal browser. Verified live only in the Claude pane, which reports the page as hidden so requestAnimationFrame never fires and pdf.js stalls; with rAF patched, all pages drew with no errors. A visible tab should just work.
+- Pick a free static host (see Current mode) and publish. Also: owner to try the preview in a normal browser. Verified live only in the Claude pane, which reports the page as hidden so requestAnimationFrame never fires and pdf.js stalls; with rAF patched, all pages drew with no errors. A visible tab should just work.
