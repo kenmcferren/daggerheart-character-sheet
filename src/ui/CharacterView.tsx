@@ -1,15 +1,33 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import type { Character } from '../engine/character'
 import { exportCharacter } from '../engine/character'
 import { MAX_LEVEL, progressOf } from '../engine/levelup'
 import { describeHistory } from './describe'
-import { setupOf, store } from './data'
+import { normalize, setupOf, store } from './data'
+import type { Creation } from '../engine/character'
+import { armorPool, weaponPool } from '../engine/rules'
+import { GearPicker } from './steps'
 import { download } from './util'
 import { Versions } from './Versions'
 
 /** A saved character above level 1: what was gained at each level, all saved versions, and the way to level up again. */
-export function CharacterView({ ch, onLevelUp, onOpen, onHome }: { ch: Character; onLevelUp: (c: Character) => void; onOpen: (c: Character) => void; onHome: () => void }) {
-  const reg = useMemo(() => setupOf(ch).registry, [ch])
+export function CharacterView({ ch: saved, onLevelUp, onOpen, onHome }: { ch: Character; onLevelUp: (c: Character) => void; onOpen: (c: Character) => void; onHome: () => void }) {
+  const [ch, setCh] = useState<Character>(() => normalize(saved))
+  const [editingGear, setEditingGear] = useState(false)
+  const setup = useMemo(() => setupOf(ch), [ch.sources])
+  const reg = setup.registry
+  // Gear edits change this version in place (they are not a level-up), saved at once.
+  const update = useCallback((fn: (c: Character, cr: Creation) => void) => {
+    setCh((prev) => {
+      const next = structuredClone(prev)
+      fn(next, next.creation!)
+      void store.save(next).catch(() => {})
+      return next
+    })
+  }, [])
+  const gearNames = ch.choices.equipmentIds.map((id) => ([...weaponPool(setup).entries, ...armorPool(setup)].find((e) => e.id === id) as { name?: string } | undefined)?.name ?? id)
+  const weaponNames = ch.choices.equipmentIds.filter((id) => weaponPool(setup).entries.some((e) => e.id === id)).map((id) => gearNames[ch.choices.equipmentIds.indexOf(id)])
+  const armorNames = ch.choices.equipmentIds.filter((id) => armorPool(setup).some((e) => e.id === id)).map((id) => gearNames[ch.choices.equipmentIds.indexOf(id)])
   const progress = useMemo(() => progressOf(ch, reg), [ch, reg])
   const history = useMemo(() => describeHistory(ch, reg), [ch, reg])
   const [versions, setVersions] = useState<Character[]>([])
@@ -29,6 +47,15 @@ export function CharacterView({ ch, onLevelUp, onOpen, onHome }: { ch: Character
         <button type="button" className="primary" disabled={ch.level >= MAX_LEVEL} onClick={() => onLevelUp(ch)}>{ch.level >= MAX_LEVEL ? 'Highest level reached' : `Level up to ${ch.level + 1}`}</button>{' '}
         <button type="button" onClick={async () => (await import('../pdf/browser')).downloadSheet(ch, setupOf(ch))}>Make PDF</button>{' '}
         <button type="button" onClick={() => download(`${ch.name || 'character'}-level-${ch.level}.json`, exportCharacter(ch))}>Export this version (JSON)</button>
+      </section>
+      <section className="panel">
+        <h2>Weapons and armor</h2>
+        <dl className="summary">
+          <div><dt>Weapons</dt><dd>{weaponNames.join(', ') || 'No weapon'}</dd></div>
+          <div><dt>Armor</dt><dd>{armorNames.join(', ') || 'No armor'}</dd></div>
+        </dl>
+        <button type="button" onClick={() => setEditingGear((v) => !v)}>{editingGear ? 'Done' : 'Edit'}</button>
+        {editingGear && <GearPicker ch={ch} cr={ch.creation!} setup={setup} update={update} issues={[]} />}
       </section>
       <section className="panel">
         <h2>What was chosen, level by level</h2>

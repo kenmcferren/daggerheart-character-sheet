@@ -13,7 +13,7 @@
   "rapid-riposte": "When an attack against you from within Melee range fails, mark a Stress to deal the weapon damage of one of your active weapons to the attacker.",
   "recovery": "During a short rest, you can choose a long rest downtime move instead. Spend a Hope to let an ally do the same.",
   "bone-touched": "When 4 or more loadout cards are from the Bone domain, gain:\n- +1 bonus to Agility\n- Once per rest, spend 3 Hope to make an attack that succeeded against you fail instead.",
-  "cruel-precision": "When you make a successful weapon attack, gain {{finesseOrAgility|a # bonus to your damage roll|a bonus to your damage roll equal to either your Finesse or Agility}}.",
+  "cruel-precision": "When you make a successful weapon attack, gain {{finesseOrAgility|a +# bonus to your damage roll|a bonus to your damage roll equal to either your Finesse or Agility}}.",
   "breaking-blow": "When you make a successful attack, mark a Stress to make the next successful attack against the same target deal an extra 2d12 damage.",
   "wrangle": "Make an Agility Roll against all targets within Close range. Spend a Hope to move targets you succeed against and willing allies within Close range to another point within Close range.",
   "on-the-brink": "When you have 2 or fewer Hit Points unmarked, you don’t take Minor damage.",

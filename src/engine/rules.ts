@@ -25,23 +25,23 @@ export interface Issue { step: string; message: string }
 type Item = Entry & Record<string, any>
 type Slot = 'primary' | 'secondary'
 
-/** Weapons a character may pick from: base Tier 1 table, changed by frame pool ops. */
-export function weaponPool(setup: CreationSetup): { entries: Item[]; builder?: string } {
+/** Weapons a character may pick from: the base tables (every tier, or only `tier`), changed by frame pool ops. */
+export function weaponPool(setup: CreationSetup, tier?: number): { entries: Item[]; builder?: string } {
   const contribs = setup.pools.get('weapons') ?? []
   const replaced = contribs[0]?.mode === 'replace'
-  const base = replaced ? [] : baseTier1(setup, 'weapon')
+  const base = replaced ? [] : baseTable(setup, 'weapon', tier)
   const entries = [...base, ...contribs.flatMap((c) => c.entries as Item[])]
   return { entries, builder: contribs.find((c) => c.choice)?.choice }
 }
 
-export function armorPool(setup: CreationSetup): Item[] {
+export function armorPool(setup: CreationSetup, tier?: number): Item[] {
   const contribs = setup.pools.get('armor') ?? []
-  const base = contribs[0]?.mode === 'replace' ? [] : baseTier1(setup, 'armor')
+  const base = contribs[0]?.mode === 'replace' ? [] : baseTable(setup, 'armor', tier)
   return [...base, ...contribs.flatMap((c) => c.entries as Item[])]
 }
 
-const baseTier1 = (setup: CreationSetup, category: string): Item[] =>
-  [...setup.registry.equipment.values()].filter((e: Item) => e.category === category && e.tier === 1) as Item[]
+const baseTable = (setup: CreationSetup, category: string, tier?: number): Item[] =>
+  [...setup.registry.equipment.values()].filter((e: Item) => e.category === category && (tier === undefined || e.tier === tier)) as Item[]
 
 /** Wheelchair weapons take the primary slot. */
 const slotOf = (w: Item): Slot => (w.weaponSlot === 'secondary' ? 'secondary' : 'primary')
@@ -149,9 +149,11 @@ function validateEquipment(ch: Character, setup: CreationSetup, bad: (s: string,
     const sec = ws.filter((w) => slotOf(w) === 'secondary')
     const twoHanded = prim.length === 1 && sec.length === 0 && prim[0].burden === 'two-handed'
     const pair = prim.length === 1 && sec.length === 1 && prim[0].burden === 'one-handed' && sec[0].burden === 'one-handed'
-    if (!twoHanded && !pair) bad('equipment', 'Choose one two-handed primary weapon, or a one-handed primary and a one-handed secondary.')
+    // No weapon is a legal choice (Brawler fights bare-handed).
+    if (ws.length && !twoHanded && !pair) bad('equipment', 'Choose no weapon, one two-handed primary weapon, or a one-handed primary and a one-handed secondary.')
   }
-  if (armorIds.length !== 1) bad('equipment', 'Choose one set of armor.')
+  // No armor is a legal choice too (Bare Bones, Brawler).
+  if (armorIds.length > 1) bad('equipment', 'Choose at most one set of armor.')
   if (cr.potion !== 'health' && cr.potion !== 'stamina') bad('equipment', 'Choose a Minor Health Potion or a Minor Stamina Potion.')
   if (!nonBlank(cr.classItem)) bad('equipment', 'Choose one class item.')
 }

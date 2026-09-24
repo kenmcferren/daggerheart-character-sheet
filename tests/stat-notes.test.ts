@@ -62,6 +62,29 @@ describe('[s7] rules-math step 1: stat bonuses and stat-note footnotes', () => {
     expect(sheetView(g, setup).stats.armorScore).toBe(sheetView(base, setup).stats.armorScore)
   })
 
+  it('Bare Bones (Valor) with no armor: Armor Score 3 + Strength and tier thresholds; ignored when armor is worn', () => {
+    const g = equipped('guardian')
+    g.choices.equipmentIds = g.choices.equipmentIds.filter((id) => !id.startsWith('armor.'))
+    g.choices.domainCardIds = [g.choices.domainCardIds[0], 'bare-bones']
+    const v = sheetView(g, setup)
+    const plain = sheetView({ ...g, choices: { ...g.choices, domainCardIds: [g.choices.domainCardIds[0]] } }, setup)
+    const [maj, sev] = [[9, 19], [11, 24], [13, 31], [15, 38]][v.stats.tier - 1]
+    expect(v.stats.armorScore).toBe(plain.stats.armorScore + Math.max(0, 3 + (v.traits.strength ?? 0)))
+    expect([v.stats.majorThreshold - plain.stats.majorThreshold, v.stats.severeThreshold - plain.stats.severeThreshold]).toEqual([maj - 1, sev - 2]) // relative to the unarmored 1 / 2 stand-in
+    const worn = equipped('guardian')
+    worn.choices.domainCardIds = [worn.choices.domainCardIds[0], 'bare-bones']
+    expect(sheetView(worn, setup).stats.armorScore).toBe(deriveStats(worn, setup).armorScore)
+  })
+
+  it('Unarmored without Bare Bones: base thresholds 1 / 2', () => {
+    const g = equipped('guardian')
+    g.choices.equipmentIds = g.choices.equipmentIds.filter((id) => !id.startsWith('armor.'))
+    g.choices.domainCardIds = [g.choices.domainCardIds[0]]
+    const v = sheetView(g, setup), plain = sheetView({ ...g, choices: { ...g.choices, equipmentIds: [] } }, setup)
+    expect(v.stats.majorThreshold - deriveStats(g, setup).majorThreshold).toBeGreaterThanOrEqual(1)
+    expect(plain.stats.severeThreshold - plain.stats.majorThreshold).toBeGreaterThanOrEqual(1)
+  })
+
   it('Mage Robes / Granminster’s Finery (equipped armor): threshold bonus = Spellcast trait, Armor Score bonus = Presence', () => {
     const w = equipped('wizard')
     w.choices.equipmentIds = [...w.choices.equipmentIds.filter((id) => !id.startsWith('armor.')), 'armor.mage-robes']
@@ -104,8 +127,9 @@ describe('[s7] rules-math step 1: stat bonuses and stat-note footnotes', () => {
     expect(after.vitalityThresholds).toBe(true)
     const v = sheetView(leveled, setup)
     const base = deriveStats(leveled, setup)
-    expect(v.stats.majorThreshold).toBe(base.majorThreshold + 2)
-    expect(v.stats.severeThreshold).toBe(base.severeThreshold + 2)
+    // This test character wears no armor, so the unarmored 1 / 2 stand-in is in the base too.
+    expect(v.stats.majorThreshold).toBe(base.majorThreshold + 1 + 2)
+    expect(v.stats.severeThreshold).toBe(base.severeThreshold + 2 + 2)
     expect(v.statNotes.some((n) => n.name === 'Vitality')).toBe(false)
   })
 

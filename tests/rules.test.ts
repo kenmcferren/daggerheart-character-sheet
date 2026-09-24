@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { buildCreation, type CreationSetup } from '../src/engine/creation'
 import { newCharacter, creationOf, type Character } from '../src/engine/character'
-import { validateCreation, deriveStats, weaponPool, downtimeMoves, ancestryFeatures, tierOf } from '../src/engine/rules'
+import { validateCreation, deriveStats, weaponPool, armorPool, downtimeMoves, ancestryFeatures, tierOf } from '../src/engine/rules'
 
 const core = JSON.parse(readFileSync('packs/core/srd-core.json', 'utf8'))
 const frames = JSON.parse(readFileSync('packs/core/srd-frames.json', 'utf8'))
@@ -58,7 +58,21 @@ describe('[s3] character rules', () => {
     expect(validateCreation(legal(setup, (x) => { x.choices.equipmentIds = [two.id, armor] }), setup)).toEqual([])
     expect(steps(validateCreation(legal(setup, (x) => { x.choices.equipmentIds = [two.id, sec.id, armor] }), setup))).toEqual(['equipment'])
     expect(steps(validateCreation(legal(setup, (x) => { x.choices.equipmentIds = [sec.id, armor] }), setup))).toEqual(['equipment'])
-    expect(steps(validateCreation(legal(setup, (x) => { x.choices.equipmentIds = [two.id] }), setup))).toEqual(['equipment'])
+    // No armor and no weapon are legal choices.
+    expect(validateCreation(legal(setup, (x) => { x.choices.equipmentIds = [two.id] }), setup)).toEqual([])
+    expect(validateCreation(legal(setup, (x) => { x.choices.equipmentIds = [armor] }), setup)).toEqual([])
+    expect(validateCreation(legal(setup, (x) => { x.choices.equipmentIds = [] }), setup)).toEqual([])
+  })
+  it('weapon and armor pools cover every tier; a tier filter narrows them', () => {
+    const all = weaponPool(setup).entries, t1 = weaponPool(setup, 1).entries
+    expect([...new Set(all.map((w: any) => w.tier))].sort()).toEqual([1, 2, 3, 4])
+    expect(t1.length).toBeGreaterThan(0)
+    expect(t1.length).toBeLessThan(all.length)
+    expect(t1.every((w: any) => w.tier === 1)).toBe(true)
+    expect([...new Set(armorPool(setup).map((a: any) => a.tier))].sort()).toEqual([1, 2, 3, 4])
+    expect(armorPool(setup, 3).every((a: any) => a.tier === 3)).toBe(true)
+    const t4 = all.find((w: any) => w.tier === 4 && w.burden === 'two-handed' && w.weaponSlot === 'primary')!
+    expect(validateCreation(legal(setup, (x) => { x.choices.equipmentIds = [t4.id] }), setup)).toEqual([])
   })
   it('potion and class item are required', () => {
     expect(steps(validateCreation(legal(setup, (x) => { x.creation!.potion = null }), setup))).toEqual(['equipment'])

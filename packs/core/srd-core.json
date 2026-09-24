@@ -3879,7 +3879,7 @@
         "type": "ability",
         "recallCost": 1,
         "rules": "Before you make an attack, you can mark a Stress to gain a bonus to your damage roll equal to twice your Strength. You can Rage Up twice per attack.",
-        "short": "Before you attack, mark a Stress to gain {{strength2|a # bonus to your damage roll|a bonus to your damage roll equal to twice your Strength}}. You can Rage Up twice per attack."
+        "short": "Before you attack, mark a Stress to gain {{strength2|a +# bonus to your damage roll|a bonus to your damage roll equal to twice your Strength}}. You can Rage Up twice per attack."
       },
       {
         "id": "blade-touched",
@@ -4182,7 +4182,7 @@
         "type": "ability",
         "recallCost": 1,
         "rules": "When you make a successful attack with a weapon, gain a bonus to your damage roll equal to either your Finesse or Agility.",
-        "short": "When you make a successful weapon attack, gain {{finesseOrAgility|a # bonus to your damage roll|a bonus to your damage roll equal to either your Finesse or Agility}}."
+        "short": "When you make a successful weapon attack, gain {{finesseOrAgility|a +# bonus to your damage roll|a bonus to your damage roll equal to either your Finesse or Agility}}."
       },
       {
         "id": "breaking-blow",
@@ -6170,7 +6170,7 @@
         "type": "ability",
         "recallCost": 1,
         "rules": "You use the full force of your body in a fight. On a successful attack using a weapon with a Melee range, gain a bonus to your damage roll equal to your Strength.",
-        "short": "On a successful attack with a Melee-range weapon, gain {{strength|a # bonus to your damage roll|a bonus to your damage roll equal to your Strength}}."
+        "short": "On a successful attack with a Melee-range weapon, gain {{strength|a +# bonus to your damage roll|a bonus to your damage roll equal to your Strength}}."
       },
       {
         "id": "bold-presence",

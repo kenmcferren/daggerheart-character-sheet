@@ -7,6 +7,9 @@ type Any = any
 /** `short` is the condensed sheet wording ('' = print nothing); the Creator always shows `rules`. */
 export type SheetCards = { label: string; items: { name: string; short: string }[] }
 export type SheetTable = { title: string; rows: { name: string; short: string }[] }
+/** Bare Bones base damage thresholds by tier (SRD). */
+const BARE_BONES_THRESHOLDS: [number, number][] = [[9, 19], [11, 24], [13, 31], [15, 38]]
+
 export type StatBonus = { evasion?: number; majorThreshold?: number; severeThreshold?: number; armorScore?: number }
 /** A footnote on a stat: 'build' = depends on gear/loadout (knowable from the sheet, not baked into the number); 'situational' = depends on what happens at the table. */
 export type StatNote = { kind: 'build' | 'situational'; stats: string[]; text: string }
@@ -139,6 +142,15 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
   if (wornArmor?.id && ['armor.mage-robes', 'armor.improved-mage-robes', 'armor.advanced-mage-robes', 'armor.legendary-mage-robes'].includes(wornArmor.id) && higherSpellcastTrait) {
     const t = traits[higherSpellcastTrait as Trait] ?? 0
     gearBonus.majorThreshold += t; gearBonus.severeThreshold += t
+  }
+  // Bare Bones (Valor): with no armor equipped, base Armor Score 3 + Strength and tier-based base thresholds.
+  if (!wornArmor && hasCard('bare-bones')) {
+    const [maj, sev] = BARE_BONES_THRESHOLDS[base.tier - 1] ?? [0, 0]
+    gearBonus.majorThreshold += maj; gearBonus.severeThreshold += sev
+    gearBonus.armorScore += Math.max(0, 3 + (traits.strength ?? 0))
+  } else if (!wornArmor) {
+    // Unarmored without Bare Bones: stand-in base thresholds (owner) so threshold math still has something to work on.
+    gearBonus.majorThreshold += 1; gearBonus.severeThreshold += 2
   }
   if (wornArmor?.id === 'armor.granminsters-finery') gearBonus.armorScore += traits.presence ?? 0
 

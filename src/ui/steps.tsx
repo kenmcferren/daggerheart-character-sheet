@@ -1,5 +1,6 @@
+import { useState } from 'react'
 import { TRAITS } from '../engine/character'
-import { TRAIT_MODIFIERS, armorPool, frameChoiceDefs, weaponPool, ancestryFeatures } from '../engine/rules'
+import { TRAIT_MODIFIERS, armorPool, frameChoiceDefs, weaponPool, ancestryFeatures, tierOf } from '../engine/rules'
 import type { WizardStep } from '../engine/creation'
 import { Choice, Details, Feature, GearRow, Notes, Rules, Section, type Ctx } from './common'
 import { titleCase } from './util'
@@ -177,19 +178,28 @@ export function TraitsStep({ ch, update }: Ctx) {
   )
 }
 
-export function EquipmentStep({ ch, cr, setup, update }: Ctx) {
-  const cls: A = ch.choices.classId ? setup.registry.classes.get(ch.choices.classId) : null
+/** Weapon and armor pickers. Shows the character's tier (plus anything already chosen) unless "all tiers" is ticked; "No weapon" / "No armor" are real choices. */
+export function GearPicker(ctx: Ctx) {
+  const { ch, setup, update } = ctx
+  const tier = tierOf(ch.level)
+  const [allTiers, setAllTiers] = useState(false)
   const { entries: weapons, builder } = weaponPool(setup)
   const armor = armorPool(setup)
   const ids = ch.choices.equipmentIds
   const has = (id: string) => ids.includes(id)
+  const shown = (e: A) => allTiers || e.tier === undefined || e.tier === tier || has(e.id)
+  const byTier = (x: A, y: A) => (x.tier ?? 0) - (y.tier ?? 0)
+  const noWeapon = !weapons.some((w) => has(w.id))
+  const noArmor = !armor.some((a) => has(a.id))
+  const tierMeta = (e: A) => (allTiers && e.tier ? `Tier ${e.tier}` : '')
   const toggleW = (w: A) => update((x) => {
     const inPool = new Set(weapons.map((e) => e.id))
     let cur = x.choices.equipmentIds.filter((i) => inPool.has(i))
     const rest = x.choices.equipmentIds.filter((i) => !inPool.has(i))
     const slot = (e: A) => (e.weaponSlot === 'secondary' ? 'secondary' : 'primary')
     const byId = (i: string) => weapons.find((e) => e.id === i)!
-    if (cur.includes(w.id)) cur = cur.filter((i) => i !== w.id)
+    if (!w) cur = []
+    else if (cur.includes(w.id)) cur = cur.filter((i) => i !== w.id)
     else if (w.burden === 'two-handed') cur = [w.id]
     else {
       cur = cur.filter((i) => byId(i).burden !== 'two-handed' && slot(byId(i)) !== slot(w))
@@ -197,26 +207,28 @@ export function EquipmentStep({ ch, cr, setup, update }: Ctx) {
     }
     x.choices.equipmentIds = [...cur, ...rest]
   })
-  const pickArmor = (id: string) => update((x) => {
+  const pickArmor = (id: string | null) => update((x) => {
     const inPool = new Set(armor.map((e) => e.id))
-    x.choices.equipmentIds = [...x.choices.equipmentIds.filter((i) => !inPool.has(i)), id]
+    x.choices.equipmentIds = [...x.choices.equipmentIds.filter((i) => !inPool.has(i)), ...(id ? [id] : [])]
   })
   // The section header already says Primary / Secondary / Wheelchair, so the slot is not repeated in the row.
   const wRow = (w: A) => (
     <GearRow key={w.id} name={w.name} selected={has(w.id)} onPick={() => toggleW(w)}
-      meta={[w.burden, w.trait && `${titleCase(w.trait)} ${titleCase(String(w.range ?? ''))}`, w.damage && `${w.damage} ${w.damageType === 'magic' ? 'mag' : 'phy'}`].filter(Boolean).join(' · ')}
+      meta={[tierMeta(w), w.burden, w.trait && `${titleCase(w.trait)} ${titleCase(String(w.range ?? ''))}`, w.damage && `${w.damage} ${w.damageType === 'magic' ? 'mag' : 'phy'}`].filter(Boolean).join(' · ')}
       detail={w.feature}>
       <Notes setup={setup} target={`equipment.${w.id}`} />
     </GearRow>
   )
   const slotOf = (w: A) => (w.weaponSlot === 'secondary' ? 'secondary' : w.weaponSlot === 'wheelchair' ? 'wheelchair' : 'primary')
-  const list = (slot: string) => weapons.filter((w) => slotOf(w) === slot)
+  const list = (slot: string) => weapons.filter((w) => slotOf(w) === slot && shown(w)).sort(byTier)
   return (
     <>
+      <label className="check"><input type="checkbox" checked={allTiers} onChange={(e) => setAllTiers(e.target.checked)} /> Show every tier{allTiers ? '' : ` (now only Tier ${tier}, plus anything already chosen)`}</label>
       <h3>Weapons</h3>
-      <p className="hint">Choose one two-handed primary weapon, or a one-handed primary and a one-handed secondary.</p>
-      {builder ? <Builder ctx={{ ch, cr, setup, update, issues: [] }} id={builder} /> : (
+      <p className="hint">Choose no weapon, one two-handed primary weapon, or a one-handed primary and a one-handed secondary.</p>
+      {builder ? <Builder ctx={ctx} id={builder} /> : (
         <>
+          <div className="gearlist"><GearRow name="No weapon" selected={noWeapon} onPick={() => toggleW(null as unknown as A)} /></div>
           <Section title="Primary"><div className="gearlist">{list('primary').map(wRow)}</div></Section>
           <Section title="Secondary"><div className="gearlist">{list('secondary').map(wRow)}</div></Section>
           {list('wheelchair').length > 0 && <Section title="Wheelchair"><div className="gearlist">{list('wheelchair').map(wRow)}</div></Section>}
@@ -224,12 +236,23 @@ export function EquipmentStep({ ch, cr, setup, update }: Ctx) {
       )}
       <Section title="Armor">
         <div className="gearlist">
-          {armor.map((a: A) => (
+          <GearRow name="No armor" selected={noArmor} onPick={() => pickArmor(null)} />
+          {armor.filter(shown).sort(byTier).map((a: A) => (
             <GearRow key={a.id} name={a.name} selected={has(a.id)} onPick={() => pickArmor(a.id)}
-              meta={`Thresholds ${a.majorThreshold}/${a.severeThreshold} (+level) · Armor Score ${a.armorScore}`} detail={a.feature} />
+              meta={[tierMeta(a), `Thresholds ${a.majorThreshold}/${a.severeThreshold} (+level) · Armor Score ${a.armorScore}`].filter(Boolean).join(' · ')} detail={a.feature} />
           ))}
         </div>
       </Section>
+    </>
+  )
+}
+
+export function EquipmentStep(ctx: Ctx) {
+  const { ch, cr, setup, update } = ctx
+  const cls: A = ch.choices.classId ? setup.registry.classes.get(ch.choices.classId) : null
+  return (
+    <>
+      <GearPicker {...ctx} />
       <Section title="Starting potion">
         <div className="grid">
           <Choice title="Minor Health Potion" meta="Clear 1d4 Hit Points" selected={cr.potion === 'health'} onPick={() => update((_, x) => { x.potion = 'health' })} />

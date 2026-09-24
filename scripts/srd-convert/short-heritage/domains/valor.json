@@ -5,7 +5,7 @@
   },
   "forceful-push": "Make an attack with your primary weapon against a target within Melee range. On a success, deal damage and knock them back to Close range. On a success with Hope, add a d6 to your damage roll.\nYou can also spend a Hope to make them temporarily Vulnerable.",
   "i-am-your-shield": "When an ally within Very Close range would take damage, mark a Stress to stand in the way and become the target of the attack instead. When you take damage from it, you can mark any number of Armor Slots.",
-  "body-basher": "On a successful attack with a Melee-range weapon, gain {{strength|a # bonus to your damage roll|a bonus to your damage roll equal to your Strength}}.",
+  "body-basher": "On a successful attack with a Melee-range weapon, gain {{strength|a +# bonus to your damage roll|a bonus to your damage roll equal to your Strength}}.",
   "bold-presence": "When you make a Presence Roll, spend a Hope to add {{strength|#|your Strength}} to the roll.\nOnce per rest, when you would gain a condition, describe how your bold presence helps and avoid gaining it.",
   "critical-inspiration": "Once per rest, when you critically succeed on an attack, all allies within Very Close range can clear a Stress or gain a Hope.",
   "lean-on-me": "Once per long rest, when you console or inspire an ally who failed an action roll, you both clear 2 Stress.",

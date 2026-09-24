@@ -11,7 +11,7 @@
   "champions-edge": "When you critically succeed on an attack, spend up to 3 Hope, choosing one option per Hope (each only once):\n- You clear a Hit Point.\n- You clear an Armor Slot.\n- The target marks an additional Hit Point.",
   "vitality": "When you choose this card, permanently gain two of the following benefits:\n- One Stress slot\n- One Hit Point slot\n- +2 bonus to your damage thresholds\nThen place this card in your vault permanently.",
   "battle-hardened": "Once per long rest, when you would make a Death Move, spend a Hope to clear a Hit Point instead.",
-  "rage-up": "Before you attack, mark a Stress to gain {{strength2|a # bonus to your damage roll|a bonus to your damage roll equal to twice your Strength}}. You can Rage Up twice per attack.",
+  "rage-up": "Before you attack, mark a Stress to gain {{strength2|a +# bonus to your damage roll|a bonus to your damage roll equal to twice your Strength}}. You can Rage Up twice per attack.",
   "blade-touched": "When 4 or more loadout cards are from the Blade domain, gain:\n- +2 bonus to your attack rolls\n- +4 bonus to your Severe damage threshold",
   "glancing-blow": "When you fail an attack, mark a Stress to deal weapon damage using {{halfProfUp|a Proficiency of #|half your Proficiency}}.",
   "battle-cry": "Once per long rest, while charging into danger, rally your allies: all allies who can hear you each clear a Stress and gain a Hope. They also gain advantage on attack rolls until you or an ally rolls a failure with Fear.",
