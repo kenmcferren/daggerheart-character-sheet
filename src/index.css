@@ -25,3 +25,8 @@ h2 { font-size: 22px; }
 h3 { font-size: 18px; margin-top: 20px; }
 h4 { font-size: 15px; margin-top: 14px; }
 p { margin: 0 0 8px; }
+
+#credit { max-width: 60rem; margin: 2rem auto 1rem; padding: 0 1rem; font-size: 0.75rem; color: #666; text-align: center; }
+#credit p { margin: 0.25rem 0; }
+#credit a { color: inherit; }
+@media print { #credit { display: none; } }

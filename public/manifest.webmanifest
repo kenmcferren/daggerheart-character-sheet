@@ -1,0 +1,11 @@
+{
+  "name": "Daggerheart Character Sheet",
+  "short_name": "DH Sheet",
+  "description": "Guided Daggerheart character creation and level-up with a printable PDF sheet.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#863bff",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
