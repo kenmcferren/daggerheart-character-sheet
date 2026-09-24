@@ -30,15 +30,25 @@ export function weaponPool(setup: CreationSetup, tier?: number): { entries: Item
   const contribs = setup.pools.get('weapons') ?? []
   const replaced = contribs[0]?.mode === 'replace'
   const base = replaced ? [] : baseTable(setup, 'weapon', tier)
-  const entries = [...base, ...contribs.flatMap((c) => c.entries as Item[])]
+  const entries = [...base, ...contribs.flatMap((c) => expandTiers(c.entries as Item[], tier))]
   return { entries, builder: contribs.find((c) => c.choice)?.choice }
 }
 
 export function armorPool(setup: CreationSetup, tier?: number): Item[] {
   const contribs = setup.pools.get('armor') ?? []
   const base = contribs[0]?.mode === 'replace' ? [] : baseTable(setup, 'armor', tier)
-  return [...base, ...contribs.flatMap((c) => c.entries as Item[])]
+  return [...base, ...contribs.flatMap((c) => expandTiers(c.entries as Item[], tier))]
 }
+
+/** Frame pool items list one `tiers` table; the pickers and stats want one flat item per tier, like the base tables (id `<id>-t<n>`, name unchanged). */
+const expandTiers = (entries: Item[], only?: number): Item[] =>
+  entries.flatMap((e) => {
+    if (!e.tiers) return [e]
+    const { tiers, ...rest } = e
+    return Object.entries(tiers as Record<string, object>)
+      .filter(([t]) => only === undefined || Number(t) === only)
+      .map(([t, v]) => ({ ...rest, ...v, id: `${e.id}-t${t}`, baseId: e.id, tier: Number(t) }) as Item)
+  })
 
 const baseTable = (setup: CreationSetup, category: string, tier?: number): Item[] =>
   [...setup.registry.equipment.values()].filter((e: Item) => e.category === category && (tier === undefined || e.tier === tier)) as Item[]

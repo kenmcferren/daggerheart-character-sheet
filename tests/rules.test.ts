@@ -151,7 +151,13 @@ describe('[s3] character rules with frames', () => {
   it('Western adds to the weapon pool: base weapons and revolver both allowed', () => {
     const w = weaponPool(buildCreation(packs, { supplements: ['western'] })).entries
     expect(w.some((e) => e.id.startsWith('weapon.'))).toBe(true)
-    expect(w.some((e) => e.id === 'revolver')).toBe(true)
+    expect(w.filter((e) => e.baseId === 'revolver').map((e) => e.tier)).toEqual([1, 2, 3, 4])
+  })
+  it('Monster Hunting armor is expanded per tier with its own thresholds', () => {
+    const s = buildCreation(packs, { supplements: ['monster-hunting'] })
+    const silver = armorPool(s).filter((a) => a.baseId === 'silverweave-armor')
+    expect(silver.map((a) => [a.tier, a.majorThreshold, a.severeThreshold, a.armorScore])).toEqual([[1, 5, 11, 3], [2, 7, 16, 4], [3, 9, 23, 5], [4, 11, 32, 6]])
+    expect(armorPool(s, 2).filter((a) => a.baseId).length).toBe(3)
   })
   it('Tech: Iconic Weapon builder validated; Credits replace gold; upgrade slots scale by tier', () => {
     const s = buildCreation(packs, { supplements: ['tech'] })
