@@ -9,10 +9,15 @@ import { renderSheet } from './sheet'
 
 const bytes = async (url: string) => new Uint8Array(await (await fetch(url)).arrayBuffer())
 
+const renderBytes = async (ch: Character, setup: CreationSetup) =>
+  renderSheet(ch, setup, { body: await bytes(bodyUrl), bold: await bytes(boldUrl), italic: await bytes(italicUrl), boldItalic: await bytes(boldItalicUrl), heading: await bytes(headUrl) })
+
+/** Renders the sheet to PDF bytes; used by the live preview. */
+export const previewSheetBytes = renderBytes
+
 /** Renders the sheet in the browser and offers it as a file download. */
 export async function downloadSheet(ch: Character, setup: CreationSetup) {
-  const pdf = await renderSheet(ch, setup, { body: await bytes(bodyUrl), bold: await bytes(boldUrl), italic: await bytes(italicUrl), boldItalic: await bytes(boldItalicUrl), heading: await bytes(headUrl) })
-  const url = URL.createObjectURL(new Blob([pdf as BlobPart], { type: 'application/pdf' }))
+  const url = URL.createObjectURL(new Blob([(await renderBytes(ch, setup)) as BlobPart], { type: 'application/pdf' }))
   const a = document.createElement('a')
   a.href = url
   a.download = `${(ch.name || 'character').replace(/[^\w-]+/g, '-')}-level-${ch.level}.pdf`

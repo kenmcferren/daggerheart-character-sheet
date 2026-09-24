@@ -104,3 +104,5 @@ details.cat > summary + * { margin-top: 6px; }
 .chip { font-size: 12px; border: 1px solid var(--border); border-radius: 10px; padding: 1px 8px; background: var(--panel); }
 .badge { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--accent); border: 1px solid var(--accent); border-radius: 8px; padding: 0 6px; }
 @media (max-width: 760px) { .vrow { grid-template-columns: 1fr; } .vactions { grid-column: 1; grid-row: auto; } }
+.pdf-pages { margin-top: 10px; display: grid; gap: 12px; }
+.pdf-page { width: 100%; height: auto; border: 1px solid var(--border); background: #fff; }

@@ -2,6 +2,7 @@ import { exportCharacter } from '../engine/character'
 import { ancestryFeatures, deriveStats, weaponPool, armorPool, type Issue } from '../engine/rules'
 import type { WizardStep } from '../engine/creation'
 import type { Ctx } from './common'
+import { PdfPreview } from './PdfPreview'
 import { issueStep, titleCase } from './util'
 
 type A = any
@@ -53,6 +54,7 @@ export function Review({ ctx, issues, steps, onJump, onHome }: { ctx: Ctx; issue
         <p>Kit: {stats.kit.join('; ')}</p>
         <p>Downtime moves: {stats.downtimeMoves.map((m) => m.name).join(', ')}</p>
       </section>
+      <PdfPreview ch={ch} setup={setup} />
       <div className="nav">
         <button type="button" onClick={download}>Export JSON</button>
         <button type="button" className="primary" onClick={() => void makePdf()}>Make PDF</button>

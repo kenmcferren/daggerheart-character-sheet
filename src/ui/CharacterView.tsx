@@ -8,6 +8,7 @@ import type { Creation } from '../engine/character'
 import { armorPool, weaponPool } from '../engine/rules'
 import { GearPicker } from './steps'
 import { download } from './util'
+import { PdfPreview } from './PdfPreview'
 import { Versions } from './Versions'
 
 /** A saved character above level 1: what was gained at each level, all saved versions, and the way to level up again. */
@@ -48,6 +49,7 @@ export function CharacterView({ ch: saved, onLevelUp, onOpen, onHome }: { ch: Ch
         <button type="button" onClick={async () => (await import('../pdf/browser')).downloadSheet(ch, setupOf(ch))}>Make PDF</button>{' '}
         <button type="button" onClick={() => download(`${ch.name || 'character'}-level-${ch.level}.json`, exportCharacter(ch))}>Export this version (JSON)</button>
       </section>
+      <PdfPreview ch={ch} setup={setup} />
       <section className="panel">
         <h2>Weapons and armor</h2>
         <dl className="summary">
