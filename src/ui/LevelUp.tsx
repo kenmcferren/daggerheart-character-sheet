@@ -27,7 +27,7 @@ export function LevelUp({ from, onDone, onCancel }: Props) {
   const [at, setAt] = useState(0)
   const [busy, setBusy] = useState('')
   const change = (p: Partial<LevelRecord>) => setDraft((d) => ({ ...d, ...p }))
-  const after = useMemo(() => afterAdvancements(prev, level, draft.advancements, from, reg), [prev, level, draft.advancements, from, reg])
+  const after = useMemo(() => afterAdvancements(prev, level, draft.advancements, from, reg, draft.newExperience), [prev, level, draft.advancements, draft.newExperience, from, reg])
   const { stanceClass, companionClass } = extrasOf(after.subclassRanks, reg)
   const startStances = !!stanceClass && !(STANCE_SUBCLASS in prev.subclassRanks)
   const startCompanion = !!companionClass && !(COMPANION_SUBCLASS in prev.subclassRanks)
@@ -203,7 +203,7 @@ export function LevelUp({ from, onDone, onCancel }: Props) {
               <dl className="summary">
                 <div><dt>Level</dt><dd>{from.level} → {level} (tier {tier})</dd></div>
                 {achievement && <div><dt>Tier achievement</dt><dd>New Experience “{draft.newExperience}” (+{achievement.newExperience}); Proficiency {prev.proficiency} → {after.proficiency}{achievement.clearTraitMarks ? '; trait marks cleared' : ''}</dd></div>}
-                <div><dt>Advancements</dt><dd>{draft.advancements.map((a, i) => <div key={i}>{describeAdvancement(a, afterAdvancements(prev, level, draft.advancements.slice(0, i), from, reg), reg)}</div>)}</dd></div>
+                <div><dt>Advancements</dt><dd>{draft.advancements.map((a, i) => <div key={i}>{describeAdvancement(a, afterAdvancements(prev, level, draft.advancements.slice(0, i), from, reg, draft.newExperience), reg)}</div>)}</dd></div>
                 <div><dt>Damage thresholds</dt><dd>All increase by 1 (automatic).</dd></div>
                 <div><dt>New domain card</dt><dd>{(reg.domainCards.get(draft.newCardId) as any)?.name}{draft.swap ? `; swap ${(reg.domainCards.get(draft.swap.out) as any)?.name} for ${(reg.domainCards.get(draft.swap.in) as any)?.name}` : ''}</dd></div>
                 {draft.stanceId && <div><dt>Stance</dt><dd>{titleCase(draft.stanceId)}</dd></div>}
@@ -261,7 +261,7 @@ function Advancements({ draft, change, prevState, level, from, reg, all, cardCho
   const set = (next: AdvancementRecord[]) => change({ advancements: next })
   const costOf = (id: string) => (reg.levelUpOptions.get(id) as any)?.cost ?? 1
   const spent = advs.reduce((n, a) => n + costOf(a.option), 0)
-  const before = (i: number) => afterAdvancements(prevState, level, advs.slice(0, i), from, reg)
+  const before = (i: number) => afterAdvancements(prevState, level, advs.slice(0, i), from, reg, draft.newExperience)
   const now = before(advs.length)
   const options = all.filter((o) => o.kind === 'advancement' && (!o.classId || o.classId === from.choices.classId))
   const patch = (i: number, p: Partial<AdvancementRecord>) => set(advs.map((a, k) => (k === i ? { ...a, ...p } : a)))

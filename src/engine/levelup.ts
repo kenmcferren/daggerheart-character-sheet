@@ -385,8 +385,8 @@ export function optionAvailability(st: Progress, level: number, opt: any, reg: R
 }
 
 /** State after the tier achievement and the given advancements of the level being built (for choosing cards and the like). */
-export function afterAdvancements(prev: Progress, level: number, drafts: AdvancementRecord[], ch: Character, reg: Registry): Progress {
-  return applyRecord(prev, { level, newExperience: 'x', advancements: drafts, newCardId: '' }, ch, reg).progress
+export function afterAdvancements(prev: Progress, level: number, drafts: AdvancementRecord[], ch: Character, reg: Registry, newExperience = ''): Progress {
+  return applyRecord(prev, { level, newExperience: newExperience.trim() || 'New Experience', advancements: drafts, newCardId: '' }, ch, reg).progress
 }
 
 /** Rule problems in a level being built, grouped by the wizard step they belong to. */

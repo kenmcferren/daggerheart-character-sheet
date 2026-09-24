@@ -1,12 +1,12 @@
 import { TRAITS } from '../engine/character'
 import { TRAIT_MODIFIERS, armorPool, frameChoiceDefs, weaponPool, ancestryFeatures } from '../engine/rules'
 import type { WizardStep } from '../engine/creation'
-import { Choice, Details, Feature, Notes, Rules, type Ctx } from './common'
+import { Choice, Details, Feature, GearRow, Notes, Rules, Section, type Ctx } from './common'
 import { titleCase } from './util'
 
 type A = any
 const sorted = (m: Map<string, A>) => [...m.values()].sort((a, b) => a.name.localeCompare(b.name))
-const fmt = (n: number) => (n > 0 ? `+${n}` : String(n))
+const fmt = (n: number) => (n >= 0 ? `+${n}` : String(n))
 
 export function ClassStep({ ch, setup, update }: Ctx) {
   return (
@@ -150,26 +150,28 @@ export function CommunityStep({ ch, setup, update }: Ctx) {
 }
 
 export function TraitsStep({ ch, update }: Ctx) {
-  const used = TRAITS.map((t) => ch.traits[t]).filter((v) => v !== undefined) as number[]
+  // Values still unassigned (a list, so +1 and +0 appear twice until both are used).
   const left = [...TRAIT_MODIFIERS]
-  for (const v of used) { const i = left.indexOf(v); if (i >= 0) left.splice(i, 1) }
+  for (const t of TRAITS) { const v = ch.traits[t]; if (v === undefined) continue; const i = left.indexOf(v); if (i >= 0) left.splice(i, 1) }
   return (
     <>
       <p className="hint">Assign +2, +1, +1, +0, +0, −1 in any order. Left to assign: {left.length ? left.map(fmt).join(', ') : 'none'}.</p>
       <div className="traits">
-        {TRAITS.map((t) => (
-          <label key={t}>{titleCase(t)}
-            <select value={ch.traits[t] ?? ''} onChange={(e) => update((x) => {
-              if (e.target.value === '') delete x.traits[t]; else x.traits[t] = Number(e.target.value)
-            })}>
-              <option value="">—</option>
-              {[...new Set(TRAIT_MODIFIERS)].sort((a, b) => b - a).map((v) => {
-                const avail = left.includes(v) || ch.traits[t] === v
-                return <option key={v} value={v} disabled={!avail}>{fmt(v)}</option>
-              })}
-            </select>
-          </label>
-        ))}
+        {TRAITS.map((t) => {
+          // What this trait can take: everything still unassigned, plus its own current value.
+          const own = ch.traits[t]
+          const options = [...left, ...(own === undefined ? [] : [own])].sort((a, b) => b - a)
+          return (
+            <label key={t}>{titleCase(t)}
+              <select value={own ?? ''} onChange={(e) => update((x) => {
+                if (e.target.value === '') delete x.traits[t]; else x.traits[t] = Number(e.target.value)
+              })}>
+                <option value="">—</option>
+                {options.map((v, i) => <option key={`${v}-${i}`} value={v}>{fmt(v)}</option>)}
+              </select>
+            </label>
+          )
+        })}
       </div>
     </>
   )
@@ -199,37 +201,41 @@ export function EquipmentStep({ ch, cr, setup, update }: Ctx) {
     const inPool = new Set(armor.map((e) => e.id))
     x.choices.equipmentIds = [...x.choices.equipmentIds.filter((i) => !inPool.has(i)), id]
   })
+  // The section header already says Primary / Secondary / Wheelchair, so the slot is not repeated in the row.
   const wRow = (w: A) => (
-    <Choice key={w.id} title={w.name} selected={has(w.id)} onPick={() => toggleW(w)}
-      meta={[w.weaponSlot, w.burden, w.trait && `${titleCase(w.trait)} ${titleCase(String(w.range ?? ''))}`, w.damage && `${w.damage} ${w.damageType === 'magic' ? 'mag' : 'phy'}`].filter(Boolean).join(' · ')}>
+    <GearRow key={w.id} name={w.name} selected={has(w.id)} onPick={() => toggleW(w)}
+      meta={[w.burden, w.trait && `${titleCase(w.trait)} ${titleCase(String(w.range ?? ''))}`, w.damage && `${w.damage} ${w.damageType === 'magic' ? 'mag' : 'phy'}`].filter(Boolean).join(' · ')}
+      detail={w.feature}>
       <Notes setup={setup} target={`equipment.${w.id}`} />
-      {w.feature && <Details><p>{w.feature}</p></Details>}
-    </Choice>
+    </GearRow>
   )
+  const slotOf = (w: A) => (w.weaponSlot === 'secondary' ? 'secondary' : w.weaponSlot === 'wheelchair' ? 'wheelchair' : 'primary')
+  const list = (slot: string) => weapons.filter((w) => slotOf(w) === slot)
   return (
     <>
       <h3>Weapons</h3>
       <p className="hint">Choose one two-handed primary weapon, or a one-handed primary and a one-handed secondary.</p>
       {builder ? <Builder ctx={{ ch, cr, setup, update, issues: [] }} id={builder} /> : (
         <>
-          <h4>Primary</h4><div className="grid">{weapons.filter((w) => w.weaponSlot !== 'secondary').map(wRow)}</div>
-          <h4>Secondary</h4><div className="grid">{weapons.filter((w) => w.weaponSlot === 'secondary').map(wRow)}</div>
+          <Section title="Primary"><div className="gearlist">{list('primary').map(wRow)}</div></Section>
+          <Section title="Secondary"><div className="gearlist">{list('secondary').map(wRow)}</div></Section>
+          {list('wheelchair').length > 0 && <Section title="Wheelchair"><div className="gearlist">{list('wheelchair').map(wRow)}</div></Section>}
         </>
       )}
-      <h3>Armor</h3>
-      <div className="grid">
-        {armor.map((a: A) => (
-          <Choice key={a.id} title={a.name} selected={has(a.id)} onPick={() => pickArmor(a.id)}
-            meta={`Thresholds ${a.majorThreshold}/${a.severeThreshold} (+level) · Armor Score ${a.armorScore}`}>
-            {a.feature && <Details><p>{a.feature}</p></Details>}
-          </Choice>
-        ))}
-      </div>
-      <h3>Starting potion</h3>
-      <div className="grid">
-        <Choice title="Minor Health Potion" meta="Clear 1d4 Hit Points" selected={cr.potion === 'health'} onPick={() => update((_, x) => { x.potion = 'health' })} />
-        <Choice title="Minor Stamina Potion" meta="Clear 1d4 Stress" selected={cr.potion === 'stamina'} onPick={() => update((_, x) => { x.potion = 'stamina' })} />
-      </div>
+      <Section title="Armor">
+        <div className="gearlist">
+          {armor.map((a: A) => (
+            <GearRow key={a.id} name={a.name} selected={has(a.id)} onPick={() => pickArmor(a.id)}
+              meta={`Thresholds ${a.majorThreshold}/${a.severeThreshold} (+level) · Armor Score ${a.armorScore}`} detail={a.feature} />
+          ))}
+        </div>
+      </Section>
+      <Section title="Starting potion">
+        <div className="grid">
+          <Choice title="Minor Health Potion" meta="Clear 1d4 Hit Points" selected={cr.potion === 'health'} onPick={() => update((_, x) => { x.potion = 'health' })} />
+          <Choice title="Minor Stamina Potion" meta="Clear 1d4 Stress" selected={cr.potion === 'stamina'} onPick={() => update((_, x) => { x.potion = 'stamina' })} />
+        </div>
+      </Section>
       <h3>Class item</h3>
       {cls && <p className="hint">Options for {cls.name}: {cls.classItems}</p>}
       <label>Your class item<input value={cr.classItem} onChange={(e) => update((_, x) => { x.classItem = e.target.value })} /></label>

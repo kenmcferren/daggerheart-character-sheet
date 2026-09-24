@@ -6,7 +6,7 @@ import { issueStep, titleCase } from './util'
 
 type A = any
 
-export function Review({ ctx, issues, steps, onJump }: { ctx: Ctx; issues: Issue[]; steps: WizardStep[]; onJump: (id: string) => void }) {
+export function Review({ ctx, issues, steps, onJump, onHome }: { ctx: Ctx; issues: Issue[]; steps: WizardStep[]; onJump: (id: string) => void; onHome: () => void }) {
   const { ch, cr, setup } = ctx
   const reg = setup.registry
   const stats = deriveStats(ch, setup)
@@ -56,8 +56,9 @@ export function Review({ ctx, issues, steps, onJump }: { ctx: Ctx; issues: Issue
       <div className="nav">
         <button type="button" onClick={download}>Export JSON</button>
         <button type="button" className="primary" onClick={() => void makePdf()}>Make PDF</button>
+        <button type="button" onClick={onHome}>Save Locally</button>
       </div>
-      <p className="hint">Your character is saved on this device. Make PDF downloads a printable two-page sheet; Export JSON keeps a backup.</p>
+      <p className="hint">Your character is saved on this device. Make PDF downloads a printable two-page sheet; Export JSON keeps a backup. Save Locally takes you back to your characters (everything is already saved on this device).</p>
     </>
   )
 }

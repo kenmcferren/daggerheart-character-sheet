@@ -86,3 +86,28 @@ export function CardPicker({ cards, selected, onPick, domainOrder = [] }: {
     </>
   )
 }
+
+/** One item per row: bold name, then " · meta" on the same line, and its details always visible on a second line inside the same button. */
+export function GearRow({ selected, onPick, name, meta, detail, children }: {
+  selected: boolean; onPick: () => void; name: string; meta?: string; detail?: ReactNode; children?: ReactNode
+}) {
+  return (
+    <div className={`choice gear${selected ? ' selected' : ''}`}>
+      <button type="button" className="pick" aria-pressed={selected} onClick={onPick}>
+        <span className="gear-line"><span className="title">{name}</span>{meta && <span className="meta-inline"> · {meta}</span>}</span>
+        {detail && <span className="gear-detail">{detail}</span>}
+      </button>
+      {children}
+    </div>
+  )
+}
+
+/** A collapsible category (open by default) with a centered title and a rule line on either side. */
+export function Section({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <details className="cat" open>
+      <summary><span>{title}</span></summary>
+      {children}
+    </details>
+  )
+}

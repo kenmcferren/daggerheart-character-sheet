@@ -52,7 +52,8 @@ button.step.current { background: var(--accent-bg); font-weight: 600; }
 .feature p { display: inline; }
 .note { margin: 4px 8px; padding: 6px 10px; border-left: 3px solid var(--accent); background: var(--accent-bg); font-size: 13px; }
 .note p { margin: 0; }
-.traits { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.traits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; } /* physical (Agility, Strength, Finesse) then mental (Instinct, Presence, Knowledge) */
+.traits select { width: 100%; }
 
 .summary { margin: 16px 0; }
 .summary div { display: flex; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--border); }
@@ -65,3 +66,41 @@ button.step.current { background: var(--accent-bg); font-weight: 600; }
   button.step { white-space: nowrap; }
   h1 { font-size: 26px; }
 }
+
+/* Weapons and armor: one per row, details always visible inside the button */
+.gearlist { display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px; }
+.gear .gear-line { display: block; }
+.gear .meta-inline { color: var(--muted); font-size: 13px; }
+.gear .gear-detail { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+
+/* Collapsible categories: centered title with a rule line on either side */
+details.cat { margin: 14px 0; }
+details.cat > summary { display: flex; align-items: center; gap: 12px; cursor: pointer; list-style: none; font-weight: 600; }
+details.cat > summary::-webkit-details-marker { display: none; }
+details.cat > summary::before, details.cat > summary::after { content: ''; flex: 1; border-top: 1px solid var(--border); }
+details.cat > summary span::after { content: ' \25BE'; color: var(--muted); }
+details.cat:not([open]) > summary span::after { content: ' \25B8'; }
+details.cat > summary + * { margin-top: 10px; }
+.gear .title { display: inline; }
+/* Tighter weapon/armor rows (owner: less margin inside and outside the buttons) */
+.gearlist { gap: 3px; margin-bottom: 4px; }
+.choice.gear { padding: 0; }
+.choice.gear .pick { padding: 4px 8px; }
+.gear .gear-detail { margin-top: 0; }
+details.cat { margin: 8px 0; }
+details.cat > summary + * { margin-top: 6px; }
+
+/* Saved versions: a tree joined by guide lines; row = level + saved time, differences as chips, actions on the right */
+.vtree { list-style: none; margin: 0; padding: 0; }
+.vtree .vtree { margin-left: 12px; padding-left: 14px; border-left: 2px solid var(--border); }
+.vtree li { display: block; border: 0; padding: 0; }
+.vrow { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center; padding: 6px 8px; margin: 2px 0; border-radius: 6px; }
+.vrow:hover, .vrow.current { background: var(--accent-bg); }
+.vmain { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.vmain .meta { display: inline; flex: none; }
+.vdiffs { grid-column: 1; display: flex; gap: 6px; flex-wrap: wrap; }
+.vactions { grid-column: 2; grid-row: 1 / span 2; display: flex; gap: 6px; align-self: center; }
+.vrow:not(:has(.vdiffs)) .vactions { grid-row: 1; }
+.chip { font-size: 12px; border: 1px solid var(--border); border-radius: 10px; padding: 1px 8px; background: var(--panel); }
+.badge { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--accent); border: 1px solid var(--accent); border-radius: 8px; padding: 0 6px; }
+@media (max-width: 760px) { .vrow { grid-template-columns: 1fr; } .vactions { grid-column: 1; grid-row: auto; } }

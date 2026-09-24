@@ -360,3 +360,14 @@ describe('[s5] saved versions and branches', () => {
     expect(() => applyLevelUp(l1, { level: 2, advancements: [], newCardId: 'nope' }, reg, 'x')).toThrow(LevelUpError)
   })
 })
+
+describe('[s5] afterAdvancements names the new Experience', () => {
+  it('lists the typed tier-achievement Experience, not a placeholder, so a later "increase two Experiences" advancement shows its text', async () => {
+    const { afterAdvancements, progressOf } = await import('../src/engine/levelup')
+    const { level1, reg } = await import('./lib/levelup-paths')
+    const ch = level1()
+    const st = afterAdvancements(progressOf(ch, reg), 2, [], ch, reg, 'Bridge builder')
+    expect(st.experiences.map((e) => e.text)).toContain('Bridge builder')
+    expect(afterAdvancements(progressOf(ch, reg), 2, [], ch, reg).experiences.map((e) => e.text)).not.toContain('x')
+  })
+})

@@ -6,7 +6,7 @@ Read this first every session. Update as steps finish.
 Daggerheart guided character creation/level-up website. Output: printable PDF. Local saves. Source-pack architecture so third-party sources load the same way as the two primary books. Details: `Docs/plan.md`.
 
 ## Current series
-- Series 1-5 archived. Series 7: step 1 done; step 2 (condense text for the 4-page level 10 target) 2a-2d all drafted 2026-09-23, owner reviewed at first glance 2026-09-23, all fine. Series 8: Druid forms page, done. Series 6 still open, untouched.
+- Series 1-5 archived. UI touch-up pass and saved-versions restyle done 2026-09-23 (owner-approved; archived in long-term-done.md). Series 7: step 1 done; step 2 (condense text for the 4-page level 10 target) 2a-2d all drafted 2026-09-23, owner reviewed at first glance 2026-09-23, all fine. Series 8: Druid forms page, done. Series 6 still open, untouched.
 
 ## Current step
 - Series 7, step 1 in progress. Listing passes done and reviewed (owner 2026-09-22): `TestArtifacts/rules-math/candidates.md` (52 number-changing hits), `trait-candidates.md` (40 trait-sizing hits), sorted in `proposal.md` into Group A (permanent unconditional -> bake into the sheet), Group B (build-conditional: gear/loadout) and Group C (situational: in-play conditions).

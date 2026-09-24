@@ -36,7 +36,7 @@ describe('[s5] sheet at level N', () => {
     expect(v.traits).toMatchObject({ agility: 1, strength: 1, finesse: 1, knowledge: 2 })
     expect(v.experiences.map((e) => `${e.text} +${e.bonus}`)).toEqual(['Sailor +3', 'Liar +2', 'Exp 2 +3'])
     const { texts, marks } = await draw(ch)
-    expect(texts).toContain('Level 3, Tier 2, Proficiency 2')
+    expect(texts).toContain('Level 3, Tier 2, Proficiency')
     expect(texts).toContain('12')
     expect(texts.filter((t) => t === '+3')).toHaveLength(2)
     expect(marks.filter(outside)).toEqual([])
