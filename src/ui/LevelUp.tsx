@@ -66,8 +66,8 @@ export function LevelUp({ from, onDone, onCancel }: Props) {
           <ol>
             {steps.map((s, i) => (
               <li key={s}>
-                <button type="button" className={`step ${i === at ? 'current' : i < at ? 'done' : 'todo'}`} disabled={i > at} aria-current={i === at ? 'step' : undefined} onClick={() => setAt(i)}>
-                  <span className="dot" aria-hidden>{i < at ? '✓' : i + 1}</span>{titles[s]}
+                <button type="button" className={`step ${i === at ? 'current' : i < at ? 'done' : 'todo'}`} title={titles[s]} aria-label={`${i + 1}. ${titles[s]}`} disabled={i > at} aria-current={i === at ? 'step' : undefined} onClick={() => setAt(i)}>
+                  <span className="dot" aria-hidden>{i < at ? '✓' : i + 1}</span><span className="label">{titles[s]}</span>
                 </button>
               </li>
             ))}

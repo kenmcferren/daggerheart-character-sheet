@@ -50,8 +50,8 @@ export function Wizard({ ch, setup, update, saveStatus, onHome, opened }: {
           <ol>
             {all.map((s, i) => (
               <li key={s.id}>
-                <button type="button" className={`step ${state(i)}`} disabled={i > furthest} aria-current={i === at ? 'step' : undefined} onClick={() => go(i)}>
-                  <span className="dot" aria-hidden>{state(i) === 'done' ? '✓' : state(i) === 'issue' ? '!' : i + 1}</span>{s.title}
+                <button type="button" className={`step ${state(i)}`} title={s.title} aria-label={`${i + 1}. ${s.title}`} disabled={i > furthest} aria-current={i === at ? 'step' : undefined} onClick={() => go(i)}>
+                  <span className="dot" aria-hidden>{state(i) === 'done' ? '✓' : state(i) === 'issue' ? '!' : i + 1}</span><span className="label">{s.title}</span>
                 </button>
               </li>
             ))}

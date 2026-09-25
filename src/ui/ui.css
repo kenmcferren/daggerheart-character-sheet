@@ -61,9 +61,24 @@ button.step.current { background: var(--accent-bg); font-weight: 600; }
 .summary dd { margin: 0; }
 
 @media (max-width: 760px) {
-  .layout { grid-template-columns: 1fr; }
-  nav ol { position: static; display: flex; overflow-x: auto; gap: 4px; }
-  button.step { white-space: nowrap; }
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  /* Steps become a wrapping row of numbered dots (no sideways scroll); the step title is the page heading below */
+  nav ol { position: static; display: flex; flex-wrap: wrap; gap: 6px; }
+  button.step { width: auto; padding: 4px; }
+  button.step .label { display: none; }
+  button.step .dot { width: 30px; height: 30px; font-size: 14px; }
+  .bar { flex-wrap: wrap; gap: 8px 12px; }
+  .bar .status { flex-basis: 100%; margin-left: 0; }
+  .panel { padding: 12px; }
+  .start, .wizard { padding: 0 12px 32px; }
+  /* Saved characters: name, then details on their own line, then actions */
+  .saved li { gap: 6px 8px; padding: 10px 0; }
+  .saved li > .meta { flex: 1 1 100%; }
+  .traits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .nav button { flex: 1; padding: 10px 14px; }
+  .summary div { flex-wrap: wrap; gap: 2px 12px; }
+  .summary dt { width: 100%; }
   h1 { font-size: 26px; }
 }
 
@@ -103,6 +118,10 @@ details.cat > summary + * { margin-top: 6px; }
 .vrow:not(:has(.vdiffs)) .vactions { grid-row: 1; }
 .chip { font-size: 12px; border: 1px solid var(--border); border-radius: 10px; padding: 1px 8px; background: var(--panel); }
 .badge { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--accent); border: 1px solid var(--accent); border-radius: 8px; padding: 0 6px; }
-@media (max-width: 760px) { .vrow { grid-template-columns: 1fr; } .vactions { grid-column: 1; grid-row: auto; } }
+@media (max-width: 760px) {
+  .vrow { grid-template-columns: minmax(0, 1fr); }
+  .vrow .vactions, .vrow:not(:has(.vdiffs)) .vactions { grid-column: 1; grid-row: auto; }
+  .vtree .vtree { margin-left: 6px; padding-left: 8px; }
+}
 .pdf-pages { margin-top: 10px; display: grid; gap: 12px; }
 .pdf-page { width: 100%; height: auto; border: 1px solid var(--border); background: #fff; }

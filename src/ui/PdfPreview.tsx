@@ -26,7 +26,9 @@ export function PdfPreview({ ch, setup }: { ch: Character; setup: CreationSetup 
         for (let n = 1; n <= doc.numPages; n++) {
           const page = await doc.getPage(n)
           const base = page.getViewport({ scale: 1 })
-          const viewport = page.getViewport({ scale: (width / base.width) * (window.devicePixelRatio || 1) })
+          // Narrow screens draw extra pixels so pinch-zoom on the small page stays legible
+        const density = Math.max(window.devicePixelRatio || 1, width < 600 ? 3 : 1)
+        const viewport = page.getViewport({ scale: (width / base.width) * density })
           const canvas = document.createElement('canvas')
           canvas.width = viewport.width
           canvas.height = viewport.height

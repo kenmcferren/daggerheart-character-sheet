@@ -60,6 +60,7 @@ Daggerheart guided character creation/level-up website. Output: printable PDF. L
 - Series 1-6 drafted in `Docs/plan.md`.
 
 ## Unverified
+- Mobile (portrait, <=760px, width-only detection): wizard steps 1-11 measured at 375px with no sideways overflow (root cause was the nav's `overflow-x` flex inflating the grid column; fixed with `minmax(0,1fr)` and a wrapping row of numbered dots). Also checked at 375px (no overflow, layout fixed): Start saved list, Level-up flow, Character view, Versions tree, PDF preview (now oversampled 3x on narrow screens for pinch-zoom). Not checked: real-device touch and pinch-zoom sharpness.
 - New page 2 layout (inventory top, rules bottom, notes space between) has been rendered and passes margin/grayscale checks but nobody has looked at it. The page 1 spill (Brawler stances, Druid, multiclass modules) is not yet fixed; options were put to the owner.
 - Pattern audit checks margins, grayscale, page counts and rules, not looks: where the extra pages come from (card pages vs page 1 continuation) is not broken down, and no one has viewed the 6-page sheets.
 - Level N sheets: only checked by numbers, text and margins; no one has looked at the sample PDFs (layout, column balance, page count with multiclass + all subclass cards). Not printed: multiclass module extras when the added class has a companion, stances or beastforms (only its class features print); Ranger "Light in the Dark" extra Hope slot (Hope stays 6 boxes); Brawler Combo Die shown as text only. Version list touch-up is on the long-term list.
@@ -93,10 +94,10 @@ Daggerheart guided character creation/level-up website. Output: printable PDF. L
 
 - Live sheet preview (2026-09-24, not yet owner-reviewed): `PdfPreview.tsx` draws the real PDF's pages onto canvases with pdfjs-dist (bytes from `previewSheetBytes` in `pdf/browser.ts`; works on phones), on the Review step and the level 2+ character screen. "Show preview" toggle; re-renders 400 ms after any change. Level 2+ gear Edit panel and page targets confirmed by owner. Cloud/share-link item dropped from the backlog (security cost, owner decision).
 
-## Current mode: ad hoc, going live
-- Working outside the numbered series on getting this onto a live website. It is a static site: no accounts, no login, no server-side storage; every character lives on the user's own machine (browser storage plus JSON export). No user data ever leaves the device.
-- Hosting must therefore be free and lightweight: static-file hosting only (build output is `dist/`, base `./`, with an offline service worker). To explore: GitHub Pages, Cloudflare Pages, Netlify, and similar free static hosts; compare limits, custom domain, HTTPS (needed for the service worker), and how the DPCGL attribution/license notice is served.
-- Cloud sync and share links are off the table (owner decision).
+## Current mode: ad hoc, live
+- LIVE (2026-09-24, owner confirmed working): https://kenmcferren.github.io/daggerheart-character-sheet/ . Host: GitHub Pages, public repo `kenmcferren/daggerheart-character-sheet`. Pages source = GitHub Actions; `.github/workflows/deploy.yml` builds (`npm ci`, `npm run build`) and publishes `dist/` on every push to `main`. Redeploy = push to main (about a minute; Actions tab shows the run).
+- Static site: no accounts, no server-side storage; every character lives on the user's device (browser storage plus JSON export). Cloud sync and share links are off the table (owner decision).
+- Not yet confirmed on the live site: service worker offline install in Chrome, fonts, Make PDF, DPCGL footer (owner said it is working; details not itemized).
 
 ## Very next action
-- Pick a free static host (see Current mode) and publish. Also: owner to try the preview in a normal browser. Verified live only in the Claude pane, which reports the page as hidden so requestAnimationFrame never fires and pdf.js stalls; with rAF patched, all pages drew with no errors. A visible tab should just work.
+- Owner picks what is next (Series 6 is on the back burner; see `long-term-to-do.md`).
