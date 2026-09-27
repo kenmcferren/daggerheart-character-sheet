@@ -20,10 +20,7 @@ label.inline { display: flex; gap: 8px; align-items: center; font-weight: 400; m
 input:not([type]), input[type='text'], textarea, select { display: block; width: 100%; box-sizing: border-box; margin-top: 4px; padding: 7px 9px; font: inherit; border: 1px solid var(--border); border-radius: 6px; background: #fff; color: var(--text); }
 textarea { min-height: 72px; resize: vertical; }
 .file input { margin-top: 6px; }
-.augment-row { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; margin: 8px 0; }
-.augment-row .augment-info { flex: 1 1 260px; }
-.augment-row .augment-info p { margin: 2px 0; }
-.augment-row label { margin: 0; flex: 0 0 auto; }
+.augment-install { margin: 0 8px 8px; }
 
 .issues { color: var(--warn); background: var(--warn-bg); border-radius: 8px; padding: 8px 8px 8px 28px; margin: 14px 0; }
 
@@ -56,8 +53,14 @@ button.step.current { background: var(--accent-bg); font-weight: 600; }
 .feature p { display: inline; }
 .note { margin: 4px 8px; padding: 6px 10px; border-left: 3px solid var(--accent); background: var(--accent-bg); font-size: 13px; }
 .note p { margin: 0; }
-.traits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; } /* physical (Agility, Strength, Finesse) then mental (Instinct, Presence, Knowledge) */
-.traits select { width: 100%; }
+.traitgrid { display: flex; flex-direction: column; gap: 6px; }
+.traitgrid-row { display: grid; grid-template-columns: 110px repeat(6, 1fr); gap: 6px; align-items: stretch; }
+.traitgrid-name { display: flex; align-items: center; font-weight: 600; }
+.traitgrid-name .short { display: none; }
+.traitgrid-cell { border: 1px solid var(--border); border-radius: 6px; background: var(--panel); color: var(--text); padding: 8px 4px; text-align: center; font: inherit; cursor: pointer; }
+.traitgrid-cell:hover:not(:disabled) { border-color: var(--accent); }
+.traitgrid-cell.selected { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 700; }
+.traitgrid-cell:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; opacity: 0.55; }
 
 .summary { margin: 16px 0; }
 .summary div { display: flex; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--border); }
@@ -78,7 +81,10 @@ button.step.current { background: var(--accent-bg); font-weight: 600; }
   /* Saved characters: name, then details on their own line, then actions */
   .saved li { gap: 6px 8px; padding: 10px 0; }
   .saved li > .meta { flex: 1 1 100%; }
-  .traits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .traitgrid-row { grid-template-columns: 46px repeat(6, 1fr); gap: 4px; }
+  .traitgrid-name .full { display: none; }
+  .traitgrid-name .short { display: inline; }
+  .traitgrid-cell { padding: 8px 2px; font-size: 13px; }
   .grid { grid-template-columns: minmax(0, 1fr); }
   .nav button { flex: 1; padding: 10px 14px; }
   .summary div { flex-wrap: wrap; gap: 2px 12px; }

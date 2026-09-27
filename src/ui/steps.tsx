@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { TRAITS } from '../engine/character'
+import { TRAITS, type Trait } from '../engine/character'
 import { TRAIT_MODIFIERS, armorPool, deriveStats, frameChoiceDefs, weaponPool, ancestryFeatures, tierOf, type AugmentDef, type AugmentState } from '../engine/rules'
 import type { WizardStep } from '../engine/creation'
 import { Choice, Details, Feature, GearRow, Notes, Rules, Section, type Ctx } from './common'
@@ -152,29 +152,43 @@ export function CommunityStep({ ch, setup, update }: Ctx) {
   )
 }
 
+// Fixed column order for the trait grid: -1, 0, 0, +1, +1, +2 (the duplicate 0 and +1 columns are separate slots).
+const TRAIT_COLUMNS = [...TRAIT_MODIFIERS].sort((a, b) => a - b)
+
 export function TraitsStep({ ch, update }: Ctx) {
   // Values still unassigned (a list, so +1 and +0 appear twice until both are used).
   const left = [...TRAIT_MODIFIERS]
   for (const t of TRAITS) { const v = ch.traits[t]; if (v === undefined) continue; const i = left.indexOf(v); if (i >= 0) left.splice(i, 1) }
+  // Which trait (if any) occupies each fixed column: the first trait (in TRAITS order) with a matching value claims
+  // the first free column of that value, so the two "+0" and two "+1" columns each resolve to a specific trait.
+  const claimedBy: (string | undefined)[] = TRAIT_COLUMNS.map(() => undefined)
+  for (const t of TRAITS) {
+    const v = ch.traits[t]
+    if (v === undefined) continue
+    const c = TRAIT_COLUMNS.findIndex((cv, i) => cv === v && claimedBy[i] === undefined)
+    if (c >= 0) claimedBy[c] = t
+  }
+  const pick = (t: Trait, v: number) => update((x) => { x.traits[t] = v })
+  const clear = (t: Trait) => update((x) => { delete x.traits[t] })
   return (
     <>
       <p className="hint">Assign +2, +1, +1, +0, +0, −1 in any order. Left to assign: {left.length ? left.map(fmt).join(', ') : 'none'}.</p>
-      <div className="traits">
-        {TRAITS.map((t) => {
-          // What this trait can take: everything still unassigned, plus its own current value.
-          const own = ch.traits[t]
-          const options = [...left, ...(own === undefined ? [] : [own])].sort((a, b) => b - a)
-          return (
-            <label key={t}>{titleCase(t)}
-              <select value={own ?? ''} onChange={(e) => update((x) => {
-                if (e.target.value === '') delete x.traits[t]; else x.traits[t] = Number(e.target.value)
-              })}>
-                <option value="">—</option>
-                {options.map((v, i) => <option key={`${v}-${i}`} value={v}>{fmt(v)}</option>)}
-              </select>
-            </label>
-          )
-        })}
+      <div className="traitgrid">
+        {TRAITS.map((t) => (
+          <div className="traitgrid-row" key={t}>
+            <span className="traitgrid-name"><span className="full">{titleCase(t)}</span><span className="short">{t.slice(0, 3).toUpperCase()}</span></span>
+            {TRAIT_COLUMNS.map((v, i) => {
+              const mine = claimedBy[i] === t
+              const taken = claimedBy[i] !== undefined && !mine
+              return (
+                <button key={i} type="button" className={`traitgrid-cell${mine ? ' selected' : ''}`} disabled={taken}
+                  onClick={() => (mine ? clear(t) : pick(t, v))}>
+                  {fmt(v)}
+                </button>
+              )
+            })}
+          </div>
+        ))}
       </div>
     </>
   )
@@ -273,7 +287,8 @@ const parseAugmentStates = (raw: string | undefined): Record<string, AugmentStat
   try { const o = JSON.parse(raw || '{}'); return o && typeof o === 'object' ? o : {} } catch { return {} }
 }
 
-/** Craft ("build") any Augment once its tier Prerequisite is met; only as many can be "installed" as the weapon has slots. */
+/** Craft ("build") any Augment once its tier Prerequisite is met; only as many can be "installed" as the weapon has slots.
+ *  Options above the character's current tier aren't shown at all, same as a subclass's higher-tier picks. */
 function AugmentsEditor({ value, onChange, tier, slotCap, defs }: { value: string; onChange: (v: string) => void; tier: number; slotCap: number; defs: AugmentDef[] }) {
   const states = parseAugmentStates(value)
   const installedCount = Object.values(states).filter((s) => s.installed).length
@@ -282,30 +297,25 @@ function AugmentsEditor({ value, onChange, tier, slotCap, defs }: { value: strin
     const cur = states[id] ?? { crafted: false, installed: false }
     set({ ...states, [id]: { ...cur, ...p } })
   }
+  const available = defs.filter((a) => (a.tier ?? 1) <= tier)
   return (
     <div className="augments">
-      <p className="hint">{installedCount} of {slotCap} slots installed. Craft an Augment once you have the Parts for its cost; only crafted Augments can be installed, up to your slots.</p>
-      {defs.map((a) => {
-        const s = states[a.id] ?? { crafted: false, installed: false }
-        const locked = (a.tier ?? 1) > tier
-        return (
-          <div className="augment-row" key={a.id}>
-            <div className="augment-info">
-              <strong>{a.name}</strong>{a.tier ? <span className="meta"> (Precompile: Tier {a.tier})</span> : null}
-              <p className="hint">{a.effect}</p>
-              <p className="meta">Cost: {a.cost}</p>
-            </div>
-            <label className="inline" title={locked ? `Requires Tier ${a.tier}` : undefined}>
-              <input type="checkbox" checked={s.crafted} disabled={locked}
-                onChange={(e) => patch(a.id, { crafted: e.target.checked, installed: e.target.checked && s.installed })} /> Crafted
-            </label>
-            <label className="inline">
-              <input type="checkbox" checked={s.installed} disabled={!s.crafted || (!s.installed && installedCount >= slotCap)}
-                onChange={(e) => patch(a.id, { installed: e.target.checked })} /> Installed
-            </label>
-          </div>
-        )
-      })}
+      <p className="hint">{installedCount} of {slotCap} slots installed. Pick an Augment to craft it once you have the Parts for its cost; only crafted Augments can be installed, up to your slots.</p>
+      <div className="grid">
+        {available.map((a) => {
+          const s = states[a.id] ?? { crafted: false, installed: false }
+          return (
+            <Choice key={a.id} title={a.name} meta={a.effect} selected={s.crafted}
+              onPick={() => patch(a.id, { crafted: !s.crafted, installed: s.crafted ? false : s.installed })}>
+              <Details><p>Cost: {a.cost}</p></Details>
+              <label className="inline augment-install">
+                <input type="checkbox" checked={s.installed} disabled={!s.crafted || (!s.installed && installedCount >= slotCap)}
+                  onChange={(e) => patch(a.id, { installed: e.target.checked })} /> Installed
+              </label>
+            </Choice>
+          )
+        })}
+      </div>
     </div>
   )
 }
