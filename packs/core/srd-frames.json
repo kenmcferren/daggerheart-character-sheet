@@ -1035,22 +1035,14 @@
                   ]
                 },
                 {
-                  "key": "range",
+                  "key": "range-damage",
+                  "label": "Range & Damage",
                   "options": [
-                    "melee",
-                    "very-close",
-                    "close",
-                    "far",
-                    "very-far"
-                  ]
-                },
-                {
-                  "key": "damage",
-                  "options": [
-                    "d6+0",
-                    "d8+0",
-                    "d10+0",
-                    "d12+0"
+                    "melee|d12+1",
+                    "very-close|d10+2",
+                    "close|d10+0",
+                    "far|d8+1",
+                    "very-far|d6+1"
                   ]
                 },
                 {
@@ -1060,6 +1052,12 @@
                 {
                   "key": "description",
                   "free": true
+                },
+                {
+                  "key": "upgrades",
+                  "label": "Upgrades",
+                  "free": true,
+                  "optional": true
                 }
               ],
               "fixed": {

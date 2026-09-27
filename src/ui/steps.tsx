@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { TRAITS } from '../engine/character'
-import { TRAIT_MODIFIERS, armorPool, frameChoiceDefs, weaponPool, ancestryFeatures, tierOf } from '../engine/rules'
+import { TRAIT_MODIFIERS, armorPool, deriveStats, frameChoiceDefs, weaponPool, ancestryFeatures, tierOf, type UpgradeRow } from '../engine/rules'
 import type { WizardStep } from '../engine/creation'
 import { Choice, Details, Feature, GearRow, Notes, Rules, Section, type Ctx } from './common'
 import { titleCase } from './util'
@@ -8,6 +8,8 @@ import { titleCase } from './util'
 type A = any
 const sorted = (m: Map<string, A>) => [...m.values()].sort((a, b) => a.name.localeCompare(b.name))
 const fmt = (n: number) => (n >= 0 ? `+${n}` : String(n))
+/** "far|d8+1" -> "Far — d8+1"; plain options are just title-cased. */
+const comboLabel = (o: string) => o.includes('|') ? o.split('|').map((p, i) => (i === 0 ? titleCase(p) : p)).join(' — ') : titleCase(o)
 
 export function ClassStep({ ch, setup, update }: Ctx) {
   return (
@@ -267,22 +269,65 @@ export function EquipmentStep(ctx: Ctx) {
   )
 }
 
+const parseUpgrades = (raw: string | undefined): UpgradeRow[] => {
+  try { const a = JSON.parse(raw || '[]'); return Array.isArray(a) ? a : [] } catch { return [] }
+}
+const blankUpgrade = (): UpgradeRow => ({ name: '', effect: '', armorScore: 0, damage: 0, unlocked: true, applied: false })
+
+/** Craft ("unlock") any number of Upgrades; only as many as the weapon's slots can be "applied" (installed) at once. */
+function UpgradesEditor({ value, onChange, slotCap }: { value: string; onChange: (v: string) => void; slotCap: number }) {
+  const rows = parseUpgrades(value)
+  const appliedCount = rows.filter((r) => r.applied).length
+  const set = (next: UpgradeRow[]) => onChange(JSON.stringify(next))
+  const patch = (i: number, p: Partial<UpgradeRow>) => set(rows.map((r, j) => (j === i ? { ...r, ...p } : r)))
+  return (
+    <div className="upgrades">
+      <p className="hint">{appliedCount} of {slotCap} upgrade slots applied. Craft ("unlock") as many Upgrades as you like; only unlocked ones can be applied, up to your slots.</p>
+      {rows.map((r, i) => (
+        <div className="upgrade-row" key={i}>
+          <input placeholder="Name" value={r.name} onChange={(e) => patch(i, { name: e.target.value })} />
+          <input placeholder="Effect" value={r.effect} onChange={(e) => patch(i, { effect: e.target.value })} />
+          <label>Armor Score<input type="number" value={r.armorScore} onChange={(e) => patch(i, { armorScore: Number(e.target.value) || 0 })} /></label>
+          <label>Damage bonus<input type="number" value={r.damage} onChange={(e) => patch(i, { damage: Number(e.target.value) || 0 })} /></label>
+          <label className="inline"><input type="checkbox" checked={r.unlocked} onChange={(e) => patch(i, { unlocked: e.target.checked, applied: e.target.checked && r.applied })} /> Unlocked</label>
+          <label className="inline">
+            <input type="checkbox" checked={r.applied} disabled={!r.unlocked || (!r.applied && appliedCount >= slotCap)}
+              onChange={(e) => patch(i, { applied: e.target.checked })} /> Applied
+          </label>
+          <button type="button" onClick={() => set(rows.filter((_, j) => j !== i))}>Remove</button>
+        </div>
+      ))}
+      <button type="button" onClick={() => set([...rows, blankUpgrade()])}>+ Add upgrade</button>
+    </div>
+  )
+}
+
 /** Frame-defined builder, e.g. Tech's Iconic Weapon. */
-function Builder({ ctx: { cr, setup, update }, id }: { ctx: Ctx; id: string }) {
+function Builder({ ctx, id }: { ctx: Ctx; id: string }) {
+  const { ch, cr, setup, update } = ctx
   const def: A = frameChoiceDefs(setup).find((d) => d.id === id)
   if (!def) return null
   const v = (typeof cr.frameChoices[id] === 'object' ? cr.frameChoices[id] : {}) as Record<string, string>
   const set = (k: string, val: string) => update((_, x) => { x.frameChoices[id] = { ...v, [k]: val } })
+  const slotsTracker = deriveStats(ch, setup).trackers.find((t) => t.attachTo?.includes(id))
+  const slotCap = typeof slotsTracker?.count === 'number' ? slotsTracker.count : Infinity
   return (
     <section className="panel">
       <h4>{titleCase(id)}</h4>
-      {def.fields.map((f: A) => f.free
-        ? <label key={f.key}>{titleCase(f.key)}<input value={v[f.key] ?? ''} onChange={(e) => set(f.key, e.target.value)} /></label>
+      {def.fields.map((f: A) => f.key === 'upgrades'
+        ? (
+          <div key={f.key}>
+            <h5>{f.label ?? titleCase(f.key)}</h5>
+            <UpgradesEditor value={v[f.key] ?? ''} onChange={(val) => set(f.key, val)} slotCap={slotCap} />
+          </div>
+        )
+        : f.free
+        ? <label key={f.key}>{f.label ?? titleCase(f.key)}<input value={v[f.key] ?? ''} onChange={(e) => set(f.key, e.target.value)} /></label>
         : (
-          <label key={f.key}>{titleCase(f.key)}
+          <label key={f.key}>{f.label ?? titleCase(f.key)}
             <select value={v[f.key] ?? ''} onChange={(e) => set(f.key, e.target.value)}>
               <option value="">Choose…</option>
-              {f.options.map((o: string) => <option key={o} value={o}>{titleCase(o)}</option>)}
+              {f.options.map((o: string) => <option key={o} value={o}>{comboLabel(o)}</option>)}
             </select>
           </label>
         ))}

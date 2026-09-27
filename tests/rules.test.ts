@@ -165,7 +165,7 @@ describe('[s3] character rules with frames', () => {
     const armor = baseArmor(s)
     const noBuild = legal(s, (x) => { x.choices.equipmentIds = [armor] })
     expect(steps(validateCreation(noBuild, s))).toEqual(['iconic-weapon'])
-    const choices = { 'iconic-weapon': { trait: 'knowledge', range: 'far', damage: 'd8+0', name: 'Arc rifle', description: 'Hums' } }
+    const choices = { 'iconic-weapon': { trait: 'knowledge', 'range-damage': 'far|d8+1', name: 'Arc rifle', description: 'Hums' } }
     const built = legal(s, (x) => { x.choices.equipmentIds = [armor]; x.creation!.frameChoices = choices })
     expect(validateCreation(built, s)).toEqual([])
     const st = deriveStats(built, s)
@@ -177,6 +177,19 @@ describe('[s3] character rules with frames', () => {
     expect(deriveStats(built, s).trackers.find((t) => t.id === 'upgrade-slots')!.count).toBe(4)
     const extra = legal(s, (x) => { x.choices.equipmentIds = [armor, 'weapon.dagger']; x.creation!.frameChoices = choices })
     expect(steps(validateCreation(extra, s))).toEqual(['equipment'])
+  })
+  it('Tech: applied Upgrades add to Armor Score; unapplied ones do not', () => {
+    const s = buildCreation(packs, { supplements: ['tech'] })
+    const armor = baseArmor(s)
+    const withoutUpgrades = { trait: 'knowledge', 'range-damage': 'far|d8+1', name: 'Arc rifle', description: 'Hums' }
+    const baseArmorScore = deriveStats(legal(s, (x) => { x.choices.equipmentIds = [armor]; x.creation!.frameChoices = { 'iconic-weapon': withoutUpgrades } }), s).armorScore
+    const upgrades = JSON.stringify([
+      { name: 'Plating', effect: 'Reinforced hull.', armorScore: 2, damage: 0, unlocked: true, applied: true },
+      { name: 'Overcharge', effect: 'Unstable but strong.', armorScore: 0, damage: 3, unlocked: true, applied: false },
+    ])
+    const withUpgrades = { ...withoutUpgrades, upgrades }
+    const ch = legal(s, (x) => { x.choices.equipmentIds = [armor]; x.creation!.frameChoices = { 'iconic-weapon': withUpgrades } })
+    expect(deriveStats(ch, s).armorScore).toBe(baseArmorScore + 2)
   })
   it('Floating Magic School: flight artifact text required', () => {
     const s = buildCreation(packs, { supplements: ['floating-magic-school'] })

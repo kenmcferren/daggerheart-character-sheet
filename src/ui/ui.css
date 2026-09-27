@@ -20,6 +20,11 @@ label.inline { display: flex; gap: 8px; align-items: center; font-weight: 400; m
 input:not([type]), input[type='text'], textarea, select { display: block; width: 100%; box-sizing: border-box; margin-top: 4px; padding: 7px 9px; font: inherit; border: 1px solid var(--border); border-radius: 6px; background: #fff; color: var(--text); }
 textarea { min-height: 72px; resize: vertical; }
 .file input { margin-top: 6px; }
+.upgrade-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; border: 1px solid var(--border); border-radius: 8px; padding: 8px; margin: 8px 0; }
+.upgrade-row input[type='text'], .upgrade-row input:not([type]) { width: auto; flex: 1 1 140px; }
+.upgrade-row label { margin: 0; flex: 0 0 auto; }
+.upgrade-row label input[type='number'] { width: 70px; }
+.upgrade-row > input { margin: 0; flex: 1 1 140px; }
 
 .issues { color: var(--warn); background: var(--warn-bg); border-radius: 8px; padding: 8px 8px 8px 28px; margin: 14px 0; }
 

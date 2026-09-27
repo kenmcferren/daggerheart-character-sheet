@@ -1,4 +1,4 @@
-import { TRAITS, creationOf, type Character } from './character'
+import { TRAITS, creationOf, type Character, type Creation } from './character'
 import type { CreationSetup, FrameOp } from './creation'
 import type { Entry } from './packs'
 
@@ -58,6 +58,30 @@ const slotOf = (w: Item): Slot => (w.weaponSlot === 'secondary' ? 'secondary' : 
 
 export function frameChoiceDefs(setup: CreationSetup) {
   return [setup.frame, ...setup.supplements].flatMap((f) => (f?.creation?.choices ?? []).map((c) => ({ ...c, source: f!.id })))
+}
+
+/** A player-defined Upgrade for a frame's builder weapon (e.g. Tech's Iconic Weapon): crafted ("unlocked") freely, but only
+ *  as many can be "applied" (installed) as the weapon has Upgrade slots. */
+export interface UpgradeRow { name: string; effect: string; armorScore: number; damage: number; unlocked: boolean; applied: boolean }
+
+const parseUpgrades = (raw: unknown): UpgradeRow[] => {
+  try {
+    const a = JSON.parse(typeof raw === 'string' ? raw : '[]')
+    return Array.isArray(a) ? a.map((r) => ({ name: '', effect: '', armorScore: 0, damage: 0, unlocked: false, applied: false, ...r })) : []
+  } catch { return [] }
+}
+
+/** Every builder choice's Upgrade rows, by choice id. */
+export function upgradesOf(setup: CreationSetup, cr: Creation): { id: string; rows: UpgradeRow[] }[] {
+  return (frameChoiceDefs(setup) as { id: string; type: string }[]).filter((d) => d.type === 'builder').map((d) => {
+    const v = cr.frameChoices[d.id]
+    return { id: d.id, rows: parseUpgrades(typeof v === 'object' ? (v as Record<string, string>).upgrades : undefined) }
+  })
+}
+
+/** Applied (installed) Upgrade rows across all builder choices. */
+export function appliedUpgrades(setup: CreationSetup, cr: Creation): UpgradeRow[] {
+  return upgradesOf(setup, cr).flatMap((u) => u.rows.filter((r) => r.applied))
 }
 
 /** Downtime moves after frame remove-move / add-move ops. */
@@ -133,7 +157,8 @@ export function validateCreation(ch: Character, setup: CreationSetup): Issue[] {
     const v = cr.frameChoices[def.id]
     if (def.type === 'builder') {
       const b = (typeof v === 'object' ? v : {}) as Record<string, string>
-      for (const f of (def.fields ?? []) as { key: string; options?: string[]; free?: boolean }[]) {
+      for (const f of (def.fields ?? []) as { key: string; options?: string[]; free?: boolean; optional?: boolean }[]) {
+        if (f.optional) continue
         if (f.free ? !nonBlank(b[f.key]) : !f.options?.includes(b[f.key])) bad(def.id, `${label(def.id)}: ${f.free ? 'fill in' : 'choose'} ${f.key}.`)
       }
     } else if (!nonBlank(v)) bad(def.id, `${label(def.id)}: fill this in.`)
@@ -211,6 +236,8 @@ export function deriveStats(ch: Character, setup: CreationSetup): DerivedStats {
   }
   for (const id of ch.choices.domainCardIds) for (const t of ((reg.domainCards.get(id) as any)?.trackers ?? []) as Tracker[]) trackers.push(t)
 
+  const armorScoreBonus = appliedUpgrades(setup, cr).reduce((n, r) => n + (Number(r.armorScore) || 0), 0)
+
   return {
     level: ch.level,
     tier,
@@ -221,7 +248,7 @@ export function deriveStats(ch: Character, setup: CreationSetup): DerivedStats {
     proficiency: STARTING_PROFICIENCY,
     majorThreshold: armor ? (armor.majorThreshold as number) + ch.level : 0,
     severeThreshold: armor ? (armor.severeThreshold as number) + ch.level : 0,
-    armorScore: armor ? (armor.armorScore as number) : 0,
+    armorScore: (armor ? (armor.armorScore as number) : 0) + armorScoreBonus,
     currency,
     kit,
     downtimeMoves: downtimeMoves(setup),
