@@ -115,8 +115,8 @@ rules.[s3] character rules with frames.Everyday Hero replaces the weapon and arm
 rules.[s3] character rules with frames.Feasts: Tend to Wounds, Clear Stress and Prepare replaced by Make a Feast,0
 rules.[s3] character rules with frames.Floating Magic School: flight artifact text required,0
 rules.[s3] character rules with frames.Monster Hunting armor is expanded per tier with its own thresholds,1
-rules.[s3] character rules with frames.Tech: applied Upgrades add to Armor Score; unapplied ones do not,1
 rules.[s3] character rules with frames.Tech: Iconic Weapon builder validated; Credits replace gold; upgrade slots scale by tier,0
+rules.[s3] character rules with frames.Tech: installed Augments (Motherboard Module catalog) add to Armor Score / Evasion; only installed ones count; tier gates crafting,1
 rules.[s3] character rules with frames.Western adds to the weapon pool: base weapons and revolver both allowed,0
 rules.[s3] character rules.a complete character has no issues,0
 rules.[s3] character rules.Beastbound needs a full companion; Martial Artist needs two Tier 1 stances,0

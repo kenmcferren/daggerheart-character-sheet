@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { TRAITS } from '../engine/character'
-import { TRAIT_MODIFIERS, armorPool, deriveStats, frameChoiceDefs, weaponPool, ancestryFeatures, tierOf, type UpgradeRow } from '../engine/rules'
+import { TRAIT_MODIFIERS, armorPool, deriveStats, frameChoiceDefs, weaponPool, ancestryFeatures, tierOf, type AugmentDef, type AugmentState } from '../engine/rules'
 import type { WizardStep } from '../engine/creation'
 import { Choice, Details, Feature, GearRow, Notes, Rules, Section, type Ctx } from './common'
 import { titleCase } from './util'
@@ -269,35 +269,40 @@ export function EquipmentStep(ctx: Ctx) {
   )
 }
 
-const parseUpgrades = (raw: string | undefined): UpgradeRow[] => {
-  try { const a = JSON.parse(raw || '[]'); return Array.isArray(a) ? a : [] } catch { return [] }
+const parseAugmentStates = (raw: string | undefined): Record<string, AugmentState> => {
+  try { const o = JSON.parse(raw || '{}'); return o && typeof o === 'object' ? o : {} } catch { return {} }
 }
-const blankUpgrade = (): UpgradeRow => ({ name: '', effect: '', armorScore: 0, damage: 0, unlocked: true, applied: false })
 
-/** Craft ("unlock") any number of Upgrades; only as many as the weapon's slots can be "applied" (installed) at once. */
-function UpgradesEditor({ value, onChange, slotCap }: { value: string; onChange: (v: string) => void; slotCap: number }) {
-  const rows = parseUpgrades(value)
-  const appliedCount = rows.filter((r) => r.applied).length
-  const set = (next: UpgradeRow[]) => onChange(JSON.stringify(next))
-  const patch = (i: number, p: Partial<UpgradeRow>) => set(rows.map((r, j) => (j === i ? { ...r, ...p } : r)))
+/** Craft ("build") any Augment once its tier Prerequisite is met; only as many can be "installed" as the weapon has slots. */
+function AugmentsEditor({ value, onChange, tier, slotCap, defs }: { value: string; onChange: (v: string) => void; tier: number; slotCap: number; defs: AugmentDef[] }) {
+  const states = parseAugmentStates(value)
+  const installedCount = Object.values(states).filter((s) => s.installed).length
+  const set = (next: Record<string, AugmentState>) => onChange(JSON.stringify(next))
+  const patch = (id: string, p: Partial<AugmentState>) => set({ ...states, [id]: { crafted: false, installed: false, ...states[id], ...p } })
   return (
-    <div className="upgrades">
-      <p className="hint">{appliedCount} of {slotCap} upgrade slots applied. Craft ("unlock") as many Upgrades as you like; only unlocked ones can be applied, up to your slots.</p>
-      {rows.map((r, i) => (
-        <div className="upgrade-row" key={i}>
-          <input placeholder="Name" value={r.name} onChange={(e) => patch(i, { name: e.target.value })} />
-          <input placeholder="Effect" value={r.effect} onChange={(e) => patch(i, { effect: e.target.value })} />
-          <label>Armor Score<input type="number" value={r.armorScore} onChange={(e) => patch(i, { armorScore: Number(e.target.value) || 0 })} /></label>
-          <label>Damage bonus<input type="number" value={r.damage} onChange={(e) => patch(i, { damage: Number(e.target.value) || 0 })} /></label>
-          <label className="inline"><input type="checkbox" checked={r.unlocked} onChange={(e) => patch(i, { unlocked: e.target.checked, applied: e.target.checked && r.applied })} /> Unlocked</label>
-          <label className="inline">
-            <input type="checkbox" checked={r.applied} disabled={!r.unlocked || (!r.applied && appliedCount >= slotCap)}
-              onChange={(e) => patch(i, { applied: e.target.checked })} /> Applied
-          </label>
-          <button type="button" onClick={() => set(rows.filter((_, j) => j !== i))}>Remove</button>
-        </div>
-      ))}
-      <button type="button" onClick={() => set([...rows, blankUpgrade()])}>+ Add upgrade</button>
+    <div className="augments">
+      <p className="hint">{installedCount} of {slotCap} slots installed. Craft an Augment once you have the Parts for its cost; only crafted Augments can be installed, up to your slots.</p>
+      {defs.map((a) => {
+        const s = states[a.id] ?? { crafted: false, installed: false }
+        const locked = (a.tier ?? 1) > tier
+        return (
+          <div className="augment-row" key={a.id}>
+            <div className="augment-info">
+              <strong>{a.name}</strong>{a.tier ? <span className="meta"> (Precompile: Tier {a.tier})</span> : null}
+              <p className="hint">{a.effect}</p>
+              <p className="meta">Cost: {a.cost}</p>
+            </div>
+            <label className="inline" title={locked ? `Requires Tier ${a.tier}` : undefined}>
+              <input type="checkbox" checked={s.crafted} disabled={locked}
+                onChange={(e) => patch(a.id, { crafted: e.target.checked, installed: e.target.checked && s.installed })} /> Crafted
+            </label>
+            <label className="inline">
+              <input type="checkbox" checked={s.installed} disabled={!s.crafted || (!s.installed && installedCount >= slotCap)}
+                onChange={(e) => patch(a.id, { installed: e.target.checked })} /> Installed
+            </label>
+          </div>
+        )
+      })}
     </div>
   )
 }
@@ -314,14 +319,7 @@ function Builder({ ctx, id }: { ctx: Ctx; id: string }) {
   return (
     <section className="panel">
       <h4>{titleCase(id)}</h4>
-      {def.fields.map((f: A) => f.key === 'upgrades'
-        ? (
-          <div key={f.key}>
-            <h5>{f.label ?? titleCase(f.key)}</h5>
-            <UpgradesEditor value={v[f.key] ?? ''} onChange={(val) => set(f.key, val)} slotCap={slotCap} />
-          </div>
-        )
-        : f.free
+      {def.fields.map((f: A) => f.free
         ? <label key={f.key}>{f.label ?? titleCase(f.key)}<input value={v[f.key] ?? ''} onChange={(e) => set(f.key, e.target.value)} /></label>
         : (
           <label key={f.key}>{f.label ?? titleCase(f.key)}
@@ -332,6 +330,12 @@ function Builder({ ctx, id }: { ctx: Ctx; id: string }) {
           </label>
         ))}
       <p className="hint">Fixed: {Object.entries(def.fixed ?? {}).map(([k, val]) => `${titleCase(k)} — ${val}`).join('; ')}</p>
+      {def.augments && (
+        <>
+          <h5>Augments</h5>
+          <AugmentsEditor value={v.augments ?? ''} onChange={(val) => set('augments', val)} tier={tierOf(ch.level)} slotCap={slotCap} defs={def.augments} />
+        </>
+      )}
     </section>
   )
 }

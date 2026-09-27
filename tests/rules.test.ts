@@ -165,7 +165,7 @@ describe('[s3] character rules with frames', () => {
     const armor = baseArmor(s)
     const noBuild = legal(s, (x) => { x.choices.equipmentIds = [armor] })
     expect(steps(validateCreation(noBuild, s))).toEqual(['iconic-weapon'])
-    const choices = { 'iconic-weapon': { trait: 'knowledge', 'range-damage': 'far|d8+1', name: 'Arc rifle', description: 'Hums' } }
+    const choices = { 'iconic-weapon': { trait: 'knowledge', 'range-damage': 'far|d8+1', 'damage-type': 'tech', name: 'Arc rifle', description: 'Hums' } }
     const built = legal(s, (x) => { x.choices.equipmentIds = [armor]; x.creation!.frameChoices = choices })
     expect(validateCreation(built, s)).toEqual([])
     const st = deriveStats(built, s)
@@ -178,18 +178,21 @@ describe('[s3] character rules with frames', () => {
     const extra = legal(s, (x) => { x.choices.equipmentIds = [armor, 'weapon.dagger']; x.creation!.frameChoices = choices })
     expect(steps(validateCreation(extra, s))).toEqual(['equipment'])
   })
-  it('Tech: applied Upgrades add to Armor Score; unapplied ones do not', () => {
+  it('Tech: installed Augments (Motherboard Module catalog) add to Armor Score / Evasion; only installed ones count; tier gates crafting', () => {
     const s = buildCreation(packs, { supplements: ['tech'] })
     const armor = baseArmor(s)
-    const withoutUpgrades = { trait: 'knowledge', 'range-damage': 'far|d8+1', name: 'Arc rifle', description: 'Hums' }
-    const baseArmorScore = deriveStats(legal(s, (x) => { x.choices.equipmentIds = [armor]; x.creation!.frameChoices = { 'iconic-weapon': withoutUpgrades } }), s).armorScore
-    const upgrades = JSON.stringify([
-      { name: 'Plating', effect: 'Reinforced hull.', armorScore: 2, damage: 0, unlocked: true, applied: true },
-      { name: 'Overcharge', effect: 'Unstable but strong.', armorScore: 0, damage: 3, unlocked: true, applied: false },
-    ])
-    const withUpgrades = { ...withoutUpgrades, upgrades }
-    const ch = legal(s, (x) => { x.choices.equipmentIds = [armor]; x.creation!.frameChoices = { 'iconic-weapon': withUpgrades } })
-    expect(deriveStats(ch, s).armorScore).toBe(baseArmorScore + 2)
+    const base = { trait: 'knowledge', 'range-damage': 'far|d8+1', 'damage-type': 'tech', name: 'Arc rifle', description: 'Hums' }
+    const baseStats = deriveStats(legal(s, (x) => { x.choices.equipmentIds = [armor]; x.creation!.frameChoices = { 'iconic-weapon': base } }), s)
+    // Guard (+1 Armor Score, no tier prerequisite) installed; Deny (+2 Armor Score) crafted but not installed.
+    const augments = JSON.stringify({ guard: { crafted: true, installed: true }, deny: { crafted: true, installed: false } })
+    const ch = legal(s, (x) => { x.choices.equipmentIds = [armor]; x.creation!.frameChoices = { 'iconic-weapon': { ...base, augments } } })
+    expect(deriveStats(ch, s).armorScore).toBe(baseStats.armorScore + 1)
+    // Block (+3 Armor Score, -1 Evasion) requires Tier 3; installing it anyway still applies its numbers (the tier gate is a crafting-time UI rule, not a sheet check).
+    const blockAugments = JSON.stringify({ block: { crafted: true, installed: true } })
+    const blocked = legal(s, (x) => { x.choices.equipmentIds = [armor]; x.creation!.frameChoices = { 'iconic-weapon': { ...base, augments: blockAugments } } })
+    const blockedStats = deriveStats(blocked, s)
+    expect(blockedStats.armorScore).toBe(baseStats.armorScore + 3)
+    expect(blockedStats.evasion).toBe(baseStats.evasion - 1)
   })
   it('Floating Magic School: flight artifact text required', () => {
     const s = buildCreation(packs, { supplements: ['floating-magic-school'] })

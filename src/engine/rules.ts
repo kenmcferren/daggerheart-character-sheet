@@ -60,28 +60,39 @@ export function frameChoiceDefs(setup: CreationSetup) {
   return [setup.frame, ...setup.supplements].flatMap((f) => (f?.creation?.choices ?? []).map((c) => ({ ...c, source: f!.id })))
 }
 
-/** A player-defined Upgrade for a frame's builder weapon (e.g. Tech's Iconic Weapon): crafted ("unlocked") freely, but only
- *  as many can be "applied" (installed) as the weapon has Upgrade slots. */
-export interface UpgradeRow { name: string; effect: string; armorScore: number; damage: number; unlocked: boolean; applied: boolean }
+/** A catalog Augment for a frame's builder weapon (e.g. Tech's Iconic Weapon's Motherboard Module): a fixed SRD option with
+ *  a Scrap cost, crafted ("built") freely once its tier Prerequisite is met, but only as many can be "installed" as the
+ *  weapon has Upgrade slots. */
+export interface AugmentDef {
+  id: string; name: string; effect: string; cost: string
+  /** Precompile tier Prerequisite; absent = craftable from Tier 1. */
+  tier?: number
+  armorScore?: number; evasion?: number; damage?: number; attack?: number
+  /** Steps to shift the weapon's range toward Very Far (Scope). */
+  rangeStep?: number
+}
+export interface AugmentState { crafted: boolean; installed: boolean }
 
-const parseUpgrades = (raw: unknown): UpgradeRow[] => {
+const parseAugmentStates = (raw: unknown): Record<string, AugmentState> => {
   try {
-    const a = JSON.parse(typeof raw === 'string' ? raw : '[]')
-    return Array.isArray(a) ? a.map((r) => ({ name: '', effect: '', armorScore: 0, damage: 0, unlocked: false, applied: false, ...r })) : []
-  } catch { return [] }
+    const o = JSON.parse(typeof raw === 'string' ? raw : '{}')
+    return o && typeof o === 'object' ? o : {}
+  } catch { return {} }
 }
 
-/** Every builder choice's Upgrade rows, by choice id. */
-export function upgradesOf(setup: CreationSetup, cr: Creation): { id: string; rows: UpgradeRow[] }[] {
-  return (frameChoiceDefs(setup) as { id: string; type: string }[]).filter((d) => d.type === 'builder').map((d) => {
-    const v = cr.frameChoices[d.id]
-    return { id: d.id, rows: parseUpgrades(typeof v === 'object' ? (v as Record<string, string>).upgrades : undefined) }
-  })
+/** Every builder choice's Augment catalog and the character's crafted/installed state for each, by choice id. */
+export function augmentsOf(setup: CreationSetup, cr: Creation): { id: string; defs: AugmentDef[]; states: Record<string, AugmentState> }[] {
+  return (frameChoiceDefs(setup) as { id: string; type: string; augments?: AugmentDef[] }[])
+    .filter((d) => d.type === 'builder' && d.augments)
+    .map((d) => {
+      const v = cr.frameChoices[d.id]
+      return { id: d.id, defs: d.augments!, states: parseAugmentStates(typeof v === 'object' ? (v as Record<string, string>).augments : undefined) }
+    })
 }
 
-/** Applied (installed) Upgrade rows across all builder choices. */
-export function appliedUpgrades(setup: CreationSetup, cr: Creation): UpgradeRow[] {
-  return upgradesOf(setup, cr).flatMap((u) => u.rows.filter((r) => r.applied))
+/** Installed (built into the weapon) Augment defs across all builder choices. */
+export function installedAugments(setup: CreationSetup, cr: Creation): AugmentDef[] {
+  return augmentsOf(setup, cr).flatMap((u) => u.defs.filter((d) => u.states[d.id]?.installed))
 }
 
 /** Downtime moves after frame remove-move / add-move ops. */
@@ -236,12 +247,14 @@ export function deriveStats(ch: Character, setup: CreationSetup): DerivedStats {
   }
   for (const id of ch.choices.domainCardIds) for (const t of ((reg.domainCards.get(id) as any)?.trackers ?? []) as Tracker[]) trackers.push(t)
 
-  const armorScoreBonus = appliedUpgrades(setup, cr).reduce((n, r) => n + (Number(r.armorScore) || 0), 0)
+  const installed = installedAugments(setup, cr)
+  const armorScoreBonus = installed.reduce((n, a) => n + (a.armorScore ?? 0), 0)
+  const evasionBonus = installed.reduce((n, a) => n + (a.evasion ?? 0), 0)
 
   return {
     level: ch.level,
     tier,
-    evasion: cls?.startingEvasion ?? 0,
+    evasion: (cls?.startingEvasion ?? 0) + evasionBonus,
     hitPoints: cls?.startingHitPoints ?? 0,
     stress: STARTING_STRESS,
     hope: STARTING_HOPE,
