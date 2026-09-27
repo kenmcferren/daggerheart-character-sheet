@@ -278,7 +278,10 @@ function AugmentsEditor({ value, onChange, tier, slotCap, defs }: { value: strin
   const states = parseAugmentStates(value)
   const installedCount = Object.values(states).filter((s) => s.installed).length
   const set = (next: Record<string, AugmentState>) => onChange(JSON.stringify(next))
-  const patch = (id: string, p: Partial<AugmentState>) => set({ ...states, [id]: { crafted: false, installed: false, ...states[id], ...p } })
+  const patch = (id: string, p: Partial<AugmentState>) => {
+    const cur = states[id] ?? { crafted: false, installed: false }
+    set({ ...states, [id]: { ...cur, ...p } })
+  }
   return (
     <div className="augments">
       <p className="hint">{installedCount} of {slotCap} slots installed. Craft an Augment once you have the Parts for its cost; only crafted Augments can be installed, up to your slots.</p>
