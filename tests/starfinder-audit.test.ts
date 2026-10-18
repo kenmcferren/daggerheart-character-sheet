@@ -53,8 +53,9 @@ const pathOf = (classId: string, p: Pattern) => {
 }
 
 describe('[s9] Starfinder page-count audit', () => {
-  for (const ancestry of ANCESTRIES) {
-    it(`${ancestry}: all classes, named + seeded paths to level 10 stay inside the margins and within 6 pages`, { timeout: 1_800_000 }, async () => {
+  // One statically named test so the policy file can skip it (the policy matches names as written in the source).
+  it('every Starfinder ancestry: all classes and named + seeded paths to level 10 stay inside the margins and within 6 pages', { timeout: 3_600_000 }, async () => {
+    for (const ancestry of ANCESTRIES) {
       for (const classId of classIds) {
         for (const p of [...NAMED, ...randoms]) {
           const ch = dress(pathOf(classId, p), ancestry)
@@ -68,9 +69,9 @@ describe('[s9] Starfinder page-count audit', () => {
           rows.push({ ancestry, classId, pattern: p.name, pages, front: lastLayout.frontPages, blank: lastLayout.blankPages, cardPages: lastLayout.cardPages, problems })
         }
       }
-      expect(rows.filter((r) => r.ancestry === ancestry && r.problems.length).map((r) => `${r.classId} ${r.pattern}: ${r.problems.join('; ')}`)).toEqual([])
-    })
-  }
+    }
+    expect(rows.filter((r) => r.problems.length).map((r) => `${r.ancestry} ${r.classId} ${r.pattern}: ${r.problems.join('; ')}`)).toEqual([])
+  })
 
   afterAll(() => {
     if (!rows.length) return

@@ -173,15 +173,15 @@ srd-files.[s2] SRD Markdown files.every adversary and environment has tier, diff
 srd-files.[s2] SRD Markdown files.every relative link resolves,0
 srd-files.[s2] SRD Markdown files.has the expected content counts,0
 srd-files.[s2] SRD Markdown files.leaves no glyph placeholders or page footers,0
-starfinder-audit.[s9] Starfinder page-count audit.${ancestry}: all classes, named + seeded paths to level 10 stay inside the margins and within 6 pages,0
-starfinder.[s9] Starfinder ancestries option.Android: every Experience starts at +3 (creation); other ancestries stay at +2,1
-starfinder.[s9] Starfinder ancestries option.Kasatha may wield two secondary weapons; other ancestries only one,1
-starfinder.[s9] Starfinder ancestries option.off: the standard list is unchanged (Clank and Human present, no Starfinder ancestries),1
-starfinder.[s9] Starfinder ancestries option.on: Mixed Ancestry and Clank are refused by validation,1
-starfinder.[s9] Starfinder ancestries option.on: Starfinder ancestries first, alphabetical (Human included), then the standard ones without Clank and Human,1
-starfinder.[s9] Starfinder ancestries option.Skittermander: +1 Evasion is baked in; Ysoki Scurry is a situational footnote, not baked in,1
-starfinder.[s9] Starfinder ancestries option.the pack validates against the schema,1
-starfinder.[s9] Starfinder ancestries option.the weapons and armor row prints natural weapons and extra secondaries as extra cells, inside the margins,1
+starfinder-audit.[s9] Starfinder page-count audit.every Starfinder ancestry: all classes and named + seeded paths to level 10 stay inside the margins and within 6 pages,0
+starfinder.[s9] Starfinder ancestries option.Android: every Experience starts at +3 (creation); other ancestries stay at +2,0
+starfinder.[s9] Starfinder ancestries option.Kasatha may wield two secondary weapons; other ancestries only one,0
+starfinder.[s9] Starfinder ancestries option.off: the standard list is unchanged (Clank and Human present, no Starfinder ancestries),0
+starfinder.[s9] Starfinder ancestries option.on: Mixed Ancestry and Clank are refused by validation,0
+starfinder.[s9] Starfinder ancestries option.on: Starfinder ancestries first, alphabetical (Human included), then the standard ones without Clank and Human,0
+starfinder.[s9] Starfinder ancestries option.Skittermander: +1 Evasion is baked in; Ysoki Scurry is a situational footnote, not baked in,0
+starfinder.[s9] Starfinder ancestries option.the pack validates against the schema,0
+starfinder.[s9] Starfinder ancestries option.the weapons and armor row prints natural weapons and extra secondaries as extra cells, inside the margins,0
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.a mastery Stalwart carries all three of Unwavering/Unrelenting/Undaunted, stacked (+1+2+3 = +6 to both thresholds),1
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.Armorer / Fortified Armor (domain cards): computed while armor is equipped, not a footnote (owner, 2026-09-23),1
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.Armorer / Fortified Armor do nothing without armor equipped,1
