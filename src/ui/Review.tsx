@@ -2,6 +2,7 @@ import { exportCharacter } from '../engine/character'
 import { ancestryFeatures, deriveStats, weaponPool, armorPool, type Issue } from '../engine/rules'
 import type { WizardStep } from '../engine/creation'
 import type { Ctx } from './common'
+import { freshImport } from './freshImport'
 import { PdfPreview } from './PdfPreview'
 import { issueStep, titleCase } from './util'
 
@@ -23,7 +24,7 @@ export function Review({ ctx, issues, steps, onJump, onHome }: { ctx: Ctx; issue
     a.href = url; a.download = `${(ch.name || 'character').replace(/[^\w-]+/g, '-')}.json`; a.click()
     URL.revokeObjectURL(url)
   }
-  const makePdf = async () => (await import('../pdf/browser')).downloadSheet(ch, setup)
+  const makePdf = () => freshImport(async () => (await import('../pdf/browser')).downloadSheet(ch, setup))
   const ancestry = cr.mixedAncestry ? ancestryFeatures(ch, setup).map((f) => f.from).join(' / ') : name('ancestries', ch.choices.ancestryId)
   const rows: [string, string, string][] = [
     ['class', 'Class', name('classes', ch.choices.classId)],

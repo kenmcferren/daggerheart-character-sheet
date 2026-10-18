@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { Character } from '../engine/character'
 import type { CreationSetup } from '../engine/creation'
+import { freshImport } from './freshImport'
 
 /** Live preview of the printable sheet: draws the real PDF's pages onto canvases a moment after the character changes. Works on phones, unlike an embedded PDF viewer. */
 export function PdfPreview({ ch, setup }: { ch: Character; setup: CreationSetup }) {
@@ -15,10 +16,13 @@ export function PdfPreview({ ch, setup }: { ch: Character; setup: CreationSetup 
     setDrawing(true)
     const timer = setTimeout(async () => {
       try {
-        const bytes = await (await import('../pdf/browser')).previewSheetBytes(ch, setup)
-        const pdfjs = await import('pdfjs-dist')
-        const worker = (await import('pdfjs-dist/build/pdf.worker.min.mjs?url')).default
-        pdfjs.GlobalWorkerOptions.workerSrc = worker
+        const { bytes, pdfjs } = await freshImport(async () => {
+          const bytes = await (await import('../pdf/browser')).previewSheetBytes(ch, setup)
+          const pdfjs = await import('pdfjs-dist')
+          const worker = (await import('pdfjs-dist/build/pdf.worker.min.mjs?url')).default
+          pdfjs.GlobalWorkerOptions.workerSrc = worker
+          return { bytes, pdfjs }
+        })
         const task = pdfjs.getDocument({ data: bytes })
         const doc = await task.promise
         const width = host.current?.clientWidth || 600

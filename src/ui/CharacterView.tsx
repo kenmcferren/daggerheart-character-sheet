@@ -8,6 +8,7 @@ import type { Creation } from '../engine/character'
 import { armorPool, weaponPool } from '../engine/rules'
 import { GearPicker } from './steps'
 import { download } from './util'
+import { freshImport } from './freshImport'
 import { PdfPreview } from './PdfPreview'
 import { Versions } from './Versions'
 
@@ -46,7 +47,7 @@ export function CharacterView({ ch: saved, onLevelUp, onOpen, onHome }: { ch: Ch
         <h2>Level {ch.level}</h2>
         <p className="hint">Proficiency {progress.proficiency}. Extra Hit Point slots {progress.hitPointSlots}, Stress slots {progress.stressSlots}, Evasion +{progress.evasionBonus}. The printable sheet at this level comes in a later step.</p>
         <button type="button" className="primary" disabled={ch.level >= MAX_LEVEL} onClick={() => onLevelUp(ch)}>{ch.level >= MAX_LEVEL ? 'Highest level reached' : `Level up to ${ch.level + 1}`}</button>{' '}
-        <button type="button" onClick={async () => (await import('../pdf/browser')).downloadSheet(ch, setupOf(ch))}>Make PDF</button>{' '}
+        <button type="button" onClick={() => freshImport(async () => (await import('../pdf/browser')).downloadSheet(ch, setupOf(ch)))}>Make PDF</button>{' '}
         <button type="button" onClick={() => download(`${ch.name || 'character'}-level-${ch.level}.json`, exportCharacter(ch))}>Export this version (JSON)</button>
       </section>
       <PdfPreview ch={ch} setup={setup} />

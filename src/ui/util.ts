@@ -16,7 +16,7 @@ export function download(name: string, text: string, type = 'application/json') 
   const url = URL.createObjectURL(new Blob([text], { type }))
   const a = document.createElement('a')
   a.href = url
-  a.download = name.replace(/[^w.-]+/g, '-')
+  a.download = name.replace(/[^\w.-]+/g, '-')
   a.click()
   URL.revokeObjectURL(url)
 }
