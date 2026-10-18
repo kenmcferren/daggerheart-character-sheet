@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { TRAITS, type Trait } from '../engine/character'
-import { TRAIT_MODIFIERS, ancestryList, secondarySlots, armorPool, deriveStats, frameChoiceDefs, weaponPool, ancestryFeatures, tierOf, type AugmentDef, type AugmentState } from '../engine/rules'
+import { TRAIT_MODIFIERS, ancestryList, communityList, secondarySlots, armorPool, deriveStats, frameChoiceDefs, weaponPool, ancestryFeatures, tierOf, type AugmentDef, type AugmentState } from '../engine/rules'
 import type { WizardStep } from '../engine/creation'
 import { Choice, Details, Feature, GearRow, Notes, Rules, Section, type Ctx } from './common'
 import { titleCase } from './util'
@@ -132,7 +132,7 @@ export function AncestryStep({ ch, cr, setup, update }: Ctx) {
           {list.map((a: A) => (
             <Choice key={a.id} title={a.name} selected={ch.choices.ancestryId === a.id} onPick={() => update((x) => { x.choices.ancestryId = a.id })}>
               <Notes setup={setup} target={`ancestries.${a.id}`} />
-              <Details>{a.features.map((f: A, i: number) => <Feature key={i} f={f} />)}</Details>
+              <Details>{a.description && <p>{a.description}</p>}{a.features.map((f: A, i: number) => <Feature key={i} f={f} />)}</Details>
             </Choice>
           ))}
         </div>
@@ -144,10 +144,10 @@ export function AncestryStep({ ch, cr, setup, update }: Ctx) {
 export function CommunityStep({ ch, setup, update }: Ctx) {
   return (
     <div className="grid">
-      {sorted(setup.registry.communities).map((c: A) => (
+      {communityList(setup).map((c: A) => (
         <Choice key={c.id} title={c.name} selected={ch.choices.communityId === c.id} onPick={() => update((x) => { x.choices.communityId = c.id })}>
           <Notes setup={setup} target={`communities.${c.id}`} />
-          <Details>{c.features.map((f: A, i: number) => <Feature key={i} f={f} />)}</Details>
+          <Details>{c.description && <p>{c.description}</p>}{c.features.map((f: A, i: number) => <Feature key={i} f={f} />)}</Details>
         </Choice>
       ))}
     </div>

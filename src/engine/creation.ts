@@ -22,6 +22,8 @@ type SourcedOp = FrameOp & { source: string }
 
 export interface FrameEntry extends Entry {
   frameKind?: 'frame' | 'supplement'
+  /** Supplements sharing a group name can be checked or unchecked together on the start screen. */
+  group?: string
   pools?: Record<string, Entry[]>
   creation?: { choices?: { id: string; type: string; [f: string]: unknown }[]; ops?: FrameOp[] }
   sessionZeroQuestions?: string[]
@@ -60,6 +62,8 @@ export interface CreationSetup {
   /** Ancestry ids listed ahead of the rest, in order (Starfinder option); ids hidden from the list; whether Mixed Ancestry is offered. */
   ancestryFirst: string[]
   ancestryHidden: string[]
+  /** Community ids listed ahead of the rest, in order (Starfinder communities option). */
+  communityFirst: string[]
   mixedAncestryAllowed: boolean
 }
 
@@ -123,9 +127,13 @@ export function buildCreation(
     if (!registry.ancestries.has(id)) throw new CreationError(`Unknown ancestry "${id}" in an ancestry list option`)
   }
   const ancestryHidden = idsOf('hide-ancestries').filter((id) => !ancestryFirst.includes(id))
+  const communityFirst = [...new Set(idsOf('list-communities-first'))]
+  for (const id of communityFirst) {
+    if (!registry.communities.has(id)) throw new CreationError(`Unknown community "${id}" in a community list option`)
+  }
   const mixedAncestryAllowed = !ops.some((o) => o.op === 'disable-mixed-ancestry')
 
-  return { frame, supplements, registry, ops, ancestryFirst, ancestryHidden, mixedAncestryAllowed, conflicts: detectConflicts(ops, Object.fromEntries(active.map((f) => [f.id, f.name]))), steps: deriveSteps(ops), annotations, pools }
+  return { frame, supplements, registry, ops, ancestryFirst, ancestryHidden, communityFirst, mixedAncestryAllowed, conflicts: detectConflicts(ops, Object.fromEntries(active.map((f) => [f.id, f.name]))), steps: deriveSteps(ops), annotations, pools }
 }
 
 function deriveSteps(ops: SourcedOp[]): WizardStep[] {

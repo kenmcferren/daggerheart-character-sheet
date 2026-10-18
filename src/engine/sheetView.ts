@@ -13,7 +13,7 @@ const BARE_BONES_THRESHOLDS: [number, number][] = [[9, 19], [11, 24], [13, 31], 
 export type StatBonus = { evasion?: number; majorThreshold?: number; severeThreshold?: number; armorScore?: number }
 /** A footnote on a stat: 'build' = depends on gear/loadout (knowable from the sheet, not baked into the number); 'situational' = depends on what happens at the table. */
 export type StatNote = { kind: 'build' | 'situational'; stats: string[]; text: string }
-export type Feature = { name?: string; rules: string; short?: string; sheetCards?: SheetCards; sheetTable?: SheetTable; level?: string; trackers?: { id: string; label: string; count: number | { trait: string } }[]; statBonus?: StatBonus; statNote?: StatNote }
+export type Feature = { name?: string; rules: string; short?: string; sheetCards?: SheetCards; sheetTable?: SheetTable; level?: string; trackers?: { id: string; label: string; count: number | { trait: string } | { level: true } }[]; statBonus?: StatBonus; statNote?: StatNote }
 
 /** Everything the printable sheet shows for a character at its current level: level 1 choices plus the replayed level-up history. */
 export interface SheetView {
@@ -39,6 +39,8 @@ export interface SheetView {
   sheetTable: { title: string; rows: string[]; columns: { title: string; cells: string[] }[] } | null
   /** Resource counters from held features (Favor, tokens): a row of boxes each, with an upper limit. */
   resourceTrackers: { label: string; count: number }[]
+  /** Write-in counts with no upper limit (Scrapborn Junk Count), printed on the inventory header row. */
+  countBoxes: string[]
   /** Ranger companion stat block (Beastbound), derived from the companion options taken; null for other characters. */
   companion: CompanionView | null
   /** Extra Hope slots on the character sheet (Ranger: Light in the Dark). */
@@ -116,6 +118,7 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
     ...subclasses.flatMap((s) => s.features),
     ...(mc && mcClass ? ((mcClass.features ?? []) as Feature[]) : []),
     ...ancestryFeatures(ch, setup),
+    ...((ch.choices.communityId ? reg.communities.get(ch.choices.communityId)?.features : undefined) ?? []) as Feature[],
   ]
   const statBonus = bonusSources.reduce((acc, f) => {
     const b = f.statBonus
@@ -215,6 +218,7 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
   const resourceTrackers: { label: string; count: number }[] = []
   const collect = (features: Feature[], scId: string | undefined) => {
     for (const f of features) for (const t of f.trackers ?? []) {
+      if (typeof t.count === 'object' && 'level' in t.count) { resourceTrackers.push({ label: t.label, count: Math.max(1, progress.level) }); continue }
       const trait = typeof t.count === 'number' ? null : t.count.trait === 'spellcast' ? spellOf(scId) : t.count.trait
       resourceTrackers.push({ label: t.label, count: typeof t.count === 'number' ? t.count : Math.max(1, (trait ? traits[trait as Trait] : 1) ?? 1) })
     }
@@ -222,6 +226,7 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
   collect((cls?.features ?? []) as Feature[], mainSub)
   if (mc && mcClass) collect(mcClass.features ?? [], multiSub)
   for (const sc of subclasses) collect(sc.features, sc.id)
+  collect(((ch.choices.communityId ? reg.communities.get(ch.choices.communityId)?.features : undefined) ?? []) as Feature[], undefined)
   if (stanceClass?.focusMax) resourceTrackers.push({ label: 'Focus', count: stanceClass.focusMax })
 
   // Stat footnotes (Series 7 step 1): from the same held class/subclass/ancestry features as statBonus above,
@@ -244,6 +249,7 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
     sheetCards: subclasses.flatMap((sc) => sc.features.flatMap((f) => (f.sheetCards ? f.sheetCards.items.map((i) => ({ label: f.sheetCards!.label, ...i })) : []))),
     sheetTable,
     resourceTrackers,
+    countBoxes: ((ch.choices.communityId ? reg.communities.get(ch.choices.communityId)?.features : undefined) ?? [] as Feature[]).flatMap((f: Any) => (f.countBox ? [String(f.countBox.label)] : [])),
     companion,
     extraHope: has('light-in-the-dark') ? 1 : 0,
     comboDie: hasCombo ? DICE[Math.min(progress.comboDieSteps, DICE.length - 1)] : null,

@@ -8,6 +8,17 @@ import { Versions } from './Versions'
 
 const CHECK_BLOCKED = 'Fix the conflicts above (deselect one of the sources) to start.'
 
+/** A checkbox that stands for a whole group of supplements: checked when all are on, mixed when only some are. */
+function GroupBox({ name, members, supps, onChange }: { name: string; members: string[]; supps: string[]; onChange: (members: string[], on: boolean) => void }) {
+  const on = members.filter((id) => supps.includes(id)).length
+  return (
+    <label className="inline">
+      <input type="checkbox" checked={on === members.length} ref={(el) => { if (el) el.indeterminate = on > 0 && on < members.length }} onChange={() => onChange(members, on !== members.length)} />
+      <strong>{name}</strong>
+    </label>
+  )
+}
+
 export function Start({ onStart, onOpen, onLevelUp }: { onStart: (supplements: string[]) => void; onOpen: (c: Character) => void; onLevelUp: (c: Character) => void }) {
   const supplements = useMemo(() => allSupplements(), [])
   const [supps, setSupps] = useState<string[]>([])
@@ -24,6 +35,13 @@ export function Start({ onStart, onOpen, onLevelUp }: { onStart: (supplements: s
   useEffect(() => { void refresh() }, [])
 
   const toggle = (id: string) => setSupps((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]))
+  const groups = useMemo(() => {
+    const m = new Map<string, typeof supplements>()
+    for (const s of supplements) if (s.group) m.set(s.group, [...(m.get(s.group) ?? []), s])
+    return [...m.entries()]
+  }, [supplements])
+  /** Check or uncheck every member of a group at once. */
+  const setGroup = (members: string[], on: boolean) => setSupps((s) => (on ? [...s, ...members.filter((id) => !s.includes(id))] : s.filter((x) => !members.includes(x))))
   const blocked = setup.conflicts.length > 0
   const namesOf = (c: Character) => [c.sources.campaignFrameId, ...(c.sources.supplementIds ?? [])].map((id) => supplements.find((f) => f.id === id)?.name).filter(Boolean).join(', ')
 
@@ -46,8 +64,18 @@ export function Start({ onStart, onOpen, onLevelUp }: { onStart: (supplements: s
         <h2>New character</h2>
         <fieldset>
           <legend>Campaign options (optional)</legend>
-          {supplements.map((s) => (
+          {supplements.filter((s) => !s.group).map((s) => (
             <label key={s.id} className="inline"><input type="checkbox" checked={supps.includes(s.id)} onChange={() => toggle(s.id)} />{s.name}</label>
+          ))}
+          {groups.map(([name, members]) => (
+            <div key={name}>
+              <GroupBox name={name} members={members.map((m) => m.id)} supps={supps} onChange={setGroup} />
+              <div className="group-members">
+                {members.map((s) => (
+                  <label key={s.id} className="inline"><input type="checkbox" checked={supps.includes(s.id)} onChange={() => toggle(s.id)} />{s.name}</label>
+                ))}
+              </div>
+            </div>
           ))}
         </fieldset>
         {blocked && (

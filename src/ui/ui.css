@@ -135,3 +135,4 @@ details.cat > summary + * { margin-top: 6px; }
 }
 .pdf-pages { margin-top: 10px; display: grid; gap: 12px; }
 .pdf-page { width: 100%; height: auto; border: 1px solid var(--border); background: #fff; }
+.group-members { margin-left: 24px; }

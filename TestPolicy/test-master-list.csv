@@ -174,6 +174,15 @@ srd-files.[s2] SRD Markdown files.every relative link resolves,0
 srd-files.[s2] SRD Markdown files.has the expected content counts,0
 srd-files.[s2] SRD Markdown files.leaves no glyph placeholders or page footers,0
 starfinder-audit.[s9] Starfinder page-count audit.every Starfinder ancestry: all classes and named + seeded paths to level 10 stay inside the margins and within 6 pages,0
+starfinder-communities.[s10] Starfinder communities option.both Starfinder supplements belong to the Starheart group, and no other supplement does,1
+starfinder-communities.[s10] Starfinder communities option.every Starfinder community has a description and one feature with rules and short wording,1
+starfinder-communities.[s10] Starfinder communities option.every Starfinder community renders inside the margins with its feature text,1
+starfinder-communities.[s10] Starfinder communities option.off: the standard community list is unchanged and Starfinder communities are refused,1
+starfinder-communities.[s10] Starfinder communities option.on: the 15 Starfinder communities come first in the owner order, then the standard ones alphabetically,1
+starfinder-communities.[s10] Starfinder communities option.Scrapborn prints a Junk Count box on the inventory row, clear of the title and the gold shapes (also with Tech credits),1
+starfinder-communities.[s10] Starfinder communities option.Self Contained prints a Rose token tracker equal to the character level,1
+starfinder-communities.[s10] Starfinder communities option.the pack validates against the schema,1
+starfinder-communities.[s10] Starfinder communities option.Wildsense is a situational Evasion footnote, not baked in,1
 starfinder.[s9] Starfinder ancestries option.Android: every Experience starts at +3 (creation); other ancestries stay at +2,0
 starfinder.[s9] Starfinder ancestries option.Kasatha may wield two secondary weapons; other ancestries only one,0
 starfinder.[s9] Starfinder ancestries option.off: the standard list is unchanged (Clank and Human present, no Starfinder ancestries),0

@@ -1,0 +1,231 @@
+{
+  "_note": "Source: Docs/starfinder-communities-draft.md (owner text; grammar fixed by Claude 2026-10-18). `rules` = owner wording with grammar fixes; `short` = condensed sheet wording drafted by Claude, PENDING OWNER APPROVAL. Owner rulings 2026-10-18: refuel/refit stay (optional starship rules); Upcycling is generic junk, not Tech scrap (Junk Count write-in box, no cap); Asanan Learner = non-violent action roll; Weather Vein mental conditions are GM-supplied custom entities; Domeborn tech weapons will be a list the owner supplies later; Wary unchanged.",
+  "communities": [
+    {
+      "id": "sf-hubborne",
+      "name": "Hubborne",
+      "description": "Absalom Station: Floating in Lost Golarion's empty orbit, this bustling space station is the center of interstellar trade and governance among the Pact Worlds. The people who live here are accustomed to the hustle and bustle and are always looking for their next opportunity.",
+      "features": [
+        {
+      "name": "Well Connected",
+      "rules": "At the start of a rest, refuel, or refit, gain tokens equal to the number of players at the table. At the end of the rest, refuel, or refit, distribute the tokens as you like among yourself and any other players. Each token clears an Armor Slot, a Stress, or a Hit Point, or grants a Hope.",
+      "short": "At the start of a rest, refuel, or refit, gain tokens equal to the number of players. At its end, hand them out as you like to yourself and others. Each token clears an Armor Slot, a Stress, or a Hit Point, or grants a Hope."
+        }
+      ]
+    },
+    {
+      "id": "sf-spikeborn",
+      "name": "Spikeborn",
+      "description": "Absalom Station: The Spike is the cramped, lawless underside of the station, beneath the wealthy Eye and next to the reactor. Its children learn the hidden passages, who sells favors, and which debts to avoid.",
+      "features": [
+        {
+      "name": "One Eye Open",
+      "rules": "Once per scene, while you are Hidden, you may mark a Stress to gain a Hope.",
+      "short": "Once per scene, while Hidden, mark a Stress to gain a Hope.",
+      "uses": 1,
+      "usesPer": "scene"
+        }
+      ]
+    },
+    {
+      "id": "sf-scrapborn",
+      "name": "Scrapborn",
+      "description": "Akiton: Akiton's dry wastes are littered with wrecked ships, played-out mines, and feuding cities. Its people live off salvage and oddities pulled from the wreckage, and believe only what they have tried themselves.",
+      "features": [
+        {
+      "name": "Upcycling",
+      "rules": "In each new scene that contains scraps, garbage, or fallen adversaries, you may add 1 to your Junk Count, which has no upper limit. During a rest, spend Junk on your junk roll: Junk spent as dice adds that many dice to the roll, and Junk spent as a bonus adds that bonus to each die. Roll the junk dice, add the bonus to each, and pick your favorite result from the consumable table.",
+      "short": "In each new scene with scraps, garbage, or fallen adversaries, you may add 1 to your Junk Count (no upper limit). During a rest, spend Junk on your junk roll: each spent as a die adds a die, each spent as a bonus adds +1 to every die. Pick your favorite result from the consumable table.",
+          "countBox": {
+            "label": "Junk Count"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sf-townbound",
+      "name": "Townbound",
+      "description": "Akiton: Many on Akiton live in settlements owned by a single company that supplies the home, the shop, and the paycheck. They know long shifts, mounting debt, and the quiet ways workers cover for each other.",
+      "features": [
+        {
+      "name": "I've Got Your Back",
+      "rules": "Once per rest, you can encourage an ally with kind words or action. You gain a Hope and they clear up to 3 Stress.",
+      "short": "Once per rest, encourage an ally with words or action: you gain a Hope and they clear up to 3 Stress.",
+      "uses": 1,
+      "usesPer": "rest"
+        }
+      ]
+    },
+    {
+      "id": "sf-asanan",
+      "name": "Asanan",
+      "description": "Castrovel: In the lashunta cities of Asana, universities and businesses share the same busy streets, and a major spaceport links them to the system. Locals treat learning as a form of wealth and skill as a vocation.",
+      "features": [
+        {
+      "name": "Asanan Learner",
+      "rules": "Gain an Experience, Asanan Learner, whose bonus is set to your highest Experience bonus each long rest. It applies only to non-violent action rolls. Each use reduces its bonus by 1.",
+      "short": "Gain an Experience, Asanan Learner, whose bonus is set to your highest Experience bonus each long rest. It applies only to non-violent action rolls. Each use reduce by 1."
+        }
+      ]
+    },
+    {
+      "id": "sf-wardenborn",
+      "name": "Wardenborn",
+      "description": "Castrovel: Castrovel's wild preserves are lovely and dangerous, and the Xenowardens guard them. Those raised in their care learn to defend wildlife and to give it its due respect.",
+      "features": [
+        {
+      "name": "Wildsense",
+      "rules": "You know the ways of non-sapient creatures. When one attacks you, you have +2 Evasion against that attack. When you attack one, you can make it mark Stress instead of Hit Points, one for one. On a successful Presence Action Roll, you can make all Vulnerable ones within Close range flee.",
+      "short": "Against non-sapient creatures: +2 Evasion when they attack you; when you attack one, it can mark Stress instead of Hit Points, one for one. On a successful Presence Action Roll, all Vulnerable ones within Close range flee.",
+          "statNote": {
+            "kind": "situational",
+            "stats": [
+              "evasion"
+            ],
+            "text": "+2 Evasion against non-sapient creatures"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sf-hivebound",
+      "name": "Hivebound",
+      "description": "Castrovel: The formian Colonies are cooperating hives devoted to the Overqueen and built around making things. Their people prize teamwork, defined duties, and tasks done right.",
+      "features": [
+        {
+      "name": "Duty Bound",
+      "rules": "At each rest, state your new duty in one sentence. When you act under this duty, you can spend a Hope to gain +2 to the action roll. If it succeeds, gain a Hope.",
+      "short": "At each rest, state a new duty in one sentence. When you act under it, spend a Hope for +2 to the action roll. On a success, gain a Hope."
+        }
+      ]
+    },
+    {
+      "id": "sf-ringborn",
+      "name": "Ringborn",
+      "description": "Verces: Verces has a blazing side and a frozen side, and its population crowds into the thin habitable band between, shared by 27 nations. Natives are skilled with machines and implants, and used to debating over borders.",
+      "features": [
+        {
+      "name": "Negotiator",
+      "rules": "You have advantage on rolls to reach a compromise when you are willing to give something up. If no compromise is reached, you can spend a Hope to make the GM lose a Fear.",
+      "short": "Advantage on rolls to reach a compromise when you are willing to give something up. If none is reached, spend a Hope to make the GM lose a Fear."
+        }
+      ]
+    },
+    {
+      "id": "sf-fringeborn",
+      "name": "Fringeborn",
+      "description": "Verces: Beyond the Ring lie the Outlaw Kingdoms, a refuge for exiles, fugitives, cultists, and survivors of the desert and the ice. Those raised there follow their own codes and expect nothing from the Ring's authorities.",
+      "features": [
+        {
+      "name": "Rulebreaker",
+      "rules": "With a moment of observation, you sense who is in charge and what they generally want. You can also sense tension in the ranks, if it exists. Spend a Hope and have a moment of conversation to gain a small favor if you act on this knowledge.",
+      "short": "After a moment of observation, you sense who is in charge, what they generally want, and any tension in the ranks. Spend a Hope and a moment of conversation to gain a small favor if you act on this."
+        }
+      ]
+    },
+    {
+      "id": "sf-legionborn",
+      "name": "Legionborn",
+      "description": "Triaxus: Triaxus endures long, harsh winters, and the Skyfire Legion is the mercenary host that guards its lands and sells its swords across the system. Those who grew up in its shadow can hold a line and read a contract.",
+      "features": [
+        {
+      "name": "Front Line",
+      "rules": "You may make a Reaction Roll appropriate to the situation to stop an adversary's movement when it is within Very Close range, or to force it to target you instead of something behind you.",
+      "short": "Make a fitting Reaction Roll to stop an adversary within Very Close range from moving, or to force it to target you instead of something behind you."
+        }
+      ]
+    },
+    {
+      "id": "sf-cloudborn",
+      "name": "Cloudborn",
+      "description": "Bretheda: Bretheda's people dwell in floating cities high in a gas giant's air, under the barathu Confluence. They watch the winds, scan the sky, and keep steady when the weather turns.",
+      "features": [
+        {
+      "name": "Weather Vein",
+      "rules": "Once per spotlight, spend a Hope to clear a mental condition from yourself or from an ally within Very Close range.",
+      "short": "Once per spotlight, spend a Hope to clear a mental condition from yourself or an ally within Very Close range."
+        }
+      ]
+    },
+    {
+      "id": "sf-moonbound",
+      "name": "Moonbound",
+      "description": "Bretheda: The moons around Bretheda include industrial water worlds, crystal caverns, and gem mines worked by bonded and convicted labor. Those raised there learn risky work, tough deals, and who is quietly buying their way out.",
+      "features": [
+        {
+      "name": "Worker's Bond",
+      "rules": "You have advantage on rolls to speak with working-class or lower-class people about what is really going on, and to examine a work site for abnormalities, exits, and opportunities.",
+      "short": "Advantage on rolls to learn from working-class or lower-class people what is really going on, and to examine a work site for abnormalities, exits, and opportunities."
+        }
+      ]
+    },
+    {
+      "id": "sf-roselit",
+      "name": "Roselit",
+      "description": "Liavara: Roselight is a floating platform-city that mines gas from Liavara, where quotas and barathu firms set the pace. Its people tend floating gardens and know how to keep a sealed living system going.",
+      "features": [
+        {
+      "name": "Self Contained",
+      "rules": "At the start of each session, gain Rose tokens equal to your level. Spend a Rose token to: (A) clear a Stress, once per spotlight; (B) clear an Armor Slot or a Hit Point, up to twice per rest; or (C) give yourself and one ally within Close range 1 Hope each, once per session.",
+      "short": "Each session, gain Rose tokens equal to your level. Spend one to: (A) clear a Stress, once per spotlight; (B) clear an Armor Slot or Hit Point, twice per rest; (C) give yourself and one ally within Close range 1 Hope each, once per session.",
+          "trackers": [
+            {
+              "id": "rose-tokens",
+              "shape": "box",
+              "count": {
+                "level": true
+              },
+              "label": "Rose tokens (max level)",
+              "placement": "front"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sf-domeborn",
+      "name": "Domeborn",
+      "description": "Apostae: Apostae has almost no air, so elven noble houses rule from enchanted domes while competing weapons makers drive the economy. Natives understand arms, corporate rivalry, and when to leave a question unasked.",
+      "features": [
+        {
+      "name": "Weapon Specialist",
+      "rules": "You can switch weapons without marking a Stress. When you attack with a tech weapon, you can mark a Stress to reroll all damage dice.",
+      "short": "Switch weapons without marking a Stress. When you attack with a tech weapon, mark a Stress to reroll all damage dice."
+        }
+      ]
+    },
+    {
+      "id": "sf-beltborn",
+      "name": "Beltborn",
+      "description": "The Diaspora: The Diaspora is a scatter of asteroids and wreckage inhabited by dwarf miners, android refugees, monks, and Free Captain pirates. Its people are self-reliant, inventive, and used to scraping by with little law.",
+      "features": [
+        {
+      "name": "Wary",
+      "rules": "When the first attack of a scene is made, you can make an attack as a Reaction Roll. On a success, gain a Hope. You have advantage on rolls to spot lies and hidden things.",
+      "short": "When the first attack of a scene is made, you can make an attack as a Reaction Roll; on a success, gain a Hope. Advantage on rolls to spot lies and hidden things."
+        }
+      ]
+    }
+  ],
+  "frame": {
+    "id": "starfinder-communities",
+      "name": "Starfinder Communities",
+    "listFirst": [
+      "sf-hubborne",
+      "sf-spikeborn",
+      "sf-scrapborn",
+      "sf-townbound",
+      "sf-asanan",
+      "sf-wardenborn",
+      "sf-hivebound",
+      "sf-ringborn",
+      "sf-fringeborn",
+      "sf-legionborn",
+      "sf-cloudborn",
+      "sf-moonbound",
+      "sf-roselit",
+      "sf-domeborn",
+      "sf-beltborn"
+    ]
+  }
+}

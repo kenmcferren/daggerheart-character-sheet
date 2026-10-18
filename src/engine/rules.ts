@@ -129,6 +129,7 @@ export function validateCreation(ch: Character, setup: CreationSetup): Issue[] {
   } else if (!ch.choices.ancestryId || !reg.ancestries.has(ch.choices.ancestryId)) bad('ancestry', 'Choose an ancestry.')
   else if (!ancestryList(setup).some((a) => a.id === ch.choices.ancestryId)) bad('ancestry', 'That ancestry is not available with the selected options.')
   if (!ch.choices.communityId || !reg.communities.has(ch.choices.communityId)) bad('community', 'Choose a community.')
+  else if (!communityList(setup).some((c) => c.id === ch.choices.communityId)) bad('community', 'That community is not available with the selected options.')
 
   // Traits
   const vals = TRAITS.map((t) => ch.traits[t])
@@ -283,6 +284,15 @@ export function ancestryList(setup: CreationSetup): any[] {
   const all = ([...setup.registry.ancestries.values()] as any[]).filter((a) => !a.onlyWith || active.has(a.onlyWith))
   const first = setup.ancestryFirst.map((id) => all.find((a) => a.id === id)).filter(Boolean)
   const rest = all.filter((a) => !setup.ancestryFirst.includes(a.id) && !setup.ancestryHidden.includes(a.id)).sort((a, b) => String(a.name).localeCompare(String(b.name)))
+  return [...first, ...rest]
+}
+
+/** Communities offered at creation: the supplement's first-listed ones in its order, then the rest alphabetically. */
+export function communityList(setup: CreationSetup): any[] {
+  const active = new Set([setup.frame?.id, ...setup.supplements.map((s) => s.id)])
+  const all = ([...setup.registry.communities.values()] as any[]).filter((c) => !c.onlyWith || active.has(c.onlyWith))
+  const first = setup.communityFirst.map((id) => all.find((c) => c.id === id)).filter(Boolean)
+  const rest = all.filter((c) => !setup.communityFirst.includes(c.id)).sort((a, b) => String(a.name).localeCompare(String(b.name)))
   return [...first, ...rest]
 }
 

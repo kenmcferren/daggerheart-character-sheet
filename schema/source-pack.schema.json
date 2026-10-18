@@ -178,7 +178,7 @@
       }
     },
     "count": {
-      "description": "Fixed number, or derived from a trait modifier (used for circles printed with rule text).",
+      "description": "Fixed number, derived from a trait modifier, or equal to the character level (used for circles/boxes printed with rule text).",
       "oneOf": [
         {
           "type": "integer",
@@ -201,6 +201,18 @@
                 "knowledge",
                 "spellcast"
               ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "level"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "level": {
+              "const": true
             }
           }
         }
@@ -353,6 +365,19 @@
                 "physical",
                 "magic"
               ]
+            }
+          }
+        },
+        "countBox": {
+          "type": "object",
+          "required": [
+            "label"
+          ],
+          "additionalProperties": false,
+          "description": "A write-in count box with no upper limit, printed on the inventory header row (Scrapborn Junk Count).",
+          "properties": {
+            "label": {
+              "type": "string"
             }
           }
         }
@@ -524,7 +549,8 @@
             "back-sheet",
             "list-ancestries-first",
             "hide-ancestries",
-            "disable-mixed-ancestry"
+            "disable-mixed-ancestry",
+            "list-communities-first"
           ]
         }
       }
@@ -901,6 +927,10 @@
           "properties": {
             "features": {
               "$ref": "#/definitions/features"
+            },
+            "onlyWith": {
+              "type": "string",
+              "description": "Id of the campaign frame or supplement that must be selected for this community to be offered."
             }
           }
         }
@@ -1124,6 +1154,10 @@
                   }
                 }
               }
+            },
+            "group": {
+              "type": "string",
+              "description": "Name of a group of supplements the start screen can check or uncheck together (Starheart - Starfinder Conversion)."
             }
           }
         }
