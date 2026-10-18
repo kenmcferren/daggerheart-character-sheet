@@ -57,6 +57,10 @@ export interface CreationSetup {
   annotations: Map<string, { source: string; text: string }[]>
   /** Item pool contributions per pool name, in application order (a replace resets the list). */
   pools: Map<string, PoolContribution[]>
+  /** Ancestry ids listed ahead of the rest, in order (Starfinder option); ids hidden from the list; whether Mixed Ancestry is offered. */
+  ancestryFirst: string[]
+  ancestryHidden: string[]
+  mixedAncestryAllowed: boolean
 }
 
 export interface PoolContribution {
@@ -113,7 +117,15 @@ export function buildCreation(
     }
   }
 
-  return { frame, supplements, registry, ops, conflicts: detectConflicts(ops, Object.fromEntries(active.map((f) => [f.id, f.name]))), steps: deriveSteps(ops), annotations, pools }
+  const idsOf = (op: string) => ops.filter((o) => o.op === op).flatMap((o) => (Array.isArray(o.ids) ? o.ids.map(String) : []))
+  const ancestryFirst = [...new Set(idsOf('list-ancestries-first'))]
+  for (const id of [...ancestryFirst, ...idsOf('hide-ancestries')]) {
+    if (!registry.ancestries.has(id)) throw new CreationError(`Unknown ancestry "${id}" in an ancestry list option`)
+  }
+  const ancestryHidden = idsOf('hide-ancestries').filter((id) => !ancestryFirst.includes(id))
+  const mixedAncestryAllowed = !ops.some((o) => o.op === 'disable-mixed-ancestry')
+
+  return { frame, supplements, registry, ops, ancestryFirst, ancestryHidden, mixedAncestryAllowed, conflicts: detectConflicts(ops, Object.fromEntries(active.map((f) => [f.id, f.name]))), steps: deriveSteps(ops), annotations, pools }
 }
 
 function deriveSteps(ops: SourcedOp[]): WizardStep[] {

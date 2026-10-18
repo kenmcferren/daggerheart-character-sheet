@@ -61,6 +61,14 @@ export function extrasOf(ranks: Record<string, number>, reg: Registry): { stance
   return { stanceClass: of(STANCE_SUBCLASS), companionClass: of(COMPANION_SUBCLASS) }
 }
 
+/** Starting bonus of a new Experience: 2, or the ancestry feature's own value (Android: 3). */
+export function experienceStart(ch: Character, reg: Registry): number {
+  const cr = creationOf(ch)
+  const ids = cr.mixedAncestry ? [cr.mixedAncestry.first, cr.mixedAncestry.second] : [ch.choices.ancestryId ?? '']
+  const starts = ids.flatMap((id) => ((reg.ancestries.get(id) as any)?.features ?? []) as any[]).map((f) => f.experienceStart).filter((n): n is number => typeof n === 'number')
+  return Math.max(2, ...starts)
+}
+
 export function initialProgress(ch: Character, reg: Registry): Progress {
   const cr = creationOf(ch)
   const cls: any = reg.classes.get(ch.choices.classId ?? '')
@@ -70,7 +78,7 @@ export function initialProgress(ch: Character, reg: Registry): Progress {
     evasionBonus: 0, hitPointSlots: 0, stressSlots: 0,
     room: { hitPoint: Math.max(0, SLOT_CAP - (cls?.startingHitPoints ?? 0)), stress: Math.max(0, SLOT_CAP - STARTING_STRESS) },
     traitBonus: {}, markedTraits: [],
-    experiences: cr.experiences.filter((e) => e.trim()).map((text) => ({ text, bonus: 2 })),
+    experiences: cr.experiences.filter((e) => e.trim()).map((text) => ({ text, bonus: experienceStart(ch, reg) })),
     domainCardIds: [...ch.choices.domainCardIds],
     subclassRanks: ch.choices.subclassId ? { [ch.choices.subclassId]: 1 } : {},
     multiclass: null,
@@ -140,7 +148,7 @@ export function applyRecord(prev: Progress, rec: LevelRecord, ch: Character, reg
     if (!rec.newExperience?.trim()) err('write the new Experience', 'achievement')
     st.proficiency += ach.proficiency ?? 0
     if (ach.clearTraitMarks) st.markedTraits = []
-    st.experiences.push({ text: rec.newExperience?.trim() ?? '', bonus: ach.newExperience ?? 0 })
+    st.experiences.push({ text: rec.newExperience?.trim() ?? '', bonus: Math.max(ach.newExperience ?? 0, experienceStart(ch, reg)) })
   } else if (rec.newExperience?.trim()) err('there is no new Experience at this level', 'achievement')
 
   // Domain-card rule shared by the extra-card advancement, the level card, and swaps.

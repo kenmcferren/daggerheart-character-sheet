@@ -312,6 +312,49 @@
         },
         "statNote": {
           "$ref": "#/definitions/statNote"
+        },
+        "experienceStart": {
+          "type": "integer",
+          "description": "Starting bonus for new Experiences (Android: 3 instead of 2)."
+        },
+        "extraSecondaryWeapon": {
+          "type": "boolean",
+          "description": "The character may wield one more secondary weapon (Kasatha)."
+        },
+        "weapon": {
+          "type": "object",
+          "required": [
+            "name",
+            "traits",
+            "range",
+            "damage",
+            "damageType"
+          ],
+          "description": "A natural weapon granted by the feature (claws, bite); printed as a weapon line using the character Proficiency.",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "traits": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            },
+            "range": {
+              "type": "string"
+            },
+            "damage": {
+              "type": "string"
+            },
+            "damageType": {
+              "enum": [
+                "physical",
+                "magic"
+              ]
+            }
+          }
         }
       }
     },
@@ -478,7 +521,10 @@
             "add-move",
             "add-tracker",
             "add-levelup-option",
-            "back-sheet"
+            "back-sheet",
+            "list-ancestries-first",
+            "hide-ancestries",
+            "disable-mixed-ancestry"
           ]
         }
       }
@@ -835,6 +881,10 @@
           "properties": {
             "features": {
               "$ref": "#/definitions/features"
+            },
+            "onlyWith": {
+              "type": "string",
+              "description": "Id of the campaign frame or supplement that must be selected for this ancestry to be offered."
             }
           }
         }

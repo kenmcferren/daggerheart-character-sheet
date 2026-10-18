@@ -1,0 +1,47 @@
+{
+  "_note": "Source: 'Starfinder Ancestries Option.md' (owner text, typos fixed). `rules` = owner wording; `short` = condensed sheet wording drafted by Claude, PENDING OWNER APPROVAL (Series 9 step 5). Human is the standard SRD Human and is only re-listed by the supplement's ops.",
+  "ancestries": [
+    { "id": "sf-android", "name": "Android", "features": [
+      { "name": "With Purpose", "rules": "New Experiences start at +3 instead of +2.", "short": "New Experiences start at +3 instead of +2.", "experienceStart": 3 },
+      { "name": "Constructed", "rules": "You have advantage to resist natural effects like heat, cold, disease, poison, and radiation.", "short": "Advantage to resist natural effects (heat, cold, disease, poison, radiation)." }
+    ] },
+    { "id": "sf-baruthu", "name": "Baruthu", "features": [
+      { "name": "Reconfigure", "rules": "When you would take Major or greater damage, you may mark a Stress to reduce the damage threshold by 1.", "short": "When you would take Major or greater damage, mark a Stress to reduce that threshold by 1." },
+      { "name": "Floating", "rules": "You can fly. Mark a Stress to propel yourself a far distance without needing the standard Agility Trait roll.", "short": "You can fly. Mark a Stress to move a far distance with no Agility roll." }
+    ] },
+    { "id": "sf-kasatha", "name": "Kasatha", "features": [
+      { "name": "Reliable", "rules": "When you assist an ally by spending a Hope, you gain a Hope if they succeed.", "short": "When you spend a Hope to assist an ally, gain a Hope if they succeed." },
+      { "name": "Four-armed", "rules": "You can wield an additional secondary weapon. Gain the benefits of all secondary weapons. Passive and reactive benefits stack where reasonable.", "short": "Wield an extra secondary weapon and gain the benefits of all of them; passive and reactive benefits stack where reasonable.", "extraSecondaryWeapon": true }
+    ] },
+    { "id": "sf-lashunta", "name": "Lashunta", "features": [
+      { "name": "Limited Telepathy", "rules": "Spend a Hope to allow willing targets in Far range of you to communicate with you and each other through your mind. You hear all of this conversation. This effect ends for each target as they leave Far range or take a long rest.", "short": "Spend a Hope: willing targets in Far range speak mind to mind with you and each other, and you hear it all. Ends for a target when it leaves Far range or takes a long rest." },
+      { "name": "Open Minded", "rules": "Once per rest, you can extend your telepathic abilities to an unwilling target in Far range. Mark a Stress to roll a number of d6s equal to your Presence or Instinct trait. If you roll any 4s, learn what they fear now. Any 5s: what they will do next. Any 6s: what they wish to keep secret.", "short": "Once per rest, mark a Stress and roll d6s equal to your Presence or Instinct against an unwilling target in Far range. Any 4: what it fears now. Any 5: what it will do next. Any 6: what it wishes to keep secret.", "uses": 1, "usesPer": "rest" }
+    ] },
+    { "id": "sf-pahtra", "name": "Pahtra", "features": [
+      { "name": "Nimble", "rules": "You have advantage on Agility, Finesse, and Instinct reaction rolls.", "short": "Advantage on Agility, Finesse, and Instinct reaction rolls." },
+      { "name": "Retractable Claws", "rules": "Your claws are an Agility or Finesse Melee weapon dealing d6 physical damage using your Proficiency. Once per rest, when an attack using your claws succeeds with Hope, gain an additional Hope.", "short": "Claws: Agility or Finesse, Melee, d6 physical using your Proficiency. Once per rest, when a claw attack succeeds with Hope, gain an additional Hope.", "uses": 1, "usesPer": "rest", "weapon": { "name": "Claws", "traits": ["agility", "finesse"], "range": "melee", "damage": "d6", "damageType": "physical" } }
+    ] },
+    { "id": "sf-shirren", "name": "Shirren", "features": [
+      { "name": "Universal Telepathy", "rules": "Spend a Hope to communicate with a target in Close range. They can understand you, though they are not compelled to respond. You can understand them regardless of language or sapience barrier.", "short": "Spend a Hope to communicate with a target in Close range; they understand you but need not respond. You understand them regardless of language or sapience." },
+      { "name": "Encouraging Vibes", "rules": "When a target in Close range fails an action roll, you can mark a Stress to allow them to reroll either die.", "short": "When a target in Close range fails an action roll, mark a Stress to let them reroll either die." }
+    ] },
+    { "id": "sf-skittermander", "name": "Skittermander", "features": [
+      { "name": "Hug Master", "rules": "As an action, you can make an Agility roll against a target larger than yourself to climb it. On a success, they temporarily gain the Hugged condition. While Hugged: they cannot attack you, but can force an Agility Reaction roll from you to free themselves; you move with them; attacks against you that miss hit them; mark a Stress as a reaction to impose disadvantage on actions they take. Hugged ends when you leave melee range, you fail the reaction roll above, or the GM spends a Fear to end it.", "short": "Agility roll against a larger target to climb it; on a success it is Hugged. Hugged: it cannot attack you but can force an Agility Reaction roll from you to break free; you move with it; attacks against you that miss hit it; mark a Stress to impose disadvantage on its actions. Ends if you leave melee range, fail that reaction roll, or the GM spends a Fear." },
+      { "name": "Tiny Chaotic Target", "rules": "Gain a +1 to your Evasion.", "short": "+1 Evasion.", "statBonus": { "evasion": 1 } }
+    ] },
+    { "id": "sf-vesk", "name": "Vesk", "features": [
+      { "name": "Blood Sense", "rules": "Spend a Hope to hone in on biological scents nearby. Biological or partially biological creatures in Far range from you cannot hide from you and you have advantage on action rolls to follow their trail.", "short": "Spend a Hope: biological or partly biological creatures in Far range cannot hide from you, and you have advantage to track them." },
+      { "name": "Cradled by War", "rules": "When your attack against an adversary succeeds, mark a Stress to gain a Hope. When an attack against you fails, spend a Hope to force your attacker to mark a Hit Point.", "short": "When your attack succeeds, mark a Stress to gain a Hope. When an attack against you fails, spend a Hope to make the attacker mark a Hit Point." }
+    ] },
+    { "id": "sf-ysoki", "name": "Ysoki", "features": [
+      { "name": "Scurry", "rules": "When you move, gain the Scurrying condition. Lose Scurrying at the start of your next Spotlight. While Scurrying, you have +2 Evasion.", "short": "When you move, you are Scurrying until the start of your next Spotlight: +2 Evasion.", "statNote": { "kind": "situational", "stats": ["evasion"], "text": "+2 Evasion while Scurrying" } },
+      { "name": "Bite-Sized", "rules": "You have sharp teeth that are a Strength or Finesse Melee weapon dealing d4+2 using your Proficiency. You can mark a Stress to chew through thin metal, plastic, fibers, etc. Depending on thickness this may require an action roll. If you successfully damage an adversary with a bite, mark a Stress to give them the Chewed condition, which lowers their thresholds by 3 each.", "short": "Bite: Strength or Finesse, Melee, d4+2 using your Proficiency. Mark a Stress to chew through thin metal, plastic, or fibers (thick material may need an action roll). After a bite damages an adversary, mark a Stress to give it Chewed: its thresholds drop by 3 each.", "weapon": { "name": "Bite", "traits": ["strength", "finesse"], "range": "melee", "damage": "d4+2", "damageType": "physical" } }
+    ] }
+  ],
+  "frame": {
+    "id": "starfinder-ancestries",
+    "name": "Starfinder Ancestries",
+    "listFirst": ["sf-android", "sf-baruthu", "human", "sf-kasatha", "sf-lashunta", "sf-pahtra", "sf-shirren", "sf-skittermander", "sf-vesk", "sf-ysoki"],
+    "hide": ["clank"]
+  }
+}

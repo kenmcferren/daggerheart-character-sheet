@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { TRAITS, type Trait } from '../engine/character'
-import { TRAIT_MODIFIERS, armorPool, deriveStats, frameChoiceDefs, weaponPool, ancestryFeatures, tierOf, type AugmentDef, type AugmentState } from '../engine/rules'
+import { TRAIT_MODIFIERS, ancestryList, secondarySlots, armorPool, deriveStats, frameChoiceDefs, weaponPool, ancestryFeatures, tierOf, type AugmentDef, type AugmentState } from '../engine/rules'
 import type { WizardStep } from '../engine/creation'
 import { Choice, Details, Feature, GearRow, Notes, Rules, Section, type Ctx } from './common'
 import { titleCase } from './util'
@@ -104,15 +104,17 @@ function Stances({ ctx: { cr, update }, cls }: { ctx: Ctx; cls: A }) {
 }
 
 export function AncestryStep({ ch, cr, setup, update }: Ctx) {
-  const list = sorted(setup.registry.ancestries)
-  const mixed = cr.mixedAncestry
+  const list = ancestryList(setup)
+  const mixed = setup.mixedAncestryAllowed ? cr.mixedAncestry : null
   const feats = ancestryFeatures(ch, setup)
   return (
     <>
-      <label className="inline">
-        <input type="checkbox" checked={!!mixed} onChange={(e) => update((_, x) => { x.mixedAncestry = e.target.checked ? { first: '', second: '' } : null })} />
-        Mixed Ancestry (first feature from one ancestry, second feature from another)
-      </label>
+      {setup.mixedAncestryAllowed && (
+        <label className="inline">
+          <input type="checkbox" checked={!!mixed} onChange={(e) => update((_, x) => { x.mixedAncestry = e.target.checked ? { first: '', second: '' } : null })} />
+          Mixed Ancestry (first feature from one ancestry, second feature from another)
+        </label>
+      )}
       {mixed ? (
         <section className="panel">
           {(['first', 'second'] as const).map((k, i) => (
@@ -216,9 +218,12 @@ export function GearPicker(ctx: Ctx) {
     const byId = (i: string) => weapons.find((e) => e.id === i)!
     if (!w) cur = []
     else if (cur.includes(w.id)) cur = cur.filter((i) => i !== w.id)
-    else if (w.burden === 'two-handed') cur = [w.id]
+    else if (w.burden === 'two-handed') cur = secondarySlots(ch, setup) > 1 ? [...cur.filter((i) => slot(byId(i)) === 'secondary'), w.id] : [w.id]
     else {
-      cur = cur.filter((i) => byId(i).burden !== 'two-handed' && slot(byId(i)) !== slot(w))
+      cur = secondarySlots(ch, setup) > 1 ? cur : cur.filter((i) => byId(i).burden !== 'two-handed')
+      const same = cur.filter((i) => slot(byId(i)) === slot(w))
+      const room = slot(w) === 'secondary' ? secondarySlots(ch, setup) : 1
+      cur = cur.filter((i) => !same.slice(0, Math.max(0, same.length - room + 1)).includes(i))
       cur.push(w.id)
     }
     x.choices.equipmentIds = [...cur, ...rest]
@@ -241,7 +246,7 @@ export function GearPicker(ctx: Ctx) {
     <>
       <label className="check"><input type="checkbox" checked={allTiers} onChange={(e) => setAllTiers(e.target.checked)} /> Show every tier{allTiers ? '' : ` (now only Tier ${tier}, plus anything already chosen)`}</label>
       <h3>Weapons</h3>
-      <p className="hint">Choose no weapon, one two-handed primary weapon, or a one-handed primary and a one-handed secondary.</p>
+      <p className="hint">Choose no weapon, one two-handed primary weapon, or a one-handed primary and {secondarySlots(ch, setup) > 1 ? 'a one-handed secondary. Four-armed: a primary of either size plus up to two one-handed secondaries.' : 'a one-handed secondary.'}</p>
       {builder ? <Builder ctx={ctx} id={builder} /> : (
         <>
           <div className="gearlist"><GearRow name="No weapon" selected={noWeapon} onPick={() => toggleW(null as unknown as A)} /></div>

@@ -121,11 +121,13 @@ export function validateCreation(ch: Character, setup: CreationSetup): Issue[] {
   if (!sub) bad('subclass', 'Choose a subclass.')
   else if (cls && sub.class !== cls.id) bad('subclass', `${sub.name} is not a ${cls.name} subclass.`)
 
-  if (cr.mixedAncestry) {
+  if (cr.mixedAncestry && !setup.mixedAncestryAllowed) bad('ancestry', 'Mixed Ancestry is not available with the selected options.')
+  else if (cr.mixedAncestry) {
     const { first, second } = cr.mixedAncestry
     if (!reg.ancestries.has(first) || !reg.ancestries.has(second)) bad('ancestry', 'Choose both ancestries for the Mixed Ancestry.')
     else if (first === second) bad('ancestry', 'Mixed Ancestry takes the first feature of one ancestry and the second feature of a different one.')
   } else if (!ch.choices.ancestryId || !reg.ancestries.has(ch.choices.ancestryId)) bad('ancestry', 'Choose an ancestry.')
+  else if (!ancestryList(setup).some((a) => a.id === ch.choices.ancestryId)) bad('ancestry', 'That ancestry is not available with the selected options.')
   if (!ch.choices.communityId || !reg.communities.has(ch.choices.communityId)) bad('community', 'Choose a community.')
 
   // Traits
@@ -194,9 +196,10 @@ function validateEquipment(ch: Character, setup: CreationSetup, bad: (s: string,
     const prim = ws.filter((w) => slotOf(w) === 'primary')
     const sec = ws.filter((w) => slotOf(w) === 'secondary')
     const twoHanded = prim.length === 1 && sec.length === 0 && prim[0].burden === 'two-handed'
-    const pair = prim.length === 1 && sec.length === 1 && prim[0].burden === 'one-handed' && sec[0].burden === 'one-handed'
+    const maxSecondary = secondarySlots(ch, setup)
+    const pair = prim.length === 1 && sec.length >= 1 && sec.length <= maxSecondary && (maxSecondary > 1 || prim[0].burden === 'one-handed') && sec.every((w) => w.burden === 'one-handed') // Four-armed: a primary of either size
     // No weapon is a legal choice (Brawler fights bare-handed).
-    if (ws.length && !twoHanded && !pair) bad('equipment', 'Choose no weapon, one two-handed primary weapon, or a one-handed primary and a one-handed secondary.')
+    if (ws.length && !twoHanded && !pair) bad('equipment', `Choose no weapon, one two-handed primary weapon, or a one-handed primary and ${maxSecondary > 1 ? 'up to two one-handed secondary weapons (Four-armed allows a two-handed primary too)' : 'a one-handed secondary'}.`)
   }
   // No armor is a legal choice too (Bare Bones, Brawler).
   if (armorIds.length > 1) bad('equipment', 'Choose at most one set of armor.')
@@ -267,6 +270,20 @@ export function deriveStats(ch: Character, setup: CreationSetup): DerivedStats {
     downtimeMoves: downtimeMoves(setup),
     trackers,
   }
+}
+
+/** How many secondary weapons the character may wield: 1, or 2 with an ancestry feature like Kasatha Four-armed. */
+export function secondarySlots(ch: Character, setup: CreationSetup): number {
+  return ancestryFeatures(ch, setup).some((f: any) => f.extraSecondaryWeapon) ? 2 : 1
+}
+
+/** Ancestries offered at creation: the supplement's first-listed ones in its order, then the rest alphabetically, minus hidden ones. */
+export function ancestryList(setup: CreationSetup): any[] {
+  const active = new Set([setup.frame?.id, ...setup.supplements.map((s) => s.id)])
+  const all = ([...setup.registry.ancestries.values()] as any[]).filter((a) => !a.onlyWith || active.has(a.onlyWith))
+  const first = setup.ancestryFirst.map((id) => all.find((a) => a.id === id)).filter(Boolean)
+  const rest = all.filter((a) => !setup.ancestryFirst.includes(a.id) && !setup.ancestryHidden.includes(a.id)).sort((a, b) => String(a.name).localeCompare(String(b.name)))
+  return [...first, ...rest]
 }
 
 /** Ancestry features the character has, honoring Mixed Ancestry (first feature of one, second of another). */
