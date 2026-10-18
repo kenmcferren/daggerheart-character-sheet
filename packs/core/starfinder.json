@@ -170,8 +170,8 @@
         "features": [
           {
             "name": "Scurry",
-            "rules": "When you move, gain the Scurrying condition. Lose Scurrying at the start of your next Spotlight. While Scurrying, you have +2 Evasion.",
-            "short": "When you move, you are Scurrying until the start of your next Spotlight: +2 Evasion.",
+            "rules": "When you move further than Very Close range, gain the Scurrying condition. Lose Scurrying at the start of your next Spotlight. While Scurrying, you have +2 Evasion.",
+            "short": "When you move further than Very Close range, you are Scurrying until the start of your next Spotlight: +2 Evasion.",
             "statNote": {
               "kind": "situational",
               "stats": [
