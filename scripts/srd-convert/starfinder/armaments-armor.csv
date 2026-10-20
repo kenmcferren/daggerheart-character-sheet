@@ -1,0 +1,30 @@
+name,tier,majorThreshold,severeThreshold,armorScore,feature
+Civilian Clothing,1,4,8,2,Lightweight: +2 to Evasion
+Carbon Skin,1,5,11,3,Flexible: +1 to Evasion
+Armored Coat,1,6,13,3,
+Freebooter Armor,1,7,15,4,Heavy: -1 to Evasion
+Defiance Series,1,8,17,4,Very Heavy: -2 to Evasion; -1 to Agility
+Improved Carbon Skin,2,7,16,4,Flexible: +1 to Evasion
+Improved Armored Coat,2,9,20,4,
+Improved Freebooter Armor,2,11,24,5,Heavy: -1 to Evasion
+Improved Defiance Series,2,13,28,5,Very Heavy: -2 to Evasion; -1 to Agility
+Abadarcorp Travel Suit,2,8,17,4,Tech Outfitted: Mark an Armor slot to gain advantage on a spell/tech action roll.
+Skyfire Armor,2,12,25,5,"Ornate: While no armor slots are marked you have advantage on rolls to persuade, intimidate, or impress people."
+Defrex Hide,2,11,24,6,
+Microcord Armor,2,8,18,4,Impact Resistant: Reduce physical damage by your armor score before taking damage.
+Quilted Armor,2,9,19,4,Layered: When you take Severe damage you can mark 2 armor slots instead of 1 to reduce it to minor damage.
+Kyokor Plating,2,13,26,5,Hacking Ports: Advantage when breaching or searching information systems
+Advanced Carbon Skin,3,9,23,5,Flexible: +1 to Evasion
+Advanced Armored Coat,3,11,27,5,
+Advanced Freebooter Armor,3,13,31,6,Heavy: -1 to Evasion
+Advanced Defiance Series,3,15,35,6,Very Heavy: -2 to Evasion; -1 to Agility
+Thinplate,3,15,35,5,Heavy: -1 to Evasion
+Estex Suit,3,10,25,5,Comfortable: Add +1 to any short rest roll
+Hardlight Series,3,9,21,4,Light Weight: +2 to Evasion
+Swarmsuit,3,13,28,5,Reconfiguring: Once per scene spend 1 Hope to clear 1 Armor.
+Veskarium Imperial Plate,3,16,38,2,Plated: Add your Strength Trait to your armor score.
+Second Skin,3,10,24,4,Natural: Add your Finesse to your evasion
+Legendary Carbon Skin,4,11,32,6,Flexible: +1 to Evasion
+Legendary Armored Coat,4,13,36,6,
+Legendary Freebooter Armor,4,15,40,7,Heavy: -1 to Evasion
+Legendary Defiance Series,4,17,44,7,Very Heavy: -2 to Evasion; -1 to Agility

@@ -85,3 +85,25 @@ Two packs conflict when both `replace-pool` the same pool, both `set-resource` t
 
 - Domain cards with a use count equal to a trait (`Spellcast trait`, or Agility, etc.): needs a general `count` expression (`{trait: "agility"}`), not only Spellcast. Check while modelling the 210 cards.
 - Print fit: one front sheet for weapon, class, subclass and domain rules may overflow for classes with long feature lists (Druid beastform, Ranger companions). Decide overflow behavior (smaller type vs continuation page) in Series 4.
+
+## Weapons and armor packs
+
+Weapons and armor are separate packs, split out of `srd-core` and `srd-frames`:
+
+- `packs/core/srd-armaments.json` (extends `srd-core`): the 315 SRD weapons and 59 armors (`equipment` entries). `srd-core` keeps items and consumables.
+- `packs/core/<frame>-armaments.json` (extends `srd-frames` and `srd-armaments`): one per frame that lists its own gear. It overrides that frame's `pools`, so it holds every pool the frame defines, including Western's one consumable. The frame's ops stay in `srd-frames`, and decide how the list combines with the core list:
+
+| Frame | File | Effect on the core lists |
+|---|---|---|
+| Everyday Hero | `everyday-hero-armaments.json` (32 weapons, 4 armor) | **Replaces** both the weapon and armor lists (`replace-pool`) |
+| Western | `western-armaments.json` (5 weapons, 1 consumable) | **Supplements** the weapon list (`add-to-pool`); the consumable is added as well |
+| Monster Hunting | `monster-hunting-armaments.json` (6 weapons, 3 armor; tiered) | **Supplements** the weapon and armor lists (`add-to-pool`) |
+| Starfinder | `starfinder-armaments.json` (29 armor; 91 weapons: 41 Starfinder + 50 SRD magic weapons, Tiers 1-2 only until Tier 3-4 are finished; wheelchair weapons not included) | **Replaces** both the weapon and armor lists (`replace-pool`). Own supplement in the Starheart group; sources `scripts/srd-convert/starfinder/armaments-armor.csv` and `Docs/armaments-weapons.csv` (raise `MAX_WEAPON_TIER` in the script for Tiers 3-4), built by `build-starfinder-armaments.mjs` (run after `build-starfinder-pack.mjs`) |
+| Tech | none | Replaces the weapon list with a builder choice (Iconic Weapon); no listed gear |
+
+Rules:
+
+- A frame armaments pack must be loaded with its frame. Without it the frame's pool ops resolve to an empty list, so Everyday Hero would leave no weapons or armor at all.
+- Build: `build-core-pack.mjs` writes `srd-core` and `srd-armaments`. After `build-frame-pack.mjs`, run `split-frame-armaments.mjs` to move each frame's `pools` into its armaments pack. `build-frame-pack.mjs` is already stale against the committed `srd-frames.json` (the Tech builder options differ), so do not regenerate frames from it without checking the diff.
+
+Combining rule (owner, 2026-10-18): when frames both add to and replace the same pool, only the replacements apply and the adds are dropped. Several replacements of one pool all stay (they add to each other). Neither case is a start-screen conflict any more. Known gap: Western's Revolver Ammo tracker still prints when Western's adds are dropped by a replace.

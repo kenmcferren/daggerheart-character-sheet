@@ -1,0 +1,4 @@
+name,weaponSlot,tier,trait,range,damage,damageType,burden,feature
+EXAMPLE Pulse Pistol,primary,1,finesse,far,d8+1,physical,one-handed,Reliable: +1 to attack rolls
+EXAMPLE Pulse Pistol,primary,2,finesse,far,d8+4,physical,one-handed,Reliable: +1 to attack rolls
+EXAMPLE Arc Blade,secondary,1,agility,melee,d6+1,magic,one-handed,

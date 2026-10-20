@@ -40,7 +40,7 @@ export interface WizardStep {
 
 export interface Conflict {
   kind:
-    | 'pool-replaced-twice' | 'pool-replace-and-add' | 'resource-set-twice'
+    | 'resource-set-twice'
     | 'step-duplicate' | 'tracker-duplicate' | 'move-conflict'
   key: string
   frames: string[]
@@ -57,7 +57,7 @@ export interface CreationSetup {
   steps: WizardStep[]
   /** Annotation text per target ("classes.druid"), each with its source frame. */
   annotations: Map<string, { source: string; text: string }[]>
-  /** Item pool contributions per pool name, in application order (a replace resets the list). */
+  /** Item pool contributions per pool name, in application order. If any replace the pool, only the replacements remain (they stack); otherwise the adds. */
   pools: Map<string, PoolContribution[]>
   /** Ancestry ids listed ahead of the rest, in order (Starfinder option); ids hidden from the list; whether Mixed Ancestry is offered. */
   ancestryFirst: string[]
@@ -114,12 +114,15 @@ export function buildCreation(
       annotations.set(key, [...(annotations.get(key) ?? []), { source: f.id, text: String(o.text) }])
     } else if (o.op === 'replace-pool' || o.op === 'add-to-pool') {
       const name = String(o.pool)
-      const cur = o.op === 'replace-pool' ? [] : pools.get(name) ?? []
+      const cur = pools.get(name) ?? []
       const ref = String(o.with ?? '')
       const choice = ref.startsWith('choices.') ? ref.slice(8) : undefined
       pools.set(name, [...cur, { source: f.id, mode: o.op === 'replace-pool' ? 'replace' : 'add', entries: poolEntries(f, ref), ...(choice ? { choice } : {}) }])
     }
   }
+
+  // Replace beats add: if any frame replaces a pool, the adds are dropped and every replacement is kept (they stack).
+  for (const [name, list] of pools) if (list.some((c) => c.mode === 'replace')) pools.set(name, list.filter((c) => c.mode === 'replace'))
 
   const idsOf = (op: string) => ops.filter((o) => o.op === op).flatMap((o) => (Array.isArray(o.ids) ? o.ids.map(String) : []))
   const ancestryFirst = [...new Set(idsOf('list-ancestries-first'))]
@@ -165,20 +168,6 @@ export function detectConflicts(ops: SourcedOp[], names: Record<string, string> 
     return m
   }
 
-  const replaced = group('replace-pool', 'pool')
-  for (const [pool, frames] of replaced) {
-    if (uniq(frames).length > 1) out.push({
-      kind: 'pool-replaced-twice', key: pool, frames: uniq(frames),
-      message: `${nm(frames).join(' and ')} both replace the ${pool} pool; only one can apply.`,
-    })
-  }
-  for (const [pool, frames] of group('add-to-pool', 'pool')) {
-    const r = replaced.get(pool)
-    if (r) out.push({
-      kind: 'pool-replace-and-add', key: pool, frames: uniq([...r, ...frames]),
-      message: `${nm(r).join(', ')} replaces the ${pool} pool while ${nm(frames).join(', ')} adds to it.`,
-    })
-  }
   for (const [res, frames] of group('set-resource', 'resource')) {
     if (uniq(frames).length > 1) out.push({
       kind: 'resource-set-twice', key: res, frames: uniq(frames),

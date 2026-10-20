@@ -3,10 +3,11 @@ import { readFileSync } from 'node:fs'
 import { buildCreation, type CreationSetup } from '../src/engine/creation'
 import { newCharacter, creationOf, type Character } from '../src/engine/character'
 import { validateCreation, deriveStats, weaponPool, armorPool, downtimeMoves, ancestryFeatures, tierOf } from '../src/engine/rules'
+import { ARMS } from './lib/packs'
 
 const core = JSON.parse(readFileSync('packs/core/srd-core.json', 'utf8'))
 const frames = JSON.parse(readFileSync('packs/core/srd-frames.json', 'utf8'))
-const packs = [core, frames]
+const packs = [core, frames, ...ARMS]
 
 /** A complete legal character for the given setup (Wizard, School of Knowledge). */
 function legal(setup: CreationSetup, tweak: (c: Character) => void = () => {}): Character {

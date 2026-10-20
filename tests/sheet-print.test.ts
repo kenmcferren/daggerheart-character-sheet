@@ -4,7 +4,7 @@ import { buildCreation, type CreationSetup } from '../src/engine/creation'
 import { newCharacter, creationOf, type Character } from '../src/engine/character'
 import { renderSheet, type SheetFonts } from '../src/pdf/sheet'
 
-const packs = [JSON.parse(readFileSync('packs/core/srd-core.json', 'utf8')), JSON.parse(readFileSync('packs/core/srd-frames.json', 'utf8'))]
+const packs = [JSON.parse(readFileSync('packs/core/srd-core.json', 'utf8')), JSON.parse(readFileSync('packs/core/srd-frames.json', 'utf8')), ...ARMS]
 const font = (f: string) => new Uint8Array(readFileSync(`assets/fonts/${f}`))
 const fonts: SheetFonts = {
   body: font('source-sans-3-latin-400-normal.woff'), bold: font('source-sans-3-latin-700-normal.woff'),
@@ -13,6 +13,7 @@ const fonts: SheetFonts = {
 }
 
 import { withRecording, outside } from './lib/record'
+import { ARMS } from './lib/packs'
 
 function base(setup: CreationSetup, classId: string, tweak: (c: Character) => void = () => {}): Character {
   const reg: any = setup.registry

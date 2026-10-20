@@ -1,10 +1,11 @@
 import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { buildCreation, detectConflicts, CreationError } from '../src/engine/creation'
+import { ARMS } from './lib/packs'
 
 const core = JSON.parse(readFileSync('packs/core/srd-core.json', 'utf8'))
 const frames = JSON.parse(readFileSync('packs/core/srd-frames.json', 'utf8'))
-const packs = [core, frames]
+const packs = [core, frames, ...ARMS]
 
 describe('[s3] creation engine', () => {
   it('no frame: the ten SRD steps in order', () => {
@@ -31,14 +32,16 @@ describe('[s3] creation engine', () => {
     expect(c.pools.get('weapons')![0].entries.length).toBeGreaterThan(0)
     expect(c.pools.get('consumables')).toBeDefined()
   })
-  it('flags two supplements replacing the weapons pool', () => {
+  it('keeps every replacement of the same pool (they stack)', () => {
     const c = buildCreation(packs, { supplements: ['everyday-hero', 'tech'] })
-    const hit = c.conflicts.find((x) => x.kind === 'pool-replaced-twice')
-    expect(hit?.frames).toEqual(['everyday-hero', 'tech'])
+    expect(c.conflicts).toEqual([])
+    expect(c.pools.get('weapons')!.map((x) => x.source)).toEqual(['everyday-hero', 'tech'])
   })
-  it('flags replace + add on the same pool', () => {
+  it('replace beats add: adds to a replaced pool are dropped', () => {
     const c = buildCreation(packs, { supplements: ['everyday-hero', 'western'] })
-    expect(c.conflicts.map((x) => x.kind)).toContain('pool-replace-and-add')
+    expect(c.conflicts).toEqual([])
+    expect(c.pools.get('weapons')!.map((x) => x.source)).toEqual(['everyday-hero'])
+    expect(c.pools.get('consumables')).toBeDefined()
   })
   it('every supplement alone is conflict-free', () => {
     for (const f of frames.content.campaignFrames.filter((x: any) => x.frameKind === 'supplement')) {

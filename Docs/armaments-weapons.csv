@@ -1,0 +1,66 @@
+name,weaponSlot,tier,trait,range,damage,damageType,burden,feature
+Acid dart rifle,primary,1,Agility,far,d6+2,physical,2,"Corrosive: On a hit, reduce the target's thresholds by -2/-2 for the rest of the scene. Does not stack."
+arc pistol,primary,1,knowledge,far,d6,tech,1,Arcing: On a hit a creature within Very Close range that is closest to your target also marks 1 HP
+Baton,primary,1,Strength,melee,d10+2,physical,1,
+Doshko,primary,1,Strength,very close,d10+4,physical,2,Forceful: If any of your damage dice roll under your strength you can move your target and/or yourself to a new position within very close range.
+Dueling Sword,primary,1,Agility,melee,d8+3,physical,1,Flashy: Use your Presence as your profiency with this weapon.
+rotating pistol,secondary,1,Finesse,far,d6,physical,1,Reliable: add 1d6 to the damage of your primary weapon. Once per session when your attack is rolled with fear you can prevent them from gaining a fear.
+flamethrower,primary,1,Instinct,close,d6+5,tech,2,"Lingering Flame: Targets hit by this weapon gain the Singed condition. On their next spotlight you may spend 1 Hope as a reaction to force them to mark either 1 HP or 2 Stress. If you don't, they lose the Singed condition."
+Hammer,primary,1,Strength,melee,d12+3,physical,2,Impactful: Use your strength as your profiency value.
+machine gun,primary,1,Strength,far,d6+3,physical,2,Repeated Hits: On a success with Hope add 2d6 to your damage roll.
+rotolaser,primary,1,knowledge,far,d6+4,tech,2,Tracer Fire: Add +2 to your attack roll with this weapon.
+scattergun,primary,1,strength,close,d8+3,physical,2,Grazing Shot: On a miss with Hope deal d4 damage using your proficiency
+screamer,primary,1,presence,close,d8+3,tech,2,Deep Vibrations: Damage from this weapon bypasses tech resistance.
+Shock Pad,primary,1,Instinct,melee,d8,tech,1,Stunning: Targets damaged by this weapon are Vulnerable until they take damage again.
+signing spear,primary,1,Presence,very close,d10+2,physical,2,Inspiring Song: After the first attack of each scene with this weapon an ally of your choice gains a Hope.
+talon,primary,1,Strength,melee,d12+3,physical,1,
+shock truncheon,secondary,1,Agility,melee,d10,tech,1,Stunning: With each hit the first HP slot the target would mark is instead a Stress slot.
+Knife,secondary,1,Finesse,melee,d8,physical,1,Paired: +2 to primary weapon damage to targets within Melee range.
+Battleglove,secondary,1,Instinct,melee,d8,physical,0,Free-Hand: this weapon requires no hands to wield.
+semi-auto pistol,secondary,2,Agility,far,d6+3,physical,1,Rapidfire: On a primary attack with Hope you can spend a Hope to deal this weapon's damage to another target the roll would have hit.
+card slinger,secondary,2,Finesse,far,d6+3,physical,1,"Lucky: when you roll a critical primary or secondary attack, gain 1 additional Hope."
+laser pistol,secondary,2,Finesse,far,d8+5,tech,1,Tracer Fire: Add +2 to your attack roll with this weapon.
+arc rifle,primary,2,Knowledge,very far,d6+3,tech,2,Arcing: On a hit a creature within Very Close range that is closest to your target also marks 1 HP
+Aucturnite chakram,primary,2,Instinct,melee,d8+3,physical,1,Thrown: This weapon can be thrown as an Agility weapon dealing d8 damage at Close range.
+autotarget rifle,primary,2,Knowledge,far,d6+7,physical,2,Corrective: Once per rest turn a hit with fear into a hit with Hope instead.
+Battle ribbon,primary,2,Finesse,very close,d10+3,physical,1,Deadly Accuracy: This weapon uses your Finesse as its proficiency level.
+Bone Scepter,primary,2,Knowledge,very close,d10+3,magical,1,"Energy Drain: When you deal Major or greater damage, or Minor damage to multiple targets, on an attack with Hope, clear a Stress."
+boom pistol,primary,2,agility,close,d6+4,physical,1,To Eleven: When you end a spotlight without making an attack your next attack adds +1d8 to the attack.
+pulse gauntlet,secondary,2,Agility,melee,d10+3,physical,1,Impact: On a hit against a target in melee range mark a Stress to shove them back to Close range. If their movement is stopped short they mark a Stress as well.
+Zero Knife,secondary,2,Finesse,melee,d10+3,tech,1,Versitile: This weapon can deal physical damage instead.
+breaching gun,primary,2,strength,close,d8+6,physical,2,"Concussive: On a hit with Hope your target is restrained until the end of their next spotlight. On a miss with Fear, you are instead."
+Cryopike,primary,2,Strength,very close,d10+6,tech,2,"Freezing Strike: On a hit, mark a Stress to Chill the target until the end of their next spotlight. Chilled targets move half their normal distance."
+Fangblade,primary,2,Strength,melee,d8+6,physical,2,Revved Up: Mark a Stress to Rev this weapon. Your next hit this scene forces the target to mark 1 additional HP.
+laser rifle,primary,2,Agility,very far,d6+5,tech,2,Tracer Fire: Add +2 to your attack roll with this weapon.
+magnetar rifle,primary,2,Agility,far,d6+6,physical,2,"Full Auto: If you defeat any minions, defeat one more minion in range. If you damage a hoard, force it to mark a stress as well."
+Phase Cutlass,primary,2,Presence,melee,d8+8,tech,1,Flashy: Use your Presence as your profiency with this weapon.
+reaction breacher,primary,2,Strength,very far,d8+6,physical,2,"Cluster Fire: Choose a point in range you can see and make an attack roll. All targets along the path to that point make reaction rolls with difficulty equal to your attack. On a roll with fear, this weapon cannot be fired again this scene."
+shirren-eye rifle,primary,2,Instinct,very far,d4+6,physical,2,Exacting: This weapon uses your Instinct as its proficiency. On a critical strike the target marks one additional HP.
+skyfire sword,primary,2,Strength,melee,d8+5,tech,1,Molten Strike: Wield with 2 hands to increase damage to d12+7. Wielded this way a roll with fear causes you to mark one Stress or power down the blade for the rest of the scene.
+thermal dynafan,primary,2,Finesse,very close,d10+2,tech,1,"Thermal Stress: When you damage a target, give them either Heated or Cooled as a temporary condition. If they were the other of these, replace it and then they mark 1 Stress."
+zero cannon,primary,2,strength,far,d6+6,tech,2,"Cooling Lance: Draw a line to a point in range. Make an attack roll against all creatures touching that line. On a hit, you may mark a Stress to force each hit to also mark a Stress."
+zero pistol,primary,2,Finesse,far,d6+3,tech,1,"Freezing Strike: On a hit, mark a Stress to Chill the target until the end of their next spotlight. Chilled targets move half their normal distance."
+arc emitter,primary,3,knowledge,close,d8,tech,2,Arcing Plus: On a hit the two creatures wtihin Very Close range that are closest to your target also mark 1 HP each.
+pulsecaster pistol,secondary,3,Finesse,close,d10,tech,1,Non-Lethal: On a hit this weapon causes the target to mark a Stress instead of a HP.
+coil rifle,primary,3,Agility,very far,d4,physical,2,
+crossbolter,primary,3,Agility,very far,d4,physical,2,
+disintegration lash,primary,3,Finesse,very close,d10,tech,1,
+shuriken drone,secondary,3,Knowledge,far,d6,physical,1,Circle Back: On a roll with Hope this weapon strikes the same target again on the way back causing them to mark 1 additional hit point.
+grindblade,primary,3,Agility,melee,d12,physical,1,
+gyrojet pistol,primary,3,strength,far,d6,physical,1,
+Neural Lash,primary,3,Instinct,very close,d10,magical,1,
+Painglave,primary,3,Presence,very close,d10,tech,2,
+plasma caster,primary,3,agility,far,d6,tech,2,
+Plasma doshko,primary,3,Strength,very close,d10,tech,1,
+sonic rifle,primary,3,agility,far,d6,tech,2,
+streetsweeper,primary,3,strength,far,d6,tech,2,
+aeon rifle,primary,4,Knowledge,far,d6,magical,2,
+artillery laser,primary,4,strength,far,d6,tech,2,
+assassin rifle,primary,4,Finesse,very far,d4,physical,2,
+Nano-edged rapier,primary,4,Finesse,melee,d12,physical,1,
+plasma cannon,primary,4,agility,far,d6,tech,2,
+Plasma Sword,primary,4,Instinct,melee,d12,tech,2,
+seeker rifle,primary,4,Agility,very far,d4,physical,2,
+singing coil,primary,4,presence,far,d6,tech,2,
+starfall pistol,primary,4,agility,close,d6,tech,1,"Rain of Fire: Mark a Stress before your attack roll to supercharge the attack, increasing your proficiency by +2."
+stellar cannon,primary,4,strength,far,d6,physical,2,

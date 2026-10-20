@@ -494,6 +494,26 @@
             }
           ]
         }
+      },
+      {
+        "id": "starfinder-armaments",
+        "name": "Starfinder Weapons and Armor",
+        "frameKind": "supplement",
+        "group": "Starheart - Starfinder Conversion",
+        "creation": {
+          "ops": [
+            {
+              "op": "replace-pool",
+              "pool": "weapons",
+              "with": "pools.weapons"
+            },
+            {
+              "op": "replace-pool",
+              "pool": "armor",
+              "with": "pools.armor"
+            }
+          ]
+        }
       }
     ]
   }

@@ -1,3 +1,4 @@
+import { ARMS } from './packs'
 import { readFileSync } from 'node:fs'
 import { buildCreation } from '../../src/engine/creation'
 import { newCharacter, creationOf, type Character, type AdvancementRecord, type LevelRecord } from '../../src/engine/character'
@@ -6,7 +7,7 @@ import { applyLevelUp, progressOf, validateLevelUp } from '../../src/engine/leve
 /** Shared helpers for building legal leveled-up characters in tests. */
 const core = JSON.parse(readFileSync('packs/core/srd-core.json', 'utf8'))
 const frames = JSON.parse(readFileSync('packs/core/srd-frames.json', 'utf8'))
-export const reg = buildCreation([core, frames]).registry
+export const reg = buildCreation([core, frames, ...ARMS]).registry
 export const cards = [...reg.domainCards.values()] as any[]
 
 /** A level 1 character of the given class (subclass = its first). Cards: two level 1 cards from its domains. */

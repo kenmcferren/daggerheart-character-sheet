@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 1,
+  "id": "monster-hunting-armaments",
+  "name": "Monster Hunting Campaigns (weapons and armor)",
+  "version": "2.0.0",
+  "publisher": "Darrington Press (SRD)",
+  "extends": [
+    "srd-frames",
+    "srd-armaments"
+  ],
+  "overrides": {
+    "campaignFrames": {
+      "monster-hunting": {
+        "pools": {
+          "weapons": [
+            {
+              "id": "blessed-brass-knuckles",
+              "name": "Blessed Brass Knuckles",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "one-handed",
+              "damageType": "magic",
+              "tiers": {
+                "1": {
+                  "damage": "d8+1"
+                },
+                "2": {
+                  "damage": "d8+4"
+                },
+                "3": {
+                  "damage": "d8+7"
+                },
+                "4": {
+                  "damage": "d8+10"
+                }
+              }
+            },
+            {
+              "id": "holy-shotgun",
+              "name": "Holy Shotgun",
+              "weaponSlot": "primary",
+              "trait": "agility",
+              "range": "very-close",
+              "burden": "two-handed",
+              "feature": "Scattershot: When you make an attack, target all creatures in front of you within range.",
+              "damageType": "magic",
+              "tiers": {
+                "1": {
+                  "damage": "d6+2"
+                },
+                "2": {
+                  "damage": "d6+5"
+                },
+                "3": {
+                  "damage": "d6+8"
+                },
+                "4": {
+                  "damage": "d6+11"
+                }
+              }
+            },
+            {
+              "id": "repeating-crossbow",
+              "name": "Repeating Crossbow",
+              "weaponSlot": "primary",
+              "trait": "finesse",
+              "range": "far",
+              "burden": "two-handed",
+              "feature": "Quick: When you make an attack, you can mark a Stress to target another creature within range.",
+              "damageType": "physical",
+              "tiers": {
+                "1": {
+                  "damage": "d6+2"
+                },
+                "2": {
+                  "damage": "d6+5"
+                },
+                "3": {
+                  "damage": "d6+8"
+                },
+                "4": {
+                  "damage": "d6+11"
+                }
+              }
+            },
+            {
+              "id": "wooden-stake",
+              "name": "Wooden Stake",
+              "weaponSlot": "secondary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "one-handed",
+              "feature": "Paired: Gain a bonus equal to 1 + your tier to primary weapon damage to targets within Melee range.",
+              "damageType": "physical",
+              "tiers": {
+                "1": {
+                  "damage": "d8"
+                },
+                "2": {
+                  "damage": "d8+2"
+                },
+                "3": {
+                  "damage": "d8+4"
+                },
+                "4": {
+                  "damage": "d8+6"
+                }
+              }
+            },
+            {
+              "id": "hallowed-shield",
+              "name": "Hallowed Shield",
+              "weaponSlot": "secondary",
+              "trait": "instinct",
+              "range": "melee",
+              "burden": "one-handed",
+              "feature": "Resonant: When you critically succeed on a primary weapon attack, you gain an additional Hope.",
+              "damageType": "magic",
+              "tiers": {
+                "1": {
+                  "damage": "d4"
+                },
+                "2": {
+                  "damage": "d4+2"
+                },
+                "3": {
+                  "damage": "d4+4"
+                },
+                "4": {
+                  "damage": "d4+6"
+                }
+              }
+            },
+            {
+              "id": "chain-whip",
+              "name": "Chain Whip",
+              "weaponSlot": "secondary",
+              "trait": "presence",
+              "range": "very-close",
+              "burden": "one-handed",
+              "feature": "Hooked: On a successful attack, you can pull the target into Melee range.",
+              "damageType": "physical",
+              "tiers": {
+                "1": {
+                  "damage": "d6+1"
+                },
+                "2": {
+                  "damage": "d6+3"
+                },
+                "3": {
+                  "damage": "d6+5"
+                },
+                "4": {
+                  "damage": "d6+7"
+                }
+              }
+            }
+          ],
+          "armor": [
+            {
+              "id": "coffinwood-armor",
+              "name": "Coffinwood Armor",
+              "feature": "Splintering: Gain a bonus to your damage thresholds equal to your unmarked Armor Slots.",
+              "tiers": {
+                "1": {
+                  "majorThreshold": 4,
+                  "severeThreshold": 10,
+                  "armorScore": 3
+                },
+                "2": {
+                  "majorThreshold": 6,
+                  "severeThreshold": 15,
+                  "armorScore": 4
+                },
+                "3": {
+                  "majorThreshold": 8,
+                  "severeThreshold": 22,
+                  "armorScore": 5
+                },
+                "4": {
+                  "majorThreshold": 10,
+                  "severeThreshold": 31,
+                  "armorScore": 6
+                }
+              }
+            },
+            {
+              "id": "leather-longcoat",
+              "name": "Leather Longcoat",
+              "feature": "Quiet: Gain a +2 bonus to rolls you make to move silently.",
+              "tiers": {
+                "1": {
+                  "majorThreshold": 5,
+                  "severeThreshold": 12,
+                  "armorScore": 3
+                },
+                "2": {
+                  "majorThreshold": 8,
+                  "severeThreshold": 18,
+                  "armorScore": 4
+                },
+                "3": {
+                  "majorThreshold": 10,
+                  "severeThreshold": 25,
+                  "armorScore": 5
+                },
+                "4": {
+                  "majorThreshold": 12,
+                  "severeThreshold": 34,
+                  "armorScore": 6
+                }
+              }
+            },
+            {
+              "id": "silverweave-armor",
+              "name": "Silverweave Armor",
+              "feature": "Warded: You reduce incoming magic damage by your Armor Score before applying it to your damage thresholds.",
+              "tiers": {
+                "1": {
+                  "majorThreshold": 5,
+                  "severeThreshold": 11,
+                  "armorScore": 3
+                },
+                "2": {
+                  "majorThreshold": 7,
+                  "severeThreshold": 16,
+                  "armorScore": 4
+                },
+                "3": {
+                  "majorThreshold": 9,
+                  "severeThreshold": 23,
+                  "armorScore": 5
+                },
+                "4": {
+                  "majorThreshold": 11,
+                  "severeThreshold": 32,
+                  "armorScore": 6
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

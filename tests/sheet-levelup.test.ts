@@ -7,8 +7,9 @@ import { renderSheet, type SheetFonts } from '../src/pdf/sheet'
 import { sheetView } from '../src/engine/sheetView'
 import { withRecording, outside } from './lib/record'
 import { level1, equipped, adv, hp, stress, up, toLevel, reg } from './lib/levelup-paths'
+import { ARMS } from './lib/packs'
 
-const packs = [JSON.parse(readFileSync('packs/core/srd-core.json', 'utf8')), JSON.parse(readFileSync('packs/core/srd-frames.json', 'utf8'))]
+const packs = [JSON.parse(readFileSync('packs/core/srd-core.json', 'utf8')), JSON.parse(readFileSync('packs/core/srd-frames.json', 'utf8')), ...ARMS]
 const setup = buildCreation(packs)
 const font = (f: string) => new Uint8Array(readFileSync(`assets/fonts/${f}`))
 const fonts: SheetFonts = {

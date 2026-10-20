@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { TRAITS, type Trait } from '../engine/character'
-import { TRAIT_MODIFIERS, ancestryList, communityList, secondarySlots, armorPool, deriveStats, frameChoiceDefs, weaponPool, ancestryFeatures, tierOf, type AugmentDef, type AugmentState } from '../engine/rules'
+import { TRAIT_MODIFIERS, ancestryList, communityList, secondarySlots, armorPool, deriveStats, frameChoiceDefs, weaponPool, weaponLoad, handsAvailable, ancestryFeatures, tierOf, type AugmentDef, type AugmentState } from '../engine/rules'
 import type { WizardStep } from '../engine/creation'
 import { Choice, Details, Feature, GearRow, Notes, Rules, Section, type Ctx } from './common'
 import { titleCase } from './util'
@@ -218,13 +218,18 @@ export function GearPicker(ctx: Ctx) {
     const byId = (i: string) => weapons.find((e) => e.id === i)!
     if (!w) cur = []
     else if (cur.includes(w.id)) cur = cur.filter((i) => i !== w.id)
-    else if (w.burden === 'two-handed') cur = secondarySlots(ch, setup) > 1 ? [...cur.filter((i) => slot(byId(i)) === 'secondary'), w.id] : [w.id]
     else {
-      cur = secondarySlots(ch, setup) > 1 ? cur : cur.filter((i) => byId(i).burden !== 'two-handed')
+      // Keep one primary and up to the secondary limit, then drop the oldest picks until the hands needed fit the hands available.
       const same = cur.filter((i) => slot(byId(i)) === slot(w))
       const room = slot(w) === 'secondary' ? secondarySlots(ch, setup) : 1
       cur = cur.filter((i) => !same.slice(0, Math.max(0, same.length - room + 1)).includes(i))
       cur.push(w.id)
+      const load = () => cur.reduce((n, i) => n + weaponLoad(byId(i)), 0)
+      while (load() > handsAvailable(ch, setup)) {
+        const drop = cur.find((i) => i !== w.id && weaponLoad(byId(i)) > 0)
+        if (!drop) break
+        cur = cur.filter((i) => i !== drop)
+      }
     }
     x.choices.equipmentIds = [...cur, ...rest]
   })
@@ -235,7 +240,7 @@ export function GearPicker(ctx: Ctx) {
   // The section header already says Primary / Secondary / Wheelchair, so the slot is not repeated in the row.
   const wRow = (w: A) => (
     <GearRow key={w.id} name={w.name} selected={has(w.id)} onPick={() => toggleW(w)}
-      meta={[tierMeta(w), w.burden, w.trait && `${titleCase(w.trait)} ${titleCase(String(w.range ?? ''))}`, w.damage && `${w.damage} ${w.damageType === 'magic' ? 'mag' : 'phy'}`].filter(Boolean).join(' · ')}
+      meta={[tierMeta(w), w.burden, w.trait && `${titleCase(w.trait)} ${titleCase(String(w.range ?? ''))}`, w.damage && `${w.damage} ${w.damageType === 'magic' ? 'mag' : w.damageType === 'physical' || !w.damageType ? 'phy' : w.damageType}`].filter(Boolean).join(' · ')}
       detail={w.feature}>
       <Notes setup={setup} target={`equipment.${w.id}`} />
     </GearRow>

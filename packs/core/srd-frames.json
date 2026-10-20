@@ -213,377 +213,6 @@
         "id": "everyday-hero",
         "name": "Everyday Hero Starting Equipment",
         "frameKind": "supplement",
-        "pools": {
-          "weapons": [
-            {
-              "id": "cleaver",
-              "name": "Cleaver",
-              "weaponSlot": "primary",
-              "trait": "agility",
-              "range": "melee",
-              "burden": "one-handed",
-              "feature": "Reliable: +1 to attack rolls",
-              "damage": "d8",
-              "damageType": "physical"
-            },
-            {
-              "id": "sharpened-rake",
-              "name": "Sharpened Rake",
-              "weaponSlot": "primary",
-              "trait": "agility",
-              "range": "melee",
-              "burden": "two-handed",
-              "damage": "d8+3",
-              "damageType": "physical"
-            },
-            {
-              "id": "butchers-axe",
-              "name": "Butcher’s Axe",
-              "weaponSlot": "primary",
-              "trait": "strength",
-              "range": "melee",
-              "burden": "two-handed",
-              "feature": "Heavy: −1 to Evasion",
-              "damage": "d12+3",
-              "damageType": "physical"
-            },
-            {
-              "id": "iron-skillet",
-              "name": "Iron Skillet",
-              "weaponSlot": "primary",
-              "trait": "strength",
-              "range": "melee",
-              "burden": "one-handed",
-              "damage": "d8+1",
-              "damageType": "physical"
-            },
-            {
-              "id": "pitchfork",
-              "name": "Pitchfork",
-              "weaponSlot": "primary",
-              "trait": "strength",
-              "range": "melee",
-              "burden": "two-handed",
-              "damage": "d10+3",
-              "damageType": "physical"
-            },
-            {
-              "id": "sledgehammer",
-              "name": "Sledgehammer",
-              "weaponSlot": "primary",
-              "trait": "strength",
-              "range": "melee",
-              "burden": "two-handed",
-              "feature": "Massive: −1 to Evasion; on a successful attack, roll an additional damage die and discard the lowest result.",
-              "damage": "d10+3",
-              "damageType": "physical"
-            },
-            {
-              "id": "cooking-knife",
-              "name": "Cooking Knife",
-              "weaponSlot": "primary",
-              "trait": "finesse",
-              "range": "melee",
-              "burden": "one-handed",
-              "damage": "d8+1",
-              "damageType": "physical"
-            },
-            {
-              "id": "walking-staff",
-              "name": "Walking Staff",
-              "weaponSlot": "primary",
-              "trait": "instinct",
-              "range": "melee",
-              "burden": "two-handed",
-              "damage": "d10+3",
-              "damageType": "physical"
-            },
-            {
-              "id": "rolling-pin",
-              "name": "Rolling Pin",
-              "weaponSlot": "primary",
-              "trait": "presence",
-              "range": "melee",
-              "burden": "one-handed",
-              "damage": "d8+1",
-              "damageType": "physical"
-            },
-            {
-              "id": "sickle",
-              "name": "Sickle",
-              "weaponSlot": "primary",
-              "trait": "presence",
-              "range": "melee",
-              "burden": "one-handed",
-              "feature": "Quick: When you make an attack, you can mark a Stress to target another creature within range.",
-              "damage": "d8",
-              "damageType": "physical"
-            },
-            {
-              "id": "forge-poker",
-              "name": "Forge Poker",
-              "weaponSlot": "primary",
-              "trait": "strength",
-              "range": "very-close",
-              "burden": "two-handed",
-              "damage": "d8+2",
-              "damageType": "physical"
-            },
-            {
-              "id": "crop-scythe",
-              "name": "Crop Scythe",
-              "weaponSlot": "primary",
-              "trait": "finesse",
-              "range": "very-close",
-              "burden": "two-handed",
-              "damage": "d8+2",
-              "damageType": "physical"
-            },
-            {
-              "id": "fishing-rod",
-              "name": "Fishing Rod",
-              "weaponSlot": "primary",
-              "trait": "agility",
-              "range": "far",
-              "burden": "two-handed",
-              "damage": "d6+3",
-              "damageType": "physical"
-            },
-            {
-              "id": "slingshot",
-              "name": "Slingshot",
-              "weaponSlot": "primary",
-              "trait": "finesse",
-              "range": "far",
-              "burden": "two-handed",
-              "damage": "d6+3",
-              "damageType": "physical"
-            },
-            {
-              "id": "firework-launcher",
-              "name": "Firework Launcher",
-              "weaponSlot": "primary",
-              "trait": "agility",
-              "range": "very-far",
-              "burden": "two-handed",
-              "feature": "Cumbersome: −1 to Finesse",
-              "damage": "d6+3",
-              "damageType": "physical"
-            },
-            {
-              "id": "enchanted-hammer",
-              "name": "Enchanted Hammer",
-              "weaponSlot": "primary",
-              "trait": "strength",
-              "range": "melee",
-              "burden": "one-handed",
-              "damage": "d10+1",
-              "damageType": "magic"
-            },
-            {
-              "id": "enchanted-mop",
-              "name": "Enchanted Mop",
-              "weaponSlot": "primary",
-              "trait": "strength",
-              "range": "melee",
-              "burden": "two-handed",
-              "damage": "d10+3",
-              "damageType": "magic"
-            },
-            {
-              "id": "enchanted-scissors",
-              "name": "Enchanted Scissors",
-              "weaponSlot": "primary",
-              "trait": "finesse",
-              "range": "very-close",
-              "burden": "one-handed",
-              "damage": "d10",
-              "damageType": "magic"
-            },
-            {
-              "id": "enchanted-broomstick",
-              "name": "Enchanted Broomstick",
-              "weaponSlot": "primary",
-              "trait": "instinct",
-              "range": "very-close",
-              "burden": "two-handed",
-              "damage": "d10+2",
-              "damageType": "magic"
-            },
-            {
-              "id": "exploding-potions",
-              "name": "Exploding Potions",
-              "weaponSlot": "primary",
-              "trait": "finesse",
-              "range": "close",
-              "burden": "one-handed",
-              "damage": "d8",
-              "damageType": "magic"
-            },
-            {
-              "id": "enchanted-forge-lighter",
-              "name": "Enchanted Forge Lighter",
-              "weaponSlot": "primary",
-              "trait": "instinct",
-              "range": "close",
-              "burden": "one-handed",
-              "damage": "d8",
-              "damageType": "magic"
-            },
-            {
-              "id": "enchanted-boomerang",
-              "name": "Enchanted Boomerang",
-              "weaponSlot": "primary",
-              "trait": "instinct",
-              "range": "far",
-              "burden": "two-handed",
-              "damage": "d6+3",
-              "damageType": "magic"
-            },
-            {
-              "id": "enchanted-kite",
-              "name": "Enchanted Kite",
-              "weaponSlot": "primary",
-              "trait": "presence",
-              "range": "far",
-              "burden": "two-handed",
-              "feature": "Versatile: This weapon can also be used with these statistics—Presence, Melee, d10.",
-              "damage": "d6",
-              "damageType": "magic"
-            },
-            {
-              "id": "whisk-wand",
-              "name": "Whisk Wand",
-              "weaponSlot": "primary",
-              "trait": "knowledge",
-              "range": "far",
-              "burden": "one-handed",
-              "damage": "d6+1",
-              "damageType": "magic"
-            },
-            {
-              "id": "sparkling-staff",
-              "name": "Sparkling Staff",
-              "weaponSlot": "primary",
-              "trait": "knowledge",
-              "range": "very-far",
-              "burden": "two-handed",
-              "feature": "Powerful: On a successful attack, roll an additional damage die and discard the lowest result.",
-              "damage": "d6",
-              "damageType": "magic"
-            },
-            {
-              "id": "large-fork",
-              "name": "Large Fork",
-              "weaponSlot": "secondary",
-              "trait": "agility",
-              "range": "melee",
-              "burden": "one-handed",
-              "feature": "Paired: +2 to primary weapon damage to targets within Melee range",
-              "damage": "d8",
-              "damageType": "physical"
-            },
-            {
-              "id": "barrel-lid-shield",
-              "name": "Barrel Lid Shield",
-              "weaponSlot": "secondary",
-              "trait": "strength",
-              "range": "melee",
-              "burden": "one-handed",
-              "feature": "Protective: +1 to Armor Score",
-              "damage": "d4",
-              "damageType": "physical"
-            },
-            {
-              "id": "table-shield",
-              "name": "Table Shield",
-              "weaponSlot": "secondary",
-              "trait": "strength",
-              "range": "melee",
-              "burden": "one-handed",
-              "feature": "Barrier: +2 to Armor Score; −1 to Evasion",
-              "damage": "d6",
-              "damageType": "physical"
-            },
-            {
-              "id": "paring-knife",
-              "name": "Paring Knife",
-              "weaponSlot": "secondary",
-              "trait": "finesse",
-              "range": "melee",
-              "burden": "one-handed",
-              "feature": "Paired: +2 to primary weapon damage to targets within Melee range",
-              "damage": "d8",
-              "damageType": "physical"
-            },
-            {
-              "id": "festival-whip",
-              "name": "Festival Whip",
-              "weaponSlot": "secondary",
-              "trait": "presence",
-              "range": "very-close",
-              "burden": "one-handed",
-              "feature": "Startling: Mark a Stress to crack the whip and force all adversaries within Melee range back to Close range.",
-              "damage": "d6",
-              "damageType": "physical"
-            },
-            {
-              "id": "towline-hook",
-              "name": "Towline Hook",
-              "weaponSlot": "secondary",
-              "trait": "finesse",
-              "range": "close",
-              "burden": "one-handed",
-              "feature": "Hooked: On a successful attack, you can pull the target into Melee range with you.",
-              "damage": "d6",
-              "damageType": "physical"
-            },
-            {
-              "id": "flare-launcher",
-              "name": "Flare Launcher",
-              "weaponSlot": "secondary",
-              "trait": "finesse",
-              "range": "far",
-              "burden": "one-handed",
-              "feature": "Bright: This weapon temporarily lights up the area the flare lands in.",
-              "damage": "d6+1",
-              "damageType": "physical"
-            }
-          ],
-          "armor": [
-            {
-              "id": "quilted-clothing",
-              "name": "Quilted Clothing",
-              "feature": "Flexible: +1 to Evasion",
-              "majorThreshold": 5,
-              "severeThreshold": 11,
-              "armorScore": 3
-            },
-            {
-              "id": "leather-apron",
-              "name": "Leather Apron",
-              "majorThreshold": 6,
-              "severeThreshold": 13,
-              "armorScore": 3
-            },
-            {
-              "id": "tree-bark-armor",
-              "name": "Tree Bark Armor",
-              "feature": "Heavy: −1 to Evasion",
-              "majorThreshold": 7,
-              "severeThreshold": 15,
-              "armorScore": 4
-            },
-            {
-              "id": "baking-tray-breastplate",
-              "name": "Baking Tray Breastplate",
-              "feature": "Very Heavy: −2 to Evasion; −1 to Agility",
-              "majorThreshold": 8,
-              "severeThreshold": 17,
-              "armorScore": 4
-            }
-          ]
-        },
         "creation": {
           "ops": [
             {
@@ -603,138 +232,6 @@
         "id": "western",
         "name": "Western Campaigns",
         "frameKind": "supplement",
-        "pools": {
-          "weapons": [
-            {
-              "id": "revolver",
-              "name": "Revolver",
-              "weaponSlot": "primary",
-              "trait": "finesse",
-              "range": "far",
-              "burden": "one-handed",
-              "feature": "Six Shot: Place 6 Ammo tokens on your character sheet. Spend 1 Ammo token to make an attack. You can mark a Stress to regain spent Ammo tokens.",
-              "damageType": "physical",
-              "tiers": {
-                "1": {
-                  "damage": "d8+1"
-                },
-                "2": {
-                  "damage": "d8+4"
-                },
-                "3": {
-                  "damage": "d8+7"
-                },
-                "4": {
-                  "damage": "d8+10"
-                }
-              }
-            },
-            {
-              "id": "rifle",
-              "name": "Rifle",
-              "weaponSlot": "primary",
-              "trait": "agility",
-              "range": "very-far",
-              "burden": "two-handed",
-              "feature": "Sightline: Spend 2 Hope to gain advantage on an attack roll.",
-              "damageType": "physical",
-              "tiers": {
-                "1": {
-                  "damage": "d8+2"
-                },
-                "2": {
-                  "damage": "d8+5"
-                },
-                "3": {
-                  "damage": "d8+8"
-                },
-                "4": {
-                  "damage": "d8+11"
-                }
-              }
-            },
-            {
-              "id": "shotgun",
-              "name": "Shotgun",
-              "weaponSlot": "primary",
-              "trait": "strength",
-              "range": "very-close",
-              "burden": "two-handed",
-              "feature": "Scattershot: When you make an attack, target all creatures in front of you within range.",
-              "damageType": "physical",
-              "tiers": {
-                "1": {
-                  "damage": "d6+2"
-                },
-                "2": {
-                  "damage": "d6+5"
-                },
-                "3": {
-                  "damage": "d6+8"
-                },
-                "4": {
-                  "damage": "d6+11"
-                }
-              }
-            },
-            {
-              "id": "lasso",
-              "name": "Lasso",
-              "weaponSlot": "secondary",
-              "trait": "agility",
-              "range": "very-close",
-              "burden": "one-handed",
-              "feature": "Roped: On a successful attack, you can temporarily Rope the target instead of dealing damage. While Roped, the target is Restrained and Vulnerable, but you must remain within Very Close range of the target. When the target would clear this condition, you can make a Strength Reaction Roll. On a success, they remain Roped.",
-              "damageType": "physical",
-              "tiers": {
-                "1": {
-                  "damage": "d4"
-                },
-                "2": {
-                  "damage": "d4+3"
-                },
-                "3": {
-                  "damage": "d4+6"
-                },
-                "4": {
-                  "damage": "d4+9"
-                }
-              }
-            },
-            {
-              "id": "small-revolver",
-              "name": "Small Revolver",
-              "weaponSlot": "secondary",
-              "trait": "finesse",
-              "range": "far",
-              "burden": "one-handed",
-              "feature": "Quick Shot: Spend 2 Hope to gain a +4 bonus to primary weapon damage.",
-              "damageType": "physical",
-              "tiers": {
-                "1": {
-                  "damage": "d6"
-                },
-                "2": {
-                  "damage": "d6+3"
-                },
-                "3": {
-                  "damage": "d6+6"
-                },
-                "4": {
-                  "damage": "d6+9"
-                }
-              }
-            }
-          ],
-          "consumables": [
-            {
-              "id": "dynamite",
-              "name": "Dynamite",
-              "category": "consumable",
-              "rules": "You can light this dynamite and toss it within Close range. All creatures within Very Close range of where the dynamite lands must make a Reaction Roll (14). Targets who fail take 1d20+5 physical damage. Targets who succeed must mark a Stress. Dynamite deals double damage to inanimate objects or structures."
-            }
-          ]
-        },
         "creation": {
           "ops": [
             {
@@ -762,236 +259,6 @@
         "id": "monster-hunting",
         "name": "Monster Hunting Campaigns",
         "frameKind": "supplement",
-        "pools": {
-          "weapons": [
-            {
-              "id": "blessed-brass-knuckles",
-              "name": "Blessed Brass Knuckles",
-              "weaponSlot": "primary",
-              "trait": "strength",
-              "range": "melee",
-              "burden": "one-handed",
-              "damageType": "magic",
-              "tiers": {
-                "1": {
-                  "damage": "d8+1"
-                },
-                "2": {
-                  "damage": "d8+4"
-                },
-                "3": {
-                  "damage": "d8+7"
-                },
-                "4": {
-                  "damage": "d8+10"
-                }
-              }
-            },
-            {
-              "id": "holy-shotgun",
-              "name": "Holy Shotgun",
-              "weaponSlot": "primary",
-              "trait": "agility",
-              "range": "very-close",
-              "burden": "two-handed",
-              "feature": "Scattershot: When you make an attack, target all creatures in front of you within range.",
-              "damageType": "magic",
-              "tiers": {
-                "1": {
-                  "damage": "d6+2"
-                },
-                "2": {
-                  "damage": "d6+5"
-                },
-                "3": {
-                  "damage": "d6+8"
-                },
-                "4": {
-                  "damage": "d6+11"
-                }
-              }
-            },
-            {
-              "id": "repeating-crossbow",
-              "name": "Repeating Crossbow",
-              "weaponSlot": "primary",
-              "trait": "finesse",
-              "range": "far",
-              "burden": "two-handed",
-              "feature": "Quick: When you make an attack, you can mark a Stress to target another creature within range.",
-              "damageType": "physical",
-              "tiers": {
-                "1": {
-                  "damage": "d6+2"
-                },
-                "2": {
-                  "damage": "d6+5"
-                },
-                "3": {
-                  "damage": "d6+8"
-                },
-                "4": {
-                  "damage": "d6+11"
-                }
-              }
-            },
-            {
-              "id": "wooden-stake",
-              "name": "Wooden Stake",
-              "weaponSlot": "secondary",
-              "trait": "strength",
-              "range": "melee",
-              "burden": "one-handed",
-              "feature": "Paired: Gain a bonus equal to 1 + your tier to primary weapon damage to targets within Melee range.",
-              "damageType": "physical",
-              "tiers": {
-                "1": {
-                  "damage": "d8"
-                },
-                "2": {
-                  "damage": "d8+2"
-                },
-                "3": {
-                  "damage": "d8+4"
-                },
-                "4": {
-                  "damage": "d8+6"
-                }
-              }
-            },
-            {
-              "id": "hallowed-shield",
-              "name": "Hallowed Shield",
-              "weaponSlot": "secondary",
-              "trait": "instinct",
-              "range": "melee",
-              "burden": "one-handed",
-              "feature": "Resonant: When you critically succeed on a primary weapon attack, you gain an additional Hope.",
-              "damageType": "magic",
-              "tiers": {
-                "1": {
-                  "damage": "d4"
-                },
-                "2": {
-                  "damage": "d4+2"
-                },
-                "3": {
-                  "damage": "d4+4"
-                },
-                "4": {
-                  "damage": "d4+6"
-                }
-              }
-            },
-            {
-              "id": "chain-whip",
-              "name": "Chain Whip",
-              "weaponSlot": "secondary",
-              "trait": "presence",
-              "range": "very-close",
-              "burden": "one-handed",
-              "feature": "Hooked: On a successful attack, you can pull the target into Melee range.",
-              "damageType": "physical",
-              "tiers": {
-                "1": {
-                  "damage": "d6+1"
-                },
-                "2": {
-                  "damage": "d6+3"
-                },
-                "3": {
-                  "damage": "d6+5"
-                },
-                "4": {
-                  "damage": "d6+7"
-                }
-              }
-            }
-          ],
-          "armor": [
-            {
-              "id": "coffinwood-armor",
-              "name": "Coffinwood Armor",
-              "feature": "Splintering: Gain a bonus to your damage thresholds equal to your unmarked Armor Slots.",
-              "tiers": {
-                "1": {
-                  "majorThreshold": 4,
-                  "severeThreshold": 10,
-                  "armorScore": 3
-                },
-                "2": {
-                  "majorThreshold": 6,
-                  "severeThreshold": 15,
-                  "armorScore": 4
-                },
-                "3": {
-                  "majorThreshold": 8,
-                  "severeThreshold": 22,
-                  "armorScore": 5
-                },
-                "4": {
-                  "majorThreshold": 10,
-                  "severeThreshold": 31,
-                  "armorScore": 6
-                }
-              }
-            },
-            {
-              "id": "leather-longcoat",
-              "name": "Leather Longcoat",
-              "feature": "Quiet: Gain a +2 bonus to rolls you make to move silently.",
-              "tiers": {
-                "1": {
-                  "majorThreshold": 5,
-                  "severeThreshold": 12,
-                  "armorScore": 3
-                },
-                "2": {
-                  "majorThreshold": 8,
-                  "severeThreshold": 18,
-                  "armorScore": 4
-                },
-                "3": {
-                  "majorThreshold": 10,
-                  "severeThreshold": 25,
-                  "armorScore": 5
-                },
-                "4": {
-                  "majorThreshold": 12,
-                  "severeThreshold": 34,
-                  "armorScore": 6
-                }
-              }
-            },
-            {
-              "id": "silverweave-armor",
-              "name": "Silverweave Armor",
-              "feature": "Warded: You reduce incoming magic damage by your Armor Score before applying it to your damage thresholds.",
-              "tiers": {
-                "1": {
-                  "majorThreshold": 5,
-                  "severeThreshold": 11,
-                  "armorScore": 3
-                },
-                "2": {
-                  "majorThreshold": 7,
-                  "severeThreshold": 16,
-                  "armorScore": 4
-                },
-                "3": {
-                  "majorThreshold": 9,
-                  "severeThreshold": 23,
-                  "armorScore": 5
-                },
-                "4": {
-                  "majorThreshold": 11,
-                  "severeThreshold": 32,
-                  "armorScore": 6
-                }
-              }
-            }
-          ]
-        },
         "creation": {
           "ops": [
             {
@@ -1067,24 +334,130 @@
                 "feature": "Bonded: Gain a bonus to your damage rolls equal to your level."
               },
               "augments": [
-                { "id": "force", "name": "Force", "effect": "+1 damage", "cost": "3 gears, 2 lenses, 4 aluminum, 1 capacitor", "damage": 1 },
-                { "id": "guard", "name": "Guard", "effect": "+1 Armor Score", "cost": "3 wires, 2 silver, 2 platinum, 3 fuses", "armorScore": 1 },
-                { "id": "converge", "name": "Converge", "effect": "+1 to attack rolls", "cost": "4 coils, 2 crystals, 5 gold, 3 discs" },
-                { "id": "amplify", "name": "Amplify", "effect": "On a successful attack, roll an additional damage die and drop the lowest result.", "cost": "4 crystals, 4 cobalt, 4 copper, 4 capacitors" },
-                { "id": "scope", "name": "Scope", "effect": "Increase range by one step (Melee to Very Close, Close to Far, etc.).", "cost": "5 lenses, 3 silver, 2 circuits, 2 relays", "rangeStep": 1 },
-                { "id": "deny", "name": "Deny", "effect": "+2 Armor Score", "cost": "6 coils, 3 wire, 2 copper, 4 batteries", "armorScore": 2 },
-                { "id": "target", "name": "Target", "effect": "+2 to attack rolls", "cost": "10 wires, 7 gold, 5 fuses, 5 circuits, 2 batteries" },
-                { "id": "split", "name": "Split", "effect": "When you make an attack, mark a Stress to target another creature within range.", "cost": "12 gears, 5 lenses, 15 aluminum, 9 relays" },
-                { "id": "fix", "name": "Fix", "effect": "When you deal Severe damage, clear a Hit Point.", "cost": "6 coils, 4 wires, 1 crystal, 5 cobalt, 5 silver, 7 relays, 2 batteries" },
-                { "id": "scare", "name": "Scare", "effect": "When you critically succeed on an attack, the target must mark a Stress.", "cost": "6 triggers, 8 copper, 9 aluminum, 10 discs" },
-                { "id": "sear", "name": "Sear", "effect": "+2 damage", "cost": "11 triggers, 11 platinum, 11 circuits, 7 discs", "damage": 2, "tier": 2 },
-                { "id": "absorb", "name": "Absorb", "effect": "You can mark an additional Armor Slot against incoming damage.", "cost": "26 gears, 13 gold, 15 relays, 8 batteries", "tier": 2 },
-                { "id": "kick", "name": "Kick", "effect": "On a successful attack, you can mark 2 Stress to force the target to mark an additional Hit Point.", "cost": "33 triggers, 13 crystals, 23 cobalt, 16 discs", "tier": 2 },
-                { "id": "block", "name": "Block", "effect": "+3 Armor Score; −1 Evasion", "cost": "27 crystals, 67 aluminum, 33 relays, 4 capacitors, 5 batteries", "armorScore": 3, "evasion": -1, "tier": 3 },
-                { "id": "zip", "name": "Zip", "effect": "Move up to Far range as part of an attack.", "cost": "37 coils, 43 silver, 67 fuses, 12 capacitors", "tier": 3 },
-                { "id": "bury", "name": "Bury", "effect": "+3 damage", "cost": "28 triggers, 28 circuits, 28 relays, 1 relic", "damage": 3, "tier": 3 },
-                { "id": "follow", "name": "Follow", "effect": "Mark 2 Stress to reroll your attack.", "cost": "75 gears, 67 lenses, 30 copper, 33 circuits", "tier": 4 },
-                { "id": "override", "name": "Override", "effect": "Attack rolls have advantage.", "cost": "63 wires, 71 gold, 58 discs, 5 relics", "tier": 4 }
+                {
+                  "id": "force",
+                  "name": "Force",
+                  "effect": "+1 damage",
+                  "cost": "3 gears, 2 lenses, 4 aluminum, 1 capacitor",
+                  "damage": 1
+                },
+                {
+                  "id": "guard",
+                  "name": "Guard",
+                  "effect": "+1 Armor Score",
+                  "cost": "3 wires, 2 silver, 2 platinum, 3 fuses",
+                  "armorScore": 1
+                },
+                {
+                  "id": "converge",
+                  "name": "Converge",
+                  "effect": "+1 to attack rolls",
+                  "cost": "4 coils, 2 crystals, 5 gold, 3 discs"
+                },
+                {
+                  "id": "amplify",
+                  "name": "Amplify",
+                  "effect": "On a successful attack, roll an additional damage die and drop the lowest result.",
+                  "cost": "4 crystals, 4 cobalt, 4 copper, 4 capacitors"
+                },
+                {
+                  "id": "scope",
+                  "name": "Scope",
+                  "effect": "Increase range by one step (Melee to Very Close, Close to Far, etc.).",
+                  "cost": "5 lenses, 3 silver, 2 circuits, 2 relays",
+                  "rangeStep": 1
+                },
+                {
+                  "id": "deny",
+                  "name": "Deny",
+                  "effect": "+2 Armor Score",
+                  "cost": "6 coils, 3 wire, 2 copper, 4 batteries",
+                  "armorScore": 2
+                },
+                {
+                  "id": "target",
+                  "name": "Target",
+                  "effect": "+2 to attack rolls",
+                  "cost": "10 wires, 7 gold, 5 fuses, 5 circuits, 2 batteries"
+                },
+                {
+                  "id": "split",
+                  "name": "Split",
+                  "effect": "When you make an attack, mark a Stress to target another creature within range.",
+                  "cost": "12 gears, 5 lenses, 15 aluminum, 9 relays"
+                },
+                {
+                  "id": "fix",
+                  "name": "Fix",
+                  "effect": "When you deal Severe damage, clear a Hit Point.",
+                  "cost": "6 coils, 4 wires, 1 crystal, 5 cobalt, 5 silver, 7 relays, 2 batteries"
+                },
+                {
+                  "id": "scare",
+                  "name": "Scare",
+                  "effect": "When you critically succeed on an attack, the target must mark a Stress.",
+                  "cost": "6 triggers, 8 copper, 9 aluminum, 10 discs"
+                },
+                {
+                  "id": "sear",
+                  "name": "Sear",
+                  "effect": "+2 damage",
+                  "cost": "11 triggers, 11 platinum, 11 circuits, 7 discs",
+                  "damage": 2,
+                  "tier": 2
+                },
+                {
+                  "id": "absorb",
+                  "name": "Absorb",
+                  "effect": "You can mark an additional Armor Slot against incoming damage.",
+                  "cost": "26 gears, 13 gold, 15 relays, 8 batteries",
+                  "tier": 2
+                },
+                {
+                  "id": "kick",
+                  "name": "Kick",
+                  "effect": "On a successful attack, you can mark 2 Stress to force the target to mark an additional Hit Point.",
+                  "cost": "33 triggers, 13 crystals, 23 cobalt, 16 discs",
+                  "tier": 2
+                },
+                {
+                  "id": "block",
+                  "name": "Block",
+                  "effect": "+3 Armor Score; −1 Evasion",
+                  "cost": "27 crystals, 67 aluminum, 33 relays, 4 capacitors, 5 batteries",
+                  "armorScore": 3,
+                  "evasion": -1,
+                  "tier": 3
+                },
+                {
+                  "id": "zip",
+                  "name": "Zip",
+                  "effect": "Move up to Far range as part of an attack.",
+                  "cost": "37 coils, 43 silver, 67 fuses, 12 capacitors",
+                  "tier": 3
+                },
+                {
+                  "id": "bury",
+                  "name": "Bury",
+                  "effect": "+3 damage",
+                  "cost": "28 triggers, 28 circuits, 28 relays, 1 relic",
+                  "damage": 3,
+                  "tier": 3
+                },
+                {
+                  "id": "follow",
+                  "name": "Follow",
+                  "effect": "Mark 2 Stress to reroll your attack.",
+                  "cost": "75 gears, 67 lenses, 30 copper, 33 circuits",
+                  "tier": 4
+                },
+                {
+                  "id": "override",
+                  "name": "Override",
+                  "effect": "Attack rolls have advantage.",
+                  "cost": "63 wires, 71 gold, 58 discs, 5 relics",
+                  "tier": 4
+                }
               ]
             }
           ],

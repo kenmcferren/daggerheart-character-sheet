@@ -196,11 +196,12 @@ function validateEquipment(ch: Character, setup: CreationSetup, bad: (s: string,
   } else {
     const prim = ws.filter((w) => slotOf(w) === 'primary')
     const sec = ws.filter((w) => slotOf(w) === 'secondary')
-    const twoHanded = prim.length === 1 && sec.length === 0 && prim[0].burden === 'two-handed'
     const maxSecondary = secondarySlots(ch, setup)
-    const pair = prim.length === 1 && sec.length >= 1 && sec.length <= maxSecondary && (maxSecondary > 1 || prim[0].burden === 'one-handed') && sec.every((w) => w.burden === 'one-handed') // Four-armed: a primary of either size
+    // One primary (or none), up to maxSecondary secondaries, and the hands they need must fit in the hands available:
+    // 2+0 is fine, 2+1 is not, 2+2 needs four arms. A secondary needs a primary.
+    const fits = prim.length <= 1 && sec.length <= maxSecondary && (sec.length === 0 || prim.length === 1) && ws.reduce((n, w) => n + weaponLoad(w), 0) <= handsAvailable(ch, setup)
     // No weapon is a legal choice (Brawler fights bare-handed).
-    if (ws.length && !twoHanded && !pair) bad('equipment', `Choose no weapon, one two-handed primary weapon, or a one-handed primary and ${maxSecondary > 1 ? 'up to two one-handed secondary weapons (Four-armed allows a two-handed primary too)' : 'a one-handed secondary'}.`)
+    if (ws.length && !fits) bad('equipment', `Choose no weapon, one primary weapon, or a primary and ${maxSecondary > 1 ? 'up to two secondary weapons' : 'a secondary weapon'}, using no more than ${handsAvailable(ch, setup)} hands in all (weapons that need no hands are free).`)
   }
   // No armor is a legal choice too (Bare Bones, Brawler).
   if (armorIds.length > 1) bad('equipment', 'Choose at most one set of armor.')
@@ -272,6 +273,12 @@ export function deriveStats(ch: Character, setup: CreationSetup): DerivedStats {
     trackers,
   }
 }
+
+/** Hands a weapon needs: two-handed 2, one-handed 1, anything else (e.g. Battleglove's "no-hands") 0. */
+export const weaponLoad = (w: object): number => ((w as { burden?: unknown }).burden === 'two-handed' ? 2 : (w as { burden?: unknown }).burden === 'one-handed' ? 1 : 0)
+
+/** Hands available for weapons: 2, or 4 with an ancestry feature like Kasatha Four-armed. */
+export const handsAvailable = (ch: Character, setup: CreationSetup): number => 2 * secondarySlots(ch, setup)
 
 /** How many secondary weapons the character may wield: 1, or 2 with an ancestry feature like Kasatha Four-armed. */
 export function secondarySlots(ch: Character, setup: CreationSetup): number {

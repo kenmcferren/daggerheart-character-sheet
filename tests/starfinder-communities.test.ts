@@ -7,9 +7,10 @@ import { validatePack } from '../src/engine/packs'
 import { renderSheet, type SheetFonts } from '../src/pdf/sheet'
 import { withRecording, outside } from './lib/record'
 import { equipped } from './lib/levelup-paths'
+import { ARMS, SF_ARMS } from './lib/packs'
 
 const pack = (f: string) => JSON.parse(readFileSync(`packs/core/${f}.json`, 'utf8'))
-const PACKS = [pack('srd-core'), pack('srd-frames'), pack('starfinder')]
+const PACKS = [pack('srd-core'), pack('srd-frames'), pack('starfinder'), ...ARMS, SF_ARMS]
 const plain = buildCreation(PACKS)
 const sf = buildCreation(PACKS, { supplements: ['starfinder-communities'] })
 const font = (f: string) => new Uint8Array(readFileSync(`assets/fonts/${f}`))
@@ -87,9 +88,9 @@ describe('[s10] Starfinder communities option', () => {
     expect(sheetView(withCommunity('sf-hubborne'), sf).countBoxes).toEqual([])
   }, 60_000)
 
-  it('both Starfinder supplements belong to the Starheart group, and no other supplement does', () => {
+  it('the Starfinder supplements belong to the Starheart group, and no other supplement does', () => {
     const frames = [...plain.registry.campaignFrames.values()] as any[]
-    expect(frames.filter((f) => f.group === 'Starheart - Starfinder Conversion').map((f) => f.id).sort()).toEqual(['starfinder-ancestries', 'starfinder-communities'])
+    expect(frames.filter((f) => f.group === 'Starheart - Starfinder Conversion').map((f) => f.id).sort()).toEqual(['starfinder-ancestries', 'starfinder-armaments', 'starfinder-communities'])
     expect(frames.filter((f) => f.group && f.group !== 'Starheart - Starfinder Conversion')).toHaveLength(0)
   })
 })

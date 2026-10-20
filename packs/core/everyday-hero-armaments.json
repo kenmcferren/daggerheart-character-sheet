@@ -1,0 +1,388 @@
+{
+  "schemaVersion": 1,
+  "id": "everyday-hero-armaments",
+  "name": "Everyday Hero Starting Equipment (weapons and armor)",
+  "version": "2.0.0",
+  "publisher": "Darrington Press (SRD)",
+  "extends": [
+    "srd-frames",
+    "srd-armaments"
+  ],
+  "overrides": {
+    "campaignFrames": {
+      "everyday-hero": {
+        "pools": {
+          "weapons": [
+            {
+              "id": "cleaver",
+              "name": "Cleaver",
+              "weaponSlot": "primary",
+              "trait": "agility",
+              "range": "melee",
+              "burden": "one-handed",
+              "feature": "Reliable: +1 to attack rolls",
+              "damage": "d8",
+              "damageType": "physical"
+            },
+            {
+              "id": "sharpened-rake",
+              "name": "Sharpened Rake",
+              "weaponSlot": "primary",
+              "trait": "agility",
+              "range": "melee",
+              "burden": "two-handed",
+              "damage": "d8+3",
+              "damageType": "physical"
+            },
+            {
+              "id": "butchers-axe",
+              "name": "Butcher’s Axe",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "two-handed",
+              "feature": "Heavy: −1 to Evasion",
+              "damage": "d12+3",
+              "damageType": "physical"
+            },
+            {
+              "id": "iron-skillet",
+              "name": "Iron Skillet",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "one-handed",
+              "damage": "d8+1",
+              "damageType": "physical"
+            },
+            {
+              "id": "pitchfork",
+              "name": "Pitchfork",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "two-handed",
+              "damage": "d10+3",
+              "damageType": "physical"
+            },
+            {
+              "id": "sledgehammer",
+              "name": "Sledgehammer",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "two-handed",
+              "feature": "Massive: −1 to Evasion; on a successful attack, roll an additional damage die and discard the lowest result.",
+              "damage": "d10+3",
+              "damageType": "physical"
+            },
+            {
+              "id": "cooking-knife",
+              "name": "Cooking Knife",
+              "weaponSlot": "primary",
+              "trait": "finesse",
+              "range": "melee",
+              "burden": "one-handed",
+              "damage": "d8+1",
+              "damageType": "physical"
+            },
+            {
+              "id": "walking-staff",
+              "name": "Walking Staff",
+              "weaponSlot": "primary",
+              "trait": "instinct",
+              "range": "melee",
+              "burden": "two-handed",
+              "damage": "d10+3",
+              "damageType": "physical"
+            },
+            {
+              "id": "rolling-pin",
+              "name": "Rolling Pin",
+              "weaponSlot": "primary",
+              "trait": "presence",
+              "range": "melee",
+              "burden": "one-handed",
+              "damage": "d8+1",
+              "damageType": "physical"
+            },
+            {
+              "id": "sickle",
+              "name": "Sickle",
+              "weaponSlot": "primary",
+              "trait": "presence",
+              "range": "melee",
+              "burden": "one-handed",
+              "feature": "Quick: When you make an attack, you can mark a Stress to target another creature within range.",
+              "damage": "d8",
+              "damageType": "physical"
+            },
+            {
+              "id": "forge-poker",
+              "name": "Forge Poker",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "very-close",
+              "burden": "two-handed",
+              "damage": "d8+2",
+              "damageType": "physical"
+            },
+            {
+              "id": "crop-scythe",
+              "name": "Crop Scythe",
+              "weaponSlot": "primary",
+              "trait": "finesse",
+              "range": "very-close",
+              "burden": "two-handed",
+              "damage": "d8+2",
+              "damageType": "physical"
+            },
+            {
+              "id": "fishing-rod",
+              "name": "Fishing Rod",
+              "weaponSlot": "primary",
+              "trait": "agility",
+              "range": "far",
+              "burden": "two-handed",
+              "damage": "d6+3",
+              "damageType": "physical"
+            },
+            {
+              "id": "slingshot",
+              "name": "Slingshot",
+              "weaponSlot": "primary",
+              "trait": "finesse",
+              "range": "far",
+              "burden": "two-handed",
+              "damage": "d6+3",
+              "damageType": "physical"
+            },
+            {
+              "id": "firework-launcher",
+              "name": "Firework Launcher",
+              "weaponSlot": "primary",
+              "trait": "agility",
+              "range": "very-far",
+              "burden": "two-handed",
+              "feature": "Cumbersome: −1 to Finesse",
+              "damage": "d6+3",
+              "damageType": "physical"
+            },
+            {
+              "id": "enchanted-hammer",
+              "name": "Enchanted Hammer",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "one-handed",
+              "damage": "d10+1",
+              "damageType": "magic"
+            },
+            {
+              "id": "enchanted-mop",
+              "name": "Enchanted Mop",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "two-handed",
+              "damage": "d10+3",
+              "damageType": "magic"
+            },
+            {
+              "id": "enchanted-scissors",
+              "name": "Enchanted Scissors",
+              "weaponSlot": "primary",
+              "trait": "finesse",
+              "range": "very-close",
+              "burden": "one-handed",
+              "damage": "d10",
+              "damageType": "magic"
+            },
+            {
+              "id": "enchanted-broomstick",
+              "name": "Enchanted Broomstick",
+              "weaponSlot": "primary",
+              "trait": "instinct",
+              "range": "very-close",
+              "burden": "two-handed",
+              "damage": "d10+2",
+              "damageType": "magic"
+            },
+            {
+              "id": "exploding-potions",
+              "name": "Exploding Potions",
+              "weaponSlot": "primary",
+              "trait": "finesse",
+              "range": "close",
+              "burden": "one-handed",
+              "damage": "d8",
+              "damageType": "magic"
+            },
+            {
+              "id": "enchanted-forge-lighter",
+              "name": "Enchanted Forge Lighter",
+              "weaponSlot": "primary",
+              "trait": "instinct",
+              "range": "close",
+              "burden": "one-handed",
+              "damage": "d8",
+              "damageType": "magic"
+            },
+            {
+              "id": "enchanted-boomerang",
+              "name": "Enchanted Boomerang",
+              "weaponSlot": "primary",
+              "trait": "instinct",
+              "range": "far",
+              "burden": "two-handed",
+              "damage": "d6+3",
+              "damageType": "magic"
+            },
+            {
+              "id": "enchanted-kite",
+              "name": "Enchanted Kite",
+              "weaponSlot": "primary",
+              "trait": "presence",
+              "range": "far",
+              "burden": "two-handed",
+              "feature": "Versatile: This weapon can also be used with these statistics—Presence, Melee, d10.",
+              "damage": "d6",
+              "damageType": "magic"
+            },
+            {
+              "id": "whisk-wand",
+              "name": "Whisk Wand",
+              "weaponSlot": "primary",
+              "trait": "knowledge",
+              "range": "far",
+              "burden": "one-handed",
+              "damage": "d6+1",
+              "damageType": "magic"
+            },
+            {
+              "id": "sparkling-staff",
+              "name": "Sparkling Staff",
+              "weaponSlot": "primary",
+              "trait": "knowledge",
+              "range": "very-far",
+              "burden": "two-handed",
+              "feature": "Powerful: On a successful attack, roll an additional damage die and discard the lowest result.",
+              "damage": "d6",
+              "damageType": "magic"
+            },
+            {
+              "id": "large-fork",
+              "name": "Large Fork",
+              "weaponSlot": "secondary",
+              "trait": "agility",
+              "range": "melee",
+              "burden": "one-handed",
+              "feature": "Paired: +2 to primary weapon damage to targets within Melee range",
+              "damage": "d8",
+              "damageType": "physical"
+            },
+            {
+              "id": "barrel-lid-shield",
+              "name": "Barrel Lid Shield",
+              "weaponSlot": "secondary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "one-handed",
+              "feature": "Protective: +1 to Armor Score",
+              "damage": "d4",
+              "damageType": "physical"
+            },
+            {
+              "id": "table-shield",
+              "name": "Table Shield",
+              "weaponSlot": "secondary",
+              "trait": "strength",
+              "range": "melee",
+              "burden": "one-handed",
+              "feature": "Barrier: +2 to Armor Score; −1 to Evasion",
+              "damage": "d6",
+              "damageType": "physical"
+            },
+            {
+              "id": "paring-knife",
+              "name": "Paring Knife",
+              "weaponSlot": "secondary",
+              "trait": "finesse",
+              "range": "melee",
+              "burden": "one-handed",
+              "feature": "Paired: +2 to primary weapon damage to targets within Melee range",
+              "damage": "d8",
+              "damageType": "physical"
+            },
+            {
+              "id": "festival-whip",
+              "name": "Festival Whip",
+              "weaponSlot": "secondary",
+              "trait": "presence",
+              "range": "very-close",
+              "burden": "one-handed",
+              "feature": "Startling: Mark a Stress to crack the whip and force all adversaries within Melee range back to Close range.",
+              "damage": "d6",
+              "damageType": "physical"
+            },
+            {
+              "id": "towline-hook",
+              "name": "Towline Hook",
+              "weaponSlot": "secondary",
+              "trait": "finesse",
+              "range": "close",
+              "burden": "one-handed",
+              "feature": "Hooked: On a successful attack, you can pull the target into Melee range with you.",
+              "damage": "d6",
+              "damageType": "physical"
+            },
+            {
+              "id": "flare-launcher",
+              "name": "Flare Launcher",
+              "weaponSlot": "secondary",
+              "trait": "finesse",
+              "range": "far",
+              "burden": "one-handed",
+              "feature": "Bright: This weapon temporarily lights up the area the flare lands in.",
+              "damage": "d6+1",
+              "damageType": "physical"
+            }
+          ],
+          "armor": [
+            {
+              "id": "quilted-clothing",
+              "name": "Quilted Clothing",
+              "feature": "Flexible: +1 to Evasion",
+              "majorThreshold": 5,
+              "severeThreshold": 11,
+              "armorScore": 3
+            },
+            {
+              "id": "leather-apron",
+              "name": "Leather Apron",
+              "majorThreshold": 6,
+              "severeThreshold": 13,
+              "armorScore": 3
+            },
+            {
+              "id": "tree-bark-armor",
+              "name": "Tree Bark Armor",
+              "feature": "Heavy: −1 to Evasion",
+              "majorThreshold": 7,
+              "severeThreshold": 15,
+              "armorScore": 4
+            },
+            {
+              "id": "baking-tray-breastplate",
+              "name": "Baking Tray Breastplate",
+              "feature": "Very Heavy: −2 to Evasion; −1 to Agility",
+              "majorThreshold": 8,
+              "severeThreshold": 17,
+              "armorScore": 4
+            }
+          ]
+        }
+      }
+    }
+  }
+}

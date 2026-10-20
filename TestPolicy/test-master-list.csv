@@ -28,13 +28,13 @@ core-pack.[s2] SRD core pack.resolves every cross-reference,0
 core-pack.[s2] SRD core pack.validates against the schema,0
 creation.[s3] creation engine.detects duplicate steps, trackers, resources, and move add/remove,0
 creation.[s3] creation engine.every supplement alone is conflict-free,0
-creation.[s3] creation engine.flags replace + add on the same pool,0
-creation.[s3] creation engine.flags two supplements replacing the weapons pool,0
 creation.[s3] creation engine.insert-step places steps before a base step or before creation,0
+creation.[s3] creation engine.keeps every replacement of the same pool (they stack),1
 creation.[s3] creation engine.no frame: the ten SRD steps in order,0
 creation.[s3] creation engine.rejects an insert before an unknown step,0
 creation.[s3] creation engine.rejects unknown ids, frame slot, duplicates,1
 creation.[s3] creation engine.replace and add pool ops resolve to pool entries,0
+creation.[s3] creation engine.replace beats add: adds to a replaced pool are dropped,1
 creation.[s3] creation engine.supplement collects annotations by target,1
 frame-pack.[s2] SRD campaign frame pack.annotate targets resolve to core entries,0
 frame-pack.[s2] SRD campaign frame pack.every annotate/back-sheet carries text,0
@@ -174,7 +174,6 @@ srd-files.[s2] SRD Markdown files.every relative link resolves,0
 srd-files.[s2] SRD Markdown files.has the expected content counts,0
 srd-files.[s2] SRD Markdown files.leaves no glyph placeholders or page footers,0
 starfinder-audit.[s9] Starfinder page-count audit.every Starfinder ancestry: all classes and named + seeded paths to level 10 stay inside the margins and within 6 pages,0
-starfinder-communities.[s10] Starfinder communities option.both Starfinder supplements belong to the Starheart group, and no other supplement does,1
 starfinder-communities.[s10] Starfinder communities option.every Starfinder community has a description and one feature with rules and short wording,1
 starfinder-communities.[s10] Starfinder communities option.every Starfinder community renders inside the margins with its feature text,1
 starfinder-communities.[s10] Starfinder communities option.off: the standard community list is unchanged and Starfinder communities are refused,1
@@ -182,6 +181,7 @@ starfinder-communities.[s10] Starfinder communities option.on: the 15 Starfinder
 starfinder-communities.[s10] Starfinder communities option.Scrapborn prints a Junk Count box on the inventory row, clear of the title and the gold shapes (also with Tech credits),1
 starfinder-communities.[s10] Starfinder communities option.Self Contained prints a Rose token tracker equal to the character level,1
 starfinder-communities.[s10] Starfinder communities option.the pack validates against the schema,1
+starfinder-communities.[s10] Starfinder communities option.the Starfinder supplements belong to the Starheart group, and no other supplement does,1
 starfinder-communities.[s10] Starfinder communities option.Wildsense is a situational Evasion footnote, not baked in,1
 starfinder.[s9] Starfinder ancestries option.Android: every Experience starts at +3 (creation); other ancestries stay at +2,0
 starfinder.[s9] Starfinder ancestries option.Kasatha may wield two secondary weapons; other ancestries only one,0
@@ -191,6 +191,12 @@ starfinder.[s9] Starfinder ancestries option.on: Starfinder ancestries first, al
 starfinder.[s9] Starfinder ancestries option.Skittermander: +1 Evasion is baked in; Ysoki Scurry is a situational footnote, not baked in,0
 starfinder.[s9] Starfinder ancestries option.the pack validates against the schema,0
 starfinder.[s9] Starfinder ancestries option.the weapons and armor row prints natural weapons and extra secondaries as extra cells, inside the margins,0
+starfinder.[s9] Starfinder armor.leaves the core lists alone when it is off,1
+starfinder.[s9] Starfinder armor.replaces the core armor list when the supplement is on,1
+starfinder.[s9] Starfinder armor.replaces the core weapon list too (Tier 1 and 2 only for now),1
+starfinder.[s9] Starfinder armor.wins over a frame that only adds armor,1
+starfinder.[s9] Starfinder weapon hands.a no-hands weapon is free: two-handed + no-hands is fine, two-handed + one-handed is not,1
+starfinder.[s9] Starfinder weapon hands.four arms hold a two-handed primary plus two one-handed secondaries,1
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.a mastery Stalwart carries all three of Unwavering/Unrelenting/Undaunted, stacked (+1+2+3 = +6 to both thresholds),1
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.Armorer / Fortified Armor (domain cards): computed while armor is equipped, not a footnote (owner, 2026-09-23),1
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.Armorer / Fortified Armor do nothing without armor equipped,1

@@ -5,6 +5,9 @@ Read this first every session. Update as steps finish.
 ## Project
 Daggerheart guided character creation/level-up website. Output: printable PDF. Local saves. Source-pack architecture so third-party sources load the same way as the two primary books. Details: `Docs/plan.md`.
 
+## Armaments split (2026-10-18, uncommitted)
+- Weapons/armor moved out of `srd-core`/`srd-frames` into `srd-armaments.json` and `<frame>-armaments.json` (everyday-hero, western, monster-hunting; overrides each frame's `pools`). See `Docs/campaign-frame-impacts.md` (last section). Tests load them via `tests/lib/packs.ts` (`ARMS`); 74 pass, `vite build` ok. Not checked live in the browser. Old saves keep working (equipment ids unchanged).
+
 ## Current series
 - Series 1-5 archived. UI touch-up pass and saved-versions restyle done 2026-09-23 (owner-approved; archived in long-term-done.md). Series 7: step 1 done; step 2 (condense text for the 4-page level 10 target) 2a-2d all drafted 2026-09-23, owner reviewed at first glance 2026-09-23, all fine. Series 8: Druid forms page, done. Series 6 still open, untouched. Series 9 (Starfinder ancestries option) done and archived 2026-10-24 (`Docs/archive/series-9.md`; its `[s9]` tests are set to 0).
 

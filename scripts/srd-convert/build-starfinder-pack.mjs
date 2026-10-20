@@ -26,6 +26,10 @@ const campaignFrames = [{
 }, {
   id: com.frame.id, name: com.frame.name, frameKind: 'supplement', group: GROUP,
   creation: { ops: [{ op: 'list-communities-first', ids: com.frame.listFirst }] },
+}, {
+  // Gear lists live in starfinder-armaments.json (build-starfinder-armaments.mjs), which supplies this frame's `pools`.
+  id: 'starfinder-armaments', name: 'Starfinder Weapons and Armor', frameKind: 'supplement', group: GROUP,
+  creation: { ops: [{ op: 'replace-pool', pool: 'weapons', with: 'pools.weapons' }, { op: 'replace-pool', pool: 'armor', with: 'pools.armor' }] },
 }]
 const pack = { schemaVersion: 1, id: 'starfinder', name: 'Starfinder', version: '1.1.0', publisher: 'Owner (house rules)', extends: ['srd-core'], content: { ancestries: src.ancestries.map((a) => ({ ...a, onlyWith: src.frame.id })), communities: com.communities.map((c) => ({ ...c, onlyWith: com.frame.id })), campaignFrames } }
 writeFileSync('packs/core/starfinder.json', JSON.stringify(pack, null, 2) + '\n')

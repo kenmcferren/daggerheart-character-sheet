@@ -1,14 +1,19 @@
 import core from '../../packs/core/srd-core.json'
 import frames from '../../packs/core/srd-frames.json'
 import starfinder from '../../packs/core/starfinder.json'
+import armaments from '../../packs/core/srd-armaments.json'
+import everydayHeroArms from '../../packs/core/everyday-hero-armaments.json'
+import westernArms from '../../packs/core/western-armaments.json'
+import monsterHuntingArms from '../../packs/core/monster-hunting-armaments.json'
+import starfinderArms from '../../packs/core/starfinder-armaments.json'
 import { buildCreation, type CreationSetup, type FrameEntry } from '../engine/creation'
 import { CharacterStore } from '../engine/saves'
 import { idbStore } from '../engine/idbStore'
 import { creationOf, newCharacter, type Character } from '../engine/character'
 
 /** Packs loaded at build time. Ids go into each saved character. */
-export const PACKS: unknown[] = [core, frames, starfinder]
-export const PACK_IDS = [core.id, frames.id, starfinder.id]
+export const PACKS: unknown[] = [core, armaments, frames, everydayHeroArms, westernArms, monsterHuntingArms, starfinder, starfinderArms]
+export const PACK_IDS = (PACKS as { id: string }[]).map((p) => p.id)
 
 export const store = new CharacterStore(idbStore)
 

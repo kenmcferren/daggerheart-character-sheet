@@ -1,13 +1,14 @@
 import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { loadPacks } from '../src/engine/packs'
+import { ARMS } from './lib/packs'
 
 const core = JSON.parse(readFileSync('packs/core/srd-core.json', 'utf8'))
 const frames = JSON.parse(readFileSync('packs/core/srd-frames.json', 'utf8'))
 
 describe('[s2] SRD campaign frame pack', () => {
   it('loads on top of the core pack', () => {
-    const r = loadPacks([core, frames])
+    const r = loadPacks([core, frames, ...ARMS])
     expect(r.campaignFrames.size).toBe(9)
     expect(r.campaignFrames.get('witherwild')).toMatchObject({ frameKind: 'supplement' })
   })
@@ -15,7 +16,7 @@ describe('[s2] SRD campaign frame pack', () => {
     expect(frames.content.campaignFrames.filter((f: any) => f.frameKind !== 'supplement').length).toBe(0)
   })
   it('annotate targets resolve to core entries', () => {
-    const r = loadPacks([core, frames])
+    const r = loadPacks([core, frames, ...ARMS])
     for (const f of r.campaignFrames.values()) for (const op of (f as any).creation?.ops ?? []) {
       if (op.op !== 'annotate') continue
       const [kind, ...rest] = op.target.split('.')

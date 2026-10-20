@@ -6,8 +6,9 @@ import { readFileSync, mkdirSync, writeFileSync } from 'node:fs'
 import { renderSheet, type SheetFonts } from '../src/pdf/sheet'
 import { withRecording, outside } from './lib/record'
 import { level1, equipped, reg } from './lib/levelup-paths'
+import { ARMS } from './lib/packs'
 
-const setup = buildCreation([JSON.parse(readFileSync('packs/core/srd-core.json', 'utf8')), JSON.parse(readFileSync('packs/core/srd-frames.json', 'utf8'))])
+const setup = buildCreation([JSON.parse(readFileSync('packs/core/srd-core.json', 'utf8')), JSON.parse(readFileSync('packs/core/srd-frames.json', 'utf8')), ...ARMS])
 const withSub = (classId: string, subclassId: string): Character => { const c = level1(classId); return { ...c, choices: { ...c.choices, subclassId } } }
 const font = (f: string) => new Uint8Array(readFileSync(`assets/fonts/${f}`))
 const fonts: SheetFonts = { body: font('source-sans-3-latin-400-normal.woff'), bold: font('source-sans-3-latin-700-normal.woff'), italic: font('source-sans-3-latin-400-italic.woff'), boldItalic: font('source-sans-3-latin-700-italic.woff'), heading: font('cinzel-latin-700-normal.woff') }

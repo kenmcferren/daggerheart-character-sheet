@@ -28,6 +28,15 @@ for (const { file, data } of packs) {
     }
   }
 }
+// Overrides (e.g. a <frame>-armaments pack supplying a frame's `pools`) are shallow-merged onto the entry, as the loader does.
+for (const { file, data } of packs) {
+  for (const [kind, patches] of Object.entries(data.overrides ?? {})) {
+    for (const [id, patch] of Object.entries(patches)) {
+      if (!reg[kind]?.has(id)) bad(file, `overrides missing ${kind} "${id}"`)
+      else reg[kind].set(id, { ...reg[kind].get(id), ...patch })
+    }
+  }
+}
 const has = (kind, id) => reg[kind]?.has(id)
 const all = (kind) => [...(reg[kind]?.values() ?? [])]
 

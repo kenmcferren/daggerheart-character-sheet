@@ -168,9 +168,15 @@ const dup = (arr, what) => {
   const seen = new Set()
   for (const e of arr) { if (seen.has(e.id)) throw new Error(`duplicate ${what} id ${e.id}`); seen.add(e.id) }
 }
-const content = { classes, subclasses, ancestries, communities, domains, domainCards, equipment, levelUpOptions: buildLevelUpRules(rd) }
+// Weapons and armor go to their own pack (srd-armaments); items and consumables stay in core.
+const isArmament = (e) => e.category === 'weapon' || e.category === 'armor'
+const content = { classes, subclasses, ancestries, communities, domains, domainCards, equipment: equipment.filter((e) => !isArmament(e)), levelUpOptions: buildLevelUpRules(rd) }
+const armaments = equipment.filter(isArmament)
 for (const [k, v] of Object.entries(content)) dup(v, k)
+dup(armaments, 'armament')
 const pack = { schemaVersion: 1, id: 'srd-core', name: 'Daggerheart SRD 2.0 (core)', version: '2.0.0', publisher: 'Darrington Press (SRD)', content }
 mkdirSync('packs/core', { recursive: true })
 writeFileSync('packs/core/srd-core.json', JSON.stringify(pack, null, 2) + '\n')
+const armPack = { schemaVersion: 1, id: 'srd-armaments', name: 'Daggerheart SRD 2.0 (weapons and armor)', version: '2.0.0', publisher: 'Darrington Press (SRD)', extends: ['srd-core'], content: { equipment: armaments } }
+writeFileSync('packs/core/srd-armaments.json', JSON.stringify(armPack, null, 2) + '\n')
 console.log(Object.entries(content).map(([k, v]) => `${k}: ${v.length}`).join(', '))

@@ -1,0 +1,4 @@
+name,tier,majorThreshold,severeThreshold,armorScore,feature
+EXAMPLE Flight Suit,1,5,11,3,
+EXAMPLE Flight Suit,2,7,16,3,
+EXAMPLE Powered Plating,1,7,15,4,Heavy: -1 to Evasion

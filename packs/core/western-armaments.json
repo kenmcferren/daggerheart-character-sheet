@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "western-armaments",
+  "name": "Western Campaigns (weapons and armor)",
+  "version": "2.0.0",
+  "publisher": "Darrington Press (SRD)",
+  "extends": [
+    "srd-frames",
+    "srd-armaments"
+  ],
+  "overrides": {
+    "campaignFrames": {
+      "western": {
+        "pools": {
+          "weapons": [
+            {
+              "id": "revolver",
+              "name": "Revolver",
+              "weaponSlot": "primary",
+              "trait": "finesse",
+              "range": "far",
+              "burden": "one-handed",
+              "feature": "Six Shot: Place 6 Ammo tokens on your character sheet. Spend 1 Ammo token to make an attack. You can mark a Stress to regain spent Ammo tokens.",
+              "damageType": "physical",
+              "tiers": {
+                "1": {
+                  "damage": "d8+1"
+                },
+                "2": {
+                  "damage": "d8+4"
+                },
+                "3": {
+                  "damage": "d8+7"
+                },
+                "4": {
+                  "damage": "d8+10"
+                }
+              }
+            },
+            {
+              "id": "rifle",
+              "name": "Rifle",
+              "weaponSlot": "primary",
+              "trait": "agility",
+              "range": "very-far",
+              "burden": "two-handed",
+              "feature": "Sightline: Spend 2 Hope to gain advantage on an attack roll.",
+              "damageType": "physical",
+              "tiers": {
+                "1": {
+                  "damage": "d8+2"
+                },
+                "2": {
+                  "damage": "d8+5"
+                },
+                "3": {
+                  "damage": "d8+8"
+                },
+                "4": {
+                  "damage": "d8+11"
+                }
+              }
+            },
+            {
+              "id": "shotgun",
+              "name": "Shotgun",
+              "weaponSlot": "primary",
+              "trait": "strength",
+              "range": "very-close",
+              "burden": "two-handed",
+              "feature": "Scattershot: When you make an attack, target all creatures in front of you within range.",
+              "damageType": "physical",
+              "tiers": {
+                "1": {
+                  "damage": "d6+2"
+                },
+                "2": {
+                  "damage": "d6+5"
+                },
+                "3": {
+                  "damage": "d6+8"
+                },
+                "4": {
+                  "damage": "d6+11"
+                }
+              }
+            },
+            {
+              "id": "lasso",
+              "name": "Lasso",
+              "weaponSlot": "secondary",
+              "trait": "agility",
+              "range": "very-close",
+              "burden": "one-handed",
+              "feature": "Roped: On a successful attack, you can temporarily Rope the target instead of dealing damage. While Roped, the target is Restrained and Vulnerable, but you must remain within Very Close range of the target. When the target would clear this condition, you can make a Strength Reaction Roll. On a success, they remain Roped.",
+              "damageType": "physical",
+              "tiers": {
+                "1": {
+                  "damage": "d4"
+                },
+                "2": {
+                  "damage": "d4+3"
+                },
+                "3": {
+                  "damage": "d4+6"
+                },
+                "4": {
+                  "damage": "d4+9"
+                }
+              }
+            },
+            {
+              "id": "small-revolver",
+              "name": "Small Revolver",
+              "weaponSlot": "secondary",
+              "trait": "finesse",
+              "range": "far",
+              "burden": "one-handed",
+              "feature": "Quick Shot: Spend 2 Hope to gain a +4 bonus to primary weapon damage.",
+              "damageType": "physical",
+              "tiers": {
+                "1": {
+                  "damage": "d6"
+                },
+                "2": {
+                  "damage": "d6+3"
+                },
+                "3": {
+                  "damage": "d6+6"
+                },
+                "4": {
+                  "damage": "d6+9"
+                }
+              }
+            }
+          ],
+          "consumables": [
+            {
+              "id": "dynamite",
+              "name": "Dynamite",
+              "category": "consumable",
+              "rules": "You can light this dynamite and toss it within Close range. All creatures within Very Close range of where the dynamite lands must make a Reaction Roll (14). Targets who fail take 1d20+5 physical damage. Targets who succeed must mark a Stress. Dynamite deals double damage to inanimate objects or structures."
+            }
+          ]
+        }
+      }
+    }
+  }
+}

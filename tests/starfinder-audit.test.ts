@@ -6,12 +6,13 @@ import type { Character } from '../src/engine/character'
 import { renderSheet, lastLayout, type SheetFonts } from '../src/pdf/sheet'
 import { withRecording, outside } from './lib/record'
 import { NAMED, build, type Pattern } from './lib/patterns'
+import { ARMS, SF_ARMS } from './lib/packs'
 
 // Page-count audit with the Starfinder ancestries option on (Series 9 step 4). Same legal paths as the leveling-pattern
 // matrix (tests/level-patterns.test.ts), but the ancestry is swapped after the path is built and the sheet is rendered
 // with the Starfinder supplement. Human is rendered the same way as the baseline, so the comparison is like for like.
 const pack = (f: string) => JSON.parse(readFileSync(`packs/core/${f}.json`, 'utf8'))
-const setup = buildCreation([pack('srd-core'), pack('srd-frames'), pack('starfinder')], { supplements: ['starfinder-ancestries'] })
+const setup = buildCreation([pack('srd-core'), pack('srd-frames'), pack('starfinder'), ...ARMS, SF_ARMS], { supplements: ['starfinder-ancestries'] })
 const font = (f: string) => new Uint8Array(readFileSync(`assets/fonts/${f}`))
 const fonts: SheetFonts = {
   body: font('source-sans-3-latin-400-normal.woff'), bold: font('source-sans-3-latin-700-normal.woff'),
