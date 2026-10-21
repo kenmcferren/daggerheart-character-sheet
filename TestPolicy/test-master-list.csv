@@ -42,6 +42,11 @@ frame-pack.[s2] SRD campaign frame pack.loads on top of the core pack,0
 frame-pack.[s2] SRD campaign frame pack.no separate frame; every entry is a supplement,1
 frame-pack.[s2] SRD campaign frame pack.pool entry ids are unique and tiered items carry four tiers,0
 frame-pack.[s2] SRD campaign frame pack.pool references and tracker attachments resolve inside the frame,0
+gear-effects.[s11] gear effects: armor and weapon feature text feeds the printed numbers.a shield-type secondary weapon adds its Armor Score,1
+gear-effects.[s11] gear effects: armor and weapon feature text feeds the printed numbers.Carbon Skin adds +1 Evasion; Civilian Clothing +2; Freebooter Armor -1,1
+gear-effects.[s11] gear effects: armor and weapon feature text feeds the printed numbers.Defiance Series: -2 Evasion and -1 Agility on the printed traits,1
+gear-effects.[s11] gear effects: armor and weapon feature text feeds the printed numbers.parses the stat clauses and ignores costs, triggers and attack-roll bonuses,1
+gear-effects.[s11] gear effects: armor and weapon feature text feeds the printed numbers.Veskarium Imperial Plate adds Strength to Armor Score; Second Skin adds Finesse to Evasion,1
 level-patterns.[s5] leveling-pattern matrix.${classId}: named and random legal paths to level 10 replay, print inside the margins in grayscale, and stay within the page budget,0
 levelup-rules.[s5] level-up rules as data.costs, minimum level, marks, and cross-outs,0
 levelup-rules.[s5] level-up rules as data.every cross-out and class reference resolves; every entry has SRD rules text,0

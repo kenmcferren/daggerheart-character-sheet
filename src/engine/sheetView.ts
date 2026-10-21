@@ -1,6 +1,7 @@
 import type { Character, Trait } from './character'
 import type { CreationSetup } from './creation'
 import { COMPANION_SUBCLASS, extrasOf, progressOf, SLOT_CAP, type Progress } from './levelup'
+import { gearEffect } from './gearEffects'
 import { ancestryFeatures, armorPool, deriveStats, weaponPool, type DerivedStats } from './rules'
 
 type Any = any
@@ -129,6 +130,18 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
   const traits: Partial<Record<Trait, number>> = { ...ch.traits }
   for (const [t, n] of Object.entries(progress.traitBonus)) traits[t as Trait] = (traits[t as Trait] ?? 0) + (n as number)
 
+  // Permanent effects in equipped armor/weapon feature text (Flexible +1 Evasion, Heavy -1 Evasion, Defiance Series -1 Agility,
+  // shields' +N Armor Score, ...): trait changes first, since later math (Bare Bones, Mage Robes) and the printed traits use them.
+  const gearFx = ch.choices.equipmentIds
+    .map((id) => ([...weaponPool(setup).entries, ...armorPool(setup)] as Any[]).find((e) => e.id === id))
+    .filter(Boolean).map((e) => gearEffect(e.feature as string | undefined))
+  for (const fx of gearFx) for (const [t, n] of Object.entries(fx.traits)) traits[t as Trait] = (traits[t as Trait] ?? 0) + (n as number)
+  const gearStat = gearFx.reduce((a, fx) => ({
+    evasion: a.evasion + fx.evasion + (fx.evasionTrait ? traits[fx.evasionTrait as Trait] ?? 0 : 0),
+    armorScore: a.armorScore + fx.armorScore + (fx.armorScoreTrait ? Math.max(0, traits[fx.armorScoreTrait as Trait] ?? 0) : 0),
+    majorThreshold: a.majorThreshold + fx.majorThreshold, severeThreshold: a.severeThreshold + fx.severeThreshold,
+  }), { evasion: 0, armorScore: 0, majorThreshold: 0, severeThreshold: 0 })
+
   const spellcastTraits = subclasses.map((s) => (reg.subclasses.get(s.id) as Any)?.spellcastTrait as string | undefined).filter((t): t is string => !!t)
   const higherSpellcastTrait = spellcastTraits.length ? [...new Set(spellcastTraits)].sort((x, y) => (traits[y as Trait] ?? 0) - (traits[x as Trait] ?? 0))[0] : null
 
@@ -160,12 +173,12 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
 
   const stats: DerivedStats = {
     ...base,
-    evasion: base.evasion + progress.evasionBonus + statBonus.evasion,
+    evasion: base.evasion + progress.evasionBonus + statBonus.evasion + gearStat.evasion,
     hitPoints: Math.min(SLOT_CAP, base.hitPoints + progress.hitPointSlots),
     stress: Math.min(SLOT_CAP, base.stress + progress.stressSlots),
-    majorThreshold: base.majorThreshold + statBonus.majorThreshold + gearBonus.majorThreshold + (progress.vitalityThresholds ? 2 : 0),
-    severeThreshold: base.severeThreshold + statBonus.severeThreshold + gearBonus.severeThreshold + (progress.vitalityThresholds ? 2 : 0),
-    armorScore: Math.min(SLOT_CAP, base.armorScore + statBonus.armorScore + gearBonus.armorScore),
+    majorThreshold: base.majorThreshold + statBonus.majorThreshold + gearBonus.majorThreshold + gearStat.majorThreshold + (progress.vitalityThresholds ? 2 : 0),
+    severeThreshold: base.severeThreshold + statBonus.severeThreshold + gearBonus.severeThreshold + gearStat.severeThreshold + (progress.vitalityThresholds ? 2 : 0),
+    armorScore: Math.min(SLOT_CAP, base.armorScore + statBonus.armorScore + gearBonus.armorScore + gearStat.armorScore),
     proficiency: progress.proficiency,
   }
   const hasCombo = [...reg.levelUpOptions.values()].some((o: Any) => o.effect === 'combo-die' && o.classId === ch.choices.classId)
