@@ -81,7 +81,8 @@ export interface Creation {
   description: string
   /** [first feature's ancestry, second feature's ancestry]; null = one ancestry (choices.ancestryId). */
   mixedAncestry: { first: string; second: string } | null
-  potion: 'health' | 'stamina' | null
+  /** 'health' | 'stamina' (standard potions) or a stim id when the Starheart Consumables option is on. */
+  potion: string | null
   classItem: string
   backgroundAnswers: string[]
   experiences: string[]

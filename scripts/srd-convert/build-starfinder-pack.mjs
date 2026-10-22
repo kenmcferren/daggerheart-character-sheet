@@ -15,6 +15,13 @@ for (const c of com.communities) {
   for (const f of c.features) if (!f.rules || !f.short) throw new Error(`starfinder: ${c.id} ${f.name} needs rules and short`)
 }
 
+const cons = JSON.parse(readFileSync('scripts/srd-convert/starfinder/consumables.json', 'utf8'))
+const stims = cons.startingStims.map((id) => {
+  const it = cons.items.find((x) => x.id === id)
+  if (!it) throw new Error(`starfinder: unknown starting stim ${id}`)
+  return { id: it.id, name: it.name, rules: it.rules }
+})
+
 const GROUP = 'Starheart - Starfinder Conversion'
 const campaignFrames = [{
   id: src.frame.id, name: src.frame.name, frameKind: 'supplement', group: GROUP,
@@ -30,7 +37,11 @@ const campaignFrames = [{
   // Gear lists live in starfinder-armaments.json (build-starfinder-armaments.mjs), which supplies this frame's `pools`.
   id: 'starfinder-armaments', name: 'Starfinder Weapons and Armor', frameKind: 'supplement', group: GROUP,
   creation: { ops: [{ op: 'replace-pool', pool: 'weapons', with: 'pools.weapons' }, { op: 'replace-pool', pool: 'armor', with: 'pools.armor' }] },
+}, {
+  // Full consumables list (120 items) is in scripts/srd-convert/starfinder/consumables.json; only the starting stims are used so far.
+  id: 'starfinder-consumables', name: 'Starheart Consumables', frameKind: 'supplement', group: GROUP,
+  creation: { ops: [{ op: 'starting-stims', items: stims }] },
 }]
-const pack = { schemaVersion: 1, id: 'starfinder', name: 'Starfinder', version: '1.1.0', publisher: 'Owner (house rules)', extends: ['srd-core'], content: { ancestries: src.ancestries.map((a) => ({ ...a, onlyWith: src.frame.id })), communities: com.communities.map((c) => ({ ...c, onlyWith: com.frame.id })), campaignFrames } }
+const pack = { schemaVersion: 1, id: 'starfinder', name: 'Starfinder', version: '1.2.0', publisher: 'Owner (house rules)', extends: ['srd-core'], content: { ancestries: src.ancestries.map((a) => ({ ...a, onlyWith: src.frame.id })), communities: com.communities.map((c) => ({ ...c, onlyWith: com.frame.id })), campaignFrames } }
 writeFileSync('packs/core/starfinder.json', JSON.stringify(pack, null, 2) + '\n')
-console.log(`starfinder pack: ${src.ancestries.length} ancestries, ${com.communities.length} communities, ${campaignFrames.length} supplements`)
+console.log(`starfinder pack: ${src.ancestries.length} ancestries, ${com.communities.length} communities, ${campaignFrames.length} supplements, ${stims.length} starting stims`)

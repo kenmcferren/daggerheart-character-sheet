@@ -64,6 +64,8 @@ export interface CreationSetup {
   ancestryHidden: string[]
   /** Community ids listed ahead of the rest, in order (Starfinder communities option). */
   communityFirst: string[]
+  /** Stims offered in place of the standard Minor Health / Stamina Potion (Starheart Consumables option); empty = standard potions. */
+  startingStims: { id: string; name: string; rules: string }[]
   mixedAncestryAllowed: boolean
 }
 
@@ -134,9 +136,10 @@ export function buildCreation(
   for (const id of communityFirst) {
     if (!registry.communities.has(id)) throw new CreationError(`Unknown community "${id}" in a community list option`)
   }
+  const startingStims = ops.filter((o) => o.op === 'starting-stims').flatMap((o) => (Array.isArray(o.items) ? o.items : []) as { id: string; name: string; rules: string }[])
   const mixedAncestryAllowed = !ops.some((o) => o.op === 'disable-mixed-ancestry')
 
-  return { frame, supplements, registry, ops, ancestryFirst, ancestryHidden, communityFirst, mixedAncestryAllowed, conflicts: detectConflicts(ops, Object.fromEntries(active.map((f) => [f.id, f.name]))), steps: deriveSteps(ops), annotations, pools }
+  return { frame, supplements, registry, ops, ancestryFirst, ancestryHidden, communityFirst, startingStims, mixedAncestryAllowed, conflicts: detectConflicts(ops, Object.fromEntries(active.map((f) => [f.id, f.name]))), steps: deriveSteps(ops), annotations, pools }
 }
 
 function deriveSteps(ops: SourcedOp[]): WizardStep[] {

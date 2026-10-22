@@ -279,10 +279,16 @@ export function EquipmentStep(ctx: Ctx) {
   return (
     <>
       <GearPicker {...ctx} />
-      <Section title="Starting potion">
+      <Section title={setup.startingStims.length ? 'Starting stim' : 'Starting potion'}>
         <div className="grid">
-          <Choice title="Minor Health Potion" meta="Clear 1d4 Hit Points" selected={cr.potion === 'health'} onPick={() => update((_, x) => { x.potion = 'health' })} />
-          <Choice title="Minor Stamina Potion" meta="Clear 1d4 Stress" selected={cr.potion === 'stamina'} onPick={() => update((_, x) => { x.potion = 'stamina' })} />
+          {setup.startingStims.length ? setup.startingStims.map((s) => (
+            <Choice key={s.id} title={s.name} meta={s.rules} selected={cr.potion === s.id} onPick={() => update((_, x) => { x.potion = s.id })} />
+          )) : (
+            <>
+              <Choice title="Minor Health Potion" meta="Clear 1d4 Hit Points" selected={cr.potion === 'health'} onPick={() => update((_, x) => { x.potion = 'health' })} />
+              <Choice title="Minor Stamina Potion" meta="Clear 1d4 Stress" selected={cr.potion === 'stamina'} onPick={() => update((_, x) => { x.potion = 'stamina' })} />
+            </>
+          )}
         </div>
       </Section>
       <h3>Class item</h3>

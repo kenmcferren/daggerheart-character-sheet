@@ -550,7 +550,8 @@
             "list-ancestries-first",
             "hide-ancestries",
             "disable-mixed-ancestry",
-            "list-communities-first"
+            "list-communities-first",
+            "starting-stims"
           ]
         }
       }

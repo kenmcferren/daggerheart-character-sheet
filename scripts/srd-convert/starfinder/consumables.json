@@ -1,0 +1,1095 @@
+{
+  "startingStims": [
+    "stim-1",
+    "stim-2",
+    "stim-3",
+    "stim-4",
+    "stim-5",
+    "stim-6",
+    "stim-8",
+    "stim-9",
+    "stim-10"
+  ],
+  "items": [
+    {
+      "id": "cypher-1",
+      "type": "cypher",
+      "number": 1,
+      "name": "Sprite Bottle",
+      "rules": "When you mark your last Hit Point, this bottle shatters to release the Sprite inside. The Sprite clears all your Hit Points before fading from the Mortal Realm.",
+      "source": "hope-and-fear",
+      "oldName": "Sprite Bottle"
+    },
+    {
+      "id": "cypher-2",
+      "type": "cypher",
+      "number": 2,
+      "name": "Displacement Token",
+      "rules": "You can swallow this token to conjure two illusions of yourself that you can control. Each illusion lasts until it takes damage or until your next rest.",
+      "source": "hope-and-fear",
+      "oldName": "Displacement Token"
+    },
+    {
+      "id": "cypher-3",
+      "type": "cypher",
+      "number": 3,
+      "name": "Stonemason’s Fortune",
+      "rules": "When you throw this gray brick on the ground, it immediately grows into a 6-foot-tall, 10-foot-wide, and 2-foot- deep wall of solid stone.",
+      "source": "hope-and-fear",
+      "oldName": "Stonemason’s Fortune"
+    },
+    {
+      "id": "cypher-4",
+      "type": "cypher",
+      "number": 4,
+      "name": "Homet’s Secret Potion",
+      "rules": "After drinking this potion, the next successful attack you make critically succeeds.",
+      "source": "core",
+      "oldName": "Homet’s Secret Potion"
+    },
+    {
+      "id": "cypher-5",
+      "type": "cypher",
+      "number": 5,
+      "name": "Midas Flask",
+      "rules": "You can pour this small flask of alchemical liquid over a mundane item to instantly transmute it into a handful of gold.",
+      "source": "hope-and-fear",
+      "oldName": "Midas Flask"
+    },
+    {
+      "id": "cypher-6",
+      "type": "cypher",
+      "number": 6,
+      "name": "Staff of Reversal",
+      "rules": "You can break this staff against the ground to reverse one magical transformation or effect within Far range.",
+      "source": "hope-and-fear",
+      "oldName": "Staff of Reversal"
+    },
+    {
+      "id": "cypher-7",
+      "type": "cypher",
+      "number": 7,
+      "name": "Berserker’s Brew",
+      "rules": "When you drink this dram of liquid, you gain a bonus to your Strength and a penalty to your Finesse and Knowledge equal to your Instinct (minimum 1). This effect lasts until you make a death move or until your next rest.",
+      "source": "hope-and-fear",
+      "oldName": "Berserker’s Brew"
+    },
+    {
+      "id": "cypher-8",
+      "type": "cypher",
+      "number": 8,
+      "name": "Hopehold Flare",
+      "rules": "When you use this flare, allies within Close range roll a d6 when they spend a Hope. On a result of 6, they gain the effect of that Hope without spending it. The flare lasts until the end of the scene.",
+      "source": "core",
+      "oldName": "Hopehold Flare"
+    },
+    {
+      "id": "cypher-9",
+      "type": "cypher",
+      "number": 9,
+      "name": "Circle of the Void",
+      "rules": "Mark a Stress to create a void that extends up to Far range. No magic can be cast inside the void, and creatures within the void are immune to magic damage.",
+      "source": "core",
+      "oldName": "Circle of the Void"
+    },
+    {
+      "id": "cypher-10",
+      "type": "cypher",
+      "number": 10,
+      "name": "Cacophonous Concoction",
+      "rules": "When you drink this potion, anything you say or do in the next hour becomes impossible for a witness to recount. Any attempts they make to communicate what they saw, heard, or otherwise sensed comes out garbled or nonsensical.",
+      "source": "hope-and-fear",
+      "oldName": "Cacophonous Concoction"
+    },
+    {
+      "id": "cypher-11",
+      "type": "cypher",
+      "number": 11,
+      "name": "Nightmare Mead",
+      "rules": "You can drink this potion to discover the deepest fear of the next person you make eye contact with. When you do, the GM gains a Fear.",
+      "source": "hope-and-fear",
+      "oldName": "Nightmare Mead"
+    },
+    {
+      "id": "cypher-12",
+      "type": "cypher",
+      "number": 12,
+      "name": "Stake of Abjuration",
+      "rules": "You can hammer this stake into the ground and make a proclamation. Until your next rest, a creature within Far range of the stake who transgresses that proclamation must mark a Stress. The stake lasts until your next rest, then it shatters.",
+      "source": "hope-and-fear",
+      "oldName": "Stake of Abjuration"
+    },
+    {
+      "id": "cypher-13",
+      "type": "cypher",
+      "number": 13,
+      "name": "Psychopomp’s Shroud",
+      "rules": "You can place this shroud over the corpse of a recently deceased creature. The creature’s spirit enters the shroud and becomes your spectral assistant until the next sunrise, when they pass through the veil of death and take the shroud with them.",
+      "source": "hope-and-fear",
+      "oldName": "Psychopomp’s Shroud"
+    },
+    {
+      "id": "cypher-14",
+      "type": "cypher",
+      "number": 14,
+      "name": "Phial of Deep Ink",
+      "rules": "You can drink this bottle of ink to transform into a cephalopod of roughly your size for the next hour. You gain rubbery skin, soft bones, the ability to breathe underwater, and new limbs until you have eight total.",
+      "source": "hope-and-fear",
+      "oldName": "Phial of Deep Ink"
+    },
+    {
+      "id": "cypher-15",
+      "type": "cypher",
+      "number": 15,
+      "name": "Mesmer’s Tonic",
+      "rules": "When you drink this tonic, the only thing you can hear until your next rest are the surface thoughts of creatures within Very Close range.",
+      "source": "hope-and-fear",
+      "oldName": "Mesmer’s Tonic"
+    },
+    {
+      "id": "cypher-16",
+      "type": "cypher",
+      "number": 16,
+      "name": "Formoid Serum",
+      "rules": "You can drink this potion to become a swarm of 16 million ants until the end of the scene. You keep and have access to all equipment, loot, and features.",
+      "source": "hope-and-fear",
+      "oldName": "Formoid Serum"
+    },
+    {
+      "id": "cypher-17",
+      "type": "cypher",
+      "number": 17,
+      "name": "Steelskin Salve",
+      "rules": "You can apply this salve to your skin to gain a bonus to your damage thresholds equal to your tier until the end of the scene.",
+      "source": "hope-and-fear",
+      "oldName": "Steelskin Salve"
+    },
+    {
+      "id": "cypher-18",
+      "type": "cypher",
+      "number": 18,
+      "name": "Block House",
+      "rules": "Toss this wooden block to conjur a phatasmal doorway where it lands. Within occupants can close and seal the door, erasing it from the world. At the end of 1 day everything brought in appears at the threshold and the door vanishes forever.",
+      "source": "core",
+      "oldName": "Block House"
+    },
+    {
+      "id": "cypher-19",
+      "type": "cypher",
+      "number": 19,
+      "name": "Snakeskin Spirit",
+      "rules": "You can drink this potion to slough off your outer layer of skin and heal a scar.",
+      "source": "hope-and-fear",
+      "oldName": "Snakeskin Spirit"
+    },
+    {
+      "id": "cypher-20",
+      "type": "cypher",
+      "number": 20,
+      "name": "Bonding Honey",
+      "rules": "This honey can be used to glue two objects together permanently.",
+      "source": "core",
+      "oldName": "Bonding Honey"
+    },
+    {
+      "id": "cypher-21",
+      "type": "cypher",
+      "number": 21,
+      "name": "Magic-User’s Malison",
+      "rules": "When you release this spellcaster’s trapped soul, you can cast one spell from a card in your vault as if it were in your loadout. This doesn’t work for permanently vaulted cards.",
+      "source": "hope-and-fear",
+      "oldName": "Magic-User’s Malison"
+    },
+    {
+      "id": "cypher-22",
+      "type": "cypher",
+      "number": 22,
+      "name": "Shrinking Potion",
+      "rules": "You can drink this potion to halve your size until you choose to drop this form or your next rest. While in this form, you have a +2 bonus to Agility and a −1 penalty to your Proficiency.",
+      "source": "core",
+      "oldName": "Shrinking Potion"
+    },
+    {
+      "id": "cypher-23",
+      "type": "cypher",
+      "number": 23,
+      "name": "Quintessential Severant",
+      "rules": "You can use this magic blade to cut one magical or metaphysical bond, such as an enchantment, contract, magical tether, or divine oath. When you do, the blade shatters.",
+      "source": "hope-and-fear",
+      "oldName": "Quintessential Severant"
+    },
+    {
+      "id": "cypher-24",
+      "type": "cypher",
+      "number": 24,
+      "name": "Growing Potion",
+      "rules": "You can drink this potion to double your size until you choose to drop this form or your next rest. While in this form, you have a +2 bonus to Strength and a +1 bonus to your Proficiency.",
+      "source": "core",
+      "oldName": "Growing Potion"
+    },
+    {
+      "id": "cypher-25",
+      "type": "cypher",
+      "number": 25,
+      "name": "Mask of the Echoed Self",
+      "rules": "You can wear this mask during your next level up to swap the values of any of your traits. When you do, the mask becomes your permanent face.",
+      "source": "hope-and-fear",
+      "oldName": "Mask of the Echoed Self"
+    },
+    {
+      "id": "cypher-26",
+      "type": "cypher",
+      "number": 26,
+      "name": "Knowledge Stone",
+      "rules": "If you die while holding this stone, an ally can take a card from your loadout to place in their loadout or vault. After they take this knowledge, the stone crumbles.",
+      "source": "core",
+      "oldName": "Knowledge Stone"
+    },
+    {
+      "id": "cypher-27",
+      "type": "cypher",
+      "number": 27,
+      "name": "Necroprancer’s Bell",
+      "rules": "You can break this rusted, clapperless bell against the ground to summon a skeletal steed that climbs out of the earth and serves you until the next sunrise.",
+      "source": "hope-and-fear",
+      "oldName": "Necroprancer’s Bell"
+    },
+    {
+      "id": "cypher-28",
+      "type": "cypher",
+      "number": 28,
+      "name": "Drakemantle",
+      "rules": "You can use this enchanted ancient dragon hide to gain draconic characteristics until the end of the scene, when the hide falls aways in tatters. Until then, you can fly and gain a +5 bonus to your damage thresholds and a +1 bonus to your Proficiency.",
+      "source": "hope-and-fear",
+      "oldName": "Drakemantle"
+    },
+    {
+      "id": "cypher-29",
+      "type": "cypher",
+      "number": 29,
+      "name": "Lionheart Tonic",
+      "rules": "You can drink this tonic to gain a +1 bonus to your Proficiency until you roll with Fear.",
+      "source": "hope-and-fear",
+      "oldName": "Lionheart Tonic"
+    },
+    {
+      "id": "cypher-30",
+      "type": "cypher",
+      "number": 30,
+      "name": "Tears of the Undying Hero",
+      "rules": "When you drink this potion, death can’t touch you until your next long rest. When you would mark your last Hit Point, instead of making a death move, you make one final action roll before falling into a dreamless slumber until an ally chooses the Tend to Wounds downtime move to clear your Hit Points.",
+      "source": "hope-and-fear",
+      "oldName": "Tears of the Undying Hero"
+    },
+    {
+      "id": "gadget-1",
+      "type": "gadget",
+      "number": 1,
+      "name": "Steward Aegis Beacon",
+      "rules": "Light to fill an area within Close range with a protective field. A creature outside it can't enter if it has ill intent toward a creature inside. Lasts an hour.",
+      "source": "hope-and-fear",
+      "oldName": "Warding Candle"
+    },
+    {
+      "id": "gadget-2",
+      "type": "gadget",
+      "number": 2,
+      "name": "Castrovel Chameleon Spray",
+      "rules": "Spray on yourself to blend perfectly into natural environments until your next rest.",
+      "source": "hope-and-fear",
+      "oldName": "Mossmantle Potion"
+    },
+    {
+      "id": "gadget-3",
+      "type": "gadget",
+      "number": 3,
+      "name": "Voxsplice Lozenge",
+      "rules": "Dissolve to perfectly mimic any voice you've heard until the end of the scene.",
+      "source": "hope-and-fear",
+      "oldName": "Lyrebird Lozenge"
+    },
+    {
+      "id": "gadget-4",
+      "type": "gadget",
+      "number": 4,
+      "name": "Fall-Damp Ampoule",
+      "rules": "Drink to ignore falling damage for 10 minutes.",
+      "source": "hope-and-fear",
+      "oldName": "Vial of Featherfall"
+    },
+    {
+      "id": "gadget-5",
+      "type": "gadget",
+      "number": 5,
+      "name": "Null-G Dust",
+      "rules": "Anything this dust covers becomes weightless for an hour. One packet covers a small crate's contents.",
+      "source": "hope-and-fear",
+      "oldName": "Packet of Space Dust"
+    },
+    {
+      "id": "gadget-6",
+      "type": "gadget",
+      "number": 6,
+      "name": "Low-Light Ocular Drops",
+      "rules": "Apply to see in total darkness until your next rest.",
+      "source": "core",
+      "oldName": "Vial of Moondrip"
+    },
+    {
+      "id": "gadget-7",
+      "type": "gadget",
+      "number": 7,
+      "name": "Pharasmin Echo Powder",
+      "rules": "Sprinkle on a recently deceased corpse to project a holographic replay of their final minute of life.",
+      "source": "hope-and-fear",
+      "oldName": "Deathseer’s Powder"
+    },
+    {
+      "id": "gadget-8",
+      "type": "gadget",
+      "number": 8,
+      "name": "Pharasmin Grave Salt",
+      "rules": "Spread in a line along windowsills or thresholds. Undead creatures can't cross it until the line is broken.",
+      "source": "hope-and-fear",
+      "oldName": "Slayer’s Salt"
+    },
+    {
+      "id": "gadget-9",
+      "type": "gadget",
+      "number": 9,
+      "name": "Glowspore Pod",
+      "rules": "Break apart to make it glow bright blue until your next long rest.",
+      "source": "hope-and-fear",
+      "oldName": "Glowmoss Mushroom"
+    },
+    {
+      "id": "gadget-10",
+      "type": "gadget",
+      "number": 10,
+      "name": "Morphic Gel",
+      "rules": "Spend a Hope and apply to alter your face enough to be unrecognizable until your next rest.",
+      "source": "core",
+      "oldName": "Morphing Clay"
+    },
+    {
+      "id": "gadget-11",
+      "type": "gadget",
+      "number": 11,
+      "name": "Compact Habitat Module",
+      "rules": "Unfold into a shelter that safely houses six people. It collapses at the end of your next long rest.",
+      "source": "hope-and-fear",
+      "oldName": "Instant Camp"
+    },
+    {
+      "id": "gadget-12",
+      "type": "gadget",
+      "number": 12,
+      "name": "Leap Capsule",
+      "rules": "Take to leap up to Far range once without rolling.",
+      "source": "core",
+      "oldName": "Jumping Root"
+    },
+    {
+      "id": "gadget-13",
+      "type": "gadget",
+      "number": 13,
+      "name": "Gecko Grip Pads",
+      "rules": "Wear to walk on walls until your next rest.",
+      "source": "hope-and-fear",
+      "oldName": "Bundle of Spiderlegs"
+    },
+    {
+      "id": "gadget-14",
+      "type": "gadget",
+      "number": 14,
+      "name": "Nanite Armor Stitcher",
+      "rules": "Spend any number of Hope to clear that many Armor Slots.",
+      "source": "core",
+      "oldName": "Armor Stitcher"
+    },
+    {
+      "id": "gadget-15",
+      "type": "gadget",
+      "number": 15,
+      "name": "Oxy-Gill Patch",
+      "rules": "Apply to your neck to breathe underwater for minutes equal to your level.",
+      "source": "core",
+      "oldName": "Gill Salve"
+    },
+    {
+      "id": "gadget-16",
+      "type": "gadget",
+      "number": 16,
+      "name": "Listening Mote",
+      "rules": "Plant on a surface. It records everything it hears for up to one week. When triggered, it plays the recording back in real time, then burns out.",
+      "source": "hope-and-fear",
+      "oldName": "Gossip Flower"
+    },
+    {
+      "id": "gadget-17",
+      "type": "gadget",
+      "number": 17,
+      "name": "Replica Film",
+      "rules": "Touch to another document to perfectly copy its contents. Afterward it becomes blank film.",
+      "source": "core",
+      "oldName": "Replication Parchment"
+    },
+    {
+      "id": "gadget-18",
+      "type": "gadget",
+      "number": 18,
+      "name": "Autosuture Spool",
+      "rules": "Use to clear either a Hit Point or 2 Armor Slots.",
+      "source": "hope-and-fear",
+      "oldName": "Self-Sewing Thread"
+    },
+    {
+      "id": "gadget-19",
+      "type": "gadget",
+      "number": 19,
+      "name": "Thermoshield Gel",
+      "rules": "Apply to your skin to become immune to heat until your next rest.",
+      "source": "hope-and-fear",
+      "oldName": "Salamander Salve"
+    },
+    {
+      "id": "gadget-20",
+      "type": "gadget",
+      "number": 20,
+      "name": "Dayglow Orb",
+      "rules": "Shatter to make the area within Very Far range appear sunlit for 24 hours.",
+      "source": "hope-and-fear",
+      "oldName": "Sunlight Orb"
+    },
+    {
+      "id": "gadget-21",
+      "type": "gadget",
+      "number": 21,
+      "name": "Drift-Skip Serum",
+      "rules": "Drink to vanish and reappear at a point you can see within Very Far range.",
+      "source": "core",
+      "oldName": "Blood of the Yorgi"
+    },
+    {
+      "id": "gadget-22",
+      "type": "gadget",
+      "number": 22,
+      "name": "Nightglow Orb",
+      "rules": "Shatter to make the area within Very Far range appear moonlit for 24 hours.",
+      "source": "hope-and-fear",
+      "oldName": "Moonlight Orb"
+    },
+    {
+      "id": "gadget-23",
+      "type": "gadget",
+      "number": 23,
+      "name": "Spellcache Drive",
+      "rules": "Use to take a spell or grimoire from your vault, use it once, and return it to your vault.",
+      "source": "core",
+      "oldName": "Channelstone"
+    },
+    {
+      "id": "gadget-24",
+      "type": "gadget",
+      "number": 24,
+      "name": "Gravchute Module",
+      "rules": "Use to control your falling speed for minutes equal to your level.",
+      "source": "core",
+      "oldName": "Featherbone"
+    },
+    {
+      "id": "gadget-25",
+      "type": "gadget",
+      "number": 25,
+      "name": "Ghost-Signature Spray",
+      "rules": "Use to prevent anyone from tracking you by any means until your next rest.",
+      "source": "core",
+      "oldName": "Ogre Musk"
+    },
+    {
+      "id": "gadget-26",
+      "type": "gadget",
+      "number": 26,
+      "name": "Disposable Jetpack",
+      "rules": "Use to fly for minutes equal to your level.",
+      "source": "core",
+      "oldName": "Wingsprout"
+    },
+    {
+      "id": "gadget-27",
+      "type": "gadget",
+      "number": 27,
+      "name": "Cloak Injector",
+      "rules": "You are Hidden until you deal damage to another creature or until your next rest.",
+      "source": "hope-and-fear",
+      "oldName": "Invisibility Potion"
+    },
+    {
+      "id": "gadget-28",
+      "type": "gadget",
+      "number": 28,
+      "name": "Castrovel Bridgevine Seed",
+      "rules": "Thick vines grow from your location to a point of your choice within Far range, letting you climb up or across. They dissipate on your next short rest.",
+      "source": "core",
+      "oldName": "Bridge Seed"
+    },
+    {
+      "id": "gadget-29",
+      "type": "gadget",
+      "number": 29,
+      "name": "Emergency Deflector",
+      "rules": "When you take damage, spend a Hope to negate it. The deflector then burns out.",
+      "source": "core",
+      "oldName": "Mirror of Marigold"
+    },
+    {
+      "id": "gadget-30",
+      "type": "gadget",
+      "number": 30,
+      "name": "Hoverstep Pods",
+      "rules": "Wear to gain a bonus to your Evasion equal to your tier until your next rest.",
+      "source": "hope-and-fear",
+      "oldName": "Featherstep Potion"
+    },
+    {
+      "id": "ordnance-1",
+      "type": "ordnance",
+      "number": 1,
+      "name": "Tracer Dust",
+      "rules": "This multicolored powder sticks to everything and prevents creatures covered in it from becoming Hidden.",
+      "source": "hope-and-fear",
+      "oldName": "Iridian Dust"
+    },
+    {
+      "id": "ordnance-2",
+      "type": "ordnance",
+      "number": 2,
+      "name": "Flash-Freeze Charge",
+      "rules": "Use to instantly freeze an area of water up to Close range.",
+      "source": "hope-and-fear",
+      "oldName": "Verglasian Seed"
+    },
+    {
+      "id": "ordnance-3",
+      "type": "ordnance",
+      "number": 3,
+      "name": "Aether Coating",
+      "rules": "Apply to a weapon that deals physical damage to change its damage type to magic until your next rest.",
+      "source": "hope-and-fear",
+      "oldName": "Chimeric Saliva"
+    },
+    {
+      "id": "ordnance-4",
+      "type": "ordnance",
+      "number": 4,
+      "name": "Eoxian Toxin Coating",
+      "rules": "Apply to a weapon that deals physical damage to add a d6 to your next damage roll with it.",
+      "source": "core",
+      "oldName": "Grindletooth Venom"
+    },
+    {
+      "id": "ordnance-5",
+      "type": "ordnance",
+      "number": 5,
+      "name": "Flux Grenade",
+      "rules": "Make a Finesse Roll to throw at a group of adversaries within Far range. Targets you succeed against take 1d20 magic damage.",
+      "source": "core",
+      "oldName": "Unstable Arcane Shard"
+    },
+    {
+      "id": "ordnance-6",
+      "type": "ordnance",
+      "number": 6,
+      "name": "Refined Eoxian Toxin",
+      "rules": "Apply to a weapon that deals physical damage to add a d8 to your next damage roll with it.",
+      "source": "core",
+      "oldName": "Improved Grindletooth Venom"
+    },
+    {
+      "id": "ordnance-7",
+      "type": "ordnance",
+      "number": 7,
+      "name": "Thermite Gel",
+      "rules": "Coat your weapon. The next successful attack with it deals an extra 1d8 magic damage and temporarily Ignites the target. While Ignited, the target takes 1d4 magic damage when they take the spotlight.",
+      "source": "hope-and-fear",
+      "oldName": "Red Ooze Oil"
+    },
+    {
+      "id": "ordnance-8",
+      "type": "ordnance",
+      "number": 8,
+      "name": "Obscurant Canister",
+      "rules": "When an adversary attacks you, use this and roll a number of d6s equal to your Agility. Add the highest result to your Evasion against the attack.",
+      "source": "core",
+      "oldName": "Vial of Darksmoke"
+    },
+    {
+      "id": "ordnance-9",
+      "type": "ordnance",
+      "number": 9,
+      "name": "Calm-Mist Canister",
+      "rules": "Break to fill the area within Close range with mist. A creature who enters the mist clears a Stress and becomes Hidden.",
+      "source": "hope-and-fear",
+      "oldName": "Ciscan Fog Bottle"
+    },
+    {
+      "id": "ordnance-10",
+      "type": "ordnance",
+      "number": 10,
+      "name": "Snarevine Pod",
+      "rules": "Throw at a point you can see. It bursts into binding vines that temporarily Restrain all creatures within Close range of that point.",
+      "source": "hope-and-fear",
+      "oldName": "Snapthorn Seed"
+    },
+    {
+      "id": "ordnance-11",
+      "type": "ordnance",
+      "number": 11,
+      "name": "Graviton Grenade",
+      "rules": "Throw at a point within Far range. It implodes and pulls all creatures and objects within Close range of that point into Melee range with it.",
+      "source": "hope-and-fear",
+      "oldName": "Gravity Bomb"
+    },
+    {
+      "id": "ordnance-12",
+      "type": "ordnance",
+      "number": 12,
+      "name": "Improved Flux Grenade",
+      "rules": "Make a Finesse Roll to throw at a group of adversaries within Far range. Targets you succeed against take 2d20 magic damage.",
+      "source": "core",
+      "oldName": "Improved Arcane Shard"
+    },
+    {
+      "id": "ordnance-13",
+      "type": "ordnance",
+      "number": 13,
+      "name": "Panic Aerosol",
+      "rules": "Spray in an adversary's face to prevent them from clearing Stress until your next long rest.",
+      "source": "hope-and-fear",
+      "oldName": "Night Hag’s Dust"
+    },
+    {
+      "id": "ordnance-14",
+      "type": "ordnance",
+      "number": 14,
+      "name": "Corrodent Gel",
+      "rules": "Coat your weapon. The next successful attack with it deals an extra 1d8 magic damage and temporarily Corrodes the target. While Corroded, the target gains a −2 penalty to their damage thresholds.",
+      "source": "hope-and-fear",
+      "oldName": "Green Ooze Oil"
+    },
+    {
+      "id": "ordnance-15",
+      "type": "ordnance",
+      "number": 15,
+      "name": "Akitonian Redthorn Resin",
+      "rules": "Apply to a weapon that deals physical damage to add a d12 to your next damage roll with it.",
+      "source": "core",
+      "oldName": "Redthorn Saliva"
+    },
+    {
+      "id": "ordnance-16",
+      "type": "ordnance",
+      "number": 16,
+      "name": "Mystic Resonance Dust",
+      "rules": "Apply to a weapon that deals magic damage to add a d12 to your next damage roll with it.",
+      "source": "core",
+      "oldName": "Mythic Dust"
+    },
+    {
+      "id": "ordnance-17",
+      "type": "ordnance",
+      "number": 17,
+      "name": "Incendiary Grenade",
+      "rules": "Choose a point within Far range. All targets within Close range of it must succeed on a Reaction Roll (16) or take 3d6 magic damage and become temporarily Ablaze. While Ablaze, a creature rolls a d4 whenever they make an action roll: on a 1 they mark a Hit Point, on a 4 they clear Ablaze.",
+      "source": "hope-and-fear",
+      "oldName": "Emberite Shard"
+    },
+    {
+      "id": "ordnance-18",
+      "type": "ordnance",
+      "number": 18,
+      "name": "Acid Breach Paste",
+      "rules": "This paste eats through walls and other surfaces.",
+      "source": "core",
+      "oldName": "Acidpaste"
+    },
+    {
+      "id": "ordnance-19",
+      "type": "ordnance",
+      "number": 19,
+      "name": "Cryo Grenade",
+      "rules": "Choose a point within Far range. All targets within Close range of it must succeed on a Reaction Roll (16) or take 3d6 magic damage and become temporarily Restrained by ice.",
+      "source": "hope-and-fear",
+      "oldName": "Arcticite Shard"
+    },
+    {
+      "id": "ordnance-20",
+      "type": "ordnance",
+      "number": 20,
+      "name": "Arc Grenade",
+      "rules": "Choose a point within Far range. All targets within Close range of it must succeed on a Reaction Roll (16) or take 3d6 magic damage and mark 1d4 Stress as electricity arcs through the area.",
+      "source": "hope-and-fear",
+      "oldName": "Fulgurite Shard"
+    },
+    {
+      "id": "ordnance-21",
+      "type": "ordnance",
+      "number": 21,
+      "name": "Major Flux Grenade",
+      "rules": "Make a Finesse Roll to throw at a group of adversaries within Far range. Targets you succeed against take 4d20 magic damage.",
+      "source": "core",
+      "oldName": "Major Arcane Shard"
+    },
+    {
+      "id": "ordnance-22",
+      "type": "ordnance",
+      "number": 22,
+      "name": "Overclock Draught",
+      "rules": "Drink to gain a +1 bonus to your Proficiency for your next successful attack roll.",
+      "source": "hope-and-fear",
+      "oldName": "Demiurge’s Draught"
+    },
+    {
+      "id": "ordnance-23",
+      "type": "ordnance",
+      "number": 23,
+      "name": "Necrotoxin Vial",
+      "rules": "A creature who consumes this takes 8d10 direct magic damage.",
+      "source": "core",
+      "oldName": "Dripfang Poison"
+    },
+    {
+      "id": "ordnance-24",
+      "type": "ordnance",
+      "number": 24,
+      "name": "Sonic Howler Canister",
+      "rules": "Open to release a deafening sonic blast for a number of minutes equal to your Instinct. Creatures within Far range unprepared for it take 6d8 magic damage.",
+      "source": "core",
+      "oldName": "Jar of Lost Voices"
+    },
+    {
+      "id": "ordnance-25",
+      "type": "ordnance",
+      "number": 25,
+      "name": "Pyrobreath Draught",
+      "rules": "Drink to unleash a fiery breath attack. Make an Instinct Roll against all adversaries in front of you within Close range. Targets you succeed against take d20 physical damage using your Proficiency.",
+      "source": "core",
+      "oldName": "Dragonbloom Tea"
+    },
+    {
+      "id": "ordnance-26",
+      "type": "ordnance",
+      "number": 26,
+      "name": "Gilded Seeker Drone",
+      "rules": "Name a target you can see. This drone launches into them. They mark 1d10 HP and 1d10 Stress.",
+      "source": "core",
+      "oldName": "Golden Fench"
+    },
+    {
+      "id": "ordnance-27",
+      "type": "ordnance",
+      "number": 27,
+      "name": "Flashbang",
+      "rules": "Activate to create a flash of bright light. All targets within Close range become Vulnerable until they mark HP.",
+      "source": "core",
+      "oldName": "Blinding Orb"
+    },
+    {
+      "id": "ordnance-28",
+      "type": "ordnance",
+      "number": 28,
+      "name": "Credit Bomb",
+      "rules": "Place any number of handfuls of gold into this slotted casing. Throw it at a point within Far range: it explodes, dealing 1d20 magic damage per handful spent to all creatures within Close range of that point. The gold is destroyed.",
+      "source": "hope-and-fear",
+      "oldName": "Gambler’s Fallacy"
+    },
+    {
+      "id": "ordnance-29",
+      "type": "ordnance",
+      "number": 29,
+      "name": "Kill-Switch Draught",
+      "rules": "After you drink this, you instantly kill your target when you critically succeed on an attack. If you don't critically succeed on an attack before your next long rest, you die.",
+      "source": "core",
+      "oldName": "Death Tea"
+    },
+    {
+      "id": "ordnance-30",
+      "type": "ordnance",
+      "number": 30,
+      "name": "Orbital Bombardment Beacon",
+      "rules": "Use to call down an orbital barrage that deals 8d20 physical damage to all targets within Very Far range.",
+      "source": "core",
+      "oldName": "Stardrop"
+    },
+    {
+      "id": "stim-1",
+      "type": "stim",
+      "number": 1,
+      "name": "Stride Stim",
+      "rules": "You gain a +1 bonus to your next Agility Roll.",
+      "source": "core",
+      "oldName": "Stride Potion"
+    },
+    {
+      "id": "stim-2",
+      "type": "stim",
+      "number": 2,
+      "name": "Bolster Stim",
+      "rules": "You gain a +1 bonus to your next Strength Roll.",
+      "source": "core",
+      "oldName": "Bolster Potion"
+    },
+    {
+      "id": "stim-3",
+      "type": "stim",
+      "number": 3,
+      "name": "Control Stim",
+      "rules": "You gain a +1 bonus to your next Finesse Roll.",
+      "source": "core",
+      "oldName": "Control Potion"
+    },
+    {
+      "id": "stim-4",
+      "type": "stim",
+      "number": 4,
+      "name": "Attune Stim",
+      "rules": "You gain a +1 bonus to your next Instinct Roll.",
+      "source": "core",
+      "oldName": "Attune Potion"
+    },
+    {
+      "id": "stim-5",
+      "type": "stim",
+      "number": 5,
+      "name": "Charm Stim",
+      "rules": "You gain a +1 bonus to your next Presence Roll.",
+      "source": "core",
+      "oldName": "Charm Potion"
+    },
+    {
+      "id": "stim-6",
+      "type": "stim",
+      "number": 6,
+      "name": "Enlighten Stim",
+      "rules": "You gain a +1 bonus to your next Knowledge Roll.",
+      "source": "core",
+      "oldName": "Enlighten Potion"
+    },
+    {
+      "id": "stim-7",
+      "type": "stim",
+      "number": 7,
+      "name": "Antitox Capsule",
+      "rules": "Swallow to become immune to poisons until your next long rest.",
+      "source": "hope-and-fear",
+      "oldName": "Cupbearer’s Bezoar"
+    },
+    {
+      "id": "stim-8",
+      "type": "stim",
+      "number": 8,
+      "name": "Minor Health Stim",
+      "rules": "Clear 1d4 HP.",
+      "source": "core",
+      "oldName": "Minor Health Potion"
+    },
+    {
+      "id": "stim-9",
+      "type": "stim",
+      "number": 9,
+      "name": "Minor Stamina Stim",
+      "rules": "Clear 1d4 Stress.",
+      "source": "core",
+      "oldName": "Minor Stamina Potion"
+    },
+    {
+      "id": "stim-10",
+      "type": "stim",
+      "number": 10,
+      "name": "Morale Tabs",
+      "rules": "Take this paired dose to immediately gain 2 Hope.",
+      "source": "core",
+      "oldName": "Varik Leaves"
+    },
+    {
+      "id": "stim-11",
+      "type": "stim",
+      "number": 11,
+      "name": "Calm Inhaler",
+      "rules": "When you choose the Clear Stress downtime move during a short rest, use this non-intoxicating inhaler to clear an additional Stress. Other PCs who chose Clear Stress gain this benefit too.",
+      "source": "hope-and-fear",
+      "oldName": "Pipeweed"
+    },
+    {
+      "id": "stim-12",
+      "type": "stim",
+      "number": 12,
+      "name": "Respite Stim",
+      "rules": "Drink to choose one additional downtime move.",
+      "source": "core",
+      "oldName": "Potion of Stability"
+    },
+    {
+      "id": "stim-13",
+      "type": "stim",
+      "number": 13,
+      "name": "Nanite Regen Shake",
+      "rules": "After drinking, the next time you clear 1 or more Hit Points, you clear an additional Hit Point.",
+      "source": "hope-and-fear",
+      "oldName": "Yakamel Milk"
+    },
+    {
+      "id": "stim-14",
+      "type": "stim",
+      "number": 14,
+      "name": "Adrenal Snap",
+      "rules": "Mark a Stress and clear a HP.",
+      "source": "core",
+      "oldName": "Snap Powder"
+    },
+    {
+      "id": "stim-15",
+      "type": "stim",
+      "number": 15,
+      "name": "Health Stim",
+      "rules": "Clear 1d4+1 HP.",
+      "source": "core",
+      "oldName": "Health Potion"
+    },
+    {
+      "id": "stim-16",
+      "type": "stim",
+      "number": 16,
+      "name": "Stamina Stim",
+      "rules": "Clear 1d4+1 Stress.",
+      "source": "core",
+      "oldName": "Stamina Potion"
+    },
+    {
+      "id": "stim-17",
+      "type": "stim",
+      "number": 17,
+      "name": "Major Stride Stim",
+      "rules": "You gain a +1 bonus to your Agility until your next rest.",
+      "source": "core",
+      "oldName": "Major Stride Potion"
+    },
+    {
+      "id": "stim-18",
+      "type": "stim",
+      "number": 18,
+      "name": "Major Bolster Stim",
+      "rules": "You gain a +1 bonus to your Strength until your next rest.",
+      "source": "core",
+      "oldName": "Major Bolster Potion"
+    },
+    {
+      "id": "stim-19",
+      "type": "stim",
+      "number": 19,
+      "name": "Major Control Stim",
+      "rules": "You gain a +1 bonus to your Finesse until your next rest.",
+      "source": "core",
+      "oldName": "Major Control Potion"
+    },
+    {
+      "id": "stim-20",
+      "type": "stim",
+      "number": 20,
+      "name": "Major Attune Stim",
+      "rules": "You gain a +1 bonus to your Instinct until your next rest.",
+      "source": "core",
+      "oldName": "Major Attune Potion"
+    },
+    {
+      "id": "stim-21",
+      "type": "stim",
+      "number": 21,
+      "name": "Major Charm Stim",
+      "rules": "You gain a +1 bonus to your Presence until your next rest.",
+      "source": "core",
+      "oldName": "Major Charm Potion"
+    },
+    {
+      "id": "stim-22",
+      "type": "stim",
+      "number": 22,
+      "name": "Major Enlighten Stim",
+      "rules": "You gain a +1 bonus to your Knowledge until your next rest.",
+      "source": "core",
+      "oldName": "Major Enlighten Potion"
+    },
+    {
+      "id": "stim-23",
+      "type": "stim",
+      "number": 23,
+      "name": "Mnemonic Stim",
+      "rules": "Drink to Utilize an Experience without spending a Hope.",
+      "source": "hope-and-fear",
+      "oldName": "Mnemonic Potion"
+    },
+    {
+      "id": "stim-24",
+      "type": "stim",
+      "number": 24,
+      "name": "Recharge Stim",
+      "rules": "Drink to refresh your features as if you had taken a long rest.",
+      "source": "hope-and-fear",
+      "oldName": "Cockerel Claw Tea"
+    },
+    {
+      "id": "stim-25",
+      "type": "stim",
+      "number": 25,
+      "name": "Vigilance Stim",
+      "rules": "Drink to gain a +1 bonus to your Evasion until you mark a Hit Point.",
+      "source": "hope-and-fear",
+      "oldName": "Potion of Vigilance"
+    },
+    {
+      "id": "stim-26",
+      "type": "stim",
+      "number": 26,
+      "name": "Sunbloom Serum",
+      "rules": "Inject and roll a d6. On 5–6, clear 2 HP. On 2–4, clear 3 Stress. On 1, brush death and return changed, gaining one scar.",
+      "source": "core",
+      "oldName": "Sun Tree Sap"
+    },
+    {
+      "id": "stim-27",
+      "type": "stim",
+      "number": 27,
+      "name": "Major Health Stim",
+      "rules": "Clear 1d4+2 HP.",
+      "source": "core",
+      "oldName": "Major Health Potion"
+    },
+    {
+      "id": "stim-28",
+      "type": "stim",
+      "number": 28,
+      "name": "Major Stamina Stim",
+      "rules": "Clear 1d4+2 Stress.",
+      "source": "core",
+      "oldName": "Major Stamina Potion"
+    },
+    {
+      "id": "stim-29",
+      "type": "stim",
+      "number": 29,
+      "name": "Panacea Injector",
+      "rules": "Inject to clear all Hit Points and Stress.",
+      "source": "hope-and-fear",
+      "oldName": "Godling’s Pomelo"
+    },
+    {
+      "id": "stim-30",
+      "type": "stim",
+      "number": 30,
+      "name": "Absalom Feast Pack",
+      "rules": "Eat this meal to clear all HP and Stress and gain 1d4 Hope.",
+      "source": "core",
+      "oldName": "Feast of Xuria"
+    }
+  ]
+}

@@ -205,7 +205,9 @@ function validateEquipment(ch: Character, setup: CreationSetup, bad: (s: string,
   }
   // No armor is a legal choice too (Bare Bones, Brawler).
   if (armorIds.length > 1) bad('equipment', 'Choose at most one set of armor.')
-  if (cr.potion !== 'health' && cr.potion !== 'stamina') bad('equipment', 'Choose a Minor Health Potion or a Minor Stamina Potion.')
+  if (setup.startingStims.length) {
+    if (!setup.startingStims.some((s) => s.id === cr.potion)) bad('equipment', 'Choose a starting stim.')
+  } else if (cr.potion !== 'health' && cr.potion !== 'stamina') bad('equipment', 'Choose a Minor Health Potion or a Minor Stamina Potion.')
   if (!nonBlank(cr.classItem)) bad('equipment', 'Choose one class item.')
 }
 
@@ -239,7 +241,9 @@ export function deriveStats(ch: Character, setup: CreationSetup): DerivedStats {
   const res = setup.ops.find((o: FrameOp) => o.op === 'set-resource' && o.resource === 'currency')
   const currency = res ? { name: String(res.name), amount: Number(res.start) } : { name: 'Gold (handfuls)', amount: 1 }
   const kit = ['A torch', '50 feet of rope', 'Basic supplies', currency.name === 'Gold (handfuls)' ? 'A handful of gold' : `${currency.amount} ${currency.name}`]
-  if (cr.potion) kit.push(cr.potion === 'health' ? 'Minor Health Potion (clear 1d4 Hit Points)' : 'Minor Stamina Potion (clear 1d4 Stress)')
+  const stim = setup.startingStims.find((s) => s.id === cr.potion)
+  if (stim) kit.push(`${stim.name} (${stim.rules})`)
+  else if (cr.potion) kit.push(cr.potion === 'health' ? 'Minor Health Potion (clear 1d4 Hit Points)' : 'Minor Stamina Potion (clear 1d4 Stress)')
   if (cr.classItem.trim()) kit.push(cr.classItem.trim())
   for (const o of setup.ops) if (o.op === 'grant') kit.push(String(o.item))
 

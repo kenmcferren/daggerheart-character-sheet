@@ -188,6 +188,10 @@ starfinder-communities.[s10] Starfinder communities option.Self Contained prints
 starfinder-communities.[s10] Starfinder communities option.the pack validates against the schema,1
 starfinder-communities.[s10] Starfinder communities option.the Starfinder supplements belong to the Starheart group, and no other supplement does,1
 starfinder-communities.[s10] Starfinder communities option.Wildsense is a situational Evasion footnote, not baked in,1
+starfinder-consumables.[s11] Starheart consumables option.off: standard potions only,1
+starfinder-consumables.[s11] Starheart consumables option.on: offers stims 1-6, 8, 9, 10 and not the standard potions,1
+starfinder-consumables.[s11] Starheart consumables option.the chosen stim goes into the kit,1
+starfinder-consumables.[s11] Starheart consumables option.the pack validates and the data file has 120 items, 30 per category,1
 starfinder.[s9] Starfinder ancestries option.Android: every Experience starts at +3 (creation); other ancestries stay at +2,0
 starfinder.[s9] Starfinder ancestries option.Kasatha may wield two secondary weapons; other ancestries only one,0
 starfinder.[s9] Starfinder ancestries option.off: the standard list is unchanged (Clank and Human present, no Starfinder ancestries),0

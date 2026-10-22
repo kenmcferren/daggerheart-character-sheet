@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "starfinder",
   "name": "Starfinder",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "publisher": "Owner (house rules)",
   "extends": [
     "srd-core"
@@ -511,6 +511,66 @@
               "op": "replace-pool",
               "pool": "armor",
               "with": "pools.armor"
+            }
+          ]
+        }
+      },
+      {
+        "id": "starfinder-consumables",
+        "name": "Starheart Consumables",
+        "frameKind": "supplement",
+        "group": "Starheart - Starfinder Conversion",
+        "creation": {
+          "ops": [
+            {
+              "op": "starting-stims",
+              "items": [
+                {
+                  "id": "stim-1",
+                  "name": "Stride Stim",
+                  "rules": "You gain a +1 bonus to your next Agility Roll."
+                },
+                {
+                  "id": "stim-2",
+                  "name": "Bolster Stim",
+                  "rules": "You gain a +1 bonus to your next Strength Roll."
+                },
+                {
+                  "id": "stim-3",
+                  "name": "Control Stim",
+                  "rules": "You gain a +1 bonus to your next Finesse Roll."
+                },
+                {
+                  "id": "stim-4",
+                  "name": "Attune Stim",
+                  "rules": "You gain a +1 bonus to your next Instinct Roll."
+                },
+                {
+                  "id": "stim-5",
+                  "name": "Charm Stim",
+                  "rules": "You gain a +1 bonus to your next Presence Roll."
+                },
+                {
+                  "id": "stim-6",
+                  "name": "Enlighten Stim",
+                  "rules": "You gain a +1 bonus to your next Knowledge Roll."
+                },
+                {
+                  "id": "stim-8",
+                  "name": "Minor Health Stim",
+                  "rules": "Clear 1d4 HP."
+                },
+                {
+                  "id": "stim-9",
+                  "name": "Minor Stamina Stim",
+                  "rules": "Clear 1d4 Stress."
+                },
+                {
+                  "id": "stim-10",
+                  "name": "Morale Tabs",
+                  "rules": "Take this paired dose to immediately gain 2 Hope."
+                }
+              ]
             }
           ]
         }
