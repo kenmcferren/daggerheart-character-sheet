@@ -1464,6 +1464,7 @@
           {
             "name": "Favor",
             "rules": "You start with 3 Favor. You can use a downtime move to show tribute to your patron. Describe how and gain Favor equal to your Spellcast trait. Additionally, when you succeed on an action roll with Hope, you can choose to gain a Favor instead of a Hope.",
+            "short": "Start with 3 Favor, holding at most 6. As a downtime move, show tribute to your patron and gain Favor equal to your Spellcast trait. When you succeed on an action roll with Hope, you can gain a Favor instead of a Hope.",
             "trackers": [
               {
                 "id": "favor",
@@ -1472,8 +1473,7 @@
                 "shape": "box",
                 "placement": "front"
               }
-            ],
-            "short": "Start with 3 Favor, holding at most 6. As a downtime move, show tribute to your patron and gain Favor equal to your Spellcast trait. When you succeed on an action roll with Hope, you can gain a Favor instead of a Hope."
+            ]
           },
           {
             "name": "Note",
@@ -1557,6 +1557,7 @@
           {
             "name": "Hex",
             "rules": "Mark a Stress to temporarily Hex a target within Far range. While Hexed, the target gains a penalty to their damage rolls and Difficulty equal to your tier. The maximum number of creatures you can Hex at one time is equal to your Spellcast trait.",
+            "short": "Mark a Stress to temporarily Hex a target within Far range. A Hexed target takes a penalty to damage rolls and Difficulty equal to your tier. You can Hex creatures up to your Spellcast trait at once.",
             "trackers": [
               {
                 "id": "hexed",
@@ -1567,8 +1568,7 @@
                 "shape": "box",
                 "placement": "front"
               }
-            ],
-            "short": "Mark a Stress to temporarily Hex a target within Far range. A Hexed target takes a penalty to damage rolls and Difficulty equal to your tier. You can Hex creatures up to your Spellcast trait at once."
+            ]
           },
           {
             "name": "Commune",
@@ -1705,15 +1705,6 @@
             "name": "Toxic Concoctions",
             "rules": "Mark a Stress to place 1d4+1 tokens on this card. When you make a successful weapon attack, you can spend a token to afflict the target with a poison. You know these poisons:\n- Ghost Petal: The target becomes temporarily Vulnerable.\n- Grave Spore: The target must also mark a Stress.\n- Leech Weed: You deal an extra 1d6 damage on this attack.",
             "level": "foundation",
-            "trackers": [
-              {
-                "id": "toxic-tokens",
-                "label": "Toxic tokens (max 5)",
-                "count": 5,
-                "shape": "box",
-                "placement": "front"
-              }
-            ],
             "short": "Mark a Stress to place 1d4+1 tokens on this card. On a successful weapon attack, spend a token to poison the target with a poison you know (see Poisons on the domain card sheet). Long rest: clear unspent tokens.",
             "sheetCards": {
               "label": "Poison",
@@ -1731,7 +1722,16 @@
                   "short": "Deal an extra 1d6 damage on this attack."
                 }
               ]
-            }
+            },
+            "trackers": [
+              {
+                "id": "toxic-tokens",
+                "label": "Toxic tokens (max 5)",
+                "count": 5,
+                "shape": "box",
+                "placement": "front"
+              }
+            ]
           },
           {
             "rules": "When you take a long rest, clear all unspent tokens.",
@@ -1804,7 +1804,7 @@
             "name": "Gifted Performer",
             "rules": "You can play three different types of songs, once each per long rest; describe how you perform for others to gain the listed benefit:\n- Relaxing Song: You and all allies within Close range clear a Hit Point.\n- Epic Song: Make a target within Close range temporarily Vulnerable.\n- Heartbreaking Song: You and all allies within Close range gain a Hope.",
             "level": "foundation",
-            "short": "Describe your performance to play each song once per long rest: Relaxing (you and allies within Close range clear a Hit Point), Epic (a target within Close range is temporarily Vulnerable), Heartbreaking (you and allies within Close range gain a Hope)."
+            "short": "Describe your performance to play each song once per long rest: Relaxing {o} (you and allies within Close range clear a Hit Point), Epic {o} (a target within Close range is temporarily Vulnerable), Heartbreaking {o} (you and allies within Close range gain a Hope)."
           },
           {
             "rules": "Maestro. Your rallying songs steel the courage of those who listen. When you give a Rally Die to an ally, they can gain a Hope or clear a Stress.",
@@ -2594,6 +2594,7 @@
             "name": "Enchanted Talisman",
             "rules": "Once per rest, you can imbue a small item with your protective essence. Spend any number of Hope to place an equal number of tokens on this card. When the person holding the talisman takes damage, spend a token to reduce the number of Hit Points they mark by one. Clear all tokens from this card when you take a rest.",
             "level": "foundation",
+            "short": "Once per rest, imbue a small item: spend any number of Hope to place that many tokens on this card. When the holder takes damage, spend a token to reduce the Hit Points they mark by one. Clear all tokens when you rest.",
             "trackers": [
               {
                 "id": "talisman-tokens",
@@ -2602,13 +2603,13 @@
                 "shape": "box",
                 "placement": "front"
               }
-            ],
-            "short": "Once per rest, imbue a small item: spend any number of Hope to place that many tokens on this card. When the holder takes damage, spend a token to reduce the Hit Points they mark by one. Clear all tokens when you rest."
+            ]
           },
           {
             "name": "Walk Between Worlds",
             "rules": "During a moment of calm, make a Spellcast Roll (13). Once per rest on a success, you can mark a Stress to step beyond the veil of death and converse with any nearby spirits. Place a number of tokens equal to your Spellcast trait on this card and remove one each time a spirit answers a question. When the last token is removed or at the end of the scene, you return to the Mortal Realm in the same spot you left it.",
             "level": "specialization",
+            "short": "In a moment of calm, make a Spellcast Roll (13). Once per rest, on a success, mark a Stress to step beyond the veil and converse with nearby spirits. Place tokens equal to your Spellcast trait on this card and remove one each time a spirit answers. When the last is removed or the scene ends, you return to where you left.",
             "trackers": [
               {
                 "id": "walk-tokens",
@@ -2619,8 +2620,7 @@
                 "shape": "box",
                 "placement": "front"
               }
-            ],
-            "short": "In a moment of calm, make a Spellcast Roll (13). Once per rest, on a success, mark a Stress to step beyond the veil and converse with nearby spirits. Place tokens equal to your Spellcast trait on this card and remove one each time a spirit answers. When the last is removed or the scene ends, you return to where you left."
+            ]
           },
           {
             "name": "Vexing Malison",
@@ -2632,6 +2632,7 @@
             "name": "Circle of Power",
             "rules": "Once per rest, mark a circle on the ground outlining a Very Close area around you, and place a number of tokens equal to your Spellcast trait on this card. While within this circle, you and your allies gain a +2 bonus to damage thresholds, attack rolls, and Evasion. Remove a token each time you or an ally within the circle makes an action roll or evades an attack. This spell lasts until the last token is removed or you exit the circle.",
             "level": "mastery",
+            "short": "Once per rest, mark a circle outlining a Very Close area around you and place tokens equal to your Spellcast trait on this card. While in it, you and allies get +2 to damage thresholds, attack rolls, and Evasion. Remove a token each time you or an ally in it makes an action roll or evades an attack. It lasts until the last token is removed or you leave the circle.",
             "trackers": [
               {
                 "id": "circle-tokens",
@@ -2642,8 +2643,7 @@
                 "shape": "box",
                 "placement": "front"
               }
-            ],
-            "short": "Once per rest, mark a circle outlining a Very Close area around you and place tokens equal to your Spellcast trait on this card. While in it, you and allies get +2 to damage thresholds, attack rolls, and Evasion. Remove a token each time you or an ally in it makes an action roll or evades an attack. It lasts until the last token is removed or you leave the circle."
+            ]
           }
         ],
         "spellcastTrait": "knowledge"
@@ -3293,6 +3293,17 @@
           {
             "name": "Know the Tide",
             "rules": "You can sense the ebb and flow of life. When you roll with Fear, place a token on your community card. You can hold a number of tokens equal to your level. Before you make an action roll, you can spend any number of these tokens to gain a +1 bonus to the roll for each token spent. At the end of each session, clear all unspent tokens.",
+            "trackers": [
+              {
+                "id": "tide-tokens",
+                "label": "Tide tokens (max level)",
+                "count": {
+                  "level": true
+                },
+                "shape": "box",
+                "placement": "front"
+              }
+            ],
             "short": "When you roll with Fear, place a token on your community card (max your level). Before an action roll, spend any number of tokens for +1 each. Clear unspent tokens at session end."
           }
         ]

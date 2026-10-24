@@ -70,8 +70,12 @@ export interface AugmentDef {
   armorScore?: number; evasion?: number; damage?: number; attack?: number
   /** Steps to shift the weapon's range toward Very Far (Scope). */
   rangeStep?: number
+  /** How many times it can be installed (the boxes beside it on the sheet); each installation stacks. Absent = 1. */
+  max?: number
 }
-export interface AugmentState { crafted: boolean; installed: boolean }
+/** `installed` is a count; saves from before stacking hold `true`, read as 1. */
+export interface AugmentState { crafted: boolean; installed: number | boolean }
+export const installedCount = (s?: AugmentState): number => (typeof s?.installed === 'number' ? s.installed : s?.installed ? 1 : 0)
 
 const parseAugmentStates = (raw: unknown): Record<string, AugmentState> => {
   try {
@@ -90,9 +94,12 @@ export function augmentsOf(setup: CreationSetup, cr: Creation): { id: string; de
     })
 }
 
-/** Installed (built into the weapon) Augment defs across all builder choices. */
+/** Installed (built into the weapon) Augment defs across all builder choices, one entry per installation so stacks add up. */
 export function installedAugments(setup: CreationSetup, cr: Creation): AugmentDef[] {
-  return augmentsOf(setup, cr).flatMap((u) => u.defs.filter((d) => u.states[d.id]?.installed))
+  return augmentsOf(setup, cr).flatMap((u) => u.defs.flatMap((d) => {
+    const n = Math.min(installedCount(u.states[d.id]), d.max ?? 1)
+    return Array.from({ length: n }, () => d)
+  }))
 }
 
 /** Downtime moves after frame remove-move / add-move ops. */

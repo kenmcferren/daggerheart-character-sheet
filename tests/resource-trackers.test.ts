@@ -5,7 +5,7 @@ import type { Character } from '../src/engine/character'
 import { readFileSync, mkdirSync, writeFileSync } from 'node:fs'
 import { renderSheet, type SheetFonts } from '../src/pdf/sheet'
 import { withRecording, outside } from './lib/record'
-import { level1, equipped, reg } from './lib/levelup-paths'
+import { level1, toLevel, equipped, reg } from './lib/levelup-paths'
 import { ARMS } from './lib/packs'
 
 const setup = buildCreation([JSON.parse(readFileSync('packs/core/srd-core.json', 'utf8')), JSON.parse(readFileSync('packs/core/srd-frames.json', 'utf8')), ...ARMS])
@@ -29,6 +29,13 @@ describe('[s5] resource trackers (tokens and counters with an upper limit)', () 
     const trait = (reg.subclasses.get('witch.hedge') as any).spellcastTrait as keyof Character['traits']
     const n = Math.max(1, ch.traits[trait] ?? 1)
     expect(rows(ch)).toEqual([{ label: 'Hexed (max Spellcast)', count: n }, { label: 'Talisman tokens (max Hope)', count: 6 }])
+  })
+
+  it('Seaborne community tracks Know the Tide tokens, one box per level', () => {
+    const ch = level1('warlock')
+    const sea = { ...ch, choices: { ...ch.choices, communityId: 'seaborne' } }
+    expect(rows(sea)).toContainEqual({ label: 'Tide tokens (max level)', count: 1 })
+    expect(rows(toLevel(5, sea)).find((r) => r.label.startsWith('Tide'))?.count).toBe(5)
   })
 
   it('classes without a limited resource show none', () => {

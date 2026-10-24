@@ -195,6 +195,17 @@ describe('[s3] character rules with frames', () => {
     expect(blockedStats.armorScore).toBe(baseStats.armorScore + 3)
     expect(blockedStats.evasion).toBe(baseStats.evasion - 1)
   })
+  it('Tech: an Augment installed twice stacks (Guard x2 = +2 Armor Score); a count above its max is capped; old boolean saves read as 1', () => {
+    const s = buildCreation(packs, { supplements: ['tech'] })
+    const armor = baseArmor(s)
+    const base = { trait: 'knowledge', 'range-damage': 'far|d8+1', 'damage-type': 'tech', name: 'Arc rifle', description: 'Hums' }
+    const stats = (augments: object) => deriveStats(legal(s, (x) => { x.choices.equipmentIds = [armor]; x.creation!.frameChoices = { 'iconic-weapon': { ...base, augments: JSON.stringify(augments) } } }), s)
+    const none = stats({})
+    expect(stats({ guard: { crafted: true, installed: 2 } }).armorScore).toBe(none.armorScore + 2)
+    expect(stats({ guard: { crafted: true, installed: 5 } }).armorScore).toBe(none.armorScore + 2)
+    expect(stats({ deny: { crafted: true, installed: 2 } }).armorScore).toBe(none.armorScore + 2)
+    expect(stats({ guard: { crafted: true, installed: true } }).armorScore).toBe(none.armorScore + 1)
+  })
   it('Floating Magic School: flight artifact text required', () => {
     const s = buildCreation(packs, { supplements: ['floating-magic-school'] })
     expect(steps(validateCreation(legal(s), s))).toEqual(['flight-artifact'])

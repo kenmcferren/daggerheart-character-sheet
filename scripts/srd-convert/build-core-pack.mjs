@@ -87,7 +87,6 @@ structureClassExtras(classes)
 for (const c of classes) for (const f of [c.hopeFeature, ...c.features]) addUses(f, false)
 
 // ---- Condensed wording for the printed sheet (hand-edited files in short/)
-console.log(`resource trackers: ${applyResourceTrackers(classes, subclasses)}`)
 console.log(`short text applied to ${applyShortText(classes, subclasses)} entries`)
 
 // ---- Ancestries, communities
@@ -99,6 +98,7 @@ const communities = ls('Communities').filter((f) => f !== 'Communities.md').map(
   const { title, sections: secs } = sections(rd(`Communities/${f}`))
   return { id: slug(title), name: title, features: features(secs.find((s) => /^Community Features?$/.test(s.title)).lines) }
 })
+console.log(`resource trackers: ${applyResourceTrackers(classes, subclasses, communities)}`)
 console.log(`heritage short text applied to ${applyHeritageShort(ancestries, 'scripts/srd-convert/short-heritage/ancestries.json') + applyHeritageShort(communities, 'scripts/srd-convert/short-heritage/communities.json')} entries`)
 
 // ---- Domains and cards

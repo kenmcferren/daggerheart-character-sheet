@@ -8,6 +8,12 @@ Daggerheart guided character creation/level-up website. Output: printable PDF. L
 ## Armaments split (2026-10-18, uncommitted)
 - Weapons/armor moved out of `srd-core`/`srd-frames` into `srd-armaments.json` and `<frame>-armaments.json` (everyday-hero, western, monster-hunting; overrides each frame's `pools`). See `Docs/campaign-frame-impacts.md` (last section). Tests load them via `tests/lib/packs.ts` (`ARMS`); 74 pass, `vite build` ok. Not checked live in the browser. Old saves keep working (equipment ids unchanged).
 
+## Tech Augment stacking (2026-10-24, uncommitted)
+- Augments can be installed more than once (`max` per augment in `srd-frames.json`, 2 for Force/Guard/Converge/Scope/Fix/Scare/Sear/Bury, else 1; from the owner's sheet image). `AugmentState.installed` is now a count (old `true` reads as 1); `installedAugments` repeats each def per install, so Armor Score/Evasion stack. Editor shows one checkbox per allowed install. Damage/attack/range bonuses still are not applied to the sheet (data only). Test in `tests/rules.test.ts`; not checked live.
+
+## Small mods (2026-10-24, uncommitted)
+- Troubadour Gifted Performer prints one circle per song: `{o}` in a `short` marks a hand-placed circle (`withUses` in `sheet.ts` skips the phrase-based circles then). Seaborne Know the Tide has a Tide tokens tracker, one box per level (`resource-trackers.mjs` now has a `community` scope). Tests: `tests/resource-trackers.test.ts`. Not looked at in a rendered PDF.
+
 ## Current series
 - Series 1-5 archived. UI touch-up pass and saved-versions restyle done 2026-09-23 (owner-approved; archived in long-term-done.md). Series 7: step 1 done; step 2 (condense text for the 4-page level 10 target) 2a-2d all drafted 2026-09-23, owner reviewed at first glance 2026-09-23, all fine. Series 8: Druid forms page, done. Series 6 still open, untouched. Series 9 (Starfinder ancestries option) done and archived 2026-10-24 (`Docs/archive/series-9.md`; its `[s9]` tests are set to 0).
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { TRAITS, type Trait } from '../engine/character'
-import { TRAIT_MODIFIERS, ancestryList, communityList, secondarySlots, armorPool, deriveStats, frameChoiceDefs, weaponPool, weaponLoad, handsAvailable, ancestryFeatures, tierOf, type AugmentDef, type AugmentState } from '../engine/rules'
+import { TRAIT_MODIFIERS, ancestryList, communityList, secondarySlots, armorPool, deriveStats, frameChoiceDefs, weaponPool, weaponLoad, handsAvailable, ancestryFeatures, tierOf, type AugmentDef, type AugmentState, installedCount as installsOf } from '../engine/rules'
 import type { WizardStep } from '../engine/creation'
 import { Choice, Details, Feature, GearRow, Notes, Rules, Section, type Ctx } from './common'
 import { titleCase } from './util'
@@ -307,7 +307,7 @@ const parseAugmentStates = (raw: string | undefined): Record<string, AugmentStat
  *  Options above the character's current tier aren't shown at all, same as a subclass's higher-tier picks. */
 function AugmentsEditor({ value, onChange, tier, slotCap, defs }: { value: string; onChange: (v: string) => void; tier: number; slotCap: number; defs: AugmentDef[] }) {
   const states = parseAugmentStates(value)
-  const installedCount = Object.values(states).filter((s) => s.installed).length
+  const installedCount = Object.values(states).reduce((n, s) => n + installsOf(s), 0)
   const set = (next: Record<string, AugmentState>) => onChange(JSON.stringify(next))
   const patch = (id: string, p: Partial<AugmentState>) => {
     const cur = states[id] ?? { crafted: false, installed: false }
@@ -322,12 +322,16 @@ function AugmentsEditor({ value, onChange, tier, slotCap, defs }: { value: strin
           const s = states[a.id] ?? { crafted: false, installed: false }
           return (
             <Choice key={a.id} title={a.name} meta={a.effect} selected={s.crafted}
-              onPick={() => patch(a.id, { crafted: !s.crafted, installed: s.crafted ? false : s.installed })}>
+              onPick={() => patch(a.id, { crafted: !s.crafted, installed: s.crafted ? 0 : installsOf(s) })}>
               <Details><p>Cost: {a.cost}</p></Details>
-              <label className="inline augment-install">
-                <input type="checkbox" checked={s.installed} disabled={!s.crafted || (!s.installed && installedCount >= slotCap)}
-                  onChange={(e) => patch(a.id, { installed: e.target.checked })} /> Installed
-              </label>
+              <div className="augment-install">
+                {Array.from({ length: a.max ?? 1 }, (_, i) => (
+                  <label key={i} className="inline">
+                    <input type="checkbox" checked={i < installsOf(s)} disabled={!s.crafted || (i >= installsOf(s) && i + 1 - installsOf(s) > slotCap - installedCount)}
+                      onChange={(e) => patch(a.id, { installed: e.target.checked ? i + 1 : i })} /> {(a.max ?? 1) > 1 ? `Installed ${i + 1}` : 'Installed'}
+                  </label>
+                ))}
+              </div>
             </Choice>
           )
         })}

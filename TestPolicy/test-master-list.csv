@@ -114,12 +114,14 @@ resource-trackers.[s5] resource trackers (tokens and counters with an upper limi
 resource-trackers.[s5] resource trackers (tokens and counters with an upper limit).classes without a limited resource show none,0
 resource-trackers.[s5] resource trackers (tokens and counters with an upper limit).once-per-rest features get a circle inline after the phrase (one per use),0
 resource-trackers.[s5] resource trackers (tokens and counters with an upper limit).sample sheets render inside the margins (TestArtifacts/sheet-samples),0
+resource-trackers.[s5] resource trackers (tokens and counters with an upper limit).Seaborne community tracks Know the Tide tokens, one box per level,1
 resource-trackers.[s5] resource trackers (tokens and counters with an upper limit).Warlock tracks Favor (max 6),0
 resource-trackers.[s5] resource trackers (tokens and counters with an upper limit).Witch counts Hex and token rows from the Spellcast trait,0
 rules.[s3] character rules with frames.Everyday Hero replaces the weapon and armor pools,0
 rules.[s3] character rules with frames.Feasts: Tend to Wounds, Clear Stress and Prepare replaced by Make a Feast,0
 rules.[s3] character rules with frames.Floating Magic School: flight artifact text required,0
 rules.[s3] character rules with frames.Monster Hunting armor is expanded per tier with its own thresholds,1
+rules.[s3] character rules with frames.Tech: an Augment installed twice stacks (Guard x2 = +2 Armor Score); a count above its max is capped; old boolean saves read as 1,1
 rules.[s3] character rules with frames.Tech: Iconic Weapon builder validated; Credits replace gold; upgrade slots scale by tier,0
 rules.[s3] character rules with frames.Tech: installed Augments (Motherboard Module catalog) add to Armor Score / Evasion; only installed ones count; tier gates crafting,1
 rules.[s3] character rules with frames.Western adds to the weapon pool: base weapons and revolver both allowed,0
