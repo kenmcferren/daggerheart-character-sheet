@@ -1,6 +1,7 @@
 import { TRAITS, creationOf, type AdvancementRecord, type Character, type Creation, type LevelRecord, type Trait } from './character'
 import type { Registry } from './packs'
 import { STARTING_PROFICIENCY, STARTING_STRESS, tierOf } from './rules'
+import { cardTypeProblem, classDomains } from './classCards'
 
 /** Everything gained after level 1, derived by replaying a character's history against the level-up rules in the packs. */
 export interface Progress {
@@ -108,10 +109,13 @@ export function domainCardProblem(st: Progress, level: number, cls: any, reg: Re
   if (!card) return `unknown domain card ${cardId}`
   if (owned.includes(cardId)) return `${card.name} is already held`
   const capped = Math.min(cap, level)
-  if (cls?.domains?.includes(card.domain) && card.level <= capped) return null
+  const own = classDomains(cls, Object.keys(st.subclassRanks), reg)
+  const typeBar = own.includes(card.domain) ? cardTypeProblem(cls, card) : null
+  if (typeBar) return typeBar
+  if (own.includes(card.domain) && card.level <= capped) return null
   const mc = st.multiclass
   if (mc && card.domain === mc.domainId) return card.level <= Math.min(capped, Math.ceil(level / 2)) ? null : `${card.name} is above half your level (multiclass domain)`
-  return cls?.domains?.includes(card.domain) ? `${card.name} is above level ${capped}` : `${card.name} is not from a domain you have`
+  return own.includes(card.domain) ? `${card.name} is above level ${capped}` : `${card.name} is not from a domain you have`
 }
 
 /** Companion options to choose at a level: one, plus extras from Expert Training (+1) and Advanced Training (+2) on the level they are taken; never more than the options not yet taken (the class list has 8, each once). */

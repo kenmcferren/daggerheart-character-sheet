@@ -1,0 +1,1233 @@
+{
+  "frame": {
+    "id": "starfinder-classes",
+    "name": "Starheart Classes"
+  },
+  "classes": [
+    {
+      "id": "envoy",
+      "name": "Envoy",
+      "subclasses": [
+        "envoy.commander",
+        "envoy.spymaster"
+      ],
+      "domains": [
+        "grace",
+        "bone"
+      ],
+      "startingEvasion": 11,
+      "startingHitPoints": 5,
+      "classItems": "Placeholder item",
+      "hopeFeature": {
+        "name": "Envoy Hope Feature",
+        "rules": "Spend any number of Hope to warn and/or encourage an ally. They increase their Evasion or next action roll by 2 plus the Hope you spent until the end of their next spotlight or your next spotlight."
+      },
+      "features": [
+        {
+          "name": "Squad Goals",
+          "rules": "When you move to a point in Close range, mark a Stress to bring up to two willing creatures in Very Close range of your starting point with you. When you attack an adversary, mark a Stress to allow an ally in Very Close range of you to make an attack against the same adversary as a reaction."
+        },
+        {
+          "name": "Tactical Mind",
+          "rules": "You have Envoy Tokens, up to a maximum of 6. When you would gain Hope, you may gain an Envoy Token instead. When you long rest, gain Envoy Tokens equal to your Spellcast Trait. You can spend an Envoy Token instead of Hope to aid an ally.",
+          "trackers": [
+            {
+              "id": "envoy-tokens",
+              "label": "Envoy Tokens (max 6)",
+              "count": 6,
+              "shape": "box",
+              "placement": "front"
+            }
+          ]
+        }
+      ],
+      "backgroundQuestions": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ],
+      "connections": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ]
+    },
+    {
+      "id": "mystic",
+      "name": "Mystic",
+      "subclasses": [
+        "mystic.spellweaver",
+        "mystic.bondsmage"
+      ],
+      "domains": [
+        "arcana",
+        "splendor"
+      ],
+      "startingEvasion": 10,
+      "startingHitPoints": 5,
+      "classItems": "Placeholder item",
+      "hopeFeature": {
+        "name": "Mystic Hope Feature",
+        "rules": "Spend 3 Hope to reroll a Spellcast Roll."
+      },
+      "features": [
+        {
+          "name": "Mystic Bond",
+          "rules": "Each rest you can designate up to 10 creatures to be part of your Mystic Bond. At each of your spotlights, you may mark a Stress to let one of them clear a Stress."
+        },
+        {
+          "name": "Vitality Network",
+          "rules": "You have a pool of Vitality Points (VP). After a long rest, refill it to its maximum of your Spellcast Trait + your Tier. Once per spotlight, you may spend 2 VP to allow someone within your Mystic Bond to clear a Stress or a Hit Point.",
+          "trackers": [
+            {
+              "id": "vitality-points",
+              "label": "VP (max Spellcast + Tier)",
+              "count": {
+                "trait": "spellcast",
+                "tier": true
+              },
+              "shape": "box",
+              "placement": "front"
+            }
+          ]
+        }
+      ],
+      "backgroundQuestions": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ],
+      "connections": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ]
+    },
+    {
+      "id": "operative",
+      "name": "Operative",
+      "subclasses": [
+        "operative.weapons-specialist",
+        "operative.technologist"
+      ],
+      "domains": [
+        "midnight",
+        "codex"
+      ],
+      "startingEvasion": 12,
+      "startingHitPoints": 6,
+      "classItems": "Placeholder item",
+      "hopeFeature": {
+        "name": "Operative Hope Feature",
+        "rules": "Spend 2 Hope when you make an action roll to add an Experience and gain advantage on the roll."
+      },
+      "features": [
+        {
+          "name": "Tech Savvy",
+          "rules": "Gain an additional domain card at level 1. On all domain cards, replace the words \"Spell\" and \"Magic\" with \"Tech\", and \"Grimoire\" with \"Kit\". If you swap out a Tech or Kit card, reduce the Stress cost to do so by 1."
+        },
+        {
+          "name": "Called Shot",
+          "rules": "If you have not moved during your spotlight, you can make a Called Shot. Make an attack roll with a weapon of range Close or farther. On a hit, mark a Stress to deal an extra Pd4 damage. Your spotlight ends after the shot."
+        }
+      ],
+      "backgroundQuestions": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ],
+      "connections": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ],
+      "startingDomainCards": 3,
+      "cardWords": [
+        {
+          "from": "spell",
+          "to": "Tech"
+        },
+        {
+          "from": "magic",
+          "to": "Tech"
+        },
+        {
+          "from": "grimoire",
+          "to": "Kit"
+        }
+      ],
+      "cardTypes": {
+        "spell": "tech",
+        "grimoire": "kit"
+      }
+    },
+    {
+      "id": "solarian",
+      "name": "Solarian",
+      "subclasses": [
+        "solarian.sidereal",
+        "solarian.coronal"
+      ],
+      "domains": [
+        "blade",
+        "arcana"
+      ],
+      "startingEvasion": 10,
+      "startingHitPoints": 7,
+      "classItems": "Placeholder item",
+      "hopeFeature": {
+        "name": "Solarian Hope Feature",
+        "rules": "Spend 3 Hope to summon all 3 Solar Conjurations."
+      },
+      "features": [
+        {
+          "name": "Twin Energies",
+          "rules": "You have two modes, Graviton and Photon, between which you can switch at the start of your spotlight. When you switch, you may perform a Solar Conjuration of a Mote, Weapon, or Aura. Your conjurations take on your mode with each switch.\n- Solar Mote: Create a floating mote of energy that orbits you. You may choose to fire it at an adversary when you make a ranged attack roll for an additional +1d6 damage.\n- Solar Weapon: Create a melee weapon that deals d8 Tech damage and uses your Spellcast Trait. Then choose one: Very Close range, d10+2 damage, or the feature \"Reliable: +1 to attack rolls.\" Add your Tier and Spellcast Trait to your damage.\n- Solar Aura: Create a cloud of energy churning around you. When you take damage, you can destroy your Aura to reduce the damage by one threshold."
+        }
+      ],
+      "backgroundQuestions": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ],
+      "connections": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ]
+    },
+    {
+      "id": "soldier",
+      "name": "Soldier",
+      "subclasses": [
+        "soldier.tactician",
+        "soldier.armor-storm"
+      ],
+      "domains": [
+        "valor",
+        "dread"
+      ],
+      "startingEvasion": 10,
+      "startingHitPoints": 7,
+      "classItems": "Placeholder item",
+      "hopeFeature": {
+        "name": "Soldier Hope Feature",
+        "rules": "While you have more than 4 Hope, you can spend a Hope instead of marking an Armor Slot."
+      },
+      "features": [
+        {
+          "name": "Suppression",
+          "rules": "When you make a weapon attack, spend a Hope to make your target temporarily Suppressed. While Suppressed, their action rolls have disadvantage, and if they move from their position their spotlight ends. Their Suppressed condition ends when they move or voluntarily mark a Stress."
+        },
+        {
+          "name": "Dread Abilities",
+          "rules": "All Dread domain card spells are now abilities instead. Dread spells that target a creature deal no damage. Instead, when you succeed on a weapon attack you can apply the non-damaging effects of the Dread spell to the target in place of the Suppressed condition. Dread spells that do not target a creature work as written but count as abilities. Use Strength for any Spellcast Roll or Spellcast Trait a Dread card calls for. Describe Dread effects as fear, suppression, and pressure, not necromancy."
+        }
+      ],
+      "backgroundQuestions": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ],
+      "connections": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ],
+      "cardWords": [
+        {
+          "domains": [
+            "dread"
+          ],
+          "from": "Spellcast Roll",
+          "to": "Strength Roll"
+        },
+        {
+          "domains": [
+            "dread"
+          ],
+          "from": "Spellcast trait",
+          "to": "Strength"
+        },
+        {
+          "domains": [
+            "dread"
+          ],
+          "from": "spell",
+          "to": "ability"
+        }
+      ],
+      "cardTypes": {
+        "spell": "ability"
+      },
+      "cardTypeDomains": [
+        "dread"
+      ]
+    },
+    {
+      "id": "witchwarper",
+      "name": "Witchwarper",
+      "subclasses": [
+        "witchwarper.neutronic",
+        "witchwarper.electronic"
+      ],
+      "domains": [
+        "dread",
+        "midnight"
+      ],
+      "startingEvasion": 12,
+      "startingHitPoints": 5,
+      "classItems": "Placeholder item",
+      "hopeFeature": {
+        "name": "Witchwarper Hope Feature",
+        "rules": "Spend 3 Hope to have a spell affect all targets in your Quantum Field."
+      },
+      "features": [
+        {
+          "name": "Quantum Field",
+          "rules": "You have a Quantum Field. You can summon or dismiss it at the start of your spotlight. Summon it at a point within Far range by marking 1 Stress. It is destroyed if it exceeds Far range from you. Everywhere within Very Close range of the center of your Quantum Field is considered \"Within your Field\". You can only select Spell domain cards. With every spell, replace \"within Melee/Very Close/Close/Far/Very Far\" with the phrase \"within your Field\". Spell effects occur only within your Field. Describe summoned creatures and fiends as entities from other dimensions, and necrotic energy as entropic."
+        },
+        {
+          "name": "Wave Function",
+          "rules": "At the start of your spotlight you may move the center of your Quantum Field to any point currently within it. During your spotlight you can forgo your own movement to move your Quantum Field to a new point currently within it, and may mark a Stress to do so again."
+        }
+      ],
+      "backgroundQuestions": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ],
+      "connections": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ],
+      "allowedCardTypes": [
+        "spell"
+      ]
+    },
+    {
+      "id": "mechanic",
+      "name": "Mechanic",
+      "subclasses": [
+        "mechanic.mechsuit",
+        "mechanic.drone-controller"
+      ],
+      "domains": [
+        "valor",
+        "sage"
+      ],
+      "startingEvasion": 10,
+      "startingHitPoints": 6,
+      "classItems": "Placeholder item",
+      "hopeFeature": {
+        "name": "Mechanic Hope Feature",
+        "rules": "Spend 3 Hope to recreate your Sidekick. Alternately, you can Prepare during a long rest and forgo gaining Hope to summon your Sidekick."
+      },
+      "features": [
+        {
+          "name": "Trusty Sidekick",
+          "rules": "You have an invention of circuits and parts, small enough to be carried as a backpack, that accompanies you. It has 4 Armor Slots plus 1 per Tier, has Evasion equal to yours, and moves with you to stay in Very Close range of you. It can be equipped with any secondary weapon, giving you that weapon's benefits as though you had it equipped. When its final Armor Slot is marked, it is destroyed.",
+          "trackers": [
+            {
+              "id": "sidekick-armor",
+              "label": "Sidekick Armor Slots (4 + Tier)",
+              "count": {
+                "base": 4,
+                "tier": true
+              },
+              "shape": "box",
+              "placement": "front"
+            }
+          ]
+        },
+        {
+          "name": "Machine Whisperer",
+          "rules": "Your Sage domain cards apply to technological and urban systems instead of natural environments: tracking can work through computer systems, a familiar can be a small drone, and speaking with the natural world becomes conversing with turrets, ship AIs, and databases. Magic damage from these cards is instead Tech or physical damage, your choice."
+        }
+      ],
+      "backgroundQuestions": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ],
+      "connections": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ]
+    },
+    {
+      "id": "technomancer",
+      "name": "Technomancer",
+      "subclasses": [
+        "technomancer.tinker",
+        "technomancer.overwatch"
+      ],
+      "domains": [
+        "codex",
+        "sage"
+      ],
+      "startingEvasion": 12,
+      "startingHitPoints": 5,
+      "classItems": "Placeholder item",
+      "hopeFeature": {
+        "name": "Technomancer Hope Feature",
+        "rules": "Mark 1 Armor Slot to gain 2 Hope, or spend 2 Hope to clear 1 Armor Slot."
+      },
+      "features": [
+        {
+          "name": "Machine Whisperer",
+          "rules": "Your Sage domain cards apply to technological and urban systems instead of natural environments: tracking can work through computer systems, a familiar can be a small drone, and speaking with the natural world becomes conversing with turrets, ship AIs, and databases. Magic damage from these cards is instead Tech or physical damage, your choice. On Codex domain cards, replace \"Book\" and \"Grimoire\" with \"Program\"."
+        },
+        {
+          "name": "Versatile Caster",
+          "rules": "Mark a Stress or spend a Hope to alter the damage type and/or flavor of any spell. Damage types include magic, Tech, and physical. Flavor never changes damage dice, ranges, or durations."
+        }
+      ],
+      "backgroundQuestions": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ],
+      "connections": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ],
+      "cardWords": [
+        {
+          "domains": [
+            "codex"
+          ],
+          "from": "book",
+          "to": "program"
+        },
+        {
+          "domains": [
+            "codex"
+          ],
+          "from": "grimoire",
+          "to": "program"
+        }
+      ],
+      "cardTypes": {
+        "grimoire": "program"
+      },
+      "cardTypeDomains": [
+        "codex"
+      ]
+    },
+    {
+      "id": "biohacker",
+      "name": "Biohacker",
+      "subclasses": [
+        "biohacker.gene-splicer",
+        "biohacker.physiologist"
+      ],
+      "domains": [
+        "bone",
+        "splendor"
+      ],
+      "startingEvasion": 11,
+      "startingHitPoints": 7,
+      "classItems": "Placeholder item",
+      "hopeFeature": {
+        "name": "Biohacker Hope Feature",
+        "rules": "Spend 3 Hope to refill your Serum Pool."
+      },
+      "features": [
+        {
+          "name": "Serum Pool",
+          "rules": "You have a pool of Serum Tokens that can hold tokens equal to your Tier plus your Spellcast Trait. Once per spotlight you can deliver a dose of serum by succeeding on a weapon attack or a Spellcast Roll (Difficulty 14) and then spending a Serum Token. Some creatures (at the GM's discretion) may make a reaction roll to negate it, against a Difficulty equal to the result of your action roll.",
+          "trackers": [
+            {
+              "id": "serum-tokens",
+              "label": "Serum Tokens (max Tier + Spellcast)",
+              "count": {
+                "trait": "spellcast",
+                "tier": true
+              },
+              "shape": "box",
+              "placement": "front"
+            }
+          ]
+        },
+        {
+          "name": "Tech Caster",
+          "rules": "Any magic damage is instead Tech damage."
+        },
+        {
+          "name": "Minor Serums",
+          "rules": "When you deliver a dose of serum, pick one of the following temporary effects to apply to a single one of your targets. Lingering effects last the rest of this scene or until the GM spends a Fear to end them. Only the most recent serum per target applies.\n- The target clears or marks a Stress.\n- The target's Difficulty or Evasion is modified by +2/-2 (lingering).\n- A PC's trait is improved by +1 (lingering)."
+        }
+      ],
+      "backgroundQuestions": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ],
+      "connections": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ]
+    },
+    {
+      "id": "aspis-sleeper",
+      "name": "Aspis Sleeper",
+      "subclasses": [
+        "aspis-sleeper.infiltrator",
+        "aspis-sleeper.executioner"
+      ],
+      "domains": [
+        "blade",
+        "grace"
+      ],
+      "startingEvasion": 13,
+      "startingHitPoints": 6,
+      "classItems": "Placeholder item",
+      "hopeFeature": {
+        "name": "Aspis Sleeper Hope Feature",
+        "rules": "Spend 3 Hope to increase your Buried Protocols bonus by +2 for the rest of the scene and immediately use it on an action roll."
+      },
+      "features": [
+        {
+          "name": "Force of Will",
+          "rules": "When you succeed with Fear on a Grace domain ability against one or more targets, a target of your choice you succeeded against marks a Stress."
+        },
+        {
+          "name": "Buried Protocols",
+          "rules": "You gain a new Experience at +1 called \"Buried Protocols\". It increases by +1 each time you increase your Tier, and can be increased via leveling options as well, to a maximum of +7. Once per rest when you succeed on a roll while using it you can clear a Stress and gain a Hope."
+        }
+      ],
+      "backgroundQuestions": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ],
+      "connections": [
+        "Placeholder question",
+        "Placeholder question",
+        "Placeholder question"
+      ]
+    }
+  ],
+  "subclasses": [
+    {
+      "id": "envoy.commander",
+      "name": "Commander",
+      "class": "envoy",
+      "features": [
+        {
+          "name": "Get 'Em",
+          "rules": "You can initiate a number of Tag Team Rolls per session equal to your Tier. You can spend Envoy Tokens in place of Hope for this, one for one.",
+          "level": "foundation"
+        },
+        {
+          "name": "Stay on Target",
+          "rules": "Once per session you can increase the value of another player's Hope Die or Fear Die by 1.",
+          "level": "foundation"
+        },
+        {
+          "name": "You've Got This",
+          "rules": "When another player rolls with Fear, spend an Envoy Token to let them clear 1d4 Stress.",
+          "level": "specialization"
+        },
+        {
+          "name": "Focus Fire",
+          "rules": "Once per scene, spend a Hope or an Envoy Token to designate an adversary for the rest of the scene. Allies add +1d6 to their attack rolls against that adversary.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "presence"
+    },
+    {
+      "id": "envoy.spymaster",
+      "name": "Spymaster",
+      "class": "envoy",
+      "features": [
+        {
+          "name": "In Plain Sight",
+          "rules": "Each scene, until you attack that scene, you may use your Presence instead of Finesse to hide and need only props or a small crowd to hide in.",
+          "level": "foundation"
+        },
+        {
+          "name": "Lie Detector",
+          "rules": "Spend an Envoy Token to ask the GM about a specific NPC statement this scene. They must tell you which parts are true and which are lies, but not the extent or contents of any lie.",
+          "level": "foundation"
+        },
+        {
+          "name": "Every Last Drop",
+          "rules": "With a quick conversation you may spend an Envoy Token and an ally may mark a Stress to refresh one of their once per rest or once per long rest features.",
+          "level": "specialization"
+        },
+        {
+          "name": "Contingencies",
+          "rules": "While you have 2 or more Envoy Tokens, you have a new death move: \"Contingencies: Spend all Envoy Tokens and all Hope. Describe how an adversary in this scene dies instead, exactly as you planned from the start. Then follow the instructions of the Avoid Death move.\"",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "presence"
+    },
+    {
+      "id": "mystic.spellweaver",
+      "name": "Spellweaver",
+      "class": "mystic",
+      "features": [
+        {
+          "name": "Arcane Font",
+          "rules": "When you cast a spell, gain a VP. Spend 3 VP before you cast a spell to gain one of the following effects on a success: (A) increase a die size listed in the spell by 1 (a d20 becomes d20+6), (B) increase the range by 1 range band, or (C) cast it as though standing at the location of another creature in your Mystic Bond.",
+          "level": "foundation"
+        },
+        {
+          "name": "Crimson Rite",
+          "rules": "Spend 2 VP after a successful Spellcast Roll to increase the Proficiency of this attack by 1.",
+          "level": "specialization"
+        },
+        {
+          "name": "Wellspring",
+          "rules": "When you critically succeed on a Spellcast Roll, refill your VP.",
+          "level": "mastery"
+        },
+        {
+          "name": "Weaver",
+          "rules": "During your spotlight you may choose up to 3 different effects from Arcane Font and Crimson Rite to apply to a spell, paying the VP for each.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "instinct"
+    },
+    {
+      "id": "mystic.bondsmage",
+      "name": "Bondsmage",
+      "class": "mystic",
+      "features": [
+        {
+          "name": "Full Hearts",
+          "rules": "You refill your VP each rest instead of each long rest. When you would gain a Hope, you may gain a VP instead. If your action roll was with Hope, clearing an ally's Stress or Hit Point costs 1 VP instead of 2.",
+          "level": "foundation"
+        },
+        {
+          "name": "Empathic Bond",
+          "rules": "When an ally within your Mystic Bond clears more than 1 Hit Point or more than 1 Stress, gain a VP.",
+          "level": "specialization"
+        },
+        {
+          "name": "Constant Gardener",
+          "rules": "You can use your Vitality Network twice per spotlight instead of once.",
+          "level": "specialization"
+        },
+        {
+          "name": "Shared Trauma",
+          "rules": "When an ally within your Mystic Bond would mark a Hit Point, you may mark a Stress and spend 2 VP to reduce the damage by one threshold.",
+          "level": "mastery"
+        },
+        {
+          "name": "Sacrificial Act",
+          "rules": "When an ally within your Mystic Bond would make a death move, you may switch places with them as a reaction. You make a death move instead, which cannot be Avoid Death. They receive the benefits of a long rest immediately and take the spotlight next. This can't be interrupted by spending Fear.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "presence"
+    },
+    {
+      "id": "operative.weapons-specialist",
+      "name": "Weapons Specialist",
+      "class": "operative",
+      "features": [
+        {
+          "name": "Precision 1",
+          "rules": "When you add an Experience to a Called Shot, increase the extra damage to d6 instead of d4.",
+          "level": "foundation"
+        },
+        {
+          "name": "Pride in Your Work",
+          "rules": "If you roll a Called Shot with Hope, gain an additional Hope.",
+          "level": "foundation"
+        },
+        {
+          "name": "Precision 2",
+          "rules": "Your Called Shot bonus damage is always a d6, and now increases to a d8 if you added an Experience to it.",
+          "level": "specialization"
+        },
+        {
+          "name": "Run and Gun",
+          "rules": "You can move before, but not after, your Called Shot.",
+          "level": "specialization"
+        },
+        {
+          "name": "Baba Yaga",
+          "rules": "Your Operative Hope Feature now costs 1 Hope.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "agility"
+    },
+    {
+      "id": "operative.technologist",
+      "name": "Technologist",
+      "class": "operative",
+      "features": [
+        {
+          "name": "Collector",
+          "rules": "When you make a Tech Roll (or a weapon roll that deals Tech damage) with Hope, put a token on this card, up to 6. Each rest, declare Gadget or Ordnance (see Starheart Consumables) and then spend all tokens to roll a d20 for each. Keep a number of results equal to your Knowledge Trait. Only you can use these inventions, and they become junk at the start of your next rest.",
+          "level": "foundation",
+          "trackers": [
+            {
+              "id": "collector-tokens",
+              "label": "Collector tokens (max 6)",
+              "count": 6,
+              "shape": "box",
+              "placement": "front"
+            }
+          ]
+        },
+        {
+          "name": "Tinker",
+          "rules": "When rolling for your Collector feature, you may roll 1d12 + any number from 1 through 10 instead of 1d20.",
+          "level": "specialization"
+        },
+        {
+          "name": "Extra Juice",
+          "rules": "Mark a Stress. For the rest of the scene, when you deal Tech damage to an adversary, they also mark 1 Stress.",
+          "level": "specialization"
+        },
+        {
+          "name": "Recycler",
+          "rules": "When you use a Gadget, you may mark 2 Stress to prevent it from being consumed. At the start of your rest, prevent one Gadget or Ordnance from falling apart.",
+          "level": "mastery"
+        },
+        {
+          "name": "Shareable",
+          "rules": "You can freely share your inventions, up to one per ally at a time. Sharing more causes previous inventions to fall apart.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "knowledge"
+    },
+    {
+      "id": "solarian.sidereal",
+      "name": "Sidereal",
+      "class": "solarian",
+      "features": [
+        {
+          "name": "Warpage",
+          "rules": "When you attack with Hope, your Mote can (Photon) push or (Graviton) pull the target it strikes up to Very Close range.",
+          "level": "foundation"
+        },
+        {
+          "name": "Slingshot",
+          "rules": "You may destroy your Weapon to make an Instinct Roll instead of an Agility Roll to move. With Graviton, you have advantage. With Photon, deal Pd6 damage to targets in Melee range before you move.",
+          "level": "foundation"
+        },
+        {
+          "name": "Lensing",
+          "rules": "While your Aura is in place, increase your Evasion by 2.",
+          "level": "specialization"
+        },
+        {
+          "name": "Alignment",
+          "rules": "When you attack an adversary directly between you and an ally, either (Photon) you have advantage on the attack roll, or (Graviton) the target has disadvantage on attacks against either of you.",
+          "level": "specialization"
+        },
+        {
+          "name": "Retrograde",
+          "rules": "When an adversary attacks you, but before damage is rolled, you can destroy all your conjurations to shift into Very Close range, causing the attack to miss.",
+          "level": "mastery"
+        },
+        {
+          "name": "Well",
+          "rules": "When a creature moves toward you, you may mark a Stress to either (Graviton) allow them double movement with no roll required, or (Photon) make a Spellcast Roll as a reaction to stop them halfway.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "instinct"
+    },
+    {
+      "id": "solarian.coronal",
+      "name": "Coronal",
+      "class": "solarian",
+      "features": [
+        {
+          "name": "Expulse",
+          "rules": "On a mode switch, a target adversary in Melee range makes a reaction roll (Difficulty 12 + your Spellcast Trait). On a failure, they (Photon) mark 1 Hit Point or (Graviton) mark 1 Stress.",
+          "level": "foundation"
+        },
+        {
+          "name": "Stellar Hunger",
+          "rules": "On a critical hit with your Weapon or Mote, gain 2 Hope instead of 1 and clear 2 Stress instead of 1.",
+          "level": "foundation"
+        },
+        {
+          "name": "Gleaming Blade",
+          "rules": "Increase your Solar Weapon damage by 1 die size and add +2 (d10+2 and d12+4).",
+          "level": "specialization"
+        },
+        {
+          "name": "Radiant Aura",
+          "rules": "Once per rest, destroy your Aura to make a Spellcast Roll against all targets in Close range. Deal Pd4+6 Tech damage to each target you succeed against. Deal 1 damage to all others.",
+          "level": "specialization"
+        },
+        {
+          "name": "Supernova",
+          "rules": "Spend 2 Hope. Make a Spellcast Roll. Graviton: Targets within Far range you succeed against are pulled into Very Close range of you, mark 1 Hit Point and 2 Stress, and are temporarily Restrained. Photon: Targets within Very Close range you succeed against are pushed to Far range, mark 2 Hit Points and 1 Stress, and are temporarily Vulnerable.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "strength"
+    },
+    {
+      "id": "soldier.tactician",
+      "name": "Tactician",
+      "class": "soldier",
+      "features": [
+        {
+          "name": "Overwhelm",
+          "rules": "You do not need to spend a Hope to apply Suppressed.",
+          "level": "foundation"
+        },
+        {
+          "name": "Primary Target",
+          "rules": "Once per rest you can declare a Primary Target. Gain a Hope any time your Primary Target marks a Hit Point. When your Primary Target succeeds on a reaction roll, you may mark a Stress to make them reroll and take the new result.",
+          "level": "foundation"
+        },
+        {
+          "name": "Quick Swap",
+          "rules": "You do not need to mark a Stress when you switch weapons on your spotlight, but are still limited to one switch per spotlight.",
+          "level": "specialization"
+        },
+        {
+          "name": "Relentless Pursuit",
+          "rules": "While your Primary Target is Suppressed, movement does not end their Suppressed condition and your attacks against them have advantage.",
+          "level": "specialization"
+        },
+        {
+          "name": "Terrifying Barrage",
+          "rules": "When you apply Suppressed, you may spend a Hope to apply it to each other target in Very Close range of the first, spending a Hope for each.",
+          "level": "mastery"
+        }
+      ]
+    },
+    {
+      "id": "soldier.armor-storm",
+      "name": "Armor Storm",
+      "class": "soldier",
+      "features": [
+        {
+          "name": "Armor Master",
+          "rules": "Your Hope Feature works while you have more than 2 Hope instead of more than 4. You may ignore any feature of armor you are wearing. Whenever you would make a Presence roll, you may make a Strength roll instead.",
+          "level": "foundation"
+        },
+        {
+          "name": "Quick Stitch",
+          "rules": "When you clear any Armor Slots during a rest, clear that many Armor Slots, distributed as you like, among your allies as well.",
+          "level": "foundation"
+        },
+        {
+          "name": "Aegis Protocol",
+          "rules": "If you spend Hope instead of marking an Armor Slot, you may then also mark an Armor Slot to further reduce your damage.",
+          "level": "specialization"
+        },
+        {
+          "name": "Heavyweight",
+          "rules": "While using a Strength or Presence weapon, add your Armor Score to your damage.",
+          "level": "specialization"
+        },
+        {
+          "name": "That's Impossible",
+          "rules": "When you would take damage and have 2 or more Hope, spend all Hope to reduce the damage to 0 and negate any effect the attack would have applied.",
+          "level": "mastery"
+        }
+      ]
+    },
+    {
+      "id": "witchwarper.neutronic",
+      "name": "Neutronic",
+      "class": "witchwarper",
+      "features": [
+        {
+          "name": "Ties that Bind",
+          "rules": "Gain access to the Splendor domain. Choose one additional domain card from it.",
+          "level": "foundation"
+        },
+        {
+          "name": "Soothing Pulse",
+          "rules": "When any target starts their spotlight within your Field, you may have them clear a Stress.",
+          "level": "foundation"
+        },
+        {
+          "name": "Expansion",
+          "rules": "Increase the size of your Quantum Field to encompass all points within Close range, instead of Very Close. You can no longer mark a Stress to move it twice during your spotlight.",
+          "level": "specialization"
+        },
+        {
+          "name": "Strong Force",
+          "rules": "When a creature moves more than Very Close range on its spotlight and enters your Field, you may elect to stop its movement. When a creature starts its spotlight within your Field, you may elect to reduce its movement distances by half.",
+          "level": "specialization"
+        },
+        {
+          "name": "Slowed Strikes",
+          "rules": "As a reaction you can reduce any physical damage that passes through your Field by 1 die, or by half if no dice were used.",
+          "level": "specialization"
+        },
+        {
+          "name": "Quantum Tunneling",
+          "rules": "Mark 2 Stress to open a wormhole to a point within your Field. Creatures and objects passing through emerge on the other side retaining their facing, and onlookers can see through the Field in the same direction they are looking. The tunnel closes at the end of your next spotlight.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "instinct",
+      "extraDomain": "splendor"
+    },
+    {
+      "id": "witchwarper.electronic",
+      "name": "Electronic",
+      "class": "witchwarper",
+      "features": [
+        {
+          "name": "Destructive Nature",
+          "rules": "Gain access to the Arcana domain. Choose one additional domain card from it.",
+          "level": "foundation"
+        },
+        {
+          "name": "Violent Frequencies",
+          "rules": "At the start of your spotlight, one target within your Field marks a Hit Point if they fail a reaction roll (Difficulty 14).",
+          "level": "foundation"
+        },
+        {
+          "name": "Probability Cloud",
+          "rules": "Mark a Stress as a reaction after any action roll you see to add or subtract your Spellcast Trait to the result. This doesn't create or remove critical effects.",
+          "level": "specialization"
+        },
+        {
+          "name": "Swift Effect",
+          "rules": "When you forgo movement to move your Quantum Field, move it to anywhere within Far range of its current position.",
+          "level": "specialization"
+        },
+        {
+          "name": "Phenomenal Effect",
+          "rules": "You can have up to 6 cards in your loadout.",
+          "level": "mastery"
+        },
+        {
+          "name": "Abrupt Appearance",
+          "rules": "When you summon your Quantum Field, all targets you elect within it, including other player characters, must mark 1 Hit Point.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "instinct",
+      "extraDomain": "arcana"
+    },
+    {
+      "id": "mechanic.mechsuit",
+      "name": "Mechsuit",
+      "class": "mechanic",
+      "features": [
+        {
+          "name": "Armor Up",
+          "rules": "Your Sidekick can manifest as a mech suit for you. When summoned this way, the Sidekick has no Armor Slots of its own; instead clear a number of your Armor Slots equal to what it would have had. It uses your damage thresholds. You still gain the benefits of its equipped secondary weapon. Choose one primary weapon you have in your inventory each time you summon your Sidekick. That weapon now uses your Spellcast Trait when making attacks.",
+          "level": "foundation"
+        },
+        {
+          "name": "Working as Intended",
+          "rules": "You can mark a Stress to mark an additional Armor Slot when you take damage. Whenever you mark more than 1 Armor Slot at a time, gain 1 Hope.",
+          "level": "specialization"
+        },
+        {
+          "name": "One with the Machine",
+          "rules": "Your Sidekick is no longer destroyed unless you allow it. Whenever your armor is fully marked, you can spend all Hope to clear that many Armor Slots.",
+          "level": "mastery"
+        },
+        {
+          "name": "Configurable",
+          "rules": "When you summon your Sidekick, and at each long rest, choose one of the following features: flying; submersible; resistant to one damage type of your choice; advantage on Spellcast Rolls; advantage on attack rolls. Your Sidekick loses the last property it had and gains this one.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "knowledge"
+    },
+    {
+      "id": "mechanic.drone-controller",
+      "name": "Drone Controller",
+      "class": "mechanic",
+      "features": [
+        {
+          "name": "Transformer",
+          "rules": "When you summon your Sidekick, choose one of the following features for it: Hovering; +2 Armor Score; +2 Evasion. Its thresholds by Tier are 7/15, 11/24, 13/31, 15/40. Describe its form when you create it.",
+          "level": "foundation"
+        },
+        {
+          "name": "Telecast",
+          "rules": "When you cast a spell you can use your Sidekick as the origin point for it. When you take the spotlight, you can elect to act solely through your Sidekick or on your own. If you start your spotlight in Very Close range of it, you can have it follow your movements.",
+          "level": "foundation"
+        },
+        {
+          "name": "More than Meets the Eye",
+          "rules": "When you summon your Sidekick, choose one of the following features for it: a secret compartment shielded from Tech, magic, and physical sensors and forces; advantage on movement action rolls; advantage on reaction rolls.",
+          "level": "specialization"
+        },
+        {
+          "name": "Follow-up",
+          "rules": "When your Sidekick succeeds with Hope against a target you could attack without moving, you can attack that target as a reaction.",
+          "level": "specialization"
+        },
+        {
+          "name": "Robot in Disguise",
+          "rules": "Mark a Stress to render your Sidekick invisible or disguised from casual observation. If any target scans it, make a Knowledge reaction roll to prevent being detected.",
+          "level": "mastery"
+        },
+        {
+          "name": "Master of Your Craft",
+          "rules": "You can resummon your Sidekick for 2 Hope instead of 3 Hope.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "knowledge"
+    },
+    {
+      "id": "technomancer.tinker",
+      "name": "Tinker",
+      "class": "technomancer",
+      "features": [
+        {
+          "name": "Always Working",
+          "rules": "Each rest, in addition to your rest actions, you may roll a d20 on either the Cypher or Gadget consumables page and gain that object. You can hold up to 4 such objects at any time.",
+          "level": "foundation",
+          "trackers": [
+            {
+              "id": "tinker-objects",
+              "label": "Held objects (max 4)",
+              "count": 4,
+              "shape": "box",
+              "placement": "front"
+            }
+          ]
+        },
+        {
+          "name": "Improvised Magic",
+          "rules": "When you cast a spell you can spend a Cypher or Gadget to pay any cost associated with the spell.",
+          "level": "foundation"
+        },
+        {
+          "name": "Efficiency",
+          "rules": "When you use Always Working, roll 3d20 on one table and 1d20 on the other. Keep any 3 of the 4 results.",
+          "level": "specialization"
+        },
+        {
+          "name": "Storage Improvement",
+          "rules": "You can hold up to 6 such objects instead of 4.",
+          "level": "specialization",
+          "trackers": [
+            {
+              "id": "tinker-objects",
+              "label": "Held objects (max 6)",
+              "count": 6,
+              "shape": "box",
+              "placement": "front"
+            }
+          ]
+        },
+        {
+          "name": "The Right Tool",
+          "rules": "Sacrifice a Cypher or Gadget to gain advantage on a Spellcast Roll.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "instinct"
+    },
+    {
+      "id": "technomancer.overwatch",
+      "name": "Overwatch",
+      "class": "technomancer",
+      "features": [
+        {
+          "name": "Magical Battery",
+          "rules": "When you or an ally casts a spell, place a token on this card. You can hold a maximum of 6. When an ally in Close range makes an action or reaction roll, spend tokens for a +1 bonus each on the result of their roll. You can do so after the roll but before consequences have been announced.",
+          "level": "foundation",
+          "trackers": [
+            {
+              "id": "battery-tokens",
+              "label": "Battery tokens (max 6)",
+              "count": 6,
+              "shape": "box",
+              "placement": "front"
+            }
+          ]
+        },
+        {
+          "name": "Capacitance",
+          "rules": "If you have no Magical Battery tokens left, the first time you would gain a token, gain 2 instead. Increase your maximum token count to 8.",
+          "level": "specialization",
+          "trackers": [
+            {
+              "id": "battery-tokens",
+              "label": "Battery tokens (max 8)",
+              "count": 8,
+              "shape": "box",
+              "placement": "front"
+            }
+          ]
+        },
+        {
+          "name": "Shielding",
+          "rules": "Spend tokens to add +1 per token to both thresholds of an ally in Close range. This new threshold lasts the rest of the scene, or until you use this effect again.",
+          "level": "specialization"
+        },
+        {
+          "name": "Defrag",
+          "rules": "When you cast a spell, you can swap it for another spell card in your vault, paying 1 less Stress than the swap normally costs.",
+          "level": "mastery"
+        },
+        {
+          "name": "Overclock",
+          "rules": "When you use your Versatile Caster class feature, you may also (A) extend the range by one range band, (B) reduce the cost by 1 Stress or Hope, or (C) increase the damage die along this track: d4 -> d6 -> d8 -> d10 -> d12 -> d12+d4 -> d20 -> d20+d6.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "instinct"
+    },
+    {
+      "id": "biohacker.gene-splicer",
+      "name": "Gene Splicer",
+      "class": "biohacker",
+      "features": [
+        {
+          "name": "Mutative Effect",
+          "rules": "Each long rest you can splice the genes of a willing ally. Give them a copy of any Bone domain card in your vault or loadout. It counts as a transformation for them, and is removed at their next long rest.",
+          "level": "foundation"
+        },
+        {
+          "name": "Self Help",
+          "rules": "Improve any one trait each long rest by +1. The trait you choose must be different from your most recently improved trait, and applying it removes the previous improvement.",
+          "level": "foundation"
+        },
+        {
+          "name": "Creature Feature",
+          "rules": "Gain a new Experience: \"Form of _______ +3\". When you succeed on a weapon attack against an adversary, or when you examine their corpse, spend a Serum Token to take a sample of it. Replace the blank with the name of the sampled creature, and use it when their form would help you.",
+          "level": "specialization"
+        },
+        {
+          "name": "I Love My Work",
+          "rules": "Taking a sample with Creature Feature costs no Serum Token. When you make an action roll with Hope, you can gain 2 Serum Tokens instead of 1 Hope.",
+          "level": "mastery"
+        },
+        {
+          "name": "Cataloger",
+          "rules": "You have a log of creatures you've sampled with a number of slots equal to your Tier + your Knowledge. You can replace any name with any new sample you take. Mark a Stress to update your \"Form of _______\" Experience to a name on your list.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "knowledge"
+    },
+    {
+      "id": "biohacker.physiologist",
+      "name": "Physiologist",
+      "class": "biohacker",
+      "features": [
+        {
+          "name": "Intermediate Serums",
+          "rules": "Add to your list of serum effects the following:\n- The target's reaction rolls have advantage/disadvantage.\n- The target sees in the dark.\n- The target changes color.\n- The target gains a Hope.\n- The target marks 1 Hit Point (costs 2 Serum Tokens).",
+          "level": "foundation"
+        },
+        {
+          "name": "Chemical Cocktail",
+          "rules": "You can spend 2 Serum Tokens to affect the same target twice. Your Minor Serum effects can stack.",
+          "level": "foundation"
+        },
+        {
+          "name": "Ample Ampules",
+          "rules": "If you start a scene with fewer than 2 Serum Tokens, refill to 2 Serum Tokens.",
+          "level": "specialization"
+        },
+        {
+          "name": "Extra Strength",
+          "rules": "Serum effects last until your next long rest.",
+          "level": "specialization"
+        },
+        {
+          "name": "Aerosol Dispersal",
+          "rules": "Spend 3 Serum Tokens to impact all creatures in Very Close range with an effect of your choice.",
+          "level": "mastery"
+        },
+        {
+          "name": "Master Serums",
+          "rules": "Add to your list of serum effects the following:\n- The target falls asleep.\n- The target has disadvantage on action rolls.\n- The target is rendered unable to sense other creatures, and other creatures are hidden from it.\n- The target marks 1 Hit Point, and then you clear 1 Stress.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "knowledge"
+    },
+    {
+      "id": "aspis-sleeper.infiltrator",
+      "name": "Infiltrator",
+      "class": "aspis-sleeper",
+      "features": [
+        {
+          "name": "Undercover",
+          "rules": "The first time each scene you succeed on a Finesse action roll, the GM loses 1 Fear if they have more than 3 Fear.",
+          "level": "foundation"
+        },
+        {
+          "name": "Who, Me?",
+          "rules": "When a single adversary would sense you while you are Hidden, you can mark a Stress to make a Spellcast Roll as a reaction against them. On a success they seem to forget what they saw or heard.",
+          "level": "foundation"
+        },
+        {
+          "name": "Quickdraw",
+          "rules": "You can hide any one-handed weapon on your person. If the weapon is hidden at the start of your spotlight, your first attack roll with it has advantage.",
+          "level": "specialization"
+        },
+        {
+          "name": "Escape Route",
+          "rules": "Spend a Hope to unlock a mundane lock, loosen a panel, slip by a single guard, or otherwise facilitate a simple step in an infiltration plan.",
+          "level": "specialization"
+        },
+        {
+          "name": "Backstory",
+          "rules": "When you succeed on a Presence roll or a non-attack Spellcast Roll against an NPC you can spend a Hope to have them accidentally give you a perfect backstory explaining your presence here.",
+          "level": "mastery"
+        },
+        {
+          "name": "Desperation",
+          "rules": "Gain a new Experience called \"Desperation\". It has a bonus equal to your marked Hit Points.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "finesse"
+    },
+    {
+      "id": "aspis-sleeper.executioner",
+      "name": "Executioner",
+      "class": "aspis-sleeper",
+      "features": [
+        {
+          "name": "Brutal Assault",
+          "rules": "When you damage a target you can mark a Stress to force them to mark 1 more Hit Point.",
+          "level": "foundation"
+        },
+        {
+          "name": "Contract",
+          "rules": "When you use your Buried Protocols Experience for an attack roll, add its bonus to your damage.",
+          "level": "foundation"
+        },
+        {
+          "name": "Take Down",
+          "rules": "Before rolling an attack you can spend a Hope to declare a Take Down. If your attack then deals Severe damage, the target is taken out of the fight. The GM can spend 2 Fear to keep them in the fight at 1 Hit Point.",
+          "level": "specialization"
+        },
+        {
+          "name": "Fast Learner",
+          "rules": "When an adversary succeeds on an attack against you, you can designate it as your Studied Adversary. When your Studied Adversary subsequently attacks you, reduce the damage you take by 1 threshold, to a minimum of 1.",
+          "level": "mastery"
+        },
+        {
+          "name": "Collateral",
+          "rules": "Once per scene, if your attack defeats an adversary, you can roll your standard damage of that attack against another adversary in range.",
+          "level": "mastery"
+        }
+      ],
+      "spellcastTrait": "agility"
+    }
+  ]
+}

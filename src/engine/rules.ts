@@ -1,6 +1,7 @@
 import { TRAITS, creationOf, type Character, type Creation } from './character'
-import type { CreationSetup, FrameOp } from './creation'
+import { CONSUMABLE_LABEL, type CreationSetup, type FrameOp } from './creation'
 import type { Entry } from './packs'
+import { cardTypeProblem, classList, startingCardRule } from './classCards'
 
 /** SRD Character Creation step 3: assign +2, +1, +1, +0, +0, -1 to the six traits in any order. */
 export const TRAIT_MODIFIERS = [2, 1, 1, 0, 0, -1]
@@ -124,6 +125,7 @@ export function validateCreation(ch: Character, setup: CreationSetup): Issue[] {
   const cls: any = ch.choices.classId ? reg.classes.get(ch.choices.classId) : undefined
 
   if (!cls) bad('class', 'Choose a class.')
+  else if (!classList(setup).includes(cls)) bad('class', `${cls.name} is not available with the selected options.`)
   const sub: any = ch.choices.subclassId ? reg.subclasses.get(ch.choices.subclassId) : undefined
   if (!sub) bad('subclass', 'Choose a subclass.')
   else if (cls && sub.class !== cls.id) bad('subclass', `${sub.name} is not a ${cls.name} subclass.`)
@@ -148,15 +150,19 @@ export function validateCreation(ch: Character, setup: CreationSetup): Issue[] {
   const exps = cr.experiences.filter(nonBlank)
   if (exps.length !== STARTING_EXPERIENCES || cr.experiences.length !== STARTING_EXPERIENCES) bad('experiences', `Write exactly ${STARTING_EXPERIENCES} Experiences.`)
 
-  // Domain cards: two level 1 cards from the class's domains, one each or both from one.
+  // Domain cards: two level 1 cards from the class's domains, one each or both from one (Starheart classes may change the count, add a domain or bar a card type).
   const ids = ch.choices.domainCardIds
-  if (ids.length !== STARTING_DOMAIN_CARDS || new Set(ids).size !== ids.length) bad('domain-cards', `Choose ${STARTING_DOMAIN_CARDS} different level 1 domain cards.`)
+  const rule = cls ? startingCardRule(cls, sub) : { count: STARTING_DOMAIN_CARDS }
+  const domains = [...(cls?.domains ?? []), ...(rule.extraDomain ? [rule.extraDomain] : [])]
+  if (ids.length !== rule.count || new Set(ids).size !== ids.length) bad('domain-cards', `Choose ${rule.count} different level 1 domain cards.`)
   for (const id of ids) {
     const card: any = reg.domainCards.get(id)
     if (!card) bad('domain-cards', `Unknown domain card "${id}".`)
     else if (card.level !== 1) bad('domain-cards', `${card.name} is level ${card.level}; choose level 1 cards.`)
-    else if (cls && !cls.domains.includes(card.domain)) bad('domain-cards', `${card.name} is not from a ${cls.name} domain.`)
+    else if (cls && !domains.includes(card.domain)) bad('domain-cards', `${card.name} is not from a ${cls.name} domain.`)
+    else if (cls && cardTypeProblem(cls, card)) bad('domain-cards', `${card.name}: ${cardTypeProblem(cls, card)}.`)
   }
+  if (rule.extraDomain && !ids.some((id) => (reg.domainCards.get(id) as any)?.domain === rule.extraDomain)) bad('domain-cards', `${sub.name}: choose one card from ${rule.extraDomain[0].toUpperCase()}${rule.extraDomain.slice(1)}.`)
 
   // Class extras
   if (sub?.id === 'ranger.beastbound') {
@@ -213,12 +219,12 @@ function validateEquipment(ch: Character, setup: CreationSetup, bad: (s: string,
   // No armor is a legal choice too (Bare Bones, Brawler).
   if (armorIds.length > 1) bad('equipment', 'Choose at most one set of armor.')
   if (setup.startingStims.length) {
-    if (!setup.startingStims.some((s) => s.id === cr.potion)) bad('equipment', 'Choose a starting stim.')
+    if (!setup.startingStims.some((s) => s.id === cr.potion) || !setup.startingStims.some((s) => s.id === cr.potion2)) bad('equipment', 'Choose two starting stims.')
   } else if (cr.potion !== 'health' && cr.potion !== 'stamina') bad('equipment', 'Choose a Minor Health Potion or a Minor Stamina Potion.')
   if (!nonBlank(cr.classItem)) bad('equipment', 'Choose one class item.')
 }
 
-export interface Tracker { id: string; shape: string; label: string; count: number | { trait: string }; attachTo?: string; placement?: string }
+export interface Tracker { id: string; shape: string; label: string; count: number | { trait?: string; level?: true; tier?: true; base?: number }; attachTo?: string; placement?: string }
 
 export interface DerivedStats {
   level: number
@@ -248,9 +254,13 @@ export function deriveStats(ch: Character, setup: CreationSetup): DerivedStats {
   const res = setup.ops.find((o: FrameOp) => o.op === 'set-resource' && o.resource === 'currency')
   const currency = res ? { name: String(res.name), amount: Number(res.start) } : { name: 'Gold (handfuls)', amount: 1 }
   const kit = ['A torch', '50 feet of rope', 'Basic supplies', currency.name === 'Gold (handfuls)' ? 'A handful of gold' : `${currency.amount} ${currency.name}`]
-  const stim = setup.startingStims.find((s) => s.id === cr.potion)
-  if (stim) kit.push(`${stim.name} (${stim.rules})`)
+  const stims = [cr.potion, cr.potion2].map((id) => setup.startingStims.find((s) => s.id === id)).filter((s) => s !== undefined)
+  if (stims.length) for (const stim of stims) kit.push(`${stim.name} (${stim.rules})`)
   else if (cr.potion) kit.push(cr.potion === 'health' ? 'Minor Health Potion (clear 1d4 Hit Points)' : 'Minor Stamina Potion (clear 1d4 Stress)')
+  for (const id of cr.consumables ?? []) {
+    const c = setup.consumables.find((x) => x.id === id)
+    if (c) kit.push(`${c.name} (${CONSUMABLE_LABEL[c.type] ?? c.type} ${c.number}: ${c.rules})`)
+  }
   if (cr.classItem.trim()) kit.push(cr.classItem.trim())
   for (const o of setup.ops) if (o.op === 'grant') kit.push(String(o.item))
 

@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { TRAITS, type Trait } from '../engine/character'
 import { TRAIT_MODIFIERS, ancestryList, communityList, secondarySlots, armorPool, deriveStats, frameChoiceDefs, weaponPool, weaponLoad, handsAvailable, ancestryFeatures, tierOf, type AugmentDef, type AugmentState, installedCount as installsOf } from '../engine/rules'
-import type { WizardStep } from '../engine/creation'
+import { CONSUMABLE_LABEL, type WizardStep } from '../engine/creation'
+import { cardTypeProblem, classCard, classList, startingCardRule } from '../engine/classCards'
 import { Choice, Details, Feature, GearRow, Notes, Rules, Section, type Ctx } from './common'
 import { titleCase } from './util'
 
 type A = any
-const sorted = (m: Map<string, A>) => [...m.values()].sort((a, b) => a.name.localeCompare(b.name))
 const fmt = (n: number) => (n >= 0 ? `+${n}` : String(n))
 /** "far|d8+1" -> "Far — d8+1"; plain options are just title-cased. */
 const comboLabel = (o: string) => o.includes('|') ? o.split('|').map((p, i) => (i === 0 ? titleCase(p) : p)).join(' — ') : titleCase(o)
@@ -14,7 +14,7 @@ const comboLabel = (o: string) => o.includes('|') ? o.split('|').map((p, i) => (
 export function ClassStep({ ch, setup, update }: Ctx) {
   return (
     <div className="grid">
-      {sorted(setup.registry.classes).map((c: A) => (
+      {classList(setup).map((c: A) => (
         <Choice key={c.id} title={c.name} selected={ch.choices.classId === c.id}
           meta={`${c.domains.map(titleCase).join(' & ')} · Evasion ${c.startingEvasion} · HP ${c.startingHitPoints}`}
           onPick={() => update((x, cr) => {
@@ -273,17 +273,48 @@ export function GearPicker(ctx: Ctx) {
   )
 }
 
+/** Inventory picker for the Starheart Consumables option: one subsection per type, each item tagged with its roll number. */
+function ConsumablesPicker({ cr, setup, update }: Ctx) {
+  const picked = cr.consumables ?? []
+  const toggle = (id: string) => update((_, x) => { const cur = x.consumables ?? []; x.consumables = cur.includes(id) ? cur.filter((i) => i !== id) : [...cur, id] })
+  return (
+    <>
+      <h3>Consumables</h3>
+      <p className="hint">Optional: add any consumables to your inventory. The number is the item's roll number within its type.</p>
+      {Object.entries(CONSUMABLE_LABEL).map(([type, label]) => {
+        const items = setup.consumables.filter((c) => c.type === type).sort((a, b) => a.number - b.number)
+        if (!items.length) return null
+        return (
+          <Section key={type} title={label}>
+            <div className="grid">
+              {items.map((c) => <Choice key={c.id} title={`${c.number}. ${c.name}`} meta={c.rules} selected={picked.includes(c.id)} onPick={() => toggle(c.id)} />)}
+            </div>
+          </Section>
+        )
+      })}
+    </>
+  )
+}
+
 export function EquipmentStep(ctx: Ctx) {
   const { ch, cr, setup, update } = ctx
   const cls: A = ch.choices.classId ? setup.registry.classes.get(ch.choices.classId) : null
   return (
     <>
       <GearPicker {...ctx} />
-      <Section title={setup.startingStims.length ? 'Starting stim' : 'Starting potion'}>
+      {setup.startingStims.length > 0 && (['potion', 'potion2'] as const).map((k, n) => (
+        <Section key={k} title={n === 0 ? 'Starting stim (first of two)' : 'Starting stim (second of two)'}>
+          <div className="grid">
+            {setup.startingStims.map((s) => (
+              <Choice key={s.id} title={s.name} meta={s.rules} selected={cr[k] === s.id} onPick={() => update((_, x) => { x[k] = s.id })} />
+            ))}
+          </div>
+        </Section>
+      ))}
+      {!setup.startingStims.length && (
+      <Section title="Starting potion">
         <div className="grid">
-          {setup.startingStims.length ? setup.startingStims.map((s) => (
-            <Choice key={s.id} title={s.name} meta={s.rules} selected={cr.potion === s.id} onPick={() => update((_, x) => { x.potion = s.id })} />
-          )) : (
+          {(
             <>
               <Choice title="Minor Health Potion" meta="Clear 1d4 Hit Points" selected={cr.potion === 'health'} onPick={() => update((_, x) => { x.potion = 'health' })} />
               <Choice title="Minor Stamina Potion" meta="Clear 1d4 Stress" selected={cr.potion === 'stamina'} onPick={() => update((_, x) => { x.potion = 'stamina' })} />
@@ -291,6 +322,8 @@ export function EquipmentStep(ctx: Ctx) {
           )}
         </div>
       </Section>
+      )}
+      {setup.consumables.length > 0 && <ConsumablesPicker {...ctx} />}
       <h3>Class item</h3>
       {cls && <p className="hint">Options for {cls.name}: {cls.classItems}</p>}
       <label>Your class item<input value={cr.classItem} onChange={(e) => update((_, x) => { x.classItem = e.target.value })} /></label>
@@ -410,20 +443,24 @@ export function ExperiencesStep({ cr, update }: Ctx) {
 export function DomainCardsStep({ ch, setup, update }: Ctx) {
   const cls: A = ch.choices.classId ? setup.registry.classes.get(ch.choices.classId) : null
   if (!cls) return <p className="hint">Choose a class first.</p>
+  const sub: A = ch.choices.subclassId ? setup.registry.subclasses.get(ch.choices.subclassId) : null
+  const { count, extraDomain } = startingCardRule(cls, sub)
   const chosen = ch.choices.domainCardIds
   const toggle = (id: string) => update((x) => {
     const c = x.choices.domainCardIds
-    x.choices.domainCardIds = c.includes(id) ? c.filter((i) => i !== id) : [...c, id].slice(-2)
+    x.choices.domainCardIds = c.includes(id) ? c.filter((i) => i !== id) : [...c, id].slice(-count)
   })
+  const hint = count === 2 && !extraDomain ? 'Choose two level 1 cards: one from each domain, or two from one'
+    : `Choose ${count} level 1 cards${extraDomain ? `, at least one from ${titleCase(extraDomain)} (${sub.name})` : ''}`
   return (
     <>
-      <p className="hint">Choose two level 1 cards: one from each domain, or two from one ({chosen.length} chosen).</p>
-      {cls.domains.map((d: string) => (
+      <p className="hint">{hint} ({chosen.length} chosen).</p>
+      {[...cls.domains, ...(extraDomain ? [extraDomain] : [])].map((d: string) => (
         <section key={d}>
           <h3>{titleCase(d)}</h3>
           <div className="grid">
-            {[...setup.registry.domainCards.values()].filter((c: A) => c.domain === d && c.level === 1).map((c: A) => (
-              <Choice key={c.id} title={c.name} selected={chosen.includes(c.id)} onPick={() => toggle(c.id)} meta={`${titleCase(c.type)} · Recall ${c.recallCost}`}>
+            {[...setup.registry.domainCards.values()].filter((c: A) => c.domain === d && c.level === 1 && !cardTypeProblem(cls, c)).map((raw: A) => classCard(raw, cls)).map((c: A) => (
+              <Choice key={c.id} title={c.name} selected={chosen.includes(c.id)} onPick={() => toggle(c.id)} meta={`${titleCase(c.typeLabel ?? c.type)} · Recall ${c.recallCost}`}>
                 <Details><Rules text={c.rules} /></Details>
               </Choice>
             ))}

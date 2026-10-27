@@ -192,6 +192,8 @@ starfinder-communities.[s10] Starfinder communities option.the Starfinder supple
 starfinder-communities.[s10] Starfinder communities option.Wildsense is a situational Evasion footnote, not baked in,1
 starfinder-consumables.[s11] Starheart consumables option.off: standard potions only,1
 starfinder-consumables.[s11] Starheart consumables option.on: offers stims 1-6, 8, 9, 10 and not the standard potions,1
+starfinder-consumables.[s11] Starheart consumables option.on: the inventory picker offers all 120 with roll numbers, and picks go into the kit,1
+starfinder-consumables.[s11] Starheart consumables option.on: two starting stims are required (may repeat), both go into the kit,1
 starfinder-consumables.[s11] Starheart consumables option.the chosen stim goes into the kit,1
 starfinder-consumables.[s11] Starheart consumables option.the pack validates and the data file has 120 items, 30 per category,1
 starfinder.[s9] Starfinder ancestries option.Android: every Experience starts at +3 (creation); other ancestries stay at +2,0
@@ -208,6 +210,15 @@ starfinder.[s9] Starfinder armor.replaces the core weapon list too (Tier 1 and 2
 starfinder.[s9] Starfinder armor.wins over a frame that only adds armor,1
 starfinder.[s9] Starfinder weapon hands.a no-hands weapon is free: two-handed + no-hands is fine, two-handed + one-handed is not,1
 starfinder.[s9] Starfinder weapon hands.four arms hold a two-handed primary plus two one-handed secondaries,1
+starheart-classes.[s13] Starheart classes.a later tracker with the same id replaces the earlier one (Tinker held objects 4 -> 6),0
+starheart-classes.[s13] Starheart classes.card rules: Operative takes 3 cards, Witchwarper spells only, Neutronic adds a Splendor card,0
+starheart-classes.[s13] Starheart classes.every class and subclass validates at level 1 and prints inside the margins,0
+starheart-classes.[s13] Starheart classes.level-up history names cards as the class prints them (Technomancer: Program of Ava),0
+starheart-classes.[s13] Starheart classes.offered only with the Starheart Classes option, alphabetical with the core classes,0
+starheart-classes.[s13] Starheart classes.the pack validates; ten classes with two subclasses each,0
+starheart-classes.[s13] Starheart classes.the printed card uses the swapped name and type,0
+starheart-classes.[s13] Starheart classes.trackers: VP and Serum Tokens = Spellcast + Tier, Sidekick armor 4 + Tier, Envoy Tokens 6,0
+starheart-classes.[s13] Starheart classes.word swaps on domain cards: Operative Spell/Magic -> Tech, Technomancer Codex Book -> Program, Soldier Dread Spellcast -> Strength,0
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.a mastery Stalwart carries all three of Unwavering/Unrelenting/Undaunted, stacked (+1+2+3 = +6 to both thresholds),1
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.Armorer / Fortified Armor (domain cards): computed while armor is equipped, not a footnote (owner, 2026-09-23),1
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.Armorer / Fortified Armor do nothing without armor equipped,1

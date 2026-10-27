@@ -11,7 +11,7 @@ const pack = (f: string) => JSON.parse(readFileSync(`packs/core/${f}.json`, 'utf
 const PACKS = [pack('srd-core'), pack('srd-frames'), pack('starfinder'), ...ARMS, SF_ARMS]
 const plain = buildCreation(PACKS)
 const on = buildCreation(PACKS, { supplements: ['starfinder-consumables'] })
-const withPotion = (potion: string) => { const ch = equipped('wizard'); ch.creation = { ...creationOf(ch), potion, classItem: 'A book', experiences: ['Sailor', 'Liar'] }; return ch }
+const withPotion = (potion: string) => { const ch = equipped('wizard'); ch.creation = { ...creationOf(ch), potion, potion2: potion.startsWith('stim') ? potion : null, classItem: 'A book', experiences: ['Sailor', 'Liar'] }; return ch }
 const equipmentIssues = (ch: ReturnType<typeof withPotion>, s: typeof on) => validateCreation(ch, s).filter((i) => i.step === 'equipment')
 
 describe('[s11] Starheart consumables option', () => {
@@ -38,5 +38,23 @@ describe('[s11] Starheart consumables option', () => {
   it('the chosen stim goes into the kit', () => {
     const kit = deriveStats(withPotion('stim-8'), on).kit
     expect(kit.some((k) => /Minor Health Stim \(Clear 1d4 HP\.\)/.test(k))).toBe(true)
+  })
+  it('on: the inventory picker offers all 120 with roll numbers, and picks go into the kit', () => {
+    expect(on.consumables).toHaveLength(120)
+    expect(plain.consumables).toEqual([])
+    const ch = withPotion('stim-1')
+    ch.creation = { ...creationOf(ch), consumables: ['cypher-2', 'ordnance-5'] }
+    const kit = deriveStats(ch, on).kit
+    expect(kit.some((k) => /^Displacement Token \(Cypher 2:/.test(k))).toBe(true)
+    expect(kit.some((k) => /\(Ordnance 5:/.test(k))).toBe(true)
+    expect(equipmentIssues(ch, on)).toEqual([])
+  })
+  it('on: two starting stims are required (may repeat), both go into the kit', () => {
+    const ch = withPotion('stim-1')
+    ch.creation = { ...creationOf(ch), potion2: null }
+    expect(equipmentIssues(ch, on).length).toBeGreaterThan(0)
+    ch.creation = { ...creationOf(ch), potion2: 'stim-9' }
+    expect(equipmentIssues(ch, on)).toEqual([])
+    expect(deriveStats(ch, on).kit.filter((k) => /Stim/.test(k))).toHaveLength(2)
   })
 })

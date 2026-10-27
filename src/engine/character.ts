@@ -83,6 +83,10 @@ export interface Creation {
   mixedAncestry: { first: string; second: string } | null
   /** 'health' | 'stamina' (standard potions) or a stim id when the Starheart Consumables option is on. */
   potion: string | null
+  /** Second starting stim id (Starheart Consumables option starts you with two stims; may repeat the first). Optional so older saves still load. */
+  potion2?: string | null
+  /** Extra consumable ids picked in the Equipment step (Starheart Consumables option). Optional so older saves still load. */
+  consumables?: string[]
   classItem: string
   backgroundAnswers: string[]
   experiences: string[]

@@ -59,3 +59,12 @@ Status: step 1 done, pending owner review.
 
 ## Series 9: Starfinder ancestries option
 Done and archived 2026-10-24: `Docs/archive/series-9.md`.
+
+## Series 10-11: Starfinder communities, Starheart consumables
+Done (see `start-here.md`, Done section).
+
+## Series 12: Starheart classes
+Done and archived 2026-10-27: `Docs/archive/series-12.md`.
+
+## Series 13: Starheart classes in the creator
+Done and archived 2026-10-27: `Docs/archive/series-13.md`.

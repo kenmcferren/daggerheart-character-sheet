@@ -5,6 +5,7 @@ import {
   progressOf, slotsLeft, validateLevelUp,
 } from '../engine/levelup'
 import { tierOf } from '../engine/rules'
+import { classCard, classDomains, classList } from '../engine/classCards'
 import { CardPicker, Details, Feature, PickGrid, Rules } from './common'
 import { describeAdvancement } from './describe'
 import { setupOf, store } from './data'
@@ -42,8 +43,10 @@ export function LevelUp({ from, onDone, onCancel }: Props) {
   const cardChoices = (st: typeof after, cap: number, owned: string[]) =>
     ([...reg.domainCards.values()] as any[])
       .filter((c) => domainCardProblem(st, level, cls, reg, c.id, cap, owned) === null)
+      .map((c) => classCard(c, cls))
       .sort((a, b) => a.level - b.level || a.domain.localeCompare(b.domain) || a.name.localeCompare(b.name))
-  const domainOrder = [...(cls?.domains ?? []), ...(prev.multiclass ? [prev.multiclass.domainId] : [])]
+  const cardName = (id: string | undefined) => { const c = id ? reg.domainCards.get(id) : undefined; return c ? classCard(c as any, cls).name : undefined }
+  const domainOrder = [...classDomains(cls, Object.keys(prev.subclassRanks), reg), ...(prev.multiclass ? [prev.multiclass.domainId] : [])]
 
   async function confirm() {
     setBusy('Saving…')
@@ -107,7 +110,7 @@ export function LevelUp({ from, onDone, onCancel }: Props) {
               <fieldset>
                 <legend>Exchange a card (optional)</legend>
                 <p className="hint">Give back a card you held before this level for a different card of the same level or lower. Pick the card to give back again to cancel.</p>
-                <CardPicker domainOrder={domainOrder} cards={prev.domainCardIds.map((id) => reg.domainCards.get(id) as any)} selected={draft.swap ? [draft.swap.out] : []}
+                <CardPicker domainOrder={domainOrder} cards={prev.domainCardIds.map((id) => classCard(reg.domainCards.get(id) as any, cls))} selected={draft.swap ? [draft.swap.out] : []}
                   onPick={(id) => change({ swap: draft.swap?.out === id ? undefined : { out: id, in: '' } })} />
                 {draft.swap && (
                   <>
@@ -203,9 +206,9 @@ export function LevelUp({ from, onDone, onCancel }: Props) {
               <dl className="summary">
                 <div><dt>Level</dt><dd>{from.level} → {level} (tier {tier})</dd></div>
                 {achievement && <div><dt>Tier achievement</dt><dd>New Experience “{draft.newExperience}” (+{achievement.newExperience}); Proficiency {prev.proficiency} → {after.proficiency}{achievement.clearTraitMarks ? '; trait marks cleared' : ''}</dd></div>}
-                <div><dt>Advancements</dt><dd>{draft.advancements.map((a, i) => <div key={i}>{describeAdvancement(a, afterAdvancements(prev, level, draft.advancements.slice(0, i), from, reg, draft.newExperience), reg)}</div>)}</dd></div>
+                <div><dt>Advancements</dt><dd>{draft.advancements.map((a, i) => <div key={i}>{describeAdvancement(a, afterAdvancements(prev, level, draft.advancements.slice(0, i), from, reg, draft.newExperience), reg, cls)}</div>)}</dd></div>
                 <div><dt>Damage thresholds</dt><dd>All increase by 1 (automatic).</dd></div>
-                <div><dt>New domain card</dt><dd>{(reg.domainCards.get(draft.newCardId) as any)?.name}{draft.swap ? `; swap ${(reg.domainCards.get(draft.swap.out) as any)?.name} for ${(reg.domainCards.get(draft.swap.in) as any)?.name}` : ''}</dd></div>
+                <div><dt>New domain card</dt><dd>{cardName(draft.newCardId)}{draft.swap ? `; swap ${cardName(draft.swap.out)} for ${cardName(draft.swap.in)}` : ''}</dd></div>
                 {draft.stanceId && <div><dt>Stance</dt><dd>{titleCase(draft.stanceId)}</dd></div>}
                 {draft.startStanceIds?.length ? <div><dt>Stances</dt><dd>{draft.startStanceIds.map(titleCase).join(', ')}</dd></div> : null}
                 {draft.newCompanion ? <div><dt>Companion</dt><dd>{draft.newCompanion.name}</dd></div> : null}
@@ -383,7 +386,7 @@ function AdvancementDetail({ a, opt, st, patch, level, from, reg, cls, cardChoic
         <div>
           <h3>Additional class</h3>
           <PickGrid selected={m ? [m.classId] : []} onPick={(id) => set({ classId: id, domainId: '', subclassId: '' })}
-            items={([...reg.classes.values()] as any[]).filter((c) => c.id !== cls.id).map((c) => ({
+            items={classList(setupOf(from)).filter((c) => c.id !== cls.id).map((c) => ({
               id: c.id, title: c.name, meta: (c.domains as string[]).map(titleCase).join(' + '), details: (c.features as any[]).map((f) => <Feature key={f.name} f={f} />),
             }))} />
           {target && (

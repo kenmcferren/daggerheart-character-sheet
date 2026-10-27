@@ -2,7 +2,7 @@ import type { Character, Trait } from './character'
 import type { CreationSetup } from './creation'
 import { COMPANION_SUBCLASS, extrasOf, progressOf, SLOT_CAP, type Progress } from './levelup'
 import { gearEffect } from './gearEffects'
-import { ancestryFeatures, armorPool, deriveStats, weaponPool, type DerivedStats } from './rules'
+import { ancestryFeatures, armorPool, deriveStats, tierOf, weaponPool, type DerivedStats } from './rules'
 
 type Any = any
 /** `short` is the condensed sheet wording ('' = print nothing); the Creator always shows `rules`. */
@@ -14,7 +14,7 @@ const BARE_BONES_THRESHOLDS: [number, number][] = [[9, 19], [11, 24], [13, 31], 
 export type StatBonus = { evasion?: number; majorThreshold?: number; severeThreshold?: number; armorScore?: number }
 /** A footnote on a stat: 'build' = depends on gear/loadout (knowable from the sheet, not baked into the number); 'situational' = depends on what happens at the table. */
 export type StatNote = { kind: 'build' | 'situational'; stats: string[]; text: string }
-export type Feature = { name?: string; rules: string; short?: string; sheetCards?: SheetCards; sheetTable?: SheetTable; level?: string; trackers?: { id: string; label: string; count: number | { trait: string } | { level: true } }[]; statBonus?: StatBonus; statNote?: StatNote }
+export type Feature = { name?: string; rules: string; short?: string; sheetCards?: SheetCards; sheetTable?: SheetTable; level?: string; trackers?: { id: string; label: string; count: number | { trait: string } | { level: true } | { tier: true; base?: number; trait?: string } }[]; statBonus?: StatBonus; statNote?: StatNote }
 
 /** Everything the printable sheet shows for a character at its current level: level 1 choices plus the replayed level-up history. */
 export interface SheetView {
@@ -228,12 +228,20 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
   // Resource trackers: class features, held subclass features and the multiclass module. A Spellcast count uses that feature's own subclass trait.
   const spellOf = (scId: string | undefined) => (scId ? ((reg.subclasses.get(scId) as Any)?.spellcastTrait as string | undefined) : undefined)
   const mainSub = subclasses.find((s) => !s.multiclass)?.id, multiSub = subclasses.find((s) => s.multiclass)?.id
-  const resourceTrackers: { label: string; count: number }[] = []
+  // A later feature's tracker with the same id replaces the earlier one (Tinker Storage Improvement raises 4 held objects to 6).
+  const resourceTrackers: { label: string; count: number }[] = [], trackerIds: (string | undefined)[] = []
   const collect = (features: Feature[], scId: string | undefined) => {
     for (const f of features) for (const t of f.trackers ?? []) {
-      if (typeof t.count === 'object' && 'level' in t.count) { resourceTrackers.push({ label: t.label, count: Math.max(1, progress.level) }); continue }
+      const put = (count: number) => {
+        const at = t.id ? trackerIds.indexOf(t.id) : -1
+        if (at >= 0) { resourceTrackers.splice(at, 1); trackerIds.splice(at, 1) }
+        resourceTrackers.push({ label: t.label, count }); trackerIds.push(t.id)
+      }
+      if (typeof t.count === 'object' && 'level' in t.count) { put(Math.max(1, progress.level)); continue }
       const trait = typeof t.count === 'number' ? null : t.count.trait === 'spellcast' ? spellOf(scId) : t.count.trait
-      resourceTrackers.push({ label: t.label, count: typeof t.count === 'number' ? t.count : Math.max(1, (trait ? traits[trait as Trait] : 1) ?? 1) })
+      const traitVal = trait ? traits[trait as Trait] ?? 0 : 0
+      if (typeof t.count === 'object' && 'tier' in t.count) { put(Math.max(1, (t.count.base ?? 0) + traitVal + tierOf(Math.max(1, progress.level)))); continue }
+      put(typeof t.count === 'number' ? t.count : Math.max(1, (trait ? traits[trait as Trait] : 1) ?? 1))
     }
   }
   collect((cls?.features ?? []) as Feature[], mainSub)

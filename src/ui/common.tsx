@@ -67,7 +67,7 @@ export function PickGrid({ items, selected, onPick }: { items: PickItem[]; selec
 
 /** Domain cards as one section per domain (class domains first), each card a button with its rules in a dropdown. */
 export function CardPicker({ cards, selected, onPick, domainOrder = [] }: {
-  cards: { id: string; name: string; domain: string; level: number; type: string; recallCost: number; rules: string }[]
+  cards: { id: string; name: string; domain: string; level: number; type: string; typeLabel?: string; recallCost: number; rules: string }[]
   selected: string[]; onPick: (id: string) => void; domainOrder?: string[]
 }) {
   const domains = [...new Set([...domainOrder, ...cards.map((c) => c.domain).sort()])].filter((d) => cards.some((c) => c.domain === d))
@@ -79,7 +79,7 @@ export function CardPicker({ cards, selected, onPick, domainOrder = [] }: {
           <h3>{titleCase(d)}</h3>
           <PickGrid selected={selected} onPick={onPick}
             items={cards.filter((c) => c.domain === d).sort((a, b) => a.level - b.level || a.name.localeCompare(b.name)).map((c) => ({
-              id: c.id, title: c.name, meta: `Level ${c.level} · ${titleCase(c.type)} · Recall ${c.recallCost}`, details: <Rules text={c.rules} />,
+              id: c.id, title: c.name, meta: `Level ${c.level} · ${titleCase(c.typeLabel ?? c.type)} · Recall ${c.recallCost}`, details: <Rules text={c.rules} />,
             }))} />
         </section>
       ))}

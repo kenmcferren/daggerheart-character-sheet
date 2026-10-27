@@ -47,6 +47,11 @@ export interface Conflict {
   message: string
 }
 
+export interface ConsumableDef { id: string; type: string; number: number; name: string; rules: string }
+
+/** Subsection order and heading for each consumable type. */
+export const CONSUMABLE_LABEL: Record<string, string> = { cypher: 'Cypher', gadget: 'Gadget', ordnance: 'Ordnance', stim: 'Stim' }
+
 export interface CreationSetup {
   frame?: FrameEntry
   supplements: FrameEntry[]
@@ -66,6 +71,8 @@ export interface CreationSetup {
   communityFirst: string[]
   /** Stims offered in place of the standard Minor Health / Stamina Potion (Starheart Consumables option); empty = standard potions. */
   startingStims: { id: string; name: string; rules: string }[]
+  /** Consumables offered in the Equipment step's inventory picker (Starheart Consumables option); `number` is the item's roll number within its type. */
+  consumables: ConsumableDef[]
   mixedAncestryAllowed: boolean
 }
 
@@ -137,9 +144,10 @@ export function buildCreation(
     if (!registry.communities.has(id)) throw new CreationError(`Unknown community "${id}" in a community list option`)
   }
   const startingStims = ops.filter((o) => o.op === 'starting-stims').flatMap((o) => (Array.isArray(o.items) ? o.items : []) as { id: string; name: string; rules: string }[])
+  const consumables = ops.filter((o) => o.op === 'consumables').flatMap((o) => (Array.isArray(o.items) ? o.items : []) as ConsumableDef[])
   const mixedAncestryAllowed = !ops.some((o) => o.op === 'disable-mixed-ancestry')
 
-  return { frame, supplements, registry, ops, ancestryFirst, ancestryHidden, communityFirst, startingStims, mixedAncestryAllowed, conflicts: detectConflicts(ops, Object.fromEntries(active.map((f) => [f.id, f.name]))), steps: deriveSteps(ops), annotations, pools }
+  return { frame, supplements, registry, ops, ancestryFirst, ancestryHidden, communityFirst, startingStims, consumables, mixedAncestryAllowed, conflicts: detectConflicts(ops, Object.fromEntries(active.map((f) => [f.id, f.name]))), steps: deriveSteps(ops), annotations, pools }
 }
 
 function deriveSteps(ops: SourcedOp[]): WizardStep[] {

@@ -5,6 +5,7 @@ import type { Ctx } from './common'
 import { freshImport } from './freshImport'
 import { PdfPreview } from './PdfPreview'
 import { issueStep, titleCase } from './util'
+import { classCard } from '../engine/classCards'
 
 type A = any
 
@@ -35,7 +36,7 @@ export function Review({ ctx, issues, steps, onJump, onHome }: { ctx: Ctx; issue
     ['equipment', 'Equipment', [...gear, ...built].join(', ') || '—'],
     ['background', 'Name / pronouns', [ch.name, cr.pronouns].filter(Boolean).join(' · ') || '—'],
     ['experiences', 'Experiences', cr.experiences.filter(Boolean).map((e) => `${e} +2`).join(', ') || '—'],
-    ['domain-cards', 'Domain cards', ch.choices.domainCardIds.map((id) => name('domainCards', id)).join(', ') || '—'],
+    ['domain-cards', 'Domain cards', ch.choices.domainCardIds.map((id) => { const c = reg.domainCards.get(id); return c ? classCard(c, reg.classes.get(ch.choices.classId ?? '')).name : id }).join(', ') || '—'],
   ]
   return (
     <>

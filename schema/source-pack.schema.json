@@ -178,7 +178,7 @@
       }
     },
     "count": {
-      "description": "Fixed number, derived from a trait modifier, or equal to the character level (used for circles/boxes printed with rule text).",
+      "description": "Fixed number, derived from a trait modifier, equal to the character level, or Tier plus a base and/or trait (used for circles/boxes printed with rule text).",
       "oneOf": [
         {
           "type": "integer",
@@ -213,6 +213,32 @@
           "properties": {
             "level": {
               "const": true
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "tier"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "tier": {
+              "const": true
+            },
+            "base": {
+              "type": "integer"
+            },
+            "trait": {
+              "enum": [
+                "agility",
+                "strength",
+                "finesse",
+                "instinct",
+                "presence",
+                "knowledge",
+                "spellcast"
+              ]
             }
           }
         }
@@ -551,7 +577,8 @@
             "hide-ancestries",
             "disable-mixed-ancestry",
             "list-communities-first",
-            "starting-stims"
+            "starting-stims",
+            "consumables"
           ]
         }
       }
@@ -861,6 +888,62 @@
             },
             "knownStancesAtCreation": {
               "type": "integer"
+            },
+            "onlyWith": {
+              "type": "string",
+              "description": "Id of the campaign frame or supplement that must be selected for this class to be offered."
+            },
+            "startingDomainCards": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Level 1 domain cards at creation (default 2)."
+            },
+            "allowedCardTypes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Only domain cards of these types can be taken (Witchwarper: spell)."
+            },
+            "cardWords": {
+              "type": "array",
+              "description": "Word swaps printed on this class's domain cards (whole words; plurals and capitals kept).",
+              "items": {
+                "type": "object",
+                "required": [
+                  "from",
+                  "to"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "from": {
+                    "type": "string"
+                  },
+                  "to": {
+                    "type": "string"
+                  },
+                  "domains": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/id"
+                    }
+                  }
+                }
+              }
+            },
+            "cardTypes": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "Card type relabels for this class (spell -> tech)."
+            },
+            "cardTypeDomains": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/id"
+              },
+              "description": "Domains cardTypes applies to (default all)."
             }
           }
         }
@@ -892,6 +975,10 @@
             },
             "features": {
               "$ref": "#/definitions/features"
+            },
+            "extraDomain": {
+              "$ref": "#/definitions/id",
+              "description": "Domain this subclass adds, with one extra level 1 card from it at creation."
             }
           }
         }
