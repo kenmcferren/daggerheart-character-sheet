@@ -2662,6 +2662,19 @@
         "name": "Starheart Classes",
         "frameKind": "supplement",
         "group": "Starheart - Starfinder Conversion"
+      },
+      {
+        "id": "starheart-exclusive",
+        "name": "Treat Starheart elements as exclusive",
+        "frameKind": "supplement",
+        "group": "Starheart - Starfinder Conversion",
+        "creation": {
+          "ops": [
+            {
+              "op": "starheart-exclusive"
+            }
+          ]
+        }
       }
     ]
   }

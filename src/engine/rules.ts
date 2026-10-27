@@ -311,6 +311,7 @@ export function ancestryList(setup: CreationSetup): any[] {
   const active = new Set([setup.frame?.id, ...setup.supplements.map((s) => s.id)])
   const all = ([...setup.registry.ancestries.values()] as any[]).filter((a) => !a.onlyWith || active.has(a.onlyWith))
   const first = setup.ancestryFirst.map((id) => all.find((a) => a.id === id)).filter(Boolean)
+  if (setup.starheartOnly && first.length) return first
   const rest = all.filter((a) => !setup.ancestryFirst.includes(a.id) && !setup.ancestryHidden.includes(a.id)).sort((a, b) => String(a.name).localeCompare(String(b.name)))
   return [...first, ...rest]
 }
@@ -320,6 +321,7 @@ export function communityList(setup: CreationSetup): any[] {
   const active = new Set([setup.frame?.id, ...setup.supplements.map((s) => s.id)])
   const all = ([...setup.registry.communities.values()] as any[]).filter((c) => !c.onlyWith || active.has(c.onlyWith))
   const first = setup.communityFirst.map((id) => all.find((c) => c.id === id)).filter(Boolean)
+  if (setup.starheartOnly && first.length) return first
   const rest = all.filter((c) => !setup.communityFirst.includes(c.id)).sort((a, b) => String(a.name).localeCompare(String(b.name)))
   return [...first, ...rest]
 }

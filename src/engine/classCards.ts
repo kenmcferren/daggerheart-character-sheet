@@ -9,7 +9,8 @@ export interface CardWord { from: string; to: string; domains?: string[] }
 /** Classes offered: core classes plus those whose `onlyWith` supplement is selected, by name. */
 export function classList(setup: CreationSetup): Any[] {
   const active = new Set([setup.frame?.id, ...setup.supplements.map((s) => s.id)])
-  return ([...setup.registry.classes.values()] as Any[]).filter((c) => !c.onlyWith || active.has(c.onlyWith))
+  const only = setup.starheartOnly && active.has('starfinder-classes')
+  return ([...setup.registry.classes.values()] as Any[]).filter((c) => (!c.onlyWith && !only) || (c.onlyWith && active.has(c.onlyWith)))
     .sort((a, b) => String(a.name).localeCompare(String(b.name)))
 }
 

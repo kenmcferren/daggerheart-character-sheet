@@ -90,7 +90,7 @@ describe('[s10] Starfinder communities option', () => {
 
   it('the Starfinder supplements belong to the Starheart group, and no other supplement does', () => {
     const frames = [...plain.registry.campaignFrames.values()] as any[]
-    expect(frames.filter((f) => f.group === 'Starheart - Starfinder Conversion').map((f) => f.id).sort()).toEqual(['starfinder-ancestries', 'starfinder-armaments', 'starfinder-classes', 'starfinder-communities', 'starfinder-consumables'])
+    expect(frames.filter((f) => f.group === 'Starheart - Starfinder Conversion').map((f) => f.id).sort()).toEqual(['starfinder-ancestries', 'starfinder-armaments', 'starfinder-classes', 'starfinder-communities', 'starfinder-consumables', 'starheart-exclusive'])
     expect(frames.filter((f) => f.group && f.group !== 'Starheart - Starfinder Conversion')).toHaveLength(0)
   })
 })

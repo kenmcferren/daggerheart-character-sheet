@@ -74,6 +74,8 @@ export interface CreationSetup {
   /** Consumables offered in the Equipment step's inventory picker (Starheart Consumables option); `number` is the item's roll number within its type. */
   consumables: ConsumableDef[]
   mixedAncestryAllowed: boolean
+  /** Starheart-exclusive option: class, ancestry and community lists show only Starheart entries (for each Starheart option that is on). */
+  starheartOnly: boolean
 }
 
 export interface PoolContribution {
@@ -147,7 +149,8 @@ export function buildCreation(
   const consumables = ops.filter((o) => o.op === 'consumables').flatMap((o) => (Array.isArray(o.items) ? o.items : []) as ConsumableDef[])
   const mixedAncestryAllowed = !ops.some((o) => o.op === 'disable-mixed-ancestry')
 
-  return { frame, supplements, registry, ops, ancestryFirst, ancestryHidden, communityFirst, startingStims, consumables, mixedAncestryAllowed, conflicts: detectConflicts(ops, Object.fromEntries(active.map((f) => [f.id, f.name]))), steps: deriveSteps(ops), annotations, pools }
+  const starheartOnly = ops.some((o) => o.op === 'starheart-exclusive')
+  return { frame, supplements, registry, ops, starheartOnly, ancestryFirst, ancestryHidden, communityFirst, startingStims, consumables, mixedAncestryAllowed, conflicts: detectConflicts(ops, Object.fromEntries(active.map((f) => [f.id, f.name]))), steps: deriveSteps(ops), annotations, pools }
 }
 
 function deriveSteps(ops: SourcedOp[]): WizardStep[] {

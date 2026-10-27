@@ -57,6 +57,10 @@ const campaignFrames = [{
   creation: { ops: [{ op: 'starting-stims', items: stims }, { op: 'consumables', items: cons.items.map(({ id, type, number, name, rules }) => ({ id, type, number, name, rules })) }] },
 }, {
   id: cls.frame.id, name: cls.frame.name, frameKind: 'supplement', group: GROUP,
+}, {
+  // Restricts the class, ancestry and community lists to Starheart ones.
+  id: 'starheart-exclusive', name: 'Treat Starheart elements as exclusive', frameKind: 'supplement', group: GROUP,
+  creation: { ops: [{ op: 'starheart-exclusive' }] },
 }]
 const pack = { schemaVersion: 1, id: 'starfinder', name: 'Starfinder', version: '1.3.0', publisher: 'Owner (house rules)', extends: ['srd-core'], content: { ancestries: src.ancestries.map((a) => ({ ...a, onlyWith: src.frame.id })), communities: com.communities.map((c) => ({ ...c, onlyWith: com.frame.id })), classes: cls.classes.map((c) => ({ ...c, onlyWith: cls.frame.id })), subclasses: cls.subclasses, campaignFrames } }
 writeFileSync('packs/core/starfinder.json', JSON.stringify(pack, null, 2) + '\n')
