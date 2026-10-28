@@ -21,6 +21,7 @@ class-extras.[s3] structured class extras.multiclassing is a level-up option ava
 class-extras.[s3] structured class extras.once-per-rest cards carry uses, usesPer and a one-circle tracker,0
 class-extras.[s3] structured class extras.ranger: companion data,0
 class-extras.[s3] structured class extras.structured entries are no longer duplicated as raw supplements,0
+consumables-page.[s14] consumables printout.sets all 120 consumables on two landscape pages, three fitted columns each,1
 core-pack.[s2] SRD core pack.carries no empty rules text,0
 core-pack.[s2] SRD core pack.every domain has 21 cards and every class has two domains,0
 core-pack.[s2] SRD core pack.has the expected counts,0
@@ -95,6 +96,8 @@ multiclass-extras.[s5] multiclass extras (stances and companion follow the subcl
 multiclass-extras.[s5] multiclass extras (stances and companion follow the subclass).multiclass into Juggernaut asks for no stances; a Juggernaut Brawler is never asked either,0
 multiclass-extras.[s5] multiclass extras (stances and companion follow the subclass).multiclass into Martial Artist: two Tier 1 stances now, one more per level after,0
 multiclass-extras.[s5] multiclass extras (stances and companion follow the subclass).sample sheets: a Wizard multiclassed into Martial Artist (stances) and into Beastbound (companion) print their blocks,0
+notices.[evergreen] Licence notices print once, on the back of the domain card sheet.Daggerheart notice appears once, on the page after the first domain card page; no Paizo notice without Starfinder,1
+notices.[evergreen] Licence notices print once, on the back of the domain card sheet.Starfinder option adds the Paizo disclaimer to the same page,1
 pack-report.[s2] Pack validation report.fails and names the problem when a reference is broken,0
 pack-report.[s2] Pack validation report.reports no problems for packs/core,0
 packs.[s1] Source pack loader.applies extended packs first, so overrides work regardless of input order,0
@@ -219,6 +222,9 @@ starheart-classes.[s13] Starheart classes.the pack validates; ten classes with t
 starheart-classes.[s13] Starheart classes.the printed card uses the swapped name and type,0
 starheart-classes.[s13] Starheart classes.trackers: VP and Serum Tokens = Spellcast + Tier, Sidekick armor 4 + Tier, Envoy Tokens 6,0
 starheart-classes.[s13] Starheart classes.word swaps on domain cards: Operative Spell/Magic -> Tech, Technomancer Codex Book -> Program, Soldier Dread Spellcast -> Strength,0
+starheart-exclusive.[s14] Starheart exclusive option.off: standard entries still appear beside Starheart ones,1
+starheart-exclusive.[s14] Starheart exclusive option.on without a Starheart option: that list stays standard,1
+starheart-exclusive.[s14] Starheart exclusive option.on: only Starheart classes, ancestries and communities are listed,1
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.a mastery Stalwart carries all three of Unwavering/Unrelenting/Undaunted, stacked (+1+2+3 = +6 to both thresholds),1
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.Armorer / Fortified Armor (domain cards): computed while armor is equipped, not a footnote (owner, 2026-09-23),1
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.Armorer / Fortified Armor do nothing without armor equipped,1
