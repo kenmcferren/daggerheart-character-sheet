@@ -5,9 +5,9 @@ import { CONSUMABLE_LABEL } from '../engine/creation'
 // Starheart Consumables reference: landscape Letter, double-sided, two pages of three columns. Cypher and Ordnance take two columns
 // (items 1-15, then 16-30), Stim and Gadget one (Cypher + Stim, then Ordnance + Gadget); column widths are fitted to the text so no column has spare room.
 const PW = 612, PH = 792, M = 36, FOOT = 19
-const INK = rgb(0, 0, 0), SHADE = rgb(0.9, 0.9, 0.9), RULE = rgb(0.25, 0.25, 0.25)
+const INK = rgb(0, 0, 0), SHADE = rgb(0.9, 0.9, 0.9)
 const MAX_SIZE = 9
-const GAP = 12, HEAD = 16, PAD = 1.2
+const HEAD = 16, PAD = 1.2
 
 const clean = (s: string) =>
   s.replace(/→/g, '->').replace(/≤/g, '<=').replace(/≥/g, '>=').replace(/−/g, '-').replace(/[^ -ɏ‐-›]/g, '?')
@@ -83,7 +83,7 @@ export function addConsumablesPages(doc: PDFDocument, f: Fonts, defs: Consumable
   const areaTop = LH - M - 24, h = areaTop - (M + FOOT + 4) - HEAD
   const avail = LW - 2 * M - CG - TG
   // A page is [first half of A, second half of A, all of B]; its minimum widths at a size give the total it needs.
-  const pageSets = []
+  const pageSets: { i: number; cols: ConsumableDef[][] }[] = []
   for (let i = 0; i < groups.length; i += 2) {
     const a = groups[i], b = groups[i + 1] ?? [], cut = Math.ceil(a.length / 2)
     pageSets.push({ i, cols: [a.slice(0, cut), a.slice(cut), b] })
