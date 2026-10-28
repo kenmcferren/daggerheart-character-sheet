@@ -60,8 +60,8 @@ describe('[s5] sheet at level N', () => {
     expect(v.spellcastTraits.length).toBeGreaterThan(0)
     const { texts, marks, pages } = await draw(ch)
     expect(pages).toBeGreaterThanOrEqual(2)
-    expect(texts.some((t) => t.includes('MC: Bard'))).toBe(true)
-    expect(texts.some((t) => t.includes('MC Subclass: Troubadour'))).toBe(true)
+    expect(texts.some((t) => t.includes('Multiclass Bard Features'))).toBe(true)
+    expect(texts.some((t) => t.includes('Multiclass Troubadour'))).toBe(true)
     expect(marks.filter(outside)).toEqual([])
   })
 
