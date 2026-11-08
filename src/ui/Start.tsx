@@ -98,7 +98,7 @@ export function Start({ onStart, onOpen, onLevelUp, onOpenShip, onNewShip }: {
 
       <section className="panel">
         <h2>New ship</h2>
-        <p className="hint">Starheart ships. Build a pilot's Solo Flier on its own (or from a character's page), or the party's shared Hub Ship.</p>
+        <p className="hint">Starheart ships. Build a pilot's Solo Flier on its own, or open any saved character (new or old) and use its Ships section to make one for them. Or build the party's shared Hub Ship.</p>
         <div className="ship-actions">
           <button type="button" className="primary" onClick={() => onNewShip('flier')}>New Solo Flier</button>
           <button type="button" className="primary" onClick={() => onNewShip('hub')}>New Hub Ship</button>
