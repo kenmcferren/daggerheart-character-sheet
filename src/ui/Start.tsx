@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { Character } from '../engine/character'
-import { importCharacter } from '../engine/character'
+import { importSaveFile } from '../engine/saves'
+import type { Ship, ShipRole } from '../engine/ship'
 import { validateCreation } from '../engine/rules'
 import { MAX_LEVEL } from '../engine/levelup'
-import { allSupplements, setupFor, setupOf, store } from './data'
+import { allSupplements, setupFor, setupOf, shipLabel, shipStore, store } from './data'
 import { Versions } from './Versions'
 
 const CHECK_BLOCKED = 'Fix the conflicts above (deselect one of the sources) to start.'
@@ -19,7 +20,10 @@ function GroupBox({ name, members, supps, onChange }: { name: string; members: s
   )
 }
 
-export function Start({ onStart, onOpen, onLevelUp }: { onStart: (supplements: string[]) => void; onOpen: (c: Character) => void; onLevelUp: (c: Character) => void }) {
+export function Start({ onStart, onOpen, onLevelUp, onOpenShip, onNewShip }: {
+  onStart: (supplements: string[]) => void; onOpen: (c: Character) => void; onLevelUp: (c: Character) => void
+  onOpenShip: (s: Ship) => void; onNewShip: (role: ShipRole) => void
+}) {
   const supplements = useMemo(() => allSupplements(), [])
   const [supps, setSupps] = useState<string[]>([])
   const [saved, setSaved] = useState<{ latest: Character; versionCount: number }[]>([])
@@ -27,8 +31,10 @@ export function Start({ onStart, onOpen, onLevelUp }: { onStart: (supplements: s
   const [versions, setVersions] = useState<Character[]>([])
   const [corrupt, setCorrupt] = useState<string[]>([])
   const [msg, setMsg] = useState('')
+  const [ships, setShips] = useState<Ship[]>([])
   const setup = useMemo(() => setupFor(null, supps), [supps])
-  const refresh = () => Promise.all([store.lineages(), store.list()]).then(([l, r]) => { setSaved(l); setCorrupt(r.corruptIds) }).catch((e) => setMsg(String(e)))
+  const refresh = () => Promise.all([store.lineages(), store.list(), shipStore.list()]).then(([l, r, sh]) => { setSaved(l); setCorrupt([...r.corruptIds, ...sh.corruptIds]); setShips(sh.ships) }).catch((e) => setMsg(String(e)))
+  const pilotName = (lineageId: string | null) => (lineageId ? saved.find((x) => x.latest.lineageId === lineageId)?.latest.name || 'Unnamed character' : '')
   const openVersions = async (lineageId: string | null) => { setShowVersions(lineageId); setVersions(lineageId ? await store.versionsOf(lineageId) : []) }
   /** Level 1 characters can level up once creation is complete; the reason is shown otherwise. */
   const blockReason = (c: Character) => (c.level >= MAX_LEVEL ? 'Highest level reached' : validateCreation(c, setupOf(c)).length ? 'Finish creation first' : '')
@@ -48,7 +54,9 @@ export function Start({ onStart, onOpen, onLevelUp }: { onStart: (supplements: s
   async function importFile(file: File | undefined) {
     if (!file) return
     try {
-      const c = importCharacter(await file.text())
+      const f = importSaveFile(await file.text())
+      if (f.kind === 'ship') { await shipStore.save(f.ship); await refresh(); onOpenShip(f.ship); return }
+      const c = f.character
       await store.save(c)
       await refresh()
       onOpen(c)
@@ -89,6 +97,15 @@ export function Start({ onStart, onOpen, onLevelUp }: { onStart: (supplements: s
       </section>
 
       <section className="panel">
+        <h2>New ship</h2>
+        <p className="hint">Starheart ships. Build a pilot's Solo Flier on its own (or from a character's page), or the party's shared Hub Ship.</p>
+        <div className="ship-actions">
+          <button type="button" className="primary" onClick={() => onNewShip('flier')}>New Solo Flier</button>
+          <button type="button" className="primary" onClick={() => onNewShip('hub')}>New Hub Ship</button>
+        </div>
+      </section>
+
+      <section className="panel">
         <h2>Saved characters</h2>
         {msg && <p className="issues" role="alert">{msg}</p>}
         {saved.length === 0 && <p className="hint">None yet.</p>}
@@ -99,13 +116,24 @@ export function Start({ onStart, onOpen, onLevelUp }: { onStart: (supplements: s
               <span className="meta">{c.choices.classId ?? 'no class yet'} · level {c.level} · {namesOf(c) || 'no campaign options'} · {new Date(c.updatedAt).toLocaleString()}</span>
               <button type="button" className="primary" disabled={!!blockReason(c)} title={blockReason(c)} onClick={() => onLevelUp(c)}>Level up</button>
               {versionCount > 1 && <button type="button" onClick={() => void openVersions(showVersions === c.lineageId ? null : c.lineageId)}>{versionCount} versions</button>}
-              <button type="button" onClick={async () => { if (confirm(`Delete ${c.name || 'this character'} and all ${versionCount} saved version(s)?`)) { await store.removeLineage(c.lineageId); await refresh() } }}>Delete</button>
+              <button type="button" onClick={async () => { if (confirm(`Delete ${c.name || 'this character'} and all ${versionCount} saved version(s)?`)) { await store.removeLineage(c.lineageId); await shipStore.unlinkCharacter(c.lineageId); await refresh() } }}>Delete</button>
               {showVersions === c.lineageId && <div style={{ flexBasis: '100%' }}><Versions versions={versions} onOpen={onOpen} onLevelUp={onLevelUp} onChanged={() => { void refresh(); void openVersions(c.lineageId) }} /></div>}
             </li>
           ))}
         </ul>
+        <h2>Saved ships</h2>
+        {ships.length === 0 && <p className="hint">None yet.</p>}
+        <ul className="saved">
+          {ships.map((s) => (
+            <li key={s.id}>
+              <button type="button" className="link" onClick={() => onOpenShip(s)}>{s.name || 'Unnamed ship'}</button>
+              <span className="meta">{shipLabel(s)} · {s.characterLineageId ? `pilot ${pilotName(s.characterLineageId)}` : 'no pilot linked'} · {new Date(s.updatedAt).toLocaleString()}</span>
+              <button type="button" onClick={async () => { if (confirm(`Delete ${s.name || 'this ship'}?`)) { await shipStore.remove(s.id); await refresh() } }}>Delete</button>
+            </li>
+          ))}
+        </ul>
         {corrupt.length > 0 && <p className="hint">{corrupt.length} saved record(s) could not be read and were skipped.</p>}
-        <label className="file">Import a character JSON file<input type="file" accept="application/json,.json" onChange={(e) => void importFile(e.target.files?.[0])} /></label>
+        <label className="file">Import a character or ship JSON file<input type="file" accept="application/json,.json" onChange={(e) => void importFile(e.target.files?.[0])} /></label>
       </section>
     </div>
   )

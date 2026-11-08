@@ -1,5 +1,5 @@
-// Builds packs/core/starfinder.json (Starfinder ancestries, communities, consumables and classes supplements) from
-// scripts/srd-convert/starfinder/ancestries.json, communities.json, consumables.json and classes.json.
+// Builds packs/core/starfinder.json (Starfinder ancestries, communities, consumables, classes and ships supplements) from
+// scripts/srd-convert/starfinder/ancestries.json, communities.json, consumables.json, classes.json and ships.json.
 // Run: node scripts/srd-convert/build-starfinder-pack.mjs
 import { readFileSync, writeFileSync } from 'node:fs'
 const src = JSON.parse(readFileSync('scripts/srd-convert/starfinder/ancestries.json', 'utf8'))
@@ -36,6 +36,27 @@ const stims = cons.startingStims.map((id) => {
   return { id: it.id, name: it.name, rules: it.rules }
 })
 
+// Starheart ships (Series 14): hand-edited ships.json, first made by make-ships-json.mjs from Docs/starheart-ships/v-final.md.
+const { frame: shipFrame, ...ships } = JSON.parse(readFileSync('scripts/srd-convert/starfinder/ships.json', 'utf8'))
+{
+  const sys = ships.systems.map((s) => s.id), doms = new Set(ships.domains.map((d) => d.id)), ids = new Set()
+  for (const c of ships.configurations) {
+    const caps = sys.map((s) => c.caps[s])
+    if (caps.filter((n) => n === ships.build.primaryCap).length !== 2) throw new Error(`ships: ${c.id} needs exactly two primary systems`)
+    if (caps.reduce((a, b) => a + b) < ships.build.cards) throw new Error(`ships: ${c.id} can't hold ${ships.build.cards} cards`)
+  }
+  for (const c of ships.cards) {
+    if (ids.has(c.id)) throw new Error(`ships: duplicate card ${c.id}`)
+    ids.add(c.id)
+    if (!doms.has(c.domain) || !sys.includes(c.system)) throw new Error(`ships: ${c.id} has unknown domain or system`)
+    // Rules carry print markup (**bold** keywords and costs, *italic* card conditions; mark-ship-cards.mjs): it must pair up.
+    const bare = c.rules.replace(/\*\*[^*]+\*\*/g, '').replace(/\*[^*]+\*/g, '')
+    if (bare.includes('*') || /(?<!in place of the )Spellcast Roll/.test(c.rules)) throw new Error(`ships: ${c.id} has unpaired markup or calls for a Spellcast Roll`)
+  }
+  for (const d of doms) for (const s of sys) if (!ships.cards.some((c) => c.domain === d && c.system === s)) throw new Error(`ships: no ${d} ${s} cards`)
+  for (const s of [ships.startingSizes.flier, ships.startingSizes.hub]) if (!ships.sizes.some((z) => z.size === s)) throw new Error(`ships: unknown starting size ${s}`)
+}
+
 const GROUP = 'Starheart - Starfinder Conversion'
 const campaignFrames = [{
   id: src.frame.id, name: src.frame.name, frameKind: 'supplement', group: GROUP,
@@ -61,7 +82,10 @@ const campaignFrames = [{
   // Restricts the class, ancestry and community lists to Starheart ones.
   id: 'starheart-exclusive', name: 'Treat Starheart elements as exclusive', frameKind: 'supplement', group: GROUP,
   creation: { ops: [{ op: 'starheart-exclusive' }] },
+}, {
+  // Ship rules and the 108 ship domain cards; the ship creator (Series 14) reads this frame's `ships`.
+  id: shipFrame.id, name: shipFrame.name, frameKind: 'supplement', group: GROUP, ships,
 }]
-const pack = { schemaVersion: 1, id: 'starfinder', name: 'Starfinder', version: '1.3.0', publisher: 'Owner (house rules)', extends: ['srd-core'], content: { ancestries: src.ancestries.map((a) => ({ ...a, onlyWith: src.frame.id })), communities: com.communities.map((c) => ({ ...c, onlyWith: com.frame.id })), classes: cls.classes.map((c) => ({ ...c, onlyWith: cls.frame.id })), subclasses: cls.subclasses, campaignFrames } }
+const pack = { schemaVersion: 1, id: 'starfinder', name: 'Starfinder', version: '1.4.0', publisher: 'Owner (house rules)', extends: ['srd-core'], content: { ancestries: src.ancestries.map((a) => ({ ...a, onlyWith: src.frame.id })), communities: com.communities.map((c) => ({ ...c, onlyWith: com.frame.id })), classes: cls.classes.map((c) => ({ ...c, onlyWith: cls.frame.id })), subclasses: cls.subclasses, campaignFrames } }
 writeFileSync('packs/core/starfinder.json', JSON.stringify(pack, null, 2) + '\n')
-console.log(`starfinder pack: ${src.ancestries.length} ancestries, ${com.communities.length} communities, ${cls.classes.length} classes, ${campaignFrames.length} supplements, ${stims.length} starting stims`)
+console.log(`starfinder pack: ${src.ancestries.length} ancestries, ${com.communities.length} communities, ${cls.classes.length} classes, ${campaignFrames.length} supplements, ${stims.length} starting stims, ${ships.cards.length} ship cards`)

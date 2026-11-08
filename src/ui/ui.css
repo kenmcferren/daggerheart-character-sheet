@@ -67,6 +67,15 @@ button.step.current { background: var(--accent-bg); font-weight: 600; }
 .summary dt { width: 150px; font-weight: 600; flex: none; }
 .summary dd { margin: 0; }
 
+.feature .meta-inline { color: var(--muted); font-size: 13px; }
+.domain-blurb { margin: 0 8px 8px; font-size: 14px; }
+table.hull { border-collapse: collapse; margin: 12px 0; }
+table.hull th, table.hull td { padding: 6px 14px 6px 0; text-align: left; border-bottom: 1px solid var(--border); }
+table.hull .stepper { display: flex; gap: 8px; align-items: center; }
+table.hull .stepper button { padding: 2px 10px; }
+table.hull .stepper span { min-width: 1.5em; text-align: center; }
+.ship-actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
+
 @media (max-width: 760px) {
   .layout { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   /* Steps become a wrapping row of numbered dots (no sideways scroll); the step title is the page heading below */

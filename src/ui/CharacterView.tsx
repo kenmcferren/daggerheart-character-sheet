@@ -13,7 +13,7 @@ import { PdfPreview } from './PdfPreview'
 import { Versions } from './Versions'
 
 /** A saved character above level 1: what was gained at each level, all saved versions, and the way to level up again. */
-export function CharacterView({ ch: saved, onLevelUp, onOpen, onHome }: { ch: Character; onLevelUp: (c: Character) => void; onOpen: (c: Character) => void; onHome: () => void }) {
+export function CharacterView({ ch: saved, onLevelUp, onOpen, onHome, extra }: { ch: Character; onLevelUp: (c: Character) => void; onOpen: (c: Character) => void; onHome: () => void; extra?: React.ReactNode }) {
   const [ch, setCh] = useState<Character>(() => normalize(saved))
   const [editingGear, setEditingGear] = useState(false)
   const setup = useMemo(() => setupOf(ch), [ch.sources])
@@ -51,6 +51,7 @@ export function CharacterView({ ch: saved, onLevelUp, onOpen, onHome }: { ch: Ch
         <button type="button" onClick={() => download(`${ch.name || 'character'}-level-${ch.level}.json`, exportCharacter(ch))}>Export this version (JSON)</button>
       </section>
       <PdfPreview ch={ch} setup={setup} />
+      {extra}
       <section className="panel">
         <h2>Weapons and armor</h2>
         <dl className="summary">

@@ -68,3 +68,6 @@ Done and archived 2026-10-27: `Docs/archive/series-12.md`.
 
 ## Series 13: Starheart classes in the creator
 Done and archived 2026-10-27: `Docs/archive/series-13.md`.
+
+## Series 14: Starheart ships
+Done and archived 2026-11-08: `Docs/archive/series-14.md`.

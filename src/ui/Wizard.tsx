@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, type ReactNode } from 'react'
 import { validateCreation } from '../engine/rules'
 import type { CreationSetup, WizardStep } from '../engine/creation'
 import type { Character } from '../engine/character'
@@ -16,8 +16,10 @@ const BODY: Record<string, (c: Ctx) => React.ReactNode> = {
   connections: ConnectionsStep,
 }
 
-export function Wizard({ ch, setup, update, saveStatus, onHome, opened }: {
+export function Wizard({ ch, setup, update, saveStatus, onHome, opened, reviewExtra }: {
   ch: Character; setup: CreationSetup; update: Ctx['update']; saveStatus: string; onHome: () => void; opened: boolean
+  /** Shown under Review (the character's ships panel). */
+  reviewExtra?: ReactNode
 }) {
   const steps = setup.steps
   const all = [...steps, { id: REVIEW, title: 'Review' } as WizardStep]
@@ -64,7 +66,7 @@ export function Wizard({ ch, setup, update, saveStatus, onHome, opened }: {
               <ul>{f!.sessionZeroQuestions!.map((q, i) => <li key={i}>{q}</li>)}</ul>
             </details>
           ))}
-          {cur.id === REVIEW ? <Review ctx={ctx} issues={issues} steps={steps} onJump={(id) => go(all.findIndex((s) => s.id === id))} onHome={onHome} />
+          {cur.id === REVIEW ? <Review ctx={ctx} issues={issues} steps={steps} onJump={(id) => go(all.findIndex((s) => s.id === id))} onHome={onHome} extra={reviewExtra} />
             : cur.source ? <FrameStep {...ctx} step={cur} /> : BODY[cur.id](ctx)}
           {cur.id !== REVIEW && furthest >= at && <StepIssues issues={by(cur.id)} />}
           <div className="nav">

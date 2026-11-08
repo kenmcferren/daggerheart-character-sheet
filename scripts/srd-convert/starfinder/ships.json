@@ -1,0 +1,1225 @@
+{
+  "frame": {
+    "id": "starheart-ships",
+    "name": "Starheart Ships"
+  },
+  "source": "Docs/starheart-ships/v-final.md (Series 14)",
+  "sizes": [
+    {
+      "size": 1,
+      "name": "Drone"
+    },
+    {
+      "size": 2,
+      "name": "Solo Flier",
+      "short": "Flier"
+    },
+    {
+      "size": 3,
+      "name": "Catamaran"
+    },
+    {
+      "size": 4,
+      "name": "Cruiser"
+    },
+    {
+      "size": 5,
+      "name": "Dreadnought"
+    }
+  ],
+  "startingSizes": {
+    "flier": 2,
+    "hub": 3
+  },
+  "systems": [
+    {
+      "id": "transport",
+      "name": "Transport",
+      "covers": "moving, piloting, escaping and docking"
+    },
+    {
+      "id": "weapons",
+      "name": "Weapons",
+      "covers": "attacks"
+    },
+    {
+      "id": "science",
+      "name": "Science",
+      "covers": "sensing, analysis, communications and Locks"
+    },
+    {
+      "id": "engineering",
+      "name": "Engineering",
+      "covers": "other ship equipment"
+    }
+  ],
+  "configurations": [
+    {
+      "id": "interceptor",
+      "name": "Interceptor",
+      "caps": {
+        "transport": 4,
+        "weapons": 4,
+        "science": 2,
+        "engineering": 2
+      }
+    },
+    {
+      "id": "scout",
+      "name": "Scout",
+      "caps": {
+        "transport": 4,
+        "weapons": 2,
+        "science": 4,
+        "engineering": 2
+      }
+    },
+    {
+      "id": "sapper",
+      "name": "Sapper",
+      "caps": {
+        "transport": 4,
+        "weapons": 2,
+        "science": 2,
+        "engineering": 4
+      }
+    },
+    {
+      "id": "surgeon",
+      "name": "Surgeon",
+      "caps": {
+        "transport": 2,
+        "weapons": 4,
+        "science": 4,
+        "engineering": 2
+      }
+    },
+    {
+      "id": "bandit",
+      "name": "Bandit",
+      "caps": {
+        "transport": 2,
+        "weapons": 4,
+        "science": 2,
+        "engineering": 4
+      }
+    },
+    {
+      "id": "warden",
+      "name": "Warden",
+      "caps": {
+        "transport": 2,
+        "weapons": 2,
+        "science": 4,
+        "engineering": 4
+      }
+    }
+  ],
+  "frames": [
+    {
+      "id": "bare",
+      "name": "Bare",
+      "freeHp": 2,
+      "stress": 8,
+      "evasion": 15,
+      "thresholds": [
+        7,
+        16
+      ]
+    },
+    {
+      "id": "standard",
+      "name": "Standard",
+      "freeHp": 3,
+      "stress": 7,
+      "evasion": 13,
+      "thresholds": [
+        9,
+        20
+      ]
+    },
+    {
+      "id": "plated",
+      "name": "Plated",
+      "freeHp": 4,
+      "stress": 6,
+      "evasion": 11,
+      "thresholds": [
+        11,
+        24
+      ]
+    },
+    {
+      "id": "bulky",
+      "name": "Bulky",
+      "freeHp": 5,
+      "stress": 5,
+      "evasion": 9,
+      "thresholds": [
+        13,
+        28
+      ]
+    }
+  ],
+  "build": {
+    "domains": 2,
+    "cards": 6,
+    "primaryCap": 4,
+    "baseHp": 1,
+    "hpPerCard": 1,
+    "maxHpPerSystem": 7
+  },
+  "tokenCaps": {
+    "analysis": 12,
+    "power": 12
+  },
+  "domains": [
+    {
+      "id": "flesh",
+      "name": "Flesh",
+      "focus": "Hope",
+      "description": "Living ships, grown, bred or tamed rather than built. They heal their own wounds, flex around danger and feel what their crew feels."
+    },
+    {
+      "id": "mind",
+      "name": "Mind",
+      "focus": "Analysis Tokens, magic damage",
+      "description": "Magical ships, carved with runes, crewed by spellcasters or run by a thinking core. They calculate, conjure and see what others miss."
+    },
+    {
+      "id": "void",
+      "name": "Void",
+      "focus": "Fear",
+      "description": "Strange ships, made of things that shouldn't exist or touched by the dark between stars. They bend space, drain warmth and feed on dread."
+    },
+    {
+      "id": "energy",
+      "name": "Energy",
+      "focus": "Power Tokens",
+      "description": "Charged ships, with reactors running hot, coils humming and plasma vented on a whim. They zap, burn and overload."
+    },
+    {
+      "id": "metal",
+      "name": "Metal",
+      "focus": "Hull Points",
+      "description": "Armored ships, all heavy plating, rivets and raw mass. They take a beating, ram through and hold the line."
+    },
+    {
+      "id": "glass",
+      "name": "Glass",
+      "focus": "Studied Target",
+      "description": "Precise ships, built around lenses, prisms and crystal sensors. They study a target, cut it apart and turn its own light against it."
+    }
+  ],
+  "keywords": [
+    {
+      "name": "Pilot",
+      "rules": "The character flying the ship. Ships have no Hope: features that spend or gain Hope use the pilot's Hope."
+    },
+    {
+      "name": "Hull Points (HP)",
+      "rules": "A ship's Hit Points, tracked per system. When a ship marks HP, the pilot chooses which systems mark them, unless an adversary's feature says otherwise."
+    },
+    {
+      "name": "Breached",
+      "rules": "A system with all its HP marked is Breached. Every action using a Breached system has disadvantage, whether or not it comes from a domain card."
+    },
+    {
+      "name": "Disabled",
+      "rules": "A ship with every HP marked is Disabled. It can't fly, attack or take other ship actions. See Damage."
+    },
+    {
+      "name": "While Available",
+      "rules": "If this card is in your ship's loadout or vault, you gain its passive benefit."
+    },
+    {
+      "name": "Sense",
+      "rules": "A ship can sense another ship within sensor range (Very Far, unless a domain card changes it) that isn't blocked by other ships or danger zones."
+    },
+    {
+      "name": "Lock / Locked",
+      "rules": "See Locks. Features marked \"With Lock:\" need their target to be Locked."
+    },
+    {
+      "name": "Studied Target",
+      "rules": "A ship a card has made your Studied Target. You can have one at a time; a new one replaces the old. It ends when the scene ends."
+    },
+    {
+      "name": "Analysis Tokens, Power Tokens",
+      "rules": "Domain tokens that cards grant and spend. You can hold up to 12 of each."
+    },
+    {
+      "name": "Reload Tokens",
+      "rules": "Some cards hold Reload Tokens, up to the number they list. While a card with Reload Tokens is available, you can spend a Hope or mark a Stress to refill one card's Reload Tokens."
+    },
+    {
+      "name": "Scene end",
+      "rules": "Conditions, Clouds, mines and other effects your ship creates end when the scene ends. Tokens last until spent or until your next Refuel or Refit."
+    },
+    {
+      "name": "Contact",
+      "rules": "You make contact with a ship when you succeed on an attack against it, dock with it, or succeed on a Transport Action Roll against it."
+    },
+    {
+      "name": "Forward Facing",
+      "rules": "In a Chase, Forward Facing features can only affect ships in a band ahead of yours. Outside a Chase they can affect any ship."
+    },
+    {
+      "name": "Aft Facing",
+      "rules": "In a Chase, Aft Facing features can only affect ships in a band behind yours. Outside a Chase they can affect any ship."
+    },
+    {
+      "name": "Observing",
+      "rules": "A ship that has left a Chase. See Chases."
+    },
+    {
+      "name": "Docked",
+      "rules": "See Docking."
+    },
+    {
+      "name": "Cloud",
+      "rules": "An area of space with an effect inside it. Unless a feature says otherwise:\n- A Cloud is centered on your position when you create it.\n- Its radius depends on your ship's size: Melee (size 1), Very Close (size 2), Close (sizes 3 and 4), Far (size 5).\n- It stays where you created it. In a Chase it keeps its band.\n- It dissipates at the start of your next spotlight.\n- It has no effect until a feature adds one. Choose which of your features are active when you create it; they don't change until you create a new Cloud."
+    },
+    {
+      "name": "Pd damage",
+      "rules": "\"Pd8+4\" means roll d8s equal to the pilot's Proficiency, then add 4."
+    },
+    {
+      "name": "Size",
+      "rules": "When ships of different sizes interact:\n- The larger ship has disadvantage on attacks against the smaller ship; the smaller ship has advantage on attacks against the larger ship.\n- Size also changes the HP a ship marks (see Damage) and limits Locks (see Locks)."
+    }
+  ],
+  "rulesSections": [
+    {
+      "title": "Characters and Ships",
+      "text": "Ships are not creatures. Character domain cards and features usually have no effect in ship scenes; the GM decides exceptions (such as Teleport). Once ships are Docked and creatures Board, character abilities work normally inside and between the ships."
+    },
+    {
+      "title": "Ranges and Moving",
+      "text": "- Ship scenes use the usual ranges (Melee, Very Close, Close, Far, Very Far), scaled to space.\n- When you make an action roll, your ship can move to a point within Close range as part of it. To move farther, or to move without making an action roll, succeed on a Transport Action Roll."
+    },
+    {
+      "title": "Resting",
+      "text": "- **Refuel** (1 day): End any conditions and tokens your ship still has. You can then mark any of your unmarked Stress to pay for domain card features (such as refilling Reload Tokens). Then clear 1d6 Stress and 1d6 HP, spread across your systems as you choose.\n- **Refit** (1 week, at a place that can do the work): As a Refuel, but you can mark as much Stress as you want to pay for domain card features. Then clear all Stress and HP. If the situation allows it, the GM can let you swap domain cards."
+    },
+    {
+      "title": "Locks",
+      "text": "- Make a Science Action Roll against an adversary ship's Difficulty to give it the **Locked** condition. You can only Lock ships your size or larger.\n- Once a ship is Locked, any ally can use \"With Lock\" features against it, whatever their size.\n- The party can have one Locked adversary at a time. Locking a new target ends the old Lock. A Lock also ends when no PC ship can sense the target.\n- Adversaries can Lock one PC ship at a time.\n- **Breaking a Lock:** When an adversary acts to break your party's Lock, the PC ship closest to it makes a Science Reaction Roll against its Difficulty; on a failure, the Lock ends. When a PC ship acts to break a Lock on itself, it makes a Transport Action Roll against the highest Difficulty among adversaries that can sense it. On a success the Lock ends; on a critical success, you can also Lock an adversary you can sense."
+    },
+    {
+      "title": "Attacking",
+      "text": "An attack is any action meant to deal damage. Weapons cards use Weapons Action Rolls unless they say otherwise."
+    },
+    {
+      "title": "Damage",
+      "text": "- Roll damage and compare it to the ship's thresholds to find the HP it marks, as for characters.\n- **Size difference:** A ship marks 1 fewer HP for each size it is larger than the attacker, and 1 more for each size it is smaller. This can reduce the HP marked to 0. Damage from a ship's Clouds, mines and other features counts as coming from that ship; hazards have no size.\n- **PC ships:** The pilot chooses which systems mark the HP. When every HP is marked the ship is Disabled: the crew is alive but the ship can't be operated. A Disabled ship marks Stress instead of HP. When it marks its last Stress, the pilot and the ship each make a death move, and they must choose different ones.\n- **Adversary ships:** Each marked HP gives -1 to the ship's action and reaction rolls, to a maximum of -6. Marking every HP leaves the ship Disabled. Marking every Stress destroys it and kills those inside; cargo is ruined unless specially protected."
+    },
+    {
+      "title": "Docking",
+      "text": "- **Docking** joins two ships so that creatures and cargo can cross. Docking with a willing ship needs no roll, unless the GM calls for a Transport Action Roll under pressure.\n- **Forced Docking** against an unwilling ship: make a Transport Action Roll with disadvantage against its Difficulty plus its Transport bonus (or a fitting pilot Experience; see Adversary Ships). Against a Disabled ship, roll against its Difficulty with no bonuses; the GM must spend a Fear to add a pilot Experience.\n- When an adversary attempts a Forced Docking on your ship, make a Transport Reaction Roll with advantage. On a success the ships don't dock, and the adversary marks 1 HP. On a failure both ships are Docked.\n- All touching ships with the Docked condition are docked to each other.\n- A Docked ship can't make Transport Action Rolls while docked to a ship of its size or larger.\n- When a Docked ship would mark 2 or more HP, it can pass 1 of them to a ship it is docked to."
+    },
+    {
+      "title": "Boarding",
+      "text": "- Without a domain card that says otherwise, creatures can only board a Docked ship. Boarding a willing ship needs no roll.\n- Boarding an unwilling ship is a scene the GM builds (defenders, locked doors, sealed or vented rooms)."
+    },
+    {
+      "title": "Undocking",
+      "text": "- Willing ships undock with no roll, unless the GM calls for one.\n- A Disabled ship can't undock and can't stop another ship from undocking.\n- **Breaking free of a Forced Docking:** Make a Transport Action Roll with disadvantage against the other ship's Difficulty. With Hope, the ships undock. With Fear, choose: undock and mark 1 HP, or stay docked. On a failure you stay docked.\n- **An adversary breaking free:** Make a Transport Reaction Roll with advantage. On a success it stays docked. On a failure it undocks, but if your Hope Die is higher than your Fear Die it must mark 1 HP to do so."
+    },
+    {
+      "title": "Adversary Ships",
+      "text": "- Adversary ships use the normal adversary stats, plus a **Transport bonus** and a **Weapons bonus**. The GM can add one of these to the ship's Difficulty without spending a Fear.\n- Use the ship's Difficulty for ship rolls, not the pilot's. If the pilot has an Experience higher than the relevant bonus, the GM can add it instead, without spending a Fear.\n- *Example:* a ship with Difficulty 10 and a Transport bonus of +2 is hit on a 12. If its pilot has *Slippery +3*, the GM can use that instead: the ship is hit on a 13."
+    },
+    {
+      "title": "Chases",
+      "text": "A Chase is a special ship scene: every ship is moving the same way toward the same goal. Once any ship tries to leave a scene, any other ship that can fly can start a Chase.\n\n### Starting a Chase\n- The **lead ship** is usually the one leaving. Place it near the middle of the table, with room for 3 bands behind it and 2 or 3 ahead.\n- **Adversary lead:** Up to two other adversary ships can share its band. Place the rest in the next 3 bands behind it, in whatever order suits the scene; no rolls. Each PC makes a Transport Reaction Roll. Beat every adversary's Difficulty: start in the band just behind the lead. Beat some: start one band further back. Beat none: start in the third band back. Then any PC can move back as many bands as they like.\n- **PC lead:** The lead PC makes a Transport Action Roll. Adversaries whose Difficulty is higher than the result can start in any band behind the lead; the rest start 2 bands back. With Hope, the other PCs place their ships in any band behind the lead, after the adversaries. With Fear, the other PCs roll and place as for an adversary lead, before the adversaries.\n\n### During a Chase\n- The spotlight moves as in any other scene.\n- **Bands** are rows of ships side by side. Within a band, measure range normally. A ship in another band is at least Close away if it is 1 band away, at least Far if 2 bands, and at least Very Far if 3 or more. It can be further, depending on how far it is to the side.\n- **Moving:** Changing one band uses your move. To change two bands, make a Transport Action Roll, with disadvantage if any adversary in the Chase is smaller than you. Beat every adversary's Difficulty: move two bands. Beat some: move one band, and one adversary you didn't beat can move one band as a reaction. Beat none: make your normal move within Close range, but you can't move forward a band if an adversary within Close range blocks your advance.\n- **Adversaries moving:** When an adversary tries to move more than one band, the closest PC makes a Transport Reaction Roll. On a success, the adversary moves one band and that PC can move one band. On a failure, the adversary moves two bands.\n- **Stationary objects** (debris, asteroids) pass through the bands as a column, as wide as the GM decides. Every ship in the column makes the same reaction roll to avoid it.\n\n### Leaving a Chase\n- **Dropping out:** Say so on your spotlight. If no adversary pursues, you are Observing. If one does, make a Transport Action Roll against the highest Difficulty among your pursuers; on a success, you are Observing. On a failure, you move one band forward or back, and your pursuer makes the same move.\n- **Keeping an adversary in:** When an adversary tries to drop out, one PC can make a Transport Reaction Roll against it. On a failure it is Observing. On a success it moves one band forward or back, and that PC makes the same move.\n- **Outpacing:** A ship at Very Far range from every other ship in the Chase is Observing.\n- **Observing** ships can't be targeted by ships in the Chase and are usually safe from the Chase's hazards. At the start of its spotlight, an Observing ship can rejoin at either side of any band."
+    }
+  ],
+  "cards": [
+    {
+      "id": "prey-drive",
+      "name": "Prey Drive",
+      "system": "transport",
+      "domain": "flesh",
+      "rules": "**Mark a Stress** to add the number of your marked Transport Hull Points to your next Transport Action Roll this spotlight. **While Available:** You have an extra Stress slot.",
+      "grants": {
+        "stress": 1
+      }
+    },
+    {
+      "id": "writhe",
+      "name": "Writhe",
+      "system": "transport",
+      "domain": "flesh",
+      "rules": "While you have any Hope, you have advantage on rolls to make, resist or break free of a **Forced Docking**."
+    },
+    {
+      "id": "self-repair",
+      "name": "Self Repair",
+      "system": "transport",
+      "domain": "flesh",
+      "rules": "Once per **Refuel**, **spend up to 3 Hope** to clear that many Hull Points from one system.",
+      "usesPer": "refuel"
+    },
+    {
+      "id": "fluid-motion",
+      "name": "Fluid Motion",
+      "system": "transport",
+      "domain": "flesh",
+      "rules": "When you make a Transport Action Roll with Hope, you gain +2 Evasion until the start of your next spotlight."
+    },
+    {
+      "id": "pod-travel",
+      "name": "Pod Travel",
+      "system": "transport",
+      "domain": "flesh",
+      "rules": "When you move, you can make a Transport Action Roll against the highest Difficulty among adversaries within Close range. On a success, you, every ally with Pod Travel available, and one other ally can each move to a point within Close range. On a failure, you move alone."
+    },
+    {
+      "id": "spore-cloud",
+      "name": "Spore Cloud",
+      "system": "transport",
+      "domain": "flesh",
+      "rules": "**Mark a Stress** to create a **Cloud**. Attacks against targets in your **Cloud** have disadvantage. **Locked** ships in your **Cloud** lose the **Locked** condition."
+    },
+    {
+      "id": "predictive-pathways",
+      "name": "Predictive Pathways",
+      "system": "transport",
+      "domain": "mind",
+      "rules": "When you **Refuel** or **Refit**, gain 3 **Analysis Tokens**. When another ship moves into Close range of you, you can **spend an Analysis Token** to move up to Close range away from it as a reaction.",
+      "tokens": [
+        "analysis"
+      ]
+    },
+    {
+      "id": "blindspot",
+      "name": "Blindspot",
+      "system": "transport",
+      "domain": "mind",
+      "rules": "**Mark a Stress** to slip into the blindspot of a ship within Very Close range. That ship can't target you while you're in its blindspot. This ends when you choose, when either ship starts a spotlight farther than Very Close from the other, or when you use this card on another ship."
+    },
+    {
+      "id": "engine-sync",
+      "name": "Engine Sync",
+      "system": "transport",
+      "domain": "mind",
+      "rules": "**With Lock:** Add the trait you use for Transport rolls to your Evasion against the **Locked** target's attacks, if it's positive."
+    },
+    {
+      "id": "calculations-confirmed",
+      "name": "Calculations Confirmed",
+      "system": "transport",
+      "domain": "mind",
+      "rules": "Once per scene, when an attack misses you, gain a Hope.",
+      "usesPer": "scene"
+    },
+    {
+      "id": "slipstream-transference",
+      "name": "Slipstream Transference",
+      "system": "transport",
+      "domain": "void",
+      "rules": "When you mark any Hull Points, you can **spend a Hope** to clear a Stress as a reaction. **While Available:** You have an extra Transport Hull Point.",
+      "grants": {
+        "hp": "transport"
+      }
+    },
+    {
+      "id": "warpfield-strain",
+      "name": "Warpfield Strain",
+      "system": "transport",
+      "domain": "void",
+      "rules": "**Mark a Stress**. Until the end of this spotlight, each adversary with an unmarked Stress that you fly within Very Close range of marks a Stress."
+    },
+    {
+      "id": "void-cohesion",
+      "name": "Void Cohesion",
+      "system": "transport",
+      "domain": "void",
+      "rules": "While you have 4 or more Void cards in your loadout, you have +2 Evasion."
+    },
+    {
+      "id": "warp-draw",
+      "name": "Warp Draw",
+      "system": "transport",
+      "domain": "void",
+      "rules": "**Mark a Stress** to create a **Cloud**. Ships you choose that start their spotlight in your **Cloud** mark a Hull Point if they move."
+    },
+    {
+      "id": "overdrive",
+      "name": "Overdrive",
+      "system": "transport",
+      "domain": "energy",
+      "rules": "When you succeed on a roll with Hope, you can **mark a Stress** or **spend a Power Token** to move to a point within Close range, even if you've already moved this spotlight.",
+      "tokens": [
+        "power"
+      ]
+    },
+    {
+      "id": "desperate-charge",
+      "name": "Desperate Charge",
+      "system": "transport",
+      "domain": "energy",
+      "rules": "Once per spotlight, **mark a Stress** to clear a Transport Hull Point. For the rest of this spotlight, add the number of your marked Stress to your Transport rolls."
+    },
+    {
+      "id": "power-reroute",
+      "name": "Power Reroute",
+      "system": "transport",
+      "domain": "energy",
+      "rules": "When you make a non-Transport Action Roll with Hope, you can gain a **Power Token**. **Spend a Power Token** to gain advantage on a Transport roll.",
+      "tokens": [
+        "power"
+      ]
+    },
+    {
+      "id": "fleet-transponder",
+      "name": "Fleet Transponder",
+      "system": "transport",
+      "domain": "metal",
+      "rules": "Once per **Refuel**, when an ally within Close range fails a Transport roll with Hope, you can **mark a Stress** to make it a success with Fear instead.",
+      "usesPer": "refuel"
+    },
+    {
+      "id": "cold-steel",
+      "name": "Cold Steel",
+      "system": "transport",
+      "domain": "metal",
+      "rules": "This card holds 2 **Reload Tokens**. When you succeed on a **Forced Docking**, or a ship fails a **Forced Docking** against you, that ship marks a Stress, and you can **spend a Reload Token** to make it mark a Hull Point.",
+      "reloadTokens": 2
+    },
+    {
+      "id": "punch-through",
+      "name": "Punch Through",
+      "system": "transport",
+      "domain": "metal",
+      "rules": "You have advantage on Transport Reaction Rolls. When an environment makes you mark Hull Points, mark 1 fewer. **While Available:** You have an extra Transport Hull Point.",
+      "grants": {
+        "hp": "transport"
+      }
+    },
+    {
+      "id": "faraday-cage",
+      "name": "Faraday Cage",
+      "system": "transport",
+      "domain": "metal",
+      "rules": "While any of your Transport Hull Points are unmarked, you have resistance to tech damage."
+    },
+    {
+      "id": "dense-frame",
+      "name": "Dense Frame",
+      "system": "transport",
+      "domain": "metal",
+      "rules": "Rolls to move your ship against your will have disadvantage, and you have advantage on rolls to resist them. While you are docked only to ships your size, you can make Transport Action Rolls with disadvantage. **While Available:** You have an extra Transport Hull Point.",
+      "grants": {
+        "hp": "transport"
+      }
+    },
+    {
+      "id": "sharp-edges",
+      "name": "Sharp Edges",
+      "system": "transport",
+      "domain": "glass",
+      "rules": "When you break free of a **Forced Docking**, the ship you were docked to marks a Hull Point. Once per scene, when you **make contact** with a ship within Melee range, you can **mark a Stress** to make it mark a Hull Point.",
+      "usesPer": "scene"
+    },
+    {
+      "id": "churn-rider",
+      "name": "Churn Rider",
+      "system": "transport",
+      "domain": "glass",
+      "rules": "When a larger ship within Very Close range moves, you can **spend a Hope** to move with it as a reaction, to a point within Close range of where you started."
+    },
+    {
+      "id": "mirage-cloud",
+      "name": "Mirage Cloud",
+      "system": "transport",
+      "domain": "glass",
+      "rules": "**Mark a Stress** to create a **Cloud**. Ships in your **Cloud** can't be targeted by ships at Far range or farther from them. At the start of your spotlight, you can **spend a Hope** to move your active **Cloud** to your position and keep it from dissipating."
+    },
+    {
+      "id": "defensive-sync",
+      "name": "Defensive Sync",
+      "system": "transport",
+      "domain": "glass",
+      "rules": "Once per scene, you can make a ship within Far range your **Studied Target**. You have +1 Evasion against your **Studied Target**'s attacks. When its attack misses you by 1, gain a Hope.",
+      "usesPer": "scene"
+    },
+    {
+      "id": "reflective-hull",
+      "name": "Reflective Hull",
+      "system": "transport",
+      "domain": "glass",
+      "rules": "When you mark a Transport Hull Point while none are marked, you can make a ship within Very Close range mark a Hull Point. **While Available:** You have an extra Transport Hull Point.",
+      "grants": {
+        "hp": "transport"
+      }
+    },
+    {
+      "id": "spearhead-charge",
+      "name": "Spearhead Charge",
+      "system": "weapons",
+      "domain": "flesh",
+      "rules": "**Forward Facing.** Make a Weapons Action Roll against an unobstructed target within Far range. On a success, move into Melee range of it and deal Pd8 physical damage. **With Lock:** Roll with advantage."
+    },
+    {
+      "id": "flechette-spines",
+      "name": "Flechette Spines",
+      "system": "weapons",
+      "domain": "flesh",
+      "rules": "**Spend a Hope** to make a Weapons Action Roll against all targets within Close range. Targets you succeed against take 1 physical damage and mark a Stress. If this **Disables** any ships, gain a Hope."
+    },
+    {
+      "id": "leeching-strike",
+      "name": "Leeching Strike",
+      "system": "weapons",
+      "domain": "flesh",
+      "rules": "Make a Weapons Action Roll against a target within Melee range. On a success, deal Pd4+3 physical damage. If it marks any Hull Points, clear a Stress."
+    },
+    {
+      "id": "engulf",
+      "name": "Engulf",
+      "system": "weapons",
+      "domain": "flesh",
+      "rules": "**Spend a Hope** to make a Weapons Action Roll against a target your size or smaller within Close range. On a success, it is temporarily *Engulfed*: it can't make Transport Action Rolls and must target you with all other actions. At the start of each of your spotlights, the *Engulfed* ship takes Pd6 physical damage."
+    },
+    {
+      "id": "tracer-fire",
+      "name": "Tracer Fire",
+      "system": "weapons",
+      "domain": "mind",
+      "rules": "**Forward Facing.** Make a Weapons Action Roll against a target within Far range. On a success, deal Pd6+4 tech damage, and either **spend an Analysis Token** to **Lock** the target or gain an **Analysis Token**.",
+      "tokens": [
+        "analysis"
+      ]
+    },
+    {
+      "id": "breaching-curse",
+      "name": "Breaching Curse",
+      "system": "weapons",
+      "domain": "mind",
+      "rules": "**With Lock:** Make a Weapons Action Roll against the **Locked** target within Close range. On a success, deal 2d6 magic damage. **Spend any number of Analysis Tokens** to add a d6 for each one spent.",
+      "tokens": [
+        "analysis"
+      ]
+    },
+    {
+      "id": "eldritch-lance",
+      "name": "Eldritch Lance",
+      "system": "weapons",
+      "domain": "mind",
+      "rules": "**Forward Facing.** Make a Weapons Action Roll against a target within Far range. On a success, choose one: deal Pd6 magic or physical damage, or **mark a Stress** to deal Pd10+6 magic damage. **With Lock:** +4 damage."
+    },
+    {
+      "id": "spacetime-chasm",
+      "name": "Spacetime Chasm",
+      "system": "weapons",
+      "domain": "void",
+      "rules": "Make a Weapons Action Roll against a target within Far range. Once per **Refuel**, on a success, **the GM gains a Fear** and you draw a line from the target to a point within Far range of you and the target. Every ship touching the line takes Pd8+2 magic damage and marks a Stress.",
+      "usesPer": "refuel"
+    },
+    {
+      "id": "entropic-beam",
+      "name": "Entropic Beam",
+      "system": "weapons",
+      "domain": "void",
+      "rules": "**Forward Facing.** Make a Weapons Action Roll against a target within Close range. On a success, deal Pd10+4 tech damage. You can also **mark a Stress** to make the target mark a Stress and lower its Difficulty by 1 until the end of the scene."
+    },
+    {
+      "id": "null-sphere",
+      "name": "Null Sphere",
+      "system": "weapons",
+      "domain": "void",
+      "rules": "**Mark a Stress** and choose a point within Far range. Make a Weapons Action Roll (15). On a success, every ship within Very Close range of that point takes Pd6+4 magic damage. Each ship that marks 2 or more Hull Points is also temporarily **Restrained**."
+    },
+    {
+      "id": "blacklight-laser",
+      "name": "Blacklight Laser",
+      "system": "weapons",
+      "domain": "void",
+      "rules": "Make a Weapons Action Roll against a target within Far range. On a success, deal Pd6+4 tech damage. On a roll with Fear, hit or miss, you can **mark a Stress** to **Lock** the target. **With Lock:** On a success, add the GM's current Fear to the damage."
+    },
+    {
+      "id": "annihilation-beam",
+      "name": "Annihilation Beam",
+      "system": "weapons",
+      "domain": "void",
+      "rules": "**Forward Facing.** Once per **Refuel**, **spend a Hope** to make a Weapons Action Roll against a target within Very Far range. On a success, deal magic damage: a d8 for each Fear the GM has. **With Lock:** If the target is larger than you, it marks Hull Points as if it were your size.",
+      "usesPer": "refuel"
+    },
+    {
+      "id": "warp-cascade",
+      "name": "Warp Cascade",
+      "system": "weapons",
+      "domain": "void",
+      "rules": "**Mark a Stress** to move to a point within Far range. Then you can make a Weapons Action Roll against a target within Very Close range. On a success, deal Pd10+4 tech damage, and the target is **Restrained** until the end of its next spotlight."
+    },
+    {
+      "id": "plasma-caster",
+      "name": "Plasma Caster",
+      "system": "weapons",
+      "domain": "energy",
+      "rules": "Make a Weapons Action Roll with disadvantage against a target within Far range and against every adversary touching the straight line of your shot. Every ship touching the line marks a Stress. You can **spend a Power Token** to deal 1d6+10 tech damage to each adversary you succeed against. On a success against the target, it also takes Pd6 tech damage as part of the same attack. **With Lock:** Roll without disadvantage.",
+      "tokens": [
+        "power"
+      ]
+    },
+    {
+      "id": "volley-fire",
+      "name": "Volley Fire",
+      "system": "weapons",
+      "domain": "energy",
+      "rules": "**Forward Facing. Mark a Stress** or **spend a Power Token** to make a Weapons Action Roll against all targets within Close range. Targets you succeed against take 2d6 tech damage.",
+      "tokens": [
+        "power"
+      ]
+    },
+    {
+      "id": "erratic-pulse",
+      "name": "Erratic Pulse",
+      "system": "weapons",
+      "domain": "energy",
+      "rules": "Make a Weapons Action Roll against a target within Close range. On a success, deal Pd8+4 tech damage, and you can **spend a Power Token** to make the target temporarily **Vulnerable**. **With Lock:** You don't need to spend the **Power Token**.",
+      "tokens": [
+        "power"
+      ]
+    },
+    {
+      "id": "jamming-blast",
+      "name": "Jamming Blast",
+      "system": "weapons",
+      "domain": "energy",
+      "rules": "Make a Weapons Action Roll against a target within Far range. On a success, the target is temporarily *Jammed*: it has disadvantage on attack rolls. You can also **spend a Power Token** to deal Pd6 tech damage to it. **With Lock:** Roll with advantage.",
+      "tokens": [
+        "power"
+      ]
+    },
+    {
+      "id": "fire-gout",
+      "name": "Fire Gout",
+      "system": "weapons",
+      "domain": "energy",
+      "rules": "**Mark a Hull Point** and gain a **Power Token** to make a Weapons Action Roll against all targets within Melee range. Targets you succeed against take Pd6+4 tech damage and are *Burning* until they use an action to put it out. A *Burning* ship marks a Stress at the end of each of its spotlights.",
+      "tokens": [
+        "power"
+      ]
+    },
+    {
+      "id": "tether",
+      "name": "Tether",
+      "system": "weapons",
+      "domain": "energy",
+      "rules": "Make a Weapons Action Roll against a target within Melee range. On a success, deal Pd4 tech damage. If it marks any Hull Points, it also marks a Stress and you clear a Stress. **With Lock:** Roll with advantage."
+    },
+    {
+      "id": "plutonium-railgun",
+      "name": "Plutonium Railgun",
+      "system": "weapons",
+      "domain": "metal",
+      "rules": "**Forward Facing.** This card holds 3 **Reload Tokens**. **Spend 2 Reload Tokens** to make a Weapons Action Roll against a target within Far range. On a success, deal Pd10+4 physical damage. **With Lock:** Roll with advantage.",
+      "reloadTokens": 3
+    },
+    {
+      "id": "gatling-autoturret",
+      "name": "Gatling Autoturret",
+      "system": "weapons",
+      "domain": "metal",
+      "rules": "This card holds 4 **Reload Tokens**. When an adversary ship enters Very Close range of you, you can **spend a Reload Token** to make a Weapons Reaction Roll against it. On a success, deal Pd4+6 physical damage.",
+      "reloadTokens": 4
+    },
+    {
+      "id": "seeking-missile",
+      "name": "Seeking Missile",
+      "system": "weapons",
+      "domain": "metal",
+      "rules": "This card holds 3 **Reload Tokens**. **With Lock: Spend 3 Reload Tokens** to make the target temporarily *Sought*. At the start of each of its spotlights while it is *Sought*, make a Weapons Reaction Roll against it. On a success, deal Pd12 physical damage. *Sought* doesn't end when the **Lock** does.",
+      "reloadTokens": 3
+    },
+    {
+      "id": "ramming-cap",
+      "name": "Ramming Cap",
+      "system": "weapons",
+      "domain": "metal",
+      "rules": "**Forward Facing.** Move into Melee range of a target within Close range and make a Weapons Action Roll against it. On a success, deal Pd8 physical damage. You can then **mark a Hull Point** to make the target mark a Hull Point. **While Available:** You have an extra Weapons Hull Point.",
+      "grants": {
+        "hp": "weapons"
+      }
+    },
+    {
+      "id": "destructive-scan",
+      "name": "Destructive Scan",
+      "system": "weapons",
+      "domain": "glass",
+      "rules": "Make a Weapons Action Roll against a target within Very Far range. On a success, deal Pd6 tech damage, and you can **mark a Stress** to **Lock** the target. **With Lock:** On a success, it also becomes your **Studied Target**."
+    },
+    {
+      "id": "dissection-ray",
+      "name": "Dissection Ray",
+      "system": "weapons",
+      "domain": "glass",
+      "rules": "**Forward Facing.** Make a Weapons Action Roll against your **Studied Target**. On a success, deal Pd4+6 tech damage. If it marks 2 or more Hull Points, it marks 1 more. **With Lock:** Deal Pd8+6 instead."
+    },
+    {
+      "id": "resonant-echo",
+      "name": "Resonant Echo",
+      "system": "weapons",
+      "domain": "glass",
+      "rules": "Make a Weapons Action Roll against a target within Close range, with advantage if it is your **Studied Target**. On a success, you can **mark up to 3 Stress**. Deal 2d8 physical damage, plus 1d8 for each Stress marked. Then you can **spend Hope** to clear Stress, one for one. **With Lock:** The target marks Hull Points as if your ship were one size larger."
+    },
+    {
+      "id": "critical-point-tracking",
+      "name": "Critical Point Tracking",
+      "system": "weapons",
+      "domain": "glass",
+      "rules": "**With Lock:** When you succeed on a Weapons Action Roll against your **Studied Target**, add 2d6 to the damage."
+    },
+    {
+      "id": "manual-inspection",
+      "name": "Manual Inspection",
+      "system": "science",
+      "domain": "flesh",
+      "rules": "**Spend a Hope** to let a willing ship within Melee range clear a Hull Point."
+    },
+    {
+      "id": "innervation",
+      "name": "Innervation",
+      "system": "science",
+      "domain": "flesh",
+      "rules": "Whenever you would gain Hope, you can clear that many Stress instead. **While Available:** You have an extra Stress slot.",
+      "grants": {
+        "stress": 1
+      }
+    },
+    {
+      "id": "slighted-spite",
+      "name": "Slighted Spite",
+      "system": "science",
+      "domain": "flesh",
+      "rules": "When you or an ally within Close range takes damage from an adversary, you can **spend a Hope** to **Lock** that adversary."
+    },
+    {
+      "id": "empathic-network",
+      "name": "Empathic Network",
+      "system": "science",
+      "domain": "flesh",
+      "rules": "**Mark a Stress** to create a **Cloud**. When a ship in your **Cloud** would mark Hull Points, you can **mark one of them instead**. If that damage was Severe, gain a Hope."
+    },
+    {
+      "id": "anticipatory-neurons",
+      "name": "Anticipatory Neurons",
+      "system": "science",
+      "domain": "flesh",
+      "rules": "You have advantage on rolls to **Lock**. When a roll to **Lock** gives you a Hope, one ally within Close range also gains a Hope. **While Available:** You have an extra Stress slot.",
+      "grants": {
+        "stress": 1
+      }
+    },
+    {
+      "id": "diagnosis-scanner",
+      "name": "Diagnosis Scanner",
+      "system": "science",
+      "domain": "mind",
+      "rules": "**Spend any number of Analysis Tokens** to make a Science Action Roll (18), adding the number spent to the roll. On a success, an ally within Very Close range clears a Hull Point and clears a Stress for each token spent.",
+      "tokens": [
+        "analysis"
+      ]
+    },
+    {
+      "id": "optimized-routines",
+      "name": "Optimized Routines",
+      "system": "science",
+      "domain": "mind",
+      "rules": "**Spend an Analysis Token** and **spend a Hope** to gain advantage on a roll. When you roll with Hope, you can gain an **Analysis Token** instead of the Hope.",
+      "tokens": [
+        "analysis"
+      ]
+    },
+    {
+      "id": "warded-hull",
+      "name": "Warded Hull",
+      "system": "science",
+      "domain": "mind",
+      "rules": "When you would mark Hull Points from damage, you can first **spend 2 Analysis Tokens** to reduce the severity by one threshold. **While Available:** You have an extra Stress slot.",
+      "grants": {
+        "stress": 1
+      },
+      "tokens": [
+        "analysis"
+      ]
+    },
+    {
+      "id": "opportunistic-analysis",
+      "name": "Opportunistic Analysis",
+      "system": "science",
+      "domain": "mind",
+      "rules": "When you deal damage to a ship, you can **spend an Analysis Token** to make it **Vulnerable** until the end of its next spotlight or yours, whichever comes first.",
+      "tokens": [
+        "analysis"
+      ]
+    },
+    {
+      "id": "detailed-systems-readout",
+      "name": "Detailed Systems Readout",
+      "system": "science",
+      "domain": "mind",
+      "rules": "When you **Lock** a ship with an action roll, gain an **Analysis Token**. If you start a scene with no **Analysis Tokens**, gain one.",
+      "tokens": [
+        "analysis"
+      ]
+    },
+    {
+      "id": "synced-arcana",
+      "name": "Synced Arcana",
+      "system": "science",
+      "domain": "mind",
+      "rules": "Add the trait you use for Science rolls to your damage thresholds, if it's positive."
+    },
+    {
+      "id": "charge-extraction",
+      "name": "Charge Extraction",
+      "system": "science",
+      "domain": "void",
+      "rules": "Once during your spotlight, when you make an adversary mark a Stress, you can **spend a Hope** to clear a Stress."
+    },
+    {
+      "id": "chaos-drive",
+      "name": "Chaos Drive",
+      "system": "science",
+      "domain": "void",
+      "rules": "**Mark a Stress** to add the GM's current Fear to a non-Weapons Action Roll."
+    },
+    {
+      "id": "matter-inversion",
+      "name": "Matter Inversion",
+      "system": "science",
+      "domain": "void",
+      "rules": "When you make an action roll with Fear, put an *Inversion Token* on this card (up to 3). **Spend an Inversion Token** to choose the damage type of any damage dealt by or to a ship within Very Close range of you.",
+      "cardTokens": {
+        "name": "Inversion",
+        "max": 3
+      }
+    },
+    {
+      "id": "electrified-field",
+      "name": "Electrified Field",
+      "system": "science",
+      "domain": "energy",
+      "rules": "**Mark a Stress** to create a **Cloud**. Attacks made from inside your **Cloud** deal an extra 1d8 damage on a success. The first time an attack from inside the **Cloud** hits an adversary, gain a Hope."
+    },
+    {
+      "id": "electron-beam",
+      "name": "Electron Beam",
+      "system": "science",
+      "domain": "energy",
+      "rules": "Make a Science Action Roll (13). On a success, you can **spend a Power Token** to let a ship within Close range clear 2 Stress. Once per spotlight, you can **mark a Stress** to gain a **Power Token**.",
+      "tokens": [
+        "power"
+      ]
+    },
+    {
+      "id": "oscillating-power-supply",
+      "name": "Oscillating Power Supply",
+      "system": "science",
+      "domain": "energy",
+      "rules": "Once per spotlight, you can **mark a Stress** to gain 2 **Power Tokens**, or **spend 2 Power Tokens** to clear a Stress. **While Available:** You have an extra Stress slot.",
+      "grants": {
+        "stress": 1
+      },
+      "tokens": [
+        "power"
+      ]
+    },
+    {
+      "id": "electrified-hull",
+      "name": "Electrified Hull",
+      "system": "science",
+      "domain": "energy",
+      "rules": "**Spend a Power Token** to make a willing ship within Melee range *Electrified*. The next time it docks with another ship, that ship marks a Hull Point and a Stress, and *Electrified* ends.",
+      "tokens": [
+        "power"
+      ]
+    },
+    {
+      "id": "close-range-scanning-battery",
+      "name": "Close Range Scanning Battery",
+      "system": "science",
+      "domain": "metal",
+      "rules": "**Mark a Stress** to make a Science Action Roll against a target within Close range. On a success, it is **Locked** and takes Pd4 physical damage."
+    },
+    {
+      "id": "hull-cannibalization",
+      "name": "Hull Cannibalization",
+      "system": "science",
+      "domain": "metal",
+      "rules": "Once per **Refuel**, **mark a Hull Point** to clear 3 Stress. **While Available:** You have an extra Science Hull Point.",
+      "grants": {
+        "hp": "science"
+      },
+      "usesPer": "refuel"
+    },
+    {
+      "id": "pulse-beacon",
+      "name": "Pulse Beacon",
+      "system": "science",
+      "domain": "metal",
+      "rules": "**Mark a Hull Point** to deploy a *Pulse Beacon*: a size 1 object with Evasion 15, your damage thresholds and 5 HP. You can move the Beacon to a point within Close range instead of moving your ship. When you deploy or move it, you can make a Science Action Roll against each ship within Close range of the Beacon. Ships you succeed against are **Vulnerable** while within Close range of it, and you can **Lock** one of them."
+    },
+    {
+      "id": "advanced-targeting",
+      "name": "Advanced Targeting",
+      "system": "science",
+      "domain": "glass",
+      "rules": "When you **Lock** a ship, you can **mark a Stress** to make it your **Studied Target**. At the start of your spotlight, you can **Lock** your **Studied Target** as a reaction."
+    },
+    {
+      "id": "sensor-mirage",
+      "name": "Sensor Mirage",
+      "system": "science",
+      "domain": "glass",
+      "rules": "When an ally within Close range becomes **Locked**, you can make a Science Action Roll against the highest Difficulty among adversaries. On a success, the **Lock** ends, and the roll counts as a success with Hope. On a failure, it counts as a failure with Fear."
+    },
+    {
+      "id": "phase-alignment",
+      "name": "Phase Alignment",
+      "system": "science",
+      "domain": "glass",
+      "rules": "When your **Studied Target** deals tech damage to a ship, that ship can **spend a Hope** to reduce the severity by one threshold."
+    },
+    {
+      "id": "gravitational-lens-drive",
+      "name": "Gravitational Lens Drive",
+      "system": "science",
+      "domain": "glass",
+      "rules": "Allies' attacks can pass through your ship. While you have any unmarked Stress, physical and tech attacks you choose that pass within Very Close range of you add 1 to their Proficiency."
+    },
+    {
+      "id": "quantum-entanglement",
+      "name": "Quantum Entanglement",
+      "system": "science",
+      "domain": "glass",
+      "rules": "Your **Studied Target** doesn't end until you choose, even when the scene ends. You always know the direction of your **Studied Target** and how many unmarked Stress it has, at any distance."
+    },
+    {
+      "id": "scanning-array",
+      "name": "Scanning Array",
+      "system": "science",
+      "domain": "glass",
+      "rules": "**Mark a Stress** to create a **Cloud**. At the start of their spotlights, allies can **Lock** any target in your **Cloud** as a reaction. When the **Cloud** dissipates, you can make any ship in it your **Studied Target**."
+    },
+    {
+      "id": "neural-interface",
+      "name": "Neural Interface",
+      "system": "engineering",
+      "domain": "flesh",
+      "rules": "When you have no Hope and gain any Hope, clear a Stress. **While Available:** You have an extra Stress slot.",
+      "grants": {
+        "stress": 1
+      }
+    },
+    {
+      "id": "corrosive-slime",
+      "name": "Corrosive Slime",
+      "system": "engineering",
+      "domain": "flesh",
+      "rules": "Once per spotlight, when you **make contact** with a ship, you can mark a Stress to lower its Major threshold by 2 and its Severe threshold by 4 for the rest of the scene."
+    },
+    {
+      "id": "selective-shedding",
+      "name": "Selective Shedding",
+      "system": "engineering",
+      "domain": "flesh",
+      "rules": "When you **make contact** with a ship, you can **spend a Hope** to slow it: until the end of its next spotlight, it can only move to a point within Very Close range. In a **Chase**, it moves back one band instead."
+    },
+    {
+      "id": "arcanic-connection",
+      "name": "Arcanic Connection",
+      "system": "engineering",
+      "domain": "mind",
+      "rules": "Once per **Refuel**, the pilot can cast one of their spells through your ship. Make an Engineering Action Roll in place of the Spellcast Roll. The spell can affect ships your size or smaller as it would affect adversaries, at ship ranges.",
+      "usesPer": "refuel"
+    },
+    {
+      "id": "eldritch-breeze",
+      "name": "Eldritch Breeze",
+      "system": "engineering",
+      "domain": "mind",
+      "rules": "Make an Engineering Action Roll against a target within Far range. On a success, it is temporarily caught in *Unfair Winds*. When it moves, you can **spend a Hope** or an **Analysis Token** to push it to a point within Very Close range of where it stopped. If you don't, *Unfair Winds* ends.",
+      "tokens": [
+        "analysis"
+      ]
+    },
+    {
+      "id": "rift-generator",
+      "name": "Rift Generator",
+      "system": "engineering",
+      "domain": "mind",
+      "rules": "**Mark a Stress** to make an Engineering Action Roll (13). On a success, teleport to a point within Very Far range. For each ally within Very Close range you bring with you, **mark another Stress or 2 Hull Points**."
+    },
+    {
+      "id": "pocket-dimension",
+      "name": "Pocket Dimension",
+      "system": "engineering",
+      "domain": "mind",
+      "rules": "**Mark a Stress** to make an Engineering Action Roll (16). On a success, you open a pocket dimension holding an abandoned space station. It lasts long enough for one **Refuel**, and a **Refuel** there clears half as much (round down). Characters can rest there undisturbed. Messages can pass in or out only if you allow it."
+    },
+    {
+      "id": "boarding-glyph",
+      "name": "Boarding Glyph",
+      "system": "engineering",
+      "domain": "mind",
+      "rules": "**Mark a Stress** to make an Engineering Action Roll against a ship within Very Close range (12 if it is willing). On a success, mark it with a *Boarding Glyph* and choose a place on your ship. Creatures you allow can travel between that place and a matching place on the marked ship (bridge to bridge, cargo bay to cargo bay). When a creature you forbid tries, make an Engineering Reaction Roll against it; on a success, it takes Pd8 magic damage and doesn't cross. The Glyph lasts while your ship has a pilot, your Engineering system isn't **Breached**, and the marked ship is within Far range."
+    },
+    {
+      "id": "cloaking-field",
+      "name": "Cloaking Field",
+      "system": "engineering",
+      "domain": "void",
+      "rules": "**Mark a Stress** to become *Cloaked* until you make a Weapons or Transport Action Roll. While *Cloaked*, adversaries can't target you, and your first attack has advantage. Once per adversary spotlight, the GM can spend a Fear to reveal you; you can **spend a Hope** to stay *Cloaked*."
+    },
+    {
+      "id": "graviton-mine",
+      "name": "Graviton Mine",
+      "system": "engineering",
+      "domain": "void",
+      "rules": "Make an Engineering Action Roll (15). On a success, you can **mark a Stress** and **mark a Hull Point** to place a *Graviton Mine* at a point within Close range. Other ships within Close range of the Mine are temporarily **Restrained**. Each of them that starts its spotlight within Close range of the Mine makes a Transport Reaction Roll (10 + the GM's current Fear): on a failure, it is pulled to the Mine; on a success, it is no longer **Restrained**. At the start of your next spotlight, every ship at the Mine takes Pd10+4 physical damage, ignoring size, and the Mine and its **Restrained** condition end."
+    },
+    {
+      "id": "void-attuned",
+      "name": "Void Attuned",
+      "system": "engineering",
+      "domain": "void",
+      "rules": "While you have 4 or more Void cards in your loadout, you have resistance to magic damage, and you clear a Stress whenever you take magic damage."
+    },
+    {
+      "id": "scrap-hound",
+      "name": "Scrap Hound",
+      "system": "engineering",
+      "domain": "void",
+      "rules": "Once per **Refuel**, when an adversary ship is destroyed, you can clear Hull Points equal to 1d4 + its size.",
+      "usesPer": "refuel"
+    },
+    {
+      "id": "veil-of-night",
+      "name": "Veil of Night",
+      "system": "engineering",
+      "domain": "void",
+      "rules": "Make an Engineering Action Roll (13) to create a *Veil of Night*: a flat plane through the battlefield, reaching Very Far range in every direction. When a ship passes through it, you can **mark a Stress** or **spend an Analysis Token** to make that ship mark a Hull Point. Communications, light, sensing, tech damage and magic damage can't pass through the Veil. You can dismiss it at the end of any spotlight; it ends with the scene.",
+      "tokens": [
+        "analysis"
+      ]
+    },
+    {
+      "id": "siphon-array",
+      "name": "Siphon Array",
+      "system": "engineering",
+      "domain": "energy",
+      "rules": "When a ship within Very Close range marks a Stress, you can **spend a Hope** to gain 2 **Power Tokens**. If you start a scene with no **Power Tokens**, gain 2.",
+      "tokens": [
+        "power"
+      ]
+    },
+    {
+      "id": "position-scrambler",
+      "name": "Position Scrambler",
+      "system": "engineering",
+      "domain": "energy",
+      "rules": "**Mark a Stress** to put 3 *Scrambler Tokens* on this card. When an adversary attacks you, you can **spend a Scrambler Token** or a **Power Token** to give the attack disadvantage.",
+      "cardTokens": {
+        "name": "Scrambler",
+        "max": 3
+      },
+      "tokens": [
+        "power"
+      ]
+    },
+    {
+      "id": "pulsar-mine",
+      "name": "Pulsar Mine",
+      "system": "engineering",
+      "domain": "energy",
+      "rules": "Make an Engineering Action Roll (15). On a success, you can **mark a Stress** and **mark a Hull Point** to place a *Pulsar Mine* at a point within Close range. Other ships within Close range of it take Pd6 tech damage. The Mine is removed at the start of your next spotlight. If you have a card that creates a **Cloud**, you can create that **Cloud** at the Mine's location without paying its cost."
+    },
+    {
+      "id": "energy-drain",
+      "name": "Energy Drain",
+      "system": "engineering",
+      "domain": "energy",
+      "rules": "Make an Engineering Action Roll against a ship within Very Close range. On a success, it marks a Stress and you clear a Stress."
+    },
+    {
+      "id": "overload-barrage",
+      "name": "Overload Barrage",
+      "system": "engineering",
+      "domain": "energy",
+      "rules": "**Mark a Stress** to make an Engineering Action Roll against a ship within Close range. On a success, it is *Overloaded* until it next attacks or the scene ends. When an *Overloaded* ship attacks, the attack has disadvantage and the ship takes Pd6 tech damage."
+    },
+    {
+      "id": "shrapnel-mine",
+      "name": "Shrapnel Mine",
+      "system": "engineering",
+      "domain": "metal",
+      "rules": "Make an Engineering Action Roll (15). On a success, you can **mark a Stress** and **mark a Hull Point** to put a *Shrapnel Mine Token* on this card. When an adversary within Close range of you moves, you can **spend the token** to deal Pd12+5 physical damage to it. At the start of any later spotlight, you can **discard the token** to clear a Stress and a Hull Point.",
+      "cardTokens": {
+        "name": "Shrapnel Mine",
+        "max": 1
+      }
+    },
+    {
+      "id": "docking-winch",
+      "name": "Docking Winch",
+      "system": "engineering",
+      "domain": "metal",
+      "rules": "You have advantage on rolls to dock. You can give rolls to undock from your ship disadvantage."
+    },
+    {
+      "id": "counterfire",
+      "name": "Counterfire",
+      "system": "engineering",
+      "domain": "metal",
+      "rules": "This card holds 2 **Reload Tokens**. When an adversary attacks you, before damage is rolled, you can **spend any number of Reload Tokens** as a reaction. Each token removes one damage die from the attack, to a minimum of 1 die.",
+      "reloadTokens": 2
+    },
+    {
+      "id": "undercoat",
+      "name": "Undercoat",
+      "system": "engineering",
+      "domain": "metal",
+      "rules": "At the start of your spotlight, add the number of your marked Hull Points to your damage thresholds until your next spotlight."
+    },
+    {
+      "id": "lightweight-frame",
+      "name": "Lightweight Frame",
+      "system": "engineering",
+      "domain": "metal",
+      "rules": "You have +2 Evasion for each of your **Breached** systems."
+    },
+    {
+      "id": "orbiting-plate",
+      "name": "Orbiting Plate",
+      "system": "engineering",
+      "domain": "metal",
+      "rules": "**Mark a Hull Point** to create an *Orbiting Plate*. When an attack roll beats your Evasion by less than 5, you can **destroy the Plate** to take no damage from it. During your spotlight, you can **destroy the Plate** to clear a Hull Point instead."
+    },
+    {
+      "id": "projection-field",
+      "name": "Projection Field",
+      "system": "engineering",
+      "domain": "glass",
+      "rules": "When you or allies you choose make an action roll against your **Studied Target**, treat it as one range closer."
+    },
+    {
+      "id": "parallax-protocol",
+      "name": "Parallax Protocol",
+      "system": "engineering",
+      "domain": "glass",
+      "rules": "When an adversary attacks you, you can **mark a Stress** to gain +3 Evasion against that attack. If the attacker is your **Studied Target**, you can then clear a Stress."
+    },
+    {
+      "id": "ultraviolet-imaging",
+      "name": "Ultraviolet Imaging",
+      "system": "engineering",
+      "domain": "glass",
+      "rules": "**Spend a Hope** to make an Engineering Action Roll against a target within Very Far range. On a success, it is *Highlighted* until it leaves Very Far range or you use this card on another target. A *Highlighted* ship is **Vulnerable** and can't become **Hidden** or *Cloaked* unless something physically blocks it. If you rolled with Hope, you can also make it your **Studied Target**."
+    }
+  ]
+}

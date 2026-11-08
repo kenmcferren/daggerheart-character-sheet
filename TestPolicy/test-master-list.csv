@@ -21,7 +21,7 @@ class-extras.[s3] structured class extras.multiclassing is a level-up option ava
 class-extras.[s3] structured class extras.once-per-rest cards carry uses, usesPer and a one-circle tracker,0
 class-extras.[s3] structured class extras.ranger: companion data,0
 class-extras.[s3] structured class extras.structured entries are no longer duplicated as raw supplements,0
-consumables-page.[s14] consumables printout.sets all 120 consumables on two landscape pages, three fitted columns each,1
+consumables-page.[s14] consumables printout.sets all 120 consumables on two landscape pages, three fitted columns each,0
 core-pack.[s2] SRD core pack.carries no empty rules text,0
 core-pack.[s2] SRD core pack.every domain has 21 cards and every class has two domains,0
 core-pack.[s2] SRD core pack.has the expected counts,0
@@ -222,9 +222,26 @@ starheart-classes.[s13] Starheart classes.the pack validates; ten classes with t
 starheart-classes.[s13] Starheart classes.the printed card uses the swapped name and type,0
 starheart-classes.[s13] Starheart classes.trackers: VP and Serum Tokens = Spellcast + Tier, Sidekick armor 4 + Tier, Envoy Tokens 6,0
 starheart-classes.[s13] Starheart classes.word swaps on domain cards: Operative Spell/Magic -> Tech, Technomancer Codex Book -> Program, Soldier Dread Spellcast -> Strength,0
-starheart-exclusive.[s14] Starheart exclusive option.off: standard entries still appear beside Starheart ones,1
-starheart-exclusive.[s14] Starheart exclusive option.on without a Starheart option: that list stays standard,1
-starheart-exclusive.[s14] Starheart exclusive option.on: only Starheart classes, ancestries and communities are listed,1
+starheart-exclusive.[s14] Starheart exclusive option.off: standard entries still appear beside Starheart ones,0
+starheart-exclusive.[s14] Starheart exclusive option.on without a Starheart option: that list stays standard,0
+starheart-exclusive.[s14] Starheart exclusive option.on: only Starheart classes, ancestries and communities are listed,0
+starheart-ships.[s14] Ship card markup.keywords and costs are bold, consequences are not, card conditions are italic,0
+starheart-ships.[s14] Ship card markup.sheet runs: style per word, \"Pd8+4\" becomes the pilot dice (bold blue) only when Proficiency is known,0
+starheart-ships.[s14] Ship engine.a legal ship has no problems; HP = 1 + cards + grants + Free HP per system; Stress = frame + grants; Power tracker only,0
+starheart-ships.[s14] Ship engine.export files: importSaveFile tells ships from characters; a character is not a ship,0
+starheart-ships.[s14] Ship engine.new ships: a Solo Flier is size 2, the Hub Ship size 3, both marked kind ship with the supplement on,0
+starheart-ships.[s14] Ship engine.problems: same trait twice, card caps, off-domain cards, card count, Free HP total, more than 7 HP in a system, no name,0
+starheart-ships.[s14] Ship engine.roll lines use the linked pilot trait values: \"Transport (Agility): +2\"; no pilot, no value,0
+starheart-ships.[s14] Ship engine.store: ships and characters keep separate lists; link, find by character lineage, unlink when the character goes,0
+starheart-ships.[s14] Ship sheet PDF.a linked ship prints after the character's sheet, starting on a fresh sheet of paper,0
+starheart-ships.[s14] Ship sheet PDF.a ship on its own: two pages inside the margins; Evasion and thresholds stacked; Hope, system HP and Stress rows with pilot trait and value; Power tracker; notice on the back,0
+starheart-ships.[s14] Ship sheet PDF.the longest cards still fit one front page; no pilot linked leaves the trait values blank,0
+starheart-ships.[s14] Starheart ships data.card extras: While Available grants, Reload Tokens, own tokens, once-per uses, token trackers,0
+starheart-ships.[s14] Starheart ships data.card rules match Docs/starheart-ships/v-final.md word for word once marks are removed, with no Spellcast Rolls,0
+starheart-ships.[s14] Starheart ships data.choosing the supplement loads cleanly beside the other Starheart options,0
+starheart-ships.[s14] Starheart ships data.creation tables match the final text: sizes, configurations (two primaries each), frames,0
+starheart-ships.[s14] Starheart ships data.the schema rejects a ship card with an unknown system,0
+starheart-ships.[s14] Starheart ships data.the Starheart Ships supplement carries 108 cards: 18 per domain, 27 per system, every domain in every system,0
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.a mastery Stalwart carries all three of Unwavering/Unrelenting/Undaunted, stacked (+1+2+3 = +6 to both thresholds),1
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.Armorer / Fortified Armor (domain cards): computed while armor is equipped, not a footnote (owner, 2026-09-23),1
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.Armorer / Fortified Armor do nothing without armor equipped,1

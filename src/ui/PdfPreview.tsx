@@ -1,10 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
 import type { Character } from '../engine/character'
 import type { CreationSetup } from '../engine/creation'
+import type { Ship } from '../engine/ship'
 import { freshImport } from './freshImport'
 
 /** Live preview of the printable sheet: draws the real PDF's pages onto canvases a moment after the character changes. Works on phones, unlike an embedded PDF viewer. */
-export function PdfPreview({ ch, setup }: { ch: Character; setup: CreationSetup }) {
+export const PdfPreview = ({ ch, setup }: { ch: Character; setup: CreationSetup }) =>
+  <PdfPages deps={[ch, setup]} render={async () => (await import('../pdf/browser')).previewSheetBytes(ch, setup)} />
+
+/** The ship sheet preview (Series 14). */
+export const ShipPdfPreview = ({ ship }: { ship: Ship }) =>
+  <PdfPages deps={[ship]} render={async () => (await import('../pdf/browser')).shipSheetBytes(ship)} />
+
+/** Draws a PDF's pages onto canvases; `render` makes the bytes and reruns when `deps` change. */
+function PdfPages({ render, deps }: { render: () => Promise<Uint8Array>; deps: unknown[] }) {
   const [open, setOpen] = useState(false)
   const [error, setError] = useState('')
   const [drawing, setDrawing] = useState(false)
@@ -17,7 +26,7 @@ export function PdfPreview({ ch, setup }: { ch: Character; setup: CreationSetup 
     const timer = setTimeout(async () => {
       try {
         const { bytes, pdfjs } = await freshImport(async () => {
-          const bytes = await (await import('../pdf/browser')).previewSheetBytes(ch, setup)
+          const bytes = await render()
           const pdfjs = await import('pdfjs-dist')
           const worker = (await import('pdfjs-dist/build/pdf.worker.min.mjs?url')).default
           pdfjs.GlobalWorkerOptions.workerSrc = worker
@@ -51,7 +60,7 @@ export function PdfPreview({ ch, setup }: { ch: Character; setup: CreationSetup 
       }
     }, 400)
     return () => { cancelled = true; clearTimeout(timer) }
-  }, [open, ch, setup])
+  }, [open, ...deps])
 
   return (
     <section className="panel">

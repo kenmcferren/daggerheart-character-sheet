@@ -9,7 +9,7 @@ import { classCard } from '../engine/classCards'
 
 type A = any
 
-export function Review({ ctx, issues, steps, onJump, onHome }: { ctx: Ctx; issues: Issue[]; steps: WizardStep[]; onJump: (id: string) => void; onHome: () => void }) {
+export function Review({ ctx, issues, steps, onJump, onHome, extra }: { ctx: Ctx; issues: Issue[]; steps: WizardStep[]; onJump: (id: string) => void; onHome: () => void; extra?: React.ReactNode }) {
   const { ch, cr, setup } = ctx
   const reg = setup.registry
   const stats = deriveStats(ch, setup)
@@ -57,6 +57,7 @@ export function Review({ ctx, issues, steps, onJump, onHome }: { ctx: Ctx; issue
         <p>Downtime moves: {stats.downtimeMoves.map((m) => m.name).join(', ')}</p>
       </section>
       <PdfPreview ch={ch} setup={setup} />
+      {extra}
       <div className="nav">
         <button type="button" onClick={download}>Export JSON</button>
         <button type="button" className="primary" onClick={() => void makePdf()}>Make PDF</button>
