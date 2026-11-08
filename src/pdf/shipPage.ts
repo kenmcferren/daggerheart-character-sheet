@@ -1,6 +1,6 @@
 import type { PDFPage } from 'pdf-lib'
 import type { Trait } from '../engine/character'
-import { SYSTEMS, primarySystems, shipConfiguration, shipFrame, shipStats, systemRollLines, type Ship, type ShipCard, type ShipRules } from '../engine/ship'
+import { SYSTEMS, archetypeOf, primarySystems, shipConfiguration, shipFrame, shipStats, systemRollLines, type Ship, type ShipCard, type ShipRules } from '../engine/ship'
 import { CREDIT, INKS, PAGE, Sheet, wrapLines, type Item, type SheetFonts } from './sheet'
 
 // Starheart ship sheet (Series 14): one double-sided sheet per ship.
@@ -128,11 +128,11 @@ export function addShipPages(s: Sheet, r: ShipRules, ship: Ship, pilot: ShipPilo
     s.text(p, val, cx - s.f.bold.widthOfTextAtSize(val, 12) / 2, top - 15.5, s.f.bold, 12)
   })
   const mx = M + 80, BOX = 12, PITCH = 13, PER_ROW = 7
-  const labelX = mx + PER_ROW * PITCH + 8, traitX = labelX + 78, valueX = traitX + 58
+  const labelX = mx + PER_ROW * PITCH + 8, traitX = labelX + 64, valueX = traitX + 46
   let top = y - 2
   const row = (name: string, count: number, earned: number, shaded: boolean, trait?: { name: string; value: string }) => {
     const perRow = Math.min(count, name === 'Stress' ? 6 : PER_ROW), rows = Math.ceil(count / perRow), h = rows * PITCH
-    if (shaded) p.drawRectangle({ x: mx - 5, y: top - h - 3, width: valueX + 30 - mx + 5, height: h + 5, color: SHADE, borderWidth: 0 })
+    if (shaded) p.drawRectangle({ x: mx - 5, y: top - h - 3, width: valueX + 20 - mx + 5, height: h + 5, color: SHADE, borderWidth: 0 })
     for (let i = 0; i < count; i++) {
       const cx = mx + (i % perRow) * PITCH, cy = top - Math.floor(i / perRow) * PITCH - BOX
       p.drawRectangle({ x: cx, y: cy, width: BOX, height: BOX, borderWidth: i < earned ? 1.1 : 0.6, borderColor: i < earned ? INK : FAINT, color: WHITE })
@@ -151,19 +151,30 @@ export function addShipPages(s: Sheet, r: ShipRules, ship: Ship, pilot: ShipPilo
     row(sysName(r, sys), r.build.maxHpPerSystem, st.hp[sys], i % 2 === 0, ln.trait ? { name: title(ln.trait), value } : undefined)
   })
   row('Stress', 12, st.stress, false)
-  // Right of the tracks: which systems are primary, and what Breached and Disabled mean.
-  const nx = valueX + 40, nw = M + W - nx
+  // Right of the tracks: which systems are primary, then the ship's archetype (name and features) at the largest size that fits
+  // beside the tracks (Series 15, owner 2026-11-08). Breached and Disabled go on full-width lines below the boxes.
+  const nx = valueX + 26, nw = M + W - nx
   let ny = y - 2
-  const noteLines = [
-    ...(cfg ? [`Primary systems: ${prim.map((x) => sysName(r, x)).join(' and ')}.`] : []),
-    'A system with every HP marked is Breached: actions using it have disadvantage.',
-    'A ship with every HP marked is Disabled.',
-  ]
-  for (const para of noteLines) {
-    for (const l of wrapLines(para, s.f.body, 8.5, nw)) { s.text(p, l, nx, ny, s.f.body, 8.5, RULE); ny -= 10.5 }
+  if (cfg) {
+    for (const l of wrapLines(`Primary systems: ${prim.map((x) => sysName(r, x)).join(' and ')}.`, s.f.body, 8.5, nw)) { s.text(p, l, nx, ny, s.f.body, 8.5, RULE); ny -= 10.5 }
     ny -= 3
   }
+  const arch = archetypeOf(r, ship)
+  if (arch) {
+    const build = (size: number) => [
+      ...s.runs([{ t: `Archetype: ${arch.name}`, f: 'bold' }], nw, { size: size + 1, after: 2 }),
+      ...arch.features.flatMap((f) => s.runs(cardSegs(f), nw, { size, after: 2 })),
+    ]
+    const room = ny - Math.min(y - 3 * 36, top)
+    let size = 8.5, items = build(size)
+    while (size > 6.5 && items.reduce((n, it) => n + it.h, 0) > room) { size -= 0.25; items = build(size) }
+    for (const it of items) { it.draw(p, nx, ny); ny -= it.h }
+  }
   y = Math.min(y - 3 * 36, top, ny) - 4
+  for (const note of ['A system with every HP marked is **Breached**: actions using it have disadvantage.', 'A ship with every HP marked is **Disabled**.']) {
+    for (const it of s.runs(cardSegs(note), W, { size: 8.5 })) { it.draw(p, M, y); y -= it.h }
+  }
+  y -= 2
 
   // -- token trackers (Analysis, Power) --
   if (st.tokenTrackers.length) {
@@ -206,19 +217,28 @@ export function addShipPages(s: Sheet, r: ShipRules, ship: Ship, pilot: ShipPilo
   const items: Item[] = []
   const kw = r.keywords ?? []
   items.push(s.heading('Keywords', 10))
-  for (const k of kw) items.push(...s.para(`${k.name}:`, k.rules.split('\n').map((l) => l.replace(/^- /, '• ')).join('\n'), cw2, { size: 8.5, after: 3 }))
-  const rest = r.rulesSections?.find((x) => x.title === 'Resting')
-  if (rest) {
-    items.push(s.space(4), s.heading('Resting', 10))
-    for (const l of rest.text.split('\n').filter((l) => l.trim())) {
-      const m = /^- \*\*(.+?)\*\* ?(.*)$/.exec(l)
-      items.push(...(m ? s.para(`${m[1]}`, ` ${m[2]}`, cw2, { size: 8.5, after: 3 }) : s.para(undefined, l.replace(/^- /, ''), cw2, { size: 8.5, after: 3 })))
-    }
+  // Back-page text carries the same **bold** / *italic* markup as the cards; a "**Lead**" at the start of a line is the bold lead-in.
+  const rules = (lead: string | undefined, markup: string): Item[] => {
+    const lines = markup.split('\n').filter((l) => l.trim())
+    return lines.flatMap((l, i) => s.runs([...(i === 0 && lead ? [{ t: lead, f: 'bold' as const }] : []), ...cardSegs(l)], cw2, { size: 8.5, after: i === lines.length - 1 ? 3 : undefined }))
   }
+  for (const k of kw) items.push(...rules(`${k.name}:`, k.rules.split('\n').map((l) => l.replace(/^- /, '• ')).join('\n')))
   // The notice (standalone ship sheets only) sits at the foot of the back page.
   const NOTICE = 7.5, LEAD = 9
   const paras = (opts.notices ?? []).map((t) => wrapLines(t, s.f.body, NOTICE, W))
   const noticeH = paras.length ? 14 + paras.reduce((n, q) => n + q.length * LEAD, 0) + (paras.length - 1) * 4 : 0
+  // Printed rules blocks, in order: the chase summary (starts column 2, owner 2026-11-08), then resting.
+  // The column break is a spacer that fills what is left of column 1.
+  const col1Room = TOP - 30 - (BOTTOM + noticeH) - items.reduce((n, it) => n + it.h, 0) - 0.5
+  if (col1Room > 0) items.push(s.space(col1Room))
+  for (const [key, head] of [['Chase Summary', 'Chases'], ['Resting', 'Resting']] as const) {
+    const sec = r.rulesSections?.find((x) => x.title === key)
+    if (!sec) continue
+    items.push(s.space(4), s.heading(head, 10))
+    for (const l of sec.text.split('\n').filter((l) => l.trim())) {
+      items.push(...rules(undefined, l.replace(/^- /, '')))
+    }
+  }
   const backNo = s.doc.getPageCount() - 1
   s.pour(items, [M, M + cw2 + cg], TOP - 30, (_c, pageNo) => (pageNo === 0 ? BOTTOM + noticeH : BOTTOM))
   if (paras.length) {

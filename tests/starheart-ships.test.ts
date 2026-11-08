@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 import { validatePack, PackError, loadPacks } from '../src/engine/packs'
 import { buildCreation } from '../src/engine/creation'
 import { ARMS, SF_ARMS } from './lib/packs'
-import { newShip, shipRulesFrom, shipProblems, shipStats, systemRollLines, primarySystems, validateShip, ShipError, type Ship } from '../src/engine/ship'
+import { archetypeOf, newShip, shipRulesFrom, shipProblems, shipStats, systemRollLines, primarySystems, validateShip, ShipError, type Ship } from '../src/engine/ship'
 import { ShipStore, CharacterStore, importSaveFile, type KeyValueStore } from '../src/engine/saves'
 import { newCharacter, exportCharacter } from '../src/engine/character'
 
@@ -28,8 +28,8 @@ describe('[s14] Starheart ships data', () => {
     expect(s.startingSizes).toEqual({ flier: 2, hub: 3 })
     expect(s.configurations.map((c: any) => c.id)).toEqual(['interceptor', 'scout', 'sapper', 'surgeon', 'bandit', 'warden'])
     for (const c of s.configurations) expect(SYS.filter((y) => c.caps[y] === 4), c.id).toHaveLength(2)
-    expect(s.frames.find((f: any) => f.id === 'standard')).toMatchObject({ freeHp: 3, stress: 7, evasion: 13, thresholds: [9, 20] })
-    expect(s.build).toEqual({ domains: 2, cards: 6, primaryCap: 4, baseHp: 1, hpPerCard: 1, maxHpPerSystem: 7 })
+    expect(s.frames.find((f: any) => f.id === 'standard')).toMatchObject({ freeHp: 2, stress: 7, evasion: 13, thresholds: [9, 20] })
+    expect(s.build).toEqual({ domains: 2, cards: 7, primaryCap: 4, baseHp: 1, hpPerCard: 1, maxHpPerSystem: 7 })
     expect(s.tokenCaps).toEqual({ analysis: 12, power: 12 })
   })
   it('card extras: While Available grants, Reload Tokens, own tokens, once-per uses, token trackers', () => {
@@ -79,8 +79,8 @@ function legalShip(): Ship {
   s.name = 'Kestrel'
   s.choices = {
     configurationId: 'interceptor', primaryTrait: 'agility', secondaryTrait: 'finesse', frameId: 'standard', domainIds: ['flesh', 'energy'],
-    cardIds: ['prey-drive', 'writhe', 'volley-fire', 'erratic-pulse', 'innervation', 'siphon-array'],
-    freeHp: { transport: 2, weapons: 1, science: 0, engineering: 0 },
+    cardIds: ['prey-drive', 'writhe', 'self-repair', 'volley-fire', 'erratic-pulse', 'innervation', 'siphon-array'],
+    freeHp: { transport: 1, weapons: 1, science: 0, engineering: 0 },
   }
   return s
 }
@@ -106,11 +106,11 @@ describe('[s14] Ship engine', () => {
   it('problems: same trait twice, card caps, off-domain cards, card count, Free HP total, more than 7 HP in a system, no name', () => {
     const msgs = (f: (s: Ship) => void) => { const s = legalShip(); f(s); return shipProblems(RULES, s).map((p) => `${p.step}: ${p.message}`) }
     expect(msgs((s) => { s.choices.secondaryTrait = 'agility' })).toEqual(['traits: The Primary and Secondary Traits must be different.'])
-    expect(msgs((s) => { s.choices.cardIds = ['prey-drive', 'writhe', 'slighted-spite', 'innervation', 'manual-inspection', 'siphon-array'] })).toEqual(['cards: Science can hold at most 2 cards (3 chosen).'])
-    expect(msgs((s) => { s.choices.cardIds[5] = 'pulsar-mine'; s.choices.domainIds = ['flesh', 'metal'] })).toEqual(expect.arrayContaining(['cards: Volley Fire is not from your domains.']))
-    expect(msgs((s) => { s.choices.cardIds.pop() })).toContain('cards: Choose 6 cards (5 chosen).')
-    expect(msgs((s) => { s.choices.freeHp.science = 1 })).toEqual(['hull: Place 3 Free HP (4 placed).'])
-    expect(msgs((s) => { s.choices.frameId = 'bulky'; s.choices.freeHp = { transport: 5, weapons: 0, science: 0, engineering: 0 } })).toEqual(['hull: Transport has 8 HP; the most is 7.'])
+    expect(msgs((s) => { s.choices.cardIds = ['prey-drive', 'writhe', 'slighted-spite', 'innervation', 'manual-inspection', 'siphon-array', 'volley-fire'] })).toEqual(['cards: Science can hold at most 2 cards (3 chosen).'])
+    expect(msgs((s) => { s.choices.cardIds[6] = 'pulsar-mine'; s.choices.domainIds = ['flesh', 'metal'] })).toEqual(expect.arrayContaining(['cards: Volley Fire is not from your domains.']))
+    expect(msgs((s) => { s.choices.cardIds.pop() })).toContain('cards: Choose 7 cards (6 chosen).')
+    expect(msgs((s) => { s.choices.freeHp.science = 1 })).toEqual(['hull: Place 2 Free HP (3 placed).'])
+    expect(msgs((s) => { s.choices.frameId = 'bulky'; s.choices.freeHp = { transport: 4, weapons: 0, science: 0, engineering: 0 } })).toEqual(['hull: Transport has 8 HP; the most is 7.'])
     expect(msgs((s) => { s.name = ' ' })).toEqual(['name: Name your ship.'])
   })
   it('store: ships and characters keep separate lists; link, find by character lineage, unlink when the character goes', async () => {
@@ -152,7 +152,7 @@ function longShip(): Ship {
   const s = legalShip()
   s.name = 'The Long Dark'
   s.role = 'hub'; s.size = 3
-  s.choices = { ...s.choices, configurationId: 'bandit', frameId: 'bulky', domainIds: ['void', 'energy'], cardIds: ['graviton-mine', 'veil-of-night', 'pulsar-mine', 'cloaking-field', 'plasma-caster', 'spacetime-chasm'], freeHp: { transport: 2, weapons: 1, science: 1, engineering: 1 } }
+  s.choices = { ...s.choices, configurationId: 'bandit', frameId: 'bulky', domainIds: ['void', 'energy'], cardIds: ['graviton-mine', 'veil-of-night', 'pulsar-mine', 'cloaking-field', 'plasma-caster', 'spacetime-chasm', 'electrified-field'], freeHp: { transport: 2, weapons: 1, science: 1, engineering: 0 } }
   return s
 }
 const pages = async (b: Uint8Array) => (await PDFDocument.load(b)).getPageCount()
@@ -228,5 +228,66 @@ describe('[s14] Ship sheet PDF', () => {
     expect(n - alone).toBeGreaterThanOrEqual(2)
     expect(shipStart % 2).toBe(0)
     writeFileSync(`${SAMPLES}/vesk-with-kestrel.pdf`, both)
+  }, 60_000)
+})
+
+describe('[s15] Ship archetypes', () => {
+  const archetypes = () => shipsFrame().ships.archetypes as { id: string; name: string; domains: string[]; features: string[]; tokens?: string[] }[]
+  it('all 15 domain pairs have exactly one archetype, with balanced markup and the right token trackers', () => {
+    const list = archetypes()
+    expect(list).toHaveLength(15)
+    const pairs = list.map((a) => [...a.domains].sort().join('+'))
+    expect(new Set(pairs).size).toBe(15)
+    const domains = shipsFrame().ships.domains.map((d: any) => d.id)
+    for (const a of list) {
+      expect(a.domains.every((d) => domains.includes(d)), a.name).toBe(true)
+      for (const f of a.features) expect((f.match(/\*\*/g) ?? []).length % 2, `${a.name}: ${f}`).toBe(0)
+      const text = a.features.join(' ')
+      expect(a.tokens ?? [], a.name).toEqual((['analysis', 'power'] as const).filter((t) => new RegExp(`${t} tokens?`, 'i').test(text)))
+    }
+    expect(list.find((a) => a.name === 'Chirurgeon')).toBeTruthy()
+    expect(list.find((a) => a.name === 'Specter')!.features).toHaveLength(1)
+  })
+  it('archetypeOf: either domain order, none until two domains; archetype tokens add their tracker', () => {
+    const s = legalShip() // Flesh + Energy
+    expect(archetypeOf(RULES, s)?.name).toBe('Drake')
+    s.choices.domainIds = ['energy', 'flesh']
+    expect(archetypeOf(RULES, s)?.name).toBe('Drake')
+    s.choices.domainIds = ['flesh']
+    expect(archetypeOf(RULES, s)).toBeNull()
+    s.choices.domainIds = ['mind', 'metal']
+    expect(archetypeOf(RULES, s)?.name).toBe('Golem')
+    expect(shipStats(RULES, s).tokenTrackers.map((t) => t.token)).toContain('analysis')
+  })
+  it('every archetype prints on the front page beside the tracks: two pages, inside the margins, text no smaller than 6.5 pt', async () => {
+    const sizes: Record<string, number> = {}
+    for (const a of archetypes()) {
+      const ship = legalShip()
+      ship.choices.domainIds = [...a.domains]
+      let bytes!: Uint8Array
+      const marks = await withRecording(async () => (bytes = await renderShipSheet(ship, RULES, FONTS, PILOT)))
+      expect(await pages(bytes), a.name).toBe(2)
+      expect(marks.filter(outside), a.name).toEqual([])
+      const texts = marks.filter((m) => m.kind === 'text')
+      const head = texts.find((m) => m.text === 'Archetype:')!
+      expect(head, a.name).toBeTruthy()
+      expect(texts.some((m) => m.text === a.name), a.name).toBe(true)
+      const note = texts.find((m) => m.text === 'A' && m.x0 < 40)!
+      const body = texts.filter((m) => m.x0 >= head.x0 - 1 && m.y0 > note.y0 + 0.5)
+      sizes[a.name] = Math.min(...body.map((m) => (m.y1 - m.y0) / 0.75))
+      expect(sizes[a.name], a.name).toBeGreaterThanOrEqual(6.5 - 0.01)
+    }
+    mkdirSync(SAMPLES, { recursive: true }); writeFileSync(`${SAMPLES}/archetype-sizes.json`, JSON.stringify(sizes, null, 1))
+    const alchemist = legalShip(); alchemist.name = 'Alembic'; alchemist.choices.domainIds = ['mind', 'glass']
+    mkdirSync(SAMPLES, { recursive: true })
+    writeFileSync(`${SAMPLES}/alembic-alchemist.pdf`, await renderShipSheet(alchemist, RULES, FONTS, PILOT))
+  }, 120_000)
+  it('the longest cards plus an archetype still fit one front page', async () => {
+    for (const pair of [['void', 'energy'], ['mind', 'glass']]) {
+      const ship = longShip()
+      ship.choices.domainIds = pair
+      const bytes = await renderShipSheet(ship, RULES, FONTS, null)
+      expect(await pages(bytes), pair.join('+')).toBe(2)
+    }
   }, 60_000)
 })

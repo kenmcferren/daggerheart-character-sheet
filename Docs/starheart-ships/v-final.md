@@ -43,10 +43,10 @@ Build a Solo Flier and the Hub Ship with the same steps.
 
 | Frame | Free HP | Stress | Evasion | Thresholds |
 | :-- | :-: | :-: | :-: | :-: |
-| Bare | 2 | 8 | 15 | 7/16 |
-| Standard | 3 | 7 | 13 | 9/20 |
-| Plated | 4 | 6 | 11 | 11/24 |
-| Bulky | 5 | 5 | 9 | 13/28 |
+| Bare | 1 | 8 | 15 | 7/16 |
+| Standard | 2 | 7 | 13 | 9/20 |
+| Plated | 3 | 6 | 11 | 11/24 |
+| Bulky | 4 | 5 | 9 | 13/28 |
 
 4. **Domains.** Choose two domains. The descriptions are shown in the creator, not printed.
    - **Flesh** (Hope): Living ships, grown, bred or tamed rather than built. They heal their own wounds, flex around danger and feel what their crew feels.
@@ -56,7 +56,7 @@ Build a Solo Flier and the Hub Ship with the same steps.
    - **Metal** (Hull Points): Armored ships, all heavy plating, rivets and raw mass. They take a beating, ram through and hold the line.
    - **Glass** (Studied Target): Precise ships, built around lenses, prisms and crystal sensors. They study a target, cut it apart and turn its own light against it.
 
-5. **Domain cards.** Choose 6 ship domain cards from your two domains. No system can hold more cards than your configuration allows. All 6 cards are in your loadout. Cards that hold Reload Tokens start full.
+5. **Domain cards.** Choose 7 ship domain cards from your two domains. No system can hold more cards than your configuration allows. All 7 cards are in your loadout. Cards that hold Reload Tokens start full.
 
 6. **Hull Points.** Each system starts with 1 HP. Add 1 HP to a system for each of its cards, plus any HP a card grants. Then place your Free HP in any systems. No system can have more than 7 HP.
 

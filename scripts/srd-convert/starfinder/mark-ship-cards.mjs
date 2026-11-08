@@ -34,11 +34,14 @@ const EXTRA = [
   ['warp-draw', 'mark a Hull Point', 'none'], // the ships in the Cloud mark it
 ]
 
-function markup(id, text) {
+// Roll names are bolded in the Keywords on the rules page, not on the approved card text.
+const KEYWORD_ONLY = [/\b(?:Forward|Aft) Facing\b/g, /\b(?:Transport|Weapons|Science|Engineering) (?:Action|Reaction) Rolls?\b/g]
+
+function markup(id, text, extra = []) {
   const t = plain(text)
   const kind = new Array(t.length).fill('') // '' | 'b' | 'i'
   const set = (a, b, k) => { for (let i = a; i < b; i++) if (kind[i] !== 'b') kind[i] = k }
-  for (const re of KEYWORDS) for (const m of t.matchAll(re)) set(m.index, m.index + m[0].length, 'b')
+  for (const re of [...KEYWORDS, ...extra]) for (const m of t.matchAll(re)) set(m.index, m.index + m[0].length, 'b')
   for (const m of t.matchAll(CONDITIONS)) set(m.index, m.index + m[0].length, 'i')
   for (const re of COSTS) for (const m of t.matchAll(re)) {
     if (/^mark/.test(m[0]) && consequence(t, m.index)) continue
@@ -68,6 +71,8 @@ for (const c of data.cards) {
   if (c.system !== sys) { sys = c.system; report.push(`## ${sys[0].toUpperCase()}${sys.slice(1)}`, '') }
   report.push(`- **${c.name}** (${c.domain}): ${c.rules.replace(/\*\*/g, '__')}`)
 }
+// The Keywords printed on the back of the ship sheet get the same marking, one line at a time (bullets stay "- ").
+for (const k of data.keywords) k.rules = k.rules.split('\n').map((l) => markup(`keyword:${k.name}`, l, KEYWORD_ONLY)).join('\n')
 writeFileSync(P, JSON.stringify(data, null, 2) + '\n')
 writeFileSync('Docs/starheart-ships/reports/card-markup.md', report.join('\n') + '\n')
 console.log(`marked ${data.cards.length} cards; report Docs/starheart-ships/reports/card-markup.md`)

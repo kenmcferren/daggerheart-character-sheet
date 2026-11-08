@@ -119,7 +119,7 @@
     {
       "id": "bare",
       "name": "Bare",
-      "freeHp": 2,
+      "freeHp": 1,
       "stress": 8,
       "evasion": 15,
       "thresholds": [
@@ -130,7 +130,7 @@
     {
       "id": "standard",
       "name": "Standard",
-      "freeHp": 3,
+      "freeHp": 2,
       "stress": 7,
       "evasion": 13,
       "thresholds": [
@@ -141,7 +141,7 @@
     {
       "id": "plated",
       "name": "Plated",
-      "freeHp": 4,
+      "freeHp": 3,
       "stress": 6,
       "evasion": 11,
       "thresholds": [
@@ -152,7 +152,7 @@
     {
       "id": "bulky",
       "name": "Bulky",
-      "freeHp": 5,
+      "freeHp": 4,
       "stress": 5,
       "evasion": 9,
       "thresholds": [
@@ -163,7 +163,7 @@
   ],
   "build": {
     "domains": 2,
-    "cards": 6,
+    "cards": 7,
     "primaryCap": 4,
     "baseHp": 1,
     "hpPerCard": 1,
@@ -211,6 +211,211 @@
       "description": "Precise ships, built around lenses, prisms and crystal sensors. They study a target, cut it apart and turn its own light against it."
     }
   ],
+  "archetypes": [
+    {
+      "id": "leviathan",
+      "name": "Leviathan",
+      "domains": [
+        "flesh",
+        "mind"
+      ],
+      "features": [
+        "While you have any Hope, gain +1 to all system Action Rolls.",
+        "While you have no Hope, gain +1 to all system Reaction Rolls."
+      ]
+    },
+    {
+      "id": "necromancer",
+      "name": "Necromancer",
+      "domains": [
+        "flesh",
+        "void"
+      ],
+      "features": [
+        "Once per scene, as a reaction, when a ship within Very Close range becomes **Disabled**, you can **spend a Hope** to clear 1 HP on that ship or on your own ship.",
+        "Once per scene, you can **spend a GM Fear** as though it were your own Hope."
+      ]
+    },
+    {
+      "id": "drake",
+      "name": "Drake",
+      "domains": [
+        "flesh",
+        "energy"
+      ],
+      "features": [
+        "When you damage an enemy within Very Close range, gain a **Power Token**.",
+        "Once per spotlight, you can **spend 2 Power Tokens** in place of 1 Hope."
+      ],
+      "tokens": [
+        "power"
+      ]
+    },
+    {
+      "id": "champion",
+      "name": "Champion",
+      "domains": [
+        "flesh",
+        "metal"
+      ],
+      "features": [
+        "Once per scene, when you mark a single Hull Point, you can **spend a Hope** instead.",
+        "When an ally within Very Close range would take damage from a direct attack, you can take that damage instead, as a reaction."
+      ]
+    },
+    {
+      "id": "direwolf",
+      "name": "Direwolf",
+      "domains": [
+        "flesh",
+        "glass"
+      ],
+      "features": [
+        "Once per scene, when your **Studied Target** becomes **Disabled**, gain 3 Hope. Choose a new Studied Target immediately."
+      ]
+    },
+    {
+      "id": "wraith",
+      "name": "Wraith",
+      "domains": [
+        "mind",
+        "void"
+      ],
+      "features": [
+        "If you have no **Analysis Tokens**, gain an Analysis Token when the GM spends a Fear to activate an adversary.",
+        "Before a ship system roll, you can **discard all Analysis Tokens** to gain a bonus to the roll equal to the number discarded."
+      ],
+      "tokens": [
+        "analysis"
+      ]
+    },
+    {
+      "id": "elemental",
+      "name": "Elemental",
+      "domains": [
+        "mind",
+        "energy"
+      ],
+      "features": [
+        "Once per spotlight, you can convert an **Analysis Token** to a **Power Token**, or a Power Token to an Analysis Token.",
+        "Each **Refuel**, choose a damage type. **Spend a Power Token** to gain resistance to that damage type against one instance of damage."
+      ],
+      "tokens": [
+        "analysis",
+        "power"
+      ]
+    },
+    {
+      "id": "golem",
+      "name": "Golem",
+      "domains": [
+        "mind",
+        "metal"
+      ],
+      "features": [
+        "When you mark any number of HP from an adversary's attack, gain 1 **Analysis Token**.",
+        "When you would take damage, you can **discard any number of Analysis Tokens** to reduce the damage by your pilot's tier for each token discarded."
+      ],
+      "tokens": [
+        "analysis"
+      ]
+    },
+    {
+      "id": "alchemist",
+      "name": "Alchemist",
+      "domains": [
+        "mind",
+        "glass"
+      ],
+      "features": [
+        "Before you make an Action Roll against your **Studied Target**, you can **spend up to 3 Analysis Tokens**. For each token spent, choose a different benefit: (A) convert the damage type to any damage type; (B) increase the attack's Proficiency by 1; (C) extend the attack's range by one band, to a maximum of Very Far.",
+        "When an Action Roll against your Studied Target succeeds with Hope, gain an **Analysis Token**."
+      ],
+      "tokens": [
+        "analysis"
+      ]
+    },
+    {
+      "id": "specter",
+      "name": "Specter",
+      "domains": [
+        "void",
+        "energy"
+      ],
+      "features": [
+        "**Spend 3 Power Tokens** to become *transdimensional* until the start of your next spotlight. While transdimensional, you can move through solid objects, take no damage, and cannot cause damage. If you end this state in contact with a physical object, mark 3 HP and a Stress and place your ship adjacent to it."
+      ],
+      "tokens": [
+        "power"
+      ]
+    },
+    {
+      "id": "revenant",
+      "name": "Revenant",
+      "domains": [
+        "void",
+        "metal"
+      ],
+      "features": [
+        "When you mark any number of Hull Points, you can also refill one card's **Reload Tokens**.",
+        "Your Proficiency increases by the number of your systems that are **Breached**."
+      ]
+    },
+    {
+      "id": "lich",
+      "name": "Lich",
+      "domains": [
+        "void",
+        "glass"
+      ],
+      "features": [
+        "While you are within Close range of your **Studied Target**, each time the GM spends a Fear to spotlight it, they must also mark an unmarked Stress on it.",
+        "Once per **Refuel**, clear Stress equal to the GM's Fear pool."
+      ]
+    },
+    {
+      "id": "phoenix",
+      "name": "Phoenix",
+      "domains": [
+        "energy",
+        "metal"
+      ],
+      "features": [
+        "When you mark any number of HP, gain that many **Power Tokens**.",
+        "Once per spotlight, when you would mark HP, **spend 3 Power Tokens** to reduce the number by 1."
+      ],
+      "tokens": [
+        "power"
+      ]
+    },
+    {
+      "id": "raiju",
+      "name": "Raiju",
+      "domains": [
+        "energy",
+        "glass"
+      ],
+      "features": [
+        "**Spend 2 Power Tokens** to move a Far distance directly toward your **Studied Target** before making an Action Roll. If this roll deals damage to your target, it also marks a Stress. **With Lock:** up to Very Far instead.",
+        "When you move closer to your Studied Target, or it moves closer to you, gain a **Power Token**."
+      ],
+      "tokens": [
+        "power"
+      ]
+    },
+    {
+      "id": "chirurgeon",
+      "name": "Chirurgeon",
+      "domains": [
+        "metal",
+        "glass"
+      ],
+      "features": [
+        "If your attack against your **Studied Target** would fail, **mark a Hull Point** to make it succeed with Fear instead.",
+        "Once per **Refuel**, when your Studied Target marks Hull Points within Very Close range, clear a number of the Hull Points it marked."
+      ]
+    }
+  ],
   "keywords": [
     {
       "name": "Pilot",
@@ -222,11 +427,11 @@
     },
     {
       "name": "Breached",
-      "rules": "A system with all its HP marked is Breached. Every action using a Breached system has disadvantage, whether or not it comes from a domain card."
+      "rules": "A system with all its HP marked is **Breached**. Every action using a **Breached** system has disadvantage, whether or not it comes from a domain card."
     },
     {
       "name": "Disabled",
-      "rules": "A ship with every HP marked is Disabled. It can't fly, attack or take other ship actions. See Damage."
+      "rules": "A ship with every HP marked is **Disabled**. It can't fly, attack or take other ship actions. See Damage."
     },
     {
       "name": "While Available",
@@ -238,11 +443,11 @@
     },
     {
       "name": "Lock / Locked",
-      "rules": "See Locks. Features marked \"With Lock:\" need their target to be Locked."
+      "rules": "See **Locks**. Features marked \"**With Lock:**\" need their target to be **Locked**."
     },
     {
       "name": "Studied Target",
-      "rules": "A ship a card has made your Studied Target. You can have one at a time; a new one replaces the old. It ends when the scene ends."
+      "rules": "A ship a card has made your **Studied Target**. You can have one at a time; a new one replaces the old. It ends when the scene ends."
     },
     {
       "name": "Analysis Tokens, Power Tokens",
@@ -250,27 +455,27 @@
     },
     {
       "name": "Reload Tokens",
-      "rules": "Some cards hold Reload Tokens, up to the number they list. While a card with Reload Tokens is available, you can spend a Hope or mark a Stress to refill one card's Reload Tokens."
+      "rules": "Some cards hold **Reload Tokens**, up to the number they list. While a card with **Reload Tokens** is available, you can **spend a Hope** or **mark a Stress** to refill one card's **Reload Tokens**."
     },
     {
       "name": "Scene end",
-      "rules": "Conditions, Clouds, mines and other effects your ship creates end when the scene ends. Tokens last until spent or until your next Refuel or Refit."
+      "rules": "Conditions, **Clouds**, mines and other effects your ship creates end when the scene ends. Tokens last until spent or until your next **Refuel** or **Refit**."
     },
     {
       "name": "Contact",
-      "rules": "You make contact with a ship when you succeed on an attack against it, dock with it, or succeed on a Transport Action Roll against it."
+      "rules": "You **make contact** with a ship when you succeed on an attack against it, dock with it, or succeed on a **Transport Action Roll** against it."
     },
     {
       "name": "Forward Facing",
-      "rules": "In a Chase, Forward Facing features can only affect ships in a band ahead of yours. Outside a Chase they can affect any ship."
+      "rules": "In a **Chase**, **Forward Facing** features can only affect ships in a band ahead of yours. Outside a **Chase** they can affect any ship."
     },
     {
       "name": "Aft Facing",
-      "rules": "In a Chase, Aft Facing features can only affect ships in a band behind yours. Outside a Chase they can affect any ship."
+      "rules": "In a **Chase**, **Aft Facing** features can only affect ships in a band behind yours. Outside a **Chase** they can affect any ship."
     },
     {
       "name": "Observing",
-      "rules": "A ship that has left a Chase. See Chases."
+      "rules": "A ship that has left a **Chase**. See Chases."
     },
     {
       "name": "Docked",
@@ -278,7 +483,7 @@
     },
     {
       "name": "Cloud",
-      "rules": "An area of space with an effect inside it. Unless a feature says otherwise:\n- A Cloud is centered on your position when you create it.\n- Its radius depends on your ship's size: Melee (size 1), Very Close (size 2), Close (sizes 3 and 4), Far (size 5).\n- It stays where you created it. In a Chase it keeps its band.\n- It dissipates at the start of your next spotlight.\n- It has no effect until a feature adds one. Choose which of your features are active when you create it; they don't change until you create a new Cloud."
+      "rules": "An area of space with an effect inside it. Unless a feature says otherwise:\n- A **Cloud** is centered on your position when you create it.\n- Its radius depends on your ship's size: Melee (size 1), Very Close (size 2), Close (sizes 3 and 4), Far (size 5).\n- It stays where you created it. In a **Chase** it keeps its band.\n- It dissipates at the start of your next spotlight.\n- It has no effect until a feature adds one. Choose which of your features are active when you create it; they don't change until you create a new **Cloud**."
     },
     {
       "name": "Pd damage",
@@ -286,7 +491,7 @@
     },
     {
       "name": "Size",
-      "rules": "When ships of different sizes interact:\n- The larger ship has disadvantage on attacks against the smaller ship; the smaller ship has advantage on attacks against the larger ship.\n- Size also changes the HP a ship marks (see Damage) and limits Locks (see Locks)."
+      "rules": "When ships of different sizes interact:\n- The larger ship has disadvantage on attacks against the smaller ship; the smaller ship has advantage on attacks against the larger ship.\n- Size also changes the HP a ship marks (see Damage) and limits **Locks** (see **Locks**)."
     }
   ],
   "rulesSections": [
@@ -299,8 +504,12 @@
       "text": "- Ship scenes use the usual ranges (Melee, Very Close, Close, Far, Very Far), scaled to space.\n- When you make an action roll, your ship can move to a point within Close range as part of it. To move farther, or to move without making an action roll, succeed on a Transport Action Roll."
     },
     {
+      "title": "Chase Summary",
+      "text": "- **Start:** The lead ship (usually the one leaving) is in front. Roll **Transport** to set starting bands; a better result puts you nearer the front, or, for a PC lead, keeps adversaries further back.\n- **Bands:** Rows of ships side by side. A ship 1 band away is at least **Close**, 2 bands away at least **Far**, 3 or more at least **Very Far**.\n- **Moving:** Changing 1 band uses your move. To change 2, make a **Transport Action Roll** (disadvantage if any adversary is smaller). Beat all: move 2 bands. Beat some: move 1 band, and an adversary you didn't beat may move 1 band. Beat none: normal move within Close.\n- **Adversaries moving:** When one tries to move more than 1 band, the closest PC makes a **Transport Reaction Roll**. Success: it moves 1 band and that PC may move 1 band. Failure: it moves 2 bands.\n- **Hazards:** Stationary objects pass through the bands as a column. Every ship in it makes the same reaction roll.\n- **Leaving:** Make a **Transport Action Roll** against the highest Difficulty among your pursuers. Success (or no pursuer): you are **Observing**. Failure: you move 1 band forward or back, and your pursuer matches it. A ship at Very Far from every other ship is also Observing.\n- **Observing** ships can't be targeted by ships in the Chase and are usually safe from its hazards. At the start of its spotlight, an Observing ship can rejoin at either side of any band."
+    },
+    {
       "title": "Resting",
-      "text": "- **Refuel** (1 day): End any conditions and tokens your ship still has. You can then mark any of your unmarked Stress to pay for domain card features (such as refilling Reload Tokens). Then clear 1d6 Stress and 1d6 HP, spread across your systems as you choose.\n- **Refit** (1 week, at a place that can do the work): As a Refuel, but you can mark as much Stress as you want to pay for domain card features. Then clear all Stress and HP. If the situation allows it, the GM can let you swap domain cards."
+      "text": "- **Refuel** (1 day): End any conditions and tokens your ship still has. You can then **mark any of your unmarked Stress** to pay for domain card features (such as refilling **Reload Tokens**). Then clear 1d6 Stress and 1d6 HP, spread across your systems as you choose.\n- **Refit** (1 week, at a place that can do the work): As a **Refuel**, but you can **mark as much Stress as you want** to pay for domain card features. Then clear all Stress and HP. If the situation allows it, the GM can let you swap domain cards."
     },
     {
       "title": "Locks",

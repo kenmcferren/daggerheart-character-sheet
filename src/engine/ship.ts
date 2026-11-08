@@ -16,6 +16,8 @@ export interface ShipCard {
   usesPer?: 'refuel' | 'scene'
   tokens?: ('analysis' | 'power')[]
 }
+/** A ship's archetype (Series 15): the pair of domains it holds gives a name and features, like a pseudo-class. */
+export interface ShipArchetype { id: string; name: string; domains: [string, string]; features: string[]; tokens?: ('analysis' | 'power')[] }
 export interface ShipRules {
   sizes: { size: number; name: string; short?: string }[]
   startingSizes: { flier: number; hub: number }
@@ -25,6 +27,7 @@ export interface ShipRules {
   build: { domains: number; cards: number; primaryCap: number; baseHp: number; hpPerCard: number; maxHpPerSystem: number }
   tokenCaps: { analysis: number; power: number }
   domains: { id: string; name: string; focus?: string; description: string }[]
+  archetypes?: ShipArchetype[]
   keywords?: { name: string; rules: string }[]
   rulesSections?: { title: string; text: string }[]
   cards: ShipCard[]
@@ -164,10 +167,18 @@ export interface ShipStats {
   tokenTrackers: { token: 'analysis' | 'power'; max: number }[]
 }
 
+/** The archetype of the ship's two domains (either order); null until both are chosen. */
+export function archetypeOf(rules: ShipRules, s: Ship): ShipArchetype | null {
+  const d = s.choices.domainIds
+  if (d.length !== 2) return null
+  return rules.archetypes?.find((a) => a.domains.includes(d[0]) && a.domains.includes(d[1]) && d[0] !== d[1]) ?? null
+}
+
 export function shipStats(rules: ShipRules, s: Ship): ShipStats {
   const fr = shipFrame(rules, s)
   const cards = cardsOf(rules, s)
   const hp = hullPoints(rules, s)
+  const arch = archetypeOf(rules, s)
   const size = rules.sizes.find((z) => z.size === s.size)
   return {
     sizeName: size ? size.name : `Size ${s.size}`,
@@ -176,7 +187,7 @@ export function shipStats(rules: ShipRules, s: Ship): ShipStats {
     stress: (fr?.stress ?? 0) + cards.reduce((a, c) => a + (c.grants?.stress ?? 0), 0),
     evasion: fr?.evasion ?? null,
     thresholds: fr ? fr.thresholds : null,
-    tokenTrackers: (['analysis', 'power'] as const).filter((t) => cards.some((c) => c.tokens?.includes(t))).map((token) => ({ token, max: rules.tokenCaps[token] })),
+    tokenTrackers: (['analysis', 'power'] as const).filter((t) => cards.some((c) => c.tokens?.includes(t)) || !!arch?.tokens?.includes(t)).map((token) => ({ token, max: rules.tokenCaps[token] })),
   }
 }
 

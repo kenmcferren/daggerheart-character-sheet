@@ -68,3 +68,10 @@ Deferred/placeholder work: `Docs/deferred-queue.md`. Do not duplicate their cont
 - One fact per memory file, with **Why** and **How to apply**. Save corrections and confirmed approaches, not code structure or history the repo records.
 - `MEMORY.md` is a one-line-per-entry index. Update rather than duplicate; delete wrong ones.
 - Periodically run a consolidation pass.
+
+# Project Facts (moved from start-here.md, 2026-11-08)
+
+- Live site: https://kenmcferren.github.io/daggerheart-character-sheet/ (GitHub Pages, public repo `kenmcferren/daggerheart-character-sheet`). Pushing `main` runs `.github/workflows/deploy.yml` and redeploys in about a minute. Static site: no accounts, no server storage; cloud sync and share links are off the table (owner).
+- Keep `start-here.md` under 30 lines. Finished work goes to `Docs/archive/`, open items to `long-term-to-do.md`.
+- Condensed sheet wording: SRD text stays in `rules`; the sheet prints `short` from `scripts/srd-convert/short/*.json` (format in the `short-text.mjs` header). Full process in `Docs/archive/start-here-history.md` ("Condensed wording process").
+- Ship data is hand-edited in `scripts/srd-convert/starfinder/ships.json`; rerun `mark-ship-cards.mjs` then `build-starfinder-pack.mjs` after edits. Never rerun `make-ships-json.mjs --force`.

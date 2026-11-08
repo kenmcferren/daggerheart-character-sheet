@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { TRAITS, type Character, type Trait } from '../engine/character'
 import {
-  SYSTEMS, cardsPerSystem, exportShip, hullBeforeFree, hullPoints, primarySystems, shipConfiguration, shipFrame, shipProblems, shipStats,
+  SYSTEMS, archetypeOf, cardsPerSystem, exportShip, hullBeforeFree, hullPoints, primarySystems, shipConfiguration, shipFrame, shipProblems, shipStats,
   systemRollLines, systemTrait, type Ship, type ShipStep, type System,
 } from '../engine/ship'
 import { Choice, Details } from './common'
@@ -136,6 +136,7 @@ const BODY: Record<ShipStep, (c: StepCtx) => React.ReactNode> = {
   ),
   domains: ({ ship, update }) => {
     const chosen = ship.choices.domainIds
+    const arch = archetypeOf(R, ship)
     const toggle = (id: string) => update((s) => {
       const d = s.choices.domainIds
       s.choices.domainIds = d.includes(id) ? d.filter((x) => x !== id) : [...d, id].slice(-R.build.domains)
@@ -151,6 +152,12 @@ const BODY: Record<ShipStep, (c: StepCtx) => React.ReactNode> = {
             </Choice>
           ))}
         </div>
+        {arch && (
+          <section className="panel">
+            <h3>Archetype: {arch.name}</h3>
+            <ul>{arch.features.map((f, i) => <li key={i}>{f.replace(/\*/g, '')}</li>)}</ul>
+          </section>
+        )}
       </>
     )
   },
@@ -256,7 +263,7 @@ function ShipReview({ ship, pilot, onJump, onHome }: StepCtx & { onJump: (id: st
         <div><dt>Configuration</dt><dd>{cfg?.name ?? '—'}{cfg ? ` · primary: ${primarySystems(R, ship).map(sysName).join(', ')}` : ''} {jump('configuration', 'Edit')}</dd></div>
         <div><dt>Rolls</dt><dd>{lines.map((l) => l.text).join(' · ')} {jump('traits', 'Edit')}</dd></div>
         <div><dt>Frame</dt><dd>{fr?.name ?? '—'} {jump('frame', 'Edit')}</dd></div>
-        <div><dt>Domains</dt><dd>{ship.choices.domainIds.map((d) => R.domains.find((x) => x.id === d)?.name ?? d).join(' and ') || '—'} {jump('domains', 'Edit')}</dd></div>
+        <div><dt>Domains</dt><dd>{ship.choices.domainIds.map((d) => R.domains.find((x) => x.id === d)?.name ?? d).join(' and ') || '—'}{archetypeOf(R, ship) ? ` · ${archetypeOf(R, ship)?.name}` : ''} {jump('domains', 'Edit')}</dd></div>
         <div><dt>Hull Points</dt><dd>{SYSTEMS.map((y) => `${sysName(y)} ${st.hp[y]}`).join(' · ')} (total {st.totalHp}) {jump('hull', 'Edit')}</dd></div>
       </dl>
       <section className="panel">

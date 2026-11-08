@@ -242,6 +242,10 @@ starheart-ships.[s14] Starheart ships data.choosing the supplement loads cleanly
 starheart-ships.[s14] Starheart ships data.creation tables match the final text: sizes, configurations (two primaries each), frames,0
 starheart-ships.[s14] Starheart ships data.the schema rejects a ship card with an unknown system,0
 starheart-ships.[s14] Starheart ships data.the Starheart Ships supplement carries 108 cards: 18 per domain, 27 per system, every domain in every system,0
+starheart-ships.[s15] Ship archetypes.all 15 domain pairs have exactly one archetype, with balanced markup and the right token trackers,0
+starheart-ships.[s15] Ship archetypes.archetypeOf: either domain order, none until two domains; archetype tokens add their tracker,0
+starheart-ships.[s15] Ship archetypes.every archetype prints on the front page beside the tracks: two pages, inside the margins, text no smaller than 6.5 pt,0
+starheart-ships.[s15] Ship archetypes.the longest cards plus an archetype still fit one front page,0
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.a mastery Stalwart carries all three of Unwavering/Unrelenting/Undaunted, stacked (+1+2+3 = +6 to both thresholds),1
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.Armorer / Fortified Armor (domain cards): computed while armor is equipped, not a footnote (owner, 2026-09-23),1
 stat-notes.[s7] rules-math step 1: stat bonuses and stat-note footnotes.Armorer / Fortified Armor do nothing without armor equipped,1
