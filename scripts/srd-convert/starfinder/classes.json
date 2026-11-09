@@ -17,7 +17,7 @@
       ],
       "startingEvasion": 11,
       "startingHitPoints": 5,
-      "classItems": "Placeholder item",
+      "classItems": "A diplomatic seal worn smooth from years of handling or a tin of tea from a world that no longer has a name",
       "hopeFeature": {
         "name": "Envoy Hope Feature",
         "rules": "Spend any number of Hope to warn and/or encourage an ally. They increase their Evasion or next action roll by 2 plus the Hope you spent until the end of their next spotlight or your next spotlight."
@@ -42,14 +42,14 @@
         }
       ],
       "backgroundQuestions": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "Which station, academy, or ship taught you that a promise is the strongest tool you own, and who broke one to you?",
+        "Who was the first person you ever talked out of a fight, and what did it cost you with the people on the other side?",
+        "Who gave you your first posting, and what did they leave out when they described it?"
       ],
       "connections": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "I spoke up for you when you were the newest face in the room. Who were we facing, and how did you thank me afterward?",
+        "I once brought you to a meal where the food, the seating, or the toasts meant something. Where were we, and what did you learn?",
+        "I taught you a phrase in a language from my home. What does it mean, and when did you first use it?"
       ]
     },
     {
@@ -65,7 +65,7 @@
       ],
       "startingEvasion": 10,
       "startingHitPoints": 5,
-      "classItems": "Placeholder item",
+      "classItems": "A prism that hums softly when no one is near or a letter in a script you have never managed to read",
       "hopeFeature": {
         "name": "Mystic Hope Feature",
         "rules": "Spend 3 Hope to reroll a Spellcast Roll."
@@ -93,14 +93,14 @@
         }
       ],
       "backgroundQuestions": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "Where were you the first time you heard the signal in the dark between stars, and why didn't you tell anyone?",
+        "Which place did you leave behind because it had started to feel like it was listening to you?",
+        "Who taught you to quiet your mind, and why did you stop practicing with them?"
       ],
       "connections": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "I sat up with you through a bad night. What did I say to keep you steady?",
+        "I once followed a strange pull toward a place and you came along. What was waiting there?",
+        "What small, ordinary thing do you do that steadies me when my gifts feel too loud?"
       ]
     },
     {
@@ -116,7 +116,7 @@
       ],
       "startingEvasion": 12,
       "startingHitPoints": 6,
-      "classItems": "Placeholder item",
+      "classItems": "A coin with a hidden seam that has never opened or a single key that fits no lock you have found yet",
       "hopeFeature": {
         "name": "Operative Hope Feature",
         "rules": "Spend 2 Hope when you make an action roll to add an Experience and gain advantage on the roll."
@@ -132,14 +132,14 @@
         }
       ],
       "backgroundQuestions": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "Which crew, agency, or syndicate gave you your first real job, and what did they call you?",
+        "You spent a season living under a false name on a world you came to like. Where was it, and who still wonders where you went?",
+        "What small job did you take for the money that you wish you had turned down?"
       ],
       "connections": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "I once covered for you when your story started to fall apart. Where were we, and what did it cost me?",
+        "I once told you my real name: __________. What did you do that made me think you earned it?",
+        "I gave you a signal that means it is safe to come in. What is it, and when did you first use it?"
       ],
       "startingDomainCards": 3,
       "cardWords": [
@@ -174,7 +174,7 @@
       ],
       "startingEvasion": 10,
       "startingHitPoints": 7,
-      "classItems": "Placeholder item",
+      "classItems": "A shard of a dead star sealed in glass or a scorched pilgrim's ribbon you were given and never returned",
       "hopeFeature": {
         "name": "Solarian Hope Feature",
         "rules": "Spend 3 Hope to summon all 3 Solar Conjurations."
@@ -186,14 +186,14 @@
         }
       ],
       "backgroundQuestions": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "What star or great light did you first feel pulling at you, and who was beside you when it did?",
+        "Which order, school, or stubborn mentor taught you the first steps of holding a star's power, and what did they forbid?",
+        "You once lost your temper and something you cared about got scorched. What was it?"
       ],
       "connections": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "I had a very bad day and you were there for it. What happened, and what did I ask you to keep to yourself?",
+        "I promised to show you the place where my star was born. What are you hoping we find there?",
+        "What do you do when my light flickers that lets me know you are there?"
       ]
     },
     {
@@ -209,7 +209,7 @@
       ],
       "startingEvasion": 10,
       "startingHitPoints": 7,
-      "classItems": "Placeholder item",
+      "classItems": "A dented service plate with names scratched into the back or a half-finished letter to someone you cannot reach",
       "hopeFeature": {
         "name": "Soldier Hope Feature",
         "rules": "While you have more than 4 Hope, you can spend a Hope instead of marking an Armor Slot."
@@ -225,14 +225,14 @@
         }
       ],
       "backgroundQuestions": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "Which garrison, academy, or mercenary company trained you, and who from it still sends you word?",
+        "You were left holding a post after everyone else had been called away. What were you guarding, and who found out you stayed?",
+        "What rule from your old unit do you still follow, even when no one is watching?"
       ],
       "connections": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "I helped you through your first real fight. Where were we, and what did we say afterward?",
+        "I once followed an order I still wonder about, and I told you what it was. What was it, and what did you say?",
+        "We shared a watch on a long, quiet night. What did I tell you about home that I have told no one else?"
       ],
       "cardWords": [
         {
@@ -277,7 +277,7 @@
       ],
       "startingEvasion": 12,
       "startingHitPoints": 5,
-      "classItems": "Placeholder item",
+      "classItems": "A clock that always runs at the wrong speed or a photograph of a place you have never been",
       "hopeFeature": {
         "name": "Witchwarper Hope Feature",
         "rules": "Spend 3 Hope to have a spell affect all targets in your Quantum Field."
@@ -293,14 +293,14 @@
         }
       ],
       "backgroundQuestions": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "What did you notice in the cracks of the world that made you realize it was not as solid as everyone said?",
+        "Which version of your life do you sometimes glimpse, and who is in it that is not here now?",
+        "Who first noticed you slipping between moments, and how did they explain it away?"
       ],
       "connections": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "I remember something you say never happened. What was it, and why are you so sure I'm wrong?",
+        "I once bent the world a little to help you out of a jam, and something small came back different. What changed?",
+        "What is the one thing about you that stays the same in every version of you I have glimpsed?"
       ],
       "allowedCardTypes": [
         "spell"
@@ -319,7 +319,7 @@
       ],
       "startingEvasion": 10,
       "startingHitPoints": 6,
-      "classItems": "Placeholder item",
+      "classItems": "A multitool worn to the shape of your hand or a mismatched bolt you keep because you cannot remember what it came from",
       "hopeFeature": {
         "name": "Mechanic Hope Feature",
         "rules": "Spend 3 Hope to recreate your Sidekick. Alternately, you can Prepare during a long rest and forgo gaining Hope to summon your Sidekick."
@@ -347,14 +347,14 @@
         }
       ],
       "backgroundQuestions": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "Which wreck, workshop, or scrapyard first taught you that everything broken is just waiting to be understood?",
+        "You built something you were proud of, and someone borrowed it and never gave it back. What was it, and who has it?",
+        "Who trusted you with their ship, their gear, or their only way home before you really knew what you were doing, and how did it go?"
       ],
       "connections": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "You once brought me a machine that would not work, and I fixed it without asking where you found it. What was it?",
+        "I built or repaired something just for you. What is it, and what does it do that you never asked for?",
+        "What sound from my gear or tools tells you I am worried?"
       ]
     },
     {
@@ -370,7 +370,7 @@
       ],
       "startingEvasion": 12,
       "startingHitPoints": 5,
-      "classItems": "Placeholder item",
+      "classItems": "A cracked data slate that boots to a single locked file or a worn charm made of old circuit boards",
       "hopeFeature": {
         "name": "Technomancer Hope Feature",
         "rules": "Mark 1 Armor Slot to gain 2 Hope, or spend 2 Hope to clear 1 Armor Slot."
@@ -386,14 +386,14 @@
         }
       ],
       "backgroundQuestions": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "What system, network, or forgotten archive first answered you when it should have been silent?",
+        "Who taught you to treat code as something that listens, and what did it ask of you in return?",
+        "You once opened something you were told to leave alone. What was inside, and who knows you did it?"
       ],
       "connections": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "I trusted you with a secret I had stored where no one else could reach. What was it, and how did you keep it safe?",
+        "I taught you one trick that makes technology bend a little for you. What was it, and what did I ask for in return?",
+        "We once stood in front of a machine neither of us understood. What did it do, and what did we decide?"
       ],
       "cardWords": [
         {
@@ -431,7 +431,7 @@
       ],
       "startingEvasion": 11,
       "startingHitPoints": 7,
-      "classItems": "Placeholder item",
+      "classItems": "A vial of your own blood, labeled in an old and shaky hand or a seed pod from a plant that should not grow on this world",
       "hopeFeature": {
         "name": "Biohacker Hope Feature",
         "rules": "Spend 3 Hope to refill your Serum Pool."
@@ -463,14 +463,14 @@
         }
       ],
       "backgroundQuestions": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "Which lab, clinic, or wild habitat first showed you that life can be rewritten, and what did it cost you to learn?",
+        "You once experimented on yourself and the results stuck. What changed, and who understood why you did it?",
+        "Who did you patch up with a treatment you were not supposed to use yet, and how are they doing now?"
       ],
       "connections": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "You came to me sick, hurt, or changed. What did I do, and what did I ask you to keep quiet?",
+        "I took a sample from you once, with your permission. What did I learn that surprised us both?",
+        "What habit of mine tells you right away that I have not been looking after myself?"
       ]
     },
     {
@@ -486,7 +486,7 @@
       ],
       "startingEvasion": 13,
       "startingHitPoints": 6,
-      "classItems": "Placeholder item",
+      "classItems": "A blank identity chip worn thin by many names or a child's toy that you cannot explain keeping",
       "hopeFeature": {
         "name": "Aspis Sleeper Hope Feature",
         "rules": "Spend 3 Hope to increase your Buried Protocols bonus by +2 for the rest of the scene and immediately use it on an action roll."
@@ -502,14 +502,14 @@
         }
       ],
       "backgroundQuestions": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "Who placed you in a quiet life, and what were you told to wait for?",
+        "You were told to watch someone and report on them, and you left things out. Who were they, and who knows?",
+        "What name did you grow into that you wish you could keep, and who called you by it?"
       ],
       "connections": [
-        "Placeholder question",
-        "Placeholder question",
-        "Placeholder question"
+        "You saw something about me that I was meant to keep hidden. What was it, and what did we agree to say about it?",
+        "I told you what I was meant to do before I met this crew. What did you say, and what do we do about it now?",
+        "I gave you a signal that means I need help but cannot ask. What is it?"
       ]
     }
   ],
