@@ -14,7 +14,7 @@ Hand estimate with the Series 14 model (`scripts/starheart-ship-power.mjs`): Tie
 | Wraith | Baseline | 1 token = +1 on one roll (about +4 to 5% to hit), so no better than a Hope spend. The free token per Fear spend keeps it topped up. |
 | Leviathan | Baseline, low | Always-on +1 (action rolls with Hope, reaction rolls without). Steady, small, no cost. |
 | Necromancer | Situational | Rescue only matters when an ally is Disabled nearby. Spending the GM's Fear as your Hope is strong at the table but costs the GM, not you. |
-| Chirurgeon | Weak to baseline | Marking a Hull Point to turn a miss into a hit costs about 1 HP for about 1.3 HP of damage and gives the GM a Fear. The once-per-Refuel heal is good but needs the target within Very Close. |
+| Hydra | Weak to baseline | Marking a Hull Point to turn a miss into a hit costs about 1 HP for about 1.3 HP of damage and gives the GM a Fear. The once-per-Refuel heal is good but needs the target within Very Close. |
 | Direwolf | Spiky | 3 Hope is half the Hope track, but only when the Studied Target goes down: about once a fight. One feature only, by design. |
 | Specter | Niche | 3 Power Tokens for a full round of immunity, but it can't deal damage that round. Useful for a Disabled-edge escape. |
 | Elemental | Weak | Resistance to tech damage only. Worth a token only against tech attackers. Converting tokens is flexible but gains nothing. |
@@ -26,7 +26,7 @@ Hand estimate with the Series 14 model (`scripts/starheart-ship-power.mjs`): Tie
 - **Champion:** no cost, no limit, no roll. Consider once per spotlight, or a Stress mark.
 - **Alchemist:** "each can be chosen only once" is printed as "choose a different benefit for each token". With a token back per success the cap of 3 rarely binds.
 - **Elemental:** resistance to tech damage only; adversary ships may rarely deal it.
-- **Chirurgeon:** "succeed with Fear" gives the GM a Fear; check that is intended.
+- **Hydra:** "succeed with Fear" gives the GM a Fear; check that is intended.
 - **Revenant:** "reload one domain card" is printed as refilling that card's Reload Tokens, with no cost.
 
 ## Owner rulings and changes applied (2026-11-08)
@@ -36,4 +36,4 @@ Hand estimate with the Series 14 model (`scripts/starheart-ship-power.mjs`): Tie
 - **Alchemist:** the token comes only on a success with Hope (a critical success counts).
 - **Golem:** unchanged.
 - **Elemental:** each Refuel, choose a damage type; a Power Token gives resistance to that type against one instance of damage.
-- **Chirurgeon:** unchanged (Hull Point cost, for the Flesh theme).
+- **Hydra:** unchanged (Hull Point cost, for the Flesh theme).

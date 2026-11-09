@@ -2,8 +2,8 @@
 // (Docs/starheart-ships/ship-archetypes-source.md), reworded with the ship keywords and print markup (**bold** keywords and costs,
 // *italic* conditions the text defines). After this run, hand-edit ships.json; rerunning replaces `archetypes`.
 // Owner rulings 2026-11-08: Elemental chooses a damage type each Refuel (SRD resistance); Necromancer's HP clear works on that ship or the
-// Necromancer's own; Alchemist gains its token only on a success with Hope; Champion's redirect stays unlimited; Golem and Chirurgeon unchanged; character tier = the pilot's tier;
-// "Chirurgeon" is the spelling; Specter has one feature on purpose.
+// Necromancer's own; Alchemist gains its token only on a success with Hope; Champion's redirect stays unlimited; Golem and Hydra unchanged; character tier = the pilot's tier;
+// "Hydra" is the spelling; Specter has one feature on purpose.
 // Run: node scripts/srd-convert/starfinder/add-archetypes.mjs
 import { readFileSync, writeFileSync } from 'node:fs'
 const P = 'scripts/srd-convert/starfinder/ships.json'
@@ -50,7 +50,7 @@ const A = [
   ['Raiju', 'energy', 'glass', [
     '**Spend 2 Power Tokens** to move a Far distance directly toward your **Studied Target** before making an Action Roll. If this roll deals damage to your target, it also marks a Stress. **With Lock:** up to Very Far instead.',
     'When you move closer to your Studied Target, or it moves closer to you, gain a **Power Token**.']],
-  ['Chirurgeon', 'metal', 'glass', [
+  ['Hydra', 'metal', 'glass', [
     'If your attack against your **Studied Target** would fail, **mark a Hull Point** to make it succeed with Fear instead.',
     'Once per **Refuel**, when your Studied Target marks Hull Points within Very Close range, clear a number of the Hull Points it marked.']],
 ]

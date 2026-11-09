@@ -245,7 +245,7 @@ describe('[s15] Ship archetypes', () => {
       const text = a.features.join(' ')
       expect(a.tokens ?? [], a.name).toEqual((['analysis', 'power'] as const).filter((t) => new RegExp(`${t} tokens?`, 'i').test(text)))
     }
-    expect(list.find((a) => a.name === 'Chirurgeon')).toBeTruthy()
+    expect(list.find((a) => a.name === 'Hydra')).toBeTruthy()
     expect(list.find((a) => a.name === 'Specter')!.features).toHaveLength(1)
   })
   it('archetypeOf: either domain order, none until two domains; archetype tokens add their tracker', () => {

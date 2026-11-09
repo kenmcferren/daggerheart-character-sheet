@@ -404,8 +404,8 @@
       ]
     },
     {
-      "id": "chirurgeon",
-      "name": "Chirurgeon",
+      "id": "hydra",
+      "name": "Hydra",
       "domains": [
         "metal",
         "glass"
