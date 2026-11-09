@@ -15,3 +15,4 @@ Completed items moved out of `long-term-to-do.md` so that list stays short and c
 - [x] Attribution: content is from the Daggerheart SRD (owner: royalty/license free, non-monetized). The SRD says it is Public Game Content under the Darrington Press Community Gaming License, © 2026 Critical Role LLC (see `Daggerheart SRD Files/About This SRD.md`). Before publishing, confirm the license's required credit/notice wording and add it to the site footer and PDF. (done 2026-09-23; see start-here.md)
 - [x] Optional: PWA/offline install (done 2026-09-23; see start-here.md)
 - [x] Unique iconography for Gold: separate fill-in-bubble shapes for handfuls, bags and chest (currently plain circles). (done 2026-09-23; see start-here.md)
+- [x] Dark mode (done 2026-11-08): CSS variables in `src/index.css`, follows the device setting, with a corner toggle (auto/light/dark) in `src/ui/ThemeToggle.tsx`. Print-friendly ink-saver variant dropped by owner.
