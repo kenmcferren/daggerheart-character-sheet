@@ -3,6 +3,9 @@ import type { Registry } from './packs'
 import { STARTING_PROFICIENCY, STARTING_STRESS, tierOf } from './rules'
 import { cardTypeProblem, classDomains } from './classCards'
 
+/** An Experience on the sheet. Ones granted by a class or subclass feature carry `grant` (the feature's name); `max` caps the bonus, `note` replaces +N for a bonus that follows something else (Desperation). */
+export interface ProgressExperience { text: string; bonus: number; grant?: string; perTier?: number; max?: number; note?: string }
+
 /** Everything gained after level 1, derived by replaying a character's history against the level-up rules in the packs. */
 export interface Progress {
   level: number
@@ -16,7 +19,7 @@ export interface Progress {
   traitBonus: Partial<Record<Trait, number>>
   markedTraits: Trait[]
   /** Base Experiences (+2 each) followed by tier-achievement Experiences, with advancement bonuses added. */
-  experiences: { text: string; bonus: number }[]
+  experiences: ProgressExperience[]
   /** Every domain card held (loadout and vault), after swaps. */
   domainCardIds: string[]
   /** 1 = foundation, 2 = specialization, 3 = mastery. */
@@ -70,9 +73,28 @@ export function experienceStart(ch: Character, reg: Registry): number {
   return Math.max(2, ...starts)
 }
 
+/** Adds the Experiences granted by features now held (class features, and subclass features up to each subclass's rank) that are not on the list yet. */
+export function syncGrantedExperiences(st: Progress, classId: string, reg: Registry): void {
+  const held: any[] = [
+    ...(((reg.classes.get(classId) as any)?.features ?? []) as any[]),
+    ...Object.entries(st.subclassRanks).flatMap(([sid, rank]) => (((reg.subclasses.get(sid) as any)?.features ?? []) as any[]).filter((f) => RANKS.indexOf(f.level ?? 'foundation') < rank)),
+  ]
+  for (const f of held) {
+    const g = f.experience
+    if (!g || st.experiences.some((e) => e.grant === f.name)) continue
+    st.experiences.push({ text: g.text, bonus: g.start ?? 0, grant: f.name, ...(g.perTier ? { perTier: g.perTier } : {}), ...(g.max !== undefined ? { max: g.max } : {}), ...(g.note ? { note: g.note } : {}) })
+  }
+}
+
 export function initialProgress(ch: Character, reg: Registry): Progress {
   const cr = creationOf(ch)
   const cls: any = reg.classes.get(ch.choices.classId ?? '')
+  const st = initialBase(ch, reg, cr, cls)
+  syncGrantedExperiences(st, ch.choices.classId ?? '', reg)
+  return st
+}
+
+function initialBase(ch: Character, reg: Registry, cr: Creation, cls: any): Progress {
   return {
     level: 1,
     proficiency: STARTING_PROFICIENCY,
@@ -152,7 +174,10 @@ export function applyRecord(prev: Progress, rec: LevelRecord, ch: Character, reg
     if (!rec.newExperience?.trim()) err('write the new Experience', 'achievement')
     st.proficiency += ach.proficiency ?? 0
     if (ach.clearTraitMarks) st.markedTraits = []
-    st.experiences.push({ text: rec.newExperience?.trim() ?? '', bonus: Math.max(ach.newExperience ?? 0, experienceStart(ch, reg)) })
+    for (const e of st.experiences) if (e.perTier) e.bonus = Math.min(e.bonus + e.perTier, e.max ?? Infinity)
+    // Granted Experiences (Buried Protocols, Desperation...) stay at the bottom of the list, so a new one goes above them.
+    const firstGrant = st.experiences.findIndex((e) => e.grant)
+    st.experiences.splice(firstGrant < 0 ? st.experiences.length : firstGrant, 0, { text: rec.newExperience?.trim() ?? '', bonus: Math.max(ach.newExperience ?? 0, experienceStart(ch, reg)) })
   } else if (rec.newExperience?.trim()) err('there is no new Experience at this level', 'achievement')
 
   // Domain-card rule shared by the extra-card advancement, the level card, and swaps.
@@ -212,6 +237,11 @@ export function applyRecord(prev: Progress, rec: LevelRecord, ch: Character, reg
       case 'experience': {
         const ix = a.experienceIndexes ?? []
         if (ix.length !== 2 || ix[0] === ix[1] || ix.some((i) => !Number.isInteger(i) || i < 0 || i >= s.experiences.length)) return 'choose two different Experiences'
+        for (const i of ix) {
+          const e = s.experiences[i]
+          if (e.note) return `${e.text} follows ${e.note} and cannot be raised`
+          if (e.max !== undefined && e.bonus >= e.max) return `${e.text} is already at +${e.max}`
+        }
         for (const i of ix) s.experiences[i].bonus += 1
         break
       }
@@ -227,6 +257,7 @@ export function applyRecord(prev: Progress, rec: LevelRecord, ch: Character, reg
         if (!(sid in s.subclassRanks)) return 'choose one of your subclasses'
         if (s.subclassRanks[sid] >= RANKS.length) return `${sid} already has its mastery card`
         s.subclassRanks[sid] += 1
+        syncGrantedExperiences(s, classId, reg)
         break
       }
       case 'multiclass': {
@@ -239,6 +270,7 @@ export function applyRecord(prev: Progress, rec: LevelRecord, ch: Character, reg
         if (!sub || sub.class !== m.classId) return `choose a subclass of ${other.name}`
         s.multiclass = m
         s.subclassRanks[m.subclassId] = 1
+        syncGrantedExperiences(s, classId, reg)
         break
       }
       default: return `unsupported effect ${String(opt.effect)}`

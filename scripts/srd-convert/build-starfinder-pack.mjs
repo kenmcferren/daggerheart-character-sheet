@@ -54,6 +54,17 @@ const { frame: shipFrame, ...ships } = JSON.parse(readFileSync('scripts/srd-conv
     if (bare.includes('*') || /(?<!in place of the )Spellcast Roll/.test(c.rules)) throw new Error(`ships: ${c.id} has unpaired markup or calls for a Spellcast Roll`)
   }
   for (const d of doms) for (const s of sys) if (!ships.cards.some((c) => c.domain === d && c.system === s)) throw new Error(`ships: no ${d} ${s} cards`)
+  // Advancement (Series 16): every option has a box count (or takes it from the ship size); threshold options pair up; compartments are unique.
+  const adv = ships.advancement, optIds = new Set(adv.options.map((o) => o.id)), compIds = new Set()
+  for (const o of adv.options) {
+    if (!(o.boxes > 0) && !o.boxesFromSize) throw new Error(`ships: advancement ${o.id} needs boxes`)
+    if (o.alternatesWith && !optIds.has(o.alternatesWith)) throw new Error(`ships: advancement ${o.id} alternates with unknown ${o.alternatesWith}`)
+  }
+  for (const c of adv.compartments) {
+    if (compIds.has(c.id)) throw new Error(`ships: duplicate compartment ${c.id}`)
+    compIds.add(c.id)
+    if (((c.rules.match(/\*\*/g) || []).length) % 2) throw new Error(`ships: compartment ${c.id} has unpaired markup`)
+  }
   for (const s of [ships.startingSizes.flier, ships.startingSizes.hub]) if (!ships.sizes.some((z) => z.size === s)) throw new Error(`ships: unknown starting size ${s}`)
 }
 

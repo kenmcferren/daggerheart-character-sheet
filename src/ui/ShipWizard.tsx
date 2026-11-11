@@ -8,6 +8,7 @@ import { Choice, Details } from './common'
 import { SHIP_RULES as R, pilotOf, shipLabel, store } from './data'
 import { freshImport } from './freshImport'
 import { ShipPdfPreview } from './PdfPreview'
+import { CardText, ShipRefit } from './ShipRefit'
 import { download, titleCase } from './util'
 
 const STEPS: { id: ShipStep | 'review'; title: string }[] = [
@@ -26,12 +27,6 @@ const sign = (n: number) => `${n >= 0 ? '+' : ''}${n}`
 
 export type ShipUpdate = (fn: (s: Ship) => void) => void
 
-/** Ship card text with its print markup: **keywords and costs** bold, *card conditions* italic. */
-function CardText({ text }: { text: string }) {
-  const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/).filter(Boolean)
-  return <p>{parts.map((s, i) => (s.startsWith('**') ? <strong key={i}>{s.slice(2, -2)}</strong> : s.startsWith('*') ? <em key={i}>{s.slice(1, -1)}</em> : s))}</p>
-}
-
 /** Ship creation, one step per rule in the Creating a Ship section, then a review. A reopened ship lands on Review. */
 export function ShipWizard({ ship, update, saveStatus, onHome, opened }: { ship: Ship; update: ShipUpdate; saveStatus: string; onHome: () => void; opened: boolean }) {
   const last = STEPS.length - 1
@@ -39,6 +34,7 @@ export function ShipWizard({ ship, update, saveStatus, onHome, opened }: { ship:
   const [furthest, setFurthest] = useState(opened ? last : 0)
   const [pilots, setPilots] = useState<Character[]>([])
   const [pilot, setPilot] = useState<Pilot | null>(null)
+  const [refit, setRefit] = useState(false)
   useEffect(() => { void store.lineages().then((l) => setPilots(l.map((x) => x.latest))) }, [])
   useEffect(() => { void pilotOf(ship.characterLineageId).then(setPilot) }, [ship.characterLineageId])
   const problems = useMemo(() => shipProblems(R, ship), [ship])
@@ -71,15 +67,22 @@ export function ShipWizard({ ship, update, saveStatus, onHome, opened }: { ship:
             ))}
           </ol>
         </nav>
+        {refit ? (
+          <main>
+            <h2>Refit and advancement</h2>
+            <ShipRefit ship={ship} update={update} onClose={() => setRefit(false)} />
+          </main>
+        ) : (
         <main>
           <h2>{cur.title}</h2>
-          {cur.id === 'review' ? <ShipReview {...ctx} onJump={(id) => go(STEPS.findIndex((s) => s.id === id))} onHome={onHome} /> : BODY[cur.id](ctx)}
+          {cur.id === 'review' ? <ShipReview {...ctx} onJump={(id) => go(STEPS.findIndex((s) => s.id === id))} onHome={onHome} onRefit={() => setRefit(true)} /> : BODY[cur.id](ctx)}
           {cur.id !== 'review' && by(cur.id).length > 0 && <ul className="issues" role="alert">{by(cur.id).map((p, n) => <li key={n}>{p.message}</li>)}</ul>}
           <div className="nav">
             <button type="button" disabled={at === 0} onClick={() => go(at - 1)}>Back</button>
             {cur.id !== 'review' && <button type="button" className="primary" disabled={by(cur.id).length > 0} onClick={() => go(at + 1)}>{at === last - 1 ? 'Review' : 'Next'}</button>}
           </div>
         </main>
+        )}
       </div>
     </div>
   )
@@ -237,7 +240,7 @@ const BODY: Record<ShipStep, (c: StepCtx) => React.ReactNode> = {
   ),
 }
 
-function ShipReview({ ship, pilot, onJump, onHome }: StepCtx & { onJump: (id: string) => void; onHome: () => void }) {
+function ShipReview({ ship, pilot, onJump, onHome, onRefit }: StepCtx & { onJump: (id: string) => void; onHome: () => void; onRefit: () => void }) {
   const problems = shipProblems(R, ship)
   const st = shipStats(R, ship)
   const cfg = shipConfiguration(R, ship)
@@ -287,6 +290,7 @@ function ShipReview({ ship, pilot, onJump, onHome }: StepCtx & { onJump: (id: st
       <div className="nav">
         <button type="button" onClick={() => download(`${ship.name || 'ship'}.json`, exportShip(ship))}>Export JSON</button>
         <button type="button" className="primary" onClick={() => void freshImport(async () => (await import('../pdf/browser')).downloadShipSheet(ship))}>Make PDF</button>
+        {R.advancement && <button type="button" onClick={onRefit}>Refit and advance</button>}
         <button type="button" onClick={onHome}>Done</button>
       </div>
       <p className="hint">Your ship is saved on this device. Make PDF downloads a double-sided ship sheet (the ship, then its rules on the back). A ship linked to a character also prints after that character's sheet.</p>

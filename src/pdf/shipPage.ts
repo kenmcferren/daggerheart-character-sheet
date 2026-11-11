@@ -1,11 +1,15 @@
 import type { PDFPage } from 'pdf-lib'
 import type { Trait } from '../engine/character'
-import { SYSTEMS, archetypeOf, primarySystems, shipConfiguration, shipFrame, shipStats, systemRollLines, type Ship, type ShipCard, type ShipRules } from '../engine/ship'
+import {
+  SYSTEMS, advancementOf, advancementOption, archetypeOf, boxesChecked, compartmentsOf, optionBoxes, primarySystems, shipConfiguration, shipFrame, shipStats, systemRollLines,
+  totalChecked, vaultCapacity, type Ship, type ShipCard, type ShipRules,
+} from '../engine/ship'
 import { CREDIT, INKS, PAGE, Sheet, wrapLines, type Item, type SheetFonts } from './sheet'
 
 // Starheart ship sheet (Series 14): one double-sided sheet per ship.
 // Front: name, role and build; Evasion / thresholds stacked beside Hope, system HP and Stress rows; token trackers; then a box per system holding its cards.
 // Back: the ship keywords and Refuel / Refit, as printed rules text (plus the licence notice when the ship prints on its own).
+// Refit page (Series 16, only for a ship with advancements or vault cards): advancement boxes, vault cards, compartments and Suit Locker spare suits.
 const { M, TOP, BOTTOM, W, CARD } = PAGE
 const { INK, RULE, FAINT, SHADE, WHITE } = INKS
 const title = (s: string) => s.replace(/^\w/, (c) => c.toUpperCase())
@@ -93,6 +97,81 @@ function systemBox(s: Sheet, r: ShipRules, sys: string, cards: ShipCard[], w: nu
     let y = top - HEAD
     for (const it of items) { it.draw(p, x + pad, y); y -= it.h }
   } }]
+}
+
+/** True when the ship has earned an advancement or holds a vault card: then it prints a refit page after its back. */
+export const hasRefitPage = (ship: Ship) => { const a = advancementOf(ship); return a.taken.length > 0 || a.vaultCardIds.length > 0 }
+
+/** A row of boxes with a light grey outline (slots the player darkens by hand). */
+function greyBoxes(n: number, d = 11): Item {
+  return { h: d + 4, draw: (p, x, top) => {
+    for (let i = 0; i < n; i++) p.drawRectangle({ x: x + i * (d + 3), y: top - d - 1, width: d, height: d, borderWidth: 0.9, borderColor: FAINT, color: WHITE })
+  } }
+}
+
+/** The refit page: where advancements, the vault and compartments are tracked. Column width is half the page. */
+function addRefitPage(s: Sheet, r: ShipRules, ship: Ship, pilot: ShipPilot | null) {
+  s.newPage()
+  const adv = r.advancement
+  if (!adv) return
+  const a = advancementOf(ship)
+  const cg = 14, cw = (W - cg) / 2
+  s.fitText(s.page, `${ship.name || 'Unnamed ship'}: refit and advancement`, M, TOP, s.f.head, 16, W, 10)
+  s.rule(TOP - 22, 1)
+  const para = (markup: string, size = 8.5, after = 3): Item[] => s.runs(cardSegs(markup), cw, { size, after })
+  const items: Item[] = []
+
+  items.push(s.heading('Advancement', 10))
+  items.push(...para('Advancing happens only during a refit, at the pace your GM sets. Each advancement, choose one option and check one of its boxes. The loadout holds 7 cards. Every 2 boxes checked add 1 more card, which goes in the vault.'))
+  const takesText = (id: string) => a.taken.filter((t) => t.optionId === id).map((t) => {
+    const o = advancementOption(r, id)
+    const g = o?.gains?.[t.gain ?? 0]
+    const sys = t.system ? sysName(r, t.system) : ''
+    if (t.compartmentId) return adv.compartments.find((c) => c.id === t.compartmentId)?.name ?? t.compartmentId
+    if (g?.hp) return `Hull Point (${sys})`
+    if (g?.stress) return 'Stress slot'
+    if (g?.evasion) return '+1 Evasion'
+    if (g?.thresholds) return `+${g.thresholds[0]}/+${g.thresholds[1]}`
+    return ''
+  }).filter(Boolean).join(', ')
+  for (const o of adv.options) {
+    const n = optionBoxes(ship, o), used = boxesChecked(ship, o.id)
+    const note = takesText(o.id)
+    const name = o.name
+    items.push({ h: 15, draw: (p, x, top) => {
+      s.text(p, name, x, top - 2, s.f.bold, 8.5)
+      let bx = x + s.f.bold.widthOfTextAtSize(name, 8.5) + 8
+      const d = 10
+      for (let i = 0; i < n; i++) {
+        p.drawRectangle({ x: bx, y: top - d - 1, width: d, height: d, borderWidth: 0.9, borderColor: INK, color: i < used ? INK : WHITE })
+        bx += d + 3
+      }
+    } })
+    if (note) items.push(...s.runs([{ t: note, f: 'italic' }], cw, { size: 8, after: 2 }))
+  }
+  items.push(...para(`Boxes checked: ${totalChecked(ship)}`, 8.5, 6))
+
+  items.push(s.space(4), s.heading(`Vault (${a.vaultCardIds.length} of ${vaultCapacity(r, ship)})`, 10))
+  items.push(...para('New cards go to the vault. While Available effects of vaulted cards are always active. Cards swap with the loadout only during a refit.'))
+  const vault = a.vaultCardIds.map((id) => r.cards.find((c) => c.id === id)).filter((c): c is ShipCard => !!c)
+  if (!vault.length) items.push(...para('No vault cards.'))
+  vault.forEach((c, i) => items.push(cardBlock(s, r, c, cw, i % 2 === 1, pilot?.proficiency)))
+
+  const comps = compartmentsOf(r, ship)
+  if (comps.length) {
+    items.push(s.space(6), s.heading('Compartments', 10))
+    for (const c of comps) {
+      items.push(...s.runs([{ t: `${c.name}.`, f: 'bold' }, ...cardSegs(' ' + c.rules)], cw, { size: 8.5, after: 3 }))
+      if (c.spareSuits) {
+        for (let i = 1; i <= c.spareSuits.count; i++) {
+          items.push({ h: 11, draw: (p, x, top) => s.text(p, `Spare suit ${i}: name and marked armor slots`, x, top, s.f.body, 8) })
+          items.push(greyBoxes(c.spareSuits.slots))
+        }
+        items.push(s.space(4))
+      }
+    }
+  }
+  s.pour(items, [M, M + cw + cg], TOP - 30)
 }
 
 /** Adds the ship's two pages to the sheet. Starts on a fresh sheet of paper (adds a blank page if the page count is odd), unless it is the document's first page. */
@@ -252,6 +331,7 @@ export function addShipPages(s: Sheet, r: ShipRules, ship: Ship, pilot: ShipPilo
       ny -= 4
     }
   }
+  if (hasRefitPage(ship)) addRefitPage(s, r, ship, pilot)
 }
 
 /** A ship on its own: its two pages plus the licence notice. */

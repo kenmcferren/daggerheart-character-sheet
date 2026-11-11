@@ -934,6 +934,12 @@
           },
           {
             "name": "Buried Protocols",
+            "experience": {
+              "text": "Buried Protocols",
+              "start": 1,
+              "perTier": 1,
+              "max": 7
+            },
             "rules": "You gain a new Experience at +1 called \"Buried Protocols\". It increases by +1 each time you increase your Tier, and can be increased via leveling options as well, to a maximum of +7. Once per rest when you succeed on a roll while using it you can clear a Stress and gain a Hope."
           }
         ],
@@ -1541,6 +1547,10 @@
           },
           {
             "name": "Creature Feature",
+            "experience": {
+              "text": "Form of _______",
+              "start": 3
+            },
             "rules": "Gain a new Experience: \"Form of _______ +3\". When you succeed on a weapon attack against an adversary, or when you examine their corpse, spend a Serum Token to take a sample of it. Replace the blank with the name of the sampled creature, and use it when their form would help you.",
             "level": "specialization"
           },
@@ -1627,6 +1637,10 @@
           },
           {
             "name": "Desperation",
+            "experience": {
+              "text": "Desperation",
+              "note": "marked HP"
+            },
             "rules": "Gain a new Experience called \"Desperation\". It has a bonus equal to your marked Hit Points.",
             "level": "mastery"
           }
@@ -4109,7 +4123,132 @@
               "domain": "glass",
               "rules": "**Spend a Hope** to make an Engineering Action Roll against a target within Very Far range. On a success, it is *Highlighted* until it leaves Very Far range or you use this card on another target. A *Highlighted* ship is **Vulnerable** and can't become **Hidden** or *Cloaked* unless something physically blocks it. If you rolled with Hope, you can also make it your **Studied Target**."
             }
-          ]
+          ],
+          "advancement": {
+            "vault": {
+              "base": 0,
+              "boxesPerExtraSlot": 2
+            },
+            "options": [
+              {
+                "id": "hull",
+                "name": "Gain a Hull Point",
+                "boxes": 2,
+                "gains": [
+                  {
+                    "hp": 1
+                  }
+                ]
+              },
+              {
+                "id": "stress-or-hull",
+                "name": "Gain a Stress Slot or a Hull Point",
+                "boxes": 2,
+                "gains": [
+                  {
+                    "stress": 1
+                  },
+                  {
+                    "hp": 1
+                  }
+                ]
+              },
+              {
+                "id": "thresholds-major",
+                "name": "Add +1/+2 to your thresholds",
+                "boxes": 4,
+                "gains": [
+                  {
+                    "thresholds": [
+                      1,
+                      2
+                    ]
+                  }
+                ],
+                "alternatesWith": "thresholds-minor"
+              },
+              {
+                "id": "thresholds-minor",
+                "name": "Add +1/+1 to your thresholds",
+                "boxes": 3,
+                "gains": [
+                  {
+                    "thresholds": [
+                      1,
+                      1
+                    ]
+                  }
+                ],
+                "alternatesWith": "thresholds-major"
+              },
+              {
+                "id": "evasion-or-hull",
+                "name": "Gain +1 Evasion or a Hull Point",
+                "boxes": 1,
+                "gains": [
+                  {
+                    "evasion": 1
+                  },
+                  {
+                    "hp": 1
+                  }
+                ]
+              },
+              {
+                "id": "compartment",
+                "name": "Add a compartment",
+                "boxesFromSize": true,
+                "compartment": true
+              }
+            ],
+            "compartments": [
+              {
+                "id": "personal-armory",
+                "name": "Personal Armory",
+                "rules": "Holds up to 4 weapons, conveniently placed where you need them."
+              },
+              {
+                "id": "stim-lab",
+                "name": "Stim Lab",
+                "rules": "Each rest, roll 1d30 on the Stims list and gain that consumable.",
+                "rollsOn": "stim"
+              },
+              {
+                "id": "stasis-chamber",
+                "name": "Stasis Chamber",
+                "rules": "When you rest in your ship and **Tend Wounds**, you always tend all wounds."
+              },
+              {
+                "id": "meditation-room",
+                "name": "Meditation Room",
+                "rules": "When you rest in your ship and **Clear Stress**, you always clear all Stress."
+              },
+              {
+                "id": "suit-locker",
+                "name": "Suit Locker",
+                "rules": "Keep up to 2 spare suits of armor on board. Their marked slots are not cleared automatically, but they can be swapped out in a few minutes. During a rest, clear only one suit; during a refit, clear all.",
+                "spareSuits": {
+                  "count": 2,
+                  "slots": 12
+                }
+              },
+              {
+                "id": "war-room",
+                "name": "War Room",
+                "rules": "When you **Prepare**, you always gain 2 Hope. Each other person in your party gains a Hope each rest if they do not Prepare."
+              },
+              {
+                "id": "gym",
+                "name": "Gym",
+                "rules": "When you rest in your ship, gain a +1 to a physical trait until your next rest."
+              },
+              {
+                "id": "library",
+                "name": "Library",
+                "rules": "When you rest in your ship, gain a +1 to a mental trait until your next rest."
+              }
+            ]
+          }
         }
       }
     ]

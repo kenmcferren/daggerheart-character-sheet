@@ -22,7 +22,7 @@ export interface SheetView {
   stats: DerivedStats
   /** Base traits plus trait advancements. */
   traits: Partial<Record<Trait, number>>
-  experiences: { text: string; bonus: number }[]
+  experiences: { text: string; bonus: number; note?: string }[]
   /** All domain cards held (loadout and vault). */
   domainCardIds: string[]
   /** Main subclass then the multiclass subclass: the cards taken so far, foundation first. */

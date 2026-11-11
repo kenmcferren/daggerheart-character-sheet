@@ -145,3 +145,11 @@ details.cat > summary + * { margin-top: 6px; }
 .pdf-pages { margin-top: 10px; display: grid; gap: 12px; }
 .pdf-page { width: 100%; height: auto; border: 1px solid var(--border); background: #fff; }
 .group-members { margin-left: 24px; }
+
+/* Ship refit and advancement (Series 16) */
+.adv-option { border-top: 1px solid var(--border); padding: 10px 0; display: grid; gap: 6px; justify-items: start; }
+.adv-option:first-of-type { border-top: 0; }
+.adv-head { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.adv-boxes { display: inline-flex; gap: 4px; font-size: 20px; line-height: 1; }
+.adv-box.on { color: var(--accent, currentColor); }
+.adv-pick { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }

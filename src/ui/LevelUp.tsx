@@ -347,8 +347,8 @@ function AdvancementDetail({ a, opt, st, patch, level, from, reg, cls, cardChoic
           <p className="hint">Choose two Experiences ({picked.length} chosen).</p>
           {st.experiences.map((e, i) => (
             <label key={i} className="inline">
-              <input type="checkbox" checked={picked.includes(i)} disabled={!picked.includes(i) && picked.length >= 2} onChange={() => toggle(i)} />
-              {e.text || `Experience ${i + 1}`} (+{e.bonus})
+              <input type="checkbox" checked={picked.includes(i)} disabled={!picked.includes(i) && (picked.length >= 2 || !!e.note || (e.max !== undefined && e.bonus >= e.max))} onChange={() => toggle(i)} />
+              {e.text || `Experience ${i + 1}`} ({e.note ? e.note : `+${e.bonus}`}{e.max !== undefined && e.bonus >= e.max ? ', at its maximum' : ''})
             </label>
           ))}
         </div>

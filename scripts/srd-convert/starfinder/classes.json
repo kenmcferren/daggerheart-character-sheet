@@ -498,7 +498,8 @@
         },
         {
           "name": "Buried Protocols",
-          "rules": "You gain a new Experience at +1 called \"Buried Protocols\". It increases by +1 each time you increase your Tier, and can be increased via leveling options as well, to a maximum of +7. Once per rest when you succeed on a roll while using it you can clear a Stress and gain a Hope."
+          "experience": { "text": "Buried Protocols", "start": 1, "perTier": 1, "max": 7 },
+          "rules":"You gain a new Experience at +1 called \"Buried Protocols\". It increases by +1 each time you increase your Tier, and can be increased via leveling options as well, to a maximum of +7. Once per rest when you succeed on a roll while using it you can clear a Stress and gain a Hope."
         }
       ],
       "backgroundQuestions": [
@@ -1104,6 +1105,7 @@
         },
         {
           "name": "Creature Feature",
+          "experience": { "text": "Form of _______", "start": 3 },
           "rules": "Gain a new Experience: \"Form of _______ +3\". When you succeed on a weapon attack against an adversary, or when you examine their corpse, spend a Serum Token to take a sample of it. Replace the blank with the name of the sampled creature, and use it when their form would help you.",
           "level": "specialization"
         },
@@ -1190,6 +1192,7 @@
         },
         {
           "name": "Desperation",
+          "experience": { "text": "Desperation", "note": "marked HP" },
           "rules": "Gain a new Experience called \"Desperation\". It has a bonus equal to your marked Hit Points.",
           "level": "mastery"
         }

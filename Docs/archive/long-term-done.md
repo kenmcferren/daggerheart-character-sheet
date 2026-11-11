@@ -16,3 +16,4 @@ Completed items moved out of `long-term-to-do.md` so that list stays short and c
 - [x] Optional: PWA/offline install (done 2026-09-23; see start-here.md)
 - [x] Unique iconography for Gold: separate fill-in-bubble shapes for handfuls, bags and chest (currently plain circles). (done 2026-09-23; see start-here.md)
 - [x] Dark mode (done 2026-11-08): CSS variables in `src/index.css`, follows the device setting, with a corner toggle (auto/light/dark) in `src/ui/ThemeToggle.tsx`. Print-friendly ink-saver variant dropped by owner.
+- [x] Starheart Experience grants (done 2026-11-10): Buried Protocols (+1, +1 per tier, max +7), Creature Feature "Form of _______ +3" and Desperation (prints "= marked HP") are now Experiences on the sheet, the level-up picker and Review. Data-driven: an `experience` block on the feature in `classes.json`; engine `syncGrantedExperiences` in `src/engine/levelup.ts`; tests in `tests/experience-grants.test.ts`.

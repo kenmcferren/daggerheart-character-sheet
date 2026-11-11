@@ -276,6 +276,33 @@
             "session"
           ]
         },
+        "experience": {
+          "type": "object",
+          "required": [
+            "text"
+          ],
+          "additionalProperties": false,
+          "description": "The feature grants an Experience, added to the character's list and printed with the others. Give `start` for a fixed bonus, or `note` for one that follows something else (printed in place of +N).",
+          "properties": {
+            "text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "start": {
+              "type": "integer"
+            },
+            "perTier": {
+              "type": "integer",
+              "description": "Added at every tier achievement after the Experience is gained."
+            },
+            "max": {
+              "type": "integer"
+            },
+            "note": {
+              "type": "string"
+            }
+          }
+        },
         "short": {
           "type": "string",
           "description": "Condensed wording for the printed sheet; \"\" = print nothing (folded into the previous feature)."
@@ -1795,6 +1822,78 @@
               "text": {
                 "type": "string",
                 "description": "Markdown."
+              }
+            }
+          }
+        },
+        "advancement": {
+          "type": "object",
+          "description": "Ship refit advancement (Series 16): vault size, advancement options (boxes to check) and compartments.",
+          "required": ["vault", "options", "compartments"],
+          "additionalProperties": false,
+          "properties": {
+            "vault": {
+              "type": "object",
+              "required": ["base", "boxesPerExtraSlot"],
+              "additionalProperties": false,
+              "properties": {
+                "base": { "type": "integer", "minimum": 0, "description": "Vault slots at no advancement (0: the loadout holds 7 cards, and every two checked boxes add one more card to the vault)." },
+                "boxesPerExtraSlot": { "type": "integer", "minimum": 1, "description": "Checked boxes per extra vault slot (rounds down)." }
+              }
+            },
+            "options": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": ["id", "name"],
+                "additionalProperties": false,
+                "properties": {
+                  "id": { "$ref": "#/definitions/id" },
+                  "name": { "type": "string", "minLength": 1 },
+                  "boxes": { "type": "integer", "minimum": 1, "description": "Boxes to check for this option." },
+                  "boxesFromSize": { "type": "boolean", "description": "True: boxes equal the ship's size number (compartments)." },
+                  "gains": {
+                    "type": "array",
+                    "description": "The ways to take this option (the player picks one).",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "hp": { "type": "integer" },
+                        "stress": { "type": "integer" },
+                        "evasion": { "type": "integer" },
+                        "thresholds": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "integer" } }
+                      }
+                    }
+                  },
+                  "alternatesWith": { "$ref": "#/definitions/id", "description": "Threshold options alternate with this one." },
+                  "compartment": { "type": "boolean", "description": "Taking this adds a compartment." }
+                }
+              }
+            },
+            "compartments": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": ["id", "name", "rules"],
+                "additionalProperties": false,
+                "properties": {
+                  "id": { "$ref": "#/definitions/id" },
+                  "name": { "type": "string", "minLength": 1 },
+                  "rules": { "type": "string", "minLength": 1, "description": "Print markup: **bold** keywords." },
+                  "rollsOn": { "type": "string", "description": "Consumable type this compartment rolls on." },
+                  "spareSuits": {
+                    "type": "object",
+                    "required": ["count", "slots"],
+                    "additionalProperties": false,
+                    "properties": {
+                      "count": { "type": "integer", "minimum": 1 },
+                      "slots": { "type": "integer", "minimum": 1 }
+                    }
+                  }
+                }
               }
             }
           }
