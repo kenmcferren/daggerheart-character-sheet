@@ -181,21 +181,21 @@ sheet.[s7] domain card tables.renders cards with tables (Teleport, Forager, Temp
 sheet.[s7] substituted card numbers.Arcana cards print the numbers in bold blue,1
 sheet.[s7] substituted card numbers.substitute() puts the character value in, or the SRD wording when it has none,1
 sheet.[s7] zebra table words.never breaks a table word into pieces (Aluminum, Capacitor, Components, Knowledge, Roll, 10),1
-ship-advancement.[s16] Ship advancement data.six options and eight compartments; box counts match the owner list; compartments take their boxes from the ship size,1
-ship-advancement.[s16] Ship advancement data.the Stim Lab rolls on a Stims list that has 30 entries; the Suit Locker holds 2 suits of 12 slots,1
-ship-advancement.[s16] Ship advancement engine.a ship saved before Series 16 (no advancement) has no vault room and unchanged stats,1
-ship-advancement.[s16] Ship advancement engine.an option refuses more takes than it has boxes; Hull Point needs a system; unknown options are refused,1
-ship-advancement.[s16] Ship advancement engine.compartments: a solo flier has 2 boxes, a catamaran 3; each compartment once; full text kept,1
-ship-advancement.[s16] Ship advancement engine.gains: Hull Point goes to the chosen system, Stress slot, Evasion, thresholds stack on the frame,1
-ship-advancement.[s16] Ship advancement engine.problems: vault over capacity, off-domain or doubled vault cards, unknown advancement, too many boxes,1
-ship-advancement.[s16] Ship advancement engine.refit swap trades a loadout card with a vaulted one; the frame can change and advancements stack on it,1
-ship-advancement.[s16] Ship advancement engine.the save shape check accepts advancement and rejects a malformed one,1
-ship-advancement.[s16] Ship advancement engine.threshold gains take turns: +1/+2 first, then +1/+1, and no more than the boxes allow,1
-ship-advancement.[s16] Ship advancement engine.vault capacity is half the checked boxes, rounded down (the loadout is always 7 cards),1
-ship-advancement.[s16] Ship advancement engine.vault: new cards go in until it is full; While Available effects count while vaulted; domains must match,1
-ship-advancement.[s16] Ship refit page.a full vault (7 cards) and three compartments still print inside the margins,1
-ship-advancement.[s16] Ship refit page.a ship with no advancements and no vault prints only its two pages, as before,1
-ship-advancement.[s16] Ship refit page.an advanced ship adds a refit page: stat gains on the front, checked boxes dark, vault cards, compartments, Suit Locker spare suits as light grey boxes,1
+ship-advancement.[s16] Ship advancement data.six options and eight compartments; box counts match the owner list; compartments take their boxes from the ship size,0
+ship-advancement.[s16] Ship advancement data.the Stim Lab rolls on a Stims list that has 30 entries; the Suit Locker holds 2 suits of 12 slots,0
+ship-advancement.[s16] Ship advancement engine.a ship saved before Series 16 (no advancement) has no vault room and unchanged stats,0
+ship-advancement.[s16] Ship advancement engine.an option refuses more takes than it has boxes; Hull Point needs a system; unknown options are refused,0
+ship-advancement.[s16] Ship advancement engine.compartments: a solo flier has 2 boxes, a catamaran 3; each compartment once; full text kept,0
+ship-advancement.[s16] Ship advancement engine.gains: Hull Point goes to the chosen system, Stress slot, Evasion, thresholds stack on the frame,0
+ship-advancement.[s16] Ship advancement engine.problems: vault over capacity, off-domain or doubled vault cards, unknown advancement, too many boxes,0
+ship-advancement.[s16] Ship advancement engine.refit swap trades a loadout card with a vaulted one; the frame can change and advancements stack on it,0
+ship-advancement.[s16] Ship advancement engine.the save shape check accepts advancement and rejects a malformed one,0
+ship-advancement.[s16] Ship advancement engine.threshold gains take turns: +1/+2 first, then +1/+1, and no more than the boxes allow,0
+ship-advancement.[s16] Ship advancement engine.vault capacity is half the checked boxes, rounded down (the loadout is always 7 cards),0
+ship-advancement.[s16] Ship advancement engine.vault: new cards go in until it is full; While Available effects count while vaulted; domains must match,0
+ship-advancement.[s16] Ship refit page.a full vault (7 cards) and three compartments still print inside the margins,0
+ship-advancement.[s16] Ship refit page.a ship with no advancements and no vault prints only its two pages, as before,0
+ship-advancement.[s16] Ship refit page.an advanced ship adds a refit page: stat gains on the front, checked boxes dark, vault cards, compartments, Suit Locker spare suits as light grey boxes,0
 short-text.[s5] condensed campaign rules.every campaign rule with a short is no longer than the SRD text and adds no numbers (table cells included),1
 short-text.[s5] condensed campaign rules.table rows all have as many cells as the header,1
 short-text.[s5] condensed domain cards.every card short is no longer than the SRD text, adds no numbers, and keeps grimoire spell lines and once-per wording,1

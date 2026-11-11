@@ -183,12 +183,14 @@ export function sheetView(ch: Character, setup: CreationSetup): SheetView {
   }
   const hasCombo = [...reg.levelUpOptions.values()].some((o: Any) => o.effect === 'combo-die' && o.classId === ch.choices.classId)
 
-  // Druid forms page (Series 8 step 1, main class only): a form of the character's tier or lower "or lower" per the
+  // Druid forms page (Series 8 step 1; main class or multiclass Druid): a form of the character's tier or lower "or lower" per the
   // Beastform feature text, with the trait/Evasion/threshold numbers worked out against this sheet (owner: derived
   // stats, not just the raw SRD text). Legendary Beast / Mythic Beast are upgrade templates with no fixed stats of
   // their own (they buff a form chosen in play), so they print as text only.
-  const beastforms: BeastformView[] = cls?.id === 'druid'
-    ? ((cls.beastforms ?? []) as Any[]).filter((b) => b.tier <= stats.tier).map((b): BeastformView => ({
+  // A multiclass Druid gets the Beastform class feature too, so its forms print the same way.
+  const formClass: Any = cls?.id === 'druid' ? cls : mcClass?.id === 'druid' ? mcClass : undefined
+  const beastforms: BeastformView[] = formClass
+    ? ((formClass.beastforms ?? []) as Any[]).filter((b) => b.tier <= stats.tier).map((b): BeastformView => ({
         id: b.id, name: b.name, tier: b.tier, examples: b.examples,
         traitLabel: b.traitBonus?.trait, traitTotal: b.traitBonus ? (traits[b.traitBonus.trait as Trait] ?? 0) + b.traitBonus.bonus : undefined,
         evasion: b.evasionBonus !== undefined ? stats.evasion + b.evasionBonus : undefined,

@@ -72,7 +72,8 @@ function cardBlock(s: Sheet, r: ShipRules, c: ShipCard, w: number, shade: boolea
   return { h, draw: (p, x, top) => {
     if (shade) p.drawRectangle({ x, y: top - h, width: w, height: h, color: SHADE, borderWidth: 0 })
     let y = top - pad
-    s.text(p, c.name, x + pad, y, s.f.bold, 10.5)
+    p.drawRectangle({ x: x + pad, y: y - 11, width: 10, height: 10, borderWidth: 1, borderColor: INK })   // loadout checkbox, left blank for the player
+    s.text(p, c.name, x + pad + 15, y, s.f.bold, 10.5)
     s.text(p, meta, x + w - pad - s.f.body.widthOfTextAtSize(meta, 8.5), y - 1.5, s.f.body, 8.5)
     y -= 15
     for (const tr of trackers) {
@@ -85,14 +86,16 @@ function cardBlock(s: Sheet, r: ShipRules, c: ShipCard, w: number, shade: boolea
 }
 
 /** One outlined box per system: its name in the display face (Audiowide) across the top, then that system's cards. */
-function systemBox(s: Sheet, r: ShipRules, sys: string, cards: ShipCard[], w: number, proficiency?: number): Item[] {
+function systemBox(s: Sheet, r: ShipRules, sys: string, cards: ShipCard[], w: number, cap: number | undefined, proficiency?: number, cont = false): Item[] {
   const pad = 5, HEAD = 22
   const font = s.f.display ?? s.f.head
   const items = cards.map((c, i) => cardBlock(s, r, c, w - 2 * pad, i % 2 === 1, proficiency))
   const h = HEAD + items.reduce((n, it) => n + it.h, 0) + pad
   return [{ h: h + 10, draw: (p, x, top) => {
     p.drawRectangle({ x, y: top - h, width: w, height: h, borderWidth: 1.2, borderColor: INK })
-    s.text(p, sysName(r, sys).toUpperCase(), x + pad + 1, top - 5, font, 13)
+    const nm = sysName(r, sys).toUpperCase() + (cont ? ' (CONT.)' : '')
+    s.text(p, nm, x + pad + 1, top - 5, font, 13)
+    if (cap !== undefined && !cont) s.text(p, `${cap} card${cap === 1 ? '' : 's'} max in loadout`, x + pad + 1 + font.widthOfTextAtSize(nm, 13) + 8, top - 8.5, s.f.body, 8)
     p.drawLine({ start: { x: x + pad, y: top - HEAD + 2 }, end: { x: x + w - pad, y: top - HEAD + 2 }, thickness: 0.6, color: RULE })
     let y = top - HEAD
     for (const it of items) { it.draw(p, x + pad, y); y -= it.h }
@@ -152,10 +155,7 @@ function addRefitPage(s: Sheet, r: ShipRules, ship: Ship, pilot: ShipPilot | nul
   items.push(...para(`Boxes checked: ${totalChecked(ship)}`, 8.5, 6))
 
   items.push(s.space(4), s.heading(`Vault (${a.vaultCardIds.length} of ${vaultCapacity(r, ship)})`, 10))
-  items.push(...para('New cards go to the vault. While Available effects of vaulted cards are always active. Cards swap with the loadout only during a refit.'))
-  const vault = a.vaultCardIds.map((id) => r.cards.find((c) => c.id === id)).filter((c): c is ShipCard => !!c)
-  if (!vault.length) items.push(...para('No vault cards.'))
-  vault.forEach((c, i) => items.push(cardBlock(s, r, c, cw, i % 2 === 1, pilot?.proficiency)))
+  items.push(...para('Vault cards print on the front page in their systems, beside the loadout cards. Check the box on each card in your loadout; the others are in your vault. While Available effects work in the loadout or the vault.'))
 
   const comps = compartmentsOf(r, ship)
   if (comps.length) {
@@ -271,9 +271,23 @@ export function addShipPages(s: Sheet, r: ShipRules, ship: Ship, pilot: ShipPilo
   y -= 8
 
   // -- the cards: one box per system that has cards, the boxes in two balanced columns (owner, 2026-11-07) --
+  for (const it of s.runs([{ t: `Loadout: ${r.build.cards} cards total. Check the box on each card in your loadout; extra cards wait in your vault.`, f: 'italic' }], W, { size: 8.5, after: 4 })) { it.draw(p, M, y); y -= it.h }
   const cg = 14, cw2 = (W - cg) / 2
-  const cardsOf = (sys: string) => ship.choices.cardIds.map((id) => r.cards.find((c) => c.id === id)).filter((c): c is ShipCard => !!c && c.system === sys)
-  const blocks = SYSTEMS.filter((sys) => cardsOf(sys).length).map((sys) => systemBox(s, r, sys, cardsOf(sys), cw2, pilot?.proficiency))
+  const heldIds = [...ship.choices.cardIds, ...advancementOf(ship).vaultCardIds]   // loadout and vault print together; the player checks the loadout cards
+  const caps = shipConfiguration(r, ship)?.caps
+  const cardsOf = (sys: string) => heldIds.map((id) => r.cards.find((c) => c.id === id)).filter((c): c is ShipCard => !!c && c.system === sys)
+  // A system holding more cards than fit one page column (loadout plus a full vault) splits into continuation boxes.
+  const maxBox = TOP - BOTTOM - 40
+  const blocks = SYSTEMS.filter((sys) => cardsOf(sys).length).flatMap((sys) => {
+    const chunks: ShipCard[][] = [[]]
+    let used = 0
+    cardsOf(sys).forEach((c, i) => {
+      const h = cardBlock(s, r, c, cw2 - 10, i % 2 === 1, pilot?.proficiency).h
+      if (used + h > maxBox && chunks[chunks.length - 1].length) { chunks.push([]); used = 0 }
+      chunks[chunks.length - 1].push(c); used += h
+    })
+    return chunks.map((cs, i) => systemBox(s, r, sys, cs, cw2, caps?.[sys as keyof typeof caps], pilot?.proficiency, i > 0))
+  })
   const hs = blocks.map((b) => b.reduce((n, it) => n + it.h, 0))
   // Split the list where the taller column is shortest; fall back to pouring when they don't fit.
   let best = 0, bestH = Infinity
@@ -286,7 +300,20 @@ export function addShipPages(s: Sheet, r: ShipRules, ship: Ship, pilot: ShipPilo
       let cy = y
       for (const it of col.flat()) { it.draw(p, M + ci * (cw2 + cg), cy); cy -= it.h }
     })
-  } else s.pourBlocks(blocks, [M, M + cw2 + cg], y)
+  } else {
+    // Too long for one page: pour whole boxes down two columns, then onto extra pages.
+    const xs = [M, M + cw2 + cg]
+    let col = 0, top = y, cy = y
+    for (const b of blocks) {
+      const h = b.reduce((n, it) => n + it.h, 0)
+      for (let tries = 0; tries < 2 && h > cy - BOTTOM && cy < TOP; tries++) {
+        col++
+        if (col >= 2) { s.newPage(); col = 0; top = TOP }
+        cy = top
+      }
+      for (const it of b) { it.draw(s.page, xs[col], cy); cy -= it.h }
+    }
+  }
 
   // -- back: keywords and resting --
   if (s.doc.getPageCount() % 2 === 1) s.newPage()

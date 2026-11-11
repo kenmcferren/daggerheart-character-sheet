@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {
-  SYSTEMS, addToVault, advancementOf, boxesChecked, changeFrame, compartmentsOf, nextThresholdOption, optionBoxes, shipProblems, shipStats, swapLoadoutVault,
+  SYSTEMS, addToVault, advancementOf, boxesChecked, changeFrame, compartmentsOf, nextThresholdOption, optionBoxes, shipProblems, shipStats,
   takeAdvancement, totalChecked, vaultCapacity, type AdvancementOption, type AdvancementTake, type Ship, type ShipCard, type System,
 } from '../engine/ship'
 import { Choice, Details } from './common'
@@ -48,7 +48,6 @@ export function ShipRefit({ ship, update, onClose }: { ship: Ship; update: Updat
   const undo = () => update((s) => { s.advancement?.taken.pop() })
 
   const vaultCards = adv.vaultCardIds.map(cardOf).filter((c): c is ShipCard => !!c)
-  const loadout = ship.choices.cardIds.map(cardOf).filter((c): c is ShipCard => !!c)
   const onShip = new Set([...ship.choices.cardIds, ...adv.vaultCardIds])
   const eligible = R.cards.filter((c) => ship.choices.domainIds.includes(c.domain) && !onShip.has(c.id))
   const have = new Set(compartmentsOf(R, ship).map((c) => c.id))
@@ -129,19 +128,13 @@ export function ShipRefit({ ship, update, onClose }: { ship: Ship; update: Updat
 
       <section className="panel">
         <h3>Loadout and vault</h3>
-        <p className="hint">Loadout {loadout.length} of {R.build.cards}. Vault {vaultCards.length} of {cap}. Vaulted cards' While Available effects are always active. Only a refit swaps cards between the two.</p>
+        <p className="hint">Your ship holds {R.build.cards} loadout cards plus up to {cap} more in the vault ({vaultCards.length} so far). While Available effects work in the loadout or the vault. All cards print on the front page in their systems: check the box on each card in your loadout (no more than {R.build.cards} in all, and no more than the number beside each system name).</p>
         <h4>Vault</h4>
         {vaultCards.length === 0 && <p className="hint">Empty. New cards go here.</p>}
         {vaultCards.map((c) => (
           <div key={c.id} className="feature">
             <strong>{c.name}</strong> <span className="meta-inline">· {sysName(c.system)} · {titleCase(c.domain)}</span>
             <Details><CardText text={c.rules} /></Details>
-            <label className="adv-pick">Swap with loadout card
-              <select value="" onChange={(e) => e.target.value && apply((s) => swapLoadoutVault(s, e.target.value, c.id))}>
-                <option value="">Choose a loadout card</option>
-                {loadout.map((l) => <option key={l.id} value={l.id}>{l.name} ({sysName(l.system)})</option>)}
-              </select>
-            </label>
             <button type="button" onClick={() => update((s) => { if (s.advancement) s.advancement.vaultCardIds = s.advancement.vaultCardIds.filter((x) => x !== c.id) })}>Remove from vault</button>
           </div>
         ))}

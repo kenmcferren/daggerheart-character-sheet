@@ -235,16 +235,6 @@ export function addToVault(rules: ShipRules, s: Ship, cardId: string): TakeResul
   return { ok: true, ship: { ...s, advancement: { ...a, vaultCardIds: [...a.vaultCardIds, cardId] } } }
 }
 
-/** Refit swap: a loadout card trades places with a vaulted card. Card caps per system are checked by shipProblems(). */
-export function swapLoadoutVault(s: Ship, loadoutCardId: string, vaultCardId: string): Ship {
-  const a = advancementOf(s)
-  if (!s.choices.cardIds.includes(loadoutCardId) || !a.vaultCardIds.includes(vaultCardId)) return s
-  return {
-    ...s,
-    choices: { ...s.choices, cardIds: s.choices.cardIds.map((id) => (id === loadoutCardId ? vaultCardId : id)) },
-    advancement: { ...a, vaultCardIds: a.vaultCardIds.map((id) => (id === vaultCardId ? loadoutCardId : id)) },
-  }
-}
 
 /** Refit frame change: earned advancements stay and stack on the new frame. Configuration and domains cannot change here. */
 export const changeFrame = (s: Ship, frameId: string): Ship => ({ ...s, choices: { ...s.choices, frameId } })

@@ -4,7 +4,7 @@ import { buildCreation } from '../src/engine/creation'
 import { renderSheet, lastLayout, type SheetFonts } from '../src/pdf/sheet'
 import { sheetView } from '../src/engine/sheetView'
 import { withRecording, outside } from './lib/record'
-import { level1, toLevel } from './lib/levelup-paths'
+import { level1, equipped, adv, up, toLevel, reg } from './lib/levelup-paths'
 import { ARMS } from './lib/packs'
 
 const packs = [JSON.parse(readFileSync('packs/core/srd-core.json', 'utf8')), JSON.parse(readFileSync('packs/core/srd-frames.json', 'utf8')), ...ARMS]
@@ -22,6 +22,15 @@ describe('[s8] Druid Beastform page', () => {
     const v = sheetView(level1('druid'), setup).beastforms
     expect(v).toHaveLength(6)
     expect(v.every((b) => b.tier === 1)).toBe(true)
+  })
+
+  it('a character who multiclasses into Druid gets the Beastforms of their tier or lower', () => {
+    const druid: any = reg.classes.get('druid')
+    const mc = { classId: 'druid', domainId: druid.domains[0], subclassId: 'druid.warden-of-renewal' }
+    const ch = up(toLevel(4, equipped()), [adv('multiclass', 3, { multiclass: mc })])   // level 5, Tier 3
+    const v = sheetView(ch, setup)
+    expect(v.beastforms.length).toBeGreaterThan(6)
+    expect(v.beastforms.every((b) => b.tier <= 3)).toBe(true)
   })
 
   it('a Tier 4 Druid sees all 24 forms, including the two upgrade templates with no stat line', () => {

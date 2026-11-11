@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 import { loadPacks } from '../src/engine/packs'
 import { ARMS, SF_ARMS } from './lib/packs'
 import {
-  newShip, shipRulesFrom, shipProblems, shipStats, validateShip, ShipError, takeAdvancement, addToVault, swapLoadoutVault, changeFrame,
+  newShip, shipRulesFrom, shipProblems, shipStats, validateShip, ShipError, takeAdvancement, addToVault, changeFrame,
   vaultCapacity, compartmentsOf, boxesChecked, optionBoxes, nextThresholdOption, advancementOption, type Ship, type AdvancementTake,
 } from '../src/engine/ship'
 
@@ -139,16 +139,14 @@ describe('[s16] Ship advancement engine', () => {
     s = take(s, { optionId: 'stress-or-hull', gain: 1, system: 'science' }, { optionId: 'compartment', compartmentId: 'gym' })
     expect(addToVault(RULES, s, next()).ok).toBe(true)
   })
-  it('refit swap trades a loadout card with a vaulted one; the frame can change and advancements stack on it', () => {
+  it('a vaulted card stays beside the loadout; the frame can change and advancements stack on it', () => {
     let s = take(legalShip(), { optionId: 'evasion-or-hull', gain: 1, system: 'science' }, { optionId: 'compartment', compartmentId: 'gym' })
     const spare = RULES.cards.find((c) => c.domain === 'flesh' && c.system === 'transport' && !s.choices.cardIds.includes(c.id))!
     const r = addToVault(RULES, s, spare.id)
     if (!r.ok) throw new Error(r.reason)
-    s = swapLoadoutVault(r.ship, 'prey-drive', spare.id)
-    expect(s.choices.cardIds).toContain(spare.id)
-    expect(s.choices.cardIds).not.toContain('prey-drive')
-    expect(s.advancement!.vaultCardIds).toEqual(['prey-drive'])
-    expect(swapLoadoutVault(s, 'nope', 'prey-drive')).toBe(s)
+    s = r.ship
+    expect(s.choices.cardIds).toContain('prey-drive')
+    expect(s.advancement!.vaultCardIds).toEqual([spare.id])
     s = take(changeFrame(s, 'standard'), { optionId: 'thresholds-major' })
     s.choices.freeHp = { transport: 0, weapons: 0, science: 0, engineering: 0 }
     s = changeFrame(s, 'plated')

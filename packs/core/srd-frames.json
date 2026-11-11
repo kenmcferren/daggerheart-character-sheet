@@ -354,6 +354,7 @@
                   "id": "converge",
                   "name": "Converge",
                   "effect": "+1 to attack rolls",
+                  "attack": 1,
                   "cost": "4 coils, 2 crystals, 5 gold, 3 discs",
                   "max": 2
                 },
@@ -384,6 +385,7 @@
                   "id": "target",
                   "name": "Target",
                   "effect": "+2 to attack rolls",
+                  "attack": 2,
                   "cost": "10 wires, 7 gold, 5 fuses, 5 circuits, 2 batteries",
                   "max": 1
                 },

@@ -3,11 +3,20 @@ import { readFileSync } from 'node:fs'
 import { buildCreation } from '../src/engine/creation'
 import { armorPool, weaponPool } from '../src/engine/rules'
 import { sheetView } from '../src/engine/sheetView'
-import { gearEffect, proficiencyTrait } from '../src/engine/gearEffects'
+import { attackBonus, gearEffect, proficiencyTrait } from '../src/engine/gearEffects'
 import { equipped } from './lib/levelup-paths'
+import { renderSheet, type SheetFonts } from '../src/pdf/sheet'
+import { withRecording } from './lib/record'
 import { ARMS, SF_ARMS } from './lib/packs'
 
 const pack = (f: string) => JSON.parse(readFileSync(`packs/core/${f}.json`, 'utf8'))
+const font = (f: string) => new Uint8Array(readFileSync(`assets/fonts/${f}`))
+const fonts: SheetFonts = {
+  body: font('source-sans-3-latin-400-normal.woff'), bold: font('source-sans-3-latin-700-normal.woff'),
+  italic: font('source-sans-3-latin-400-italic.woff'), boldItalic: font('source-sans-3-latin-700-italic.woff'),
+  heading: font('cinzel-latin-700-normal.woff'),
+}
+const base = buildCreation([pack('srd-core'), pack('srd-frames'), ...ARMS])
 const sf = buildCreation([pack('srd-core'), pack('srd-frames'), pack('starfinder'), ...ARMS, SF_ARMS], { supplements: ['starfinder-armaments'] })
 
 /** Same character, once with the named armor and once with no armor at all (both without the unarmored stand-in thresholds). */
@@ -65,5 +74,23 @@ describe('[s11] gear effects: armor and weapon feature text feeds the printed nu
     const ch = equipped('guardian'), before = sheetView(ch, sf).stats.armorScore
     ch.choices.equipmentIds.push(shield.id)
     expect(sheetView(ch, sf).stats.armorScore).toBe(before + 1)
+  })
+
+  it('attackBonus reads flat attack-roll bonuses and ignores conditional text', () => {
+    expect(attackBonus('Reliable: +1 to attack rolls')).toBe(1)
+    expect(attackBonus('Tracer Fire: Add +2 to your attack roll with this weapon.')).toBe(2)
+    expect(attackBonus('Trusty: +1 to attack rolls made with your primary weapon')).toBe(0)
+    expect(attackBonus('Extending: You gain a −1 penalty to attack rolls for each step you increase the range by')).toBe(0)
+    expect(attackBonus(undefined)).toBe(0)
+  })
+
+  it('a Reliable weapon prints its +1 inside the attack modifier', async () => {
+    const wpn: any = (weaponPool(base).entries as any[]).find((w) => w.id === 'weapon.broadsword')
+    const ch = equipped('guardian')
+    ch.choices.equipmentIds = [...ch.choices.equipmentIds.filter((id) => !(weaponPool(base).entries as any[]).some((w) => w.id === id)), wpn.id]
+    const marks = await withRecording(async () => { await renderSheet(ch, base, fonts) })
+    const texts = marks.filter((m) => m.kind === 'text').map((m) => m.text ?? '')
+    const t = ((ch.traits as any)[wpn.trait] as number) + 1
+    expect(texts[texts.indexOf('Melee,') - 1]).toBe(`(${t < 0 ? '−' : '+'}${Math.abs(t)}),`)
   })
 })

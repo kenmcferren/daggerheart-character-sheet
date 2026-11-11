@@ -49,3 +49,14 @@ export function proficiencyTrait(feature: string | undefined): TraitName | undef
   const m = (feature ?? '').match(new RegExp(`(?:Use|uses) your (${TRAIT_RE})(?: as)? (?:its |your |the )?proficiency`, 'i'))
   return m ? (m[1].toLowerCase() as TraitName) : undefined
 }
+
+/** Flat, unconditional attack-roll bonus a weapon's feature gives ("Reliable: +1 to attack rolls", "Tracer Fire: Add +2 to
+ *  your attack roll with this weapon"). Conditional or situational text (penalties per range step, "made with your primary
+ *  weapon") stays plain text. */
+export function attackBonus(feature: string | undefined): number {
+  const text = (feature ?? '').replace(/^[^:]+:\s*/, '').trim()
+  let m = text.match(new RegExp(`^${SIGNED} to attack rolls\\.?$`, 'i'))
+  if (m) return num(m[1])
+  m = text.match(new RegExp(`^Add ${SIGNED} to your attack roll with this weapon\\.?$`, 'i'))
+  return m ? num(m[1]) : 0
+}
